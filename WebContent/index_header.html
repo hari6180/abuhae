@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>아이를부탁해</title>
+
+    <!-- 모바일 웹 페이지 설정 -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/favicon.ico" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+    <!-- noto Sans 웹 폰트 적용 -->
+    <link rel="stylesheet" type="text/css" href="assets/css/notosans.css" />
+    <!-- fontawesome(글리피콘) 적용 -->
+    <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
+
+    <!-- animaition 적용-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="assets/css/index_header.css"></link>
+  </head>
+
+  <!--grid 사용시 col-xs-nn 사용-->
+  <body>
+    <div id="app">
+      <div class="container">
+        <!-- header : 하리-->
+        <header>
+          <div class="header_wrap col-xs-12">
+            <div class="header">
+              <div class="flex_row main_menu">
+                <!-- 메뉴 모달 열기-->
+                <a data-toggle="modal" href="#menu_modal"
+                  ><p><i class="fas fa-bars"> </i></p
+                ></a>
+
+                <!--메인페이지 연결 필요-->
+                <a href="Index.html">
+                  <img src="assets/img/logo (1).png" class="logo" />
+                </a>
+              </div>
+              <div class="flex_row">
+                <button class="join">가입하기</button>
+                <img src="assets/img/돋보기.png" class="header_search_btn" />
+              </div>
+            </div>
+          </div>
+        </header>
+        <!-- header end-->
+
+        <!-- modal -->
+
+        <div id="menu_modal" class="modal col-xs-12 fade" data-toggle="tab" tabindex="-1" role="dialog" aria-labelledby="menu_modal_label" aria-hidden="true">
+          <!-- modal content-->
+          <div class="modal_content col-xs-9">
+            <!-- modal header -->
+            <div class="modal_group">
+              <div class="modal_header">
+                <button type="button" class="modal_btn">
+                  <p class="login_btn">로그인</p>
+                </button>
+                <button type="button" class="modal_btn">
+                  <p class="join_btn">회원가입</p>
+                </button>
+              </div>
+              <!-- modal header end-->
+
+              <!-- modal body-->
+              <div class="modal_body">
+                <div class="sitter_search">
+                  <a href="#">
+                    <img src="assets/img/index-sittersearch.svg" />
+                    <p>맘시터 찾기</p>
+                  </a>
+                </div>
+
+                <div class="job_search">
+                  <a href="#">
+                    <img src="assets/img/index-jobsearch.svg" />
+                    <p>일자리 찾기</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- modal body end-->
+            <div class="divider"></div>
+            <!-- modal footer -->
+            <div class="modal_footer modal_group">
+              <a href="#">
+                <p>이용권 / 지원권 구매</p>
+              </a>
+              <a href="#">
+                <p>서비스 소개</p>
+              </a>
+              <a href="#">
+                <p>공지사항</p>
+              </a>
+              <a href="#">
+                <p>고객센터</p>
+              </a>
+            </div>
+
+            <!-- modal footer end -->
+          </div>
+          <!-- modal content end-->
+        </div>
+        <!-- modal end -->
+
+        <!--section-->
+        <div class="section"></div>
+
+        <!--footer-->
+        <div class="footer"></div>
+      </div>
+    </div>
+    <!-- Javascript -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      /**$(function () {
+        $("#main_menu").click(function () {
+          $("#menu_modal").toggleClass("show", "hide");
+        });
+      });*/
+    </script>
+  </body>
+</html>
