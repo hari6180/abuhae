@@ -1,0 +1,140 @@
+/*초기 설정*/
+button {
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+#activity_type_modal {
+  background-color: #fff;
+}
+
+#activity_type_modal .modal_header {
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e6e7e8;
+  padding: 5px 10px;
+  z-index: 1;
+}
+
+#activity_type_modal .modal_header h2 {
+  font-size: 1.7rem;
+  color: #2b2b2b;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  line-height: 1.375;
+}
+
+#activity_type_modal .modal_content {
+  margin-top: 70px;
+  padding: 5px 0 100px;
+}
+
+#activity_type_modal .apply_btn {
+  background-color: #ff7000 !important;
+  width: 70px;
+  height: 35px;
+  border-radius: 18px;
+  color: #fff;
+}
+
+#activity_type_modal .close {
+  opacity: 1;
+  padding: 12px;
+}
+
+#activity_type_modal .want_act_box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#activity_type_modal .want_img {
+  width: 70%;
+  height: 70%;
+}
+
+#activity_type_modal .want_text {
+  font-weight: bold;
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #939393;
+  padding-top: 10px;
+}
+
+#activity_type_modal .want_btn {
+  width: 25%;
+  text-align: center;
+  margin: 10px 0;
+  box-sizing: content-box;
+  position: relative;
+}
+
+#activity_type_modal .want_btn button {
+  position: relative;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  line-height: 36px;
+  color: #f1f3f5;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  text-align: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 56px;
+}
+
+#activity_type_modal .modal_footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 55px;
+  background-color: #fff;
+  border-top: 1px solid #e3e3e3;
+}
+
+#activity_type_modal .reset {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  height: 55px;
+  background: none;
+  z-index: 15;
+}
+#activity_type_modal .fa-undo-alt {
+  padding-left: 25px;
+  color: rgb(186, 186, 186);
+}
+
+#activity_type_modal .modal_footer h2 {
+  margin: 0 0 0 5px;
+  font-size: 14.4px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #727272;
+}
+
+/*버튼 클릭시 적용될 클래스-------------------------------------*/
+.select_btn {
+  background-color: #ff7000 !important;
+  position: relative !important;
+}
+
+.select_text {
+  color: #ff7000 !important;
+}
+/*end 버튼 클릭시 적용될 클래스-------------------------------------*/

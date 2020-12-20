@@ -22,10 +22,43 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/index_header.css" />
     <!-- sitter_search.css-->
     <link rel="stylesheet" type="text/css" href="css/sitter_search.css" />
+    <!-- join css -->
+    <link rel="stylesheet" type="text/css" href="css/join.css" />
 
-    <!-- AjaxHelper -->
+    <!-- sweetalert 사용 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- ajax Helper -->
     <script src="WebContent/plugins/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="WebContent/plugins/ajax/ajax_helper.css" />
+
+    <style>
+      #activity_type_modal {
+        width: 100%;
+        height: 100%;
+      }
+
+      .want_btn button {
+        position: relative;
+        border: 0;
+        outline: 0;
+        text-decoration: none;
+        margin: 0;
+        padding: 0;
+        line-height: 36px;
+        color: #f1f3f5;
+        transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+        text-align: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 56px;
+      }
+
+      .want_btn img {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </head>
 
   <!--grid 사용시 col-xs-nn 사용-->
@@ -184,64 +217,89 @@
               <!-- location modal end -->
 
               <!-- activity type modal -->
-              <div id="activity_type_modal" class="modal col-xs-12" data-toggle="tab" tabindex="-1" role="dialog" aria-labelledby="activity_type_label" aria-hidden="true">
-                <!-- modal content-->
-                <div class="modal_content">
-                  <!-- modal header -->
-                  <div class="modal_group">
-                    <div class="modal_header">
-                      <a href="#"
-                        ><button type="button" class="modal_btn">
-                          <p class="login_btn">로그인</p>
-                        </button></a
-                      >
-                      <a href="join/join.html"
-                        ><button type="button" class="modal_btn">
-                          <p class="join_btn">회원가입</p>
-                        </button></a
-                      >
-                    </div>
-                    <!-- modal header end-->
+              <!--modal-->
+              <div id="activity_type_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="activity_type_modal_Label" aria-hidden="true">
+                <!--modal header-->
 
-                    <!-- modal body-->
-                    <div class="modal_body">
-                      <div class="sitter_search">
-                        <a href="#">
-                          <img src="../assets/img/index-sittersearch.svg" />
-                          <p>맘시터 찾기</p>
-                        </a>
-                      </div>
-
-                      <div class="job_search">
-                        <a href="#">
-                          <img src="../assets/img/index-jobsearch.svg" />
-                          <p>일자리 찾기</p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- modal body end-->
-                  <div class="divider"></div>
-                  <!-- modal footer -->
-                  <div class="modal_footer modal_group">
-                    <a href="#">
-                      <p>이용권 / 지원권 구매</p>
-                    </a>
-                    <a href="#">
-                      <p>서비스 소개</p>
-                    </a>
-                    <a href="#">
-                      <p>공지사항</p>
-                    </a>
-                    <a href="#">
-                      <p>고객센터</p>
-                    </a>
-                  </div>
-
-                  <!-- modal footer end -->
+                <div class="modal_header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                  </button>
+                  <h2>원하는 활동 선택</h2>
+                  <button class="apply_btn" type="button">적용</button>
                 </div>
-                <!-- modal content end-->
+
+                <!--modal header end-->
+                <!--modal content-->
+                <div class="modal_content">
+                  <!--돌봄 유형 선택-->
+                  <div class="want_act_box">
+                    <div class="want_btn">
+                      <button class="act_btn" value="innerplay"><img class="want_img" src="/WebContent/img/join/innerplayicon_n.png" /></button>
+                      <div class="want_text">실내놀이</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="guide"><img class="want_img" src="/WebContent/img/join/guideicon_n.png" /></button>
+                      <div class="want_text">등하원 돕기</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="read"><img class="want_img" src="/WebContent/img/join/readicon_n.png" /></button>
+                      <div class="want_text">책읽기</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="outside"><img class="want_img" src="/WebContent/img/join/ousideicon_n.png" /></button>
+                      <div class="want_text">야외활동</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="korean"><img class="want_img" src="/WebContent/img/join/koreanicon_n.png" /></button>
+                      <div class="want_text">한글놀이</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="english"><img class="want_img" src="/WebContent/img/join/englishicon_n.png" /></button>
+                      <div class="want_text">영어놀이</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="study"><img class="want_img" src="/WebContent/img/join/studyicon_n.png" /></button>
+                      <div class="want_text">학습지도</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/ousideicon_n.png" /></button>
+                      <div class="want_text">체육놀이</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/eaticon_n.png" /></button>
+                      <div class="want_text">간단 청소</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/eaticon_n.png" /></button>
+                      <div class="want_text">밥 챙겨주기</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/eaticon_n.png" /></button>
+                      <div class="want_text">간단 설거지</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/eaticon_n.png" /></button>
+                      <div class="want_text">장기입주</div>
+                    </div>
+                    <div class="want_btn">
+                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/eaticon_n.png" /></button>
+                      <div class="want_text">단기입주</div>
+                    </div>
+                  </div>
+                  <!--end modal content -->
+                  <!--modal footer-->
+                  <div class="modal_footer">
+                    <button class="reset" type="reset">
+                      <i class="fas fa-undo-alt"></i>
+                      <h2>초기화</h2>
+                    </button>
+                  </div>
+                  <!--modal footer end-->
+                </div>
+                <!--end modal dialog-->
               </div>
+              <!--end modal-->
               <!-- activity type modal end -->
 
               <!-- detail search modal -->
@@ -304,6 +362,27 @@
                 <!-- modal content end-->
               </div>
               <!-- detail search modal end -->
+              <!-- .modal --------------------------------------------------------------------------------------------------------------------->
+
+              <div id="like_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="like_modal_label" aria-hidden="true">
+                <!-- .modal-dialog -->
+                <div class="modal-dialog">
+                  <!-- .modal-content -->
+                  <div class="modal-content">
+                    <div id="modal-body">
+                      <p style="text-align: center; padding-top: 10px; font-weight: bold">찜하기 완료!</p>
+                      <p style="text-align: center; padding-top: 10px">마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" id="modal_ok" style="text-align: center">확인</button>
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+              <!-- /.modal -->
+
               <div class="search_filter_wrap">
                 <div class="search_filter_group">
                   <div class="location_filter">
@@ -360,7 +439,7 @@
               </div>
 
               <div class="sitter_item_group">
-                <a href="mom_page_detail">
+                <a href="http://localhost:8080/ezen-android2020-2/page_detail/sitter_page_detail_for_mom.html">
                   <div class="item_header">
                     <div class="cert_label"><img src="img/icon-cert-label (1).png" /><span class="cert_text">세 아이의 엄마</span></div>
                   </div>
@@ -380,7 +459,13 @@
                           <div class="user_name">정O우</div>
                           <div class="last_update">6일 전 작성</div>
                         </div>
-                        <button class="like_btn"><img src="img/s-list-like-off (1).png" /></button>
+                        <div>
+                          <button id="swapHeart" class="btn btn-default">                           
+                        <div class="jim">
+                            <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 25px;"></span>
+                        </div>                           
+                     </button>
+                        </div>
                       </div>
                       <div class="content_row location_group">
                         <span class="location">성남시 분당구 </span>
@@ -573,31 +658,70 @@
     <script src="../assets/js/bootstrap.min.js"></script>
     <script type="text/Javascript">
       $(document).ready(function () {
-       $(document).scroll(function() {
-         var maxHeight = $(document).height();
-         var currentScroll = $(window).scrollTop() + $(window).height();
+        // 무한 스크롤
+        $(document).scroll(function() {
+          var maxHeight = $(document).height();
+          var currentScroll = $(window).scrollTop() + $(window).height();
 
-         if (maxHeight <= currentScroll + 100) {
-             $.ajax( {
-           			// 결과를 읽어올 URL
-           			url: 'item_group.html',
-           			// 웹 프로그램에게 데이터를 전송하는 방식.
-           			// 생략할 경우 get으로 자동 지정됨
-           			method: 'get',
-           			// 전달할 조건값은 JSON 형식으로 구성
-           			// 사용하지 않을 경우 명시 자체를 생략할 수 있다.
-           			data: {},
-           			// 읽어올 내용의 형식(생략할 경우 json)
-           			dataType: 'html',
-           			// 읽어온 내용을 처리하기 위한 함수
-           			success: function(req) {
-           				// 준비된 요소에게 읽어온 내용을 출력한다.
-           				$("#result").append(req);
-                   }
-           		}); // end $.ajax
-             }	// end testAjax
-           });
+          if (maxHeight <= currentScroll + 100) {
+            $.ajax( {
+            // 결과를 읽어올 URL
+            url: 'item_group.html',
+            // 웹 프로그램에게 데이터를 전송하는 방식.
+            // 생략할 경우 get으로 자동 지정됨
+            method: 'get',
+            // 전달할 조건값은 JSON 형식으로 구성
+            // 사용하지 않을 경우 명시 자체를 생략할 수 있다.
+            data: {},
+            // 읽어올 내용의 형식(생략할 경우 json)
+            dataType: 'html',
+            // 읽어온 내용을 처리하기 위한 함수
+            success: function(req) {
+              // 준비된 요소에게 읽어온 내용을 출력한다.
+              $("#result").append(req);
+                }
+            }); // end $.ajax
+              }	// end testAjax
           });
+        });
+
+        $(function () {
+            //활동 버튼 클릭
+          $(".act_btn").click(function (e) {
+            //버튼 클릭시 클래스 변경
+            $(this).toggleClass("select_btn");
+            //버튼 클릭시 text 색 변경
+            $(this).next().toggleClass("select_text");
+            //버튼 클릭시 이미지 URL 변경
+            //url 가져오기
+            var img_url = $(this).find(".want_img").attr('src');
+            var indeximg = img_url.indexOf("_n") //잘라서 _n이 있는지 확인
+            if (indeximg > -1) {
+                var img_src = img_url.replace(/_n/, "_s");
+                $(this).find(".want_img").attr('src', img_src);
+            } else {
+                var img_src = img_url.replace(/_s/, "_n");
+                $(this).find(".want_img").attr('src', img_src);
+            };
+          });
+            
+          $('#swapHeart').on('click', function() {
+              var $jim = $(this)
+              
+              // 찜할 때 alert창과 glyphicon변형
+              if($(this).find('span').hasClass("glyphicon-heart-empty")) {
+                 $(this).find('span').removeClass("glyphicon-heart-empty");
+                 $(this).find('span').addClass("glyphicon-heart");
+                   swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+              }
+              // 찜 취소할 때 alert창과 glyphicon변형
+               else{
+                     swal("찜 하기 취소");
+                   $(this).find('span').addClass("glyphicon-heart-empty");
+               }
+           
+            }); // fin. 찜버튼 기능
+        });
     </script>
   </body>
 </html>
