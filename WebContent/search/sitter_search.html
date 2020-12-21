@@ -22,8 +22,8 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/index_header.css" />
     <!-- sitter_search.css-->
     <link rel="stylesheet" type="text/css" href="css/sitter_search.css" />
-    <!-- join css -->
-    <link rel="stylesheet" type="text/css" href="css/join.css" />
+    <!-- join parent.css -->
+    <link rel="stylesheet" type="text/css" href="css/join_parent.css" />
 
     <!-- sweetalert 사용 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -31,34 +31,6 @@
     <!-- ajax Helper -->
     <script src="WebContent/plugins/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="WebContent/plugins/ajax/ajax_helper.css" />
-
-    <style>
-      #activity_type_modal {
-        width: 100%;
-        height: 100%;
-      }
-
-      .want_btn button {
-        position: relative;
-        border: 0;
-        outline: 0;
-        text-decoration: none;
-        margin: 0;
-        padding: 0;
-        line-height: 36px;
-        color: #f1f3f5;
-        transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-        text-align: center;
-        width: 56px;
-        height: 56px;
-        border-radius: 56px;
-      }
-
-      .want_btn img {
-        width: 100%;
-        height: 100%;
-      }
-    </style>
   </head>
 
   <!--grid 사용시 col-xs-nn 사용-->
@@ -76,7 +48,7 @@
                 </a>
 
                 <!--메인페이지 연결 필요-->
-                <a href="Index.html">
+                <a href="http://localhost:8080/ezen-android2020-2/Index.html">
                   <img src="../assets/img/logo (1).png" class="logo" />
                 </a>
               </div>
@@ -157,67 +129,197 @@
             <div class="search_wrap">
               <!-- location modal -->
               <div id="location_modal" class="modal col-xs-12" data-toggle="tab" tabindex="-1" role="dialog" aria-labelledby="location_label" aria-hidden="true">
-                <!-- modal content-->
-                <div class="modal_content">
-                  <!-- modal header -->
-                  <div class="modal_group">
-                    <div class="modal_header">
-                      <a href="#"
-                        ><button type="button" class="modal_btn">
-                          <p class="login_btn">로그인</p>
-                        </button></a
-                      >
-                      <a href="join/join.html"
-                        ><button type="button" class="modal_btn">
-                          <p class="join_btn">회원가입</p>
-                        </button></a
-                      >
-                    </div>
-                    <!-- modal header end-->
-
-                    <!-- modal body-->
-                    <div class="modal_body">
-                      <div class="sitter_search">
-                        <a href="#">
-                          <img src="../assets/img/index-sittersearch.svg" />
-                          <p>맘시터 찾기</p>
-                        </a>
-                      </div>
-
-                      <div class="job_search">
-                        <a href="#">
-                          <img src="../assets/img/index-jobsearch.svg" />
-                          <p>일자리 찾기</p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- modal body end-->
-                  <div class="divider"></div>
-                  <!-- modal footer -->
-                  <div class="modal_footer modal_group">
-                    <a href="#">
-                      <p>이용권 / 지원권 구매</p>
-                    </a>
-                    <a href="#">
-                      <p>서비스 소개</p>
-                    </a>
-                    <a href="#">
-                      <p>공지사항</p>
-                    </a>
-                    <a href="#">
-                      <p>고객센터</p>
-                    </a>
-                  </div>
-
-                  <!-- modal footer end -->
+                <div class="location_header">
+                  <button class="reset" type="reset">
+                    <i class="fas fa-undo-alt"></i>
+                  </button>
+                  <h1>돌봄 지역</h1>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                  </button>
                 </div>
-                <!-- modal content end-->
+                <!--지역 선택-->
+                <div class="location_box">
+                  <!--시,도-->
+                  <div class="location_group">
+                    <div>
+                      <button>서울특별시</button>
+                    </div>
+                    <div>
+                      <button>경기도</button>
+                    </div>
+                    <div>
+                      <button>인천광역시</button>
+                    </div>
+                    <div>
+                      <button>부산광역시</button>
+                    </div>
+                    <div>
+                      <button>대전광역시</button>
+                    </div>
+                    <div>
+                      <button>대구광역시</button>
+                    </div>
+                    <div>
+                      <button>울산광역시</button>
+                    </div>
+                    <div>
+                      <button>세종특별자치시</button>
+                    </div>
+                    <div>
+                      <button>광주광역시</button>
+                    </div>
+                    <div>
+                      <button>강원도</button>
+                    </div>
+                    <div>
+                      <button>충청북도</button>
+                    </div>
+                    <div>
+                      <button>충청남도</button>
+                    </div>
+                    <div>
+                      <button>경상북도</button>
+                    </div>
+                    <div>
+                      <button>경상남도</button>
+                    </div>
+                    <div>
+                      <button>전라북도</button>
+                    </div>
+                    <div>
+                      <button>전라남도</button>
+                    </div>
+                    <div>
+                      <button>제주특별자치도</button>
+                    </div>
+                  </div>
+                  <!--end 시-->
+                  <!--구-->
+                  <div class="location_group">
+                    <div>
+                      <button>강남구</button>
+                    </div>
+                    <div>
+                      <button>강동구</button>
+                    </div>
+                    <div>
+                      <button>강북구</button>
+                    </div>
+                    <div>
+                      <button>강서구</button>
+                    </div>
+                    <div>
+                      <button>관악구</button>
+                    </div>
+                    <div>
+                      <button>광진구</button>
+                    </div>
+                    <div>
+                      <button>구로구</button>
+                    </div>
+                    <div>
+                      <button>금천구</button>
+                    </div>
+                    <div>
+                      <button>노원구</button>
+                    </div>
+                    <div>
+                      <button>도봉구</button>
+                    </div>
+                    <div>
+                      <button>동대문구</button>
+                    </div>
+                    <div>
+                      <button>동작구</button>
+                    </div>
+                    <div>
+                      <button>마포구</button>
+                    </div>
+                    <div>
+                      <button>서대문구</button>
+                    </div>
+                    <div>
+                      <button>서초구</button>
+                    </div>
+                    <div>
+                      <button>성동구</button>
+                    </div>
+                    <div>
+                      <button>성북구</button>
+                    </div>
+                    <div>
+                      <button>송파구</button>
+                    </div>
+                    <div>
+                      <button>양천구</button>
+                    </div>
+                    <div>
+                      <button>영등포구</button>
+                    </div>
+                    <div>
+                      <button>용산구</button>
+                    </div>
+                    <div>
+                      <button>은평구</button>
+                    </div>
+                    <div>
+                      <button>종로구</button>
+                    </div>
+                    <div>
+                      <button>중구</button>
+                    </div>
+                    <div>
+                      <button>중랑구</button>
+                    </div>
+                  </div>
+                  <!--end 구-->
+                  <!--동-->
+                  <div class="location_group">
+                    <div>
+                      <button>가산동</button>
+                    </div>
+                    <div>
+                      <button>독산1동</button>
+                    </div>
+                    <div>
+                      <button>독산2동</button>
+                    </div>
+                    <div>
+                      <button>독산3동</button>
+                    </div>
+                    <div>
+                      <button>독산4동</button>
+                    </div>
+                    <div>
+                      <button>독산동</button>
+                    </div>
+                    <div>
+                      <button>시흥1동</button>
+                    </div>
+                    <div>
+                      <button>시흥2동</button>
+                    </div>
+                    <div>
+                      <button>시흥3동</button>
+                    </div>
+                    <div>
+                      <button>시흥4동</button>
+                    </div>
+                    <div>
+                      <button>시흥5동</button>
+                    </div>
+                    <div>
+                      <button>시흥동</button>
+                    </div>
+                  </div>
+                  <!--end 동-->
+                </div>
+                <!-- fin. col-xs-12 -->
               </div>
               <!-- location modal end -->
 
               <!-- activity type modal -->
-              <!--modal-->
               <div id="activity_type_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="activity_type_modal_Label" aria-hidden="true">
                 <!--modal header-->
 
@@ -235,55 +337,55 @@
                   <!--돌봄 유형 선택-->
                   <div class="want_act_box">
                     <div class="want_btn">
-                      <button class="act_btn" value="innerplay"><img class="want_img" src="/WebContent/img/join/innerplayicon_n.png" /></button>
+                      <button class="act_btn" value="innerplay"><img class="want_img" src="../img/join/innerplayicon_n.png" /></button>
                       <div class="want_text">실내놀이</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="guide"><img class="want_img" src="/WebContent/img/join/guideicon_n.png" /></button>
+                      <button class="act_btn" value="guide"><img class="want_img" src="../img/join/guideicon_n.png" /></button>
                       <div class="want_text">등하원 돕기</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="read"><img class="want_img" src="/WebContent/img/join/readicon_n.png" /></button>
+                      <button class="act_btn" value="read"><img class="want_img" src="../img/join/readicon_n.png" /></button>
                       <div class="want_text">책읽기</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="outside"><img class="want_img" src="/WebContent/img/join/ousideicon_n.png" /></button>
+                      <button class="act_btn" value="outside"><img class="want_img" src="../img/join/ousideicon_n.png" /></button>
                       <div class="want_text">야외활동</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="korean"><img class="want_img" src="/WebContent/img/join/koreanicon_n.png" /></button>
+                      <button class="act_btn" value="korean"><img class="want_img" src="../img/join/koreanicon_n.png" /></button>
                       <div class="want_text">한글놀이</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="english"><img class="want_img" src="/WebContent/img/join/englishicon_n.png" /></button>
+                      <button class="act_btn" value="english"><img class="want_img" src="../img/join/englishicon_n.png" /></button>
                       <div class="want_text">영어놀이</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="study"><img class="want_img" src="/WebContent/img/join/studyicon_n.png" /></button>
+                      <button class="act_btn" value="study"><img class="want_img" src="../img/join/studyicon_n.png" /></button>
                       <div class="want_text">학습지도</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/ousideicon_n.png" /></button>
+                      <button class="act_btn" value="sport"><img class="want_img" src="../img/join/ousideicon_n.png" /></button>
                       <div class="want_text">체육놀이</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/eaticon_n.png" /></button>
+                      <button class="act_btn" value="simple_cleaning"><img class="want_img" src="../img/join/eaticon_n.png" /></button>
                       <div class="want_text">간단 청소</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/eaticon_n.png" /></button>
+                      <button class="act_btn" value="eat"><img class="want_img" src="../img/join/eaticon_n.png" /></button>
                       <div class="want_text">밥 챙겨주기</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/eaticon_n.png" /></button>
+                      <button class="act_btn" value="do_dish"><img class="want_img" src="../img/join/eaticon_n.png" /></button>
                       <div class="want_text">간단 설거지</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/eaticon_n.png" /></button>
+                      <button class="act_btn" value="long_move_in"><img class="want_img" src="../img/join/eaticon_n.png" /></button>
                       <div class="want_text">장기입주</div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="eat"><img class="want_img" src="/WebContent/img/join/eaticon_n.png" /></button>
+                      <button class="act_btn" value="short_move_in"><img class="want_img" src="../img/join/eaticon_n.png" /></button>
                       <div class="want_text">단기입주</div>
                     </div>
                   </div>
@@ -299,70 +401,142 @@
                 </div>
                 <!--end modal dialog-->
               </div>
-              <!--end modal-->
               <!-- activity type modal end -->
 
               <!-- detail search modal -->
-              <div id="sitter_search_detail_modal" class="modal col-xs-12" data-toggle="tab" tabindex="-1" role="dialog" aria-labelledby="sitter_search_detail_label" aria-hidden="true">
-                <!-- modal content-->
-                <div class="modal_content">
-                  <!-- modal header -->
-                  <div class="modal_group">
-                    <div class="modal_header">
-                      <a href="#"
-                        ><button type="button" class="modal_btn">
-                          <p class="login_btn">로그인</p>
-                        </button></a
-                      >
-                      <a href="join/join.html"
-                        ><button type="button" class="modal_btn">
-                          <p class="join_btn">회원가입</p>
-                        </button></a
-                      >
-                    </div>
-                    <!-- modal header end-->
-
-                    <!-- modal body-->
-                    <div class="modal_body">
-                      <div class="sitter_search">
-                        <a href="#">
-                          <img src="../assets/img/index-sittersearch.svg" />
-                          <p>맘시터 찾기</p>
-                        </a>
-                      </div>
-
-                      <div class="job_search">
-                        <a href="#">
-                          <img src="../assets/img/index-jobsearch.svg" />
-                          <p>일자리 찾기</p>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- modal body end-->
-                  <div class="divider"></div>
-                  <!-- modal footer -->
-                  <div class="modal_footer modal_group">
-                    <a href="#">
-                      <p>이용권 / 지원권 구매</p>
-                    </a>
-                    <a href="#">
-                      <p>서비스 소개</p>
-                    </a>
-                    <a href="#">
-                      <p>공지사항</p>
-                    </a>
-                    <a href="#">
-                      <p>고객센터</p>
-                    </a>
-                  </div>
-
-                  <!-- modal footer end -->
+              <div id="sitter_search_detail_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="sitter_search_detail_modal_Label" aria-hidden="true">
+                <div class="modal_header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                  </button>
+                  <h2>상세검색</h2>
+                  <button class="apply_btn" type="button">적용</button>
                 </div>
-                <!-- modal content end-->
+                <!--modal header end-->
+                <!--modal content-->
+                <div class="modal_content">
+                  <!-- 아이 나이 -->
+                  <div class="children_age_wrap">
+                    <h4>아이 나이</h4>
+                    <div class="age_line">
+                      <button class="ages">
+                        <div style="margin-bottom: -10px">
+                          <i class="fas fa-baby fa-3x"></i>
+                        </div>
+                        <br />
+                        <span>신생아</span>
+                      </button>
+                      <button class="ages">
+                        <div style="margin-bottom: -10px">
+                          <i class="fas fa-baby-carriage fa-3x"></i>
+                        </div>
+                        <br />
+                        <span>영아</span>
+                      </button>
+                      <button class="ages">
+                        <div style="margin-bottom: -10px">
+                          <i class="fas fa-child fa-3x"></i>
+                        </div>
+                        <br />
+                        <span>유아</span>
+                      </button>
+                      <button class="ages">
+                        <div style="margin-bottom: -10px">
+                          <i class="fas fa-school fa-3x"></i>
+                        </div>
+                        <br />
+                        <span>초등학생</span>
+                      </button>
+                    </div>
+                  </div>
+                  <hr />
+                  <!-- 돌봄 요일 -->
+                  <div class="care_day_wrap">
+                    <h4>돌봄 요일</h4>
+                    <div class="care_day_group">
+                      <button class="care_day"><div>월</div></button>
+                      <button class="care_day"><div>화</div></button>
+                      <button class="care_day"><div>수</div></button>
+                      <button class="care_day"><div>목</div></button>
+                      <button class="care_day"><div>금</div></button>
+                      <button class="care_day"><div>토</div></button>
+                      <button class="care_day"><div>일</div></button>
+                    </div>
+                  </div>
+                  <hr />
+                  <!--돌봄 시간대-->
+                  <div class="caretime_wrap">
+                    <h4>돌봄 시간대</h4>
+                    <div class="time_range_group">
+                      <button class="time_range"><span class="time_range_content">07 - 12시</span></button>
+                      <button class="time_range"><span class="time_range_content">12 - 18시</span></button>
+                      <button class="time_range"><span class="time_range_content">18 - 22시</span></button>
+                    </div>
+                  </div>
+                  <hr />
+                  <!-- 맘시터 유형 -->
+                  <div class="sitter_type_wrap">
+                    <h4>맘시터 유형</h4>
+                    <div class="sitter_type_group">
+                      <div>
+                        <button class="sitter_type">
+                          <div>
+                            <i class="fas fa-circle"></i>
+                            <span class="sitter_type_content">엄마 맘시터</span>
+                          </div>
+                        </button>
+                        <button class="sitter_type">
+                          <div>
+                            <i class="fas fa-circle"></i>
+                            <span class="sitter_type_content">선생님 맘시터</span>
+                          </div>
+                        </button>
+                      </div>
+                      <div>
+                        <button class="sitter_type">
+                          <div>
+                            <i class="fas fa-circle"></i>
+                            <span class="sitter_type_content">대학생 맘시터</span>
+                          </div>
+                        </button>
+                        <button class="sitter_type">
+                          <div>
+                            <i class="fas fa-circle"></i>
+                            <span class="sitter_type_content">일반 맘시터</span>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="sitter_insurance">
+                      <input type="checkbox" value="ins_check" class="ins_check" id="ins_check" />
+                      <label for="ins_check">보험 가입한 맘시터</label>
+                    </div>
+                  </div>
+                  <hr />
+                  <!-- 원하는 맘시터 나이대 -->
+                  <div class="sitter_age">
+                    <h4>원하는 맘시터 나이대</h4>
+                    <div class="age_range">
+                      <div class="want_age_box">
+                        <input type="checkbox" value="20" class="want_age" id="20age" checked /> <label for="20age">20대</label>
+                        <input type="checkbox" value="30" class="want_age" id="30age" checked /> <label for="30age">30대</label>
+                        <input type="checkbox" value="40" class="want_age" id="40age" checked /> <label for="40age">40대</label> <input type="checkbox" value="50" class="want_age" id="50age" />
+                        <label for="50age">50대</label> <input type="checkbox" value="60" class="want_age" id="60age" /> <label for="60age">60대</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--end modal content -->
+                <!--modal footer-->
+                <div class="modal_footer">
+                  <button class="reset" type="reset">
+                    <i class="fas fa-undo-alt"></i>
+                    <h2>초기화</h2>
+                  </button>
+                </div>
+                <!--modal footer end-->
               </div>
               <!-- detail search modal end -->
-              <!-- .modal --------------------------------------------------------------------------------------------------------------------->
 
               <div id="like_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="like_modal_label" aria-hidden="true">
                 <!-- .modal-dialog -->
@@ -381,7 +555,7 @@
                 </div>
                 <!-- /.modal-dialog -->
               </div>
-              <!-- /.modal -->
+              <!-- modal end --------------------------------------------------------------------------------------------------------------------->
 
               <div class="search_filter_wrap">
                 <div class="search_filter_group">
@@ -402,19 +576,19 @@
               <div class="activity_type_wrap">
                 <a data-toggle="modal" href="#activity_type_modal">
                   <div class="activity_type_btn_group">
-                    <button class="activity_type_btn">실내놀이</button>
-                    <button class="activity_type_btn">등하원 돕기</button>
-                    <button class="activity_type_btn">책 읽기</button>
-                    <button class="activity_type_btn">야외활동</button>
-                    <button class="activity_type_btn">한글놀이</button>
-                    <button class="activity_type_btn">영어놀이</button>
-                    <button class="activity_type_btn">학습지도</button>
-                    <button class="activity_type_btn">체육놀이</button>
-                    <button class="activity_type_btn">간단청소</button>
-                    <button class="activity_type_btn">밥챙겨주기</button>
-                    <button class="activity_type_btn">간단설거지</button>
-                    <button class="activity_type_btn">장기입주</button>
-                    <button class="activity_type_btn">단기입주</button>
+                    <button class="activity_type_btn" value="innerplay">실내놀이</button>
+                    <button class="activity_type_btn" value="guide">등하원 돕기</button>
+                    <button class="activity_type_btn" value="read">책 읽기</button>
+                    <button class="activity_type_btn" value="outside">야외활동</button>
+                    <button class="activity_type_btn" value="korean">한글놀이</button>
+                    <button class="activity_type_btn" value="english">영어놀이</button>
+                    <button class="activity_type_btn" value="study">학습지도</button>
+                    <button class="activity_type_btn" value="sport">체육놀이</button>
+                    <button class="activity_type_btn" value="simple_cleaning">간단청소</button>
+                    <button class="activity_type_btn" value="eat">밥챙겨주기</button>
+                    <button class="activity_type_btn" value="do_dish">간단설거지</button>
+                    <button class="activity_type_btn" value="long_move_in">장기입주</button>
+                    <button class="activity_type_btn" value="short_move_in">단기입주</button>
                   </div>
                   <button class="tab_index"><img src="img/p-search-activity (1).png" /></button>
                 </a>
@@ -437,73 +611,7 @@
                 </div>
                 <!-- 드롭다운 end-->
               </div>
-
-              <div class="sitter_item_group">
-                <a href="http://localhost:8080/ezen-android2020-2/page_detail/sitter_page_detail_for_mom.html">
-                  <div class="item_header">
-                    <div class="cert_label"><img src="img/icon-cert-label (1).png" /><span class="cert_text">세 아이의 엄마</span></div>
-                  </div>
-                  <hr class="divider" />
-                  <div class="item_body">
-                    <div class="profile_img_group">
-                      <img src="img/profile.jpg" />
-                      <div class="responsive_rate_group">
-                        <div class="res_text">응답률</div>
-                        <div class="res_rate">88</div>
-                        <div class="res_text">%</div>
-                      </div>
-                    </div>
-                    <div class="profile_info_group">
-                      <div class="content_row">
-                        <div>
-                          <div class="user_name">정O우</div>
-                          <div class="last_update">6일 전 작성</div>
-                        </div>
-                        <div>
-                          <button id="swapHeart" class="btn btn-default">                           
-                        <div class="jim">
-                            <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 25px;"></span>
-                        </div>                           
-                     </button>
-                        </div>
-                      </div>
-                      <div class="content_row location_group">
-                        <span class="location">성남시 분당구 </span>
-                        <span class="location">,용인시 수지구 </span>
-                        <span class="location">,서울특별시 강남구</span>
-                      </div>
-                      <div class="content_row">
-                        <div class="user_age">50세</div>
-                        <div class="text_sep"></div>
-                        <div class="wanted_pay">희망 시급 15000원</div>
-                      </div>
-                      <div class="content_row">
-                        <div class="review_rate">
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                        </div>
-                        <span class="review_count">후기 155개</span>
-                      </div>
-                    </div>
-                  </div>
-                  <hr class="divider" />
-                  <div class="item_footer">
-                    <div class="cert_info_group">
-                      <div class="cert_text_group">
-                        <div class="cert_label">확인된 인증</div>
-                        <div class="cert_count">2개</div>
-                      </div>
-                      <div class="cert_info_btn_group">
-                        <div class="cert_btn">엄마 인증</div>
-                        <div class="cert_btn">등초본 인증</div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
+              <!-- 카드영역 -->
               <div class="sitter_item_group">
                 <div class="item_header">
                   <div class="cert_label"><img src="img/icon-cert-label (1).png" /><span class="cert_text">세 아이의 엄마</span></div>
@@ -524,7 +632,13 @@
                         <div class="user_name">정O우</div>
                         <div class="last_update">6일 전 작성</div>
                       </div>
-                      <button class="like_btn"><img src="img/s-list-like-off (1).png" /></button>
+                      <div class="jim_btn">
+                        <button class="btn btn-default swapHeart">
+                          <div class="jim">
+                            <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
+                          </div>
+                        </button>
+                      </div>
                     </div>
                     <div class="content_row location_group">
                       <span class="location">성남시 분당구 </span>
@@ -562,6 +676,8 @@
                   </div>
                 </div>
               </div>
+              <!-- 카드영역 end -->
+              <!-- 카드영역 -->
               <div class="sitter_item_group">
                 <div class="item_header">
                   <div class="cert_label"><img src="img/icon-cert-label (1).png" /><span class="cert_text">세 아이의 엄마</span></div>
@@ -582,7 +698,13 @@
                         <div class="user_name">정O우</div>
                         <div class="last_update">6일 전 작성</div>
                       </div>
-                      <button class="like_btn"><img src="img/s-list-like-off (1).png" /></button>
+                      <div class="jim_btn">
+                        <button class="btn btn-default swapHeart">
+                          <div class="jim">
+                            <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
+                          </div>
+                        </button>
+                      </div>
                     </div>
                     <div class="content_row location_group">
                       <span class="location">성남시 분당구 </span>
@@ -620,6 +742,73 @@
                   </div>
                 </div>
               </div>
+              <!-- 카드영역 end -->
+              <!-- 카드영역 -->
+              <div class="sitter_item_group">
+                <div class="item_header">
+                  <div class="cert_label"><img src="img/icon-cert-label (1).png" /><span class="cert_text">세 아이의 엄마</span></div>
+                </div>
+                <hr class="divider" />
+                <div class="item_body">
+                  <div class="profile_img_group">
+                    <img src="img/profile.jpg" />
+                    <div class="responsive_rate_group">
+                      <div class="res_text">응답률</div>
+                      <div class="res_rate">88</div>
+                      <div class="res_text">%</div>
+                    </div>
+                  </div>
+                  <div class="profile_info_group">
+                    <div class="content_row">
+                      <div>
+                        <div class="user_name">정O우</div>
+                        <div class="last_update">6일 전 작성</div>
+                      </div>
+                      <div class="jim_btn">
+                        <button class="btn btn-default swapHeart">
+                          <div class="jim">
+                            <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="content_row location_group">
+                      <span class="location">성남시 분당구 </span>
+                      <span class="location">,용인시 수지구 </span>
+                      <span class="location">,서울특별시 강남구</span>
+                    </div>
+                    <div class="content_row">
+                      <div class="user_age">50세</div>
+                      <div class="text_sep"></div>
+                      <div class="wanted_pay">희망 시급 15000원</div>
+                    </div>
+                    <div class="content_row">
+                      <div class="review_rate">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      </div>
+                      <span class="review_count">후기 155개</span>
+                    </div>
+                  </div>
+                </div>
+                <hr class="divider" />
+                <div class="item_footer">
+                  <div class="cert_info_group">
+                    <div class="cert_text_group">
+                      <div class="cert_label">확인된 인증</div>
+                      <div class="cert_count">2개</div>
+                    </div>
+                    <div class="cert_info_btn_group">
+                      <div class="cert_btn">엄마 인증</div>
+                      <div class="cert_btn">등초본 인증</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 카드영역 end -->
 
               <div class="app_banner">
                 <div class="banner_group">
@@ -636,7 +825,7 @@
                   <img src="img/s-list-1-banner-image@3x (1).png" />
                 </div>
               </div>
-
+              <div id="result1"></div>
               <div id="result"></div>
               <div>
                 <a data-toggle="modal" href="#sitter_search_detail_modal">
@@ -658,70 +847,133 @@
     <script src="../assets/js/bootstrap.min.js"></script>
     <script type="text/Javascript">
       $(document).ready(function () {
-        // 무한 스크롤
-        $(document).scroll(function() {
+        // 무한 스크롤 1218 하리
+        $(document).scroll(function () {
           var maxHeight = $(document).height();
           var currentScroll = $(window).scrollTop() + $(window).height();
 
           if (maxHeight <= currentScroll + 100) {
-            $.ajax( {
-            // 결과를 읽어올 URL
-            url: 'item_group.html',
-            // 웹 프로그램에게 데이터를 전송하는 방식.
-            // 생략할 경우 get으로 자동 지정됨
-            method: 'get',
-            // 전달할 조건값은 JSON 형식으로 구성
-            // 사용하지 않을 경우 명시 자체를 생략할 수 있다.
-            data: {},
-            // 읽어올 내용의 형식(생략할 경우 json)
-            dataType: 'html',
-            // 읽어온 내용을 처리하기 위한 함수
-            success: function(req) {
-              // 준비된 요소에게 읽어온 내용을 출력한다.
-              $("#result").append(req);
-                }
+            $.ajax({
+              // 결과를 읽어올 URL
+              url: "item_group.html",
+              // 웹 프로그램에게 데이터를 전송하는 방식.
+              // 생략할 경우 get으로 자동 지정됨
+              method: "get",
+              // 전달할 조건값은 JSON 형식으로 구성
+              // 사용하지 않을 경우 명시 자체를 생략할 수 있다.
+              data: {},
+              // 읽어올 내용의 형식(생략할 경우 json)
+              dataType: "html",
+              // 읽어온 내용을 처리하기 위한 함수
+              success: function (req) {
+                // 준비된 요소에게 읽어온 내용을 출력한다.
+                $("#result").append(req);
+              },
             }); // end $.ajax
-              }	// end testAjax
-          });
+          }
+        });
+      });
+
+
+
+      $(function () {
+      /** 원하는 활동 선택 ------------------------------------------------------------------- */
+        //활동 버튼 클릭
+        $(".act_btn").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn");
+          //버튼 클릭시 text 색 변경
+          $(this).next().toggleClass("select_text");
+          //버튼 클릭시 이미지 URL 변경
+          //url 가져오기
+          var img_url = $(this).find(".want_img").attr("src");
+          var indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
+          if (indeximg > -1) {
+            var img_src = img_url.replace(/_n/, "_s");
+            $(this).find(".want_img").attr("src", img_src);
+          } else {
+            var img_src = img_url.replace(/_s/, "_n");
+            $(this).find(".want_img").attr("src", img_src);
+          }
         });
 
-        $(function () {
-            //활동 버튼 클릭
-          $(".act_btn").click(function (e) {
-            //버튼 클릭시 클래스 변경
-            $(this).toggleClass("select_btn");
-            //버튼 클릭시 text 색 변경
-            $(this).next().toggleClass("select_text");
-            //버튼 클릭시 이미지 URL 변경
-            //url 가져오기
-            var img_url = $(this).find(".want_img").attr('src');
-            var indeximg = img_url.indexOf("_n") //잘라서 _n이 있는지 확인
-            if (indeximg > -1) {
-                var img_src = img_url.replace(/_n/, "_s");
-                $(this).find(".want_img").attr('src', img_src);
-            } else {
-                var img_src = img_url.replace(/_s/, "_n");
-                $(this).find(".want_img").attr('src', img_src);
-            };
-          });
-            
-          $('#swapHeart').on('click', function() {
-              var $jim = $(this)
-              
-              // 찜할 때 alert창과 glyphicon변형
-              if($(this).find('span').hasClass("glyphicon-heart-empty")) {
-                 $(this).find('span').removeClass("glyphicon-heart-empty");
-                 $(this).find('span').addClass("glyphicon-heart");
-                   swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
-              }
-              // 찜 취소할 때 alert창과 glyphicon변형
-               else{
-                     swal("찜 하기 취소");
-                   $(this).find('span').addClass("glyphicon-heart-empty");
-               }
-           
-            }); // fin. 찜버튼 기능
+        //활동 버튼 반영 1221 하리 - 수정중
+        $("act_btn").each(function (i) {
+          $(".apply_btn").click(function (e) {
+          e.preventDefault();
+
+          if(!choice_btn) {
+            alert("선택된 항목이 없습니다.");
+            return false;
+          }
+
+
+
+          console.log(choice_btn);
+        })
+
+
         });
+
+        /** 상세 검색 ------------------------------------------------------------------- */
+
+        // 아이나이 버튼 클릭
+        $(".ages").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("i").toggleClass("select_text_detail");
+          $(this).find("span").toggleClass("select_text_detail");
+        });
+
+        // 돌봄요일 버튼 클릭
+        $(".care_day").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("div").toggleClass("select_text_detail");
+        });
+
+        // 돌봄 시간대 버튼 클릭
+        $(".time_range").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("span").toggleClass("select_text_detail");
+        });
+
+        // 맘시터 유형 버튼 클릭
+        $(".sitter_type").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("span").toggleClass("select_text_detail");
+        });
+
+        /** 상세 검색 end ------------------------------------------------------------------- */
+
+        $(".swapHeart").on("click", function (e) {
+          event.stopPropagation(); // 버블링 방지 1220 하리
+          var $jim = $(this);
+
+          // 찜할 때 alert창과 glyphicon변형
+          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+            $(this).find("span").removeClass("glyphicon-heart-empty");
+            $(this).find("span").addClass("glyphicon-heart");
+            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+          }
+          // 찜 취소할 때 alert창과 glyphicon변형
+          else {
+            swal("찜 하기 취소");
+            $(this).find("span").addClass("glyphicon-heart-empty");
+          }
+        }); // fin. 찜버튼 기능
+
+        // 상세 페이지 연동 1220 하리
+        $(".sitter_item_group").on("click", function () {
+          location.href = "http://localhost:8080/ezen-android2020-2/page_detail/sitter_page_detail_for_mom.html";
+        });
+      });
     </script>
   </body>
 </html>
