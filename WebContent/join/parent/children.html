@@ -9,16 +9,16 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/WebContent/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/WebContent/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="/WebContent/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
 
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/WebContent/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
     <!-- join css -->
-    <link rel="stylesheet" type="text/css" href="/WebContent/assets/css/join.css" />
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_parent.css" />
     <style type="text/css">
         html,
         body {
@@ -55,13 +55,14 @@
                         <br>
                         <strong>돌봄 아이 2명일 경우</strong>
                         <br>
-                        최저시급 8,590원 x 1.5배인 12,885원 이상 필수
+                        최저시급 8,590원 x 1.5배인 12,855원 이상 필수
                     </p>
                 </div>
             </div>
-            <!--end modal content -->
         </div>
-        <!--end modal dialog-->
+        <!--end modal content -->
+    </div>
+    <!--end modal dialog-->
     </div>
     <!--end modal-->
     <!--화면 영역-->
@@ -78,8 +79,8 @@
                 </div>
                 <h3 class="what_want">몇 명의 아이를 돌봐드릴까요?</h3>
                 <div class="number_children_wrap">
-                    <button class="childeren_num btn_children_off">1명</button>
-                    <button class="childeren_num btn_children_off">2명</button>
+                    <button class="childeren_num1 btn_children_off" data-tab="select_one">1명</button>
+                    <button class="childeren_num2 btn_children_off" data-tab="select_two">2명</button>
                 </div>
                 <!--동적 요소 위치-->
                 <div class="title">
@@ -90,60 +91,21 @@
                         <br>
                         시터 1명이 최대 2명까지 돌볼 수 있습니다.
                     </div>
-                    <!--추가될 내용 미리 정의-->
                     <div class="select_title">
-                        <p>아이 생년/월을 입력해 주세요.</p>
-                        <p>출산 예정이라면 예정 년/월을 입력해 주세요.</p>
                     </div>
                 </div>
+                <!--버튼 select시 공지내용 변경 - ajax-->
+                
                 <!--end 동적 요소 위치-->
-                <div class="children_age_block">
-                    <div class="title_block">아이 1</div>
-                    <div class="select_children_age_wrap">
-                        <div class="select_list">
-                            <select>
-                                <option value="">출생년도</option>
-                                <option value="2021">2021년</option>
-                                <option value="2020">2020년</option>
-                                <option value="2019">2019년</option>
-                                <option value="2018">2018년</option>
-                                <option value="2017">2017년</option>
-                                <option value="2016">2016년</option>
-                                <option value="2015">2015년</option>
-                                <option value="2014">2014년</option>
-                                <option value="2013">2013년</option>
-                                <option value="2012">2012년</option>
-                                <option value="2011">2011년</option>
-                                <option value="2010">2010년</option>
-                            </select>
-                        </div>
-                        <div class="select_list">
-                            <select>
-                                <option value="">출생 월</option>
-                                <option value="1">1월</option>
-                                <option value="2">2월</option>
-                                <option value="3">3월</option>
-                                <option value="4">4월</option>
-                                <option value="5">5월</option>
-                                <option value="6">6월</option>
-                                <option value="7">7월</option>
-                                <option value="8">8월</option>
-                                <option value="9">9월</option>
-                                <option value="10">10월</option>
-                                <option value="11">11월</option>
-                                <option value="12">12월</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="payment_wrap">
-                    <div class="show_content">
+                    <div class="payment_box hide_content">
                         <h4>맘시터에게 지급할 희망 시급을 적어 주세요.
                             <div class="help_box">
                                 <a data-toggle="modal" href="#help_modal"><button class="help_btn">
                                         <span class="sr-only">도움말</span>
-                                        <img src="/WebContent/img/join/help.png" alt="도움말">
+                                        <img src="/ezen-android2020-2/join/img/help.png" alt="도움말">
                                     </button></a>
                             </div>
                         </h4>
@@ -165,8 +127,8 @@
     </div>
 
     <!-- Javascript -->
-    <script src="/WebContent/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/WebContent/assets/js/bootstrap.min.js"></script>
+    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         function addCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -193,20 +155,55 @@
             });
 
 
-            //거머냐 아이명수 클릭시 버튼 색상 바뀜
-            $(".childeren_num").on("click", function () {
-                var select = $(this).hasClass("btn_children_off");
+            //아이명수 클릭시 버튼 색상 바뀜
+            $(".childeren_num1, .childeren_num2").on("click", function () {
+                var select = $(this).hasClass("childeren_num1");
 
+                //num1 클릭했을 때
                 if (select) {
+                    //버튼 색상 적용
                     $(this).removeClass("btn_children_off");
                     $(this).addClass("btn_children_on");
-                };
-                if ($(this).next().hasClass("btn_children_on") || $(this).prev().hasClass("btn_children_on")) {
-                    $(this).prev().removeClass("btn_children_off");
-                    $(this).next().removeClass("btn_children_off");
-                    $(this).addClass("btn_children_on");
-                };
+                    $(this).next().removeClass("btn_children_on");
+                    $(this).next().addClass("btn_children_off");
+                    ;
 
+                } else {
+                    //num2 클릭했을 때
+                    $(this).removeClass("btn_children_off");
+                    $(this).addClass("btn_children_on");
+                    $(this).prev().removeClass("btn_children_on");
+                    $(this).prev().addClass("btn_children_off");
+                }
+
+                $(".noselect_title").empty();
+                //버튼 클릭시에 내용 변경
+                var test = $(this).attr('data-tab');
+                $.ajax({
+                    type: 'GET',                 //get방식으로 통신
+                    url: test + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+                    dataType: "html",            //html형식으로 값 읽기
+                    error: function () {          //통신 실패시 ㅠㅠ
+                        alert('통신실패!');
+                    },
+                    success: function (data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
+                        $('.select_title').html(data);
+                    }
+                });
+
+            });
+
+            //select box 출생년도, 출생월 선택이 되면 show_content
+            $(document).on('change','#year, #month', function(){
+                //드롭다운의 선택값
+                var yaer = $("#year").val();
+                console.log(year);
+                var month = $("#month").val();
+                //가져온 값이 존재한다면?
+                if (yaer != "" && month != "") {
+                    $(this).parents().find(".payment_box").removeClass("hide_content");
+                    $(this).parents().find(".payment_box").addClass("show_content");
+                };
             });
 
         });

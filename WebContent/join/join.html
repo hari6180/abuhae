@@ -9,19 +9,19 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
     <!-- icon 참조 -->
     <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
     <!--header css-->
-    <link rel="stylesheet" href="../assets/css/index_header.css">
+    <link rel="stylesheet" href="/ezen-android2020-2/assets/css/index_header.css">
     <!--join css-->
-    <link rel="stylesheet" href="../assets/css/join.css">
+    <link rel="stylesheet" href="/ezen-android2020-2/join/css/join_parent.css">
 
     <style type="text/css">
         html,
@@ -33,10 +33,15 @@
             padding: 0;
             margin: 0;
         }
+
+        .col-xs-12 {
+            margin: 0;
+        }
     </style>
 </head>
 
 <body>
+    <div class="app">
     <div class="container">
         <!-- header : 하리-->
         <header>
@@ -49,13 +54,13 @@
                         </a>
 
                         <!--메인페이지 연결 필요-->
-                        <a href="../Index.html">
-                            <img src="../img/logo (1).png" class="logo" />
+                        <a href="/ezen-android2020-2/Index.html">
+                            <img src="/ezen-android2020-2/img/logo (1).png" class="logo" />
                         </a>
                     </div>
                     <div class="flex_row">
-                        <a href="#"><button class="join">가입하기</button></a>
-                        <a href="#"><img src="../img/돋보기.png" class="header_search_btn" /></a>
+                        <a href="/ezen-android2020-2/join/join.html"><button class="join">가입하기</button></a>
+                        <a href="/ezen-android2020-2/search/sitter_search.html"><img src="/ezen-android2020-2/img/돋보기.png" class="header_search_btn" /></a>
                     </div>
                 </div>
             </div>
@@ -84,14 +89,14 @@
                     <div class="modal_body">
                         <div class="sitter_search">
                             <a href="#">
-                                <img src="../img/index-sittersearch.svg" />
+                                <img src="/ezen-android2020-2/img/index-sittersearch.svg" />
                                 <p>맘시터 찾기</p>
                             </a>
                         </div>
 
                         <div class="job_search">
                             <a href="#">
-                                <img src="../img/index-jobsearch.svg" />
+                                <img src="/ezen-android2020-2/img/index-jobsearch.svg" />
                                 <p>일자리 찾기</p>
                             </a>
                         </div>
@@ -129,7 +134,7 @@
                             <button class="join_mom">
                                 <div class="join_group">
                                     <div>
-                                        <img src="../img/join-mom-img.png">
+                                        <img src="img/join-mom-img.png">
                                     </div>
                                     <div class="join_text">
                                         <h3>"아이를 돌봐줄 <br>맘시터가 필요해요."</h3>
@@ -138,11 +143,11 @@
                                 </div>
                             </button></a>
                         <hr>
-                        <a href="#">
+                        <a href="sitter/start.html">
                             <button class="join_siter">
                                 <div class="join_group">
                                     <div>
-                                        <img src="../img/join-sitter-img.png">
+                                        <img src="img/join-sitter-img.png">
                                     </div>
                                     <div class="join_text">
                                         <h3>"든든한 맘시터로 <br>활동하고 싶어요."</h3>
@@ -163,10 +168,11 @@
         <!--end row-->
     </div>
     <!--end container-->
+</div>
 
     <!-- Javascript -->
-    <script src="../assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
 </body>
 
 </html>

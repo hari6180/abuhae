@@ -168,7 +168,7 @@ section .select {
 
 section .guide_main {
   min-height: 390px;
-  padding: 30px 0;
+  padding-top: 30px;
   background-color: #f1f1f1;
 }
 
@@ -212,27 +212,6 @@ section .btn-default:active {
 
 section .guide_text {
   margin: 0 auto 24px;
-}
-
-section .guide_go {
-  background-color: #f1f1f1;
-  text-align: center;
-}
-
-section .guide_go .btn:hover {
-  background-color: rgba(153, 153, 153, 0.2);
-}
-
-section .giude_go_text,
-section .giude_go_text:hover {
-  color: #666;
-  position: relative;
-  padding: 0 16px;
-  text-decoration: none;
-  font-size: 1.1em;
-  font-weight: 700;
-  display: block;
-  padding: 15px 0;
 }
 
 /*아부해가 궁금하신가요?---------------------------------------------*/
