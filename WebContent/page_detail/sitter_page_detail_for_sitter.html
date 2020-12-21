@@ -21,21 +21,29 @@
 
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="css/page_detail_for_sitter.css" />
+
+<style type="text/css">
+	.profil_img {
+		height: 270px;
+	}
+</style>
 </head>
 	
 <body>		
 	<div class="container">
 		<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->		
 			<div class="profil_photo">
-			  <button type="button" class="btn btn-dark btn-xs" id="siren">
-			 	<a href="siren.html"><img src="img/siren.png" width="13" height="15"/></a>
-			            신고
-			  </button>	
-			  <div class="profil_img">				  
+			  <div class="profil_img">			  
 				<img src="img/sitter_photo.jpg"/>
-			  </div>
+				<button type="button" class="x_btn" onclick = "location.href = 'http://localhost:8080/ezen-android2020-2/search/sitter_search.html'">
+					<img src="img/x-btn.jpg" width="28" height="28"/>
+				</button>		
+				<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = 'sitter_report_for_sitter.html'">
+			 	<img src="img/siren.png" width="13" height="15"/>
+			            신고
+			  	</button>
+			</div>
 			</div> <!-- fin. profil_photo -->
-			
 			<div class="profil_info">
 				<div class="info_name">
 					<div class="name" style="font-size:1.4em;">정<i class="far fa-circle"></i>우</div>
@@ -45,7 +53,6 @@
 						96%
 					</div>
 				</div><!-- fin. info_name -->	
-							
 				<div class="info_star">
 					<div class="star">
 						<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
@@ -84,7 +91,6 @@
 					</div>
 				</div>
 			</div>
-			
 			<!-- Main start-->
 			<div class="main">
 				<div class="human_box">
@@ -148,7 +154,6 @@
 						</div> <!-- fin. main_other -->						
 					</div>
 				</div>
-				
 				<div class="info_box">
 					<div class="box_name">간단 자기소개</div>
 					<div class="info_area">
@@ -168,7 +173,6 @@
 						</div>
 					</div>
 				</div>
-				
 				<div class="iwant_box">
 					<div class="box_name">선호하는 돌봄유형</div>
 					<div class="iwant_area">
@@ -184,7 +188,6 @@
 						</div>
 					</div>
 				</div>
-				
 				<div class="active_box">
 					<div class="box_name">활동 가능 시간</div>
 					<div class="active_area">
@@ -473,29 +476,33 @@
 									<div class="active_line">
 										<div class="active_ok">
 											<div class="active_ok_img">
-												<img src="img/puzzle.png"/>
-												<br>
+												<div class="active_ok_box">
+												<img src="img/innerplayicon_s.png"/>
+												</div>
 												<span>실내놀이</span>
 											</div>
 										</div>
 										<div class="active_no">
 											<div class="active_no_img">
-												<img src="img/korean.png" width="50"/>
-												<br>
+												<div class="active_no_box">
+												<img src="img/koreanicon_s.png"/>
+												</div>
 												<span>한글놀이</span>
 											</div>
 										</div>
 										<div class="active_ok">
 											<div class="active_ok_img">
-												<img src="img/clean.png"/>
-												<br>
+												<div class="active_ok_box">
+												<img src="img/cleanicon_s.png"/>
+												</div>
 												<span>간단 청소</span>
 											</div>
 										</div>
 										<div class="active_no">
 											<div class="active_no_img">
-												<img src="img/longhouseicon.png" width="55"/>
-												<br>
+												<div class="active_no_box">
+												<img src="img/longhouseicon_s.png"/>
+												</div>
 												<span>장기입주</span>
 											</div>
 										</div>
@@ -504,29 +511,33 @@
 									<div class="active_line">
 										<div class="active_no">
 											<div class="active_no_img">
-												<img src="img/kindergarden.png"/>
-												<br>
+												<div class="active_no_box">
+												<img src="img/guideicon_s.png"/>
+												</div>
 												<span>등하원 돕기</span>
 											</div>
 										</div>
 										<div class="active_no">
 											<div class="active_no_img">
-												<img src="img/english.png" width="50"/>
-												<br>
+												<div class="active_ok_box">
+												<img src="img/englishicon_s.png"/>
+												</div>
 												<span>영어놀이</span>
 											</div>
 										</div>
 										<div class="active_ok">
 											<div class="active_ok_img">
-												<img src="img/eaticon.svg"/>
-												<br>
+												<div class="active_ok_box">
+												<img src="img/eaticon_s.png"/>
+												</div>
 												<span>밥 챙겨주기</span>
 											</div>
 										</div>
 										<div class="active_no">
 											<div class="active_no_img">
-												<img src="img/houseicon.png" width="55"/>
-												<br>
+												<div class="active_no_box">
+												<img src="img/houseicon_s.png"/>
+												</div>
 												<span>단기입주</span>
 											</div>
 										</div>
@@ -535,22 +546,25 @@
 									<div class="active_line">
 										<div class="active_ok">
 											<div class="active_ok_img">
-												<img src="img/book.png"/>
-												<br>
+												<div class="active_ok_box">
+												<img src="img/readicon_s.png"/>
+												</div>
 												<span>책읽기</span>
 											</div>
 										</div>
 										<div class="active_no">
 											<div class="active_no_img">
-												<img src="img/pencil.png" width="50"/>
-												<br>
+												<div class="active_no_box">
+												<img src="img/studyicon_s.png"/>
+												</div>
 												<span>학습지도</span>
 											</div>
 										</div>
 										<div class="active_ok">
 											<div class="active_ok_img">
-												<img src="img/dish.png"/>
-												<br>
+												<div class="active_ok_box">
+												<img src="img/dishicon_s.png"/>
+												</div>
 												<span>간단 설거지</span>
 											</div>
 										</div>
@@ -559,15 +573,17 @@
 									<div class="active_line">
 										<div class="active_ok">
 											<div class="active_ok_img">
-												<img src="img/playground.png"/>
-												<br>
+												<div class="active_ok_box">
+												<img src="img/ousideicon_s.png"/>
+												</div>
 												<span>야외활동</span>
 											</div>
 										</div>
 										<div class="active_no">
 											<div class="active_no_img">
-												<img src="img/ballicon.svg" width="50"/>
-												<br>
+												<div class="active_no_box">
+												<img src="img/ballicon_s.png" />
+												</div>
 												<span>체육놀이</span>
 											</div>
 										</div>
@@ -608,7 +624,6 @@
 						</div>
 					</div> <!-- fin. possible_zone_area -->
 				</div> <!-- fin. possible_zone_box -->
-				
 				<div class="talk_box">
 					<div class="box_name">부모 후기 <span style="color: #ff7000;">999개</span></div>
 					<div class="talk_area">
@@ -617,10 +632,8 @@
 								<div data-tab="tab_ok_for_sitter" class='tabmenu' id="default">
 								<p id="tab01_p">채용 후기(99)</p></div>
 								<div class="tab_style"></div>
-								
 								<div data-tab="tab_interview_for_sitter" class='tabmenu' id="tab02">
 								<p id="tab02_p">인터뷰 후기(99)</p></div>
-								
 								<div data-tab="tab_faile_for_sitter" class='tabmenu' id="tab03">
 								<p id="tab03_p">실패 후기(0)</p></div>									
 							</div>
@@ -642,9 +655,47 @@
 						</div>
 					</div> <!-- fin. famille_area -->
 				</div> <!-- fin. famille_box -->
+				<div class="experience_box">
+					<div class="box_name">관련 경험</div>
+					<div class="experience_area">
+						<div class="experience_main">
+							<div class="experience_line">
+								<div class="experience_text">
+									<div class="experience_point"></div>
+									<div>1세 쌍둥이 여아, 8개월 여아 자매 정기돌봄</div>
+								</div> <!-- fin. experience_text -->
+								<div class="experience_date">
+									2019.01.04 ~ 2020.10.10
+								</div>
+							</div> <!-- fin. experience_line --> 
+						</div> <!-- fin. experience_main -->
+						<div class="experience_main">
+							<div class="experience_line">
+								<div class="experience_text">
+									<div class="experience_point"></div>
+									<div>2세 남아 단기돌봄</div>
+								</div> <!-- fin. experience_text -->
+								<div class="experience_date">
+									2018.07.01 ~ 2018.08.15
+								</div>
+							</div> <!-- fin. experience_line --> 
+						</div> <!-- fin. experience_main -->
+						<div class="experience_main">
+							<div class="experience_line">
+								<div class="experience_text">
+									<div class="experience_point"></div>
+									<div>고아원 관련 단기 봉사</div>
+								</div> <!-- fin. experience_text -->
+								<div class="experience_date">
+									2017.05.20 ~ 2017.07.18
+								</div>
+							</div> <!-- fin. experience_line --> 
+						</div> <!-- fin. experience_main -->
+					</div> <!-- fin. experience_area -->
+				</div> <!-- fin. experience_box -->
 			</div> <!-- fin. Main -->
 			
-			<div class="pixed_box">
+			<div class="fixed_box">
 				<div class="fixed_area">
 					<div class="fixed_area_age">
 						<div class="fixed_name">
@@ -663,7 +714,6 @@
 						<button id="swapHeart" class="btn btn-default swap">
 						    <a data-toggle="modal" href="#Modal"><span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 25px;"></span></a>
 						</button>
-						
 						<div class="jim_number">
 							999
 						</div>
