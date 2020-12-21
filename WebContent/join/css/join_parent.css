@@ -888,7 +888,3 @@ input[type="checkbox"]:checked + label:after {
   font-weight: 600;
   color: #9d9d9d;
 }
-
-.calrendar_block {
-  margin: auto;
-}

@@ -37,6 +37,18 @@
         .flatpickr-calendar.inline {
             margin: auto;
         }
+        .flatpickr-day.selected {
+            background-color: #ff7000;
+            border-color: #ff7000;
+        }
+        .flatpickr-day.selected.prevMonthDay, .flatpickr-day.selected.nextMonthDay {
+            background-color: #fff0e8;
+            border-color: #fff0e8;
+        }
+
+        .flatpickr-day.today {
+            border-color: #ff7000;
+        }
     </style>
 </head>
 
@@ -106,10 +118,14 @@
     <script type="text/javascript">
         $(function () {
             $(".calrendar_block").flatpickr({
-                inline: true
+                inline: true,
+                dateFormat: "Y/m/d",
+                minDate: "today",
+                maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
+                mode: "multiple", //여러개 선택 가능
+                defaultDate: new Date().fp_incr(6) //지금으로부터 6일이 기본
             });
         });
-
     </script>
 </body>
 
