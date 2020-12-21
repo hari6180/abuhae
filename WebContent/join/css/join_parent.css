@@ -833,23 +833,23 @@ input[type="checkbox"]:checked + label:after {
   font-size: 0.9em;
 }
 
-#regular .time_select_box {
+.time_select_box {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
 }
 
-#regular .middle_bar {
+.middle_bar {
   border-right: 1px solid #efefef;
 }
 
-#regular .time_select_box {
+.time_select_box {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
 }
 
-#regular .jojung_box {
+.jojung_box {
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -859,7 +859,7 @@ input[type="checkbox"]:checked + label:after {
   padding: 10px;
 }
 
-#regular .jojung_check {
+.jojung_check {
   display: inline-block;
   position: relative;
   width: 22px;
@@ -871,7 +871,7 @@ input[type="checkbox"]:checked + label:after {
   margin-right: 8px;
 }
 
-#regular .jojung_check::after {
+.jojung_check::after {
   content: "";
   width: 10px;
   height: 5px;
@@ -883,8 +883,12 @@ input[type="checkbox"]:checked + label:after {
   transform: rotate(315deg);
 }
 
-#regular .jojung_text {
+.jojung_text {
   font-size: 0.9em;
   font-weight: 600;
   color: #9d9d9d;
+}
+
+.calrendar_block {
+  margin: auto;
 }
