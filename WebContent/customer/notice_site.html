@@ -7,15 +7,16 @@
 		<title>맘시터 > 공지사항</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="../assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="../assets/ico/favicon.ico" />
+		<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
 
 		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
 
 		<!-- noto Sans 웹 폰트 적용 -->
-        <link rel="stylesheet" type="text/css" href="../assets/css/notosans.css" />
-        <link rel="stylesheet" type="text/css" href="../customer/css/notice_site.css" />
+        <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+        <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/customer/css/notice_site.css" />
+        <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 	</head>
 
 	<body>
@@ -24,14 +25,14 @@
             <div class="col-xs-12 header"> <!-- xs-12로 모바일 맞춤 -->
                 <div class="col-xs-12 header_logo">
                     <div class="col-xs-3 header_logo_img">
-                        <a href="#"><img src="../img/logo2.png" width="86" height="70">
+                        <a href="#"><img src="/customer/img/logo2.png" width="86" height="70">
                         </a>
                     </div>
                 </div>
             </div>
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="../customer/customer_center.html">맘시터</a>
+                        <a href="/ezen-android2020-2/customer/customer_center.html">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
@@ -53,7 +54,7 @@
                             <h2><a href="#">공지 사항</a></h2>
                     </div>
                     <div class="col-xs-12 section_title">
-                        <a href="../customer/notice_site_ch2.html">[공지] 부모회원 약속알림 설정기능 중단 안내</a>
+                        <a href="/ezen-android2020-2/customer/notice_site_ch2.html">[공지] 부모회원 약속알림 설정기능 중단 안내</a>
                     </div>
                     <div class="col-xs-12 section_title">
                         <a href="#">[공지] 아부해 부모-시터 채팅 서비스 이용정책 안내</a>
@@ -68,7 +69,7 @@
                         <a href="#">[공지] 아부해란? 아이를 부탁해!</a>
                     </div>
                     <div class="col-xs-12 section_title_2">
-                        <a href="#">문서 20개 모두 보기</a>
+                        <a link="#" id="mybutton">문서 20개 모두 보기</a>
                     </div>
                     <div class="col-xs-12 footer">
                     </div>
@@ -78,7 +79,30 @@
 		</div>
 	
 		<!-- Javascript -->
-		<script src="../assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
-		<script src="../assets/js/bootstrap.min.js"></script>
+		<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
+        <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+			$(function() {
+				$("#mybutton").click(function(e) {
+					$.ajax( {
+						// 결과를 읽어올 URL
+						url: '/ezen-android2020-2/customer/hello2.html',
+						// 웹 프로그램에게 데이터를 전송하는 방식
+						// 생략할 경우 get으로 자동 지정됨
+						method: 'get',
+						// 전달할 조건값은 JSON형식으로 구성
+						// 사용하지 않을 경우 명시 자체를 생략할 수 있다.
+						data: {},
+						// 읽어올 내용의 형식(생략할 경우 json)
+						dataType: 'html',
+						// 읽어온 내용을 처리하기 위한 함수
+						success: function(req) {
+							// 준비된 요소에게 읽어온 내용을 출력한다.
+							$("#mybutton").before(req);
+						}
+					}); // end $.ajax
+				}) // end $.#mybutton
+			})
+			</script>
 	</body>
 </html>
