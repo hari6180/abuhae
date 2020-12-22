@@ -7,14 +7,14 @@
 <title>아이를부탁해</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="../assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed" href="../assets/ico/favicon.ico" />
+<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
 
 <!-- noto Sans 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css" href="../assets/css/notosans.css" />
+<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
 
 <!-- 아이콘 사용 -->
 <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
@@ -23,28 +23,24 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="css/page_detail_for_mom.css" />	
-
-<style type="text/css">
-	.profil_img {
-		height: 270px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/page_detail/css/page_detail_for_mom.css" />	
 </head>
 	
 <body>		
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
-				<div class="profil_photo">
-				  <div class="profil_img">			  
-					<img src="img/sitter_photo.jpg"/>
-					<button type="button" class="x_btn" onclick = "location.href = 'http://localhost:8080/ezen-android2020-2/search/sitter_search.html'">
-						<img src="img/x-btn.jpg" width="28" height="28"/>
-					</button>		
+				<div class="pull-right">
 					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = 'sitter_report_for_mom.html'">
 				 	<img src="img/siren.png" width="13" height="15"/>
 				            신고
 				  	</button>
+				</div>
+				  <button type="button" class="x_btn" onclick = "location.href = 'http://localhost:8080/ezen-android2020-2/search/sitter_search.html'">
+						<img src="img/x-btn.jpg" width="28" height="28"/>
+					</button>
+				<div class="profil_photo">
+				  <div class="profil_img">			  
+					<img src="img/chat_mom03.jpg" width="100%"/>
 				  </div>
 				</div> <!-- fin. profil_photo -->
 				<div class="profil_info">
@@ -439,28 +435,28 @@
 					<div class="possible_age_area">
 						<div>
 							<div class="age_line">
-								<div class="ages">
+								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-baby fa-3x"></i>
 									</div>
 									<br>
 									<span>신생아</span>
 								</div>
-								<div class="ages">
+								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-baby-carriage fa-3x"></i>
 									</div>
 									<br>
 									<span>영아</span>
 								</div>
-								<div class="ages">
+								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-child fa-3x"></i>
 									</div>
 									<br>
 									<span>유아</span>
 								</div>
-								<div class="ages">
+								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-school fa-3x"></i>
 									</div>
@@ -476,7 +472,7 @@
 						<div class="possible_age_area">
 							<div>
 								<div class="possible_active_main">
-									<div class="active_line">
+									<div class="active_line col-xs-3">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -511,7 +507,7 @@
 										</div>
 									</div>
 									<!-- --- -->
-									<div class="active_line">
+									<div class="active_line col-xs-3">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -546,7 +542,7 @@
 										</div>
 									</div>
 									<!-- ----- -->
-									<div class="active_line">
+									<div class="active_line col-xs-3">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -573,7 +569,7 @@
 										</div>
 									</div>
 									<!-- ------- -->
-									<div class="active_line">
+									<div class="active_line col-xs-3">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -632,14 +628,14 @@
 						<div class="talk_area">
 							<div class="talk_main">
 								<div class="talk_menu">
-									<div data-tab="tab_ok" class='tabmenu' id="default">
+									<div data-tab="tab_ok" class='tabmenu col-xs-4' id="default">
 									<span id="tab01">
 									<p id="tab01_p">채용 후기(99)</p></div>
 									</span>
-									<div data-tab="tab_interview" class='tabmenu' id="tab02">
+									<div data-tab="tab_interview" class='tabmenu col-xs-4' id="tab02">
 									<p id="tab02_p">인터뷰 후기(99)</p></div>
 									
-									<div data-tab="tab_faile" class='tabmenu' id="tab03">
+									<div data-tab="tab_faile" class='tabmenu col-xs-4' id="tab03">
 									<p id="tab03_p">실패 후기(0)</p></div>									
 								</div>
 								<div id="tabcontent"> <!-- tab 내용부분 -->				
@@ -651,7 +647,7 @@
 						<div class="box_name">함께한 가족 수</div>
 						<div class="famille_area">
 							<div class="famille_main">
-								<div class="famille_date">
+								<div class="famille_date col-xs-12">
 									1999년 10월 28일 부터 <span style="font-weight: bold; color: #ff7000;">현재까지</span>
 								</div>
 								<div class="famille_number">
@@ -812,7 +808,7 @@
 		</div>
 	
 		<!-- Javascript -->
-		<script src="../assets/js/jquery.min.js"></script>
+		<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script>
 		<script type="text/javascript">
 		jQuery(function($) {
 			
@@ -835,7 +831,7 @@
 			  			  
 			  $('.tabmenu').click(function() {
 					var activeTab = $(this).attr('data-tab');
-					$('#tab01').css('background-color', 'white');
+					$('#default').css('background-color', 'white');
 					$('#tab02').css('background-color', 'white');
 					$('#tab03').css('background-color', 'white');
 					$(this).css('background-color', 'rgb(255,238,224)');
@@ -855,6 +851,6 @@
 			}); // fin. 탭 기능
 		</script>
 		 <!-- jquery 파일명 수정 -->
-		<script src="../assets/js/bootstrap.min.js"></script> 
+		<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script> 
 	</body>
 </html>
