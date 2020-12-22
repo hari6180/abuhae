@@ -1,4 +1,13 @@
 /*초기 설정*/
+html,
+body {
+  color: #222;
+  font-weight: 100;
+  font-size: 1em;
+  line-height: 1.375;
+  padding: 0;
+  margin: 0;
+}
 button {
   border: 0;
   outline: 0;
@@ -16,6 +25,18 @@ a:hover {
 .col-xs-12 {
   margin: 27px 0;
   width: 100%;
+}
+
+/*선택 전까지 숨기기*/
+.hide_content {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+/*선택 후 보여주기*/
+.show_content {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 
 /*선택 전까지 숨기기*/
@@ -333,6 +354,7 @@ a:hover {
 .select_btn {
   background-color: #ff7000 !important;
   position: relative !important;
+  color: #fff !important;
 }
 
 .select_text {
@@ -791,7 +813,9 @@ input[type="checkbox"]:checked + label:after {
   font-weight: 600;
 }
 
-/*join/parent/regular.html-------------------------------------------------------------*/
+/*join/parent/regular.html
+  join/parent/shortTerm.html
+-------------------------------------------------------------*/
 #regular .calc_box {
   display: flex;
   justify-content: space-between;
@@ -809,7 +833,7 @@ input[type="checkbox"]:checked + label:after {
   border: 1px solid #ffcfb8;
   background-color: #fff0e8;
   border-radius: 2px;
-  width: 250px;
+  width: 101px;
   height: 37px;
   text-align: center;
   color: #ff7000;
@@ -843,10 +867,30 @@ input[type="checkbox"]:checked + label:after {
   border-right: 1px solid #efefef;
 }
 
-.time_select_box {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
+.select_time {
+  width: 133px;
+  height: 38px;
+  border: 1px solid #ffcfb8;
+  background-color: #fff0e8;
+  margin-top: 6px;
+  color: #ff7000;
+  font-weight: 600;
+  text-align: center;
+}
+
+.select_time select {
+  width: 100%;
+  padding: 0.5em 0.5em;
+  border: none;
+  font-family: inherit;
+  background: url("/ezen-android2020-2/join/img/arrow.png") no-repeat 95% 50%;
+  border-radius: 0px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.select_time option {
+  color: #222;
 }
 
 .jojung_box {
@@ -857,6 +901,10 @@ input[type="checkbox"]:checked + label:after {
   margin: 15px 0;
   border-radius: 14px;
   padding: 10px;
+  cursor: pointer;
+}
+.box_check {
+  background-color: #fff9f5;
 }
 
 .jojung_check {
@@ -869,6 +917,9 @@ input[type="checkbox"]:checked + label:after {
   transition: background-color 0.3s;
   padding: 0;
   margin-right: 8px;
+}
+.check_check {
+  background-color: #ff7000;
 }
 
 .jojung_check::after {
@@ -887,4 +938,62 @@ input[type="checkbox"]:checked + label:after {
   font-size: 0.9em;
   font-weight: 600;
   color: #9d9d9d;
+}
+/*join/parent/noplan.html-------------------------------------------------------------------------*/
+.noplan_text {
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.64;
+}
+.noplan_grey {
+  font-size: 12px;
+  line-height: 0.83;
+  color: #888;
+}
+.noplan_orange {
+  color: #ff7000;
+}
+
+.noplan_wrap {
+  margin: 0 auto;
+  width: 375px;
+  padding: 0 16px;
+}
+.noplan_schedule {
+  width: 260px;
+  margin: 50px auto 40px;
+  display: flex;
+  align-items: flex-end;
+}
+.noplan_schedule img {
+  width: 29px;
+  height: 228px;
+}
+.noplan_check_box {
+  margin: 0 30px;
+  width: 60px;
+}
+
+.noplan_check_box .title {
+  margin-bottom: 23px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 0.85;
+}
+.noplan_check_box .time_box {
+  position: relative;
+  margin-top: 13px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.noplan_check_box .time_btn {
+  background-color: #f1f3f5;
+  width: 100%;
+  height: 100%;
+  color: #9d9d9d;
+  font-weight: 600;
+  border-radius: 60px;
 }

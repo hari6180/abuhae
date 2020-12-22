@@ -65,18 +65,20 @@
             <div>
                 <!--시간 선택-->
                 <div class="time_select_box">
-                    <!--시작 시간-->
-                    <div class="regu_title">시작시간</div>
-                    <!--시간-->
                     <div>
-                        <select>
-                            <option>오전 10:00</option>
-                            <option>오전 10:30</option>
-                            <option selected>오전 11:00</option>
-                            <option>오전 11:30</option>
-                            <option>오전 12:00</option>
-                            <option>오전 12:30</option>
-                        </select>
+                        <!--시작 시간-->
+                        <div class="regu_title">시작시간</div>
+                        <!--시간-->
+                        <div class="select_time">
+                            <select>
+                                <option value="10:00">오전 10:00</option>
+                                <option value="10:30">오전 10:30</option>
+                                <option value="11:00" selected>오전 11:00</option>
+                                <option value="11:30">오전 11:30</option>
+                                <option value="12:00">오전 12:00</option>
+                                <option value="12:30">오전 12:30</option>
+                            </select>
+                        </div>
                     </div>
                     <!--end select-->
 
@@ -84,17 +86,19 @@
                     <div class="middle_bar"></div>
                     <!--종료시간-->
                     <div>
-                        <div class="regu_title">종료시간</div>
-                    </div>
-                    <div>
-                        <select>
-                            <option>오후 20:00</option>
-                            <option>오후 20:30</option>
-                            <option selected>오후 21:00</option>
-                            <option>오후 21:30</option>
-                            <option>오후 22:00</option>
-                            <option>오후 22:30</option>
-                        </select>
+                        <div>
+                            <div class="regu_title">종료시간</div>
+                        </div>
+                        <div class="select_time">
+                            <select>
+                                <option value="20:00">오후 20:00</option>
+                                <option value="20:30">오후 20:30</option>
+                                <option value="21:00" selected>오후 21:00</option>
+                                <option value="21:30">오후 21:30</option>
+                                <option value="22:00">오후 22:00</option>
+                                <option value="22:30">오후 22:30</option>
+                            </select>
+                        </div>
                     </div>
                     <!--end select-->
                 </div>
@@ -125,6 +129,12 @@
                 mode: "multiple", //여러개 선택 가능
                 defaultDate: new Date().fp_incr(6) //지금으로부터 6일이 기본
             });
+
+            //일정 조정 선택
+			$(".jojung_box").on("click", function(){
+				$(this).toggleClass("box_check");
+				$(this).find(".jojung_check").toggleClass("check_check");
+			});
         });
     </script>
 </body>

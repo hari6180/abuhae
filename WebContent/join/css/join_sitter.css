@@ -1,0 +1,265 @@
+html,
+body {
+  color: #222;
+  font-weight: 100;
+  font-size: 1em;
+  line-height: 1.375;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.col-xs-12 {
+  margin: 27px 0;
+  width: 100%;
+}
+
+.next_btn {
+  background-color: #ff7000;
+  width: 100%;
+  height: 51px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+/*join/sitter/start.html-------------------------------------------------------*/
+#start .col-xs-12 {
+  margin-top: 100px;
+}
+
+#start .join_title {
+  text-align: center;
+}
+
+#start h3 {
+  font-weight: 600;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+#start p {
+  font-weight: 600;
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: #888;
+}
+
+#start button {
+  display: block;
+}
+
+#start a:hover {
+  display: block;
+  text-decoration: none;
+}
+
+#start .start_join_btn {
+  background-color: #ff7000;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  margin: 40px auto;
+  width: 220px;
+  height: 51px;
+  border-radius: 25px;
+  line-height: 36px;
+  font-size: 1em;
+  font-weight: 600;
+  text-align: center;
+}
+
+#start .already_join_btn {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  outline: 0;
+  text-decoration: underline;
+  color: #222;
+  font-size: 0.9em;
+  font-weight: 600;
+  margin: auto;
+  height: 36px;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+#start .already_join_btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/*join/siiter/sitter_type.html-------------------------------------------------------------------*/
+/*회원 가입 페이지에서 페이지 위치 알리기 위해 쓰임*/
+.page_dots {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin: 5px;
+  border-radius: 11px;
+  background-color: #e8e8e8;
+}
+
+.now_dots {
+  background-color: #ff7000 !important;
+}
+/*회원 가입 페이지에서 페이지 위치 알리기 위해 쓰임*/
+
+.what_want {
+  display: block;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+/*radio 버튼 커스텀*/
+input[type="radio"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+input[type="radio"]:hover + label:before {
+  border-color: #999;
+}
+
+input[type="radio"]:active + label:before {
+  transition-duration: 0;
+  filter: brightness(0.2);
+}
+
+input[type="radio"] + label {
+  position: relative;
+  padding-left: 35px;
+  font-weight: normal;
+}
+
+input[type="radio"] + label:before,
+input[type="radio"] + label:after {
+  box-sizing: content-box;
+  position: absolute;
+  content: "";
+  display: block;
+  left: 0;
+}
+
+input[type="radio"] + label:before {
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin-top: -10px;
+  border: 2px solid #d9d9d9;
+  text-align: center;
+}
+
+input[type="radio"] + label:after {
+  background-color: #ff7000;
+  top: 50%;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  transform: scale(0);
+  transform-origin: 50%;
+  transition: transform 200ms ease-out;
+}
+
+input[type="radio"]:checked + label:before {
+  -moz-animation: borderscale 300ms ease-in;
+  -webkit-animation: borderscale 300ms ease-in;
+  animation: borderscale 300ms ease-in;
+  background-color: #fff;
+}
+input[type="radio"]:checked + label:after {
+  transform: scale(1);
+}
+input[type="radio"] + label:before,
+input[type="radio"] + label:after {
+  border-radius: 50%;
+}
+
+/*end radio 커스텀 --------------------------------------------------*/
+
+#type .radio_box {
+  position: relative;
+  display: table;
+  height: auto;
+  width: 100%;
+  margin: 15px 0;
+}
+
+#type .radio_text {
+  display: block;
+  line-height: 24px;
+}
+
+#type .radio_text h3 {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin: 0 0 2px;
+}
+#type .radio_text p {
+  font-size: 0.8em;
+  margin: 0;
+  font-weight: 600;
+  color: #989898;
+}
+
+#type .type_desc {
+  background-color: #d9d9d9;
+  width: 100%;
+  height: 51px;
+  border-radius: 2px;
+  color: #989898;
+  font-size: 1em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/*modal 디자인 --------------------------------------*/
+
+#help_modal h4 {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+#help_modal .help_box {
+  margin: 30px 0;
+  align-items: center;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+#help_modal .help_box span {
+  font-weight: 600;
+  font-size: 1.2em;
+  color: #ff7000;
+}
+
+#help_modal .desc {
+  color: #777;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+/*end modal--------------------------------------------*/

@@ -20,8 +20,8 @@
 	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
 	<!--join.css-->
 	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_parent.css" />
-	<!--datepicker.css-->
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/datepicker.min.css" />
+	<!--flatpickr-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 	<style type="text/css">
 		html,
@@ -32,6 +32,23 @@
 			line-height: 1.375;
 			padding: 0;
 			margin: 0;
+		}
+
+		.flatpickr-day.selected,
+		.flatpickr-day.selected:focus,
+		.flatpickr-day.selected:hover {
+			background-color: #ff7000;
+			border-color: #ff7000;
+		}
+
+		.flatpickr-day.selected.prevMonthDay,
+		.flatpickr-day.selected.nextMonthDay {
+			background-color: #fff0e8;
+			border-color: #fff0e8;
+		}
+
+		.flatpickr-day.today {
+			border-color: #ff7000;
 		}
 	</style>
 </head>
@@ -46,7 +63,7 @@
 				<!--돌봄 시작일-->
 				<div class="calc_box">
 					<div class="regu_title">돌봄 시작일</div>
-					<input id="datepicker" class="date_box" date-toggle="datepicker">
+					<input id="datepicker" class="date_box">
 				</div>
 				<hr>
 				<div>
@@ -63,21 +80,23 @@
 				</div>
 				<hr>
 				<!--요일 선택시 나타내주기-->
-				<div>
+				<div id="content" class="hide_content">
 					<!--시간 선택-->
 					<div class="time_select_box">
-						<!--시작 시간-->
-						<div class="regu_title">시작시간</div>
-						<!--시간-->
 						<div>
-							<select>
-								<option>오전 10:00</option>
-								<option>오전 10:30</option>
-								<option selected>오전 11:00</option>
-								<option>오전 11:30</option>
-								<option>오전 12:00</option>
-								<option>오전 12:30</option>
-							</select>
+							<!--시작 시간-->
+							<div class="regu_title">시작시간</div>
+							<!--시간-->
+							<div class="select_time">
+								<select>
+									<option value="10:00">오전 10:00</option>
+									<option value="10:30">오전 10:30</option>
+									<option value="11:00" selected>오전 11:00</option>
+									<option value="11:30">오전 11:30</option>
+									<option value="12:00">오전 12:00</option>
+									<option value="12:30">오전 12:30</option>
+								</select>
+							</div>
 						</div>
 						<!--end select-->
 
@@ -85,30 +104,34 @@
 						<div class="middle_bar"></div>
 						<!--종료시간-->
 						<div>
-							<div class="regu_title">종료시간</div>
-						</div>
-						<div>
-							<select>
-								<option>오후 20:00</option>
-								<option>오후 20:30</option>
-								<option selected>오후 21:00</option>
-								<option>오후 21:30</option>
-								<option>오후 22:00</option>
-								<option>오후 22:30</option>
-							</select>
+							<div>
+								<div class="regu_title">종료시간</div>
+							</div>
+							<div class="select_time">
+								<select>
+									<option value="20:00">오후 20:00</option>
+									<option value="20:30">오후 20:30</option>
+									<option value="21:00" selected>오후 21:00</option>
+									<option value="21:30">오후 21:30</option>
+									<option value="22:00">오후 22:00</option>
+									<option value="22:30">오후 22:30</option>
+								</select>
+							</div>
 						</div>
 						<!--end select-->
 					</div>
 					<!--end select box-->
-				</div>
-				<!--일정은 시터에게 맞출 수 잇어요-->
-				<div class="jojung_box">
-					<span class="jojung_check"></span>
-					<span class="jojung_text">본 일정은 맘시터에 맞춰서 얼마든지 조정할 수 있어요.</span>
-				</div>
-			</div>
-			<a href="description.html"><button class="next_btn">다음</button></a>
 
+					<!--일정은 시터에게 맞출 수 잇어요-->
+					<div class="jojung_box">
+						<span class="jojung_check"></span>
+						<span class="jojung_text">본 일정은 맘시터에 맞춰서 얼마든지 조정할 수 있어요.</span>
+					</div>
+
+					<a href="description.html"><button class="next_btn">다음</button></a>
+				</div>
+				<!--end hide content-->
+			</div>
 
 		</div> <!-- fin. col-xs-12 -->
 
@@ -117,18 +140,35 @@
 	<!-- Javascript -->
 	<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
 	<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
-	<!--datepicker.js-->
-	<script src="/ezen-android2020-2/join/js/datepicker.min.js"></script>
-	<script src="/ezen-android2020-2/join/js/datepicker.ko.js"></script>
+	<!--flatpickr-->
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<script type="text/javascript">
 		$(function () {
+			$('#datepicker').flatpickr({
+				dateFormat: "Y/m/d",
+				minDate: "today",
+				maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
+				defaultDate: new Date().fp_incr(6) //지금으로부터 6일이 기본
+			});
 
-			$('#datepicker').datepicker({
-				language: 'ko',
-				startDate: new Date(),
-				autoClose: true,
-				format: "yyyy/mm/dd",
-				minDate: new Date()
+			//요일 선택시 
+			$(".day_btn").on("click", function () {
+				$(this).toggleClass("select_btn");
+
+				var count = $(".select_btn").length;
+				if (count == 0) {
+					$("#content").removeClass("show_content");
+					$("#content").addClass("hide_content");
+				} else {
+					$("#content").removeClass("hide_content");
+					$("#content").addClass("show_content");
+				}
+			});
+
+			//일정 조정 선택
+			$(".jojung_box").on("click", function () {
+				$(this).toggleClass("box_check");
+				$(this).find(".jojung_check").toggleClass("check_check");
 			});
 		});
 
