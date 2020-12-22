@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>아이를부탁해</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+
+		<!-- noto Sans 웹 폰트 적용 -->
+        <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+        
+        <!-- icon 참조 -->
+        <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
+
+        <style type="text/css">
+         /* 초기 설정 -----------------------------------------------------*/
+         .body, html, * {
+            margin: 0;
+            padding: 0;
+
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            color: black;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+        /** header --------------------------------------------------------------------*/
+
+        .mp_detail_tl {
+            width: 100%;
+        }
+        
+        .mp_detail_tl .mp_detail_tl_in {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .mp_detail_tl .mp_detail_tl_in a i {
+            text-decoration: none;
+            color: black;
+            font-size: 1.5em;
+            margin-top: 7px;
+        }
+
+        .mp_detail_tl .mp_detail_tl_in h3 {
+            font-weight: bold;
+        }
+
+        /** for 후기 관리 페이지 (review.html) --------------------------------------*/
+        /** 공통 for 후기 관리 */
+        .wrap_review {
+            padding: 20px 20px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        /** 탭메뉴 for 후기 관리 */
+        .wrap_review .group_rev_con .rev_tab_button {
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+
+        .wrap_review .group_rev_con .rev_tab_button .tab_button_item {
+            width: 33.333%;
+            height: 48px;
+            border-bottom: 3px solid rgb(237, 237, 237);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .wrap_review .group_rev_con .rev_tab_button .tab_button_item.fi_selected {
+            border-bottom: 3px solid #ff7000;
+        }
+
+        .wrap_review .group_rev_con .rev_tab_button .tab_button_item_link {
+            color: rgb(148, 148, 148);
+            font-size: 1.1em;
+            width: 100%;
+            
+        }
+
+        .wrap_review .group_rev_con .rev_tab_button .tab_button_item_link.selected {
+            color: #ff7000;
+        }
+
+        /** 리뷰 내용 영역 */
+
+        .wrap_review .group_rev_con .rev_tab_panel {
+            padding: 10px 15px;
+        }
+
+        .wrap_review .group_rev_con .rev_tab_panel .rev_tab_panel_con {
+            min-height: 300px;
+            background-color: rgb(240, 240, 240);
+            padding: 10px;
+            border-radius: 3px;
+        }
+
+        .wrap_review .group_rev_con .rev_tab_panel .rev_tab_panel_con h4 {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .wrap_review .group_rev_con .rev_tab_panel .rev_tab_panel_con h5 {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .wrap_review .group_rev_con .rev_tab_panel .si_rev_no {
+            background-color: #ffffff;
+            padding: 15px;
+        }
+
+        .wrap_review .group_rev_con .rev_tab_panel .si_rev_no .si_rev_no_tl {
+            display: flex;
+
+        }
+
+        .wrap_review .group_rev_con .rev_tab_panel .si_rev_no_tl .si_rev_no_info {
+            margin-left: 15px;
+        }
+
+        .wrap_review .group_rev_con .rev_tab_panel button {
+            height: 36px;
+            width: 100%;
+            border: 0;
+            border-radius: 8px;
+            margin-top: 15px;
+            background-color: rgb(255, 95, 0);
+            color: #fff;
+        }
+
+        .rev_button {
+            display: flex;
+            justify-content: space-between;
+        }
+
+		</style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="container">
+                <div class="wrap_review">
+                     <!-- header -->
+                     <header class="mp_detail_tl">
+                        <div class="row">
+                            <div class="col-xs-12 mp_detail_tl_in">
+                                <a href="/ezen-android2020-2/mypage/mypage_sitter/sitter_mypage.html">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                                <h3 class="center-block">후기 관리</h3>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- 두번째 항목 -->
+                    <section class="group_rev_con">
+                        <!-- 탭버튼 -->
+                        <div class="row">
+                            <div class="col-xs-12 rev_tab">
+                                <!-- 탭 버튼 영역 -->
+                                <ul class="rev_tab_button">
+                                    <li id="button1" class="tab_button_item fi_selected">
+                                        <a class="tab_button_item_link selected" href="#tab_page_1">미작성 후기</a>
+                                    </li>
+                                    <li id="button2" class="tab_button_item">
+                                        <a class="tab_button_item_link" href="#tab_page_2">작성한 후기</a>
+                                    </li>
+                                    <li id="button3" class="tab_button_item">
+                                        <a class="tab_button_item_link" href="#tab_page_3">받은 후기</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 탭 내용 영역 -->
+                        <div class="row">
+                            <div class="col-xs-12 rev_tab_panel">
+                                <div class="rev_tab_panel_con">
+                                    <!-- 미작성 후기 -->
+                                    <div id="tab_page_1">
+                                        <div class="si_rev_no">
+                                            <div class="si_rev_no_tl">
+                                                <!-- 후기작성 부모 프로필사진 -->
+                                                <div class="si_rev_no_prof">
+                                                    <img src="/ezen-android2020-2/mypage/img/profile.jpg" alt="임시프로필" style="width: 42px; border-radius: 50%;">
+                                                </div>
+                                                <!-- 후기작성 부모 정보 -->
+                                                <div class="si_rev_no_info">
+                                                    <h4>김○영 부모</h4>
+                                                    <h5>서울특별시 강남구</h5>
+                                                </div>
+                                            </div>
+                                            <a href="#">
+                                                <button type="button">후기 작성하기</button>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- 작성한 후기 -->
+                                    <div id="tab_page_2" class="hide">
+                                        <div class="si_rev_no">
+                                            <div class="si_rev_no_tl">
+                                                <!-- 후기작성 부모 프로필사진 -->
+                                                <div class="si_rev_no_prof">
+                                                    <img src="/ezen-android2020-2/mypage/img/profile.jpg" alt="임시프로필" style="width: 42px; border-radius: 50%;">
+                                                </div>
+                                                <!-- 후기작성 부모 정보 -->
+                                                <div class="si_rev_no_info">
+                                                    <h5>서울특별시 강남구</h5>
+                                                    <p class="star" style="color: #ff7000;">★★★★</p>
+                                                    <p class="rev_text">친절하시고, 간식도 잘 챙겨주셔서 정말 좋았습니다! 하지만 아이가 오르기를 너무 좋아하더라구요,, 다람쥐인줄</p>
+                                                </div>
+                                            </div>
+                                            <div class="rev_button">
+                                                <button type="button" style="width: 49%;">
+                                                    수정하기
+                                                </button>
+                                                <button type="button" style="width: 49%;">
+                                                    삭제하기
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 받은 후기 -->
+                                    <div id="tab_page_3" class="hide">
+                                        <p>받은 후기가 없습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+		<!-- Javascript -->
+		<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script>
+        <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+
+        <script>
+            $(function() {
+              /** 탭 버튼 클릭 처리 */
+                $(".tab_button_item").click(function(e) {
+                    e.preventDefault();
+                    $(".tab_button_item").not(this).removeClass("fi_selected");
+                    $(this).addClass("fi_selected");
+
+                    $(".tab_button_item").not(this).find("a").removeClass("selected");
+                    $(this).find("a").addClass("selected");
+
+                    var target2 = $(this).find("a").attr("href");
+                    $(target2).removeClass("hide");
+                    $(".rev_tab_panel_con > div").not($(target2)).addClass("hide");
+                });            
+            });
+        </script>
+	</body>
+</html>
