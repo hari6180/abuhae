@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>아이를부탁해</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="../../assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="../../assets/ico/favicon.ico" />
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+
+		<!-- noto Sans 웹 폰트 적용 -->
+        <link rel="stylesheet" type="text/css" href="../../assets/css/notosans.css" />
+        
+        <!-- icon 참조 -->
+        <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
+
+        <style type="text/css">
+        /* 초기 설정 -----------------------------------------------------*/
+        .body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        /** 첫번째 항목 --------------------------------------------------*/
+        .wrap_change_pw {
+            padding: 5px 20px;
+        }
+
+        .wrap_change_pw .change_pw_title {
+            width: 100%;
+        }
+        
+        .wrap_change_pw .change_pw_title .pw_title_in {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 1em;
+        }
+
+        .wrap_change_pw .change_pw_title .pw_title_in a i {
+            text-decoration: none;
+            color: black;
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+
+        .wrap_change_pw .change_pw_title .pw_title_in h3 {
+            font-weight: bold;
+        }
+
+        /** 두 번째 항목*/
+        .wrap_change_pw .change_pw_con .pw_con_on {
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, 
+            rgba(0, 0, 0, 0.12) 0px 1px 4px;
+        }
+
+        .wrap_change_pw .change_pw_con #now_pw, #new_pw  {
+            border: 0px;
+            width: 100%;
+        }
+
+        .wrap_change_pw .change_pw_con .pw_con_in input, label {
+            margin: 8px 0;
+        }
+
+        .wrap_change_pw .change_pw_con button {
+            width: 100%;
+            margin-top: 40px;
+            line-height: 36px;
+            border: 0;
+            border-radius: 3px;
+            background-color: rgb(255, 112, 0);
+
+            font-size: 1.143em;
+            color: ivory;
+        }
+
+        .wrap_change_pw .change_pw_con .pw_con_in #show_pw {
+            margin-right: 10px;
+        }
+		</style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="container">
+                <div class="wrap_change_pw">
+                    <!-- 첫번째 항목 -->
+                    <section class="change_pw_title">
+                        <div class="row">
+                            <div class="col-xs-12 pw_title_in">
+                                <a href="./sitter_mypage.html">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                                <h3 class="center-block">비밀번호 변경</h3>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- 두번째 항목 -->
+                   <section class="change_pw_con">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <form action="#">
+                                    <div class="pw_con_on">
+                                        <div class="pw_con_in">
+                                            <label for="now_pw">현재 비밀번호</label> <br/>
+                                            <input autocomplete="false" type="password" name="now_pw" id="now_pw" minlength="6"
+                                            placeholder="현재 비밀번호를 입력하세요." style="border-bottom: 1px solid #ccc;"> 
+                                        </div>
+                                        <div class="pw_con_in">
+                                            <label for="new_pw">새로운 비밀번호</label> <br/>
+                                            <input autocomplete="false" type="password" name="new_pw" id="new_pw" minlength="6"
+                                            placeholder="새롭게 사용할 비밀번호를 입력하세요." style="border-bottom: 1px solid #ccc;">
+                                        </div>
+                                        <div class="pw_con_show">
+                                            <input type="checkbox" name="show_pw" id="show_pw">
+                                            <label for="show_pw">비밀번호 보기</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit">변경하기</button>
+                                </form>  
+                            </div>
+                        </div>
+                   </section>
+                </div>
+            </div>
+        </div>
+
+		<!-- Javascript -->
+		<script src="../../assets/js/jquery.min.js"></script>
+        <script src="../../assets/js/bootstrap.min.js"></script>
+
+        <!-- 비밀번호 보이기/가리기 기능-->
+        <script>
+            $(function() {
+                // 체크박스 클릭 시 패스워드 보이기
+                $("#show_pw").change(function() {
+                   /** $(this).prop('checked',$("#now_pw").attr('type', 'text')); */
+                   if($(this).prop('checked') == true) {
+                        $(this).prop('checked',$("#now_pw").attr('type', 'text'));
+                        $(this).prop('checked',$("#new_pw").attr('type', 'text'));
+                   } else {
+                       $("#now_pw").attr('type', 'password');
+                       $("#new_pw").attr('type', 'password');
+                   }
+                });
+            });
+        </script>
+	</body>
+</html>

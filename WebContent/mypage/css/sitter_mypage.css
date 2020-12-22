@@ -1,0 +1,451 @@
+@charset "UTF-8";
+
+/* 초기 설정 -----------------------------------------------------*/
+.body,
+html,
+* {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.wrap_mp {
+  padding: 10px;
+}
+
+/* header --------------------------------------------------------- */
+
+.header {
+  min-height: 60px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.header a {
+  color: #212121;
+}
+
+.header_wrap {
+  height: 60px;
+  border-bottom: 1px solid rgb(216, 216, 216);
+}
+
+.header .flex_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .main_menu {
+  width: 112px;
+}
+
+.header .logo {
+  width: 117px;
+  height: auto;
+  padding-bottom: 2px;
+  margin-left: 12px;
+}
+
+.header .join {
+  outline: none;
+  border: none;
+  margin-right: 5px;
+  width: 75px;
+  height: 35px;
+  border-radius: 18px;
+  background: rgb(255, 121, 40);
+  color: rgb(255, 255, 255);
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.header .header_search_btn {
+  width: 20px;
+  height: 22px;
+  margin-left: 18px;
+  margin-right: 10px;
+}
+
+.header p {
+  margin: 0;
+}
+
+.header .fa-bars {
+  font-size: 1.5em;
+}
+
+/* header end ---------------------------------------------------------*/
+
+/* modal -------------------------------------------------------------------------------------*/
+
+#menu_modal {
+  padding: 0;
+}
+
+#menu_modal p {
+  padding: 0;
+  margin: 0;
+}
+
+#menu_modal .modal_body a,
+#menu_modal .modal_footer a {
+  display: flex;
+}
+
+#menu_modal .col-xs-9 {
+  padding: 0;
+  margin: 0;
+}
+
+#menu_modal .modal_group {
+  padding: 40px 28px 28px;
+}
+
+#menu_modal .modal_content {
+  background-color: #fff;
+  height: 100%;
+  margin: 0;
+  box-shadow: 10px 0px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* modal header ---------------------------------------------------------*/
+
+#menu_modal button {
+  padding: 1px 6px;
+}
+
+#menu_modal button p {
+  line-height: 1.375;
+  color: rgb(102, 102, 102);
+  letter-spacing: -0.2px;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+#menu_modal .modal_btn {
+  background-color: #fff;
+  border: 0;
+}
+
+#menu_modal .join_btn {
+  margin-left: 10px;
+}
+
+/* modal header end ---------------------------------------------------------*/
+
+/* modal body ---------------------------------------------------------*/
+
+#menu_modal .modal_body {
+  margin-top: 30px;
+}
+
+#menu_modal .modal_body p {
+  font-size: 1.15em;
+  font-weight: 1000;
+  color: rgb(68, 68, 68);
+  margin-top: 7px;
+}
+
+#menu_modal img {
+  margin-right: 16px;
+  width: 40px;
+  height: 40px;
+}
+
+#menu_modal .sitter_search,
+.job_search {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#menu_modal .job_search {
+  margin-top: 16px;
+}
+
+#menu_modal .divider {
+  width: 100%;
+  height: 1px;
+  opacity: 0.5;
+  background: rgb(221, 221, 221);
+}
+
+/* modal body end ---------------------------------------------------------*/
+
+/* footer ---------------------------------------------------------**/
+
+#menu_modal .modal_footer p {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  color: rgb(68, 68, 68);
+  letter-spacing: -0.2px;
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 22px;
+}
+#menu_modal .modal_footer a {
+  margin-top: 32px;
+}
+#menu_modal .modal_footer a:first-child {
+  margin-top: 0;
+}
+
+/* footer end ---------------------------------------------------------**/
+
+/* modal end -------------------------------------------------------------------------------------*/
+
+/* 첫번째 항목 --------------------------------------------------*/
+.wrap_mp .group_mp_title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.wrap_mp .group_mp_title .title_con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrap_mp .group_mp_title .title_con .title_con_in {
+  margin-top: 15px;
+}
+
+.wrap_mp .group_mp_title .title_con .title_con_in a {
+  font-size: 0.857em;
+  color: #696969;
+}
+
+/* 두번째 항목 --------------------------------------------------*/
+
+.wrap_mp .group_mp_buy .buy_con {
+  background-color: #e6f1ee;
+  padding: 20px 20px 27px;
+}
+
+.wrap_mp .group_mp_buy .buy_con .buy_profile {
+  display: flex;
+}
+
+.wrap_mp .group_mp_buy .buy_con .buy_profile .group_con_p {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 1.143em;
+  font-weight: bold;
+}
+
+.wrap_mp .group_mp_buy .buy_profile .group_con_p:last-child {
+  margin-top: 14px;
+  margin-left: 5px;
+  font-size: 0.857em;
+  font-weight: normal;
+}
+
+/** 토글버튼 세부 조정 (수정필요) */
+.wrap_mp .group_mp_buy .buy_con .buy_title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.wrap_mp .group_mp_buy .buy_con .buy_title .buy_title_left {
+  display: flex;
+  align-items: center;
+}
+
+.wrap_mp .group_mp_buy .buy_con .buy_title .buy_tl_switch {
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+.wrap_mp .group_mp_buy .buy_con .buy_title .buy_tl_switch label {
+  margin-left: 5px;
+}
+/** 토글버튼 세부 조정 (수정필요) end*/
+
+.wrap_mp .group_mp_buy .buy_con .buy_product {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.wrap_mp .group_mp_buy .buy_con .buy_product .product_con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.wrap_mp .group_mp_buy .buy_con .buy_product p {
+  font-size: 0.714em;
+  color: #888888;
+}
+
+.wrap_mp .group_mp_buy .buy_con .product_button {
+  background-color: rgb(34, 172, 135);
+  width: 69px;
+  height: 30px;
+  border: 0;
+  border-radius: 17px;
+  font-size: 0.857em;
+  font-weight: bold;
+  color: #fff;
+}
+
+/** 두번째 항목, 토글버튼 (수정필요)*/
+.wrap_mp .group_mp_buy .switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+/* Hide default HTML checkbox */
+.wrap_mp .group_mp_buy .switch input {
+  display: none;
+}
+
+/* The slider */
+
+.wrap_mp .group_mp_buy .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.wrap_mp .group_mp_buy .slider:before {
+  position: absolute;
+  content: "";
+  top: -4px;
+  height: 23px;
+  width: 23px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.wrap_mp .group_mp_buy input:checked + .slider {
+  background-color: rgb(34, 172, 135);
+}
+
+.wrap_mp .group_mp_buy input:focus + .slider {
+  box-shadow: 0 0 1px rgb(34, 172, 135);
+}
+
+.wrap_mp .group_mp_buy input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+
+.wrap_mp .group_mp_buy .slider.round {
+  border-radius: 34px;
+}
+
+.wrap_mp .group_mp_buy .slider.round:before {
+  border-radius: 50%;
+}
+
+.wrap_mp .group_mp_buy .buy_title p {
+  margin: 0px;
+  display: inline-block;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+/* 세번째 항목 --------------------------------------------------*/
+.wrap_mp .group_mp_list .list_con {
+  padding: 20px 20px;
+}
+
+.wrap_mp .group_mp_list .list_con a {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrap_mp .group_mp_list .list_con a:hover {
+  background-color: #eee;
+}
+
+.wrap_mp .group_mp_list .list_con .list_con_in {
+  padding: 0;
+  margin: -10px 0;
+}
+
+.wrap_mp .group_mp_list .list_con .list_con_in .list_con_tl {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.071em;
+  color: #000;
+}
+
+.wrap_mp .group_mp_list .list_con .list_con_in .list_con_icon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1em;
+}
+
+.wrap_mp .group_mp_list .list_con a p {
+  margin: 8px 10px 10px 10px;
+}
+
+.wrap_mp .group_mp_list .list_con .list_con_in i {
+  font-size: 1.7em;
+  color: rgb(34, 172, 135);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* 네번째 항목 --------------------------------------------------*/
+.wrap_mp .group_mp_bottom .bottom_con {
+  padding: 20px 20px;
+  background-color: rgb(243, 241, 241);
+}
+
+.wrap_mp .group_mp_bottom .bottom_con a {
+  font-size: 1em;
+  color: #000;
+}
+
+.wrap_mp .group_mp_bottom .bottom_con .bottom_con_in {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.wrap_mp .group_mp_bottom .bottom_con .bottom_con_in:first-child {
+  margin: 0;
+}
+
+.wrap_mp .group_mp_bottom .bottom_con .bottom_con_in.bt_cash {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrap_mp .group_mp_bottom .bottom_con .bottom_con_in .bt_cash_p {
+  margin-right: 17px;
+}

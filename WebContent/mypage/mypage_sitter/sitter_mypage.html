@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>아이를부탁해</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="../../assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="../../assets/ico/favicon.ico" />
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+
+		<!-- noto Sans 웹 폰트 적용 -->
+        <link rel="stylesheet" type="text/css" href="../../assets/css/notosans.css" />
+        
+        <!-- icon 참조 -->
+        <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
+
+        <!-- animaition 적용-(for header) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
+
+        <!-- header css 적용 -->
+        <link rel="stylesheet" type="text/css" href="../css/sitter_mypage.css"></link>
+
+        <style type="text/css">
+
+		</style>
+    </head>
+
+    <body>
+        <!-- header 메뉴바 -->
+        <div id="app">
+            <div class="container">
+                <!-- header : 하리-->
+                <header>
+                    <div class="header_wrap col-xs-12">
+                        <div class="header">
+                            <div class="flex_row main_menu">
+                                <!-- 메뉴 모달 열기-->
+                                <a data-toggle="modal" href="#menu_modal">
+                                    <p><i class="fas fa-bars"> </i></p>
+                                </a>
+    
+                                <!--메인페이지 연결 필요-->
+                                <a href="Index.html">
+                                    <img src="../../img/logo (1).png" class="logo" />
+                                </a>
+                            </div>
+                            <div class="flex_row">
+                                <a href="join/join.html"><button class="join">가입하기</button></a>
+                                <a href="#"><img src="../../img/돋보기.png" class="header_search_btn" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!-- header end-->
+    
+                <!-- modal -->
+    
+                <div id="menu_modal" class="modal col-xs-12 fade" data-toggle="tab" tabindex="-1" role="dialog"
+                    aria-labelledby="menu_modal_label" aria-hidden="true">
+                    <!-- modal content-->
+                    <div class="modal_content col-xs-9">
+                        <!-- modal header -->
+                        <div class="modal_group">
+                            <div class="modal_header">
+                                <a href="#"><button type="button" class="modal_btn">
+                                    <p class="login_btn">로그인</p>
+                                </button></a>
+                                <a href="join/join.html"><button type="button" class="modal_btn">
+                                    <p class="join_btn">회원가입</p>
+                                </button></a>
+                            </div>
+                            <!-- modal header end-->
+    
+                            <!-- modal body-->
+                            <div class="modal_body">
+                                <div class="sitter_search">
+                                    <a href="#">
+                                        <img src="../../img/index-sittersearch.svg" />
+                                        <p>맘시터 찾기</p>
+                                    </a>
+                                </div>
+    
+                                <div class="job_search">
+                                    <a href="#">
+                                        <img src="../../img/index-jobsearch.svg" />
+                                        <p>일자리 찾기</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- modal body end-->
+                        <div class="divider"></div>
+                        <!-- modal footer -->
+                        <div class="modal_footer modal_group">
+                            <a href="#">
+                                <p>이용권 / 지원권 구매</p>
+                            </a>
+                            <a href="#">
+                                <p>서비스 소개</p>
+                            </a>
+                            <a href="#">
+                                <p>공지사항</p>
+                            </a>
+                            <a href="#">
+                                <p>고객센터</p>
+                            </a>
+                        </div>
+    
+                        <!-- modal footer end -->
+                    </div>
+                    <!-- modal content end-->
+                </div>
+                <!-- modal end -->
+                <!-- header end-->
+
+                <!-- 마이페이지 -->
+                <section>
+                    <div class="wrap_mp">
+                        <!--첫번째 항목-->
+                        <section class="group_mp_title">
+                            <div class="row">
+                                <div class="col-xs-12 title_con">
+                                    <div>
+                                        <h3 style="font-weight:bold;">마이페이지</h3>
+                                    </div>
+                                    <div class="title_con_in">
+                                        <!--백엔드 연동 필요-->
+                                        <a href="./change_pw.html"><span class="glyphicon glyphicon-pencil"></span>비밀번호 변경</a>
+                                        ㅣ
+                                        <a href="#" id="mp_logout">로그아웃</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!--두번째 항목-->
+                        <section class="group_mp_buy">
+                            <div class="row">
+                                <div class="col-xs-12 buy_con">
+                                    <!--백엔드 연동 필요-->
+                                    <div class="buy_profile">
+                                        <img src="../img/m-sitter-detail-w-general.png" alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
+                                        <p class="group_con_p">정지우</p>
+                                        <p class="group_con_p">no.01</p>
+                                    </div>
+                                   
+                                    <hr style="border: 1px solid rgb(226, 225, 225); background-color: rgb(226, 225, 225);">
+                                    
+                                    <div class="buy_title">
+                                        <div class="buy_title_left">
+                                            <h4 style="font-size: 1.071em; font-weight: bold;">내 프로필 상태</h4>
+                                            <!--백엔드 연동 필요-->
+                                            <!--토글버튼 (수정필요)-->
+                                            <div class="buy_tl_switch">
+                                                <p class="switch_p" style="color: #ccc;">구직 종료</p>
+                                                <p class="switch_p" style="display:none; color: rgb(34, 172, 135);">구직 중</p>
+                                                <label class="switch">									
+                                                    <input type="checkbox">
+                                                    <span class="slider round"></span>								
+                                                </label>
+                                            </div>
+                                            <!--토글버튼 끝-->
+                                        </div>
+                                        <div class="buy_title_ricght">
+                                            <a data-toggle="modal" href="#tl_right_modal">
+                                                <i class="fas fa-question-circle" style="color: #b6b5b5; font-size: 1.7em;"></i>
+                                            </a>
+                                            <!-- modal(구직 중/ 구직 종료 상태 설명) -->
+                                            <div id="tl_right_modal" class="modal fade" tabindex="-1" role="dialog" 
+                                            aria-labelledby="modalLabel" aria-hidden="true">
+                                                <!-- mocal-dialog -->
+                                                <div class="modal-dialog">
+                                                    <!-- modal-content -->
+                                                    <div class="modal-content">
+                                                        <!--제목-->
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                                            style="padding: 10px 0;">
+                                                                <i class="fas fa-times"></i>
+                                                            </button>
+                                                            <h4 class="modal-title" id="modalLabel" 
+                                                            style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+                                                                구직 중, 구직 종료 상태란?
+                                                            </h4>
+                                                        </div>
+                                                        
+                                                        <!-- 내용 -->
+                                                        <div class="modal-body">
+                                                            <h4 style="font-size: 1.3em; font-weight: bold;">
+                                                                1.'구직 중' 상태
+                                                            </h4>
+                                                            <br/>
+                                                            <p style="font-size: 1em;">
+                                                                부모님들이 내 프로필을 보고 인터뷰 신청을 할 수 있는 상태입니다. 구직을 <br/>
+                                                                종료하고 싶은 경우, 반드시 ‘구직 종료’로 변경해주세요. 프로필에 작성한 <br/>
+                                                                돌봄 기간이 지난 경우, ‘구직 종료’ 상태로 자동 변경됩니다. <br/>
+                                                                <span style="font-size: 0.9em; color: #b6b5b5;"><span class="glyphicon glyphicon-hand-right"></span> 실제와 다른 내용의 프로필 내용은 신고사유가 될 수 있습니다.</span>
+                                                            </p>
+                                                            <br/> <br/>
+                                                            <h4 style="font-size: 1.3em; font-weight: bold;">
+                                                                2.'구직 종료' 상태
+                                                            </h4>
+                                                            <br/>
+                                                            <p style="font-size: 1em; margin-bottom: 20px;">
+                                                                부모님들이 내 프로필을 보고 인터뷰 신청할 수 없는 상태입니다. 구직을 <br/>
+                                                                다시 시작하고 싶은 경우, 반드시 ‘구직 중’으로 변경해주세요.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- //modal-content end -->
+                                                </div>
+                                                <!-- //modal-dailog end-->
+                                            </div>
+                                            <!-- // modal end -->
+                                        </div>
+                                    </div>
+                                    <div class="buy_product">
+                                        <div class="product_con" style="box-shadow: 3px 4px 4px rgb(231, 231, 231);">
+                                            <div>
+                                                <h4 style="font-size: 0.929em; font-weight: bold;">맘시터 지원권</h4>
+                                                <p>일자리에서 직접 지원하거나<br/> 무제한으로 수락/조율할 수 있어요!</p>
+                                            </div>
+                                            <div class="pro_btn">
+                                                <button class="product_button" style="box-shadow: 1px 3px 3px rgb(141, 206, 189);">구매하기</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!--세번째 항목-->
+                        <section class="group_mp_list">
+                            <div class="row">
+                                <div class="col-xs-12 list_con">
+                                    <div class="list_con_in">
+                                        <a href="./get_sitter.html">                              
+                                            <div class="list_con_tl">
+                                                <i class="fas fa-address-book"></i>
+                                                <p class="list_con_p">내 구직 현황</p>
+                                            </div>
+                                            <div class="list_con_icon">
+                                                <i class="fas fa-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+    
+                                    <hr style="background-color: rgb(243, 241, 241); width: 87%;">
+    
+                                    <div class="list_con_in">
+                                        <a href="./like_mom.html">
+                                            <div class="list_con_tl">
+                                                <i class="fab fa-gratipay"></i>
+                                                <p>찜한 일자리</p>
+                                            </div>
+                                            <div class="list_con_icon">
+                                                <!--백엔드 연동 필요-->
+                                                <p style="color: rgb(48, 132, 132);">2명</p>
+                                                <i class="fas fa-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+    
+                                    <hr style="background-color: rgb(243, 241, 241); width: 87%;">
+    
+                                    <div class="list_con_in">
+                                        <a href="#">
+                                            <div class="list_con_tl">
+                                                <i class="fab fa-jenkins"></i>
+                                                <p>내 프로필 보기</p>
+                                            </div>
+                                            <div class="list_con_icon">
+                                                <i class="fas fa-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+    
+                                    <hr style="background-color: rgb(243, 241, 241); width: 87%;">
+    
+                                    <div class="list_con_in">
+                                        <a href="#">
+                                            <div class="list_con_tl">
+                                                <i class="fas fa-pen"></i>
+                                                <p>내 프로필 수정</p>
+                                            </div>
+                                            <div class="list_con_icon">
+                                                <!--백엔드 연동 필요-->
+                                                <p style="color: rgb(48, 132, 132);">3시간 전</p>
+                                                <i class="fas fa-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+    
+                                    <hr style="border: 5px solid rgb(243, 241, 241); background-color: rgb(243, 241, 241);">
+    
+                                    <div class="list_con_in">
+                                        <a href="./fund.html">
+                                            <div class="list_con_tl">
+                                                <i class="fas fa-comment-dollar" style="margin-right: 11px;"></i>
+                                                <p>내 적립금</p>
+                                            </div>
+                                            <div class="list_con_icon">
+                                                <i class="fas fa-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+    
+                                    <hr style="background-color: rgb(243, 241, 241); width: 87%;">
+    
+                                    <div class="list_con_in">
+                                        <a href="#">
+                                            <div class="list_con_tl">
+                                                <i class="fas fa-file-invoice-dollar" style="margin-right: 17px;"></i>
+                                                <p>내 쿠폰함</p>
+                                            </div>
+                                            <div class="list_con_icon">
+                                                <p style="color: rgb(255, 129, 0);">0 장</p>
+                                                <i class="fas fa-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+    
+                                    <hr style="border: 5px solid rgb(243, 241, 241); background-color: rgb(243, 241, 241);">
+                                    
+                                    <div class="list_con_in">
+                                        <a href="#">
+                                            <div class="list_con_tl">
+                                                <i class="fas fa-star"></i>
+                                                <p>후기 관리</p>
+                                            </div>
+                                            <div class="list_con_icon">
+                                                <i class="fas fa-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+    
+                                    <hr style="background-color: rgb(243, 241, 241); width: 87%;">
+    
+                                    <div class="list_con_in">
+                                        <a href="#">
+                                            <div class="list_con_tl">
+                                                <i class="fas fa-check-circle" style="margin-right: 12px;"></i>
+                                                <p>인증 관리</p>
+                                            </div>
+                                            <div class="list_con_icon">
+                                                <!--백엔드 연동 필요-->
+                                                <p style="color: rgb(48, 132, 132);">0개 완료</p>
+                                                <i class="fas fa-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+    
+                                    <hr style="background-color: rgb(243, 241, 241); width: 87%;">
+                                    
+                                    <div class="list_con_in">
+                                        <a href="#">
+                                            <div class="list_con_tl">
+                                                <i class="fas fa-user-plus" style="margin-right: 8px;"></i>
+                                                <p>내 맘시터 채용 횟수</p>
+                                            </div>
+                                            <div class="list_con_icon">
+                                                <!--백엔드 연동 필요-->
+                                                <p style="color: rgb(48, 132, 132);">0 회</p>
+                                                <i class="fas fa-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+    
+                                    <hr style="background-color: rgb(243, 241, 241); width: 87%;">
+    
+                                    <div class="list_con_in">
+                                        <a href="#">
+                                            <div class="list_con_tl">
+                                                <i class="fas fa-bomb" style="margin-right: 14px;"></i>
+                                                <p>신고내역</p>
+                                            </div>
+                                            <div class="list_con_icon">
+                                                <!--백엔드 연동 필요-->
+                                                <p style="color: rgb(48, 132, 132);">0 건</p>
+                                                <i class="fas fa-angle-right"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+    
+                        <!--네번째 항목-->
+                        <section class="group_mp_bottom">
+                            <div class="row">
+                                <div class="col-xs-12 bottom_con">
+                                    <a href="#" class="bottom_con_in bt_cash">
+                                        <p>결제 내역</p>
+                                        <!--백엔드 연동 필요-->
+                                        <p class="bt_cash_p" style="color: rgb(48, 132, 132);">0 건</p>
+                                    </a>
+                                    <a href="#" class="bottom_con_in">
+                                        <p>공지사항</p>
+                                    </a>
+                                    <a href="#" class="bottom_con_in">
+                                        <p>계정관리</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+		<!-- Javascript -->
+		<script src="../../assets/js/jquery.min.js"></script>
+        <script src="../../assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+        <!-- 로그아웃 기능 (수정필요 / 백앤드 연동??), by daye, 2020.12.08-->
+        <script type="text/javascript">
+            $(function() {
+                $("#mp_logout").click(function() {
+                    alert("로그아웃 되었습니다.");
+                });
+            });
+        </script>
+
+        <!-- on off 토글 버튼, by daye, 2020.12.07 -->
+		<script type="text/javascript">
+			var check = $("input[type='checkbox']");
+			check.click(function(){
+				$(".switch_p").toggle();
+			}); 
+		</script>
+	</body>
+</html>
