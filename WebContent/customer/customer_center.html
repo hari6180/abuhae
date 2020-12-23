@@ -27,7 +27,7 @@
 		<div class="container"> <!-- 페이지 전체 영역 -->
 			<!-- header : 하리-->
 			<header>
-				<div class="header_wrap col-xs-12">
+				<div class="header_wrap col-xs-12">	
 					<div class="header">
 						<div class="flex_row main_menu">
 							<!-- 메뉴 모달 열기-->
@@ -72,14 +72,14 @@
 						<div class="modal_body">
 							<div class="sitter_search">
 								<a href="/ezen-android2020-2/search/sitter_search.html">
-									<img src="/img/index-sittersearch.svg" />
+									<img src="/ezen-android2020-2/img/index-sittersearch.svg" />
 									<p>맘시터 찾기</p>
 								</a>
 							</div>
 
 							<div class="job_search">
 								<a href="#">
-									<img src="/img/index-jobsearch.svg" />
+									<img src="/ezen-android2020-2/img/index-jobsearch.svg" />
 									<p>일자리 찾기</p>
 								</a>
 							</div>
@@ -176,7 +176,7 @@
 						</div>
 						<div class="activity_list">
 							<a class="activity_item_parent" href="#">공지사항</a>	
-							<a class="activity_item_link" href="#">[공지] 코로나조심또조심</a>
+							<a class="activity_item_link" href="#">[공지] 코로나조심또조심123123123123</a>
 						</div>
 						<a link="#" id="mybutton">더보기</a>
 						
@@ -209,6 +209,15 @@
 						}
 					}); // end $.ajax
 				}) // end $.#mybutton
+				//모달의 로그인 버튼 클릭시
+				$("#login_btn").on("click", function () {
+					location.replace('/ezen-android2020-2/login/login.html');
+				});
+
+				//모달의 회원가입 버튼 클릭시
+				$("#go_to_join").on("click", function () {
+					location.replace('/ezen-android2020-2/join/join.html');
+				});
 			})
 			</script>
 	</body>
