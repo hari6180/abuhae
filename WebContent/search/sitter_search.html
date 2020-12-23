@@ -22,15 +22,13 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/index_header.css" />
     <!-- sitter_search.css-->
     <link rel="stylesheet" type="text/css" href="css/sitter_search.css" />
-    <!-- join parent.css -->
-    <link rel="stylesheet" type="text/css" href="css/join_parent.css" />
 
     <!-- sweetalert 사용 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- ajax Helper -->
-    <script src="WebContent/plugins/ajax/ajax_helper.js"></script>
-    <link rel="stylesheet" type="text/css" href="WebContent/plugins/ajax/ajax_helper.css" />
+    <script src="/ezen-android2020-2/plugins/ajax/ajax_helper.js"></script>
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/plugins/ajax/ajax_helper.css" />
   </head>
 
   <!--grid 사용시 col-xs-nn 사용-->
@@ -141,176 +139,180 @@
                 <!--지역 선택-->
                 <div class="location_box">
                   <!--시,도-->
-                  <div class="location_group">
+                  <div class="location_group" id="si">
                     <div>
-                      <button>서울특별시</button>
+                      <button class="loc_btn">서울특별시</button>
                     </div>
                     <div>
-                      <button>경기도</button>
+                      <button class="loc_btn">경기도</button>
                     </div>
                     <div>
-                      <button>인천광역시</button>
+                      <button class="loc_btn">인천광역시</button>
                     </div>
                     <div>
-                      <button>부산광역시</button>
+                      <button class="loc_btn">부산광역시</button>
                     </div>
                     <div>
-                      <button>대전광역시</button>
+                      <button class="loc_btn">대전광역시</button>
                     </div>
                     <div>
-                      <button>대구광역시</button>
+                      <button class="loc_btn">대구광역시</button>
                     </div>
                     <div>
-                      <button>울산광역시</button>
+                      <button class="loc_btn">울산광역시</button>
                     </div>
                     <div>
-                      <button>세종특별자치시</button>
+                      <button class="loc_btn">세종특별자치시</button>
                     </div>
                     <div>
-                      <button>광주광역시</button>
+                      <button class="loc_btn">광주광역시</button>
                     </div>
                     <div>
-                      <button>강원도</button>
+                      <button class="loc_btn">강원도</button>
                     </div>
                     <div>
-                      <button>충청북도</button>
+                      <button class="loc_btn">충청북도</button>
                     </div>
                     <div>
-                      <button>충청남도</button>
+                      <button class="loc_btn">충청남도</button>
                     </div>
                     <div>
-                      <button>경상북도</button>
+                      <button class="loc_btn">경상북도</button>
                     </div>
                     <div>
-                      <button>경상남도</button>
+                      <button class="loc_btn">경상남도</button>
                     </div>
                     <div>
-                      <button>전라북도</button>
+                      <button class="loc_btn">전라북도</button>
                     </div>
                     <div>
-                      <button>전라남도</button>
+                      <button class="loc_btn">전라남도</button>
                     </div>
                     <div>
-                      <button>제주특별자치도</button>
+                      <button class="loc_btn">제주특별자치도</button>
                     </div>
                   </div>
                   <!--end 시-->
                   <!--구-->
-                  <div class="location_group">
-                    <div>
-                      <button>강남구</button>
-                    </div>
-                    <div>
-                      <button>강동구</button>
-                    </div>
-                    <div>
-                      <button>강북구</button>
-                    </div>
-                    <div>
-                      <button>강서구</button>
-                    </div>
-                    <div>
-                      <button>관악구</button>
-                    </div>
-                    <div>
-                      <button>광진구</button>
-                    </div>
-                    <div>
-                      <button>구로구</button>
-                    </div>
-                    <div>
-                      <button>금천구</button>
-                    </div>
-                    <div>
-                      <button>노원구</button>
-                    </div>
-                    <div>
-                      <button>도봉구</button>
-                    </div>
-                    <div>
-                      <button>동대문구</button>
-                    </div>
-                    <div>
-                      <button>동작구</button>
-                    </div>
-                    <div>
-                      <button>마포구</button>
-                    </div>
-                    <div>
-                      <button>서대문구</button>
-                    </div>
-                    <div>
-                      <button>서초구</button>
-                    </div>
-                    <div>
-                      <button>성동구</button>
-                    </div>
-                    <div>
-                      <button>성북구</button>
-                    </div>
-                    <div>
-                      <button>송파구</button>
-                    </div>
-                    <div>
-                      <button>양천구</button>
-                    </div>
-                    <div>
-                      <button>영등포구</button>
-                    </div>
-                    <div>
-                      <button>용산구</button>
-                    </div>
-                    <div>
-                      <button>은평구</button>
-                    </div>
-                    <div>
-                      <button>종로구</button>
-                    </div>
-                    <div>
-                      <button>중구</button>
-                    </div>
-                    <div>
-                      <button>중랑구</button>
+                  <div class="location_group" id="gu">
+                    <div class="hide_content">
+                      <div>
+                        <button>강남구</button>
+                      </div>
+                      <div>
+                        <button>강동구</button>
+                      </div>
+                      <div>
+                        <button>강북구</button>
+                      </div>
+                      <div>
+                        <button>강서구</button>
+                      </div>
+                      <div>
+                        <button>관악구</button>
+                      </div>
+                      <div>
+                        <button>광진구</button>
+                      </div>
+                      <div>
+                        <button>구로구</button>
+                      </div>
+                      <div>
+                        <button>금천구</button>
+                      </div>
+                      <div>
+                        <button>노원구</button>
+                      </div>
+                      <div>
+                        <button>도봉구</button>
+                      </div>
+                      <div>
+                        <button>동대문구</button>
+                      </div>
+                      <div>
+                        <button>동작구</button>
+                      </div>
+                      <div>
+                        <button>마포구</button>
+                      </div>
+                      <div>
+                        <button>서대문구</button>
+                      </div>
+                      <div>
+                        <button>서초구</button>
+                      </div>
+                      <div>
+                        <button>성동구</button>
+                      </div>
+                      <div>
+                        <button>성북구</button>
+                      </div>
+                      <div>
+                        <button>송파구</button>
+                      </div>
+                      <div>
+                        <button>양천구</button>
+                      </div>
+                      <div>
+                        <button>영등포구</button>
+                      </div>
+                      <div>
+                        <button>용산구</button>
+                      </div>
+                      <div>
+                        <button>은평구</button>
+                      </div>
+                      <div>
+                        <button>종로구</button>
+                      </div>
+                      <div>
+                        <button>중구</button>
+                      </div>
+                      <div>
+                        <button>중랑구</button>
+                      </div>
                     </div>
                   </div>
                   <!--end 구-->
                   <!--동-->
-                  <div class="location_group">
-                    <div>
-                      <button>가산동</button>
-                    </div>
-                    <div>
-                      <button>독산1동</button>
-                    </div>
-                    <div>
-                      <button>독산2동</button>
-                    </div>
-                    <div>
-                      <button>독산3동</button>
-                    </div>
-                    <div>
-                      <button>독산4동</button>
-                    </div>
-                    <div>
-                      <button>독산동</button>
-                    </div>
-                    <div>
-                      <button>시흥1동</button>
-                    </div>
-                    <div>
-                      <button>시흥2동</button>
-                    </div>
-                    <div>
-                      <button>시흥3동</button>
-                    </div>
-                    <div>
-                      <button>시흥4동</button>
-                    </div>
-                    <div>
-                      <button>시흥5동</button>
-                    </div>
-                    <div>
-                      <button>시흥동</button>
+                  <div class="location_group" id="dong">
+                    <div class="hide_content">
+                      <div>
+                        <button>가산동</button>
+                      </div>
+                      <div>
+                        <button>독산1동</button>
+                      </div>
+                      <div>
+                        <button>독산2동</button>
+                      </div>
+                      <div>
+                        <button>독산3동</button>
+                      </div>
+                      <div>
+                        <button>독산4동</button>
+                      </div>
+                      <div>
+                        <button>독산동</button>
+                      </div>
+                      <div>
+                        <button>시흥1동</button>
+                      </div>
+                      <div>
+                        <button>시흥2동</button>
+                      </div>
+                      <div>
+                        <button>시흥3동</button>
+                      </div>
+                      <div>
+                        <button>시흥4동</button>
+                      </div>
+                      <div>
+                        <button>시흥5동</button>
+                      </div>
+                      <div>
+                        <button>시흥동</button>
+                      </div>
                     </div>
                   </div>
                   <!--end 동-->
@@ -328,7 +330,7 @@
                     <i class="fas fa-times"></i>
                   </button>
                   <h2>원하는 활동 선택</h2>
-                  <button class="apply_btn" type="button">적용</button>
+                  <button id="act_apply" class="apply_btn" type="button">적용</button>
                 </div>
 
                 <!--modal header end-->
@@ -337,62 +339,127 @@
                   <!--돌봄 유형 선택-->
                   <div class="want_act_box">
                     <div class="want_btn">
-                      <button class="act_btn" value="innerplay"><img class="want_img" src="../join/img/innerplayicon_n.png" /></button>
-                      <div class="want_text">실내놀이</div>
+                      <div>
+                        <input type="checkbox" id="check1" class="act_btn" value="innerplay" />
+                        <label for="check1" class="want_label"
+                          ><img class="want_img" src="../join/img/innerplayicon_n.png" />
+                          <div class="want_text">실내놀이</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="guide"><img class="want_img" src="../join/img/guideicon_n.png" /></button>
-                      <div class="want_text">등하원 돕기</div>
+                      <div>
+                        <input type="checkbox" id="check2" class="act_btn" value="guide" />
+                        <label for="check2" class="want_label"
+                          ><img class="want_img" src="../join/img/guideicon_n.png" />
+                          <div class="want_text">등하원돕기</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="read"><img class="want_img" src="../join/img/readicon_n.png" /></button>
-                      <div class="want_text">책읽기</div>
+                      <div>
+                        <input type="checkbox" id="check3" class="act_btn" value="read" />
+                        <label for="check3" class="want_label"
+                          ><img class="want_img" src="../join/img/readicon_n.png" />
+                          <div class="want_text">책읽기</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="outside"><img class="want_img" src="../join/img/ousideicon_n.png" /></button>
-                      <div class="want_text">야외활동</div>
+                      <div>
+                        <input type="checkbox" id="check4" class="act_btn" value="outside" />
+                        <label for="check4" class="want_label"
+                          ><img class="want_img" src="../join/img/ousideicon_n.png" />
+                          <div class="want_text">야외활동</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="korean"><img class="want_img" src="../join/img/koreanicon_n.png" /></button>
-                      <div class="want_text">한글놀이</div>
+                      <div>
+                        <input type="checkbox" id="check5" class="act_btn" value="korean" />
+                        <label for="check5" class="want_label"
+                          ><img class="want_img" src="../join/img/koreanicon_n.png" />
+                          <div class="want_text">한글놀이</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="english"><img class="want_img" src="../join/img/englishicon_n.png" /></button>
-                      <div class="want_text">영어놀이</div>
+                      <div>
+                        <input type="checkbox" id="check6" class="act_btn" value="english" />
+                        <label for="check6" class="want_label"
+                          ><img class="want_img" src="../join/img/englishicon_n.png" />
+                          <div class="want_text">영어놀이</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="study"><img class="want_img" src="../join/img/studyicon_n.png" /></button>
-                      <div class="want_text">학습지도</div>
+                      <div>
+                        <input type="checkbox" id="check7" class="act_btn" value="study" />
+                        <label for="check7" class="want_label"
+                          ><img class="want_img" src="../join/img/studyicon_n.png" />
+                          <div class="want_text">학습지도</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="sport"><img class="want_img" src="../join/img/ousideicon_n.png" /></button>
-                      <div class="want_text">체육놀이</div>
+                      <div>
+                        <input type="checkbox" id="check8" class="act_btn" value="sport" />
+                        <label for="check8" class="want_label"
+                          ><img class="want_img" src="../join/img/ousideicon_n.png" />
+                          <div class="want_text">체육놀이</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="simple_cleaning"><img class="want_img" src="../join/img/eaticon_n.png" /></button>
-                      <div class="want_text">간단 청소</div>
+                      <div>
+                        <input type="checkbox" id="check9" class="act_btn" value="simple_cleaning" />
+                        <label for="check9" class="want_label"
+                          ><img class="want_img" src="../join/img/eaticon_n.png" />
+                          <div class="want_text">간단 청소</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="eat"><img class="want_img" src="../join/img/eaticon_n.png" /></button>
-                      <div class="want_text">밥 챙겨주기</div>
+                      <div>
+                        <input type="checkbox" id="check10" class="act_btn" value="eat" />
+                        <label for="check10" class="want_label"
+                          ><img class="want_img" src="../join/img/eaticon_n.png" />
+                          <div class="want_text">밥 챙겨주기</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="do_dish"><img class="want_img" src="../join/img/eaticon_n.png" /></button>
-                      <div class="want_text">간단 설거지</div>
+                      <div>
+                        <input type="checkbox" id="check11" class="act_btn" value="do_dish" />
+                        <label for="check11" class="want_label"
+                          ><img class="want_img" src="../join/img/eaticon_n.png" />
+                          <div class="want_text">간단 설거지</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="long_move_in"><img class="want_img" src="../join/img/eaticon_n.png" /></button>
-                      <div class="want_text">장기입주</div>
+                      <div>
+                        <input type="checkbox" id="check12" class="act_btn" value="long_move_in" />
+                        <label for="check12" class="want_label"
+                          ><img class="want_img" src="../join/img/eaticon_n.png" />
+                          <div class="want_text">장기입주</div></label
+                        >
+                      </div>
                     </div>
                     <div class="want_btn">
-                      <button class="act_btn" value="short_move_in"><img class="want_img" src="../join/img/eaticon_n.png" /></button>
-                      <div class="want_text">단기입주</div>
+                      <div>
+                        <input type="checkbox" id="check13" class="act_btn" value="short_move_in" />
+                        <label for="check13" class="want_label"
+                          ><img class="want_img" src="../join/img/eaticon_n.png" />
+                          <div class="want_text">단기입주</div></label
+                        >
+                      </div>
                     </div>
                   </div>
                   <!--end modal content -->
                   <!--modal footer-->
                   <div class="modal_footer">
-                    <button class="reset" type="reset">
+                    <button id="act_reset" class="reset" type="reset">
                       <i class="fas fa-undo-alt"></i>
                       <h2>초기화</h2>
                     </button>
@@ -509,7 +576,7 @@
                     </div>
                     <div class="sitter_insurance">
                       <input type="checkbox" value="ins_check" class="ins_check" id="ins_check" />
-                      <label for="ins_check">보험 가입한 맘시터</label>
+                      <label for="ins_check"><span class="ins_text">보험 가입한 맘시터</span></label>
                     </div>
                   </div>
                   <hr />
@@ -566,7 +633,7 @@
                     >
                   </div>
                   <div class="caretype_filter">
-                    <a href="caretype_sitter.html">
+                    <a href="http://localhost:8080/ezen-android2020-2/search/caretype_sitter.html">
                       <img src="img/p-search-caretype (1).png" />
                       <p>모든 돌봄유형</p>
                     </a>
@@ -576,19 +643,32 @@
               <div class="activity_type_wrap">
                 <a data-toggle="modal" href="#activity_type_modal">
                   <div class="activity_type_btn_group">
-                    <button class="activity_type_btn" value="innerplay">실내놀이</button>
-                    <button class="activity_type_btn" value="guide">등하원 돕기</button>
-                    <button class="activity_type_btn" value="read">책 읽기</button>
-                    <button class="activity_type_btn" value="outside">야외활동</button>
-                    <button class="activity_type_btn" value="korean">한글놀이</button>
-                    <button class="activity_type_btn" value="english">영어놀이</button>
-                    <button class="activity_type_btn" value="study">학습지도</button>
-                    <button class="activity_type_btn" value="sport">체육놀이</button>
-                    <button class="activity_type_btn" value="simple_cleaning">간단청소</button>
-                    <button class="activity_type_btn" value="eat">밥챙겨주기</button>
-                    <button class="activity_type_btn" value="do_dish">간단설거지</button>
-                    <button class="activity_type_btn" value="long_move_in">장기입주</button>
-                    <button class="activity_type_btn" value="short_move_in">단기입주</button>
+                    <input type="checkbox" id="act_type1" class="activity_type_btn" value="innerplay" />
+                    <label for="act_type1" class="act_label">실내놀이 </label>
+                    <input type="checkbox" id="act_type2" class="activity_type_btn" value="guide" />
+                    <label for="act_type2" class="act_label">등하원 돕기 </label>
+                    <input type="checkbox" id="act_type3" class="activity_type_btn" value="read" />
+                    <label for="act_type3" class="act_label">책 읽기 </label>
+                    <input type="checkbox" id="act_type4" class="activity_type_btn" value="outside" />
+                    <label for="act_type4" class="act_label">야외활동 </label>
+                    <input type="checkbox" id="act_type5" class="activity_type_btn" value="korean" />
+                    <label for="act_type5" class="act_label">한글놀이 </label>
+                    <input type="checkbox" id="act_type6" class="activity_type_btn" value="english" />
+                    <label for="act_type6" class="act_label">영어놀이 </label>
+                    <input type="checkbox" id="act_type7" class="activity_type_btn" value="study" />
+                    <label for="act_type7" class="act_label">학습지도 </label>
+                    <input type="checkbox" id="act_type8" class="activity_type_btn" value="sport" />
+                    <label for="act_type8" class="act_label">체육놀이 </label>
+                    <input type="checkbox" id="act_type9" class="activity_type_btn" value="simple_cleaning" />
+                    <label for="act_type9" class="act_label">간단청소 </label>
+                    <input type="checkbox" id="act_type10" class="activity_type_btn" value="eat" />
+                    <label for="act_type10" class="act_label">밥챙겨주기 </label>
+                    <input type="checkbox" id="act_type11" class="activity_type_btn" value="do_dish" />
+                    <label for="act_type11" class="act_label">간단설거지 </label>
+                    <input type="checkbox" id="act_type12" class="activity_type_btn" value="long_move_in" />
+                    <label for="act_type12" class="act_label">장기입주 </label>
+                    <input type="checkbox" id="act_type13" class="activity_type_btn" value="short_move_in" />
+                    <label for="act_type13" class="act_label">단기입주 </label>
                   </div>
                   <button class="tab_index"><img src="img/p-search-activity (1).png" /></button>
                 </a>
@@ -836,6 +916,8 @@
           </div>
         </div>
         <!-- search end-->
+
+        <div id="console"></div>
       </div>
       <!-- fin. col-xs-12 -->
     </div>
@@ -880,40 +962,83 @@
       /** 원하는 활동 선택 ------------------------------------------------------------------- */
         //활동 버튼 클릭
         $(".act_btn").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn");
-          //버튼 클릭시 text 색 변경
-          $(this).next().toggleClass("select_text");
+             //버튼 클릭시 text 색 변경
+          $(this).next().find(".want_text").toggleClass("select_text");
           //버튼 클릭시 이미지 URL 변경
           //url 가져오기
-          var img_url = $(this).find(".want_img").attr("src");
+          var img_url = $(this).next().find(".want_img").attr("src");
           var indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
           if (indeximg > -1) {
             var img_src = img_url.replace(/_n/, "_s");
-            $(this).find(".want_img").attr("src", img_src);
+            $(this).next().find(".want_img").attr("src", img_src);
           } else {
             var img_src = img_url.replace(/_s/, "_n");
-            $(this).find(".want_img").attr("src", img_src);
+            $(this).next().find(".want_img").attr("src", img_src);
           }
         });
+
 
         //활동 버튼 반영 1221 하리 - 수정중
-        $("act_btn").each(function (i) {
-          $(".apply_btn").click(function (e) {
+        $('#act_apply').click(function (e) {
           e.preventDefault();
+          $("#activity_type_modal").modal("hide");
+          const act_btn = $(".activity_type_btn");
+          const result2 = [];
 
-          if(!choice_btn) {
-            alert("선택된 항목이 없습니다.");
-            return false;
+          for (var i = 0; i < act_btn.length; i++) {
+            result2.push($(act_btn[i]).val());
           }
 
-
-
-          console.log(choice_btn);
-        })
-
+          for (var i = 0; i < result2.length; i++) {
+            if (!$(".act_label").eq(i).hasClass("select_act_type")) {
+                $(".act_label").eq(i).addClass("unselect_act_type");
+              }
+          }
 
         });
+
+        $(".act_btn").change(function change_btn(e) {
+          e.preventDefault();
+          const checked = $(".act_btn:checked");
+          const act_btn = $(".activity_type_btn");
+          const result1 = [];
+          const result2 = [];
+
+          for (var i = 0; i < checked.length; i++) {
+            result1.push($(checked[i]).val());
+          }
+
+          console.log(result1);
+
+          for (var i = 0; i < act_btn.length; i++) {
+            result2.push($(act_btn[i]).val());
+          }
+
+          console.log(result2);
+
+
+          for (var i = 0; i < result1.length; i++) {
+            for (var j = 0; j < result2.length; j++) {
+              if (result1[i] == result2[j]) {
+                $(".act_label").eq(j).addClass("select_act_type");
+              }
+            }
+          }
+          console.log($(".act_label").eq(j).hasClass("select_act_type"));
+        });
+
+
+        $('.activity_type_wrap').click(function (e) {
+          $(".act_label").removeClass("select_act_type");
+          $(".act_label").removeClass("unselect_act_type");
+        });
+
+
+        $(".reset").click(function () {
+          $('#form1 input[type="checkbox"]').prop('checked', false);
+        });
+
+
 
         /** 상세 검색 ------------------------------------------------------------------- */
 
@@ -951,6 +1076,56 @@
         });
 
         /** 상세 검색 end ------------------------------------------------------------------- */
+
+          //시 클릭했을 때
+          $(".loc_btn").on("click", function () {
+                var select = $(this).hasClass("select_location");
+                //선택이 안되어있을때
+                if (select == false) {
+                    //선택이 되어있는 요소 탐색
+                    var loc = $("#si").find("button").removeClass("select_loaction");
+                    //console.log(loc);
+                    $(this).addClass("select_loaction");
+                    //시 선택하면 gu 보이게
+                    $("#gu>div").removeClass("hide_content");
+                    $("#gu>div").addClass("show_content");
+                }
+
+            });
+            //구 클릭했을 때
+            $("#gu button").on("click", function () {
+                var select = $(this).hasClass("select_location");
+                //선택이 안되어있을때
+                if (select == false) {
+                    //선택이 되어있는 요소 탐색
+                    var loc = $("#gu").find("button").removeClass("select_loaction");
+                    //console.log(loc);
+                    $(this).addClass("select_loaction");
+                    //구 선택하면 동 보이게
+                    $("#dong>div").removeClass("hide_content");
+                    $("#dong>div").addClass("show_content");
+                }
+
+            });
+
+            //동 클릭했을때
+            $("#dong button").on("click", function () {
+                var select = $(this).hasClass("select_location");
+                //선택이 안되어있을때
+                if (select == false) {
+                    //선택이 되어있는 요소 탐색
+                    var loc = $("#dong").find("button").removeClass("select_loaction");
+                    //console.log(loc);
+                    $(this).addClass("select_loaction");
+
+                    //동까지 선택하면 다음 버튼 활성화
+                    //다음 버튼의 현재 disabled 값 가져오기
+                    var now = $(".next_btn").prop('disabled');
+                    //가져온 값 역으로 변경하여 다시 적용
+                    $(".next_btn").prop('disabled', !now);
+
+                }
+            });
 
         $(".swapHeart").on("click", function (e) {
           event.stopPropagation(); // 버블링 방지 1220 하리
