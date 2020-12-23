@@ -330,7 +330,7 @@
                     <i class="fas fa-times"></i>
                   </button>
                   <h2>원하는 활동 선택</h2>
-                  <button class="apply_btn" type="button">적용</button>
+                  <button id="act_apply" class="apply_btn" type="button">적용</button>
                 </div>
 
                 <!--modal header end-->
@@ -459,7 +459,7 @@
                   <!--end modal content -->
                   <!--modal footer-->
                   <div class="modal_footer">
-                    <button class="reset" type="reset">
+                    <button id="act_reset" class="reset" type="reset">
                       <i class="fas fa-undo-alt"></i>
                       <h2>초기화</h2>
                     </button>
@@ -644,31 +644,31 @@
                 <a data-toggle="modal" href="#activity_type_modal">
                   <div class="activity_type_btn_group">
                     <input type="checkbox" id="act_type1" class="activity_type_btn" value="innerplay" />
-                    <label for="act_type1">실내놀이 </label>
+                    <label for="act_type1" class="act_label">실내놀이 </label>
                     <input type="checkbox" id="act_type2" class="activity_type_btn" value="guide" />
-                    <label for="act_type2">등하원 돕기 </label>
+                    <label for="act_type2" class="act_label">등하원 돕기 </label>
                     <input type="checkbox" id="act_type3" class="activity_type_btn" value="read" />
-                    <label for="act_type3">책 읽기 </label>
+                    <label for="act_type3" class="act_label">책 읽기 </label>
                     <input type="checkbox" id="act_type4" class="activity_type_btn" value="outside" />
-                    <label for="act_type4">야외활동 </label>
+                    <label for="act_type4" class="act_label">야외활동 </label>
                     <input type="checkbox" id="act_type5" class="activity_type_btn" value="korean" />
-                    <label for="act_type5">한글놀이 </label>
+                    <label for="act_type5" class="act_label">한글놀이 </label>
                     <input type="checkbox" id="act_type6" class="activity_type_btn" value="english" />
-                    <label for="act_type6">영어놀이 </label>
+                    <label for="act_type6" class="act_label">영어놀이 </label>
                     <input type="checkbox" id="act_type7" class="activity_type_btn" value="study" />
-                    <label for="act_type7">학습지도 </label>
+                    <label for="act_type7" class="act_label">학습지도 </label>
                     <input type="checkbox" id="act_type8" class="activity_type_btn" value="sport" />
-                    <label for="act_type8">체육놀이 </label>
+                    <label for="act_type8" class="act_label">체육놀이 </label>
                     <input type="checkbox" id="act_type9" class="activity_type_btn" value="simple_cleaning" />
-                    <label for="act_type9">간단청소 </label>
+                    <label for="act_type9" class="act_label">간단청소 </label>
                     <input type="checkbox" id="act_type10" class="activity_type_btn" value="eat" />
-                    <label for="act_type10">밥챙겨주기 </label>
+                    <label for="act_type10" class="act_label">밥챙겨주기 </label>
                     <input type="checkbox" id="act_type11" class="activity_type_btn" value="do_dish" />
-                    <label for="act_type11">간단설거지 </label>
+                    <label for="act_type11" class="act_label">간단설거지 </label>
                     <input type="checkbox" id="act_type12" class="activity_type_btn" value="long_move_in" />
-                    <label for="act_type12">장기입주 </label>
+                    <label for="act_type12" class="act_label">장기입주 </label>
                     <input type="checkbox" id="act_type13" class="activity_type_btn" value="short_move_in" />
-                    <label for="act_type13">단기입주 </label>
+                    <label for="act_type13" class="act_label">단기입주 </label>
                   </div>
                   <button class="tab_index"><img src="img/p-search-activity (1).png" /></button>
                 </a>
@@ -979,44 +979,64 @@
 
 
         //활동 버튼 반영 1221 하리 - 수정중
-        $('.apply_btn').click(function () {
-          console.log($('.act_btn').is('.checked'));
+        $('#act_apply').click(function (e) {
+          e.preventDefault();
+          $("#activity_type_modal").modal("hide");
+          const act_btn = $(".activity_type_btn");
+          const result2 = [];
 
-          $(".act_btn").change(function(e) {
-                e.preventDefault();
-                const checked = $(".act_btn:checked");
-                const act_btn = $(".activity_type_btn");
-                const result1 = [];
-                const result2 = [];
-                for (var i=0; i<checked.length; i++) {
-                    result1.push($(checked[i]).val());
-                }
+          for (var i = 0; i < act_btn.length; i++) {
+            result2.push($(act_btn[i]).val());
+          }
 
-                console.log(result1);
+          for (var i = 0; i < result2.length; i++) {
+            if (!$(".act_label").eq(i).hasClass("select_act_type")) {
+                $(".act_label").eq(i).addClass("unselect_act_type");
+              }
+          }
 
-                for (var i=0; i<act_btn.length; i++) {
-                    result2.push($(act_btn[i]).val());
-                }
+        });
 
-                console.log(result2);
+        $(".act_btn").change(function change_btn(e) {
+          e.preventDefault();
+          const checked = $(".act_btn:checked");
+          const act_btn = $(".activity_type_btn");
+          const result1 = [];
+          const result2 = [];
 
-                for (var i=0; i<result1.length; i++) {
-                  for (var j=0; j<result2.length; j++) {
-                    if (result1[i]==result2[j]) {
-                      $(".activity_type_btn"[i]).addClass(".select_act_type");
-                    } else {
-                      $(".activity_type_btn"[i]).addClass(".unselect_act_type");
-                    }
-                  }
-                }
+          for (var i = 0; i < checked.length; i++) {
+            result1.push($(checked[i]).val());
+          }
+
+          console.log(result1);
+
+          for (var i = 0; i < act_btn.length; i++) {
+            result2.push($(act_btn[i]).val());
+          }
+
+          console.log(result2);
 
 
-            });
+          for (var i = 0; i < result1.length; i++) {
+            for (var j = 0; j < result2.length; j++) {
+              if (result1[i] == result2[j]) {
+                $(".act_label").eq(j).addClass("select_act_type");
+              }
+            }
+          }
+          console.log($(".act_label").eq(j).hasClass("select_act_type"));
         });
 
 
+        $('.activity_type_wrap').click(function (e) {
+          $(".act_label").removeClass("select_act_type");
+          $(".act_label").removeClass("unselect_act_type");
+        });
 
 
+        $(".reset").click(function () {
+          $('#form1 input[type="checkbox"]').prop('checked', false);
+        });
 
 
 

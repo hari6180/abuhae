@@ -1126,7 +1126,11 @@ input[type="checkbox"]:checked + label:after {
 }
 
 .select_act_type {
-  border: solid 1px #ff7000;
-  color: #ff7000;
+  border: solid 1px #ff7000 !important;
+  color: #ff7000 !important;
+}
+
+.unselect_act_type {
+  display: none !important;
 }
 /*end 버튼 클릭시 적용될 클래스-------------------------------------*/
