@@ -20,14 +20,22 @@
     <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
     <!--join sitter 참조-->
     <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_sitter.css" />
+    <!-- 아이콘 사용 -->
+    <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script>
 
     <style type="text/css">
-
+        .fa-3x {
+            font-size: 2.1em;
+        }
+        .fa-3x {
+            display: block;
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div id="act_age" class="container">
         <div class="col-xs-12">
             <!-- xs-12로 모바일 맞춤 -->
             <div>
@@ -52,23 +60,19 @@
                 <!--돌봄 유형 선택-->
                 <div class="want_act_box">
                     <div class="want_btn">
-                        <button class="act_btn" value="innerplay"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/innerplayicon_n.png"></button>
+                        <button class="act_btn" value="got_baby"><i class="fas fa-baby fa-3x"></i></button>
                         <div class="want_text">신생아</div>
                     </div>
                     <div class="want_btn">
-                        <button class="act_btn" value="guide"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/guideicon_n.png"></button>
+                        <button class="act_btn" value="baby"><i class="fas fa-baby-carriage fa-3x"></i></button>
                         <div class="want_text">영아</div>
                     </div>
                     <div class="want_btn">
-                        <button class="act_btn" value="english"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/englishicon_n.png"></button>
+                        <button class="act_btn" value="children"><i class="fas fa-child fa-3x"></i></button>
                         <div class="want_text">유아</div>
                     </div>
                     <div class="want_btn">
-                        <button class="act_btn" value="korean"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/koreanicon_n.png"></button>
+                        <button class="act_btn" value="adult"><i class="fas fa-school fa-3x"></i></button>
                         <div class="want_text">초등학생</div>
                     </div>
                 </div>

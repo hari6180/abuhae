@@ -68,25 +68,25 @@
                 <!--전체 동의-->
                 <div class="agree_box all_check">
                     <div class="agree_check">
-                        <input type="checkbox" id="all_check"><label>전체동의</label>
+                        <input type="checkbox" id="all_check"><label for="all_check">전체동의</label>
                     </div>
                 </div>
                 <!--서비스 운영정책 의무 동의-->
                 <div class="agree_box">
                     <div class="agree_check">
-                        <input type="checkbox" class="agree" value="agree1"><label>서비스 운영정책 및 회원의 의무 동의<span>&nbsp;(필수)</span></label>
+                        <input type="checkbox" id="agree1" class="agree" value="agree1"><label for="agree1">서비스 운영정책 및 회원의 의무 동의<span>&nbsp;(필수)</span></label>
                     </div>
                 </div>
                 <!--서비스 이용약관, 개인정보 수집 이용 동의-->
                 <div class="agree_box">
                     <div class="agree_check">
-                        <input type="checkbox" class="agree" value="agree2"><label>서비스 이용약관 동의<span>&nbsp;(필수)</span></label>
+                        <input type="checkbox" id="agree2" class="agree" value="agree2"><label for="agree2">서비스 이용약관 동의<span>&nbsp;(필수)</span></label>
                     </div>
                     <div class="agree_check">
-                        <input type="checkbox" class="agree" value="agree3"><label>개인정보 수집 및 이용에 관한 동의<span>&nbsp;(필수)</span></label>
+                        <input type="checkbox" id="agree3" class="agree" value="agree3"><label for="agree3">개인정보 수집 및 이용에 관한 동의<span>&nbsp;(필수)</span></label>
                     </div>
                     <div class="agree_check">
-                        <input type="checkbox" class="agree" value="agree4"><label>개인정보 제3자 제공에 관한 동의<span>&nbsp;(필수)</span></label>
+                        <input type="checkbox" id="agree4" class="agree" value="agree4"><label for="agree4">개인정보 제3자 제공에 관한 동의<span>&nbsp;(필수)</span></label>
                     </div>
                 </div>
                 <br>
@@ -97,6 +97,15 @@
     <!-- Javascript -->
     <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //올체크 상태 변경되었을 떄 이벤트
+            $("#all_check").change(function(){
+                //모든 hobby의 상태를 올체크와 동일하게
+                $(".agree").prop('checked', $(this).prop('checked'));
+            });
+        });
+    </script>
 </body>
 
 </html>

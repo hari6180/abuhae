@@ -56,13 +56,13 @@ a:hover {
   outline: none;
   border: none;
   margin-right: 5px;
-  width: 75px;
   height: 35px;
   border-radius: 18px;
   background: rgb(255, 121, 40);
   color: rgb(255, 255, 255);
   font-size: 0.9em;
   font-weight: bold;
+  padding: 0 20px;
 }
 
 .header .header_search_btn {
