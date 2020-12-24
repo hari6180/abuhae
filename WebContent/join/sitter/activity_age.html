@@ -20,14 +20,22 @@
     <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
     <!--join sitter 참조-->
     <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_sitter.css" />
+    <!-- 아이콘 사용 -->
+    <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script>
 
     <style type="text/css">
-
+        .fa-3x {
+            font-size: 2.1em;
+        }
+        .fa-3x {
+            display: block;
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div id="act_age" class="container">
         <div class="col-xs-12">
             <!-- xs-12로 모바일 맞춤 -->
             <div>
@@ -49,29 +57,112 @@
                     </div>
                 </h3>
 
-                <!--돌봄 유형 선택-->
+                <!--아이 연령 선택-->
                 <div class="want_act_box">
                     <div class="want_btn">
-                        <button class="act_btn" value="innerplay"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/innerplayicon_n.png"></button>
+                        <button class="act_btn" value="got_baby"><i class="fas fa-baby fa-3x"></i></button>
                         <div class="want_text">신생아</div>
                     </div>
                     <div class="want_btn">
-                        <button class="act_btn" value="guide"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/guideicon_n.png"></button>
+                        <button class="act_btn" value="baby"><i class="fas fa-baby-carriage fa-3x"></i></button>
                         <div class="want_text">영아</div>
                     </div>
                     <div class="want_btn">
-                        <button class="act_btn" value="english"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/englishicon_n.png"></button>
+                        <button class="act_btn" value="children"><i class="fas fa-child fa-3x"></i></button>
                         <div class="want_text">유아</div>
                     </div>
                     <div class="want_btn">
-                        <button class="act_btn" value="korean"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/koreanicon_n.png"></button>
+                        <button class="act_btn" value="adult"><i class="fas fa-school fa-3x"></i></button>
                         <div class="want_text">초등학생</div>
                     </div>
                 </div>
+
+                <h3 class="what_want">어떤 활동을 할 수 있나요?
+                    <div class="help_box">
+                        <a data-toggle="modal" href="#help_modal"><button class="help_btn">
+                                <span class="sr-only">도움말</span>
+                                <img src="/ezen-android2020-2/join/img/help.png" alt="도움말">
+                            </button></a>
+                    </div>
+                </h3>
+
+                <!--돌봄 유형 선택-->
+                <div class="want_act_box">
+                    <div class="active_line">
+                        <div class="want_btn">
+                            <button class="act_btn" value="innerplay"><img class="want_img"
+                                    src="/ezen-android2020-2/join/img/innerplayicon_n.png"></button>
+                            <div class="want_text">실내놀이</div>
+                            <div class="want_btn">
+                                <button class="act_btn" value="korean"><img class="want_img"
+                                        src="/ezen-android2020-2/join/img/koreanicon_n.png"></button>
+                                <div class="want_text">한글놀이</div>
+                            </div>
+                            <div class="want_btn">
+                                <button class="act_btn" value="simple_cleaning"><img class="want_img"
+                                        src="/ezen-android2020-2/join/img/cleanicon_n.png"></button>
+                                <div class="want_text">간단청소</div>
+                            </div>
+                            <div class="want_btn">
+                                <button class="act_btn" value="long_move_in"><img class="want_img"
+                                        src="/ezen-android2020-2/join/img/longhouseicon_n.png"></button>
+                                <div class="want_text">장기입주</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="active_line">
+                        <div class="want_btn">
+                            <button class="act_btn" value="guide"><img class="want_img"
+                                    src="/ezen-android2020-2/join/img/guideicon_n.png"></button>
+                            <div class="want_text">등하원 돕기</div>
+                            <div class="want_btn">
+                                <button class="act_btn" value="english"><img class="want_img"
+                                        src="/ezen-android2020-2/join/img/englishicon_n.png"></button>
+                                <div class="want_text">영어놀이</div>
+                            </div>
+                            <div class="want_btn">
+                                <button class="act_btn" value="eat"><img class="want_img"
+                                        src="/ezen-android2020-2/join/img/eaticon_n.png"></button>
+                                <div class="want_text">밥 챙겨주기</div>
+                            </div>
+                            <div class="want_btn">
+                                <button class="act_btn" value="short_move_in"><img class="want_img"
+                                        src="/ezen-android2020-2/join/img/houseicon_n.png"></button>
+                                <div class="want_text">단기입주</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="active_line">
+                        <div class="want_btn">
+                            <button class="act_btn" value="read"><img class="want_img"
+                                    src="/ezen-android2020-2/join/img/readicon_n.png"></button>
+                            <div class="want_text">책읽기</div>
+                        </div>
+                        <div class="want_btn">
+                            <button class="act_btn" value="study"><img class="want_img"
+                                    src="/ezen-android2020-2/join/img/studyicon_n.png"></button>
+                            <div class="want_text">학습지도</div>
+                        </div>
+                        <div class="want_btn">
+                            <button class="act_btn" value="do_dish"><img class="want_img"
+                                    src="/ezen-android2020-2/join/img/dishicon_n.png"></button>
+                            <div class="want_text">간단설거지</div>
+                        </div>
+                    </div>
+                    <div class="active_line">
+                        <div class="want_btn">
+                            <button class="act_btn" value="outside"><img class="want_img"
+                                    src="/ezen-android2020-2/join/img/ousideicon_n.png"></button>
+                            <div class="want_text">야외활동</div>
+                        </div>
+                        <div class="want_btn">
+                            <button class="act_btn" value="sport"><img class="want_img"
+                                    src="/ezen-android2020-2/join/img/ballicon_n.png"></button>
+                            <div class="want_text">체육놀이</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="location.html"><button class="next_btn">다음</button></a>
 
             </div>
         </div> <!-- fin. col-xs-12 -->

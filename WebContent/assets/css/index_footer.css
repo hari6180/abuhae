@@ -34,7 +34,7 @@ footer .ft_content .ft_button {
 }
 
 footer .ft_content .ft_button img {
-  width: 164px;
+  width: calc(50% - 7px);
   height: 53px;
 }
 
