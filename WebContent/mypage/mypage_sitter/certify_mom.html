@@ -161,7 +161,7 @@
                         <div class="row">
                             <div class="col-xs-12 certi_resident_tl_in">
                                 <div>
-                                    <h3>등/초본 인증</h3>
+                                    <h3>엄마 인증</h3>
                                     <p>"올리신 서류의 세부내용은 노출되지 않으니 안심하세요."</p>
                                 </div>
                                 <a href="certify.html">
@@ -179,7 +179,11 @@
                                     <!-- 첫번째 내용 -->
                                     <div class="certi_resi_one">
                                         <p class="resi_one_con order_resi">1번째</p>
-                                        <h4 class="resi_one_con">주민등록 (초)본 사진으로 <br/> 찍어서 올려주세요.</h4>
+                                        <h4 class="resi_one_con">
+                                            자녀 양육경험을 확인하기 위해서 <br/>
+                                            <span style="text-decoration: underline;">가족관계증명서</span>를 사진으로 찍어서 <br/>
+                                            올려주세요. 
+                                        </h4>
                                         <ul class="resi_one_con add_resi">
                                             <li>최근 6개월 이내에 발급된 경우만 인정됩니다.</li>
                                             <li>회원님의 개인정보 보호를 위해 주민등록 번호 뒷자리를 꼭 가리고 보내주세요.
@@ -190,27 +194,57 @@
                                         <div class="resi_button1">
                                             <input type="file" name="resi_photo">
                                         </div>
-                                        <img src="../img/cert-resident-1.png" alt="주민등록등본 예시" style="width: 100%;">
+                                        <img src="../img/cert_family_1.png" alt="주민등록등본 예시" style="margin-top: 20px; width: 100%;">
                                     </div>
 
                                     <!-- 두번째 내용 -->
                                     <div class="certi_resi_one">
                                         <p class="resi_one_con order_resi">2번째</p>
-                                        <h4 class="resi_one_con">등(초)본에 적혀있는 현주소를 <br/>아래 입력칸에 똑같이 적어주세요.</h4>
-                                        <input type="text" name="real_resident" class="resi_one_con resi_button2" placeholder="여기에 똑같이 적어주세요.">
-                                        <img src="../img/certi_resident_2.png" alt="주민등록등본 예시" style="width: 100%;">
-                                        <p class="resi_one_con add_resi">
-                                            올리신 등(초)본 현주소와 적어주신 내용이<br/>
-                                            일치되어야 인증처리가 완료됩니다.
-                                        </p>
+                                        <h4 class="resi_one_con">
+                                            올리신 가족관계증명서에 적혀있는 <br/>
+                                            발급일자를 아래 입력칸에 <br/>
+                                            똑같이 입력해주세요.
+                                        </h4>
+                                        <img src="../img/cert_family_2.png" alt="주민등록등본 예시" style="width: 100%;">
+                                        <select name="resi_year" id="resi_year_1" class="selc_con">
+                                            <option>년도</option>
+                                            <option value="1960">1960</option>
+                                            <option value="1970">1970</option>
+                                            <option value="1980">1980</option>
+                                            <option value="1990">1990</option>
+                                            <option value="2000">2000</option>
+                                            <option value="2010">2010</option>
+                                            <option value="2020">2020</option>
+                                        </select>
+                                        <select name="resi_month" id="resi_month" class="selc_con">
+                                            <option>월</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                        </select>
+                                        <select name="resi_day" id="resi_day" class="selc_con">
+                                            <option>일</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                        </select>
                                     </div>
 
                                      <!-- 세번째 내용 -->
                                      <div class="certi_resi_one">
                                         <p class="resi_one_con order_resi">3번째</p>
-                                        <h4 class="resi_one_con">등(초)본 우측 상단에 적혀있는 발급일자를 <br/>
-                                            아래 입력칸에 똑같이 입력해주세요.</h4>
-                                        <img class="resi_one_con" src="../img/certi_resident_3.png" alt="주민등록등본 예시" style="width: 100%;">
+                                        <h4 class="resi_one_con">
+                                            올리신 증명서 내용과 똑같게 <br/>
+                                            아래 내용을 입력해주세요.
+                                        </h4>
                                         <div class="resi_date_slec" id="resi_date_slec">
                                             <label for="resi_year" style="font-size: 1.2em; font-weight: bold; margin-top: 5px; margin-right: 20px;">자녀 수</label>
                                             <select name="resi_year" id="resi_year" class="selc_con">
@@ -231,13 +265,34 @@
                                                 <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
                                                 </div>
                                             </div>
-                                            <div class="child_two hide">
-                                                둘째자녀
+                                            <div class="child_two hide" id="child_two">
+                                                <h4>둘째자녀</h4>
+                                                <div class="child_one_con">
+                                                    <label for="child_gender">성별</label>
+                                                <select id="child_gender_one" class="child_gender" name="child_gender_one">
+                                                    <option value="m">남자</option>
+                                                    <option value="f">여자</option>
+                                                </select>
+                                                <label for="child_brithdate">생년월일</label>
+                                                <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                </div>
                                             </div>
-                                            <div class="child_three hide">
-                                                셋째 자녀
+                                            <div class="child_three hide" id="child_three">
+                                                <h4>셋째자녀</h4>
+                                                <div class="child_one_con">
+                                                    <label for="child_gender">성별</label>
+                                                <select id="child_gender_one" class="child_gender" name="child_gender_one">
+                                                    <option value="m">남자</option>
+                                                    <option value="f">여자</option>
+                                                </select>
+                                                <label for="child_brithdate">생년월일</label>
+                                                <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                </div>
                                             </div>
-
+                                            <p class="resi_one_con add_resi" style="margin-bottom: 50px;">
+                                                올리신 증명서 내용과 입력하신 내용이 일치되어야 <br/>
+                                                인증처리가 완료됩니다.
+                                            </p>
                                         </div>
                                     </div>
                                     <div>
@@ -260,7 +315,7 @@
         <script src="../../assets/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             $(function() {
-                $("#resi_year").change(function(e) {
+                $("#resi_year").click(function(e) {
                     e.preventDefault();
 
                     var count = $("#resi_year").val();
