@@ -53,15 +53,15 @@
                     <img src="/ezen-android2020-2/join/img/time_img.png" class="time_bar" alt="시간">
                     <div class="noplan_check_box">
                         <div class="title">평일</div>
-                        <div class="time_box"><button class="time_btn">아침</button></div>
-                        <div class="time_box"><button class="time_btn">점심</button></div>
-                        <div class="time_box"><button class="time_btn">저녁</button></div>
+                        <div class="time_box"><button class="time_btn" value="wek_morning">아침</button></div>
+                        <div class="time_box"><button class="time_btn" value="wek_launch">점심</button></div>
+                        <div class="time_box"><button class="time_btn" value="wek_evning">저녁</button></div>
                     </div>
                     <div class="noplan_check_box">
                         <div class="title">주말</div>
-                        <div class="time_box"><button class="time_btn">아침</button></div>
-                        <div class="time_box"><button class="time_btn">점심</button></div>
-                        <div class="time_box"><button class="time_btn">저녁</button></div>
+                        <div class="time_box"><button class="time_btn" value="end_morning">아침</button></div>
+                        <div class="time_box"><button class="time_btn" value="end_launch">점심</button></div>
+                        <div class="time_box"><button class="time_btn" value="end_evning">저녁</button></div>
                     </div>
                 </div>
                 <a href="description.html"><button class="next_btn">다음</button></a>
@@ -73,6 +73,13 @@
     <!-- Javascript -->
     <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".time_btn").on("click", function(){
+                $(this).toggleClass("select_btn");
+            });
+        });
+    </script>
 </body>
 
 </html>
