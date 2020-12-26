@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -25,63 +24,6 @@
 
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/page_detail/css/page_detail_for_mom.css" />	
-<style type="text/css">
-.profil_img > img {
-	width: 80px;
-	height: 80px;
-	border-radius: 100%;
-}
-.profil_img {
-	text-align: center;
-	padding-top: 45px;
-}
-.profil_info {
-	text-align: center;
-}
-.mom_info {
-	display: flex;
-	color: #000;
-	justify-content: center;
-	
-}
-.name {
-font-size: 1.1em;
-}
-.line {
-	height: 13px;
-}
-#siren {
-	top: 10px;
-}
-.three {
-	font-size: 1.2em;
-}
-.sitter_age_ok_area {
-	border-color: #028071;
-	margin: 0 5px;
-	text-align: center;
-	color: #028071;
-	width: calc(20% - 10px);
-	border-bottom: 4px solid #028071;
-	padding: 0 3% 10px;
-}
-
-.sitter_age_no_area {
-	margin: 0 5px;
-	text-align: center;
-	border-color: #ccc;
-	color: #ccc;
-	width: calc(20% - 10px);
-	border-bottom: 4px solid #ccc;
-	padding: 0 3% 10px;
-}
-
-.sitter_age_area {
-	display: flex;
-	font-size: 1em;
-	font-weight: bold;
-}
-</style>
 </head>
 	
 <body>		
@@ -89,75 +31,158 @@ font-size: 1.1em;
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
 					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = 'sitter_report_for_mom.html'">
-				 	<img src="img/siren.png" width="13" height="15"/>
+				 	<img src="/ezen-android2020-2/page_detail/img/siren.png" width="13" height="15"/>
 				            신고
 				  	</button>
 				</div>
 				  <button type="button" class="x_btn" onclick = "location.href = 'http://localhost:8080/ezen-android2020-2/search/sitter_search.html'">
-						<img src="img/x-btn.jpg" width="28" height="28"/>
+						<img src="/ezen-android2020-2/page_detail/img/x-btn.jpg" width="28" height="28"/>
 					</button>
-				
 				<div class="profil_photo">
 				  <div class="profil_img">			  
-					<img src="img/chat_mom.png"/>				
+					<img src="/ezen-android2020-2/page_detail/img/chat_mom03.jpg" width="100%"/>
 				  </div>
 				</div> <!-- fin. profil_photo -->
 				<div class="profil_info">
-					<h6 style="font-weight: bold; font-size: 1em;">실내놀이 맘시터 찾습니다.</h6>
+					<div class="info_name">
+						<div class="name" style="font-size:1.4em;">정<i class="far fa-circle"></i>우</div>
+						<div class="name_siter">엄마 맘시터</div>
+						<div class="response">
+							응답률
+							96%
+						</div>
+					</div><!-- fin. info_name -->		
+					<div class="info_star">
+						<div class="star">
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+						</div>
+						<div class="review_ea">
+								후기 20개
+						</div>
+						<div class="line"></div>
+						<div class="age">50세</div>
+						<div class="line"></div>
+						<div class="number">no.53213</div>
+					</div><!-- fin. info_star -->
 				</div> <!-- fin. profil_info -->
-				<div class="mom_info">
-				    <div class="name">정<i class="far fa-circle"></i>우</div>
-					<div class="line"></div>
-					<div class="number">no.53213</div>
-				</div>
 				
 				<hr/>
 				
 				<div class="three">
 					<div class="three_area">
 						<div class="views_area">
-							<div id="views"><i class="fas fa-user-friends"></i> 지원자 수</div>
-							<div id="views_number"><span style="color: #00726e;">현재 999명</span></div>
+							<div id="views"><i class="fas fa-user-friends"></i> 조회수</div>
+							<div id="views_number">93742</div>
 						</div>
 						<div class="line_three"></div>
 						<div class="clock_area">
-							<div id="clock"><i class="far fa-clock"></i> 신청서 작성</div>
+							<div id="clock"><i class="far fa-clock"></i> 프로필 작성</div>
 							<div id="date">한 달 전</div>
+						</div>
+						<div class="line_three"></div>
+						<div class="cctv_area">
+							<div id="cctv" style="color: #ff7000"><span style="color: #ff7000;"><i class="fas fa-video"></i></span> CCTV</div>
+							<div id="agree" style="color: #ff7000">동의함</div>
 						</div>
 					</div>
 				</div>
 				<!-- Main start-->
 				<div class="main">
+					<div class="human_box">
+						<div class="human">
+							<div class="human_area">
+								<div><img width="70" height="70" src="/ezen-android2020-2/page_detail/img/certification.png"/></div>	
+							<div class="human_text_area">
+								<div class="human_text_title">본인 인증 완료</div>
+								<div class="human_text">맘시터 고객안전관리팀에서 
+								실명 / 생년월일 / 연락처를 확인하였습니다.
+								</div>
+							</div>
+							</div>		
+						</div>
+					</div>
+					<!-- ------------- -->
+					<div class="main_box">
+						<div class="box_name">핵심 인증</div>
+						<div class="main_area">
+							<div class="main_mom">
+								<div class="main_mom_area">
+									<div height= 40px;>
+									<img width="90" src="/ezen-android2020-2/page_detail/img/certification_mom.png"/>
+									</div>
+									<div class="main_mom_text_area">
+										<div class="mom_text_title">엄마 인증 완료</div>
+										<div class="mom_text">맘시터 고객안전관리팀이 가족관계증명서로
+											자녀 양육 경험을 확인했습니다.
+										</div>
+										<div class="mom_info">
+										<div>- 세 아이의 엄마</div>
+										<div>- 가족관계증명서 확인</div>
+										</div>
+										<div class="child_area">
+											<div class="child_female">
+												<span style="color: #e73895;"><i class="fas fa-baby"></i></span> 만 21세 여아
+											</div>
+											<div class="child_male">
+												<span style="color: #448ee4;"><i class="fas fa-baby"></i></span> 만 17세 남아
+											</div>
+											<div class="child_male">
+												<span style="color: #448ee4;"><i class="fas fa-baby"></i></span> 만 19세 남아
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> <!-- fin. main_mom -->	
+							<div class="main_other_area">
+								<div height= 40px;>
+								<img width="100" src="/ezen-android2020-2/page_detail/img/certification_human.png"/>
+								</div>
+								<div class="main_other_text_area">
+									<div class="other_text_title">등초본 인증 완료</div>
+									<div class="other_text">맘시터 고객안전관리팀이 주민등록등(초)본으로
+										맘시터의 등록소재지를 확인했습니다.
+									</div>
+									<div class="mom_info">
+									<div>- 주민등록등(초)본 확인</div>
+									</div>
+								</div>
+							</div> <!-- fin. main_other -->						
+						</div>
+					</div>
 					<div class="info_box">
-						<div class="box_name">신청내용</div>
+						<div class="box_name">간단 자기소개</div>
 						<div class="info_area">
 							<div class="info_text_box">
 								<div class="info_text">
+									<span>세아이를 키운 엄마로서 아이들을 돌봄과 동시에 필요한 전문적인 학습도 도와줄수 있습니다
+									(수학전공, 수학학원 최근까지 운영 초등생 전과목 중고등 이과수학까지 지도 가능 
+									영어책 리딩 문제없어요 중등교사 자격증 소지) 
+									<br/>
+									</span>
 									<span>
-										여아 15개월 엄청 산만함.. 오르기 좋아합니다
+									맞벌이 가정의 육아의 어려움을 충분히 공감하며 맡겨진 아이를 책임감을 갖고 정성을 다해 돌보겠습니다. 
+									밝고 쾌활한 성격으로 동화구연(아이 눈높이에 맞게)이나 역할놀이도 재밌게 잘하고 노래 하는것도 좋아합니다.
+									(교회 성가대봉사 20년) 차 가지고 이동하며(운전경력 24년) 돌봄 시간에 따라 시급조정 가능합니다. 
 									</span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="iwant_box">
-						<div class="box_name">원하는 시터나이</div>
+						<div class="box_name">선호하는 돌봄유형</div>
 						<div class="iwant_area">
-							<div class="sitter_age_area">
-								<div class="sitter_age_no_area">
-									20대
+							<div class="iwant_text_box">
+								<div class="iwant_text_title">
+									"저는<span style="color: #ff7000"> 등하원</span> 돌봄을 가장 선호해요"
 								</div>
-								<div class="sitter_age_ok_area">
-									30대
-								</div>
-								<div class="sitter_age_ok_area">
-									40대
-								</div>
-								<div class="sitter_age_ok_area">
-									50대
-								</div>
-								<div class="sitter_age_no_area">
-									60대
+								<div class="iwant_text">
+									<div id="iwant_text_desc">- 2~10세 아이를 기관에 가기 전후에 돌볼 수 있어요</div>
+									<div id="iwant_text_desc">- 주 5일 하루 3~5시간 책임지고 돌볼 수 있어요</div>
+									<div id="iwant_text_desc">- 등하원, 밥챙겨주기, 씻기기, 놀아주기 활동을 할 수 있어요</div>
 								</div>
 							</div>
 						</div>
@@ -446,12 +471,12 @@ font-size: 1.1em;
 						<div class="box_name">가능한 활동</div>
 						<div class="possible_age_area">
 							<div>
-							<div class="possible_active_main">
+								<div class="possible_active_main">
 									<div class="active_line col-xs-3">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="img/innerplayicon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/innerplayicon_s.png"/>
 												</div>
 												<span>실내놀이</span>
 											</div>
@@ -459,7 +484,7 @@ font-size: 1.1em;
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="img/koreanicon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/koreanicon_s.png"/>
 												</div>
 												<span>한글놀이</span>
 											</div>
@@ -467,7 +492,7 @@ font-size: 1.1em;
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="img/cleanicon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/cleanicon_s.png"/>
 												</div>
 												<span>간단 청소</span>
 											</div>
@@ -475,7 +500,7 @@ font-size: 1.1em;
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="img/longhouseicon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/longhouseicon_s.png"/>
 												</div>
 												<span>장기입주</span>
 											</div>
@@ -486,7 +511,7 @@ font-size: 1.1em;
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="img/guideicon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/guideicon_s.png"/>
 												</div>
 												<span>등하원 돕기</span>
 											</div>
@@ -494,7 +519,7 @@ font-size: 1.1em;
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_ok_box">
-												<img src="img/englishicon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/englishicon_s.png"/>
 												</div>
 												<span>영어놀이</span>
 											</div>
@@ -502,7 +527,7 @@ font-size: 1.1em;
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="img/eaticon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/eaticon_s.png"/>
 												</div>
 												<span>밥 챙겨주기</span>
 											</div>
@@ -510,7 +535,7 @@ font-size: 1.1em;
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="img/houseicon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/houseicon_s.png"/>
 												</div>
 												<span>단기입주</span>
 											</div>
@@ -521,7 +546,7 @@ font-size: 1.1em;
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="img/readicon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/readicon_s.png"/>
 												</div>
 												<span>책읽기</span>
 											</div>
@@ -529,7 +554,7 @@ font-size: 1.1em;
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="img/studyicon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/studyicon_s.png"/>
 												</div>
 												<span>학습지도</span>
 											</div>
@@ -537,7 +562,7 @@ font-size: 1.1em;
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="img/dishicon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/dishicon_s.png"/>
 												</div>
 												<span>간단 설거지</span>
 											</div>
@@ -548,7 +573,7 @@ font-size: 1.1em;
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="img/ousideicon_s.png"/>
+												<img src="/ezen-android2020-2/page_detail/img/ousideicon_s.png"/>
 												</div>
 												<span>야외활동</span>
 											</div>
@@ -556,7 +581,7 @@ font-size: 1.1em;
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="img/ballicon_s.png" />
+												<img src="/ezen-android2020-2/page_detail/img/ballicon_s.png" />
 												</div>
 												<span>체육놀이</span>
 											</div>
@@ -564,7 +589,7 @@ font-size: 1.1em;
 									</div>
 									<!-- ---- -->
 								</div>
-						</div>
+							</div>
 						</div> <!-- fin. possible_active_area -->
 					</div> <!-- fin. possible_active_box -->
 					<div class="possible_zone_box">
@@ -604,9 +629,12 @@ font-size: 1.1em;
 							<div class="talk_main">
 								<div class="talk_menu">
 									<div data-tab="tab_ok" class='tabmenu col-xs-4' id="default">
+									<span id="tab01">
 									<p id="tab01_p">채용 후기(99)</p></div>
+									</span>
 									<div data-tab="tab_interview" class='tabmenu col-xs-4' id="tab02">
 									<p id="tab02_p">인터뷰 후기(99)</p></div>
+									
 									<div data-tab="tab_faile" class='tabmenu col-xs-4' id="tab03">
 									<p id="tab03_p">실패 후기(0)</p></div>									
 								</div>
@@ -668,112 +696,42 @@ font-size: 1.1em;
 					</div> <!-- fin. experience_box -->
 				</div> <!-- fin. Main -->
 				<!-- ----------하단고정 부분 시작------------ -->
-			<div class="fixed_box col-xs-12">
-				<div class="fixed_area">
-					<div class="fixed_area_age">
-						<div class="fixed_name">
-							정<i class="far fa-circle"></i>우
+				<div class="fixed_box">
+					<div class="fixed_area">
+						<div class="fixed_area_age">
+							<div class="fixed_name">
+								정<i class="far fa-circle"></i>우
+							</div>
+							<div class="fixed_age">
+								(50세, 여)
+							</div>
 						</div>
-						<div class="fixed_age">
-							(50세, 여)
+						<div class="fixed_money">
+							희망시급 : 99,900원
 						</div>
-					</div>
-					<div class="fixed_money">
-						희망시급 : 99,900원
-					</div>
-				</div> <!-- fin. fixed_area -->
-				<div class="fixed_btn">
-					<div class="fixed_btn_jim">						
-						<button id="swapHeart" class="btn btn-default swap">
-						    <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 25px;"></span>
-						</button>
-						<div class="jim_number">
-							999
-						</div>
-					</div>
-					<div class="interview_btn">
-						<button tabindex="0" type="button" class="btn-interview">
-							<div>
-								<div class="btn_text_box">
-									<span><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">인터뷰 신청하기</a></span>
+					</div> <!-- fin. fixed_area -->
+					<div class="fixed_btn">
+						<div class="fixed_btn_jim">
+							<button id="swapHeart" class="btn btn-default">									
+								<div class="jim">
+								    <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 25px;"></span>
+								</div>									
+							</button>
+							<div class="jim_number">
+								999
+							</div>
+						</div> <!-- fin. fixed_btn_jim -->					
+						<div class="interview_btn">
+							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href = 'sitter_interview.html'">
+								<div>
+									<div class="btn_text_box">
+										<span><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">인터뷰 신청하기</a></span>
+									</div>
 								</div>
-							</div>
-						</button>
-					</div>
-				</div>
-			</div> <!-- fin. fixed_box -->
-				<!-- .modal --------------------------------------------------------------------------------------------------------------------->
-				<div class="momo">
-				<div id="Modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-					<!-- .modal-dialog -->
-					<div class="modal-dialog">
-						<!-- .modal-content -->
-						<div class="modal-content">
-							<div id="modal-body">
-								<p style="text-align: center; padding-top: 10px; font-weight: bold;">
-									찜하기 완료!
-								</p>
-								<p style="text-align: center; padding-top: 10px;">
-									마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.
-								</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal" id="modal_ok"  style="text-align: center;">
-									확인
-								</button>
-							</div>
-						</div>
-						<!-- /.modal-content -->
-					</div>
-					<!-- /.modal-dialog -->
-				</div>
-				<!-- /.modal -->
-				</div>
-				<div id="Modal_test" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-					<!-- .modal-dialog -->
-					<div class="modal-dialog">
-						<!-- .modal-content -->
-						<div class="modal-content">
-							<div id="modal-body">
-								<p style="text-align: center; padding-top: 10px; font-weight: bold;">
-									찜하기 완료!
-								</p>
-								<p style="text-align: center; padding-top: 10px;">
-									마이페이지 > 찜한 맘회원에서 확인할 수 있습니다.
-								</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal" id="modal_ok"  style="text-align: center;">
-									확인
-								</button>
-							</div>
-						</div>
-						<!-- /.modal-content -->
-					</div>
-					<!-- /.modal-dialog -->
-				</div>
-				<!-- /.modal -->
-				<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<!-- .modal-dialog -->
-					<div class="modal-dialog">
-						<!-- .modal-content -->
-						<div class="modal-content">
-							<div class="modal-body">
-								<p style="text-align: center; padding-top: 10px; font-weight: bold;">
-									이용권이 있는 회원만 신청 가능합니다.
-								</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick="location.href='test.html'">
-									이용권 구매하러 가기
-								</button>
-							</div>
-						</div>
-						<!-- /.modal-content -->
-					</div>
-					<!-- /.modal-dialog -->
-				</div>
-				<!-- /.modal -->		
+							</button>
+						</div> <!-- fin. interview_btn -->
+					</div> <!-- fin. fixed_btn -->
+				</div> <!-- fin. fixed_box -->				
 			</div> <!-- fin. col-xs-12 -->
 		</div>
 	
@@ -798,6 +756,27 @@ font-size: 1.1em;
 		        }
 		    
 			  }); // fin. 찜버튼 기능
+			  			  
+			  $('.tabmenu').click(function() {
+					var activeTab = $(this).attr('data-tab');
+					$('#default').css('background-color', 'white');
+					$('#tab02').css('background-color', 'white');
+					$('#tab03').css('background-color', 'white');
+					$(this).css('background-color', 'rgb(255,238,224)');
+					$.ajax({
+						type : 'GET',                 //get방식으로 통신
+						url : activeTab + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+						dataType : "html",            //html형식으로 값 읽기
+						error : function() {          //통신 실패시 ㅠㅠ
+							alert('통신실패!');
+						},
+						success : function(data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
+							$('#tabcontent').html(data);
+						}
+					});
+				});
+				$('#default').click(); 
+			}); // fin. 탭 기능
 		</script>
 		 <!-- jquery 파일명 수정 -->
 		<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script> 
