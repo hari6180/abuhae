@@ -1,66 +1,80 @@
 <!DOCTYPE html>
 <html lang="ko">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>아이를부탁해</title>
 
-		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>아이를부탁해</title>
 
-		<!-- bootstrap -->
-		<!--절대 경로 수정 1220 선아-->
-		<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <!-- 모바일 웹 페이지 설정 -->
+    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
 
-		<!-- noto Sans 웹 폰트 적용 -->
-        <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
-        <!--join sitter 참조-->
-        <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_sitter.css" />
+    <!-- bootstrap -->
+    <!--절대 경로 수정 1220 선아-->
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
 
-		<style type="text/css">
-            .container {
-                padding: 0;
-            }
-            .col-xs-12 {
-                padding: 0;
-            }
+    <!-- noto Sans 웹 폰트 적용 -->
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+    <!--join sitter 참조-->
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_sitter.css" />
+    <!-- 아이콘 사용 -->
+    <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script>
 
-            .what_want {
-                margin-bottom: 50px;
-            }
-		</style>
-	</head>
+    <style type="text/css">
+        .container {
+            padding: 0;
+        }
 
-	<body>
-		<div id="location" class="container">
+        .col-xs-12 {
+            padding: 0;
+        }
 
-			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
-				<div>
-                    <div class="page_dots">
-                        <span class="dot now_dots"></span>
-                        <span class="dot now_dots"></span>
-                        <span class="dot now_dots"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
+        .what_want {
+            margin-bottom: 50px;
+        }
+
+        button:disabled,
+        button[disabled] {
+            background-color: #cccccc;
+            color: #666666;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="location" class="container">
+
+        <div class="col-xs-12">
+            <!-- xs-12로 모바일 맞춤 -->
+            <div>
+                <div class="page_dots">
+                    <span class="dot now_dots"></span>
+                    <span class="dot now_dots"></span>
+                    <span class="dot now_dots"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <h3 class="what_want">활동하고 싶은 지역을 순서대로
+                    <br>
+                    선택해 주세요. <span class="text_orange">(최대 3개)</span>
+                </h3>
+                <div class="title_box">
+                    <!--back에서 결과 받아와서 출력-->
+                    <div class="select_box">
                     </div>
-                    <h3 class="what_want">활동하고 싶은 지역을 순서대로
-                        <br>
-                        선택해 주세요. <span class="text_orange">(최대 3개)</span>
-                    </h3>
-                    <div class="title_box">
-                        <div class="select_box">
-                        </div>
-                        <div class="location_title">
-                            <div class="sub_title">시/도</div>
-                            <div class="sub_title">시/군/구</div>
-                            <div class="sub_title">동/읍/면</div>
-                        </div>
+
+                    <div class="location_title">
+                        <div class="sub_title">시/도</div>
+                        <div class="sub_title">시/군/구</div>
+                        <div class="sub_title">동/읍/면</div>
                     </div>
-                    <!--지역 선택-->
+                </div>
+                <!--지역 선택-->
                 <div class="location_box">
                     <!--시,도-->
                     <div class="location_group" id="si">
@@ -243,13 +257,76 @@
                     <!--end 동-->
                 </div>
                 <a href="schedule.html"><button class="next_btn" disabled>다음</button></a>
-                </div>
-			</div> <!-- fin. col-xs-12 -->
+            </div>
+        </div> <!-- fin. col-xs-12 -->
 
-		</div>
-	
-		<!-- Javascript -->
-		<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
-		<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
-	</body>
+    </div>
+
+    <!-- Javascript -->
+    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //시 클릭했을 때
+            $(".loc_btn").on("click", function () {
+                var select = $(this).hasClass("select_location");
+                //선택이 안되어있을때
+                if (select == false) {
+                    //선택이 되어있는 요소 탐색
+                    var loc = $("#si").find("button").removeClass("select_loaction");
+                    //console.log(loc);
+                    $(this).addClass("select_loaction");
+                    //시 선택하면 gu 보이게
+                    $("#gu>div").removeClass("hide_content");
+                    $("#gu>div").addClass("show_content");
+                }
+
+            });
+            //구 클릭했을 때
+            $("#gu button").on("click", function () {
+                var select = $(this).hasClass("select_location");
+                //선택이 안되어있을때
+                if (select == false) {
+                    //선택이 되어있는 요소 탐색
+                    var loc = $("#gu").find("button").removeClass("select_loaction");
+                    //console.log(loc);
+                    $(this).addClass("select_loaction");
+                    //구 선택하면 동 보이게
+                    $("#dong>div").removeClass("hide_content");
+                    $("#dong>div").addClass("show_content");
+                }
+
+            });
+
+            //동 클릭했을때
+            $("#dong button").on("click", function () {
+                var select = $(this).hasClass("select_location");
+                //선택이 안되어있을때
+                if (select == false) {
+                    //선택이 되어있는 요소 탐색
+                    var loc = $("#dong").find("button").removeClass("select_loaction");
+                    //console.log(loc);
+                    $(this).addClass("select_loaction");
+
+                    $.ajax({
+                        type: 'GET',                 //get방식으로 통신
+                        url: "location_result.html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+                        dataType: "html",            //html형식으로 값 읽기
+                        error: function () {          //통신 실패시 ㅠㅠ
+                            alert('통신실패!');
+                        },
+                        success: function (data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
+                            $('.select_box').html(data);
+                            var now = $(".next_btn").prop('disabled');
+                            //가져온 값 역으로 변경하여 다시 적용
+                            $(".next_btn").prop('disabled', !now);
+                        }
+                    });
+
+                }
+            });
+        });
+    </script>
+</body>
+
 </html>

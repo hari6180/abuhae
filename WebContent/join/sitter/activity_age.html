@@ -27,6 +27,7 @@
         .fa-3x {
             font-size: 2.1em;
         }
+
         .fa-3x {
             display: block;
             width: 100%;
@@ -35,6 +36,119 @@
 </head>
 
 <body>
+    <!--modal-->
+    <div id="help_modal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="help_modal_Label"
+        aria-hidden="true">
+        <!--modal dialog-->
+        <div class="modal-dialog">
+            <!--modal content-->
+            <div class="modal-content">
+                <!--제목-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel"> 돌봄 가능 연령이란?</h4>
+                </div>
+                <!--내용-->
+                <div class="modal-body">
+                    <div class="act_box">
+                        <div class="age_type">신생아&nbsp;<span>0~6개월</span></div>
+                        <div class="age_desc">제 몸을 못 가누는 아주 작은 아이로 수유하기, 재우기, 목욕시키기가 주 활동입니다.</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="age_type">영아&nbsp;<span>7~36개월</span></div>
+                        <div class="age_desc">기어가거나 걸을 수 있는 아이로 이유식/밥 먹이기, 기저귀 갈아주기, 감각 활동하기가 주 활동입니다.</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="age_type">유아&nbsp;<span>4-7세</span></div>
+                        <div class="age_desc">활동성이 매우 높은 시기의 아이들로 보통 어린이집/유치원에 다닙니다. 등하원 돕기, 책 읽어주기, 놀아주기등이 주 활동입니다.</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="age_type">초등학생</div>
+                        <div class="age_desc">초등학교 1~6학년 아이들로 등하교 돕기, 숙제 도와주기, 전문 학습하기 등이 주 활동입니다.</div>
+                    </div>
+                </div>
+            </div>
+            <!--end modal content -->
+        </div>
+        <!--end modal dialog-->
+    </div>
+    <!--end modal-->
+    <!--modal-->
+    <div id="help_modal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="help_modal_Label"
+        aria-hidden="true">
+        <!--modal dialog-->
+        <div class="modal-dialog">
+            <!--modal content-->
+            <div class="modal-content">
+                <!--제목-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">어떤 활동이 있나요?</h4>
+                </div>
+                <!--내용-->
+                <div class="modal-body">
+                    <div class="act_box">
+                        <div class="act_name">실내놀이</div>
+                        <div class="act_desc">그림 그리기, 보드게임하기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">등하원 돕기</div>
+                        <div class="act_desc">유치원 데려다주기, 데리고오기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">책 읽기</div>
+                        <div class="act_desc">아이가 좋아하는 책 읽기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">야외활동</div>
+                        <div class="act_desc">놀이동산, 키즈카페 가기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">한글놀이</div>
+                        <div class="act_desc">한글 카드 놀이, 받아쓰기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">영어놀이</div>
+                        <div class="act_desc">영어노래 부르기, 영어책 읽어주기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">학습지도</div>
+                        <div class="act_desc">면학 분위기 조성, 숙제 도와주기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">체육놀이</div>
+                        <div class="act_desc">공놀이, 놀이터 나가기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">간단 청소</div>
+                        <div class="act_desc">아이 장난감 치우기, 청소기 돌리기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">밥 챙겨주기</div>
+                        <div class="act_desc">있는 반찬으로 밥 챙겨주기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">간단 설거지</div>
+                        <div class="act_desc">젖병 세척, 아이먹은 그릇 씻기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">장기입주</div>
+                        <div class="act_desc">함께 살면서 종일 돌봐주기</div>
+                    </div>
+                    <div class="act_box">
+                        <div class="act_name">단기입주</div>
+                        <div class="act_desc">2-3일 종일 돌봐주기</div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!--end modal content -->
+        </div>
+        <!--end modal dialog-->
+    </div>
+    <!--end modal-->
+
+    <!--화면 영역-->
     <div id="act_age" class="container">
         <div class="col-xs-12">
             <!-- xs-12로 모바일 맞춤 -->
@@ -50,7 +164,7 @@
                 </div>
                 <h3 class="what_want">어떤 아이를 돌볼 수 있나요?
                     <div class="help_box">
-                        <a data-toggle="modal" href="#help_modal"><button class="help_btn">
+                        <a data-toggle="modal" href="#help_modal1"><button class="help_btn">
                                 <span class="sr-only">도움말</span>
                                 <img src="/ezen-android2020-2/join/img/help.png" alt="도움말">
                             </button></a>
@@ -79,7 +193,7 @@
 
                 <h3 class="what_want">어떤 활동을 할 수 있나요?
                     <div class="help_box">
-                        <a data-toggle="modal" href="#help_modal"><button class="help_btn">
+                        <a data-toggle="modal" href="#help_modal2"><button class="help_btn">
                                 <span class="sr-only">도움말</span>
                                 <img src="/ezen-android2020-2/join/img/help.png" alt="도움말">
                             </button></a>
@@ -171,6 +285,30 @@
     <!-- Javascript -->
     <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //활동 버튼 클릭
+            $(".act_btn").click(function (e) {
+                $(this).toggleClass("select_btn");
+                //버튼 클릭시 text 색 변경
+                $(this).next().toggleClass("select_text");
+
+                //버튼 클릭시 이미지 URL 변경
+                //url 가져오기
+                var img_url = $(this).find(".want_img").attr('src');
+                var indeximg = img_url.indexOf("_n") //잘라서 _n이 있는지 확인
+                if (indeximg > -1) {
+                    var img_src = img_url.replace(/_n/, "_s");
+                    $(this).find(".want_img").attr('src', img_src);
+                } else {
+                    var img_src = img_url.replace(/_s/, "_n");
+                    $(this).find(".want_img").attr('src', img_src);
+                };
+
+
+            });
+        });
+    </script>
 </body>
 
 </html>
