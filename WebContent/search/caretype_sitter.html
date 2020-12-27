@@ -31,6 +31,7 @@
       <div class="row">
         <!-- xs-12로 모바일 맞춤 -->
         <div class="col-xs-12">
+          <!-- caretype -->
           <div id="caretype" class="d">
             <!--header-->
             <div class="ct_header">
@@ -117,7 +118,7 @@
             </div>
             <button type="button" class="all_btn">모든 돌봄유형 보기</button>
           </div>
-          <!-- activity type modal end -->
+          <!-- caretype end -->
         </div>
         <!--end row-->
       </div>
@@ -126,5 +127,13 @@
     <script src="/WebContent/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
     <script src="/WebContent/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $(".icon").click(function (e) {
+          $(this).addClass("selected_icon");
+          location.href = "http://localhost:8080/ezen-android2020-2/search/sitter_search.html";
+        });
+      });
+    </script>
   </body>
 </html>
