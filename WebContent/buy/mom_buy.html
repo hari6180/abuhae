@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>아이를 부탁해</title>
+
+	<!-- 모바일 웹 페이지 설정 -->
+	<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+	<!-- bootstrap -->
+	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+	<!-- noto Sans 웹 폰트 적용 -->
+	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+	<!--slick slider-->
+	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/plugin/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/plugin/slick/slick-theme.css" />
+	<!--header css-->
+	<link rel="stylesheet" href="/ezen-android2020-2/assets/css/index_header.css">
+	<!-- fontawesome(글리피콘) 적용 -->
+	<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
+
+	<!-- animaition 적용-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
+	<!--section-->
+	<link rel="stylesheet" href="/ezen-android2020-2/assets/css/section.css">
+
+	<style type="text/css">
+		html,
+		body {
+			color: #222;
+			font-weight: 100;
+			font-size: 1em;
+			line-height: 1.375;
+			padding: 0;
+			margin: 0;
+		}
+		.mom_buy_area {
+			box-sizing: border-box;
+		}
+		.mom_buy_area {
+			box-sizing: inherit;
+			margin: 30px 0px 0px;
+		}
+		.mom_buy_title {
+			display: flex;
+			flex-direction: column;
+			-webkit-box-align: center;
+			align-items: center;
+			margin-bottom: 30px;
+			font-size: 0.9em;
+			color: #000;
+			text-align: center;
+		}
+		.mom_title {
+			color: #058ee2;
+			font-weight: bold;
+			font-size: 1.2em;
+			letter-spacing: -0.2px;
+			line-height: 1;
+			margin-bottom: 10px;
+		}
+		.mom_buy_title_text {
+			color: #000;
+			font-size: 0.9em;
+			margin-top: 26px;
+			text-align: center;
+			letter-spacing: -0.2px;
+		}
+		.mom_buy_box {
+			display: flex;
+			width: 100%;
+			padding: 10px 18px 0px;
+		}
+		.mom_buy_box_left, .mom_buy_box_center, .mom_buy_box_right {
+			cursor: pointer;
+		}
+		.mom_buy_main {
+			border: 1px solid #ccc;
+			box-shadow: rgba(0,0,0,0.43) 0px 3px 3px;
+			border-radius: 4px;
+			box-sizing: border-box;
+			text-align: center;
+			padding: 18px 0px;
+			height: 170px;
+			
+		}
+		.mom_buy_month {
+			margin: 0px;
+			padding: 0px;
+			width: 100%;
+			color: #000;
+			letter-spacing: -0.2px;
+			font-weight: bold;
+			line-height: 24px;
+			font-size: 1em;
+		}
+		.mom_buy_before_price {
+			text-decoration: line-through;
+			margin: 0px;
+			padding: 0px;
+			width: 100%;
+			color: #ccc;
+			letter-spacing: -0.2px;
+			font-size: 0.85em;
+			line-height: 18px;
+		}
+		.mom_buy_price {
+			margin: 0px;
+			padding: 0px;
+			width: 100%;
+			color: #000;
+			letter-spacing: -0.2px;
+			font-size: 0.8em;
+			font-weight: bold;
+			line-height: 21px;
+		}
+		.save_box {
+			display: flex;
+			-webkit-box-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			align-items: center;
+			margin: 9px auto 0px;
+			width: 65px;
+			height: 24px;
+			border-radius: 11px;
+			background: #69bbee;
+		}
+		.mom_buy_save {
+			margin: 0px;
+			padding: 0px;
+			width: 100%;
+			color: #fff;
+			font-size: 0.8em;
+			letter-spacing: -0.2px;
+			line-height: 18px;
+		}
+		.mom_buy_box_center, .mom_buy_box_right {
+			margin-left: 8px;
+		}
+		.save_box_bad {
+			display: flex;
+			-webkit-box-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			align-items: center;
+			margin: 9px auto 0px;
+			width: 65px;
+			height: 24px;
+			border-radius: 11px;
+			background: #b8b8b8;
+		}
+		.buy_btn {
+			outline: none;
+			border: none;
+			margin: 28px auto 43px;
+			display: block;
+			height: 60px;
+			cursor: pointer;
+			border-radius: 6px;
+			background: #058ee2;
+			width: 340px;
+		}
+		.buy_btn_style {
+			color: #fff;
+			line-height: 24px;
+			font-weight: bold;
+			font-size: 1.1em;
+			letter-spacing: -0.2px;
+			margin: 0px;
+			padding: 0px;
+			width: 100%;
+		}
+		.mom_buy_desc_area {
+			margin: 0 auto;
+			width: 100%;
+			padding: 27px 18px 0px;
+			width: 375px;
+		}
+		.mom_desc_title {
+			margin: 0 auto;
+			width: 140px;
+			height: 24px;
+			border-radius: 12px;
+			border: 1px solid #ff7000;
+			font-size: 0.75em;
+			letter-spacing: -0.2px;
+			line-height: 24px;
+			text-align: center;
+			color: #ff7000;
+		}
+		.desc_title {
+			margin-top: 14px;
+			font-size: 1em;
+			line-height: 1.33;
+			letter-spacing: -0.2px;
+			color: #000;
+			text-align: center;
+		}
+		.desc_text {
+			margin-top: 8px;
+			font-size: 0.8em;
+			line-height: 1.42;
+			letter-spacing: -0.2px;
+			color: #7c7c7c;
+			text-align: center;
+		}
+		.desc_style {
+			padding-bottom: 15px;
+		}
+		.line {
+			margin-bottom: 40px;
+			width: 100%;
+		}
+		.refund_box {
+			width: 100%;
+		}
+		.refund_title {
+			font-size: 1em;
+			font-weight: bold;
+			text-align: center;
+		}
+		.refund_text {
+			margin-top: 8px;
+			font-size: 0.8em;
+			line-height: 0.82;
+			color: #ccc;
+			letter-spacing: -0.2px;
+			font-weight: bold;
+		}
+		.refund_style {
+			background-color: #fbf1c5;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<div class="container">
+		
+			<div class="mom_buy_area col-xs-12">
+				<div class="mom_buy_area">
+					<div class="mom_buy_title">
+						<div class="mom_title">
+							<strong>무제한 이용권</strong>
+						</div>
+						<div class="mom_buy_title_text">
+						<div>
+							수많은 시터회원들에게 인터뷰를
+							<strong>무제한 신청하고</strong>
+						</div>
+						<div>
+							지원한 시터회원들의
+							<strong>연락처를 무제한 받아</strong> 보세요!
+						</div>
+						</div>
+					</div> <!-- fin. mom_buy_title -->
+					<div class="mom_buy_box">
+						<div class="mom_buy_box_left col-xs-4">
+							<div class="mom_buy_main">
+								<div style="padding-top: 25px;">
+									<p class="mom_buy_month">6개월</p>
+								</div>
+								<div style="padding-top: 10px;">
+									<p class="mom_buy_before_price">179,400원</p>
+								</div>
+								<div>
+									<p class="mom_buy_price">월 13,316원</p>
+								</div>
+								<div class="save_box">
+									<p class="mom_buy_save">55% 절약!</p>
+								</div>
+							</div> <!-- fin. mom_buy_main -->	
+							<div class="mom_buy_select_btn"></div>	
+						</div>
+						<div class="mom_buy_box_center col-xs-4">
+							<div class="mom_buy_main">
+								<div style="padding-bottom: 10px;">
+									<p class="mom_buy_month" style="color: #058ee2;">Best</p>
+									<p class="mom_buy_month">3개월</p>
+								</div>
+								<div>
+									<p class="mom_buy_before_price">89,700원</p>
+								</div>
+								<div>
+									<p class="mom_buy_price">월 16,633원</p>
+								</div>
+								<div class="save_box">
+									<p class="mom_buy_save">44% 절약!</p>
+								</div>
+							</div> <!-- fin. mom_buy_main -->	
+							<div class="mom_buy_select_btn"></div>
+						</div>
+						<div class="mom_buy_box_right col-xs-4">
+							<div class="mom_buy_main">
+								<div style="padding-top: 25px;">
+									<p class="mom_buy_month">1개월</p>
+								</div>
+								<div style="padding-top: 27px;">
+									<p class="mom_buy_price">월 29,900원</p>
+								</div>
+								<div class="save_box_bad">
+									<p class="mom_buy_save">0% 절약!</p>
+								</div>
+							</div> <!-- fin. mom_buy_main -->	
+							<div class="mom_buy_select_btn"></div>
+						</div>
+					</div> <!-- fin. mom_buy_box -->
+					<button type="button" class="buy_btn">
+					 <p class="buy_btn_style">  
+					   결제하기
+					 </p>
+					</button>
+					<div class="mom_buy_desc_area">
+						<div class="mom_desc_title">1개월 무제한 이용권이란?</div>
+						<div class="desc_style">
+							<div class="desc_title">
+								<div>
+									1. 마음에 드는 시터회원에게
+									<br/>
+									<strong>무제한으로 인터뷰를 신청하고</strong>
+								</div>
+							</div> <!-- fin. desc_title -->
+							<div class="desc_text">
+								<div>
+									내 인터뷰 신청에 시터회원이 수락하면,
+									<br/>
+									<strong>나에게 시터회원의 연락처가 전송</strong>
+									됩니다.
+								</div>
+							</div> <!-- fin. desc_text -->
+						</div>
+						
+						<div class="desc_style">
+							<div class="desc_title">
+								<div>
+									2. 지원자의
+									<br/>
+									<strong>연락처도 무제한 </strong>
+									받아서,
+								</div>
+							</div> <!-- fin. desc_title -->
+							<div class="desc_text">
+								<div>
+									내 인터뷰 신청에 시터회원이 수락하면,
+									<br/>
+									<strong>나에게 시터회원의 연락처가 전송</strong>
+									됩니다.
+								</div>
+							</div> <!-- fin. desc_text -->
+						</div>
+						
+						<div class="desc_style">
+							<div class="desc_title">
+								<div>
+									3. 나와 꼭 맞는
+									<br/>
+									<strong>맘시터를 찾을 수 있어요!</strong>
+								</div>
+							</div> <!-- fin. desc_title -->
+							<div class="desc_text">
+								<div>
+									<strong>업계 가장 많은 아이돌보미가 활동</strong>하여
+									<br/>
+									내 조건에 맞는 사람을 찾을 확률이 가장 높습니다.
+								</div>
+							</div> <!-- fin. desc_text -->
+						</div>
+						
+						<div class="desc_style" style="padding-bottom: 40px;">
+							<div class="desc_title">
+								<div>
+									4. <strong>수수료가 없어서</strong> 합리적이에요~!
+								</div>
+							</div> <!-- fin. desc_title -->
+							<div class="desc_text">
+								<div>
+									시터회원 채용 후 지급해야 하는 <strong>수수료가 없어</strong>
+									<br/>
+									현명한 부모님들이 선택하는 가장 합리적인 이용권입니다.
+								</div>
+							</div> <!-- fin. desc_text -->
+						</div>
+					</div> <!-- fin. mom_buy_desc_area -->
+				</div> <!-- fin. mom_buy_area -->
+				<hr class="line"></hr>
+				<div class="refund_box">
+					<div class="refund_title">
+						<span class="refund_style">
+						<strong>100% 환불가능!</strong>
+						</span>
+					</div>
+					<div class="desc_text">
+						<div>
+							이용권을 구매했는데 <strong>맘시터 연락처를</strong> 한 번도 받지
+							<br/>
+							못하면 100% 연장/환불 가능합니다.
+							<div class="refund_text">
+							자세한 환불 규정은 아래 유의사항을 꼭 확인해주세요!
+							</div>
+						</div>
+					</div>
+					<div style="width: 100%; height: 40px;"></div>
+				</div>
+			</div> 
+			
+		</div>
+	</div>
+	<!-- Javascript -->
+	<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script>
+	<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+	<!--slick slider-->
+	<script type="text/javascript" src="/ezen-android2020-2/assets/plugin/slick/slick.min.js"></script>
+</body>
+
+</html>
