@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>아이를부탁해</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="../../../assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="../../../assets/ico/favicon.ico" />
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="../../../assets/css/bootstrap.min.css" />
+
+		<!-- noto Sans 웹 폰트 적용 -->
+        <link rel="stylesheet" type="text/css" href="../../../assets/css/notosans.css" />
+        
+        <!-- icon 참조 -->
+        <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
+
+        <style type="text/css">
+         /* 초기 설정 -----------------------------------------------------*/
+         .body, html, * {
+            margin: 0;
+            padding: 0;
+
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: black;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+        /** header --------------------------------------------------------------------*/
+
+        .mp_detail_tl {
+            width: 100%;
+        }
+        
+        .mp_detail_tl .mp_detail_tl_in {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .mp_detail_tl .mp_detail_tl_in a i {
+            text-decoration: none;
+            color: black;
+            font-size: 1.5em;
+            margin-top: 7px;
+        }
+
+        .mp_detail_tl .mp_detail_tl_in h3 {
+            font-weight: bold;
+        }
+
+        /** for 후기 관리 페이지 (review.html) --------------------------------------*/
+        /** 공통 for 후기 관리 */
+        .wrap_choice_care {
+            padding: 20px 20px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .choice_care_cont {
+            padding: 5% 17%;
+        }
+
+        .care_form_in {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .care_box {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(255, 112, 0, 0.1);
+            margin-bottom: 10px;
+            width: 100%;
+            min-height: 61px;
+            border-radius: 4px;
+            padding: 15px;
+        }
+
+        .care_box label {
+            font-size: 1.2em;
+        }
+
+        .care_box p {
+            margin-left: 15px;
+            margin-top: 10px;
+            font-size: 1em;
+        }
+
+        .care_button button {
+            width: 100%;
+            height: 60px;
+            border: 0;
+            background-color: #ff7000;
+            color: #fff;
+        }
+
+		</style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="container">
+                <div class="wrap_choice_care">
+                     <!-- header -->
+                     <header class="mp_detail_tl" style="border-bottom: 1px solid #ccc;">
+                        <div class="row">
+                            <div class="col-xs-12 mp_detail_tl_in">
+                                <a href="../../mypage/mypage_sitter/sitter_mypage.html">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                                <h3 class="center-block">돌봄유형 선택</h3>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- content -->
+                    <form id="choice_care_form" action="#">
+                        <section class="choice_care_cont">
+                            <div class="row">
+                                <div class="col-xs-12 care_form_in">
+                                    <div class="care_box">
+                                        <label for="kind_care">
+                                            <input type="radio" name="kind_care" value="care1"> 신생아/영아 풀타임 돌봄
+                                        </label>
+                                        <p id="kind_care_cont1" class="kind_care_cont hide">
+                                            - 0~24개월 아이를 먹이고, 재우고, 놀아주는 활동 <br/>
+                                            - 보통 주5일 하루 8~10시간 책임지고 돌봄 필요 <br/>
+                                            - 아이 관련 가사활동 필수 <br/>
+                                        </p>
+                                    </div>
+                                    <div class="care_box">
+                                        <label for="kind_care">
+                                            <input class="kind_care" type="radio" name="kind_care" value="care2"> 등하원 돌봄
+                                        </label>
+                                        <p id="kind_care_cont2" class="kind_care_cont hide">
+                                            - 2~10세 아이를 기관에 가기 전후에는 돌보는 활동 <br/> 
+                                            - 보통 주5일 하루 3~5시간 책임지고 돌봄 필요 <br/>
+                                            - 등하원, 밥 챙겨주기, 씻기기, 놀아주기 활동 포함 <br/>
+                                        </p>
+                                    </div>
+                                    <div class="care_box">
+                                        <label for="kind_care">
+                                            <input class="kind_care" type="radio" name="kind_care" value="care3"> 신생아/영아 보조 돌봄
+                                        </label>
+                                        <p id="kind_care_cont3" class="kind_care_cont hide">
+                                            - 0~24개월 아이를 보호자와 함께 또는 혼자 돌봄유형 <br/>
+                                            - 최근 0~12개월 돌본 경험 주 1회 이상 필수 <br/>
+                                            - 주 1~4회 정기적으로 또는 단기로 2~4시간 활동 <br/>
+                                        </p>
+                                    </div>
+                                    <div class="care_box">
+                                        <label for="kind_care">
+                                            <input class="kind_care" type="radio" name="kind_care" value="care4"> 놀이/학습 돌봄
+                                        </label>
+                                        <p id="kind_care_cont4" class="kind_care_cont hide">
+                                            - 2~10세 아이와 특기를 활용해서 즐겁고 학습적인 시간을 보내는 활동 <br/>
+                                            - 주 1~4회 정기적으로 또는 단기로 2~4시간 활동 <br/>
+                                        </p>
+                                    </div>
+                                    <div class="care_box">
+                                        <label for="kind_care">
+                                            <input class="kind_care" type="radio" name="kind_care" value="care4"> 놀이/학습 돌봄
+                                            <p id="kind_care_cont2" class="kind_care_cont hide">
+                                                - 정기 방문이 아닌, 1~2회 또는 짧은 기간 동안만 돌봄 활동 <br/>
+                                                - 프로필에 돌봄 가능한 아이 연령과 활동 명시 필요 <br/>
+                                            </p>
+                                        </label> 
+                                    </div>  
+                                </div>
+                            </div>
+                        </section>
+                        <section class="care_button">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <button type="submit">전송하기</button>
+                                </div>
+                            </div>
+                        </section>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+
+		<!-- Javascript -->
+		<script src="../../../assets/js/jquery.min.js"></script>
+        <script src="../../../assets/js/bootstrap.min.js"></script>
+
+        <script>
+            $(function() {
+                /** 라디오 버튼 클릭시 아코디언 형식으로 내용이 나타는 기능 */
+                $(".kind_care").change(function() {
+                    $(this).find(p).removeClass("hide");
+                });
+            });
+        </script>
+	</body>
+</html>
