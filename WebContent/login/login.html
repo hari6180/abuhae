@@ -43,7 +43,7 @@
                     <hr>
                     <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
                 </div>
-                <a href="/ezen-android2020-2/Index.html"><button class="next_btn">로그인</button></a>
+                <button class="next_btn" id="login_btn">로그인</button>
 
                 <div class="other_action">
                     <a href="find.html" class="otehr_login underline">로그인 정보를 잊으셨나요?</a>
@@ -59,7 +59,16 @@
         <script type="text/javascript">
             $(function(){
                 $("#menu").load("../index_header.html");
-            })
+
+                $("#login_btn").on("click", function(){
+                    if($("#userid").val() == "mom" && $("#password").val() == "sitter") {
+                        location.href="/ezen-android2020-2/Index.html";
+                    } else {
+                        alert("아이디 혹은 비밀번호를 확인해 주세요.");
+                    }
+                    
+                });
+            });
         </script>
 	</body>
 </html>
