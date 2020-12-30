@@ -34,89 +34,7 @@
         <!-- header 메뉴바 -->
         <div id="app">
             <div class="container">
-                <!-- header : 하리-->
-                <header>
-                    <div class="header_wrap col-xs-12">
-                        <div class="header">
-                            <div class="flex_row main_menu">
-                                <!-- 메뉴 모달 열기-->
-                                <a data-toggle="modal" href="#menu_modal">
-                                    <p><i class="fas fa-bars"> </i></p>
-                                </a>
-    
-                                <!--메인페이지 연결 필요-->
-                                <a href="../../Index.html">
-                                    <img src="../../img/logo (1).png" class="logo" />
-                                </a>
-                            </div>
-                            <div class="flex_row">
-                                <a href="../../join/join.html"><button class="join">가입하기</button></a>
-                                <a href="#"><img src="../../img/돋보기.png" class="header_search_btn" /></a>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-                <!-- header end-->
-    
-                <!-- modal -->
-    
-                <div id="menu_modal" class="modal col-xs-12 fade" data-toggle="tab" tabindex="-1" role="dialog"
-                    aria-labelledby="menu_modal_label" aria-hidden="true">
-                    <!-- modal content-->
-                    <div class="modal_content col-xs-9">
-                        <!-- modal header -->
-                        <div class="modal_group">
-                            <div class="modal_header">
-                                <a href="#"><button type="button" class="modal_btn">
-                                    <p class="login_btn">로그인</p>
-                                </button></a>
-                                <a href="../../join/join.html"><button type="button" class="modal_btn">
-                                    <p class="join_btn">회원가입</p>
-                                </button></a>
-                            </div>
-                            <!-- modal header end-->
-    
-                            <!-- modal body-->
-                            <div class="modal_body">
-                                <div class="sitter_search">
-                                    <a href="#">
-                                        <img src="../../img/index-sittersearch.svg" />
-                                        <p>맘시터 찾기</p>
-                                    </a>
-                                </div>
-    
-                                <div class="job_search">
-                                    <a href="#">
-                                        <img src="../../img/index-jobsearch.svg" />
-                                        <p>일자리 찾기</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- modal body end-->
-                        <div class="divider"></div>
-                        <!-- modal footer -->
-                        <div class="modal_footer modal_group">
-                            <a href="#">
-                                <p>이용권 / 지원권 구매</p>
-                            </a>
-                            <a href="#">
-                                <p>서비스 소개</p>
-                            </a>
-                            <a href="#">
-                                <p>공지사항</p>
-                            </a>
-                            <a href="#">
-                                <p>고객센터</p>
-                            </a>
-                        </div>
-    
-                        <!-- modal footer end -->
-                    </div>
-                    <!-- modal content end-->
-                </div>
-                <!-- modal end -->
-                <!-- header end-->
+                <div id="menu"></div>
 
                 <!-- 마이페이지 -->
                 <section>
@@ -372,7 +290,7 @@
                                     <hr style="background-color: rgb(243, 241, 241);">
     
                                     <div class="list_con_in">
-                                        <a href="#">
+                                        <a href="sue.html">
                                             <div class="list_con_tl">
                                                 <i class="fas fa-bomb" style="margin-right: 14px;"></i>
                                                 <p>신고내역</p>
@@ -392,15 +310,15 @@
                         <section class="group_mp_bottom">
                             <div class="row">
                                 <div class="col-xs-12 bottom_con">
-                                    <a href="#" class="bottom_con_in bt_cash">
+                                    <a href="payment.html" class="bottom_con_in bt_cash">
                                         <p>결제 내역</p>
                                         <!--백엔드 연동 필요-->
                                         <p class="bt_cash_p" style="color: rgb(48, 132, 132);">0 건</p>
                                     </a>
-                                    <a href="#" class="bottom_con_in">
+                                    <a href="../../customer/customer_center.html" class="bottom_con_in">
                                         <p>공지사항</p>
                                     </a>
-                                    <a href="#" class="bottom_con_in">
+                                    <a href="manage_account.html" class="bottom_con_in">
                                         <p>계정관리</p>
                                     </a>
                                 </div>
@@ -416,8 +334,14 @@
         <script src="../../assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 
-        <!-- 로그아웃 기능 (수정필요 / 백앤드 연동??), by daye, 2020.12.08-->
+        
         <script type="text/javascript">
+        	<!-- header 삽입 -->
+        	$(function() {
+        		$("#menu").load("../../index_header.html");
+        	});
+        
+        	<!-- 로그아웃 기능 (수정필요 / 백앤드 연동??), by daye, 2020.12.08-->
             $(function() {
                 $("#mp_logout").click(function() {
                     alert("로그아웃 되었습니다.");
