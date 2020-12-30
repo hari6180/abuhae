@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>관리자페이지</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+
+		<!-- noto Sans 웹 폰트 적용 -->
+		<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+		<link rel="stylesheet" type="text/css" herf="/ezen-android2020-2/customer/css/flexboxgrid.css" />
+		<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/customer/css/customer_center.css" />
+		<style>
+		* {
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+	color: #222;
+}
+ul, ol {
+	list-style: none;
+}
+/* 전체 박스 크기*/
+.container {
+	height: 1200px;
+}
+/* 왼쪽 사이드 바 */
+.sidebar {
+	padding-top: 80px;
+	height: 500px;
+}
+/* 게시판 관리 글씨 위치 */
+.middle {
+	padding-top: 45px;
+}
+
+/* 게시판 크기 */
+.text_box {
+	height: 500px;
+	margin-top: 10px;
+}
+#connect {
+	float: right;
+}
+.input_search {
+    float: right;
+    width: 0;
+    padding-right: 184px;
+    margin-bottom: 10px;
+}
+.button2 {
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-toolbar {
+    display: flex;
+    justify-content: center;
+}
+/* 후기관리 / 신고내역 관리 / 공지사항 / FAQ 박스 크기 및 정렬 */
+.middle_box {
+	height: 130px;
+	border-style: solid;
+	margin: 10px 0;
+	text-align: center;
+	background-color: #eeeeee;
+}
+/* 후기관리 / 신고내역 관리 / 공지사항 / FAQ 버튼 위치 및 색상 */
+.middle_box>.btn {
+	margin-top: 50px;
+	width: 120px;
+	margin-left: 30px;
+}
+		</style>
+</head>
+	<body>
+<div class="container">
+		<div class="header">
+			<div class="col-md-12 header_login">
+				<p id="connect">
+					admin 님 접속중
+					<button type="submit" class="btn btn-xs">Logout</button>
+				</p>
+			</div>
+		</div>
+		<div class="col-md-2 sidebar">
+			<a href="/ezen-android2020-2/admin/admin_main.html" class="list-group-item">회원관리</a>
+			 <a href="/ezen-android2020-2/admin/admin_help.html" class="list-group-item">구인구직 관리</a>
+			 <a href="#" class="list-group-item active">게시판 관리</a>
+			 <a href="#" class="list-group-item">인증 관리</a>
+			 <a href="#" class="list-group-item">통계 관리</a>
+		</div>
+<div class="col-md-10 middle">
+			<div class="col-md-12 text_box">
+				<h3>게시판 관리</h3>
+				<div class="col-md-12 middle_box">
+			<button onclick="#" class="btn">후기관리</button>
+			<button onclick="#" class="btn btn-info">신고내역 관리</button>
+			<button onclick="#" class="btn">공지사항</button>
+			<button onclick="#" class="btn">FAQ</button>
+		</div>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th class="text-center"><input type="checkbox" onclick="allcheck(this)"></th>
+							<th class="text-center">No.</th>
+							<th class="text-center">이름</th>
+							<th class="text-center">신고 유형</th>
+							<th class="text-center">신고 내용</th>
+							<th class="text-center">처리여부</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-center"><input type="checkbox" name="chk"></td>
+							<td class="text-center">1</td>
+							<td class="text-center"> </td>
+							<td class="text-center"> </td>
+							<td class="text-center"> </td>
+							<td class="text-center"> </td>
+						</tr>
+						<tr>
+							<td class="text-center"><input type="checkbox" name="chk"></td>
+							<td class="text-center">2</td>
+							<td class="text-center"> </td>
+							<td class="text-center"> </td>
+							<td class="text-center"> </td>
+							<td class="text-center"> </td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="col-md-12 button2">
+				<button type="button" class="btn btn-xs" id="btn_delete">회원탈퇴</button>
+				</div>
+				<div class="col-md-12 btn-toolbar">
+				<div class="btn-group">
+				<button type="button" class="btn btn-default">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				</button>
+				</div>
+				<div class="btn-group">
+				<button type="button" class="btn btn-default">1</button>
+				</div>
+				<div class="btn-group">
+				<button type="button" class="btn btn-default">2</button>
+				</div>
+				<div class="btn-group">
+				<button type="button" class="btn btn-default">3</button>
+				</div>
+				<div class="btn-group">
+				<button type="button" class="btn btn-default">4</button>
+				</div>
+				<div class="btn-group">
+				<button type="button" class="btn btn-default">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				</button>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+		<!-- Javascript -->
+		<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script>
+		<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		function allcheck(o) {
+			// 클릭한 체크박스의 table 에서 (바로위 부모요소를 대상)
+			// 이름이 chk 인것을 찾고
+			// 현재 요소의 체크 상태를 찾은 대상에 적용
+			$(o).closest('table').find('[name=chk]').prop('checked', o.checked);
+		}
+		$(document).ready(function() {
+			$('#btn_delete').click(function() {
+				var result = confirm('정말 삭제하시겠습니까?');
+				if(result) {
+					//yes
+					location.replace('admin_list.html');
+				} else {
+					// no
+				}
+			});
+		});
+			</script>
+	</body>
+</html>

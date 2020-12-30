@@ -23,89 +23,7 @@
 	<body>
 		<div class="container">
 			<div class="row">
-            <!-- header : 하리-->
-			<header>
-				<div class="header_wrap col-xs-12">
-					<div class="header">
-						<div class="flex_row main_menu">
-							<!-- 메뉴 모달 열기-->
-							<a data-toggle="modal" href="#menu_modal">
-								<p><i class="fas fa-bars"> </i></p>
-							</a>
-
-							<!--메인페이지 연결 필요-->
-							<a href="/ezen-android2020-2/Index.html">
-								<img src="/ezen-android2020-2/img/logo (1).png" class="logo" />
-							</a>
-						</div>
-						<div class="flex_row">
-							<a href="/ezen-android2020-2/join/join.html"><button class="join">가입하기</button></a>
-							<a href="/ezen-android2020-2/search/sitter_search.html"><img src="/ezen-android2020-2/img/돋보기.png"
-									class="header_search_btn" /></a>
-						</div>
-					</div>
-				</div>
-			</header>
-			<!-- header end-->
-
-			<!-- modal -->
-
-			<div id="menu_modal" class="modal col-xs-12 fade" data-toggle="tab" tabindex="-1" role="dialog"
-				aria-labelledby="menu_modal_label" aria-hidden="true">
-				<!-- modal content-->
-				<div class="modal_content col-xs-9">
-					<!-- modal header -->
-					<div class="modal_group">
-						<div class="modal_header">
-							<button type="button" class="modal_btn">
-								<p class="login_btn">로그인</p>
-							</button>
-							<button type="button" class="modal_btn" id="go_to_join">
-								<p class="join_btn">회원가입</p>
-							</button>
-						</div>
-						<!-- modal header end-->
-
-						<!-- modal body-->
-						<div class="modal_body">
-							<div class="sitter_search">
-								<a href="/ezen-android2020-2/search/sitter_search.html">
-									<img src="/ezen-android2020-2/img/index-sittersearch.svg" />
-									<p>맘시터 찾기</p>
-								</a>
-							</div>
-
-							<div class="job_search">
-								<a href="#">
-									<img src="/ezen-android2020-2/img/index-jobsearch.svg" />
-									<p>일자리 찾기</p>
-								</a>
-							</div>
-						</div>
-					</div>
-					<!-- modal body end-->
-					<div class="divider"></div>
-					<!-- modal footer -->
-					<div class="modal_footer modal_group">
-						<a href="#">
-							<p>이용권 / 지원권 구매</p>
-						</a>
-						<a href="#">
-							<p>서비스 소개</p>
-						</a>
-						<a href="#">
-							<p>공지사항</p>
-						</a>
-						<a href="#">
-							<p>고객센터</p>
-						</a>
-					</div>
-
-					<!-- modal footer end -->
-				</div>
-				<!-- modal content end-->
-			</div>
-			<!-- modal end -->
+			<div id="menu"></div> <!-- 헤더영역 load함수 -->
                 <div class="col-xs-12 nav">
                     <li>
                         <a href="/ezen-android2020-2/customer/customer_center.html">맘시터</a>
@@ -221,5 +139,10 @@
         <!-- Javascript -->
 		<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
 		<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		$(function() {
+			$("#menu").load("../index_header.html");
+		});
+		</script>
 	</body>
 </html>
