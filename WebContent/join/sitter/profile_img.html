@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
     <!--join sitter 참조-->
     <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_sitter.css" />
+    <!-- 아이콘 사용 -->
+    <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script>
 
     <style type="text/css">
         .what_want span {
@@ -40,6 +42,71 @@
 </head>
 
 <body>
+    <!--modal-->
+    <div id="help_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="help_moda_Label"
+        aria-hidden="true">
+        <!--modal dialog-->
+        <div class="modal-dialog">
+            <!--modal content-->
+            <div class="modal-content">
+                <!--제목-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel"> 부모님이 좋아하는 프로필 사진 올리는 방법!</h4>
+                </div>
+                <!--내용-->
+                <div class="modal-body">
+                    <div class="prof_desc">
+                        <img src="/ezen-android2020-2/join/img/ex1.jpg"></img>
+                        <div class="prof_guide_desc">
+                            <i class="far fa-circle"></i><br>
+                            <div class="age_desc">본인의 얼굴 정면이<br>나온 모습</div>
+                        </div>
+                    </div>
+                    <div class="prof_desc">
+                        <img src="/ezen-android2020-2/join/img/ex2.jpg">
+                        <div class="prof_guide_desc">
+                            <i class="fas fa-times"></i><br>
+                            <div class="age_desc">이모티콘이<br>포함된 사진</div>
+                        </div>
+                    </div>
+                    <div class="prof_desc">
+                        <img src="/ezen-android2020-2/join/img/ex3.jpg">
+                        <div class="prof_guide_desc">
+                            <i class="fas fa-times"></i>
+                            <div class="age_desc">얼굴이<br>가려진 경우</div>
+                        </div>
+                    </div>
+                    <div class="prof_desc">
+                        <img src="/ezen-android2020-2/join/img/ex4.jpg">
+                        <div class="prof_guide_desc">
+                            <i class="fas fa-times"></i>
+                            <div class="age_desc">여러 명이<br>한께 찍은 경우</div>
+                        </div>
+                    </div>
+                    <div class="prof_desc">
+                        <img src="/ezen-android2020-2/join/img/ex5.jpg">
+                        <div class="prof_guide_desc">
+                            <i class="fas fa-times"></i>
+                            <div class="age_desc">먼 거리에서<br>찍은 경우</div>
+                        </div>
+                    </div>
+                    <div class="prof_desc">
+                        <img src="/ezen-android2020-2/join/img/ex6.jpg">
+                        <div class="prof_guide_desc">
+                            <i class="fas fa-times"></i>
+                            <div class="age_desc">인물 식별이<br>어려울 경우</div>
+                        </div>
+                    </div>
+                    <p class="otehr_desc">이 외에도 본인이 아닌 경우, 썬글라스를 착용한 경우 등 본인 식별이 어려운 사진을 올리면 부모의 선택을 받지 못할 수도 있습니다.</p>
+                </div>
+            </div>
+            <!--end modal content -->
+        </div>
+        <!--end modal dialog-->
+    </div>
+    <!--end modal-->
+    <!--화면 영역-->
     <div id="prof_img" class="container">
         <div class="col-xs-12">
             <!-- xs-12로 모바일 맞춤 -->
@@ -63,8 +130,8 @@
                 </div>
                 <p>내 사진을 올리면 부모회원의<br>
                     선택을 <span class="select_text">5배 더 많이</span> 받을 수 있습니다.</p>
-
-                <a href="#file"><button class="next_btn">지금 올리기</button></a>
+                <a data-toggle="modal" href="#help_modal"><button class="guide_prof">좋은 프로필 사진 올리는 방법!</button></a>
+                <button class="next_btn">지금 올리기</button>
                 <a href="introduce.html"><button class="next_btn_later">나중에 하기</button></a>
             </div>
 
@@ -74,6 +141,17 @@
     <!-- Javascript -->
     <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.next_btn').click(function (e) {
+                e.preventDefault();
+                $('#file').click();
+
+            });
+
+        });
+    </script>
+
 </body>
 
 </html>

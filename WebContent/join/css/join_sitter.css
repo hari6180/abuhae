@@ -266,6 +266,55 @@ input[type="radio"] + label:after {
   font-weight: 700;
 }
 
+#help_modal h4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+#help_modal img {
+  width: 146px;
+  height: 146px;
+  margin-right: 28px;
+}
+
+#help_modal .prof_guide_desc {
+  text-align: center;
+  width: 40%;
+}
+
+#help_modal .far {
+  font-size: 3em;
+  color: green;
+  margin-bottom: 8px;
+}
+
+#help_modal .fas {
+  font-size: 3em;
+  color: red;
+  margin-bottom: 8px;
+}
+
+#help_modal .age_desc {
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+#help_modal .prof_desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+}
+
+#help_modal .otehr_desc {
+  font-size: 0.8em;
+  font-weight: 600;
+  color: #007e62;
+  background-color: #e9f2f1;
+  padding: 25px 23px 22px;
+  margin: 0;
+}
+
 .help_box {
   margin: 30px 0;
   align-items: center;
@@ -329,6 +378,111 @@ input[type="radio"] + label:after {
   font-size: 0.75em;
   font-weight: 600;
   color: #777;
+}
+
+#other_introduce_modal {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+#other_introduce_modal .modal_header {
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  padding: 10px 10px;
+  z-index: 1;
+  height: 60px;
+}
+
+#other_introduce_modal .modal_header h2 {
+  font-size: 1.25em;
+  color: #2b2b2b;
+  font-weight: bold;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  line-height: 1.375;
+  width: 100%;
+  text-align: center;
+}
+
+#other_introduce_modal .close {
+  opacity: 1;
+  padding: 12px;
+}
+
+#other_introduce_modal .modal_content {
+  margin-top: 60px;
+  padding: 5px 0 100px;
+  background-color: #e8e8e8;
+}
+
+#other_introduce_modal .intro_text {
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #9e9e9e;
+  text-align: center;
+  margin: 20px auto 12px;
+}
+
+#other_introduce_modal .intro_ex_box {
+  padding: 15px 25px;
+  margin: 7px 12px;
+  background-color: #fff;
+}
+
+#other_introduce_modal .intro_ex_title {
+  display: flex;
+  align-items: center;
+}
+
+#other_introduce_modal .intro_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#other_introduce_modal .img_cir {
+  width: 52px;
+  height: 52px;
+  margin-right: 13px;
+  margin-top: 7px;
+  border-radius: 70%;
+  overflow: hidden;
+}
+
+#other_introduce_modal .intro_ex_title strong {
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+#other_introduce_modal .intro_ex_title span {
+  font-size: 0.75em;
+  font-weight: 500;
+}
+
+#other_introduce_modal .side_bar {
+  border-left: 1px solid #d0d0d0;
+  margin: 0 6px;
+  display: inline-block;
+  height: 10px;
+}
+
+#other_introduce_modal .intro_ex_desc {
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #747474;
+  line-height: 1.64;
+  margin: 10px 0;
+}
+
+#other_introduce_modal .highlight {
+  background-color: #fff597;
+  color: #000;
 }
 
 /*end modal--------------------------------------------*/
@@ -415,6 +569,11 @@ input[type="radio"] + label:after {
   align-items: center;
 }
 
+#location .location_wrap {
+  height: 65vh;
+  overflow: hidden;
+}
+
 #location .location_title {
   width: 100%;
   display: flex;
@@ -442,7 +601,7 @@ input[type="radio"] + label:after {
 }
 #location .location_box {
   overflow: hidden;
-  height: 65vh;
+  height: 77%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -664,6 +823,7 @@ input[type="checkbox"]:checked + label:after {
   color: #646464;
   text-align: center;
   font-weight: 600;
+  margin-bottom: 70px;
 }
 
 #prof_img .upload_prof {
@@ -703,7 +863,24 @@ input[type="checkbox"]:checked + label:after {
 }
 
 #prof_img .next_btn {
-  margin-bottom: 5px;
+  margin: 5px 0;
+}
+
+#prof_img .guide_prof {
+  margin: 14px 12px;
+  width: calc(100% - 24px);
+  height: 36px;
+  color: #ff4300;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 0.9em;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+#prof_img .guide_prof:active {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* join/sitter/introduce.html------------------------------------------------------------------- */
