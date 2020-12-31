@@ -237,16 +237,74 @@
                                         <div class="user_info_p user_phone">
                                             <h5>가입한 휴대폰 번호</h5>
                                             <p>01012345678</p>
-                                            <button type="button">수정하기</button>
+                                            <button type="button"><a data-toggle="modal" href="#upd_phonenumber">수정하기</a></button>
                                         </div>
                                         <div class="user_info_p user_email">
                                             <h5>가입한 이메일</h5>
                                             <p>KoreanJiwoo@google.com</p>
-                                            <button type="button">수정하기</button>
+                                            <button type="button"><a data-toggle="modal" href="#upd_email">수정하기</a></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- 휴대폰번호 수정 modal -->
+                            <div id="upd_phonenumber" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="modal_label1" aria-hidden="true">
+                                <!-- modal dialog -->
+                                <div class="modal-dialog">
+                                    <!-- modal content -->
+                                    <div class="modal-content">
+                                        <!-- 제목 -->
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="padding: 10px 0;">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                            <h4 class="modal-title" id="modal_label1" style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+                                                    휴대폰 번호 수정하기
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body"">
+                                            <form action="#">
+                                                <label for="new_phonenumber">새로운 휴대폰 번호</label>
+                                                <input type="text" name="new_phonenumber" id="new_phonenumber" placeholder="새로운 휴대폰 번호를 입력하세요." 
+                                                style="width: 100%; line-height: 36px; padding: 0 20px; border: 0; border: 2px solid #ccc;">
+                                                <button class="rev_no_btn" type="submit" style="width: 100%; margin-top: 20px; 
+                                                background-color: rgb(34, 172, 135); border: 0; height: 30px; border-radius: 5px; color: #ffffff;">저장하기</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--// 후기작성 modal end -->
+                            <!-- 가입한 이메일 수정 modal -->
+                            <div id="upd_email" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="modal_label" aria-hidden="true">
+                                <!-- modal dialog -->
+                                <div class="modal-dialog">
+                                    <!-- modal content -->
+                                    <div class="modal-content">
+                                        <!-- 제목 -->
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="padding: 10px 0;">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                            <h4 class="modal-title" id="modalLabel" style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+                                                    이메일 수정하기
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body"">
+                                            <form action="#">
+                                                <label for="new_email">새로운 이메일</label>
+                                                <input type="text" name="new_email" id="new_email" placeholder="새로운 이메일을 입력하세요." 
+                                                style="width: 100%; line-height: 36px; padding: 0 20px; border: 0; border: 2px solid #ccc;">
+                                                <button class="rev_no_btn" type="submit" style="width: 100%; margin-top: 20px; 
+                                                background-color: rgb(34, 172, 135); border: 0; height: 30px; border-radius: 5px; color: #ffffff;">저장하기</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--// 후기작성 modal end -->
                         </section>
 
                         <!-- 두번째 항목 -->
@@ -262,15 +320,8 @@
                                         </li>
                                         <hr/>
                                         <li>
-                                            <a class="account_ft_btn" href="change_pw.html">
+                                            <a class="account_ft_btn" href="leave_abu.html">
                                                 <p>회원탈퇴 신청</p>
-                                                <i class="fas fa-angle-right"></i>
-                                            </a>
-                                        </li>
-                                        <hr/>
-                                        <li>
-                                            <a class="account_ft_btn" href="change_pw.html">
-                                                <p>맘시터 서비스 이용 동의</p>
                                                 <i class="fas fa-angle-right"></i>
                                             </a>
                                         </li>

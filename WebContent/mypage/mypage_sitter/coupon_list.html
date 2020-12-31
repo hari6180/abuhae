@@ -85,6 +85,30 @@
             background-color: #eee;
             min-height: 400px;
             padding: 20px;
+            margin-top: 20px;
+        }
+
+        .coupon1 {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #fff;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        .coupon1 a button {
+            width: 70px;
+            height: 25px;
+            border: 0;
+            border-radius: 15px;
+            background-color: #ff7000;
+            color: #fff;
+        }
+
+        /** for modal */
+        .fund_caution {
+            margin-top: 10px;
         }
        
 		</style>
@@ -101,7 +125,7 @@
                                 <a href="sitter_mypage.html">
                                     <i class="fas fa-times"></i>
                                 </a>
-                                <h3 class="center-block">내 쿠폰함 <span style="color: #ff7000;">0장</span></h3>
+                                <h3 class="center-block">내 쿠폰함 <span style="color: #ff7000;">1장</span></h3>
                             </div>
                         </div>
                     </header>
@@ -110,11 +134,54 @@
                     <section class="coupon_precaution">
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="#">
+                                <a data-toggle="modal" href="#caution_coupon">
                                     <i class="fas fa-exclamation-circle"></i>
                                     쿠폰 유의 사항을 확인해 주세요
                                     <i class="fas fa-angle-right"></i>
                                 </a>
+                            </div>
+                        </div>
+                        <!-- 쿠폰유의사항 모달 -->
+                        <div id="caution_coupon" class="modal fade" tabindex="-1" role="dialog"
+                        aria-labelledby="modal_label" aria-hidden="true">
+                            <!-- modal dialog -->
+                            <div class="modal-dialog">
+                                <!-- modal content -->
+                                <div class="modal-content">
+                                    <!-- 제목 -->
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="padding: 10px 0;">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                        <h4 class="modal-title" id="modalLabel" style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+                                            적립금/쿠폰 유의사항
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body" style="color: #838383;">
+                                        <h5 style="font-weight: bold;">적립금 유의사항</h5>
+                                        <br/>
+                                        <ul style="list-style: outside; margin-left: 20px;">
+                                            <li class="fund_caution">적립금은 이용권/프리미엄 지원권 결제하기에서 1,000단위로 사용하실 수 있습니다.(단, 베이직 지원권 및 맘시터 안전 보험은 적립금을 적용할 수 없습니다.)</li>
+                                            <li class="fund_caution">이용권/프리미엄 지원권 구매시 쿠폰 또는 적립금을 사용하여 할인을 받더라도 최소 1,000원 이상은 결제하셔야 합니다.</li>
+                                            <li class="fund_caution">적립금 유효기간은 2년이며, 유효기간이 지나면 해당 적립금은 자동 소멸됩니다.</li>
+                                            <li class="fund_caution">적립금 사용시, 유효기간이 가장 적게 남은 적립금부터 자동으로 사용됩니다.</li>
+                                            <li class="fund_caution">이용권/프리미엄 지원권 환불 시 사용한 적립금은 재적립되지 않으며 적립금/쿠폰 금액을 제외한 금액만 환불 가능합니다.</li>
+                                            <li class="fund_caution">만료일 기준 6개월이 지난 적립금은 내역에서 삭제됩니다.</li>
+                                            <li class="fund_caution">회원탈퇴시, 보유한 적립금은 자동 소멸됩니다.</li>
+                                            <li class="fund_caution">부정한 방법으로 적립금을 사용할 경우 해당 결제건 전체가 취소(직권취소)될 수 있으며, 재가입 불가 회원탈퇴 처리될 수 있습니다.</li>
+                                        </ul>
+                                        <br/>
+                                        <h5 style="font-weight: bold;">쿠폰사용 유의사항</h5>
+                                        <br/>
+                                        <ul style="list-style: outside; margin-left: 20px;">
+                                            <li class="fund_caution">쿠폰은 이용권/프리미엄 지원권 결제하기에서 사용하실 수 있습니다.(단, 베이직 지원권 및 맘시터 안전 보험은 쿠폰을 적용할 수 없습니다.)</li>
+                                            <li class="fund_caution">모든 쿠폰은 중복사용이 불가하며 결제건당 1장만 사용할 수 있습니다.</li>
+                                            <li class="fund_caution">이용권/프리미엄 지원권 환불 시 사용한 쿠폰은 재발급되지 않으며, 적립금/쿠폰 금액을 제외한 금액만 환불 가능합니다.</li>
+                                            <li class="fund_caution">부정한 방법으로 쿠폰을 사용할 경우 해당 결제건 전체가 취소(직권취소)될 수 있으며, 재가입 불가 회원탈퇴 처리될 수 있습니다.</li>
+                                            <li class="fund_caution">만료일 기준 6개월이 지난 쿠폰은 내역에서 삭제됩니다.</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -122,7 +189,15 @@
                     <section class="coupon_available">
                         <div class="row">
                             <div class="col-xs-12">
-                                사용가능한 쿠폰이 없습니다.
+                                <div class="coupon1">
+                                    <div class="coupon_cont">
+                                        <h4>5000원 할인권</h4>
+                                        <p>2020.12.20 ~ 2021.1.30</p>
+                                    </div>
+                                    <a href="#" class="use_btn">
+                                        <button type="button">사용</button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </section>
