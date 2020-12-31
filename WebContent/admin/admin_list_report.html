@@ -42,7 +42,6 @@ ul, ol {
 .middle {
 	padding-top: 45px;
 }
-
 /* 게시판 크기 */
 .text_box {
 	height: 500px;
@@ -50,12 +49,6 @@ ul, ol {
 }
 #connect {
 	float: right;
-}
-.input_search {
-    float: right;
-    width: 0;
-    padding-right: 184px;
-    margin-bottom: 10px;
 }
 .button2 {
     display: flex;
@@ -95,27 +88,27 @@ ul, ol {
 			<a href="/ezen-android2020-2/admin/admin_main.html" class="list-group-item">회원관리</a>
 			 <a href="/ezen-android2020-2/admin/admin_help.html" class="list-group-item">구인구직 관리</a>
 			 <a href="#" class="list-group-item active">게시판 관리</a>
-			 <a href="#" class="list-group-item">인증 관리</a>
+			 <a href="/ezen-android2020-2/admin/admin_adduction.html" class="list-group-item">인증 관리</a>
 			 <a href="#" class="list-group-item">통계 관리</a>
 		</div>
 <div class="col-md-10 middle">
 			<div class="col-md-12 text_box">
 				<h3>게시판 관리</h3>
 				<div class="col-md-12 middle_box">
-			<button onclick="#" class="btn">후기관리</button>
-			<button onclick="#" class="btn btn-info">신고내역 관리</button>
-			<button onclick="#" class="btn">공지사항</button>
-			<button onclick="#" class="btn">FAQ</button>
+			<button onclick="window.location.href='http://localhost:8080/ezen-android2020-2/admin/admin_list.html'" class="btn">후기관리</button>
+			<button onclick="window.location.href='http://localhost:8080/ezen-android2020-2/admin/admin_list_report.html'" class="btn btn-info">신고내역 관리</button>
+			<button onclick="window.location.href='http://localhost:8080/ezen-android2020-2/admin/admin_list_notice.html'" class="btn">공지사항</button>
+			<button onclick="window.location.href='http://localhost:8080/ezen-android2020-2/admin/admin_list_faq.html'" class="btn">FAQ</button>
 		</div>
 				<table class="table table-bordered table-hover">
 					<thead>
 						<tr>
-							<th class="text-center"><input type="checkbox" onclick="allcheck(this)"></th>
-							<th class="text-center">No.</th>
-							<th class="text-center">이름</th>
-							<th class="text-center">신고 유형</th>
-							<th class="text-center">신고 내용</th>
-							<th class="text-center">처리여부</th>
+							<th class="text-center col-md-1"><input type="checkbox" onclick="allcheck(this)"></th>
+							<th class="text-center col-md-1">No.</th>
+							<th class="text-center col-md-2">이름</th>
+							<th class="text-center col-md-2">신고 유형</th>
+							<th class="text-center col-md-5">신고 내용</th>
+							<th class="text-center col-md-1">처리여부</th>
 						</tr>
 					</thead>
 					<tbody>
