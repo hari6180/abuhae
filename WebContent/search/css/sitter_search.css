@@ -5,6 +5,12 @@ html {
   padding: 0;
 }
 
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -23,9 +29,10 @@ a:hover {
   width: 100%;
 }
 
-a {
-  margin: 0;
-  padding: 0;
+button {
+  border: 0;
+  outline: 0;
+  text-decoration: none;
 }
 
 /* 전체 설정 end----------------------------------------------------------*/
@@ -121,20 +128,6 @@ a {
 .activity_type_wrap input[type="checkbox"]:checked + label:after {
   display: none;
 }
-
-/**
-.activity_type_btn {
-  color: #434343;
-  padding: 10px 14px;
-  border-radius: 16px;
-  border: 1px solid #ddd;
-  margin: 5px 6px 10px 0;
-  display: inline-block;
-  font-size: 0.9em;
-  font-weight: 400;
-  line-height: 12px;
-  text-align: center;
-}*/
 
 .tab_index {
   display: inline-block;
@@ -366,6 +359,19 @@ a {
   background: none;
 }
 
+.swal-button {
+  background-color: #ff7000;
+}
+
+#modal_ok {
+  border-color: #fff;
+  color: #ff7000;
+  font-weight: bold;
+  height: 50px;
+  width: 160px;
+  border-right-color: 1px solid #ccc;
+}
+
 .sitter_item_group .location_group {
   display: flex;
   flex-direction: row;
@@ -554,17 +560,6 @@ a {
 }
 
 /* modal ---------------------------------------------------------- */
-
-/*초기 설정*/
-button {
-  border: 0;
-  outline: 0;
-  text-decoration: none;
-}
-
-a {
-  text-decoration: none;
-}
 
 /* activity_type modal ---------------------------------------------------------- */
 
@@ -1133,4 +1128,4 @@ input[type="checkbox"]:checked + label:after {
 .unselect_act_type {
   display: none !important;
 }
-/*end 버튼 클릭시 적용될 클래스-------------------------------------*/
+/* 버튼 클릭시 적용될 클래스 end-------------------------------------*/

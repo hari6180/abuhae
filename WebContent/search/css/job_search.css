@@ -5,6 +5,12 @@ html {
   padding: 0;
 }
 
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -23,9 +29,10 @@ a:hover {
   width: 100%;
 }
 
-a {
-  margin: 0;
-  padding: 0;
+button {
+  border: 0;
+  outline: 0;
+  text-decoration: none;
 }
 
 /* 전체 설정 end----------------------------------------------------------*/
@@ -44,6 +51,9 @@ a {
 }
 
 .location_filter div {
+  display: flex;
+  align-items: center;
+  justify-content: start;
   border: 1px solid rgb(220, 220, 220);
   margin: auto;
   padding: 12px 0px;
@@ -62,7 +72,6 @@ a {
   flex-flow: row wrap;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 15px;
 }
 
 .location_filter i {
@@ -70,6 +79,7 @@ a {
   margin-right: 13px;
   color: #999;
   display: inline-block;
+  margin-left: 15px;
 }
 
 .location_filter p {
@@ -148,94 +158,58 @@ a {
 
 /* order_selector_group end ----------------------------------------------------------*/
 
-/* sitter_item_group  ----------------------------------------------------------*/
+/* job_item_group  ----------------------------------------------------------*/
 
-/* header ----------------------------------------*/
-.sitter_item_group {
-  margin: 9px;
+.job_item_group {
   border-radius: 3px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(170, 170, 170, 0.5) 0px 0px 3px 0px;
-  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.07);
+  padding: 15px;
   position: relative;
-  z-index: 1;
+  margin: 9px;
 }
-
-.item_header {
-  font-size: 15px;
-  font-weight: bold;
-  line-height: 1.33;
-  color: rgb(59, 59, 59);
-  margin: 6px 0px 11px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding-left: 5px;
-  display: flex;
-  align-items: center;
-}
-
-.item_header img {
-  border-style: none;
-  margin-right: 5px;
-  width: 23px;
-  height: 20px;
-}
-
-.item_header .cert_text {
-  color: #000;
-  font-size: 1.5em;
-}
-
-.sitter_item_group .divider {
-  margin: 0;
-  padding: 0;
-}
-/* header end----------------------------------------*/
-
 /* body ----------------------------------------*/
 
 .item_body {
+  position: relative;
   display: flex;
-  flex-flow: row nowrap;
-  padding: 19px 0px 8px;
+  flex-wrap: nowrap;
+  margin-bottom: 15px;
 }
 
 .profile_img_group {
-  flex: 1 1 0%;
-  width: 60px;
-  max-width: 120px;
-  display: inline-block;
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   vertical-align: top;
   text-align: center;
+  width: 25%;
+  max-width: 100px;
   position: relative;
 }
 
-.profile_img_group img,
-.profile_img_group div {
+.profile_img_group img {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 5px;
-}
-
-.profile_img_group img {
-  width: 70px;
-  height: 70px;
+  width: 64px;
+  height: 64px;
+  margin-top: 1px;
+  margin-bottom: 5px;
   border-radius: 90px;
 }
 
-.responsive_rate_group {
-  margin-top: 10px;
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  padding: 5px 2px;
+.applicant_group {
   width: 70px;
+  padding: 5px 2px;
+  margin-bottom: 0 !important;
+  background-color: #f6f6f6;
   border-radius: 15px;
-  font-size: 11px;
-  font-weight: 400;
-  background: rgb(255, 112, 0);
-  color: rgb(255, 255, 255);
+  color: #666;
+  font-size: 0.8em;
+  font-weight: bold;
 }
 
 .profile_info_group {
@@ -243,7 +217,7 @@ a {
   display: inline-block;
   vertical-align: top;
   position: relative;
-  margin-left: 10px;
+  margin-left: 5%;
   width: calc(100% - 100px);
 }
 
@@ -263,17 +237,109 @@ a {
   align-items: center;
 }
 
-.user_name {
-  color: rgb(0, 0, 0);
+.content_row .kids_count {
+  margin-right: 5px;
   font-size: 1em;
   font-weight: bold;
-  margin-right: 5px;
+  color: #ff7000;
 }
 
 .last_update {
-  color: rgb(89, 89, 89);
-  font-size: 0.75em;
+  font-size: 1em;
+  font-weight: bold;
+  color: #585858;
+}
+
+.find_text {
+  color: #3b3b3b;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.job_item_group .location,
+.user_name {
+  font-size: 1em;
   font-weight: 400;
+  color: #585858;
+}
+
+.start_date {
+  color: #bdbdbd;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.fa-won-sign {
+  font-size: 0.5em;
+  margin-right: 5px;
+  opacity: 0.5;
+  background-color: #ffd6b6;
+  border-radius: 30px;
+}
+
+.wanted_pay {
+  color: #585858;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.text_sep {
+  width: 1px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #ccc;
+}
+
+.divider {
+  margin: 0 0 0.5em 0;
+}
+
+/* body end ----------------------------------------*/
+/* footer ----------------------------------------*/
+.item_footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.time_info_group {
+  display: flex;
+  flex: 1 1 0%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.time_text_group {
+  overflow: visible;
+  flex-basis: 25%;
+  justify-content: center;
+  width: 100%;
+  max-width: 100px;
+  margin-right: 20px;
+}
+
+.frequency {
+  font-size: 1em;
+  font-weight: bold;
+  color: #ff7000;
+  text-align: center;
+}
+
+.care_days_group {
+  float: left;
+}
+
+.care_days {
+  width: 23px;
+  border-radius: 1px;
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: bold;
+  line-height: 1.25;
+  margin: 0 1px;
+  padding: 3px 0;
+  text-align: center;
+  background-color: #ff7000;
+  color: #fff;
 }
 
 .jim_btn {
@@ -304,105 +370,17 @@ a {
   background: none;
 }
 
-.sitter_item_group .location_group {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 5px;
+.swal-button {
+  background-color: #ff7000;
 }
 
-.sitter_item_group .location {
-  font-size: 0.75em;
-  font-weight: 400;
-  text-align: left;
-  color: rgb(89, 89, 89);
-}
-
-.user_age,
-.wanted_pay {
-  color: rgb(89, 89, 89);
-  font-size: 0.75em;
-  font-weight: 400;
-}
-
-.text_sep {
-  width: 1px;
-  height: 10px;
-  background-color: rgb(204, 204, 204);
-  margin: 0px 7px;
-}
-
-.review_rate {
-  height: 23px;
-}
-
-.review_rate i {
-  font-size: 0.4em;
+#modal_ok {
+  border-color: #fff;
   color: #ff7000;
-}
-
-.review_count {
-  display: inline-block;
-  color: rgb(89, 89, 89);
-  font-size: 12px;
-  font-weight: 400;
-  padding-left: 5px;
-}
-
-/* body end ----------------------------------------*/
-/* footer ----------------------------------------*/
-.cert_info_group {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 12px 0px 0px 5px;
-}
-
-.cert_text_group {
-  width: 60px;
-  max-width: 120px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  flex: 1 1 0%;
-  display: inline-block;
-  vertical-align: top;
-  text-align: center;
-  position: relative;
-}
-
-.cert_label {
-  font-size: 0.7em;
-  font-weight: 400;
-  color: rgb(89, 89, 89);
-  margin-right: 5px;
-}
-
-.cert_count {
-  font-size: 0.7em;
-  font-weight: 500;
-  color: rgb(255, 112, 0);
-  margin-right: 10px;
-}
-
-.cert_info_btn_group {
-  align-items: center;
-  flex: 3 1 0%;
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-  width: calc(100% - 100px);
-}
-
-.cert_btn {
-  display: inline-block;
-  background-color: rgb(255, 241, 233);
-  border-radius: 12px;
-  color: rgb(255, 112, 0);
-  font-size: 11px;
-  font-weight: 400;
-  padding: 5px 8px;
-  margin: 0px 5px 5px 0px;
+  font-weight: bold;
+  height: 50px;
+  width: 160px;
+  border-right-color: 1px solid #ccc;
 }
 
 /* footer end ----------------------------------------*/
@@ -411,57 +389,12 @@ a {
 /* app_banner -----------------------------------------------------------*/
 
 .app_banner {
-  margin: 9px;
-  height: 144px;
+  margin: 0px auto;
+  width: calc(100% - 18px);
+  background: rgb(255, 112, 0);
+  box-sizing: border-box;
   border-radius: 3px;
-  background-color: #3a96ed;
-  box-shadow: 0 0 3px 0 hsla(0, 0%, 66.7%, 0.5);
-  overflow: hidden;
-  padding-top: 9px;
-  position: relative;
-  display: flex;
-}
-
-.banner_group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 335px;
-  margin: 0 auto;
-}
-
-.app_banner img {
-  width: 151px;
-  height: 135px;
-  margin-left: 20px;
-}
-
-.banner_text_group {
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 1.3;
-  letter-spacing: -0.2px;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.banner_btn {
-  margin-top: 8px;
-  width: 77px;
-  height: 25px;
-  border-radius: 12.5px;
-  background-color: #fff;
   text-align: center;
-  font-size: 12px;
-  font-weight: 700;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 25px;
-  letter-spacing: normal;
-  color: rgba(0, 0, 0, 0.7);
-  z-index: 1;
 }
 
 /* app_banner end -----------------------------------------------------------*/
@@ -493,33 +426,22 @@ a {
 
 /* modal ---------------------------------------------------------- */
 
-/*초기 설정*/
-button {
-  border: 0;
-  outline: 0;
-  text-decoration: none;
-}
-
-a {
-  text-decoration: none;
-}
-
 /*  sitter_search_detail_modal ---------------------------------------------------------- */
 
-#sitter_search_detail_modal {
+#job_search_detail_modal {
   width: 100%;
   height: auto;
   background-color: #fff;
 }
 
-#sitter_search_detail_modal hr {
+#job_search_detail_modal hr {
   margin: 20px 20px 20px 0px;
   height: 1px;
   border: none;
   background-color: rgb(232, 232, 232);
 }
 
-#sitter_search_detail_modal .modal_header {
+#job_search_detail_modal .modal_header {
   position: fixed;
   background-color: #fff;
   width: 100%;
@@ -531,7 +453,7 @@ a {
   z-index: 1;
 }
 
-#sitter_search_detail_modal .modal_header h2 {
+#job_search_detail_modal .modal_header h2 {
   font-size: 1.7rem;
   color: #2b2b2b;
   font-weight: bold;
@@ -541,7 +463,7 @@ a {
   line-height: 1.375;
 }
 
-#sitter_search_detail_modal .apply_btn {
+#job_search_detail_modal .apply_btn {
   background-color: #ff7000 !important;
   width: 70px;
   height: 35px;
@@ -549,17 +471,17 @@ a {
   color: #fff;
 }
 
-#sitter_search_detail_modal .close {
+#job_search_detail_modal .close {
   opacity: 1;
   padding: 12px;
 }
 
-#sitter_search_detail_modal .modal_content {
+#job_search_detail_modal .modal_content {
   margin: 70px 0;
   padding: 0 20px;
 }
 
-#sitter_search_detail_modal .modal_content h4 {
+#job_search_detail_modal .modal_content h4 {
   display: block;
   margin-block-start: 1.33em;
   margin-block-end: 1.33em;
@@ -569,39 +491,16 @@ a {
   font-size: 1.1em;
 }
 
-#sitter_search_detail_modal .modal_content .age_line {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
+/* 요일 --------------------------------------- */
 
-#sitter_search_detail_modal .modal_content .ages {
-  min-width: 0 !important;
-  max-width: 80px !important;
-  margin: 0 4px !important;
-  width: calc(25% - 8px) !important;
-  height: 88px !important;
-  text-align: center !important;
-  border-radius: 5px !important;
-}
-
-#sitter_search_detail_modal .modal_content .ages i {
-  color: #ccc;
-  font-size: 2em;
-}
-
-#sitter_search_detail_modal .modal_content .ages span {
-  color: #aaa;
-}
-#sitter_search_detail_modal .modal_content .care_day_group {
+#job_search_detail_modal .modal_content .care_day_group {
   margin: 10px 0px;
   padding: 10px 0;
   display: flex;
   justify-content: space-around;
 }
 
-#sitter_search_detail_modal .modal_content .care_day {
+#job_search_detail_modal .modal_content .care_day {
   border: 1px solid rgb(211, 211, 211);
   width: 38px;
   height: 38px;
@@ -614,13 +513,17 @@ a {
   padding: 0;
 }
 
-#sitter_search_detail_modal .modal_content .time_range_group {
+/* 요일 end--------------------------------------- */
+
+/* 시간대 --------------------------------------- */
+
+#job_search_detail_modal .modal_content .time_range_group {
   display: flex;
   justify-content: center;
   margin: 10 0;
 }
 
-#sitter_search_detail_modal .modal_content .time_range {
+#job_search_detail_modal .modal_content .time_range {
   border: 1px solid rgb(222, 222, 222);
   margin: 0px;
   padding: 0px;
@@ -632,64 +535,101 @@ a {
   width: 100%;
 }
 
-#sitter_search_detail_modal .modal_content .sitter_type_group {
-  display: flex;
-  flex-wrap: nowrap;
-}
+/* 시간대 end --------------------------------------- */
 
-#sitter_search_detail_modal .modal_content .sitter_type {
-  width: calc(50% - 10px);
-  margin: 7px 5px;
-  display: inline-block;
-  padding: 0px;
-  height: 36px;
-  line-height: 36px;
-  min-width: 0px;
-  color: rgba(0, 0, 0, 0.87);
-  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  border-radius: 100px;
-  background-color: rgb(245, 245, 245);
-  text-align: left;
-  width: 95%;
-}
-#sitter_search_detail_modal .modal_content .sitter_type div {
+/* 아이 나이 --------------------------------------- */
+
+#job_search_detail_modal .modal_content .age_line {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 
-#sitter_search_detail_modal .modal_content .fa-circle {
-  color: #fff;
-  font-size: 0.7em;
-  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  vertical-align: middle;
-  margin-left: 12px;
-  margin-right: 0px;
+#job_search_detail_modal .modal_content .ages {
+  min-width: 0 !important;
+  max-width: 80px !important;
+  margin: 0 4px !important;
+  width: calc(25% - 8px) !important;
+  height: 88px !important;
+  text-align: center !important;
+  border-radius: 5px !important;
 }
 
-#sitter_search_detail_modal .modal_content .sitter_type_content {
-  font-size: 0.8em;
+#job_search_detail_modal .modal_content .ages i {
+  color: #ccc;
+  font-size: 2em;
+}
+
+#job_search_detail_modal .modal_content .ages span {
+  color: #aaa;
+}
+
+/* 아이 나이 end--------------------------------------- */
+
+#job_search_detail_modal .care_type_group div {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#job_search_detail_modal .activity_type_btn {
+  width: calc(33% - 10px);
+  margin: 5px;
+  background-color: #f5f5f5;
+  color: #434343;
+  padding: 10px 0;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
   text-align: center;
-  margin-left: 10px;
-  font-weight: bold;
-}
-#sitter_search_detail_modal .modal_content .sitter_insurance {
-  margin: 15px 0 23px 4px;
+  display: inline-block;
 }
 
-#sitter_search_detail_modal .modal_content .sitter_age {
-  margin-bottom: 50px;
+#job_search_detail_modal .pay_range {
+  margin-right: 10px;
 }
 
-#sitter_search_detail_modal .modal_content .want_age_box {
+#job_search_detail_modal #min_pay,
+#job_search_detail_modal #max_pay {
+  width: 90px;
+  border: 1px solid #ff7000;
+  border-radius: 3px;
+}
+
+#job_search_detail_modal #min_pay:focus,
+#job_search_detail_modal #max_pay:focus {
+  width: 90px;
+  border: 3px solid #ff7000;
+  background-color: #fff7f1;
+}
+
+#job_search_detail_modal .want_pay_wrap div {
   display: flex;
   justify-content: space-around;
 }
 
-#sitter_search_detail_modal .modal_content .want_age_box label {
-  color: #aaa;
+#job_search_detail_modal .kids_box {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
 }
 
-#sitter_search_detail_modal .modal_footer {
+#job_search_detail_modal .kids_box div {
+  position: relative;
+  margin-bottom: 15px;
+  border: 2px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  width: 33%;
+}
+
+#job_search_detail_modal .kids_box div label {
+  margin-left: 15px;
+}
+
+#job_search_detail_modal .modal_footer {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -698,7 +638,29 @@ a {
   border-top: 1px solid #e3e3e3;
 }
 
-#sitter_search_detail_modal .reset {
+#job_search_detail_modal input[type="radio"] {
+  display: none;
+}
+
+.box-radio-input label {
+  display: flex;
+  align-items: center;
+}
+
+.box-radio-input .fa-circle {
+  color: #ccc;
+  font-size: 1.2em;
+  margin-right: 10px;
+}
+
+.box-radio-input input[type="radio"]:checked + .fa-circle {
+  border: 3px solid #ff7700;
+  border-radius: 10px;
+  background: #ff7700;
+  color: #fff;
+}
+
+#job_search_detail_modal .reset {
   display: flex;
   justify-content: left;
   align-items: center;
@@ -707,12 +669,12 @@ a {
   background: none;
   z-index: 15;
 }
-#sitter_search_detail_modal .fa-undo-alt {
+#job_search_detail_modal .fa-undo-alt {
   padding-left: 25px;
   color: rgb(186, 186, 186);
 }
 
-#sitter_search_detail_modal .modal_footer h2 {
+#job_search_detail_modal .modal_footer h2 {
   margin: 0 0 0 5px;
   font-size: 14.4px;
   font-size: 1em;
@@ -720,7 +682,7 @@ a {
   color: #727272;
 }
 
-/*  sitter_search_detail_modal end ---------------------------------------------------------- */
+/*  job_search_detail_modal end ---------------------------------------------------------- */
 
 /*  location_modal ---------------------------------------------------------- */
 
@@ -817,51 +779,6 @@ a {
 
 /*  location_modal end ---------------------------------------------------------- */
 
-/*check box 커스터마이징 by suna 201216-------------------------------------------------*/
-
-input[type="checkbox"] + label {
-  display: inline-block;
-  position: relative;
-  padding-left: 26px;
-  cursor: pointer;
-}
-
-input[type="checkbox"] {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-input[type="checkbox"] + label:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 3px;
-  width: 18px;
-  height: 18px;
-  text-align: center;
-  background: #fff;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-input[type="checkbox"]:checked + label:after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 0;
-  width: 18px;
-  height: 18px;
-  background-color: #ff7000;
-}
-
-/*end check box 커스터마이징 by suna 201216--------------------------------------------*/
-
 /* modal end ---------------------------------------------------------- */
 
 /*버튼 클릭시 적용될 클래스-------------------------------------*/
@@ -892,4 +809,10 @@ input[type="checkbox"]:checked + label:after {
 .unselect_act_type {
   display: none !important;
 }
-/*end 버튼 클릭시 적용될 클래스-------------------------------------*/
+
+.select_act_btn {
+  background-color: #ff7928 !important;
+  color: #fff !important;
+  display: unset !important;
+}
+/*버튼 클릭시 적용될 클래스 end-------------------------------------*/

@@ -10,17 +10,17 @@
     <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
     <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="/webcontent/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/webcontent/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
     <!-- fontawesome(글리피콘) 적용 -->
     <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
     <!-- animaition 적용-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
     <!-- header css -->
-    <link rel="stylesheet" type="text/css" href="/webcontent/assets/css/index_header.css" />
-    <!-- sitter_search.css-->
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/index_header.css" />
+    <!-- job_search.css-->
     <link rel="stylesheet" type="text/css" href="css/job_search.css" />
 
     <!-- sweetalert 사용 -->
@@ -238,7 +238,7 @@
               <!-- location modal end -->
 
               <!-- detail search modal -->
-              <div id="sitter_search_detail_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="sitter_search_detail_modal_Label" aria-hidden="true">
+              <div id="job_search_detail_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="job_search_detail_modal_Label" aria-hidden="true">
                 <div class="modal_header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times"></i>
@@ -311,7 +311,10 @@
                   <!-- 희망 시급 -->
                   <div class="want_pay_wrap">
                     <h4 class="want_pay_title">희망시급</h4>
-                    <input type="range" />
+                    <div>
+                      <div><label for="min_pay" class="pay_range">최소</label><input type="number" id="min_pay" /></div>
+                      <div><label for="max_pay" class="pay_range">최대</label><input type="number" id="max_pay" /></div>
+                    </div>
                   </div>
                   <hr />
                   <!-- 돌봄 종류 -->
@@ -319,48 +322,42 @@
                     <h4>돌봄 종류</h4>
                     <div class="care_type_group">
                       <div>
-                        <input type="checkbox" id="act_type1" class="activity_type_btn" value="innerplay" />
-                        <label for="act_type1" class="act_label">실내놀이 </label>
-                        <input type="checkbox" id="act_type2" class="activity_type_btn" value="guide" />
-                        <label for="act_type2" class="act_label">등하원 돕기 </label>
-                        <input type="checkbox" id="act_type3" class="activity_type_btn" value="read" />
-                        <label for="act_type3" class="act_label">책 읽기 </label>
-                        <input type="checkbox" id="act_type4" class="activity_type_btn" value="outside" />
-                        <label for="act_type4" class="act_label">야외활동 </label>
-                        <input type="checkbox" id="act_type5" class="activity_type_btn" value="korean" />
-                        <label for="act_type5" class="act_label">한글놀이 </label>
-                        <input type="checkbox" id="act_type6" class="activity_type_btn" value="english" />
-                        <label for="act_type6" class="act_label">영어놀이 </label>
-                        <input type="checkbox" id="act_type7" class="activity_type_btn" value="study" />
-                        <label for="act_type7" class="act_label">학습지도 </label>
-                        <input type="checkbox" id="act_type8" class="activity_type_btn" value="sport" />
-                        <label for="act_type8" class="act_label">체육놀이 </label>
-                        <input type="checkbox" id="act_type9" class="activity_type_btn" value="simple_cleaning" />
-                        <label for="act_type9" class="act_label">간단청소 </label>
-                        <input type="checkbox" id="act_type10" class="activity_type_btn" value="eat" />
-                        <label for="act_type10" class="act_label">밥챙겨주기 </label>
-                        <input type="checkbox" id="act_type11" class="activity_type_btn" value="do_dish" />
-                        <label for="act_type11" class="act_label">간단설거지 </label>
-                        <input type="checkbox" id="act_type12" class="activity_type_btn" value="long_move_in" />
-                        <label for="act_type12" class="act_label">장기입주 </label>
-                        <input type="checkbox" id="act_type13" class="activity_type_btn" value="short_move_in" />
-                        <label for="act_type13" class="act_label">단기입주 </label>
+                        <button type="button" id="act_type1" class="activity_type_btn" value="innerplay"><i class="fas fa-check unselect_act_type"></i>실내놀이</button>
+                        <button type="button" id="act_type2" class="activity_type_btn" value="guide"><i class="fas fa-check unselect_act_type"></i>등하원돕기</button>
+                        <button type="button" id="act_type3" class="activity_type_btn" value="read"><i class="fas fa-check unselect_act_type"></i>책읽기</button>
+                        <button type="button" id="act_type4" class="activity_type_btn" value="outside"><i class="fas fa-check unselect_act_type"></i>야외활동</button>
+                        <button type="button" id="act_type5" class="activity_type_btn" value="korean"><i class="fas fa-check unselect_act_type"></i>한글놀이</button>
+                        <button type="button" id="act_type6" class="activity_type_btn" value="english"><i class="fas fa-check unselect_act_type"></i>영어놀이</button>
+                        <button type="button" id="act_type7" class="activity_type_btn" value="study"><i class="fas fa-check unselect_act_type"></i>학습지도</button>
+                        <button type="button" id="act_type8" class="activity_type_btn" value="sport"><i class="fas fa-check unselect_act_type"></i>체육놀이</button>
+                        <button type="button" id="act_type9" class="activity_type_btn" value="simple_cleaning"><i class="fas fa-check unselect_act_type"></i>간단청소</button>
+                        <button type="button" id="act_type10" class="activity_type_btn" value="eat"><i class="fas fa-check unselect_act_type"></i>밥챙겨주기</button>
+                        <button type="button" id="act_type11" class="activity_type_btn" value="do_dish"><i class="fas fa-check unselect_act_type"></i>간단설거지</button>
+                        <button type="button" id="act_type12" class="activity_type_btn" value="long_move_in"><i class="fas fa-check unselect_act_type"></i>장기입주</button>
+                        <button type="button" id="act_type13" class="activity_type_btn" value="short_move_in"><i class="fas fa-check unselect_act_type"></i>단기입주</button>
                       </div>
                     </div>
                   </div>
                   <hr />
                   <!-- 아이 수 -->
-                  <div class="sitter_age">
+                  <div class="kids_count">
                     <h4>아이 수</h4>
-                    <div class="age_range">
-                      <div class="want_age_box">
-                        <input type="radio" value="all" class="kids" id="all" /> <label for="all">무관</label> <input type="radio" value="1" class="kids" id="kid" /> <label for="kid">1명</label>
-                        <input type="radio" value="2" class="kids" id="kids" /> <label for="kids">2명</label>
+                    <div class="kids_range">
+                      <div class="kids_box">
+                        <div>
+                          <label for="all" class="box-radio-input"><input type="radio" name="kids" value="all" class="kids" id="all" /><i class="far fa-circle"></i> 무관</label>
+                        </div>
+                        <div>
+                          <label for="kid" class="box-radio-input"><input type="radio" name="kids" value="1" class="kids" id="kid" /><i class="far fa-circle"></i> 1명</label>
+                        </div>
+                        <div>
+                          <label for="kids" class="box-radio-input"><input type="radio" name="kids" value="2" class="kids" id="kids" /><i class="far fa-circle"></i> 2명</label>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!--end modal content -->
+                <!--modal content end -->
                 <!--modal footer-->
                 <div class="modal_footer">
                   <button class="reset" type="reset">
@@ -396,9 +393,10 @@
                   <div class="location_filter">
                     <a data-toggle="modal" href="#location_modal">
                       <div>
-                      <i class="fas fa-search"></i>
-                      <p>돌봄 지역을 선택해주세요</p></a
-                    ></div>
+                        <i class="fas fa-search"></i>
+                        <p>돌봄 지역을 선택해주세요</p>
+                      </div>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -419,12 +417,12 @@
                 <!-- 드롭다운 end-->
               </div>
               <!-- 카드영역 -->
-              <div class="sitter_item_group">
+              <div class="job_item_group">
                 <div class="item_body">
                   <div class="profile_img_group">
                     <img src="img/profile.jpg" />
-                    <div class="responsive_rate_group">
-                      <div class="res_text">0명 지원</div>
+                    <div class="applicant_group">
+                      <div class="applicant">0명 지원</div>
                     </div>
                   </div>
                   <div class="profile_info_group">
@@ -453,11 +451,129 @@
                 </div>
                 <hr class="divider" />
                 <div class="item_footer">
-                  <div class="cert_info_group">
-                    <div class="cert_text_group">
-                      <div class="cert_count">정기적</div>
+                  <div class="time_info_group">
+                    <div class="time_text_group">
+                      <div class="frequency">정기적</div>
                     </div>
-                    <div class="cert_info_btn_group">
+                    <div class="care_days_group">
+                      <span class="care_days">월</span>
+                      <span class="care_days">화</span>
+                      <span class="care_days">수</span>
+                      <span class="care_days">목</span>
+                      <span class="care_days">금</span>
+                      <span class="care_days">토</span>
+                      <span class="care_days">일</span>
+                    </div>
+                  </div>
+                  <div class="jim_btn">
+                    <button class="btn btn-default swapHeart">
+                      <div class="jim">
+                        <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- 카드영역 end -->
+              <!-- 카드영역 -->
+              <div class="job_item_group">
+                <div class="item_body">
+                  <div class="profile_img_group">
+                    <img src="img/profile.jpg" />
+                    <div class="applicant_group">
+                      <div class="applicant">0명 지원</div>
+                    </div>
+                  </div>
+                  <div class="profile_info_group">
+                    <div class="content_row">
+                      <div>
+                        <div class="kids_count">영아 1명</div>
+                        <div class="text_sep"></div>
+                        <div class="last_update">8분 전</div>
+                      </div>
+                    </div>
+                    <div class="content_row">
+                      <div class="find_text">실내놀이 맘시터 찾습니다.</div>
+                    </div>
+                    <div class="content_row location_group">
+                      <span class="location">성남시 분당구 </span>
+                      <div class="text_sep"></div>
+                      <span class="user_name"> 정○우</span>
+                      <div class="text_sep"></div>
+                      <span class="start_date">12/29 시작</span>
+                    </div>
+                    <div class="content_row">
+                      <i class="fas fa-won-sign"></i>
+                      <div class="wanted_pay">희망 시급 15000원</div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="divider" />
+                <div class="item_footer">
+                  <div class="time_info_group">
+                    <div class="time_text_group">
+                      <div class="frequency">정기적</div>
+                    </div>
+                    <div class="care_days_group">
+                      <span class="care_days">월</span>
+                      <span class="care_days">화</span>
+                      <span class="care_days">수</span>
+                      <span class="care_days">목</span>
+                      <span class="care_days">금</span>
+                      <span class="care_days">토</span>
+                      <span class="care_days">일</span>
+                    </div>
+                  </div>
+                  <div class="jim_btn">
+                    <button class="btn btn-default swapHeart">
+                      <div class="jim">
+                        <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- 카드영역 end -->
+              <!-- 카드영역 -->
+              <div class="job_item_group">
+                <div class="item_body">
+                  <div class="profile_img_group">
+                    <img src="img/profile.jpg" />
+                    <div class="applicant_group">
+                      <div class="applicant">0명 지원</div>
+                    </div>
+                  </div>
+                  <div class="profile_info_group">
+                    <div class="content_row">
+                      <div>
+                        <div class="kids_count">영아 1명</div>
+                        <div class="text_sep"></div>
+                        <div class="last_update">8분 전</div>
+                      </div>
+                    </div>
+                    <div class="content_row">
+                      <div class="find_text">실내놀이 맘시터 찾습니다.</div>
+                    </div>
+                    <div class="content_row location_group">
+                      <span class="location">성남시 분당구 </span>
+                      <div class="text_sep"></div>
+                      <span class="user_name"> 정○우</span>
+                      <div class="text_sep"></div>
+                      <span class="start_date">12/29 시작</span>
+                    </div>
+                    <div class="content_row">
+                      <i class="fas fa-won-sign"></i>
+                      <div class="wanted_pay">희망 시급 15000원</div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="divider" />
+                <div class="item_footer">
+                  <div class="time_info_group">
+                    <div class="time_text_group">
+                      <div class="frequency">정기적</div>
+                    </div>
+                    <div class="care_days_group">
                       <span class="care_days">월</span>
                       <span class="care_days">화</span>
                       <span class="care_days">수</span>
@@ -479,24 +595,19 @@
               <!-- 카드영역 end -->
 
               <div class="app_banner">
-                <div class="banner_group">
-                  <div>
-                    <div class="banner_text_group">
-                      <div class="banner_text">앱으로 더 빠르게</div>
-                      <div class="banner_text_bottom">
-                        <span class="banner_app_name" style="color: #ffe400">맘시터</span>
-                        <span class="banner_text">구하세요!</span>
-                      </div>
-                    </div>
-                    <div class="banner_btn">앱 설치하기</div>
-                  </div>
-                  <img src="img/s-list-1-banner-image@3x (1).png" />
-                </div>
+                <img
+                  srcset="
+                    https://momsitter-service.s3.ap-northeast-2.amazonaws.com/momsitter-app/static/public/banner/jobsearch-banner_1.png    1x,
+                    https://momsitter-service.s3.ap-northeast-2.amazonaws.com/momsitter-app/static/public/banner/jobsearch-banner_1@3x.png 2x,
+                    https://momsitter-service.s3.ap-northeast-2.amazonaws.com/momsitter-app/static/public/banner/jobsearch-banner_1@3x.png 3x
+                  "
+                  src="https://momsitter-service.s3.ap-northeast-2.amazonaws.com/momsitter-app/static/public/banner/jobsearch-banner_1.png"
+                  alt="배너"
+                />
               </div>
-              <div id="result1"></div>
               <div id="result"></div>
               <div>
-                <a data-toggle="modal" href="#sitter_search_detail_modal">
+                <a data-toggle="modal" href="#job_search_detail_modal">
                   <button class="detail_btn">상세 검색</button>
                 </a>
               </div>
@@ -504,12 +615,10 @@
           </div>
         </div>
         <!-- search end-->
-
-        <div id="console"></div>
       </div>
-      <!-- fin. col-xs-12 -->
+      <!-- col-xs-12 end -->
     </div>
-    <!--end row-->
+    <!--row end-->
 
     <!-- Javascript -->
     <script src="../assets/js/jquery.min.js"></script>
@@ -522,10 +631,10 @@
           var maxHeight = $(document).height();
           var currentScroll = $(window).scrollTop() + $(window).height();
 
-          if (maxHeight <= currentScroll + 100) {
+          if (maxHeight <= currentScroll + 10) {
             $.ajax({
               // 결과를 읽어올 URL
-              url: "item_group.html",
+              url: "job_item_group.html",
               // 웹 프로그램에게 데이터를 전송하는 방식.
               // 생략할 경우 get으로 자동 지정됨
               method: "get",
@@ -545,91 +654,13 @@
       });
 
 
-
       $(function () {
-        <!-- ezen-android2020-2 변경필요!! -->
-        $("#menu").load("/webcontent/index_header.html"); // 헤더 메뉴 load처리 1224 하리
-
-      /** 원하는 활동 선택 ------------------------------------------------------------------- */
-        //활동 버튼 클릭
-        $(".act_btn").click(function (e) {
-             //버튼 클릭시 text 색 변경
-          $(this).next().find(".want_text").toggleClass("select_text");
-          //버튼 클릭시 이미지 URL 변경
-          //url 가져오기
-          var img_url = $(this).next().find(".want_img").attr("src");
-          var indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
-          if (indeximg > -1) {
-            var img_src = img_url.replace(/_n/, "_s");
-            $(this).next().find(".want_img").attr("src", img_src);
-          } else {
-            var img_src = img_url.replace(/_s/, "_n");
-            $(this).next().find(".want_img").attr("src", img_src);
-          }
+        // 헤더 메뉴 load처리 1224 하리
+        $("#menu").load("/ezen-android2020-2/index_header.html");
+        // 상세 페이지 연동 1220 하리
+        $(".job_item_group").on("click", function () {
+          location.href = "http://localhost:8080/ezen-android2020-2/page_detail/mom_page_detail/mom_page_detail_graph.html";
         });
-
-
-        //활동 버튼 반영 1221 하리
-        $('#act_apply').click(function (e) {
-          e.preventDefault();
-          $("#activity_type_modal").modal("hide");
-          const act_btn = $(".activity_type_btn");
-          const result2 = [];
-
-          for (var i = 0; i < act_btn.length; i++) {
-            result2.push($(act_btn[i]).val());
-          }
-
-          for (var i = 0; i < result2.length; i++) {
-            if (!$(".act_label").eq(i).hasClass("select_act_type")) {
-                $(".act_label").eq(i).addClass("unselect_act_type");
-              }
-          }
-
-        });
-
-        $(".act_btn").change(function change_btn(e) {
-          e.preventDefault();
-          const checked = $(".act_btn:checked");
-          const act_btn = $(".activity_type_btn");
-          const result1 = [];
-          const result2 = [];
-
-          for (var i = 0; i < checked.length; i++) {
-            result1.push($(checked[i]).val());
-          }
-
-          console.log(result1);
-
-          for (var i = 0; i < act_btn.length; i++) {
-            result2.push($(act_btn[i]).val());
-          }
-
-          console.log(result2);
-
-
-          for (var i = 0; i < result1.length; i++) {
-            for (var j = 0; j < result2.length; j++) {
-              if (result1[i] == result2[j]) {
-                $(".act_label").eq(j).addClass("select_act_type");
-              }
-            }
-          }
-          console.log($(".act_label").eq(j).hasClass("select_act_type"));
-        });
-
-
-        $('.activity_type_wrap').click(function (e) {
-          $(".act_label").removeClass("select_act_type");
-          $(".act_label").removeClass("unselect_act_type");
-        });
-
-
-        $(".reset").click(function () {
-          $('#form1 input[type="checkbox"]').prop('checked', false);
-        });
-
-
 
         /** 상세 검색 ------------------------------------------------------------------- */
 
@@ -658,66 +689,66 @@
           $(this).find("span").toggleClass("select_text_detail");
         });
 
-        // 맘시터 유형 버튼 클릭
-        $(".sitter_type").click(function (e) {
+        // 돌봄 종류 버튼 클릭
+        $(".activity_type_btn").click(function (e) {
           //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
+          $(this).toggleClass("select_act_btn");
           //버튼 클릭시 text 색 변경
-          $(this).find("span").toggleClass("select_text_detail");
+          $(this).find("i").toggleClass("select_act_btn");
         });
 
         /** 상세 검색 end ------------------------------------------------------------------- */
 
-          //시 클릭했을 때
-          $(".loc_btn").on("click", function () {
-                var select = $(this).hasClass("select_location");
-                //선택이 안되어있을때
-                if (select == false) {
-                    //선택이 되어있는 요소 탐색
-                    var loc = $("#si").find("button").removeClass("select_loaction");
-                    //console.log(loc);
-                    $(this).addClass("select_loaction");
-                    //시 선택하면 gu 보이게
-                    $("#gu>div").removeClass("hide_content");
-                    $("#gu>div").addClass("show_content");
-                }
+        /** 주소 선택 모달 ------------------------------------------------------------------- */
+        //시 클릭했을 때
+        $(".loc_btn").on("click", function () {
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#si").find("button").removeClass("select_loaction");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
+            //시 선택하면 gu 보이게
+            $("#gu>div").removeClass("hide_content");
+            $("#gu>div").addClass("show_content");
+          }
+        });
+        //구 클릭했을 때
+        $("#gu button").on("click", function () {
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#gu").find("button").removeClass("select_loaction");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
+            //구 선택하면 동 보이게
+            $("#dong>div").removeClass("hide_content");
+            $("#dong>div").addClass("show_content");
+          }
+        });
 
-            });
-            //구 클릭했을 때
-            $("#gu button").on("click", function () {
-                var select = $(this).hasClass("select_location");
-                //선택이 안되어있을때
-                if (select == false) {
-                    //선택이 되어있는 요소 탐색
-                    var loc = $("#gu").find("button").removeClass("select_loaction");
-                    //console.log(loc);
-                    $(this).addClass("select_loaction");
-                    //구 선택하면 동 보이게
-                    $("#dong>div").removeClass("hide_content");
-                    $("#dong>div").addClass("show_content");
-                }
+        //동 클릭했을때
+        $("#dong button").on("click", function () {
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#dong").find("button").removeClass("select_loaction");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
 
-            });
+            //동까지 선택하면 다음 버튼 활성화
+            //다음 버튼의 현재 disabled 값 가져오기
+            var now = $(".next_btn").prop("disabled");
+            //가져온 값 역으로 변경하여 다시 적용
+            $(".next_btn").prop("disabled", !now);
+          }
+        });
+        /** 주소 선택 모달 end ------------------------------------------------------------------- */
 
-            //동 클릭했을때
-            $("#dong button").on("click", function () {
-                var select = $(this).hasClass("select_location");
-                //선택이 안되어있을때
-                if (select == false) {
-                    //선택이 되어있는 요소 탐색
-                    var loc = $("#dong").find("button").removeClass("select_loaction");
-                    //console.log(loc);
-                    $(this).addClass("select_loaction");
-
-                    //동까지 선택하면 다음 버튼 활성화
-                    //다음 버튼의 현재 disabled 값 가져오기
-                    var now = $(".next_btn").prop('disabled');
-                    //가져온 값 역으로 변경하여 다시 적용
-                    $(".next_btn").prop('disabled', !now);
-
-                }
-            });
-
+        /** 찜하기 ------------------------------------------------------------------- */
         $(".swapHeart").on("click", function (e) {
           event.stopPropagation(); // 버블링 방지 1220 하리
           var $jim = $(this);
@@ -733,12 +764,10 @@
             swal("찜 하기 취소");
             $(this).find("span").addClass("glyphicon-heart-empty");
           }
-        }); // fin. 찜버튼 기능
-
-        // 상세 페이지 연동 1220 하리
-        $(".sitter_item_group").on("click", function () {
-          location.href = "http://localhost:8080/ezen-android2020-2/page_detail/sitter_page_detail_for_mom.html";
         });
+        /** 찜하기 end ------------------------------------------------------------------- */
+
+
       });
     </script>
   </body>
