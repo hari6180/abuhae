@@ -4,22 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>아이를부탁해</title>
 
+    <title>아이를부탁해</title>
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
     <!-- fontawesome(글리피콘) 적용 -->
     <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
     <!-- animaition 적용-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
     <!-- header css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/index_header.css" />
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/index_header.css" />
     <!-- sitter_search.css-->
     <link rel="stylesheet" type="text/css" href="css/sitter_search.css" />
 
@@ -233,7 +233,7 @@
                   </div>
                   <!--end 동-->
                 </div>
-                <!-- fin. col-xs-12 -->
+                <!-- col-xs-12 end -->
               </div>
               <!-- location modal end -->
 
@@ -832,12 +832,10 @@
           </div>
         </div>
         <!-- search end-->
-
-        <div id="console"></div>
       </div>
-      <!-- fin. col-xs-12 -->
+      <!-- col-xs-12 end -->
     </div>
-    <!--end row-->
+    <!--row end-->
 
     <!-- Javascript -->
     <script src="../assets/js/jquery.min.js"></script>
@@ -872,10 +870,13 @@
         });
       });
 
-
-
       $(function () {
-        $("#menu").load("/ezen-android2020-2/index_header.html"); // 헤더 메뉴 load처리 1224 하리
+    	// 헤더 메뉴 load처리 1224 하리
+        $("#menu").load("/ezen-android2020-2/index_header.html"); 
+        // 상세 페이지 연동 1220 하리
+        $(".sitter_item_group").on("click", function () {
+          location.href = "http://localhost:8080/ezen-android2020-2/page_detail/sitter_page_detail/sitter_page_detail_for_mom.html";
+        });
 
       /** 원하는 활동 선택 ------------------------------------------------------------------- */
         //활동 버튼 클릭
@@ -1062,10 +1063,7 @@
           }
         }); // fin. 찜버튼 기능
 
-        // 상세 페이지 연동 1220 하리
-        $(".sitter_item_group").on("click", function () {
-          location.href = "http://localhost:8080/ezen-android2020-2/page_detail/sitter_page_detail_for_mom.html";
-        });
+
       });
     </script>
   </body>
