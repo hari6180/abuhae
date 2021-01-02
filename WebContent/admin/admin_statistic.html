@@ -15,43 +15,12 @@
 
 		<!-- noto Sans 웹 폰트 적용 -->
 		<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
-		<link rel="stylesheet" type="text/css" herf="/ezen-android2020-2/customer/css/flexboxgrid.css" />
-		<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/customer/css/customer_center.css" />
+		<!-- css 참조  -->
+		<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/admin/css/admin_statistic.css" />
+		<!-- chart.js -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 		<style>
-		* {
-	margin: 0;
-	padding: 0;
-}
-a {
-	text-decoration: none;
-	color: #222;
-}
-ul, ol {
-	list-style: none;
-}
-/* 전체 박스 크기*/
-.container {
-	height: 1200px;
-}
-/* 왼쪽 사이드 바 */
-.sidebar {
-	padding-top: 80px;
-	height: 500px;
-}
-/* 게시판 관리 글씨 위치 */
-.middle {
-	padding-top: 45px;
-}
-
-/* 게시판 크기 */
-.text_box {
-	height: 500px;
-	margin-top: 10px;
-}
-
-/* admin 위치 */
-#connect {
-	float: right;
 		</style>
 </head>
 	<body>
@@ -68,12 +37,18 @@ ul, ol {
 			<a href="/ezen-android2020-2/admin/admin_main.html" class="list-group-item">회원관리</a>
 			 <a href="/ezen-android2020-2/admin/admin_help.html" class="list-group-item">구인구직 관리</a>
 			 <a href="/ezen-android2020-2/admin/admin_list.html" class="list-group-item">게시판 관리</a>
-			 <a href="/ezen-android2020-2/admin/admin_adduction.html" class="list-group-item active">인증 관리</a>
-			 <a href="#" class="list-group-item">통계 관리</a>
+			 <a href="/ezen-android2020-2/admin/admin_adduction.html" class="list-group-item">인증 관리</a>
+			 <a href="#" class="list-group-item active">통계 관리</a>
 		</div>
 		<div class="col-md-10 middle">
 			<div class="col-md-12 text_box">
 				<h3>통계</h3>
+				</div>
+				<div class="col-md-6 chart">
+				<canvas id="myChart"></canvas>
+				</div>
+				<div class="col-md-6 chart">
+				<canvas id="myChart2"></canvas>
 				</div>
 				</div>
 				</div>
@@ -81,7 +56,72 @@ ul, ol {
 		<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script>
 		<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-		
+			var ctx = document.getElementById('myChart');
+			var ctx2 = document.getElementById('myChart2');
+			var myChart = new Chart(ctx, {
+				type: 'pie',
+				data: {
+					labels: ['부모회원', '시터회원'],
+					datasets: [{
+						label: '하루접속인원',
+						data: [333333, 2222222],
+						backgroundColor: [
+							'skyblue',
+							'pink'
+						],
+						borderColor: [
+							'black',
+							'black'
+						],
+						borderWidth: 1
+					}]
+				},
+				options: {
+				title: {
+					display: true,
+					text : '하루 접속 인원',
+					fontSize: 20,
+					fontColor: 'black',
+					position: 'bottom'
+					}
+				}
+			});
+			var myChart2 = new Chart(ctx2, {
+				type: 'pie',
+				data: {
+					labels: ['10대', '20대', '30대', '40대', '50대', '60대'],
+					datasets: [{
+						label: '하루접속인원',
+						data: [50, 200, 300, 400, 200, 100],
+						backgroundColor: [
+							'skyblue',
+							'pink',
+							'green',
+							'red',
+							'blue',
+							'yellow'
+						],
+						borderColor: [
+							'black',
+							'black',
+							'black',
+							'black',
+							'black',
+							'black'
+						],
+						borderWidth: 1
+					}]
+				},
+				options: {
+				title: {
+					display: true,
+					text : '연령별 가입현황',
+					fontSize: 20,
+					fontColor: 'black',
+					position: 'bottom'
+					}
+				}
+			});
 			</script>
 	</body>
 </html>
