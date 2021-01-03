@@ -86,7 +86,7 @@
 				<div class="col-md-12 button2">
 				<button type="button" class="btn btn-xs" id="btn_update">수정</button>
 				<button type="button" class="btn btn-xs" id="btn_delete">삭제</button>
-				<button type="button" class="btn btn-xs" id="open_modal_btn">
+				<button type="button" onclick="window.location.href='http://localhost:8080/ezen-android2020-2/admin/admin_list_noticewrite.html'" class="btn btn-xs" id="open_modal_btn">
 				<span class="glyphicon glyphicon-pencil"></span>
 				</button>
 				</div>
@@ -169,14 +169,14 @@
 				}
 			});
 		});
-		$(function() {
+		/**$(function() {
 			$("#open_modal_btn").click(function(e) {
 				// 스크립트를 사용하여 특정 Modal을 강제로 열기
 				$("#myModal").modal('show');
 				// 아래는 창을 강제로 닫기 처리
 				// $("#myModal").modal('hide');
 			});
-		});
+		});*/
 			</script>
 	</body>
 </html>
