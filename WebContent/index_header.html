@@ -30,12 +30,12 @@
       <!-- modal header -->
       <div class="modal_group">
         <div class="modal_header">
-          <a href="http://localhost:8080/ezen-android2020-2/join/join.html" id="login_btn"
+          <a href="#" id="login_btn"
             ><button type="button" class="modal_btn">
               <p class="login_btn">로그인</p>
             </button></a
           >
-          <a href="http://localhost:8080/ezen-android2020-2/join/join.html" id="join_btn"
+          <a href="#" id="join_btn"
             ><button type="button" class="modal_btn">
               <p class="join_btn">회원가입</p>
             </button></a
@@ -46,14 +46,14 @@
         <!-- modal body-->
         <div class="modal_body">
           <div class="sitter_search">
-            <a href="http://localhost:8080/ezen-android2020-2/search/sitter_search.html">
+            <a href="#" id="stsc_btn">
               <img src="/ezen-android2020-2/assets/img/index-sittersearch.svg" />
               <p>맘시터 찾기</p>
             </a>
           </div>
 
           <div class="job_search">
-            <a href="http://localhost:8080/ezen-android2020-2/search/job_search.html">
+            <a href="#" id="jobsc_btn">
               <img src="/ezen-android2020-2/assets/img/index-jobsearch.svg" />
               <p>일자리 찾기</p>
             </a>
@@ -64,16 +64,16 @@
       <div class="divider"></div>
       <!-- modal footer -->
       <div class="modal_footer modal_group">
-        <a href="http://localhost:8080/ezen-android2020-2/buy/buy.html">
+        <a href="#" id="buy_btn">
           <p>이용권 / 지원권 구매</p>
         </a>
         <a href="#">
           <p>서비스 소개</p>
         </a>
-        <a href="http://localhost:8080/ezen-android2020-2/customer/notice_site.html">
+        <a href="#" id="notice_btn">
           <p>공지사항</p>
         </a>
-        <a href="http://localhost:8080/ezen-android2020-2/customer/customer_center.html">
+        <a href="#" id="cus_btn">
           <p>고객센터</p>
         </a>
       </div>
@@ -84,3 +84,29 @@
   </div>
   <!-- modal end -->
 </div>
+
+<script>
+  $(function () {
+    $("#login_btn").click(function (e) {
+      location.replace("http://localhost:8080/ezen-android2020-2/login/login.html");
+    });
+    $("#join_btn").click(function (e) {
+      location.replace("http://localhost:8080/ezen-android2020-2/join/join.html");
+    });
+    $("#stsc_btn").click(function (e) {
+      location.replace("http://localhost:8080/ezen-android2020-2/search/sitter_search.html");
+    });
+    $("#jobsc_btn").click(function (e) {
+      location.replace("http://localhost:8080/ezen-android2020-2/search/job_search.html");
+    });
+    $("#buy_btn").click(function (e) {
+      location.replace("http://localhost:8080/ezen-android2020-2/buy/buy.html");
+    });
+    $("#notice_btn").click(function (e) {
+      location.replace("http://localhost:8080/ezen-android2020-2/customer/notice_site.html");
+    });
+    $("#cus_btn").click(function (e) {
+      location.replace("http://localhost:8080/ezen-android2020-2/customer/customer_center.html");
+    });
+  });
+</script>
