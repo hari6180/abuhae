@@ -34,25 +34,25 @@ a:hover {
 
 /** header --------------------------------------------------------------------*/
 
-.mps_detail_tl {
+.mp_detail_tl {
   width: 100%;
   padding: 15px 0 20px;
 }
 
-.mps_detail_tl .mps_detail_tl_in {
+.mp_detail_tl .mp_detail_tl_in {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.mps_detail_tl .mps_detail_tl_in a i {
+.mp_detail_tl .mp_detail_tl_in a i {
   text-decoration: none;
   color: black;
   font-size: 1.4em;
   margin-top: 7px;
 }
 
-.mps_detail_tl .mps_detail_tl_in h3 {
+.mp_detail_tl .mp_detail_tl_in h3 {
   font-size: 1.4em;
   font-weight: bold;
 }
@@ -178,6 +178,7 @@ label {
   color: #e93c3c;
   font-size: 1.1em;
 }
+/** end 내 구직 현황 --------------------------------------------------------------*/
 
 /** 찜한 일자리 --------------------------------------------------------------------*/
 /** 공통 */
@@ -193,6 +194,7 @@ label {
   padding: 10px 10px;
 }
 
+/** 전체 / 구직 중인 일자리만 탭 버튼 */
 .wrap_like_mom .grouop1_like_mom .lm_tab_button {
   padding: 10px;
 }
@@ -261,18 +263,592 @@ label {
   background-color: #fff;
 }
 
-.lm_page_box_left {
+.wrap_like_mom .grouop1_like_mom .lm_tab_panel .lm_page_box_left {
   margin-right: 20px;
 }
 
-.lm_page_box_left span {
+.wrap_like_mom .grouop1_like_mom .lm_tab_panel .lm_page_box_left span {
   position: relative;
   top: 20px;
   left: 3px;
 }
 
-.page-days {
+/** end 찜한 일자리 -----------------------------------------------------------------*/
+
+/** 내 적립금  ----------------------------------------------------------------------*/
+
+/** 공통 */
+.wrap_fund {
+  margin: 0 auto;
+  max-width: 600px;
+  font-weight: bold;
+}
+
+/**  content1 */
+.wrap_fund .fund_con_in {
+  background-color: #3b4049;
+  width: 100%;
+}
+
+.wrap_fund .fund_con_in .con_in_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.wrap_fund .fund_con_in .item_list {
+  padding: 20px;
+  width: 50%;
+}
+
+.wrap_fund .fund_con_in .item_list div {
+  margin-bottom: 10px;
+}
+
+.wrap_fund .fund_con_in .item_list div:last-child {
+  margin-bottom: 0;
+}
+
+.wrap_fund .fund_con_in .list_char {
+  color: #c4c6c8;
+  font-size: 1em;
+}
+
+.wrap_fund .fund_con_in .item_line {
+  margin-top: 10px;
+  width: 1px;
+  height: 70px;
+  background-color: #61666d;
+}
+
+.wrap_fund .fund_con_in .item_list:last-child {
+  margin-right: 0;
+}
+
+.wrap_fund .fund_con_in .use_button {
+  padding: 10px;
+}
+
+.wrap_fund .fund_con_in .use_button button {
+  height: 55px;
+  width: 100%;
+  border: 1px solid #fff;
+  border-radius: 2px;
+}
+
+.wrap_fund .fund_con_in .use_button button a {
+  font-size: 1.1em;
+  color: rgb(59, 64, 73);
+}
+
+/** content2 */
+
+/** 탭버튼 */
+.group2_fund .fund_tab .fund_tab_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.group2_fund .fund_tab .fund_tab_button_item {
+  text-align: center;
+  width: 33.333%;
+  line-height: 48px;
+  border-bottom: 3px solid rgb(237, 237, 237);
+}
+
+.group2_fund .fund_tab .fund_tab_button_item.fi_selected {
+  border-bottom: 3px solid #ff7000;
+}
+
+.group2_fund .fund_tab .fund_tab_button_item_link {
+  color: rgb(148, 148, 148);
+  font-size: 1.1em;
+  width: 100%;
+}
+
+.group2_fund .fund_tab .fund_tab_button_item_link.selected {
+  color: #ff7000;
+}
+
+/** 탭 버튼 내용 영역 */
+.group2_fund .fund_tab .fund_tab_panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 20px;
+  min-height: 200px;
+  text-align: center;
+  color: #bcbcbc;
+}
+
+.group2_fund .fund_tab .fund_tab_panel i {
+  font-size: 80px;
+}
+
+.group2_fund .fund_tab .fund_tab_panel p {
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+/** end 내 적립금  ------------------------------------------------------------------*/
+
+/** 내 쿠폰함  ----------------------------------------------------------------------*/
+
+/** 공통 */
+.wrap_coupon {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/** content1 */
+.wrap_coupon .group1_coupon .coupon_cont1 a i {
+  font-size: 1em;
+  color: #838383;
+}
+
+/** for modal */
+.fund_caution {
+  margin-top: 10px;
+}
+
+/** content2 */
+.wrap_coupon .group2_coupon {
+  background-color: #eee;
+  min-height: 400px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.wrap_coupon .group2_coupon .coupon_cont2 a button {
+  width: 100%;
+  height: 55px;
+  border: 1px solid #e4e4e4;
+  background-color: #fff;
+  color: #rgba(0, 0, 0, 0.87);
+  margin-bottom: 10px;
+}
+
+.wrap_coupon .group2_coupon .coupon_list {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid #e4e4e4;
+  background-color: #fff;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.wrap_coupon .group2_coupon .coupon_list .discount_amount {
+  font-size: 1.3em;
+}
+
+.wrap_coupon .group2_coupon .coupon_list .expire {
+  background-color: rgb(194, 221, 221);
+  padding: 5px 20px;
+  border: 0;
+  border-radius: 15px;
+  color: #838383;
+}
+
+.wrap_coupon .group2_coupon .coupon_list .expire p {
+  margin-top: 5px;
+}
+
+/** end 내 쿠폰함  ------------------------------------------------------------------*/
+
+/** 리뷰 관리  ----------------------------------------------------------------------*/
+
+/** 공통 영역 */
+.wrap_review {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/** 탭메뉴 for 후기 관리 */
+.wrap_review .group1_review .rev_tab_button {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.wrap_review .group1_review .rev_tab_button .tab_button_item {
+  width: 33.333%;
+  height: 48px;
+  border-bottom: 3px solid rgb(237, 237, 237);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.wrap_review .group1_review .rev_tab_button .tab_button_item.fi_selected {
+  border-bottom: 3px solid #ff7000;
+}
+
+.wrap_review .group1_review .rev_tab_button .tab_button_item_link {
+  color: rgb(148, 148, 148);
+  font-size: 1.1em;
+  width: 100%;
+}
+
+.wrap_review .group1_review .rev_tab_button .tab_button_item_link.selected {
+  color: #ff7000;
+}
+
+/** 리뷰 내용 영역 */
+
+.wrap_review .group1_review .rev_tab_panel {
+  padding: 10px 15px;
+}
+
+.wrap_review .group1_review .rev_tab_panel .rev_tab_panel_con {
+  min-height: 300px;
+  background-color: rgb(240, 240, 240);
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.wrap_review .group1_review .rev_tab_panel .rev_tab_panel_con h4 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.wrap_review .group1_review .rev_tab_panel .rev_tab_panel_con h5 {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.wrap_review .group1_review .rev_tab_panel .si_rev_no {
+  background-color: #ffffff;
+  padding: 15px;
+}
+
+.wrap_review .group1_review .rev_tab_panel .si_rev_no .si_rev_no_tl {
+  display: flex;
+}
+
+.wrap_review .group1_review .rev_tab_panel .si_rev_no_tl .si_rev_no_info {
+  margin-left: 15px;
+}
+
+.wrap_review .group1_review .rev_tab_panel .rev_no_btn {
+  height: 36px;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  margin-top: 15px;
+  background-color: rgb(255, 95, 0);
+  color: #fff;
+}
+
+.rev_button {
+  display: flex;
+  justify-content: space-between;
+}
+
+/** end 리뷰 관리  ------------------------------------------------------------------*/
+
+/** 인증 관리  ----------------------------------------------------------------------*/
+/** 공통 for 내 인증관리 */
+.wrap_certify {
+  padding: 20px 20px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.wrap_certify p,
+button {
+  font-size: 1.071em;
+}
+
+/** content1 */
+.wrap_certify .group1_certify {
+  padding: 10px 10px;
+}
+
+.wrap_certify .group1_certify .certify_cont1 {
+  border: 6px solid #cfe7e1;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.wrap_certify .group1_certify .certify_cont1 .my_certi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my_certi_left {
+  width: 20%;
+  text-align: center;
+}
+
+.my_certi_right {
+  width: 75%;
+  height: 75%;
+}
+
+.wrap_certify .group1_certify .certify_cont1 .my_certi_left img {
+  width: 70%;
+}
+
+.wrap_certify .group1_certify .certify_cont1 h3 {
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+.wrap_certify .group1_certify .certify_cont1 button {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(0, 153, 255);
+  border-radius: 2px;
+  border: 0;
+  color: #ffffff;
+}
+
+/** content2 */
+.wrap_certify .certify_cont2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 35px;
+  color: #626262;
+}
+
+.wrap_certify .group2_certify .certify_cont2 i {
+  font-size: 3.5em;
+  margin-bottom: 10px;
+}
+/** end 인증 관리  ------------------------------------------------------------------*/
+
+/** 내 맘시터 채용 횟수  --------------------------------------------------------- ---*/
+/** 공통 */
+.wrap_count_mom {
+  margin: 0 auto;
+  max-width: 600px;
+}
+/** content1 */
+.wrap_count_mom .group1_count_mom {
+  background-color: #eee;
+  min-height: 700px;
+}
+
+.wrap_count_mom .group1_count_mom .total_count {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 20px 0 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.wrap_count_mom .group1_count_mom .cm_page_cont {
+  background-color: #fff;
+  position: relative;
+  margin: 10px;
+  padding: 20px 20px;
+}
+
+.wrap_count_mom .group1_count_mom .lm_page_box {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrap_count_mom .group1_count_mom .cm_page_box_left {
+  margin-right: 20px;
+}
+
+.wrap_count_mom .group1_count_mom .cm_page_box_left img {
+  padding: 10px;
+  width: 65px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.wrap_count_mom .group1_count_mom .cm_page_box_left span {
+  position: relative;
+  top: 20px;
+  left: 3px;
+}
+
+.wrap_count_mom .group1_count_mom .lm_page_days {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
+/** end 내 맘시터 채용 횟수  ---------------------------------------------------------*/
+
+/** 신고 내역  ----------------------------------------------------------------------*/
+.wrap_sue {
+  padding: 20px 20px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.wrap_sue .sue_content .sue_con_in {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.wrap_sue .sue_content .sue_con_in .sue_con_prof {
+  display: flex;
+}
+
+.wrap_sue .sue_content .sue_con_in .sue_con_prof img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.wrap_sue .sue_content .sue_con_in .sue_reason {
+  background-color: rgb(224, 224, 224);
+  height: 32px;
+  border-radius: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 4px;
+}
+/** end 신고 내역  ------------------------------------------------------------------*/
+
+/** 계정 관리  ----------------------------------------------------------------------*/
+/** 공통 for 내 인증관리 */
+.wrap_mng_account {
+  padding: 20px 20px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.wrap_mng_account p,
+button {
+  font-size: 1.071em;
+}
+
+.total_account {
+  background-color: #eee;
+}
+
+/** 첫번째 항목 */
+.group1_mng_account {
+  padding: 20px 0;
+  background-color: #fff;
+}
+
+.acc_con_one {
+  background-color: #666;
+  border-radius: 5px;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.21) 0px 3px 5px 0px;
+}
+
+.acc_con_left {
+  margin-right: 80px;
+  color: #fff;
+}
+
+.acc_con_left p {
+  color: #f1d8c8;
+}
+
+.acc_con_right {
+  margin-top: 5%;
+}
+
+.acc_con_right button {
+  background-color: rgb(255, 233, 19);
+  box-shadow: rgba(0, 0, 0, 0.21) 0px 3px 5px 0px;
+  color: #000;
+  border: 0;
+  border-radius: 15px;
+  min-width: 88px;
+}
+
+.acc_con_two {
+  padding: 30px 20px 0;
+}
+
+.user_info_p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+}
+
+..user_info_p: :last-child {
+  margin-bottom: 0;
+}
+
+.user_info_p h5 {
+  width: 35%;
+  text-align: left;
+}
+
+.user_info_p p {
+  margin-top: 3px;
+  font-size: 0.9em;
+}
+
+.user_info_p.user_phone p {
+  width: 50%;
+}
+
+.user_info_p.user_email p {
+  width: 50%;
+}
+
+.user_info_p.user_phone button {
+  width: 15%;
+  background-color: #cccccc;
+  border: 0;
+  height: 30px;
+  border-radius: 15px;
+  font-size: 0.9em;
+}
+
+.user_info_p.user_email button {
+  width: 15%;
+  background-color: #cccccc;
+  border: 0;
+  height: 30px;
+  border-radius: 15px;
+  font-size: 0.9em;
+}
+
+/** 두번째 항목 */
+.group_account_foot {
+  margin-top: 20px;
+  padding: 20px 20px;
+  background-color: #fff;
+}
+
+.account_ft_btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: centeraccount_ft_btn;
+}
+
+/** end 계정 관리  ------------------------------------------------------------------*/
+
+/** 결제 내역  ----------------------------------------------------------------------*/
+
+/** 공통 for 내 인증관리 */
+.wrap_payment {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/** content1 */
+.payment_cont1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/** end 결제 내역  ------------------------------------------------------------------*/

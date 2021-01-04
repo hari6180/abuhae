@@ -19,80 +19,8 @@
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
-        <style type="text/css">
-        /* 초기 설정 -----------------------------------------------------*/
-        .body, html, * {
-            margin: 0;
-            padding: 0;
-
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            padding: 0;
-            margin: 0;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        a {
-            color: black;
-        }
-
-        a:hover {
-            text-decoration: none;
-            color: black;
-        }
-
-        /** header --------------------------------------------------------------------*/
-
-        .mp_detail_tl {
-            width: 100%;
-        }
-        
-        .mp_detail_tl .mp_detail_tl_in {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in a i {
-            text-decoration: none;
-            color: black;
-            font-size: 1.5em;
-            margin-top: 7px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in h3 {
-            font-weight: bold;
-        }
-
-
-        /** for 내 인증관리 페이지 (certify.html) --------------------------------------*/
-
-        /** 공통 for 내 인증관리 */
-        .wrap_payment {
-            padding: 20px 20px;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-
-        /** 내용 1 */
-        .payment_cont_one {
-            margin-top: 20px;
-        }
-
-        .payment_cont_in {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    
-		</style>
+        <!-- css 참조 -->
+        <link rel="stylesheet" href="../css/upd_mps_detail.css">
     </head>
 
     <body>
@@ -112,9 +40,9 @@
                     </header>
 
                     <!-- content -->
-                    <section class="payment_cont_one">
+                    <section class="group1_payment">
                         <div class="row">
-                            <div class="col-xs-12 payment_cont_in">
+                            <div class="col-xs-12 payment_cont1">
                                 <div class="kind_payment">
                                     <p>맘시터 이용권 (1개월)</p>
                                     <p>결제 일시 2020.12.23</p>

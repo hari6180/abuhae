@@ -78,13 +78,13 @@
 
         /** for 후기 관리 페이지 (review.html) --------------------------------------*/
         /** 공통 for 후기 관리 */
-        .wrap_care_age {
+        .wrap_upd_img {
             padding: 20px 20px;
             margin: 0 auto;
             max-width: 600px;
         }
 
-        .update_img_cont {
+        .wrap_upd_img .update_img_cont {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -92,15 +92,15 @@
             text-align: center;
         }
 
-        .user_img {
+        .wrap_upd_img .user_img {
             padding: 40px;
         }
 
-        .user_img input[type="file"] {
+        .wrap_upd_img .user_img input[type="file"] {
             display: none;
         }
 
-        .user_img input[type="file"]+label i {
+        .wrap_upd_img .user_img input[type="file"]+label i {
             background-color: #eee;
             color: #838383;
             font-size: 3em;
@@ -108,7 +108,7 @@
             border-radius: 56px;
         }
 
-        .example_img a button {
+        .wrap_upd_img .example_img a button {
             width: 100%;
             height: 48px;
             padding: 0 25px;
@@ -117,13 +117,22 @@
             background-color: #fcf2d4;
             margin-top: 50px;
         }
+
+        /** mocal */
+        .example_img {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+        }
 		</style>
     </head>
 
     <body>
         <div id="app">
             <div class="container">
-                <div class="wrap_care_age">
+                <div class="wrap_upd_img">
                     <form action="#">
                          <!-- header -->
                         <header class="mp_detail_tl">
@@ -155,7 +164,7 @@
                                         </p>
                                     </div>
                                     <div class="example_img">
-                                        <a href="#">
+                                        <a data-toggle="modal" href="#way_upd_img">
                                             <button type="button">
                                                 <i class="fas fa-lightbulb" style="color: #ffd446; font-size: 1.2em;"></i> 부모님이 좋아하는 사진 올리는 방법!
                                             </button>
@@ -163,6 +172,38 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- modal (사진 올리는 방법 )-->
+                            <div id="way_upd_img" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="modal_label" aria-hidden="true">
+                            <!-- modal dialog -->
+                            <div class="modal-dialog">
+                                <!-- modal content -->
+                                <div class="modal-content">
+                                    <!-- 제목 -->
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="padding: 10px 0;">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                        <h4 class="modal-title" id="modalLabel" style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+                                            부모님이 좋아하는 사진 올리는 방법!
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body" style="color: #838383;">
+                                        <div class="example_img">
+                                            <img src="../../img/example_proflie_img.png" alt="" width="40%">
+                                            <p>
+                                                <span style="color:rgb(34, 172, 135); font-size:3em">○</span>
+                                                <br> 본인 얼굴 정면이 나온 모습
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end modal content -->
+                            </div>
+                            <!-- end modal dialog -->
+                        </div>
+                        <!-- end modal -->
 
                         </section>
                     </form>

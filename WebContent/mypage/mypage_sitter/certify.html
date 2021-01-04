@@ -19,134 +19,8 @@
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
-        <style type="text/css">
-        /* 초기 설정 -----------------------------------------------------*/
-        .body, html, * {
-            margin: 0;
-            padding: 0;
-
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            padding: 0;
-            margin: 0;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        a {
-            color: black;
-        }
-
-        a:hover {
-            text-decoration: none;
-            color: black;
-        }
-
-        /** header --------------------------------------------------------------------*/
-
-        .mps_detail_tl {
-            width: 100%;
-        }
-        
-        .mps_detail_tl .mps_detail_tl_in {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .mps_detail_tl .mps_detail_tl_in a i {
-            text-decoration: none;
-            color: black;
-            font-size: 1.4em;
-            margin-top: 7px;
-        }
-
-        .mps_detail_tl .mps_detail_tl_in h3 {
-            font-size: 1.4em;
-            font-weight: bold;
-        }
-
-
-        /** for 내 인증관리 페이지 (certify.html) --------------------------------------*/
-
-        /** 공통 for 내 인증관리 */
-        .wrap_certify {
-            padding: 20px 20px;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-
-        .wrap_certify p, button {
-            font-size: 1.071em;
-        }
-
-        /** 첫번째 항목 for 내 인증관리 */
-        .wrap_certify .group_certi_con {
-            padding: 10px 10px;
-        }
-
-        .wrap_certify .group_certi_con .certi_con_in {
-            border: 6px solid #cfe7e1;
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .wrap_certify .group_certi_con .certi_con_in .my_certi {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .my_certi_left {
-            width: 20%;
-            text-align: center;
-        }
-
-        .my_certi_right {
-            width: 75%;
-        }
-
-        .wrap_certify .group_certi_con .certi_con_in .my_certi_left i {
-            font-size: 6em;
-            color: #eee;
-        }
-
-        .wrap_certify .group_certi_con .certi_con_in h3 {
-            font-weight: bold;
-            font-size: 1.5em;
-        }
-
-        .wrap_certify .group_certi_con .certi_con_in button {
-            width: 100%;
-            height: 40px;
-            background-color: rgb(0, 153, 255);
-            border-radius: 2px;
-            border: 0;
-            color: #ffffff;
-        }
-
-        /** 두번째 항목 */
-        .wrap_certify .group_certi_foot {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin-top: 35px;
-            color: #626262;
-        }
-
-        .wrap_certify .group_certi_foot .certi_ft_in i {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-        }
-       
-		</style>
+        <!-- css 참조 -->
+        <link rel="stylesheet" href="../css/upd_mps_detail.css">
     </head>
 
     <body>
@@ -154,9 +28,9 @@
             <div class="container">
                 <div class="wrap_certify">
                     <!-- header -->
-                    <header class="mps_detail_tl">
+                    <header class="mp_detail_tl">
                         <div class="row">
-                            <div class="col-xs-12 mps_detail_tl_in">
+                            <div class="col-xs-12 mp_detail_tl_in">
                                 <a href="sitter_mypage.html">
                                     <i class="fas fa-times"></i>
                                 </a>
@@ -165,14 +39,14 @@
                         </div>
                     </header>
 
-                    <!-- 첫번째 항목 -->
-                    <section class="group_certi_con">
+                    <!-- cotent1 -->
+                    <section class="group1_certify">
                         <div class="row">
-                            <div class="col-xs-12 certi_con_in">
+                            <div class="col-xs-12 certify_cont1">
                                 <!-- 첫번째 인증 -->
                                 <div class="my_certi">
                                     <div class="my_certi_left">
-                                        <i class="fas fa-certificate"></i> <br/>
+                                        <img src="../img/certified.png" alt="인증 아이콘"> <br/>
                                     </div>
                                     <div class="my_certi_right">
                                         <h3>
@@ -195,7 +69,7 @@
                                 <!-- 두반째 인증-->
                                 <div class="my_certi">
                                     <div class="my_certi_left">
-                                        <i class="fas fa-certificate"></i> <br/>
+                                        <img src="../img/certified.png" alt="인증 아이콘"> <br/>
                                     </div>
                                     <div class="my_certi_right">
                                         <h3>
@@ -218,9 +92,9 @@
                     </section>
 
                     <!-- 두번째 항목 -->
-                    <section class="group_certi_foot">
+                    <section class="group2_certify">
                         <div class="row">
-                            <div class="col-xs-12 certi_ft_in">
+                            <div class="col-xs-12 certify_cont2">
                                 <p>
                                     <i class="fas fa-stamp"></i> <br/>
                                     인증을 받으면 부모님에게 <br/>

@@ -23,58 +23,71 @@
 <!-- sweetalert 사용 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<!-- css 참조 -->
+<!-- 상세페이지 css 참조 -->
 <link rel="stylesheet" type="text/css" href="../../page_detail/css/page_detail_for_sitter.css" />
+<link rel="stylesheet" href="../css/upd_mps_detail.css">
 
 <style>
-    .profil_photo {
+    .mp_detail_tl {
+        margin: 0;
+        padding: 0 20px 20px;
+        margin-bottom: 20px;
+    }
+
+    /** 프로필 사진 여백 및 바탕 */
+    
+    .main .profil_photo {
         background-color: #fff;
         margin-bottom: 30px;
     }
 
-    .info_text_box {
+    .main .info_text_box {
         padding-top: 30px;
     }
 
-    .agree_cctv_tab {
+    /** cctv 동의 여부 탭 버튼 */
+
+    .main .agree_cctv_tab {
         display: flex;
         justify-content: center;
     }
 
-    .agree_cctv_choice {
+    .main .agree_cctv_choice {
         width: 50%;
         height: 126px;
         padding: 12px;
         margin: 3px;
     }
 
-    .agree_cctv_choice.selected {
+    .main .agree_cctv_choice.selected {
         background-color: rgb(0, 174, 153);
         color: #fff;
     }
 
-    .agree_cctv_check {
+    .main .agree_cctv_check {
         margin-top: 35px;
         margin-left: 95%;
         font-size: 1.5em;
     }
 
-    .agree_cctv_choice {
+    .main .agree_cctv_choice {
         border: 1px solid #d5d5d5;
     }
 
-    .precaution_cctv {
+    .main .precaution_cctv {
         display: flex;
         justify-content: center;
         padding: 15px;
         color: #a7a7a7;
     }
 
-    .iwant_box {
+    /** 프로필 수정 버튼 위치 조정 */
+
+    .main .iwant_box {
         position: relative;
     }
 
-    .box_name_edit_iwant {
+    .main .box_name_edit_iwant {
         position: absolute;
         z-index: 100;
         color: #828282;
@@ -83,11 +96,11 @@
         top: 0;
     }
 
-    .active_box {
+    .main .active_box {
         position: relative;
     }
 
-    .box_name_edit_act {
+    .main .box_name_edit_act {
         position: absolute;
         z-index: 100;
         color: #828282;
@@ -96,11 +109,15 @@
         top: 0;
     }
 
-    .possible_age_box {
+    .main .possible_age_box {
         position: relative;
     }
 
-    .box_name_edit_age {
+    .main .info_box {
+        position: relative;
+    }
+
+    .main .box_name_edit_age {
         position: absolute;
         z-index: 100;
         color: #828282;
@@ -109,11 +126,7 @@
         top: 0;
     }
 
-    .info_box {
-        position: relative;
-    }
-
-    .box_name_edit {
+    .main .box_name_edit {
         position: absolute;
         z-index: 100;
         color: #828282;
@@ -122,11 +135,11 @@
         top: 0;
     }
 
-    .possible_zone_box {
+    .main .possible_zone_box {
         position: relative;
     }
 
-    .box_name_edit_zone {
+    .main .box_name_edit_zone {
         position: absolute;
         z-index: 100;
         color: #828282;
@@ -142,6 +155,18 @@
     <div class="container">
         <div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
             <div class="main">
+                <!-- header -->
+                <header class="mp_detail_tl" style="border-bottom: 1px solid #ccc;">
+                    <div class="row">
+                        <div class="col-xs-12 mp_detail_tl_in">
+                            <a href="sitter_mypage.html">
+                                <i class="fas fa-angle-left"></i>
+                            </a>
+                            <h3 class="center-block">프로필 수정</h3>
+                        </div>
+                    </div>
+                </header>
+
                 <div class="info_box">
                     <div class="box_name">내 사진</div>
                     <a href="update_profile_detail/update_profile_img.html" class="box_name_edit">
@@ -173,7 +198,7 @@
                 </div>
                 <div class="active_box">
                     <div class="box_name">활동 가능 시간</div>
-                    <a href="update_profile_detail/change_regular.html" class="box_name_edit_act">
+                    <a href="update_profile_detail/update_regular.html" class="box_name_edit_act">
                         <i class="fas fa-pen-square"></i>
                     </a>
                     <div class="active_area">
@@ -632,7 +657,7 @@
                 </div>
                 <div class="possible_zone_box">
                     <div class="box_name">활동 가능 지역</div>
-                    <a href="#" class="box_name_edit_zone">
+                    <a href="update_profile_detail/update_location.html" class="box_name_edit_zone">
                         <i class="fas fa-pen-square"></i>
                     </a>
                     <div class="possible_zone_area">

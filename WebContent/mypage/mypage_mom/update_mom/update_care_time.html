@@ -24,135 +24,161 @@
 
         <!-- css 참조 -->
         <link rel="stylesheet" href="../../css/update_mom.css">
+
+        <!--flatpickr-->
+	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     
 
         <style type="text/css">
         /** for 후기 관리 페이지 (review.html) --------------------------------------*/
         /** 공통 for 후기 관리 */
-#wrap_upd_ct .upd_ct_tab_panel .calc_box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+        .wrap_upd_ct .upd_ct_tab_panel .calc_box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
 
-#wrap_upd_ct .regu_title {
-  font-weight: 600;
-  font-size: 1em;
-  color: #646464;
-}
+        .wrap_upd_ct .regu_title {
+        font-weight: 600;
+        font-size: 1em;
+        color: #646464;
+        }
 
-#wrap_upd_ct .date_box {
-  display: block;
-  border: 1px solid #ffcfb8;
-  background-color: #fff0e8;
-  border-radius: 2px;
-  width: 130px;
-  height: 37px;
-  text-align: center;
-  color: #ff7000;
-  font-weight: 600;
-  font-size: 0.9em;
-}
+        .wrap_upd_ct .date_box {
+        display: block;
+        border: 1px solid #ffcfb8;
+        background-color: #fff0e8;
+        border-radius: 2px;
+        width: 130px;
+        height: 37px;
+        text-align: center;
+        color: #ff7000;
+        font-weight: 600;
+        font-size: 0.9em;
+        }
 
-#wrap_upd_ct .day_btn_group {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: nowrap;
-  margin: 13px 0;
-}
+        .wrap_upd_ct .day_btn_group {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        margin: 13px 0;
+        }
 
-#wrap_upd_ct .day_btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 36px;
-  background-color: #eee;
-  color: #646464;
-  font-weight: 600;
-  font-size: 0.9em;
-}
+        .wrap_upd_ct .day_btn {
+        width: 36px;
+        height: 36px;
+        border: 0;
+        border-radius: 36px;
+        background-color: #eee;
+        color: #646464;
+        font-weight: 600;
+        font-size: 0.9em;
+        }
 
-.time_select_box {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-}
+        .wrap_upd_ct .time_select_box {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        }
 
-.middle_bar {
-  border-right: 1px solid #efefef;
-}
+        .wrap_upd_ct .middle_bar {
+        border-right: 1px solid #efefef;
+        }
 
-.select_time {
-  width: 133px;
-  height: 38px;
-  border: 1px solid #ffcfb8;
-  background-color: #fff0e8;
-  margin-top: 6px;
-  color: #ff7000;
-  font-weight: 600;
-  text-align: center;
-}
+        .wrap_upd_ct .select_time {
+        width: 133px;
+        height: 38px;
+        border: 1px solid #ffcfb8;
+        background-color: #fff0e8;
+        margin-top: 6px;
+        color: #ff7000;
+        font-weight: 600;
+        text-align: center;
+        }
 
-.select_time select {
-  width: 100%;
-  padding: 0.5em 0.5em;
-  border: none;
-  font-family: inherit;
-  background: url("/ezen-android2020-2/join/img/arrow.png") no-repeat 95% 50%;
-  border-radius: 0px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-.select_time option {
-  color: #222;
-}
+        .wrap_upd_ct .select_time select {
+        width: 100%;
+        padding: 0.5em 0.5em;
+        border: none;
+        font-family: inherit;
+        background: url("/ezen-android2020-2/join/img/arrow.png") no-repeat 95% 50%;
+        border-radius: 0px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        }
+        .wrap_upd_ct .select_time option {
+        color: #222;
+        }
 
-.jojung_box {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  background-color: #f1f3f5;
-  margin: 15px 0;
-  border-radius: 14px;
-  padding: 10px;
-  cursor: pointer;
-}
-.box_check {
-  background-color: #fff9f5;
-}
+        .wrap_upd_ct .jojung_box {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        background-color: #f1f3f5;
+        margin: 15px 0;
+        border-radius: 14px;
+        padding: 10px;
+        cursor: pointer;
+        }
 
-.jojung_check {
-  display: inline-block;
-  position: relative;
-  width: 25px;
-  height: 22px;
-  border-radius: 22px;
-  background-color: #cfcfcf;
-  transition: background-color 0.3s;
-  padding: 0;
-  margin-right: 8px;
-}
-.check_check {
-  background-color: #ff7000;
-}
+        .wrap_upd_ct .box_check {
+        background-color: #fff9f5;
+        }
 
-.jojung_check::after {
-  content: "";
-  width: 10px;
-  height: 5px;
-  position: absolute;
-  border-left: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-  left: 6px;
-  top: 7px;
-  transform: rotate(315deg);
-}
+        .wrap_upd_ct .jojung_check {
+        display: inline-block;
+        position: relative;
+        width: 25px;
+        height: 22px;
+        border-radius: 22px;
+        background-color: #cfcfcf;
+        transition: background-color 0.3s;
+        padding: 0;
+        margin-right: 8px;
+        }
 
-.jojung_text {
-  font-size: 0.9em;
-  font-weight: 600;
-  color: #9d9d9d;
-}
+        .wrap_upd_ct .check_check {
+        background-color: #ff7000;
+        }
+
+        .wrap_upd_ct .jojung_check::after {
+        content: "";
+        width: 10px;
+        height: 5px;
+        position: absolute;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        left: 6px;
+        top: 7px;
+        transform: rotate(315deg);
+        }
+
+        .wrap_upd_ct .jojung_text {
+        font-size: 0.9em;
+        font-weight: 600;
+        color: #9d9d9d;
+        }
+
+        /*선택 전까지 숨기기*/
+        .hide_content {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out;
+        }
+        /*선택 후 보여주기*/
+        .show_content {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        }
+
+        .calen {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding: 20px;
+
+        }
 
         .flatpickr-day.selected,
 		.flatpickr-day.selected:focus,
@@ -189,7 +215,7 @@
                         <header class="update_mom_tl">
                             <div class="row">
                                 <div class="col-xs-12 update_mom_tl_in">
-                                    <a href="../update_profile.html">
+                                    <a href="../update_appl.html">
                                         <i class="fas fa-times"></i>
                                     </a>
                                     <h3 class="center-block">돌봄 기간 / 시간 변경</h3>
@@ -281,7 +307,57 @@
                                                 </div>
 				                            </div>
                                         </div>
-                                        <div id="upd_ct_tab_page2" class="upd_ct_tab_page hide">content2</div>
+                                        <div id="upd_ct_tab_page2" class="upd_ct_tab_page hide">
+                                            <div class="calen">
+                                                <!--특정 날 선택 daypicker-->
+                                                 <div class="calrendar_block"></div>
+                                            </div>
+                                             <!--시간 선택-->
+                                            <div class="time_select_box">
+                                                <div>
+                                                    <!--시작 시간-->
+                                                    <div class="regu_title">시작시간</div>
+                                                    <!--시간-->
+                                                    <div class="select_time">
+                                                        <select>
+                                                            <option value="10:00">오전 10:00</option>
+                                                            <option value="10:30">오전 10:30</option>
+                                                            <option value="11:00" selected>오전 11:00</option>
+                                                            <option value="11:30">오전 11:30</option>
+                                                            <option value="12:00">오전 12:00</option>
+                                                            <option value="12:30">오전 12:30</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!--end select-->
+
+                                                <!--중간 바-->
+                                                <div class="middle_bar"></div>
+                                                <!--종료시간-->
+                                                <div>
+                                                    <div>
+                                                        <div class="regu_title">종료시간</div>
+                                                    </div>
+                                                    <div class="select_time">
+                                                        <select>
+                                                            <option value="20:00">오후 20:00</option>
+                                                            <option value="20:30">오후 20:30</option>
+                                                            <option value="21:00" selected>오후 21:00</option>
+                                                            <option value="21:30">오후 21:30</option>
+                                                            <option value="22:00">오후 22:00</option>
+                                                            <option value="22:30">오후 22:30</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!--end select-->
+                                            </div>
+                                            <!--end select box-->
+                                            <!--일정은 시터에게 맞출 수 잇어요-->
+                                            <div class="jojung_box">
+                                                <span class="jojung_check"></span>
+                                                <span class="jojung_text">본 일정은 맘시터에 맞춰서 얼마든지 조정할 수 있어요.</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -320,23 +396,33 @@
 
                 //요일 선택시 
                 $(".day_btn").on("click", function () {
-                    $(this).toggleClass("select_btn");
+                                $(this).toggleClass("select_btn");
 
-                    var count = $(".select_btn").length;
-                    if (count == 0) {
-                        $("#content").removeClass("show_content");
-                        $("#content").addClass("hide_content");
-                    } else {
-                        $("#content").removeClass("hide_content");
-                        $("#content").addClass("show_content");
-                    }
-                });
+				var count = $(".select_btn").length;
+				if (count == 0) {
+					$("#content").removeClass("show_content");
+					$("#content").addClass("hide_content");
+				} else {
+					$("#content").removeClass("hide_content");
+					$("#content").addClass("show_content");
+				}
+            });
+            
+            $(".calrendar_block").flatpickr({
+                inline: true,
+                dateFormat: "Y/m/d",
+                minDate: "today",
+                maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
+                mode: "multiple", //여러개 선택 가능
+                defaultDate: new Date().fp_incr(6) //지금으로부터 6일이 기본
+            });
 
-                //일정 조정 선택
-                $(".jojung_box").on("click", function () {
-                    $(this).toggleClass("box_check");
-                    $(this).find(".jojung_check").toggleClass("check_check");
-                });
+
+			//일정 조정 선택
+			$(".jojung_box").on("click", function () {
+				$(this).toggleClass("box_check");
+				$(this).find(".jojung_check").toggleClass("check_check");
+			});
             });
         </script>
  

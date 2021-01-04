@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>아이를부탁해</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="../../../assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="../../../assets/ico/favicon.ico" />
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="../../../assets/css/bootstrap.min.css" />
+
+		<!-- noto Sans 웹 폰트 적용 -->
+        <link rel="stylesheet" type="text/css" href="../../../assets/css/notosans.css" />
+        
+        <!-- icon 참조 -->
+        <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
+
+        <!--flatpickr-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+        <!-- css 참조 -->
+        <link rel="stylesheet" href="../../css/update_mom.css">
+
+        <style type="text/css">
+        /** for 후기 관리 페이지 (review.html) --------------------------------------*/
+        /** 공통 for 후기 관리 */
+        .wrap_want_wage {
+            padding: 20px 20px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .number_children_wrap {
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        }
+
+        .btn_children_off {
+        width: calc(50% - 3px);
+        height: 50px;
+        background-color: #f1f3f5;
+        border: 0;
+        color: #646464;
+        font-size: 1.1em;
+        font-weight: 600;
+        }
+
+        .btn_children_on {
+        width: calc(50% - 3px);
+        height: 50px;
+        background-color: #ff7000;
+        color: #fff;
+        font-size: 1.1em;
+        font-weight: 600;
+        transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+        }
+
+        .title {
+        margin: 30px auto 37px;
+        text-align: center;
+        }
+
+        .title .noselect_title {
+        font-weight: 600;
+        line-height: 18px;
+        color: #949494;
+        letter-spacing: -0.2px;
+        font-size: 0.9em;
+        }
+
+        .title .select_title p {
+        font-weight: 600;
+        line-height: 18px;
+        color: #949494;
+        letter-spacing: -0.2px;
+        font-size: 0.8em;
+        margin: 0;
+        }
+
+        .children_age_block {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 375px;
+        padding: 0 23px;
+        box-sizing: border-box;
+        }
+
+        .title_block {
+        margin: 28px 0 8px;
+        text-align: left;
+        }
+
+        .select_children_age_wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        }
+
+        .select_list {
+        width: calc(50% - 4px);
+        height: 50px;
+        }
+
+        .select_list select {
+        width: 100%;
+        padding: 0.8em 0.5em;
+        border: 1px solid #999;
+        font-family: inherit;
+        background: url("/ezen-android2020-2/join/img/arrow.jpg") no-repeat 95% 50%;
+        border-radius: 0px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        }
+
+        .payment_wrap {
+        margin: auto;
+        }
+
+        .show_content {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out 0s;
+        }
+
+        h4 {
+        display: block;
+        text-align: left;
+        font-size: 0.9em;
+        color: #666;
+        margin: 34px 0 11px;
+        }
+
+        .help_box {
+        display: inline-block;
+        }
+
+        .help_btn {
+        background-color: rgba(0, 0, 0, 0);
+        }
+
+        .payment_input_wrap {
+        border: 1px solid #d5d5d5;
+        height: 48px;
+        line-height: 48px;
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        }
+
+        .payment_input {
+        border: none;
+        text-align: right;
+        width: 100%;
+        font-size: 1.4em;
+        font-weight: 600;
+        color: #2b2b2b;
+        }
+
+        .payment_fix {
+        display: inline-block;
+        margin: 3px 20px 5px 8px;
+        font-size: 1.3em;
+        font-weight: 600;
+        line-height: 48px;
+        }
+
+        .disc_box {
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+        }
+
+        .disc_box label {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-left: 10px;
+        }
+
+        /*선택 전까지 숨기기*/
+        .hide_content {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out;
+        }
+        /*선택 후 보여주기*/
+        .show_content {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        }
+
+
+		</style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="container">
+                <div class="wrap_upd_profile_cont">
+                    <form action="#">
+                         <!-- header -->
+                        <header class="update_mom_tl">
+                            <div class="row">
+                                <div class="col-xs-12 update_mom_tl_in">
+                                    <a href="../update_appl.html">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                    <h3 class="center-block">아이정보/희망시급 수정</h3>
+                                    <button type="submit">저장</button>
+                                </div>
+                            </div>
+                        </header>
+
+                        <!-- content1 -->
+                        <section class="group_upd_img">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="number_children_wrap">
+                                        <button class="childeren_num1 btn_children_off" data-tab="select_one">1명</button>
+                                        <button class="childeren_num2 btn_children_off" data-tab="select_two">2명</button>
+                                    </div>
+                                    <!--동적 요소 위치-->
+                                    <div class="title">
+                                        <!--아이 명수 선택 안 할시 띄우기-->
+                                        <!--아이 명수 셀렉하면 동적 요소로 타이틀 변경-->
+                                        <div class="noselect_title">
+                                            안전한 아이 돌봄 서비스를 위해
+                                            <br>
+                                            시터 1명이 최대 2명까지 돌볼 수 있습니다.
+                                        </div>
+                                        <div class="select_title">
+                                        </div>
+                                    </div>
+                                    <!--버튼 select시 공지내용 변경 - ajax-->
+                                    
+                                    <!--end 동적 요소 위치-->
+                    
+                    
+                                    <div class="payment_wrap">
+                                        <div class="payment_box hide_content">
+                                            <h4>맘시터에게 지급할 희망 시급을 적어 주세요.
+                                                <div class="help_box">
+                                                    <a data-toggle="modal" href="#help_modal"><button class="help_btn">
+                                                            <span class="sr-only">도움말</span>
+                                                            <img src="/ezen-android2020-2/join/img/help.png" alt="도움말">
+                                                        </button></a>
+                                                </div>
+                                            </h4>
+                                            <div class="payment_input_wrap">
+                                                <input type="text" class="payment_input" value="10,000" id="payment_input">
+                                                <span class="payment_fix">원</span>
+                                            </div>
+                                            <div class="disc_box">
+                                                <input type="checkbox" value="discussion" id="discussion"><label for="discussion">시급 협의
+                                                    가능</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>   
+                        <!-- end content1 -->
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+
+		<!-- Javascript -->
+		<script src="../../../assets/js/jquery.min.js"></script>
+        <script src="../../../assets/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+        <script type="text/javascript">
+            function addCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            $(function () {
+                //시급 입력시 콤마 자동으로 찍히기
+                $("#payment_input").on("blur", function () {
+                    var val = $(this).val();
+                    if (val.length != 0) {
+                        $(this).val(addCommas($(this).val().replace(/[^0-9]/g, "")));
+                    }
+    
+                    if (/\D/.test(val)) {
+                        val = val.replace(/\D/g, '')
+                        alert('숫자만 입력가능합니다.');
+                        $("#payment_input").val("0");
+                    }
+                    if (val < 8590) {
+                        val = 8590;
+                        alert('최저시급 이상 입력해야 합니다.');
+                        $("#payment_input").val("8590");
+    
+                    }
+                });
+    
+    
+                //아이명수 클릭시 버튼 색상 바뀜
+                $(".childeren_num1, .childeren_num2").on("click", function () {
+                    var select = $(this).hasClass("childeren_num1");
+    
+                    //num1 클릭했을 때
+                    if (select) {
+                        //버튼 색상 적용
+                        $(this).removeClass("btn_children_off");
+                        $(this).addClass("btn_children_on");
+                        $(this).next().removeClass("btn_children_on");
+                        $(this).next().addClass("btn_children_off");
+                        ;
+    
+                    } else {
+                        //num2 클릭했을 때
+                        $(this).removeClass("btn_children_off");
+                        $(this).addClass("btn_children_on");
+                        $(this).prev().removeClass("btn_children_on");
+                        $(this).prev().addClass("btn_children_off");
+                    }
+    
+                    $(".noselect_title").empty();
+                    //버튼 클릭시에 내용 변경
+                    var test = $(this).attr('data-tab');
+                    $.ajax({
+                        type: 'GET',                 //get방식으로 통신
+                        url: test + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+                        dataType: "html",            //html형식으로 값 읽기
+                        error: function () {          //통신 실패시 ㅠㅠ
+                            alert('통신실패!');
+                        },
+                        success: function (data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
+                            $('.select_title').html(data);
+                        }
+                    });
+    
+                });
+    
+                //select box 출생년도, 출생월 선택이 되면 show_content
+                $(document).on('change','#year, #month', function(){
+                    //드롭다운의 선택값
+                    var yaer = $("#year").val();
+                    console.log(year);
+                    var month = $("#month").val();
+                    //가져온 값이 존재한다면?
+                    if (yaer != "" && month != "") {
+                        $(this).parents().find(".payment_box").removeClass("hide_content");
+                        $(this).parents().find(".payment_box").addClass("show_content");
+                    };
+                });
+    
+            });
+    
+        </script>
+        
+	</body>
+</html>

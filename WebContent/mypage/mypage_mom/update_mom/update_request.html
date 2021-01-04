@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>아이를부탁해</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="../../../assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="../../../assets/ico/favicon.ico" />
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="../../../assets/css/bootstrap.min.css" />
+
+		<!-- noto Sans 웹 폰트 적용 -->
+        <link rel="stylesheet" type="text/css" href="../../../assets/css/notosans.css" />
+        
+        <!-- icon 참조 -->
+        <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
+
+        <style type="text/css">
+         /* 초기 설정 -----------------------------------------------------*/
+         .body, html, * {
+            margin: 0;
+            padding: 0;
+
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: black;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+        /** header --------------------------------------------------------------------*/
+
+        .mp_detail_tl {
+            width: 100%;
+        }
+        
+        .mp_detail_tl .mp_detail_tl_in {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .mp_detail_tl .mp_detail_tl_in a i {
+            text-decoration: none;
+            color: black;
+            font-size: 1.5em;
+            margin-top: 7px;
+        }
+
+        .mp_detail_tl .mp_detail_tl_in h3 {
+            font-weight: bold;
+        }
+
+        .mp_detail_tl button {
+            background-color: rgb(255, 112, 0);
+            width: 70px;
+            height: 35px;
+            border: 0;
+            border-radius: 15px;
+            color: #ffffff;
+        }
+
+        /** for 후기 관리 페이지 (review.html) --------------------------------------*/
+        /** 공통 for 후기 관리 */
+        .wrap_upd_request {
+            padding: 20px 20px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        
+        .request_box {
+            padding: 20px 0;
+        }
+
+        .request_box h4 {
+            font-weight: bold;
+        }
+
+        .choice_gender {
+            padding-top: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .choice_gender input[type="radio"] {
+            display: none;
+        }
+
+        .choice_gender input[type="radio"]+label {
+            width: 33.33%;
+            line-height: 40PX;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .choice_gender input[type="radio"]:checked+label {
+            background-color: #ff7000;
+            color: #ffffff;
+            border: 0;
+        }
+
+        .choice_interview {
+            padding-top: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+        }
+
+        .choice_interview input[type="radio"] {
+            display: none;
+        }
+
+        .choice_interview input[type="radio"]+label {
+            width: 33.33%;
+            line-height: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .choice_interview input[type="radio"]:checked+label {
+            background-color: #ff7000;
+            color: #ffffff;
+            border: 0;
+        }
+
+        .choice_care {
+            padding-top: 10px;
+        }
+
+        .choice_care input[type="radio"]+label {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            margin-left: 5px;
+        }
+
+		</style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="container">
+                <div class="wrap_upd_request">
+                    <form action="#">
+                         <!-- header -->
+                        <header class="mp_detail_tl">
+                            <div class="row">
+                                <div class="col-xs-12 mp_detail_tl_in">
+                                    <a href="../update_appl.html">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                    <h3 class="center-block">그 외 요청사항</h3>
+                                    <button type="submit">저장</button>
+                                </div>
+                            </div>
+                        </header>
+
+                        <section class="group1_upd_req">
+                            <div class="row">
+                                <div class="col-xs-12 upd_care_age_in">
+                                    <div class="request_box">
+                                        <h4>원하는 맘시터 성별</h4>
+                                        <div class="choice_gender">
+                                            <input type="radio" id="gender_f" name="s_gender" value="F">
+                                            <label for="gender_f">여자</label>
+                                            <input type="radio" id="gender_m" name="s_gender" value="M">
+                                            <label for="gender_m">남자</label>
+                                            <input type="radio" id="gender_n" name="s_gender" value="N">
+                                            <label for="gender_n">무관</label>
+                                        </div>
+                                    </div>
+                                    <div class="request_box">
+                                        <h4>인터뷰 방식</h4>
+                                        <div class="choice_interview">
+                                            <input type="radio" id="call" name="type_interview" value="call">
+                                            <label for="call">전화 인터뷰</label>
+                                            <input type="radio" id="face" name="type_interview" value="face">
+                                            <label for="face">대면 인터뷰</label>
+                                            <input type="radio" id="text" name="type_interview" value="test">
+                                            <label for="text">시범 채용 </label>
+                                        </div>
+                                    </div>
+                                    <div class="request_box">
+                                        <h4>돌보는 방식</h4>
+                                        <div class="choice_care">
+                                            <div>
+                                                <input type="radio" id="type_care1" name="type_care" value="1">
+                                                <label for="type_care1">부모 대신 혼자 돌봐주세요.</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" id="type_care2" name="type_care" value="2">
+                                                <label for="type_care2">엄마 아빠와 함께 돌봐주세요.</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" id="type_care3" name="type_care" value="3">
+                                                <label for="type_care3">할머니(할아버지)와 함께 도와주세요.</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" id="type_care4" name="type_care" value="4">
+                                                <label for="type_care4">이모님(도우미)과 함께 도와주세요.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+
+		<!-- Javascript -->
+		<script src="../../../assets/js/jquery.min.js"></script>
+        <script src="../../../assets/js/bootstrap.min.js"></script>
+        <script>
+             $(function () {
+            //활동 버튼 클릭
+            $(".care_age").click(function (e) {
+                //버튼 클릭시 이미지 URL 변경
+                //url 가져오기
+                var img_url = $(this).next().find(".want_img").attr('src');
+                var indeximg = img_url.indexOf("_n") //잘라서 _n이 있는지 확인
+                if (indeximg > -1) {
+                    var img_src = img_url.replace(/_n/, "_s");
+                    $(this).next().find(".want_img").attr('src', img_src);
+                } else {
+                    var img_src = img_url.replace(/_s/, "_n");
+                    $(this).next().find(".want_img").attr('src', img_src);
+                }
+
+
+            });
+        });
+        </script>
+	</body>
+</html>
