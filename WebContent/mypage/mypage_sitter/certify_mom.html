@@ -118,6 +118,21 @@
             color: rgb(14, 151, 115);
         }
 
+        .resi_button1 input[type="file"] {
+            display: none;
+        }
+
+        .resi_button1 input[type="file"]+label {
+            width: 100%;
+            height: 52px;
+            padding-top: 12px;
+            text-align: center;
+            border: 1px solid #bebebe;
+            border-radius: 5px;
+            background-image: linear-gradient(180deg,#fff 2%,#ededed);
+            font-size: 1.2em;
+        }
+
         .resi_button2 {
             width: 100%;
             height: 50px;
@@ -192,7 +207,10 @@
                                         </ul>
                                         <p class="resi_one_con" style="color:#aaaaaa;">사진첨부는 최대 5장까지 가능합니다.</p>
                                         <div class="resi_button1">
-                                            <input type="file" name="resi_photo">
+                                            <input type="file" id="mom_photo" name="mom_photo">
+                                            <label for="mom_photo">
+                                                <i class="fas fa-file-import"></i> 사진 추가하기
+                                            </label>
                                         </div>
                                         <img src="../img/cert_family_1.png" alt="주민등록등본 예시" style="margin-top: 20px; width: 100%;">
                                     </div>

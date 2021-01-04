@@ -225,32 +225,7 @@
                                                 <button type="button" class="rev_no_btn">후기 작성하기</button>
                                             </a>
                                         </div>
-                                        <!-- 후기작성 modal -->
-                                            <div id="rev_modal" class="modal fade" tabindex="-1" role="dialog"
-                                            aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <!-- modal-dialog -->
-                                                <div class="modal-dailog">
-                                                    <!-- modal content -->
-                                                    <div class="modal-content">
-                                                        <!-- 제목 -->
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                                            style="padding: 5px 0;">
-                                                                <i class="fas fa-times"></i>
-                                                            </button>
-                                                            <h4 class="modal-title" id="myModalLabel">후기 작성하기</h4>
-                                                        </div>
-                                                        <!-- 내용 -->
-                                                        <div class="modal-body">
-                                                            <form action="#">
-                                                                <textarea name="rev_no_text" id="" cols="60%" rows="4" placeholder="내용을 입력하세요."></textarea>
-                                                                <button class="rev_no_btn" type="submit" style="width: 50%;">저장하기</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--// 후기작성 modal end -->
+                                        
                                     </div>
 
                                     <!-- 작성한 후기 -->
@@ -269,39 +244,7 @@
                                                 </div>
                                             </div>
                                             <div class="rev_button">
-                                                <a data-toggle="modal" href="#rev_edit_modal" style="width:49%">
-                                                    <button class="rev_no_btn" type="button">
-                                                    수정하기
-                                                    </button>
-                                                </a>
-                                                <!-- 후기작성 modal -->
-                                                <div id="rev_edit_modal" class="modal fade" tabindex="-1" role="dialog"
-                                                aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <!-- modal-dialog -->
-                                                    <div class="modal-dailog">
-                                                        <!-- modal content -->
-                                                        <div class="modal-content">
-                                                            <!-- 제목 -->
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                                                style="padding: 5px 0;">
-                                                                    <i class="fas fa-times"></i>
-                                                                </button>
-                                                                <h4 class="modal-title" id="myModalLabel">후기 수정하기</h4>
-                                                            </div>
-                                                            <!-- 내용 -->
-                                                            <div class="modal-body">
-                                                                <form action="#">
-                                                                    <textarea name="rev_no_text" id="" cols="60%" rows="4" placeholder="내용을 입력하세요."></textarea>
-                                                                    <button class="rev_no_btn" type="submit" style="width: 50%;">저장하기</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--// 후기작성 modal end -->
-                                                
-                                                <a href="#" style="width:49%;">
+                                                <a href="#" style="width:100%;">
                                                     <button class="rev_no_btn" type="button">
                                                         삭제하기
                                                     </button>
@@ -317,6 +260,33 @@
                                 </div>
                             </div>
                         </div>
+
+                       <!-- 후기작성 모달 -->
+                       <div id="rev_modal" class="modal fade" tabindex="-1" role="dialog"
+                       aria-labelledby="modal_label" aria-hidden="true">
+                           <!-- modal dialog -->
+                           <div class="modal-dialog">
+                               <!-- modal content -->
+                               <div class="modal-content">
+                                   <!-- 제목 -->
+                                   <div class="modal-header">
+                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="padding: 10px 0;">
+                                           <i class="fas fa-times"></i>
+                                       </button>
+                                       <h4 class="modal-title" id="modalLabel" style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+                                            후기 작성하기
+                                       </h4>
+                                   </div>
+                                   <div class="modal-body"">
+                                        <form action="#">
+                                            <textarea name="rev_no_text" id="" cols="60%" rows="10" placeholder="내용을 입력하세요." style="width: 100%;"></textarea>
+                                            <button class="rev_no_btn" type="submit" style="width: 100%; margin-top: 20px; 
+                                            background-color: rgb(34, 172, 135); border: 0; height: 30px; border-radius: 5px; color: #ffffff;">저장하기</button>
+                                        </form>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
                     </section>
                     
                     

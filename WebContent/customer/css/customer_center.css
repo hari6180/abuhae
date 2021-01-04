@@ -80,6 +80,17 @@ a:hover {
 .header .fa-bars {
   font-size: 1.5em;
 }
+/**
+#header_join {
+	display: none;
+}
+#header_search {
+	display: none;
+}
+.flex_row {
+	display: none;
+}
+*/
 /* header end ---------------------------------------------------------*/
 
 /* modal -------------------------------------------------------------------------------------*/

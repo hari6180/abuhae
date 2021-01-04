@@ -106,7 +106,8 @@
         .exp_cont input[type="text"] {
             border: 0;
             border-bottom: 2px solid #ccc;
-            height: 20px;
+            line-height: 30px;
+            padding: 5px 15px;
             font-size: 1.2em;
         }
 
@@ -194,14 +195,12 @@
             $(function() {
                 $('#startDate').flatpickr({
                 dateFormat: "Y.m.d",
-                minDate: "today",
                 maxDate: new Date().fp_incr(30),
                 defaultDate: new Date(),
                 });
 
                 $('#endDate').flatpickr({
                 dateFormat: "Y.m.d",
-                minDate: "today",
                 maxDate: new Date().fp_incr(30),
                 defaultDate: new Date(),
                 });
