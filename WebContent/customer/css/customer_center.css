@@ -64,6 +64,7 @@ a:hover {
   color: rgb(255, 255, 255);
   font-size: 0.9em;
   font-weight: bold;
+  display: none;
 }
 
 .header .header_search_btn {
@@ -71,6 +72,7 @@ a:hover {
   height: 22px;
   margin-left: 18px;
   margin-right: 10px;
+  display: none;
 }
 
 .header p {
@@ -213,7 +215,6 @@ a:hover {
 /* modal end -------------------------------------------------------------------------------------*/
 
 .container {
-    margin: 0;
     padding: 0;
 }
 .col-xs-12 {
@@ -267,7 +268,7 @@ a:hover {
     color: #FFFFFF;
     text-decoration: none;
 }
-.bock_item:hover {
+.block_item:hover {
     color: #ffffff;
 }
 .block_item_title {

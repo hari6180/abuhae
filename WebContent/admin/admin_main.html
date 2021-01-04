@@ -25,7 +25,7 @@
 			<div class="col-md-12 header_login">
 				<p id="connect">
 					admin 님 접속중
-					<button type="submit" class="btn btn-xs">Logout</button>
+					<button type="submit" class="btn btn-xs logout">Logout</button>
 				</p>
 			</div>
 		</div>
@@ -138,6 +138,17 @@
 				if(result) {
 					//yes
 					location.replace('admin_main.html');
+				} else {
+					// no
+				}
+			});
+		});
+		$(document).ready(function() {
+			$('.logout').click(function() {
+				var result = confirm('정말 로그아웃 하시겠습니까?');
+				if(result) {
+					//yes
+					location.replace('admin_login.html');
 				} else {
 					// no
 				}
