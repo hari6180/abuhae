@@ -141,7 +141,7 @@
                         <header class="mp_detail_tl">
                             <div class="row">
                                 <div class="col-xs-12 mp_detail_tl_in">
-                                    <a href="../../mypage/mypage_sitter/sitter_mypage.html">
+                                    <a href="../update_profile.html">
                                         <i class="fas fa-times"></i>
                                     </a>
                                     <h3 class="center-block">관련 경험 수정</h3>
@@ -175,6 +175,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="result"></div>
                                     <button id="exp_btn" type="button">+ 경험 내용 추가하기</button>
                                 </div>
                             </div>
@@ -203,6 +204,10 @@
                 dateFormat: "Y.m.d",
                 maxDate: new Date().fp_incr(30),
                 defaultDate: new Date(),
+                });
+
+                $("#exp_btn").click(function(e) {
+                    $(".result").addClass("con1");
                 });
             });
         </script>
