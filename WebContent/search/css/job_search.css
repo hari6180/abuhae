@@ -167,6 +167,7 @@ button {
   padding: 15px;
   position: relative;
   margin: 9px;
+  cursor: pointer;
 }
 /* body ----------------------------------------*/
 

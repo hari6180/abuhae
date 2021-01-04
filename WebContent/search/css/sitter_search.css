@@ -214,6 +214,7 @@ button {
   padding: 10px;
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 
 .item_header {
