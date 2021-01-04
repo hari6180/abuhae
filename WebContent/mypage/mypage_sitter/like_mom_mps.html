@@ -19,169 +19,69 @@
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
-        <style type="text/css">
-        /* 초기 설정 -----------------------------------------------------*/
-        .body, html, * {
-            margin: 0;
-            padding: 0;
-        }
-
-        ul {
-            list-style: none;
-        }
-        a:hover {
-            text-decoration: none;
-        }
-
-        /** 첫번째 항목 --------------------------------------------------*/
-        .wrap_change_pw {
-            padding: 5px 20px;
-        }
-
-        .wrap_change_pw .change_pw_title {
-            width: 100%;
-        }
-        
-        .wrap_change_pw .change_pw_title .pw_title_in {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 30px;
-            font-size: 1em;
-        }
-
-        .wrap_change_pw .change_pw_title .pw_title_in a i {
-            text-decoration: none;
-            color: black;
-            font-size: 1.5em;
-            margin-top: 10px;
-        }
-
-        .wrap_change_pw .change_pw_title .pw_title_in h3 {
-            font-weight: bold;
-        }
-
-        /** 두번째 항목 */
-        li {
-            list-style: none;
-            margin-right: 10px;
-            min-height: 36px;
-        }
-
-        .like_mom_cont {
-            background-color: #eee;
-            min-height: 700px;
-        }
-        
-        .tab {
-            margin: 10px auto;
-        }
-
-        .tab-button {
-            padding: 10px;
-        }
-
-        .tab-button-item { 
-            min-height: 36px;
-            }
-
-        .tab-button-item-link.selected { color: #000; }
-
-        .tab-button-item-link.selected .glyphicon { color: #ff7000; }
-        
-        .tab-button-item-link {
-            color: #858585;
-            text-decoration: none;
-        }
-        .tab-panel .page-con {
-            background-color: #fff;
-            position: relative;
-            top: 20px;
-            margin: 10px;
-            padding: 20px 20px;
-        }
-
-        .page-con-top {
-            display: flex;
-        }
-
-        .page-con-top-left {
-            margin-right: 20px;
-        }
-
-        .page-con-top-left span {
-            position: relative;
-            top: 20px;
-            left: 3px;
-        }
-
-        .page-days {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-		</style>
+        <!-- css 참조 -->
+        <link rel="stylesheet" href="../css/upd_mps_detail.css">
     </head>
 
     <body>
         <div id="app">
             <div class="container">
-                <div class="wrap_change_pw">
-                    <!-- 첫번째 항목 -->
-                    <section class="change_pw_title">
+                <div class="wrap_like_mom">
+                    <!-- header -->
+                    <header class="mps_detail_tl">
                         <div class="row">
-                            <div class="col-xs-12 pw_title_in">
+                            <div class="col-xs-12 mps_detail_tl_in">
                                 <a href="sitter_mypage.html">
                                     <i class="fas fa-times"></i>
                                 </a>
-                                <h3 class="center-block">찜한 일자리 <span style="color: #ff7000;">2명</span></h3>
+                                <h3 class="center-block">내가 찜한 일자리 <span style="color: #ff7000;">2명</span></h3>
                             </div>
                         </div>
-                    </section>
+                    </header>
+                    <!-- end header -->
                     
-                    <!-- 두번째 항목 -->
-                    <section class="like_mom_cont">
+                    <!-- content1 -->
+                    <section class="grouop1_like_mom">
                         <div class="row">
-                            <div class="col-xs-12 tab">
+                            <div class="col-xs-12 lm_tab">
                                 <!-- 탭 메뉴 -->
-                                <ul class="tab-button">
-                                    <li class="tab-button-item pull-left">
-                                        <a class="tab-button-item-link selected" href="#tab-page-1">
+                                <ul class="lm_tab_button">
+                                    <li class="lm_tab_button_item pull-left">
+                                        <a class="lm_tab_button_item_link selected" href="#lm_tab_page_1">
                                             <span class="glyphicon glyphicon-ok"></span> 전체
                                         </a>
                                     </li>
-                                    <li class="tab-button-item pull-left">
-                                        <a class="tab-button-item-link" href="#tab-page-2">
+                                    <li class="lm_tab_button_item pull-left">
+                                        <a class="lm_tab_button_item_link" href="#lm_tab_page_2">
                                             <span class="glyphicon glyphicon-ok"></span> 구인 중인 일자리만
                                         </a>
                                     </li>
                                 </ul>
                                 <!-- 내용 영역 -->
-                                <div class="tab-panel">
-                                    <div id="tab-page-1">
-                                        <div class="page-con">
-                                            <div class="page-con-top">
-                                                <div class="page-con-top-left">
-                                                    <img src="../../mypage/img/profile.jpg" width="65px" alt="임시프로필" style="border-radius: 50%;">
+                                <div class="lm_tab_panel">
+                                    <!-- 전체 일자리 -->
+                                    <div id="lm_tab_page_1">
+                                        <div class="lm_page_cont" id="page_con_1">
+                                            <div class="lm_page_box">
+                                                <div class="lm_page_box_left">
+                                                    <img src="../../mypage/img/profile.png" alt="임시프로필">
                                                     <br>
                                                     <span style="margin-top: 10px; width: 70px; padding: 5px 10px; background-color: #dcecea; border-radius: 15px;
                                                     color: #007e62; font-size: 0.7em; font-weight: bold;">
                                                         0명 지원
                                                     </span>
                                                 </div>
-                                                <div class="page-con-top-right">
+                                                <div class="lm_page_box_right">
                                                     <p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">신생아 1명 ㅣ <span style="color: #888888; font-size: 0.9em;">한 달 전</span></p>
                                                     <p style="font-size: 1em; font-weight: bold;">실내놀이 맘시터 찾습니다.</p>
-                                                    <p style="color: #888888; font-size: 0.95em; font-weight: bold;">전북 군산시 ㅣ 이o림 ㅣ Invaild date</p>
+                                                    <p style="color: #888888; font-size: 0.95em; font-weight: bold;">전북 군산시 ㅣ 김○선 ㅣ Invaild date</p>
                                                     <p style="color: #888888; font-size: 0.95en;">
                                                         <i class="fas fa-dollar-sign" style="color: #007e62;"></i> 희망시급 9,000원 <span style="color: black;"><strong>협의가능</strong></span>
                                                     </p>
-                                                </div>
-                                                
+                                                </div>          
                                             </div>
                                             <hr/>
-                                            <div class="page-days">
+                                            <div class="lm_page_box">
                                                 <div class="days" style="font-size: 0.95em; font-weight: bold;">
                                                     <span style="margin-right: 10px; color: #888888;"><span style="color: #488f8f;">단기</span> -일 동안</span>
                                                     <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">월</span>
@@ -192,33 +92,32 @@
                                                     <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">토</span>
                                                     <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">일</span>
                                                 </div>
-                                                <div class="garbage">
+                                                <button type="button" class="garbage" href="#">
                                                     <i class="fas fa-trash-alt"></i>
-                                                </div>
+                                                </button>
                                             </div>
                                         </div>
-                                        <div class="page-con">
-                                            <div class="page-con-top">
-                                                <div class="page-con-top-left">
-                                                    <img src="../../mypage/img/profile.jpg" width="65px" alt="임시프로필" style="border-radius: 50%;">
+                                        <div class="lm_page_cont">
+                                            <div class="lm_page_box">
+                                                <div class="lm_page_box_left">
+                                                    <img src="../../mypage/img/profile.png" alt="임시프로필">
                                                     <br>
                                                     <span style="margin-top: 10px; width: 70px; padding: 5px 10px; background-color: #dcecea; border-radius: 15px;
                                                     color: #007e62; font-size: 0.7em; font-weight: bold;">
-                                                        0명 지원
+                                                        3명 지원
                                                     </span>
                                                 </div>
-                                                <div class="page-con-top-right">
-                                                    <p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">신생아 1명 ㅣ <span style="color: #888888; font-size: 0.9em;">한 달 전</span></p>
+                                                <div class="lm_page_box_right">
+                                                    <p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">유아 2명 ㅣ <span style="color: #888888; font-size: 0.9em;">한 달 전</span></p>
                                                     <p style="font-size: 1em; font-weight: bold;">실내놀이 맘시터 찾습니다.</p>
-                                                    <p style="color: #888888; font-size: 0.95em; font-weight: bold;">전북 군산시 ㅣ 이o림 ㅣ Invaild date</p>
+                                                    <p style="color: #888888; font-size: 0.95em; font-weight: bold;">서울 강남실 ㅣ 전○리 ㅣ Invaild date</p>
                                                     <p style="color: #888888; font-size: 0.95en;">
-                                                        <i class="fas fa-dollar-sign" style="color: #007e62;"></i> 희망시급 9,000원 <span style="color: black;"><strong>협의가능</strong></span>
+                                                        <i class="fas fa-dollar-sign" style="color: #007e62;"></i> 희망시급 10,000원 <span style="color: black;"><strong>협의가능</strong></span>
                                                     </p>
-                                                </div>
-                                                
+                                                </div>          
                                             </div>
                                             <hr/>
-                                            <div class="page-days">
+                                            <div class="lm_page_box">
                                                 <div class="days" style="font-size: 0.95em; font-weight: bold;">
                                                     <span style="margin-right: 10px; color: #888888;"><span style="color: #488f8f;">단기</span> -일 동안</span>
                                                     <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">월</span>
@@ -229,35 +128,37 @@
                                                     <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">토</span>
                                                     <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">일</span>
                                                 </div>
-                                                <div class="garbage">
+                                                <button type="button" class="garbage" href="#">
                                                     <i class="fas fa-trash-alt"></i>
-                                                </div>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="tab-page-2" class="hide">
-                                        <div class="page-con">
-                                            <div class="page-con-top">
-                                                <div class="page-con-top-left">
-                                                    <img src="../../mypage/img/profile.jpg" width="65px" alt="임시프로필" style="border-radius: 50%;">
+                                    <!-- end 전체 일자리 -->
+
+                                    <!-- 구인중인 일자리 -->
+                                    <div id="lm_tab_page_2" class="hide">
+                                        <div class="lm_page_cont"">
+                                            <div class="lm_page_box">
+                                                <div class="lm_page_box_left">
+                                                    <img src="../../mypage/img/profile.png" alt="임시프로필">
                                                     <br>
                                                     <span style="margin-top: 10px; width: 70px; padding: 5px 10px; background-color: #dcecea; border-radius: 15px;
                                                     color: #007e62; font-size: 0.7em; font-weight: bold;">
                                                         0명 지원
                                                     </span>
                                                 </div>
-                                                <div class="page-con-top-right">
-                                                    <p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">영아 2명 ㅣ <span style="color: #888888; font-size: 0.9em;">한 달 전</span></p>
+                                                <div class="lm_page_box_right">
+                                                    <p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">신생아 1명 ㅣ <span style="color: #888888; font-size: 0.9em;">한 달 전</span></p>
                                                     <p style="font-size: 1em; font-weight: bold;">실내놀이 맘시터 찾습니다.</p>
-                                                    <p style="color: #888888; font-size: 0.95em; font-weight: bold;">전북 군산시 ㅣ 이o림 ㅣ Invaild date</p>
+                                                    <p style="color: #888888; font-size: 0.95em; font-weight: bold;">전북 군산시 ㅣ 김○선 ㅣ Invaild date</p>
                                                     <p style="color: #888888; font-size: 0.95en;">
                                                         <i class="fas fa-dollar-sign" style="color: #007e62;"></i> 희망시급 9,000원 <span style="color: black;"><strong>협의가능</strong></span>
                                                     </p>
-                                                </div>
-                                                
+                                                </div>          
                                             </div>
                                             <hr/>
-                                            <div class="page-days">
+                                            <div class="lm_page_box">
                                                 <div class="days" style="font-size: 0.95em; font-weight: bold;">
                                                     <span style="margin-right: 10px; color: #888888;"><span style="color: #488f8f;">단기</span> -일 동안</span>
                                                     <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">월</span>
@@ -268,12 +169,13 @@
                                                     <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">토</span>
                                                     <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">일</span>
                                                 </div>
-                                                <div class="garbage">
+                                                <button type="button" class="garbage" href="#">
                                                     <i class="fas fa-trash-alt"></i>
-                                                </div>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
+                                    <!--end 구인 중인 일자리 -->
                                 </div>
                             </div>
                         </div>
@@ -291,17 +193,26 @@
         <script>
            $(function() {
                /**  탭 버튼의 클릭 처리 */
-               $(".tab-button-item-link").click(function(e) {
+               $(".lm_tab_button_item_link").click(function(e) {
                    // 페이지 이동 방지
                    e.preventDefault();
 
-                   $(".tab-button-item-link").not(this).removeClass("selected");
+                   $(".lm_tab_button_item_link").not(this).removeClass("selected");
 
                    $(this).addClass("selected");
 
                    var target = $(this).attr("href");
                    $(target).removeClass("hide");
-                   $(".tab-panel > div").not($(target)).addClass("hide");
+                   $(".lm_tab_panel > div").not($(target)).addClass("hide");
+               });
+
+               /** 임시 삭제 기능 */
+               $(".garbage").click(function(e) {
+                   var is_ok = confirm("정말 삭제하시겠습니까?");
+
+                   if(is_ok) {
+                    $(this).parents("#page_con_1").addClass("hide");
+                   }
                });
            });
            
