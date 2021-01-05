@@ -19,152 +19,8 @@
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
-        <style type="text/css">
-         /* 초기 설정 -----------------------------------------------------*/
-         .body, html, * {
-            margin: 0;
-            padding: 0;
-
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            padding: 0;
-            margin: 0;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        a {
-            color: black;
-        }
-
-        a:hover {
-            text-decoration: none;
-            color: black;
-        }
-
-        /** header --------------------------------------------------------------------*/
-
-        .mp_detail_tl {
-            width: 100%;
-        }
-        
-        .mp_detail_tl .mp_detail_tl_in {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in a i {
-            text-decoration: none;
-            color: black;
-            font-size: 1.5em;
-            margin-top: 7px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in h3 {
-            font-weight: bold;
-        }
-
-        /** for 후기 관리 페이지 (review.html) --------------------------------------*/
-        /** 공통 for 후기 관리 */
-        .wrap_review {
-            padding: 20px 20px;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-
-        /** 탭메뉴 for 후기 관리 */
-        .wrap_review .group_rev_con .rev_tab_button {
-            display: flex;
-            padding: 0;
-            margin: 0;
-        }
-
-
-        .wrap_review .group_rev_con .rev_tab_button .tab_button_item {
-            width: 33.333%;
-            height: 48px;
-            border-bottom: 3px solid rgb(237, 237, 237);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .wrap_review .group_rev_con .rev_tab_button .tab_button_item.fi_selected {
-            border-bottom: 3px solid #ff7000;
-        }
-
-        .wrap_review .group_rev_con .rev_tab_button .tab_button_item_link {
-            color: rgb(148, 148, 148);
-            font-size: 1.1em;
-            width: 100%;
-            
-        }
-
-        .wrap_review .group_rev_con .rev_tab_button .tab_button_item_link.selected {
-            color: #ff7000;
-        }
-
-        /** 리뷰 내용 영역 */
-
-        .wrap_review .group_rev_con .rev_tab_panel {
-            padding: 10px 15px;
-        }
-
-        .wrap_review .group_rev_con .rev_tab_panel .rev_tab_panel_con {
-            min-height: 300px;
-            background-color: rgb(240, 240, 240);
-            padding: 10px;
-            border-radius: 3px;
-        }
-
-        .wrap_review .group_rev_con .rev_tab_panel .rev_tab_panel_con h4 {
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-
-        .wrap_review .group_rev_con .rev_tab_panel .rev_tab_panel_con h5 {
-            font-size: 1.1em;
-            font-weight: bold;
-        }
-
-        .wrap_review .group_rev_con .rev_tab_panel .si_rev_no {
-            background-color: #ffffff;
-            padding: 15px;
-        }
-
-        .wrap_review .group_rev_con .rev_tab_panel .si_rev_no .si_rev_no_tl {
-            display: flex;
-
-        }
-
-        .wrap_review .group_rev_con .rev_tab_panel .si_rev_no_tl .si_rev_no_info {
-            margin-left: 15px;
-        }
-
-        .wrap_review .group_rev_con .rev_tab_panel .rev_no_btn {
-            height: 36px;
-            width: 100%;
-            border: 0;
-            border-radius: 8px;
-            margin-top: 15px;
-            background-color: rgb(255, 95, 0);
-            color: #fff;
-        }
-
-        .rev_button {
-            display: flex;
-            justify-content: space-between;
-        }
-
-		</style>
+        <!-- css 참조 -->
+        <link rel="stylesheet" href="../css/upd_mps_detail.css">
     </head>
 
     <body>
@@ -183,8 +39,8 @@
                         </div>
                     </header>
 
-                    <!-- 두번째 항목 -->
-                    <section class="group_rev_con">
+                    <!-- content1 -->
+                    <section class="group1_review">
                         <!-- 탭버튼 -->
                         <div class="row">
                             <div class="col-xs-12 rev_tab">

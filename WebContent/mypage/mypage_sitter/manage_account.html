@@ -19,184 +19,14 @@
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
-        <style type="text/css">
-        /* 초기 설정 -----------------------------------------------------*/
-        .body, html, * {
-            margin: 0;
-            padding: 0;
-
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            padding: 0;
-            margin: 0;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        a {
-            color: black;
-        }
-
-        a:hover {
-            text-decoration: none;
-            color: black;
-        }
-
-        /** header --------------------------------------------------------------------*/
-
-        .mp_detail_tl {
-            width: 100%;
-        }
-        
-        .mp_detail_tl .mp_detail_tl_in {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in a i {
-            text-decoration: none;
-            color: black;
-            font-size: 1.5em;
-            margin-top: 7px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in h3 {
-            font-weight: bold;
-        }
-
-
-        /** for 내 인증관리 페이지 (certify.html) --------------------------------------*/
-
-        /** 공통 for 내 인증관리 */
-        .wrap_certify {
-            padding: 20px 20px;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-
-        .wrap_certify p, button {
-            font-size: 1.071em;
-        }
-
-        .total_account {
-            background-color: #eee;
-        }
-
-        /** 첫번째 항목 */
-        .group_account_con {
-            padding: 20px 0;
-            background-color: #fff;
-        }
-
-        .acc_con_one {
-            background-color: #666;
-            border-radius: 5px;
-            padding: 30px 20px;
-            display: flex;
-            justify-content: center;
-            box-shadow: rgba(0, 0, 0, 0.21) 0px 3px 5px 0px;
-        }
-
-        .acc_con_left {
-            margin-right: 80px;
-            color: #fff;
-        }
-
-        .acc_con_left p {
-            color: #f1d8c8;   
-        }
-
-        .acc_con_right {
-            margin-top: 5%;
-        }
-
-        .acc_con_right button {
-            background-color: rgb(255, 233, 19);
-            box-shadow: rgba(0, 0, 0, 0.21) 0px 3px 5px 0px;
-            color: #000;
-            border: 0;
-            border-radius: 15px;
-            min-width: 88px;
-        }
-
-        .acc_con_two {
-            padding: 30px 20px 0;
-        }
-
-        .user_info_p {
-            display: flex;
-            align-items: center;
-            margin-bottom: 7px;
-        }
-
-        ..user_info_p: :last-child {
-            margin-bottom: 0;
-        }
-
-        .user_info_p h5 {
-            width: 35%;
-            text-align: left;
-        }
-
-        .user_info_p p {
-            margin-top: 3px;
-            font-size: 0.9em;
-        }
-
-        .user_info_p.user_phone p {
-            width: 50%;
-        }
-
-        .user_info_p.user_email p {
-            width: 50%;
-        }
-
-        .user_info_p.user_phone button {
-            width: 15%;
-            background-color: #cccccc;
-            border: 0;
-            height: 30px;
-            border-radius: 15px;
-            font-size: 0.9em;
-        }
-
-        .user_info_p.user_email button {
-            width: 15%;
-            background-color: #cccccc;
-            border: 0;
-            height: 30px;
-            border-radius: 15px;
-            font-size: 0.9em;
-        }
-
-        /** 두번째 항목 */
-        .group_account_foot {
-            margin-top: 20px;
-            padding: 20px 20px;
-            background-color: #fff;
-        }
-
-        .account_ft_btn {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: centeraccount_ft_btn;
-        }
-       
-		</style>
+        <!-- css 참조 -->
+        <link rel="stylesheet" href="../css/upd_mps_detail.css">
     </head>
 
     <body>
         <div id="app">
             <div class="container">
-                <div class="wrap_certify">
+                <div class="wrap_mng_account">
                     <!-- header -->
                     <header class="mp_detail_tl" style="border-bottom: 1px solid #ccc;">
                         <div class="row">
@@ -211,7 +41,7 @@
 
                     <div class="total_account">
                         <!-- 첫번째 항목 -->
-                        <section class="group_account_con">
+                        <section class="group1_mng_account">
                             <div class="row">
                                 <div class="col-xs-12 account_con_in">
                                     <div class="acc_con_one">
@@ -220,7 +50,7 @@
                                             <h4>사용 중인 지원권 없음</h4>
                                         </div>
                                         <div class="acc_con_right">
-                                            <a href="#">
+                                            <a href="../../buy/sitter_ticket.html">
                                                 <button type="button" class="btn btn-primary">지원권 구매하기</button>
                                             </a>
                                         </div>
@@ -313,7 +143,7 @@
                                 <div class="col-xs-12 account_ft_in">
                                     <ul>
                                         <li>
-                                            <a class="account_ft_btn" href="change_pw.html">
+                                            <a class="account_ft_btn" href="upadate_passowrd.html">
                                                 <p>비밀번호 변경</p>
                                                 <i class="fas fa-angle-right"></i>
                                             </a>

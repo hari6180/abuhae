@@ -20,7 +20,7 @@
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
         <!--flatpickr-->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
         <style type="text/css">
          /* 초기 설정 -----------------------------------------------------*/
@@ -83,15 +83,19 @@
             color: #ffffff;
         }
 
-        /** for 후기 관리 페이지 (review.html) --------------------------------------*/
         /** 공통 for 후기 관리 */
-        .wrap_want_wage {
+        .wrap_upd_regular {
             padding: 20px 20px;
             margin: 0 auto;
             max-width: 600px;
         }
 
-        .startdate {
+        .wrap_upd_regular .regular_tl {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .wrap_upd_regular .startdate {
             display: block;
             border: 0;
             width: 130px;
@@ -102,17 +106,17 @@
             font-size: 1.1em;
         }
 
-        .available_time_in {
+        .wrap_upd_regular .available_time_in {
             display: flex;
             justify-content: center;
             text-align: center;
         }
 
-        .timelist {
+        .wrap_upd_regular .timelist {
             padding: 20px 30px;
         }
 
-        .timelist select {
+        .wrap_upd_regular .timelist select {
             width: 135px;
             height: 35px;
             margin-top: 6px;
@@ -121,18 +125,18 @@
             color: #ff7000;
         }
 
-        .available_days_in {
+        .wrap_upd_regular .available_days_in {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             padding-top: 20px;
         }
 
-        .available_days_in input[type="checkbox"] {
+        .wrap_upd_regular .available_days_in input[type="checkbox"] {
             display: none;
         }
 
-        .available_days_in input[type="checkbox"]+label {
+        .wrap_upd_regular .available_days_in input[type="checkbox"]+label {
             background-color: #eee;
             width: 35px;
             height: 35px;
@@ -141,7 +145,7 @@
             border-radius: 50px;
         }
 
-        .available_days_in input[type="checkbox"]:checked+label {
+        .wrap_upd_regular .available_days_in input[type="checkbox"]:checked+label {
             background-color: #ff7000;
             color: #ffffff;
         }
@@ -193,7 +197,7 @@
     <body>
         <div id="app">
             <div class="container">
-                <div class="wrap_want_wage">
+                <div class="wrap_upd_regular">
                     <form action="#">
                          <!-- header -->
                         <header class="mp_detail_tl">
@@ -208,11 +212,11 @@
                             </div>
                         </header>
 
-                        <!-- content -->
+                        <!-- content1 -->
                         <section class="start_job">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <h4>활동 시작일</h4>
+                                    <h4 class="regular_tl">활동 시작일</h4>
                                     <input type="text" name="start_date" id="datepicker" class="startdate center-block">
                                 </div>
                             </div>
@@ -224,7 +228,7 @@
                             <div class="row">
                                 <div class="col-xs-12 available_time_in">
                                     <div class="timelist">
-                                        <h4>시작시간</h4>
+                                        <h4 class="regular_tl">시작시간</h4>
                                         <select name="starttime" id="starttime">
                                             <option value="am1000">오전 10:00</option>
                                             <option value="am1030">오전 10:30</option>
@@ -235,7 +239,7 @@
                                         </select>
                                     </div>
                                     <div class="timelist">
-                                        <h4>종료시간</h4>
+                                        <h4 class="regular_tl">종료시간</h4>
                                         <select name="endtime" id="endtime">
                                             <option value="pm2000">오후 20:00</option>
                                             <option value="pm2030">오후 20:30</option>
@@ -251,11 +255,12 @@
 
                         <hr/>
 
+                        <!-- content2 -->
                         <section class="available_days">
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="choose_day_title">
-                                        <h4>활동 요일</h4>
+                                        <h4 class="regular_tl">활동 요일</h4>
                                     </div>
                                     <div class="available_days_in">
                                         <input type="checkbox" name="workdays" id="workday1" class="workdays" value="mon">
@@ -285,10 +290,11 @@
 
                         <hr/>
 
+                        <!-- content3 -->
                         <section class="work_term">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <h4>이 일정으로 얼마동안 일할 수 있나요?</h4>
+                                    <h4 class="regular_tl">이 일정으로 얼마동안 일할 수 있나요?</h4>
                                 </div>
                             </div>
                             <div class="term_list">
