@@ -33,7 +33,7 @@
 			<div class="receipt_area col-xs-12">
 				<div class="receipt_title">
 					<div style="margin-top: 8px; margin-right: 8px; margin-left: -16px;">
-						<button type="button" class="back_btn">
+						<button type="button" class="back_btn" onclick = "location.href = 'buy.html'">
 							<i class="fas fa-times"></i>
 						</button>
 					</div>
@@ -44,6 +44,7 @@
 						<div class="second_name">맘회원 전용</div>
 						<div class="name">프리미엄 이용권</div>
 					</div>
+					<div style="font-weight: bold; font-size: 0.8em; color: #ff9000; text-align: center;"><span style="color: #ff7000;"><i class="fas fa-exclamation"></i></span> 쿠폰과 적립금은 중복할인이 불가능합니다</div>
 					<hr style="margin-bottom: 15px;">
 					<div class="coupon_area">
 					  <div class="coupon_line">
@@ -194,7 +195,7 @@
 			    $("#total_price").html("47,900원");
 			    $("#price_dc").css(
 					"color", "#ff7000"
-				) 
+				)
 			} else if (index == 0) {
 				$("#price_dc").html("49,900원");
 			    $("#total_price").html("49,900원");

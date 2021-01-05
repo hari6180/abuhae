@@ -279,4 +279,5 @@ html,
 		}
 		#button2 {
 			border : 2px solid #ff7000;
+			border-radius: 8px;
 		}
