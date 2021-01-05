@@ -61,7 +61,7 @@
                                             <label for="show_pw">비밀번호 보기</label>
                                         </div>
                                     </div>
-                                    <button type="submit">변경하기</button>
+                                    <button type="button" id="pwd_btn">변경하기</button>
                                 </form>  
                             </div>
                         </div>
@@ -88,6 +88,14 @@
                        $("#now_pw").attr('type', 'password');
                        $("#new_pw").attr('type', 'password');
                    }
+                });
+                
+                $("#pwd_btn").click(function() {
+                    var result = confirm("비밀번호를 변경하시겠습니까?");
+
+                    if(result) {
+                        location.href = "../../login/login.html";
+                    }
                 });
             });
         </script>
