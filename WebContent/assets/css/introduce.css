@@ -1,0 +1,100 @@
+html,
+body {
+  color: #222;
+  font-weight: 100;
+  font-size: 1em;
+  line-height: 1.375;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#service .service_wrap {
+  padding: 60px 20px 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#service .what_service {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ff5700;
+  margin-bottom: 25px;
+}
+#service .service_desc_bold {
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+
+#service .service_img {
+  margin-bottom: 35px;
+}
+
+#service .service_img img {
+  width: 100%;
+}
+
+#service .service_desc {
+  line-height: 1.64;
+  font-size: 0.8em;
+  font-weight: 700;
+}
+
+#service .bar {
+  width: 100%;
+  height: 10px;
+  background-color: #efefef;
+}
+
+#service .button_wrap {
+  width: 100%;
+  background-color: #fff;
+  white-space: nowrap;
+  display: flex;
+  border-bottom: 2px solid #e0e0e0;
+  height: 50px;
+}
+
+#service .service_btn {
+  border: 10px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-size: 0.85em;
+  font-weight: bold;
+  position: relative;
+  width: 50%;
+  text-transform: uppercase;
+  background-color: #fff;
+}
+
+#service .click {
+  left: 0;
+  width: 50%;
+  bottom: 0;
+  display: block;
+  background-color: #ff5700;
+  height: 4px;
+  margin-top: -3px;
+  position: relative;
+  transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+#content {
+  min-height: 400px;
+}

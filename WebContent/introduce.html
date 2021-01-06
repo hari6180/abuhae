@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>아이를부탁해</title>
+
+    <!-- 모바일 웹 페이지 설정 -->
+    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+
+    <!-- bootstrap -->
+    <!--절대 경로 수정 1220 선아-->
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+
+    <!-- noto Sans 웹 폰트 적용 -->
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/introduce.css" />
+    <!--header css-->
+    <link rel="stylesheet" href="assets/css/index_header.css">
+    <!-- fontawesome(글리피콘) 적용 -->
+    <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        .container {
+            margin: 0;
+            padding: 0;
+        }
+
+        section .col-xs-12 {
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="menu"></div>
+        <section>
+            <div id="service" class="col-xs-12">
+                <!-- xs-12로 모바일 맞춤 -->
+                <div class="service_wrap">
+                    <div class="what_service">맘시터 서비스는 무엇인가요?</div>
+                    <div>바쁜 부모님들이</div>
+                    <div>믿을 수 있는 아이돌보미를</div>
+                    <div class="service_desc_bold">쉽고 빠르게 찾을 수 있는 서비스입니다.</div>
+                    <div class="service_img"><img src="/ezen-android2020-2/img/momsitter_about.png"></div>
+                    <div class="service_desc">각자의 상황마다 요청시간과 돌봄내용이 다양한 부모님들의 다양한 니즈를, 다양한 특기와 장점을 가진 아이돌보미들이 도움을 줄 수 있도록
+                        연결하는 공유경제 서비스입니다.</div>
+                </div>
+                <!--중간 나눔 바-->
+                <div class="bar"></div>
+                <!--페이지 나누어서 진행 ajax로 버튼 클릭시 화면 변환 tab으로 진행-->
+                <div>
+                    <div class="button_wrap">
+                        <button class="service_btn">어떤 점이 좋나요?</button>
+                        <button class="service_btn">어떻게 시작되었나요?</button>
+                    </div>
+                    <div>
+                        <div class="click"></div>
+                    </div>
+                    <div id="content"></div>
+                </div>
+            </div> <!-- fin. col-xs-12 -->
+        </section>
+    </div>
+
+    <!-- Javascript -->
+    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //브라우저 로드시 헤더 받아오기
+            $("#menu").load("index_header.html");
+        });
+    </script>
+</body>
+
+</html>
