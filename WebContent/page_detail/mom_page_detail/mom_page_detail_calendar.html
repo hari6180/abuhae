@@ -509,34 +509,27 @@
 			const init = {
 					  monList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 					  dayList: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-					  today: new Date(),
+					  today: new Date(), // 오늘 날짜 담기
 					  monForChange: new Date().getMonth(),
 					  activeDate: new Date(),
-					  getFirstDay: (yy, mm) => new Date(yy, mm, 1),
-					  getLastDay: (yy, mm) => new Date(yy, mm + 1, 0),
-					  nextMonth: function () {
+					  getFirstDay: (yy, mm) => new Date(yy, mm, 1), // 어떤 달의 첫번째 날에 대한 정보 얻기 
+					  getLastDay: (yy, mm) => new Date(yy, mm + 1, 0), // 마지막 날에 대한 정보 얻기 
+					  nextMonth: function () { // 다음 달 버튼 클릭시 실행 
 					    let d = new Date();
-					    d.setDate(1);
-					    d.setMonth(++this.monForChange);
+					    d.setDate(1); // 일자를 1일로 설정 
+					    d.setMonth(++this.monForChange); // d객체 통해서 몇월인지 얻기 
 					    this.activeDate = d;
 					    return d;
 					  },
-					  prevMonth: function () {
+					  prevMonth: function () { // 이전 달 버튼 클릭 시 실행 
 					    let d = new Date();
-					    d.setDate(1);
-					    d.setMonth(--this.monForChange);
+					    d.setDate(1); // 일자를 1일로 설정 
+					    d.setMonth(--this.monForChange); //d객체 통해서 몇월인지 얻기 
 					    this.activeDate = d;
 					    return d;
 					  },
-					  addZero: (num) => (num < 10) ? '0' + num : num,
-					  activeDTag: null,
-					  getIndex: function (node) {
-					    let index = 0;
-					    while (node = node.previousElementSibling) {
-					      index++;
-					    }
-					    return index;
-					  }
+					  addZero: (num) => (num < 10) ? '0' + num : num, // 한자리 숫자 앞에 0붙이기 
+					  activeDTag: null
 					};
 
 					const $calBody = document.querySelector('.cal-body');
@@ -555,6 +548,7 @@
 					/**
 					 * @param {date} fullDate
 					 */
+					 // 동적으로 달력생성 하기 
 					function loadYYMM (fullDate) {
 					  let yy = fullDate.getFullYear();
 					  let mm = fullDate.getMonth();
@@ -576,7 +570,7 @@
 					    trtd += '<tr>';
 					    for (let j = 0; j < 7; j++) {
 					      if (i === 0 && !startCount && j === firstDay.getDay()) {
-					        startCount = 1;
+					        startCount = 1; // 날짜가 처음 시작하면 startCount 변수를 0에서 1로 변경 
 					      }
 					      if (!startCount) {
 					        trtd += '<td>'
@@ -584,11 +578,12 @@
 					        let fullDate = yy + '.' + init.addZero(mm + 1) + '.' + init.addZero(countDay + 1);
 					        trtd += '<td class="day';
 					        trtd += (markToday && markToday === countDay + 1) ? ' today" ' : '"';
+					        // -> countDay 변수가 markToday값과 일치하면 td에 today클래스를 준다 
 					        trtd += ` data-date="${countDay + 1}" data-fdate="${fullDate}">`;
 					      }
 					      trtd += (startCount) ? ++countDay : '';
 					      if (countDay === lastDay.getDate()) { 
-					        startCount = 0; 
+					        startCount = 0; // 날짜 세는 게 끝나면 startCount 변수를 다시 0으로 초기화한다 
 					      }
 					      trtd += '</td>';
 					    }
@@ -600,6 +595,7 @@
 					/**
 					 * @param {string} val
 					 */
+					 // day 리스트 만들기 
 					function createNewList (val) {
 					  let id = new Date().getTime() + '';
 					  let yy = init.activeDate.getFullYear();
@@ -620,7 +616,8 @@
 
 					loadYYMM(init.today);
 					loadDate(init.today.getDate(), init.today.getDay());
-
+					
+					// click 이벤트 
 					$btnNext.addEventListener('click', () => loadYYMM(init.nextMonth()));
 					$btnPrev.addEventListener('click', () => loadYYMM(init.prevMonth()));
 
