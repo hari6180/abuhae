@@ -65,3 +65,6 @@ ul, ol {
 #key {
 	float: right;
 }
+#btn_delete, #btn_update {
+	margin-right: 20px;
+}

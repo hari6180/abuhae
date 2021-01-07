@@ -53,3 +53,6 @@ ul, ol {
     display: flex;
     justify-content: center;
 }
+#btn_delete {
+	margin-left: 20px;
+}
