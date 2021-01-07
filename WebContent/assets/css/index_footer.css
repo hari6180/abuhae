@@ -33,9 +33,11 @@ footer .ft_content .ft_button {
   text-align: center;
 }
 
+footer .ft_content .ft_button .store_link {
+  width: calc(50% - 5px);
+}
 footer .ft_content .ft_button img {
-  width: calc(50% - 7px);
-  height: 53px;
+  width: 100%;
 }
 
 footer .ft_content .ft_list li {
@@ -47,8 +49,17 @@ footer .ft_content a {
 }
 
 /** 간격 조정 */
-footer .ft_content .ft_button {
+footer .ft_content {
   margin-top: 15px;
+}
+
+footer .ft_button {
+  max-width: 375px;
+  margin: 22px auto 0px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 footer .ft_content .ft_button a {

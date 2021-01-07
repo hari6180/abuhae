@@ -43,7 +43,7 @@
                     <span class="dot"></span>
                 </div>
                 <h3 class="what_want">언제 활동할 수 있나요?</h3>
-                <div>
+                <div id="select_group">
                     <div class="schedule_box">
                         <input type="radio" name="schedule" id="schedule_set_1" class="type_select"
                             value="schedule_set_1" checked>
@@ -90,7 +90,7 @@
                         </label>
                     </div>
                 </div>
-                <a href="payment_cctv.html"><button class="next_btn">다음</button></a>
+                <button class="next_btn">다음</button>
             </div>
 
         </div> <!-- fin. col-xs-12 -->
@@ -99,6 +99,22 @@
     <!-- Javascript -->
     <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //라디오 버튼에 따라 페이지 이동 위치 변경
+            $(".next_btn").on("click", function () {
+                var select = $("input[name='schedule']:checked").val();
+                //console.log(select);
+                //선택이 안되어있을때
+                if (select == 'schedule_set_5') {
+                    location.href='detail.html';
+                } else {
+                    location.href='payment_cctv.html';
+                }
+
+            });
+        });
+    </script>
 </body>
 
 </html>
