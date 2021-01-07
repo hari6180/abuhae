@@ -15,11 +15,11 @@ a:hover {
   text-decoration: none;
 }
 
-#app > .container {
+#app > .container-fluid {
   padding: 0;
 }
 
-#search .container {
+#search .container-fluid {
   margin: 0;
   padding: 0;
   background-color: rgb(240, 240, 240);
@@ -776,6 +776,69 @@ button {
 .select_loaction {
   color: #ff7000 !important;
   background-color: #fff8f2 !important;
+}
+
+.select_box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.select_box {
+  flex-wrap: wrap;
+  padding: 9px;
+  min-height: 40px;
+  background-color: #f2f2f2;
+  border-top: 1px solid #dbd3cd;
+  border-bottom: 1px solid #dbd3cd;
+}
+
+.result_box {
+  height: 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-right: 15px;
+  border: 1px solid #ff7000;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.result_num {
+  padding: 0 8px;
+  margin-right: 5px;
+  color: #ff7000;
+  font-size: 1.1em;
+  font-weight: 700;
+  border-right: 1px solid #ff7000;
+}
+
+.result_text {
+  color: #ff7000;
+  font-size: 1em;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.result_cancle {
+  background-color: rgba(0, 0, 0, 0);
+  color: #ff7000;
+}
+
+.result_cancle button {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/*선택 전까지 숨기기*/
+.hide_content {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+/*선택 후 보여주기*/
+.show_content {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 
 /*  location_modal end ---------------------------------------------------------- */
