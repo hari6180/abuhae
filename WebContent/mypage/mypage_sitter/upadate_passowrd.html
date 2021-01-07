@@ -44,29 +44,29 @@
                    <section class="group1_upd_pwd">
                         <div class="row">
                             <div class="col-xs-12">
-                                <form action="#">
-                                    <div class="upd_pwd_cont">
+                                <form action="#" id="upd_pwd_form">
+                                    <div class="upd_pwd_cont"> 
                                         <div class="pwd_con_in">
                                             <label for="now_pw">현재 비밀번호</label> <br/>
-                                            <input autocomplete="false" type="password" name="now_pw" id="now_pw" minlength="6"
+                                            <input type="password" name="now_pw" id="now_pw" minlength="6"
                                             placeholder="현재 비밀번호를 입력하세요." style="border-bottom: 1px solid #ccc;"> 
                                         </div>
                                         <div class="pwd_con_in">
                                             <label for="new_pw">새로운 비밀번호</label> <br/>
-                                            <input autocomplete="false" type="password" name="new_pw" id="new_pw" minlength="6"
+                                            <input type="password" name="new_pw" id="new_pw" minlength="6"
                                             placeholder="새롭게 사용할 비밀번호를 입력하세요." style="border-bottom: 1px solid #ccc;">
                                         </div>
                                         <div class="pwd_con_show">
                                             <input type="checkbox" name="show_pw" id="show_pw">
                                             <label for="show_pw">비밀번호 보기</label>
-                                        </div>
-                                    </div>
-                                    <a href="#"><button type="button" id="pwd_btn">변경하기</button></a>
+                                        </div> 
+                                    </div> 
+                                    <button type="submit" id="pwd_btn">변경하기</button>
                                 </form>  
                             </div>
                         </div>
                    </section>
-                   <!-- end content -->
+                   <!-- end content --> <!--autocomplete="false"-->
                 </div>
             </div>
         </div>
@@ -76,11 +76,10 @@
         <script src="../../assets/js/bootstrap.min.js"></script>
 
         <!-- 비밀번호 보이기/가리기 기능-->
-        <script>
+        <script type="text/javascript">
             $(function() {
                 // 체크박스 클릭 시 패스워드 보이기
                 $("#show_pw").change(function() {
-                   /** $(this).prop('checked',$("#now_pw").attr('type', 'text')); */
                    if($(this).prop('checked') == true) {
                         $(this).prop('checked',$("#now_pw").attr('type', 'text'));
                         $(this).prop('checked',$("#new_pw").attr('type', 'text'));
@@ -90,11 +89,22 @@
                    }
                 });
 
-                $("#pwd_btn").click(function() {
-                    var result = confirm("비밀번호를 변경하시겠습니까?");
+                /** 임시 비밀번호 변경 기능 */
+                 $("#upd_pwd_form").submit(function(e) {
+                    e.preventDefault();
 
-                    if(result) {
-                        location.href = "../../login/login.html";
+                    var now = $("#now_pw").val();
+
+                    if(now != "123qwe!@#") {
+                        alert("현재 비밀번호를 확인해주세요."); // 임시 비밀번호(123qwe!@#)와 다를 경우 확인 메세지 띄우기
+                        $("#now_pw").focus();
+                        return false;
+                    } else {
+                        var result = confirm("비밀번호를 변경하시겠습니까?");
+
+                        if(result) {
+                            location.href = "../../login/login.html";
+                        } 
                     }
                 });
             });

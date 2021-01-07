@@ -20,7 +20,7 @@
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
         <!-- css 참조 -->
-        <link rel="stylesheet" type="text/css" href="../css/upd_mps_detail.css">
+        <link rel="stylesheet" type="text/css" href="../css/upd_mpm_detail.css">
 
         <style type="text/css">
 
@@ -35,7 +35,7 @@
     <body>
         <div class="app">
             <div class="container">
-                <div class="wrap_get_mom">
+                <div class="wrap_get_sitter">
                      <!-- header -->
                      <header class="mp_detail_tl">
                         <div class="row">
@@ -50,50 +50,54 @@
                     <!-- end header -->
                     
                     <!-- content1 -->
-                    <section class="group1_get_mom">
+                    <section class="group1_get_sitter">
                         <div class="row">
-                            <div class="col-xs-12 get_mom_tab">
+                            <div class="col-xs-12 get_sitter_tab">
                                 <!-- 탭 버튼 영역 -->
-                                <ul class="gm_tab_button">
-                                    <li id="button1" class="gm_tab_item fi_selected">
-                                        <a class="tab_button_item_link selected" href="#gm_tab_page_1">내가 지원한</a>
+                                <ul class="gs_tab_button">
+                                    <li id="button1" class="gs_tab_item fi_selected">
+                                        <a class="tab_button_item_link selected" href="#gs_tab_page_1">내가 지원한</a>
                                     </li>
-                                    <li id="button2" class="gm_tab_item">
-                                        <a class="tab_button_item_link" href="#gm_tab_page_2">내게 신청한</a>
+                                    <li id="button2" class="gs_tab_item">
+                                        <a class="tab_button_item_link" href="#gs_tab_page_2">내게 신청한</a>
                                     </li>
                                 </ul>
                                 <!-- end 탭 버튼 영역-->
 
                                 <!-- 내용 영역 -->
-                                <div class="gm_tab_panel">
+                                <div class="gs_tab_panel">
                                     <!-- 내가 지원한 -->
-                                    <div class="gm_tab_page" id="gm_tab_page_1">
-                                        <div class="gm_appl">
+                                    <div class="gs_tab_page" id="gs_tab_page_1">
+                                        <div class="gs_appl">
                                             <img src="../img/profile.png" alt="임시프로필">
-                                            <div class="gm_info">
-                                                <p>김○선</p>
+                                            <div>
+                                                <p>김○선 <span>(20세)</span></p>
                                                 <p>희망시급:10,000원</p>
                                                 <p>지원시간:2020.12.21 16:27</p>
                                             </div>
                                         </div> 
                                         <hr>
-                                        <div class="gm_appl">
+                                        <div class="gs_appl">
                                             <img src="../img/profile.png" alt="임시프로필">
-                                            <div class="gm_info">
-                                                <p>전○리</p>
+                                            <div>
+                                                <p>전○리 <span>(64세)</span></p>
                                                 <p>희망시급:11,000원</p>
                                                 <p>지원시간:2020.12.25 17:07</p>
-                                                <p class="gm_endtime">응답시간이 초과되었습니다.</p>
+                                                <br/>
+                                                <p class="gm_endtime">
+                                                    응답시간이 초과되었습니다. <br/>
+                                                    아쉽게 답변시간을 놓치셨다면, 시터 프로필에서 신청하기를 눌러 돌봄활동을 요청해보세요.
+                                                 </p>
                                             </div>
                                         </div>   
                                     </div>
                                     <!-- end 내가 지원한 -->
 
                                     <!-- 내게 신청한-->
-                                    <div class="gm_tab_page hide" id="gm_tab_page_2" class="hide">
-                                        <div class="gm_appl">
+                                    <div class="gs_tab_page hide" id="gs_tab_page_2" class="hide">
+                                        <div class="gs_appl">
                                             <img src="../img/profile.png" alt="임시프로필">
-                                            <div class="gm_info">
+                                            <div>
                                                 <p>조○상</p>
                                                 <p>희망시급:9,000원</p>
                                                 <p>지원시간:2020.12.19 10:27</p>
@@ -114,18 +118,18 @@
         <script src="../../assets/js/bootstrap.min.js"></script>
         <script type="text/javascript">
         	 $(function() {
-                $(".gm_tab_item").click(function(e) {
+                $(".gs_tab_item").click(function(e) {
                     e.preventDefault();
 
-                    $(".gm_tab_item").not(this).removeClass("fi_selected");
+                    $(".gs_tab_item").not(this).removeClass("fi_selected");
                     $(this).addClass("fi_selected");
 
-                    $(".gm_tab_item").not(this).find("a").removeClass("selected");
+                    $(".gs_tab_item").not(this).find("a").removeClass("selected");
                     $(this).find("a").addClass("selected");
 
                     var target = $(this).find("a").attr("href");
                     $(target).removeClass("hide");
-                    $(".gm_tab_panel > div").not($(target)).addClass("hide");
+                    $(".gs_tab_panel > div").not($(target)).addClass("hide");
                 });    
             });
         </script>
