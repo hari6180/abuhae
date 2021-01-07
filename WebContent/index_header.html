@@ -1,3 +1,6 @@
+<!-- header css -->
+<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/index_header.css" />
+
 <div id="header">
   <!-- header : 하리-->
   <header>
@@ -76,6 +79,20 @@
         <a href="#" id="cus_btn">
           <p>고객센터</p>
         </a>
+        <!-- 프론트 테스트용 임시 링크 -->
+        <br />
+        <br />
+        <p style="color: red">프론트 테스트용 임시 링크</p>
+        <a href="#" id="mommp">
+          <p>맘 마이페이지</p>
+        </a>
+        <a href="#" id="stmp">
+          <p>시터 마이페이지</p>
+        </a>
+        <a href="#" id="manpg">
+          <p>관리자페이지</p>
+        </a>
+        <!-- 프론트 테스트용 임시 링크 끝-->
       </div>
 
       <!-- modal footer end -->
@@ -108,5 +125,16 @@
     $("#cus_btn").click(function (e) {
       location.replace("http://localhost:8080/ezen-android2020-2/customer/customer_center.html");
     });
+    // 프론트 테스트용 임시 링크
+    $("#mommp").click(function (e) {
+      location.replace("http://localhost:8080/ezen-android2020-2/mypage/mypage_mom/mom_mypage.html");
+    });
+    $("#stmp").click(function (e) {
+      location.replace("http://localhost:8080/ezen-android2020-2/mypage/mypage_sitter/sitter_mypage.html");
+    });
+    $("#manpg").click(function (e) {
+      location.replace("http://localhost:8080/ezen-android2020-2/admin/admin_login.html");
+    });
+    //프론트 테스트용 임시 링크 끝
   });
 </script>
