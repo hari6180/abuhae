@@ -25,6 +25,7 @@ a:hover {
 .col-xs-12 {
   margin: 27px 0;
   width: 100%;
+  overflow: hidden;
 }
 
 .next_btn {
@@ -146,7 +147,7 @@ a:hover {
 .what_want {
   display: block;
   text-align: center;
-  font-size: 1.25em;
+  font-size: 1.1em;
   font-weight: 600;
 }
 
@@ -945,6 +946,7 @@ input[type="checkbox"]:checked + label:after {
   white-space: nowrap;
   overflow-x: auto;
   text-align: center;
+  vertical-align: middle;
 }
 
 #prof_img .prof_box {
@@ -960,13 +962,15 @@ input[type="checkbox"]:checked + label:after {
 #prof_img .prof_box img {
   width: 120px;
   height: 120px;
+  border-radius: 120px;
+  vertical-align: middle;
 }
 
 #prof_img .input_file {
   z-index: 1;
   display: block;
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   border-radius: 120px;
   opacity: 0;
   position: absolute;

@@ -24,19 +24,11 @@
     <link rel="stylesheet" href="/ezen-android2020-2/join/css/join_parent.css">
 
     <style type="text/css">
-        html,
-        body {
-            color: #222;
-            font-weight: 100;
-            font-size: 1em;
-            line-height: 1.375;
-            padding: 0;
-            margin: 0;
-        }
-
         .col-xs-12 {
             margin: 0;
+            overflow: hidden;
         }
+
         .container {
             padding: 0;
         }
@@ -45,58 +37,56 @@
 
 <body>
     <div class="app">
-    <div class="container">
-        <div id="menu"></div>
-        <div id="join" class="row">
-            <div class="col-xs-12">
-                <!-- xs-12로 모바일 맞춤 -->
-                <div class="join_box">
-                    <div class="join_button">
-                        <a href="parent/start.html">
-                            <button class="join_mom">
-                                <div class="join_group">
-                                    <div>
-                                        <img src="img/join-mom-img.png">
+        <div class="container">
+            <div id="menu"></div>
+            <div id="join">
+                <div class="col-xs-12">
+                    <!-- xs-12로 모바일 맞춤 -->
+                    <div class="join_box">
+                        <div class="join_button">
+                            <a href="parent/start.html">
+                                <button class="join_mom">
+                                    <div class="join_group">
+                                        <div>
+                                            <img src="img/join-mom-img.png">
+                                        </div>
+                                        <div class="join_text">
+                                            <h3>"아이를 돌봐줄 <br>맘시터가 필요해요."</h3>
+                                            <span>부모회원가입 ></span>
+                                        </div>
                                     </div>
-                                    <div class="join_text">
-                                        <h3>"아이를 돌봐줄 <br>맘시터가 필요해요."</h3>
-                                        <span>부모회원가입 ></span>
+                                </button></a>
+                            <hr>
+                            <a href="sitter/start.html">
+                                <button class="join_siter">
+                                    <div class="join_group">
+                                        <div>
+                                            <img src="img/join-sitter-img.png">
+                                        </div>
+                                        <div class="join_text">
+                                            <h3>"든든한 맘시터로 <br>활동하고 싶어요."</h3>
+                                            <span>시터회원가입 ></span>
+                                        </div>
                                     </div>
-                                </div>
-                            </button></a>
-                        <hr>
-                        <a href="sitter/start.html">
-                            <button class="join_siter">
-                                <div class="join_group">
-                                    <div>
-                                        <img src="img/join-sitter-img.png">
-                                    </div>
-                                    <div class="join_text">
-                                        <h3>"든든한 맘시터로 <br>활동하고 싶어요."</h3>
-                                        <span>시터회원가입 ></span>
-                                    </div>
-                                </div>
-                            </button></a>
-                        <hr>
+                                </button></a>
+                            <hr>
+                        </div>
+                        <div class="already_join">
+                            <span>이미 맘시터 회원이신가요?</span><br>
+                            <a href="/ezen-android2020-2/login/login.html">로그인</a>
+                        </div>
                     </div>
-                    <div class="already_join">
-                        <span>이미 맘시터 회원이신가요?</span><br>
-                        <a href="/ezen-android2020-2/login/login.html">로그인</a>
-                    </div>
-                </div>
-
-            </div> <!-- fin. col-xs-12 -->
+                </div> <!-- fin. col-xs-12 -->
+            </div><!--end join-->
         </div>
-        <!--end row-->
+        <!--end container-->
     </div>
-    <!--end container-->
-</div>
 
     <!-- Javascript -->
     <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        $(function(){
+        $(function () {
             $("#menu").load("../index_header.html");
         })
     </script>

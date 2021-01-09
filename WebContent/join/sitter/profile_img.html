@@ -38,6 +38,13 @@
             font-size: 1.2em;
             font-weight: 600;
         }
+        .modal-content {
+            border-radius: 0;
+        }
+        .modal {
+            top:8%;
+            max-height: 700px;
+        }
     </style>
 </head>
 
@@ -124,14 +131,14 @@
                 <!--이미지 업로드-->
                 <div class="upload_prof">
                     <div class="prof_box">
-                        <img src="/ezen-android2020-2/join/img/user.png">
                         <input type="file" id="file" accept="image/*" class="input_file">
+                        <img id="profile_img_upload" src="/ezen-android2020-2/join/img/user.png">
                     </div>
                 </div>
                 <p>내 사진을 올리면 부모회원의<br>
                     선택을 <span class="select_text">5배 더 많이</span> 받을 수 있습니다.</p>
                 <a data-toggle="modal" href="#help_modal"><button class="guide_prof">좋은 프로필 사진 올리는 방법!</button></a>
-                <button class="next_btn">지금 올리기</button>
+                <button class="next_btn now_upload">지금 올리기</button>
                 <a href="introduce.html"><button class="next_btn_later">나중에 하기</button></a>
             </div>
 
@@ -146,6 +153,35 @@
             $('.next_btn').click(function (e) {
                 e.preventDefault();
                 $('#file').click();
+
+            });
+
+            //파일 업로드시 미리보기
+            function upload_img(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        
+                        var img_html = '<div class=prof_box><img src='+e.target.result+"></div>";
+                        $('.upload_prof').append(img_html);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#file").change(function () {
+                upload_img(this);
+                //이미지 업로드시 align 변경
+                $(".upload_prof").css('text-align','left');
+                //이미지 업로드시 지금 올리기 버튼 삭제, 나중에 올리기를 다음 내용 변경 버튼 클래스 변경
+                $(".now_upload").css('display', 'none');
+                $(".next_btn_later").empty();
+                $(".next_btn_later").html("다음");
+                $(".next_btn_later").addClass("next_btn");
+                $(".next_btn_later").removeClass("next_btn_later");
+                
+                //다중 업로드
+
 
             });
 
