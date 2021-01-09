@@ -894,12 +894,26 @@
             $(this).next().find(".want_img").attr("src", img_src);
           }
         });
-        // 리셋 버튼 0109 하리 - 이미지 변경 반영 필요....
+        // 리셋 버튼 0109 하리
         $("#act_reset").click(function (e) {
           e.preventDefault();
 
+          // 이미지 찾기
+          var $img = $(".want_img");
+          // 이미지 길이
+          var length = $img.length;
+          // console.log(length);
+
+          for (var i = 0; i < length; i++) {
+            var img_url = $img.eq(i).attr("src");
+            var img_src = img_url.replace(/_s/, "_n");
+            $(".want_img").eq(i).attr("src", img_src);
+          }
+
           $(".act_btn").prop("checked", false);
           $(".want_text").removeClass("select_text");
+          $(".act_label").removeClass("select_act_type");
+          $(".act_label").removeClass("unselect_act_type");
         });
 
         //활동 버튼 반영 1221 하리
@@ -1011,6 +1025,7 @@
             $(this).addClass("select_loaction");
             //시 선택하면 gu 보이게
             $("#gu>div").removeClass("hide_content");
+            $("#gu button").removeClass("hide_content");
             $("#gu>div").addClass("show_content");
           }
         });
@@ -1020,11 +1035,12 @@
           //선택이 안되어있을때
           if (select == false) {
             //선택이 되어있는 요소 탐색
-            var loc = $("#gu").find("button").removeClass("select_loaction");
+            var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
             //console.log(loc);
             $(this).addClass("select_loaction");
             //구 선택하면 동 보이게
             $("#dong>div").removeClass("hide_content");
+            $("#dong button").removeClass("hide_content");
             $("#dong>div").addClass("show_content");
           }
         });
@@ -1035,7 +1051,7 @@
           //선택이 안되어있을때
           if (select == false) {
             //선택이 되어있는 요소 탐색
-            var loc = $("#dong").find("button").removeClass("select_loaction");
+            var loc = $("#dong").find("button").removeClass("select_loaction hide_content");
             //console.log(loc);
             $(this).addClass("select_loaction");
 
@@ -1058,11 +1074,14 @@
           }
         });
 
-        // 리셋 0109 하리 작업중
-        $("#reset_loc").click(function (e) {
-          $("#locaition_modal").on("hidden.bs.modal", function (e) {
-            $(this).find("form")[0].reset();
-          });
+        // 리셋 0109 하리
+        $("#reset_loc").on("click", function (e) {
+          e.preventDefault();
+          $(".loc_btn").removeClass("select_loaction");
+          $("#gu button").removeClass("select_loaction");
+          $("#gu button").addClass("hide_content");
+          $("#dong button").removeClass("select_loaction");
+          $("#dong button").addClass("hide_content");
         });
 
         $(".swapHeart").on("click", function (e) {
