@@ -100,10 +100,10 @@ button {
   flex-wrap: nowrap;
   position: relative;
   align-content: center;
+  justify-content: space-between;
 }
 
 .total {
-  width: 100%;
   display: flex;
   align-items: center;
   line-height: 30px;
@@ -122,10 +122,7 @@ button {
 }
 
 #orderby {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 120px;
+  display: inline-block;
 }
 
 #orderby #text {
@@ -142,6 +139,11 @@ button {
 .dropdown-menu .active a {
   color: rgb(255, 64, 129);
   background: #fff;
+}
+
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  background-color: #ddd;
 }
 
 .order_dropdown {
@@ -369,6 +371,11 @@ button {
   width: 28px;
   height: 28px;
   background: none;
+}
+
+.btn-default:hover {
+  background-color: #fff;
+  border-color: rgba(0, 0, 0, 1);
 }
 
 .swal-button {

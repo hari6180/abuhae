@@ -178,13 +178,33 @@
             margin-bottom: 10px;
         }
 
-        .child_one_con select {
-            margin-right: 10px;
-            margin-bottom: 20px;
+        .child_one_con .row {
+            display: flex;
+            flex-direction: column;
         }
 
-        .child_one_con select:last-child {
-            margin-bottom: 0;
+        .child_one_con div {
+            width: 100%;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .child_one_con div label {
+            margin-right: 37px;
+        }
+
+        .child_one_con div:last-child label {
+            margin-right: 20px;
+        }
+
+        .child_one_con div input[type="text"] {
+            border: 0;
+            border-bottom: 1px solid #6c6c6c;
+        }
+
+        .child_one_con div:last-child {
+            margin-bottom: 20px
         }
 
         .select_date {
@@ -307,67 +327,91 @@
                                             <div class="child_list hide" id="child_one">
                                                 <h4>첫째자녀</h4>
                                                 <div class="child_one_con">
-                                                    <label for="child_gender">성별</label>
-                                                    <select id="child_gender_one" class="child_gender" name="child_gender_one">
-                                                        <option value="m">남자</option>
-                                                        <option value="f">여자</option>
-                                                    </select>
-                                                    <label for="child_brithdate">생년월일</label>
-                                                    <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                    <div>
+                                                        <label for="child_gender_one">성별</label>
+                                                        <select id="child_gender_one" class="child_gender" name="child_gender_one">
+                                                            <option value="m">남자</option>
+                                                            <option value="f">여자</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <label for="child_brithdate">생년월일</label>
+                                                        <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="child_list hide" id="child_two">
                                                 <h4>첫째자녀</h4>
                                                 <div class="child_one_con">
-                                                    <label for="child_gender">성별</label>
-                                                    <select id="child_gender_one" class="child_gender" name="child_gender_one">
-                                                        <option value="m">남자</option>
-                                                        <option value="f">여자</option>
-                                                    </select>
-                                                    <label for="child_brithdate">생년월일</label>
-                                                    <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                    <div>
+                                                        <label for="child_gender_one">성별</label>
+                                                        <select id="child_gender_one" class="child_gender" name="child_gender_one">
+                                                            <option value="m">남자</option>
+                                                            <option value="f">여자</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <label for="child_brithdate">생년월일</label>
+                                                        <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                    </div>
                                                 </div>
                                                 <h4>둘째자녀</h4>
                                                 <div class="child_one_con">
-                                                    <label for="child_gender">성별</label>
-                                                <select id="child_gender_one" class="child_gender" name="child_gender_one">
-                                                    <option value="m">남자</option>
-                                                    <option value="f">여자</option>
-                                                </select>
-                                                <label for="child_brithdate">생년월일</label>
-                                                <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                    <div>
+                                                        <label for="child_gender_one">성별</label>
+                                                        <select id="child_gender_one" class="child_gender" name="child_gender_one">
+                                                            <option value="m">남자</option>
+                                                            <option value="f">여자</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <label for="child_brithdate">생년월일</label>
+                                                        <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="child_list hide" id="child_three">
                                                 <h4>첫째자녀</h4>
                                                 <div class="child_one_con">
-                                                    <label for="child_gender">성별</label>
-                                                    <select id="child_gender_one" class="child_gender" name="child_gender_one">
-                                                        <option value="m">남자</option>
-                                                        <option value="f">여자</option>
-                                                    </select>
-                                                    <label for="child_brithdate">생년월일</label>
-                                                    <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                    <div>
+                                                        <label for="child_gender_one">성별</label>
+                                                        <select id="child_gender_one" class="child_gender" name="child_gender_one">
+                                                            <option value="m">남자</option>
+                                                            <option value="f">여자</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <label for="child_brithdate">생년월일</label>
+                                                        <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                    </div>
                                                 </div>
                                                 <h4>둘째자녀</h4>
                                                 <div class="child_one_con">
-                                                    <label for="child_gender">성별</label>
-                                                <select id="child_gender_one" class="child_gender" name="child_gender_one">
-                                                    <option value="m">남자</option>
-                                                    <option value="f">여자</option>
-                                                </select>
-                                                <label for="child_brithdate">생년월일</label>
-                                                <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                    <div>
+                                                        <label for="child_gender_one">성별</label>
+                                                        <select id="child_gender_one" class="child_gender" name="child_gender_one">
+                                                            <option value="m">남자</option>
+                                                            <option value="f">여자</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <label for="child_brithdate">생년월일</label>
+                                                        <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                    </div>
                                                 </div>
                                                 <h4>셋째자녀</h4>
                                                 <div class="child_one_con">
-                                                    <label for="child_gender">성별</label>
-                                                    <select id="child_gender_one" class="child_gender" name="child_gender_one">
-                                                        <option value="m">남자</option>
-                                                        <option value="f">여자</option>
-                                                    </select>
-                                                    <label for="child_brithdate">생년월일</label>
+                                                    <div>
+                                                            <label for="child_gender_one">성별</label>
+                                                            <select id="child_gender_one" class="child_gender" name="child_gender_one">
+                                                                <option value="m">남자</option>
+                                                                <option value="f">여자</option>
+                                                            </select>
+                                                    </div>
+                                                    <div>
+                                                        <label for="child_brithdate">생년월일</label>
                                                     <input type="text"  id="child_brithdate_one" class="child_brithdate" name="child_brithdate">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

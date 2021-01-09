@@ -359,7 +359,7 @@
                 <!--modal content end -->
                 <!--modal footer-->
                 <div class="modal_footer">
-                  <button class="reset" type="reset">
+                  <button id="reset_detail" class="reset" type="reset">
                     <i class="fas fa-undo-alt"></i>
                     <h2>초기화</h2>
                   </button>
@@ -405,12 +405,12 @@
                 <div class="total">총 3038명</div>
                 <!-- 드롭다운 -->
                 <div class="dropdown clearfix order_dropdown">
-                  <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">프로필 업데이트 순<b class="caret"></b></a>
+                  <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">후기 순 </a><b class="caret"></b>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="orderby">
                     <!-- 아이템 항목 나열 -->
-                    <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="#">프로필 업데이트 순</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">시급 낮은 순</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">시급 높은 순</a></li>
+                    <li class="dr_option active" role="presentation" value="update"><a role="menuitem" tabindex="-1" href="#">프로필 업데이트 순</a></li>
+                    <li class="dr_option" role="presentation" value="lowpay"><a role="menuitem" tabindex="-1" href="#">시급 낮은 순</a></li>
+                    <li class="dr_option" role="presentation" value="highpay"><a role="menuitem" tabindex="-1" href="#">시급 높은 순</a></li>
                   </ul>
                 </div>
                 <!-- 드롭다운 end-->
@@ -465,7 +465,7 @@
                     </div>
                   </div>
                   <div class="jim_btn">
-                    <button class="btn btn-default swapHeart">
+                    <button class="swapHeart">
                       <div class="jim">
                         <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
                       </div>
@@ -524,7 +524,7 @@
                     </div>
                   </div>
                   <div class="jim_btn">
-                    <button class="btn btn-default swapHeart">
+                    <button class="swapHeart">
                       <div class="jim">
                         <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
                       </div>
@@ -583,7 +583,7 @@
                     </div>
                   </div>
                   <div class="jim_btn">
-                    <button class="btn btn-default swapHeart">
+                    <button class="swapHeart">
                       <div class="jim">
                         <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
                       </div>
@@ -696,6 +696,17 @@
           $(this).find("i").toggleClass("select_act_btn");
         });
 
+                // 리셋 버튼 0109 하리
+                $("#reset_detail").click(function (e) {
+          e.preventDefault();
+          $("#job_search_detail_modal .modal_content *").removeClass("select_btn_detail");
+          $("#job_search_detail_modal .modal_content *").removeClass("select_text_detail");
+          $("#job_search_detail_modal .modal_content *").removeClass("select_act_btn");
+          $(".kids").prop("checked", false);
+          $("#min_pay").val('');
+          $("#max_pay").val('');
+        });
+
         /** 상세 검색 end ------------------------------------------------------------------- */
 
         /** 주소 선택 모달 ------------------------------------------------------------------- */
@@ -778,6 +789,12 @@
         });
         /** 찜하기 end ------------------------------------------------------------------- */
 
+        // 드롭다운 선택 - 0109 하리
+         $(".dr_option").click(function () {
+          $(this).addClass("active");
+        $(".dr_option").not(this).removeClass("active");
+           $("#orderby").html($(this).find("a").html());
+         });
 
       });
     </script>

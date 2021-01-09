@@ -160,23 +160,9 @@
                                         </p>
                                     </div>
 
-                                    <div class="con1" id="con1">
-                                        <div class="exp_cont exp_list">
-                                            <label for="type_exp" style="font-size: 1.2em; margin-bottom: 10px;">
-                                                경험 내용</label>
-                                             <input type="text" id="type_exp" name="type_exp" placeholder="예) 키즈카페, 교육기관, 봉사활동">
-                                        </div>
-                                        <div class="exp_list">
-                                            <h4 style="font-size: 1.2em; font-weight: bold;">경험 기간</h4>
-                                            <div class="datepicker">
-                                                <input type="text" id="startDate" class="startDate" required />
-                                                <span><i class="fas fa-long-arrow-alt-right"></i></span>
-                                                <input type="text" id="endDate" class="endDate" required>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div id="con1" class="con1"></div>
 
-                                    <button id="exp_btn" type="button">+ 경험 내용 추가하기</button>
+                                    <button id="exp_btn" type="button" data-tab="experience_form">+ 경험 내용 추가하기</button>
                                 </div>
                             </div>
                         </section>
@@ -188,35 +174,59 @@
             </div>
         </div>
 
+        <!-- Handlebars template-->
+        <script type="text/x-handlebars-template" id="list-item-tmpl">
+            <div class="exp_cont">
+                <label for="type_exp" style="font-size: 1.2em; margin-bottom: 10px;">
+                    {{title1}}</label>
+                 <input type="text" id="type_exp" name="type_exp" placeholder="예) 키즈카페, 교육기관, 봉사활동">
+            </div>
+            <div class="exp_list">
+                <h4 style="font-size: 1.2em; font-weight: bold;">{{title2}}</h4>
+                <div class="datepicker">
+                    <input type="text" name="startdate" class="startDate" required />
+                    <span><i class="fas fa-long-arrow-alt-right"></i></span>
+                    <input type="text" name="enddate" class="endDate" required>
+                </div>
+            </div>
+        </script>
+
 		<!-- Javascript -->
 		<script src="../../../assets/js/jquery.min.js"></script>
         <script src="../../../assets/js/bootstrap.min.js"></script>
+        <script src="../../../plugins/handlebars/handlebars-v4.0.11.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
         <script>
+            // 버튼 클릭 시, 경험 내용, 경험기간 form 추가됨 
+            /** 시도해본 방법 : 
+             * ajax로 html 페이지 불러오기 -> 여러번 불러올 수 없음.
+             *  clone()함수로 요소 복사하기  -> 이전의 내용이 복사됨 (내용 초기화시, flatpickr까지 사라짐) 
+             *  버튼 클릭 시 동적 요소 생성 */
+            var content = {
+                title1 : "경험 내용",
+                title2 : "경험 기간"
+            };
+
             $(function() {
-                $('#startDate').flatpickr({
-                dateFormat: "Y.m.d",
-                maxDate: new Date().fp_incr(30),
-                defaultDate: new Date(),
-                });
+                $("#exp_btn").click(function() {
+                    
+                    var template = Handlebars.compile($("#list-item-tmpl").html());
+                    var html = template(content); 
 
-                $('#endDate').flatpickr({
-                dateFormat: "Y.m.d",
-                maxDate: new Date().fp_incr(30),
-                defaultDate: new Date(),
-                });
+                    $("#con1").append(html);
 
-                /** 경험 내용 추가 버튼 누르면 내용 추가 기능 */
-               /** $("#exp_btn").click(function(e) {
-                    var obj = $("<div>").addClass("con1");
-                        obj.insertAfter($("#con1"));
-                }); */
+                    $('.startDate').flatpickr({
+                    dateFormat: "Y.m.d",
+                    maxDate: new Date().fp_incr(30),
+                    defaultDate: new Date(),
+                    });
 
-                var counter = 0;
-                $(document).on('click', '#exp_btn', function(e) {
-                    var item = $(this).prev(".con1");
-                    var clone = item.clone();
-                    clone.insertAfter(item);
+                    $('.endDate').flatpickr({
+                    dateFormat: "Y.m.d",
+                    maxDate: new Date().fp_incr(30),
+                    defaultDate: new Date(),
+                    });
                 });
             });
         </script>

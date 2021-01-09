@@ -97,6 +97,11 @@
             text-decoration: underline;
         }
 
+        /** modal-body */
+        #introduce_modal .modal-body {
+            background-color: #eee;
+        }
+
 		</style>
     </head>
 
@@ -125,12 +130,64 @@
                                     <textarea name="introduce" id="introduce" cols="30" rows="10"
                                     placeholder="자기소개 작성 시 부모님에게 2배 더 많은 신청을 받게 됩니다."></textarea>
                                     <p>자기소개 내용에 연락처, 이메일 카카오ID 등을 작성할 경우 회원 자격을 영구적으로 잃게 됩니다.</p>
-                                    <a href="#"><span>다른 맘시터 자기소개 내용 확인하기</span></a>
+                                    <a href="#introduce_modal" data-toggle="modal"><span>다른 맘시터 자기소개 내용 확인하기</span></a>
                                 </div>
                             </div>
 
                         </section>
                     </form>
+
+                    <!-- modal -->
+                    <div id="introduce_modal" class="modal fade" tabindex="-1" role="dialog" 
+                    aria-labelledby="modalLabel" aria-hidden="true">
+                        <!-- mocal-dialog -->
+                        <div class="modal-dialog">
+                            <!-- modal-content -->
+                            <div class="modal-content">
+                                <!--제목-->
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                    style="padding: 10px 0;">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <h4 class="modal-title" id="modalLabel" 
+                                    style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+                                       다른 맘시터 자기소개
+                                    </h4>
+                                </div>
+                                
+                                <!-- 내용 -->
+                                <div class="modal-body" style="background-color: #eee;">
+                                    <div style="text-align: center;">
+                                        <p style="color: #838383;">아래 내용을 참고하여 작성해보세요 :)</p>
+                                    </div>
+                                    <div style="background-color: #ffffff; padding: 10px 10px; margin-bottom: 20px;">
+                                        <p>
+                                            <span style="font-size: 1em; font-weight: bold; color: #777;">선생님 맘시터</span> ㅣ <span style="font-size: 0.8em;">송○예 ㅣ 27세</span>
+                                        </p>
+                                        <p>
+                                            저는 밝고 활발하며 적극적인 성격을 지니고 있습니다. <mark> ○○대학교 유아교육학과</mark>
+                                            서 아동사회학 드으이 여러 과목들을 배웠습니다. 평소 약속을 중요하게 생각하는 
+                                            성격이라 <mark>한번 정한 약속은 꼭 지킬 수 있도록 노력하겠습니다.</mark>
+                                        </p>
+                                    </div>
+                                    <div style="background-color: #ffffff; padding: 10px 10px;">
+                                        <p>
+                                            <span style="font-size: 1em; font-weight: bold; color: #777;">엄마 맘시터</span> ㅣ <span style="font-size: 0.8em;">남○재ㅣ 50세</span>
+                                        </p>
+                                        <p>
+                                            현재 <mark>두 아들을 잘 키워내고</mark> 대학까지 무사히 보냈습니다. 
+                                            아이들을 워낙 좋아하고 잘 돌볼 수 있는 자신이 있어서 맘시터로 활동하고 있습니다. 내 아들같이
+                                            사랑으로 돌보겠습니다.^^
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //modal-content end -->
+                        </div>
+                        <!-- //modal-dailog end-->
+                    </div>
+                    <!-- // modal end -->
                     
                 </div>
             </div>

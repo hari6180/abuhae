@@ -1,0 +1,362 @@
+/* 초기 설정 -----------------------------------------------------*/
+.body,
+html,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-size: 1em;
+  font-weight: bold;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+/** header --------------------------------------------------------------------*/
+
+.mp_detail_tl {
+  width: 100%;
+  padding: 15px 0 20px;
+}
+
+.mp_detail_tl .mp_detail_tl_in {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mp_detail_tl .mp_detail_tl_in a i {
+  text-decoration: none;
+  color: black;
+  font-size: 1.4em;
+  margin-top: 7px;
+}
+
+.mp_detail_tl .mp_detail_tl_in h3 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+/** 내 구인 현황 ------------------------------------------------------------------ */
+.wrap_get_sitter {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/** content 1 */
+
+/** 탭 버튼 */
+
+.wrap_get_sitter .group1_get_sitter .gs_tab_button {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.wrap_get_sitter .group1_get_sitter .gs_tab_item {
+  width: 49%;
+  height: 48px;
+  background-color: #eee;
+  border: 2px solid #eee;
+  border-bottom: 0;
+  z-index: 10;
+  border-radius: 18px 18px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.wrap_get_sitter .group1_get_sitter .gs_tab_item.fi_selected {
+  background-color: #fff;
+}
+
+.wrap_get_sitter .group1_get_sitter .tab_button_item_link {
+  color: rgb(148, 148, 148);
+  font-size: 1.1em;
+  width: 100%;
+}
+
+.wrap_get_sitter .group1_get_sitter .tab_button_item_link.selected {
+  color: black;
+}
+
+.wrap_get_sitter .group1_get_sitter .gs_tab_panel {
+  border-top: 2px solid #eee;
+  position: relative;
+  top: -1px;
+}
+
+/** 탭 내용 */
+
+.wrap_get_sitter .group1_get_sitter .gs_appl {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 0;
+}
+
+.wrap_get_sitter .group1_get_sitter .gs_appl img {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  background-color: #eee;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+
+.wrap_get_sitter .group1_get_sitter .gs_appl p:first-child {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.wrap_get_sitter .group1_get_sitter .gs_appl p {
+  font-size: 0.8em;
+  margin-bottom: 1px;
+}
+
+.wrap_get_sitter .group1_get_sitter .gs_appl .gm_endtime {
+  margin-top: 10px;
+  color: #e93c3c;
+  font-size: 1em;
+}
+/** end 내 구직 현황 --------------------------------------------------------------*/
+
+/** 찜한 맘시터 --------------------------------------------------------------------*/
+/** 공통 */
+.wrap_like_sitter {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/** content1 */
+.wrap_like_sitter .grouop1_like_sitter {
+  background-color: #eee;
+  min-height: 600px;
+  padding: 10px 10px;
+}
+
+/** 전체 / 구직 중인 일자리만 탭 버튼 */
+.wrap_like_sitter .grouop1_like_sitter .ls_tab_button {
+  padding: 10px;
+}
+
+.wrap_like_sitter .grouop1_like_sitter .ls_tab_button li {
+  list-style: none;
+  margin-right: 13px;
+  min-height: 36px;
+}
+
+.wrap_like_sitter .grouop1_like_sitter .ls_tab_button li a span {
+  font-size: 0.8em;
+}
+
+.wrap_like_sitter .grouop1_like_sitter .ls_tab_button .ls_tab_button_item {
+  min-height: 36px;
+}
+
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_button
+  .ls_tab_button_item_link.selected {
+  color: #000;
+}
+
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_button
+  .ls_tab_button_item_link.selected
+  .glyphicon {
+  color: #ff7000;
+}
+
+.wrap_like_sitter .grouop1_like_sitter .ls_tab_button .ls_tab_button_item_link {
+  color: #858585;
+  text-decoration: none;
+}
+
+/** 일자리 내용 영역 */
+.wrap_like_sitter .grouop1_like_sitter .ls_tab_panel .ls_page_cont {
+  background-color: #fff;
+  position: relative;
+  top: 20px;
+  margin: 10px;
+  padding: 20px 20px;
+}
+
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_panel
+  .ls_page_cont
+  .ls_page_box {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrap_like_sitter .grouop1_like_sitter .ls_tab_panel .ls_page_cont img {
+  width: 65px;
+  height: 65px;
+  background-color: #eee;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.wrap_like_sitter .grouop1_like_sitter .ls_tab_panel .ls_page_cont .point {
+  color: #ff4300;
+}
+
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_panel
+  .ls_page_cont
+  .ls_page_box_left {
+  margin-right: 20px;
+}
+
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_panel
+  .ls_page_cont
+  .ls_page_box_left
+  .response_per {
+  width: 100%;
+  padding: 5px 10px;
+  background-color: #ff4300;
+  border-radius: 15px;
+  margin-top: 10px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+.wrap_like_sitter .grouop1_like_sitter .ls_tab_panel .ls_page_cont .ls_certify {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_panel
+  .ls_page_cont
+  .box_certify {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_panel
+  .ls_page_cont
+  .box_certify
+  .text_certify {
+  background-color: #ffece5;
+  height: 26px;
+  padding: 6px 10px;
+  border-radius: 16px;
+  margin-right: 5px;
+  font-size: 0.8em;
+}
+
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_panel
+  .ls_page_cont
+  .ls_certify
+  .count_certify {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_panel
+  .ls_page_cont
+  .ls_certify
+  .count_certify
+  .count {
+  color: #ff4300;
+}
+
+/* 삭제버튼 */
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_panel
+  .ls_page_cont
+  .ls_page_box
+  button {
+  position: absolute;
+  border: 0;
+  right: 20px;
+  bottom: 20px;
+  background-color: #fff;
+}
+
+/* 구직 중이 아닐 경우 프로필 */
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_panel
+  .ls_page_cont.no_work
+  .ls_page_box_left
+  .response_per {
+  background-color: #848484;
+}
+
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_panel
+  .ls_page_cont.no_work
+  .point {
+  color: #888888;
+}
+
+.wrap_like_sitter
+  .grouop1_like_sitter
+  .ls_tab_panel
+  .ls_page_cont.no_work
+  .text_certify {
+  background-color: #848484;
+  color: #ffffff;
+}
+
+/** 모달창 */
+.wrap_like_sitter .modal {
+  margin-top: 200px;
+  padding: 20px 20px 10px;
+  text-align: center;
+}
+
+.wrap_like_sitter .modal button {
+  width: 150px;
+  height: 40px;
+  border: 0;
+  background-color: #ff7000;
+  border-radius: 3px;
+  color: #ffffff;
+}
+
+/** end 찜한 일자리 -----------------------------------------------------------------*/

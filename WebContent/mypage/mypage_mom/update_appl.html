@@ -21,10 +21,19 @@
 
 <!-- sweetalert 사용 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ <!-- header css 적용 -->
+ <link rel="stylesheet" href="../css/upd_mpm_detail.css">
 
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="../../page_detail/css/mom_page_detail.css" />
 <style type="text/css">
+	/** for header */
+	.mp_detail_tl {
+        margin: 0;
+        padding: 20px 20px;
+    }
+	/** end for header */
+
 	#modal_ok {
 		color: #008f69;
 		border-color: #fff;
@@ -58,13 +67,16 @@
         border-radius: 50%;
         margin-bottom: 20px;
         position: relative;
-    }
+	}
+	
+	.info_box {
+		position: relative;
+	}
 
     .box_name_edit1 {
         color: #838383;
         font-size: 2.5em;
         position: absolute;
-        top: 15px;
         right: 20px;
         z-index: 10;
     }
@@ -120,7 +132,6 @@
         right: 20px;
         z-index: 10;
     }
-
     
 </style>
 </head>
@@ -128,6 +139,19 @@
 <body>		
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
+				<!-- header -->
+                <header class="mp_detail_tl" style="border-bottom: 1px solid #ccc;">
+                    <div class="row">
+                        <div class="col-xs-12 mp_detail_tl_in">
+                            <a href="mom_mypage.html">
+                                <i class="fas fa-angle-left"></i>
+                            </a>
+                            <h3 class="center-block">내 신청서 수정</h3>
+                        </div>
+                    </div>
+				</header>
+				<!--end header-->
+				
 				<!-- Main start-->
 				<div class="main">
 					<div class="info_box">
@@ -451,5 +475,11 @@
 		<script src="../../assets/js/jquery.min.js"></script>
 		 <!-- jquery 파일명 수정 -->
 		<script src="../../assets/js/bootstrap.min.js"></script> 
+		<script>
+			<!-- header 삽입 -->
+        	$(function() {
+        		$("#menu").load("../../index_header.html");
+            });
+		</script>
 	</body>
 </html>

@@ -6,6 +6,11 @@ html,
   padding: 0;
 }
 
+.container {
+  margin: 0;
+  padding: 0;
+}
+
 h1,
 h2,
 h3,
@@ -78,6 +83,12 @@ a:hover {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.wrap_mpm .group2_mpm .mpm_profile .mpm_prof_info .mpm_info_left img {
+  width: 52px;
+  background-color: #eee;
+  padding: 10px;
 }
 
 .wrap_mpm .group2_mpm .mpm_profile .prof_info_cont {
