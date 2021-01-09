@@ -53,15 +53,15 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 0;
+  margin: 10px 0 20px;
 }
 
-.wrap_mpm .group1_mpm .mpm_title .mpm_title_cont {
-  margin-top: 15px;
+.wrap_mpm .group1_mpm .mpm_title h3 {
+  font-size: 1.5em;
 }
 
 .wrap_mpm .group1_mpm .mpm_title .mpm_title_cont a {
-  font-size: 0.857em;
+  font-size: 0.8em;
   color: #696969;
 }
 
@@ -69,56 +69,60 @@ a:hover {
 
 .wrap_mpm .group2_mpm .mpm_profile {
   background-color: #e6f1ee;
-  padding: 20px 20px 27px;
+  padding: 20px 20px 15px;
 }
 
-.wrap_mpm .group2_mpm .mpm_profile .mpm_prof_info {
+.wrap_mpm .group2_mpm .mpm_prof_info {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.wrap_mpm .group2_mpm .mpm_profile .mpm_prof_info .mpm_info_left {
+.wrap_mpm .group2_mpm .mpm_info_left {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.wrap_mpm .group2_mpm .mpm_profile .mpm_prof_info .mpm_info_left img {
+.wrap_mpm .group2_mpm .mpm_info_left img {
   width: 52px;
   background-color: #eee;
   padding: 10px;
 }
 
-.wrap_mpm .group2_mpm .mpm_profile .prof_info_cont {
+.wrap_mpm .group2_mpm .prof_info_cont {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
 }
 
-.wrap_mpm .group2_mpm .mpm_profile .mom_info_dt {
+.wrap_mpm .group2_mpm .prof_info_cont p {
+  font-size: 0.8em;
+}
+
+.wrap_mpm .group2_mpm .mom_info_dt {
   display: flex;
   flex-direction: row;
 }
 
-.wrap_mpm .group2_mpm .mpm_profile .info_mom {
+.wrap_mpm .group2_mpm .info_mom {
   margin-top: 10px;
-  font-size: 1.143em;
+  font-size: 1em;
   font-weight: bold;
 }
 
-.wrap_mpm .group2_mpm .mpm_profile .info_mom:last-child {
+.wrap_mpm .group2_mpm .info_mom:last-child {
   margin-top: 14px;
   margin-left: 5px;
-  font-size: 0.857em;
+  font-size: 0.85em;
   font-weight: normal;
 }
 
 .wrap_mpm .group2_mpm .mpm_profile a button {
   min-width: 69px;
   min-height: 30px;
-  padding: 0 20px;
+  padding: 0 10px;
   background-color: rgb(34, 172, 135);
   box-shadow: 1px 3px 3px rgb(141, 206, 189);
   border: 0;

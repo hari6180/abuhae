@@ -360,3 +360,121 @@ a:hover {
 }
 
 /** end 찜한 일자리 -----------------------------------------------------------------*/
+
+/** 내 채용 내역 --------------------------------------------------------------------*/
+.wrap_count_mom {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/** content1 */
+.wrap_count_mom .group1_count_mom .total_count {
+  text-align: right;
+  margin-right: 15px;
+}
+
+.wrap_count_mom .group1_count_mom {
+  background-color: #eee;
+  min-height: 600px;
+  padding: 10px 0;
+}
+
+.wrap_count_mom .group1_count_mom .cm_page_cont {
+  background-color: #fff;
+  position: relative;
+  top: 10px;
+  margin: 10px;
+  padding: 20px 10px;
+}
+
+.wrap_count_mom .group1_count_mom .ls_page_cont .ls_page_box {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrap_count_mom .group1_count_mom .ls_page_cont img {
+  width: 65px;
+  height: 65px;
+  background-color: #eee;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.wrap_count_mom .group1_count_mom .ls_page_cont .point {
+  color: #ff4300;
+}
+
+.wrap_count_mom .group1_count_mom .ls_page_cont .ls_page_box_left {
+  margin-right: 20px;
+}
+
+.wrap_count_mom
+  .group1_count_mom
+  .ls_page_cont
+  .ls_page_box_left
+  .response_per {
+  width: 100%;
+  padding: 5px 10px;
+  background-color: #ff4300;
+  border-radius: 15px;
+  margin-top: 10px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+.wrap_count_mom .group1_count_mom .ls_page_cont .ls_certify {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrap_count_mom .group1_count_mom .ls_page_cont .box_certify {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.wrap_count_mom .group1_count_mom .ls_page_cont .box_certify .text_certify {
+  background-color: #ffece5;
+  height: 26px;
+  padding: 6px 10px;
+  border-radius: 16px;
+  margin-right: 5px;
+  font-size: 0.8em;
+}
+
+.wrap_count_mom .group1_count_mom .ls_page_cont .ls_certify .count_certify {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.wrap_count_mom
+  .group1_count_mom
+  .ls_page_cont
+  .ls_certify
+  .count_certify
+  .count {
+  color: #ff4300;
+}
+
+.wrap_count_mom
+  .group1_count_mom
+  .ls_page_cont.no_work
+  .ls_page_box_left
+  .response_per {
+  background-color: #848484;
+}
+
+.wrap_count_mom .group1_count_mom .ls_page_cont.no_work .point {
+  color: #888888;
+}
+
+.wrap_count_mom .group1_count_mom .ls_page_cont.no_work .text_certify {
+  background-color: #848484;
+  color: #ffffff;
+}
+/** end 내 채용 내역 ----------------------------------------------------------------*/

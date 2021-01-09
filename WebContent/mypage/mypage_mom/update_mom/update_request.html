@@ -19,139 +19,11 @@
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
+        <!-- css 참조 -->
+        <link rel="stylesheet" href="../../css/upd_mom_appl.css">
         <style type="text/css">
-         /* 초기 설정 -----------------------------------------------------*/
-         .body, html, * {
-            margin: 0;
-            padding: 0;
-
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            padding: 0;
-            margin: 0;
-        }
-
-        a {
-            color: black;
-        }
-
-        a:hover {
-            text-decoration: none;
-            color: black;
-        }
-
-        /** header --------------------------------------------------------------------*/
-
-        .mp_detail_tl {
-            width: 100%;
-        }
         
-        .mp_detail_tl .mp_detail_tl_in {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in a i {
-            text-decoration: none;
-            color: black;
-            font-size: 1.5em;
-            margin-top: 7px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in h3 {
-            font-weight: bold;
-        }
-
-        .mp_detail_tl button {
-            background-color: rgb(255, 112, 0);
-            width: 70px;
-            height: 35px;
-            border: 0;
-            border-radius: 15px;
-            color: #ffffff;
-        }
-
-        /** for 후기 관리 페이지 (review.html) --------------------------------------*/
-        /** 공통 for 후기 관리 */
-        .wrap_upd_request {
-            padding: 20px 20px;
-            margin: 0 auto;
-            max-width: 600px;
-        }
         
-        .request_box {
-            padding: 20px 0;
-        }
-
-        .request_box h4 {
-            font-weight: bold;
-        }
-
-        .choice_gender {
-            padding-top: 10px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            text-align: center;
-        }
-
-        .choice_gender input[type="radio"] {
-            display: none;
-        }
-
-        .choice_gender input[type="radio"]+label {
-            width: 33.33%;
-            line-height: 40PX;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .choice_gender input[type="radio"]:checked+label {
-            background-color: #ff7000;
-            color: #ffffff;
-            border: 0;
-        }
-
-        .choice_interview {
-            padding-top: 10px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            text-align: center;
-        }
-
-        .choice_interview input[type="radio"] {
-            display: none;
-        }
-
-        .choice_interview input[type="radio"]+label {
-            width: 33.33%;
-            line-height: 40px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .choice_interview input[type="radio"]:checked+label {
-            background-color: #ff7000;
-            color: #ffffff;
-            border: 0;
-        }
-
-        .choice_care {
-            padding-top: 10px;
-        }
-
-        .choice_care input[type="radio"]+label {
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            margin-left: 5px;
-        }
 
 		</style>
     </head>
@@ -162,7 +34,7 @@
                 <div class="wrap_upd_request">
                     <form action="#">
                          <!-- header -->
-                        <header class="mp_detail_tl">
+                        <header class="mp_detail_tl" style="border-bottom: 1px solid #ccc;">
                             <div class="row">
                                 <div class="col-xs-12 mp_detail_tl_in">
                                     <a href="../update_appl.html">
@@ -189,7 +61,10 @@
                                         </div>
                                     </div>
                                     <div class="request_box">
-                                        <h4>인터뷰 방식</h4>
+                                        <h4>
+                                            인터뷰 방식
+                                            <a href="#interview_modal" data-toggle="modal"><i class="fas fa-question-circle"></i></a>
+                                        </h4>
                                         <div class="choice_interview">
                                             <input type="radio" id="call" name="type_interview" value="call">
                                             <label for="call">전화 인터뷰</label>
@@ -224,6 +99,52 @@
                             </div>
                         </section>
                     </form>
+
+                    <!-- modal -->
+                    <div id="interview_modal" class="modal fade" tabindex="-1" role="dialog" 
+                    aria-labelledby="modalLabel" aria-hidden="true">
+                        <!-- mocal-dialog -->
+                        <div class="modal-dialog">
+                            <!-- modal-content -->
+                            <div class="modal-content">
+                                <!--제목-->
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                    style="padding: 10px 0;">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <h4 class="modal-title" id="modalLabel" 
+                                    style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+                                        인터뷰 방식이란?
+                                    </h4>
+                                </div>
+                                
+                                <!-- 내용 -->
+                                <div class="modal-body">
+                                    <div class="way_interview">
+                                        <h4>전화 인터뷰</h4>
+                                        <p>시터에게 전화하여 근무조건이 맞는지 말은 잘 통하는지 간단하게 확인</p>
+                                    </div>
+                                    <div class="way_interview">
+                                        <h4>대면 인터뷰</h4>
+                                        <p>
+                                            맘시터가 부모회원 집으로 방문하여 30분 정도 서로 얼굴을 보며 근무 조건과 성향을 확인
+                                            (5천원 ~ 1만원 현장 지급)
+                                        </p>
+                                    </div>
+                                    <div class="way_interview">
+                                        <h4>시범 채용</h4>
+                                        <p>맘시터가 부모회원 집으로 방문하여 부모가 옆에 있을 때
+                                            1~2시간 아이를 직접 돌보며 아이와 잘 맞는지 확인
+                                            (희망시급에 따른 활동비 현장지급)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //modal-content end -->
+                        </div>
+                        <!-- //modal-dailog end-->
+                    </div>
+                    <!-- // modal end -->
                     
                 </div>
             </div>

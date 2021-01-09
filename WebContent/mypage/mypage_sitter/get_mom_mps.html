@@ -143,8 +143,8 @@
                                     <p>응답가능 시간 2 : 58 : 16초 남음</p>
                                     <p>맘시터 구인 1일째 - 희망시급 10,000원</p>
                                     <div class="modal_btn">
-                                        <button id="interview_no">거절</button>
-                                        <button id="interview_ok">수락</button>
+                                        <button type="button" id="interview_no" onclick="location.href='reason_deny.html'">거절</button>
+                                        <button type="button" id="interview_ok">수락</button>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,18 @@
                     var target = $(this).find("a").attr("href");
                     $(target).removeClass("hide");
                     $(".gm_tab_panel > div").not($(target)).addClass("hide");
-                });    
+                }); 
+                
+                $("#interview_ok").click(function(e) {
+                    var result = confirm("수락하시겠습니까?");
+
+                    if (result) {
+                        alert("수락하였습니다.");
+                        location.href="get_mom_mps.html";
+                    } else {
+                        location.href="get_mom_mps.html";
+                    }
+                });
             });
         </script>
 	</body>

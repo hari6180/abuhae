@@ -19,63 +19,10 @@
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
+        <!-- css 참조 -->
+        <link rel="stylesheet" href="../../css/upd_mom_appl.css">
         <style type="text/css">
-         /* 초기 설정 -----------------------------------------------------*/
-         .body, html, * {
-            margin: 0;
-            padding: 0;
-
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            padding: 0;
-            margin: 0;
-        }
-
-        a {
-            color: black;
-        }
-
-        a:hover {
-            text-decoration: none;
-            color: black;
-        }
-
-        /** header --------------------------------------------------------------------*/
-
-        .mp_detail_tl {
-            width: 100%;
-        }
         
-        .mp_detail_tl .mp_detail_tl_in {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in a i {
-            text-decoration: none;
-            color: black;
-            font-size: 1.5em;
-            margin-top: 7px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in h3 {
-            font-weight: bold;
-        }
-
-        .mp_detail_tl button {
-            background-color: rgb(255, 112, 0);
-            width: 70px;
-            height: 35px;
-            border: 0;
-            border-radius: 15px;
-            color: #ffffff;
-        }
-
         /** for 후기 관리 페이지 (review.html) --------------------------------------*/
         /** 공통 for 후기 관리 */
         .wrap_update_activity {
@@ -88,7 +35,6 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
-            padding-top: 30px;
             width: 100%;
         }
 
@@ -167,15 +113,14 @@
                         </header>
 
                         <!-- content -->
-                      <!--  <section class="upd_care_age_cont">
+                        <section class="upd_care_age_cont">
                             <div class="row">
                                 <div class="col-xs-12 care_age_cont_in">
-                                    <h4>가능한 활동이란<a href="#"><i class="fas fa-question-circle" style="margin-left: 10px; color: #919191;"></i></a></h4>
+                                    <h4>원하는 활동이란<a href="#mom_activity_modal" data-toggle="modal"><i class="fas fa-question-circle" style="margin-left: 10px; color: #919191;"></i></a></h4>
                                     <br/>
-                                    <p>현재 신생아/영아 풀타임 돌봄유형이므로 실내놀이, 아이와 관련된 가사활동은 필수로 선택되어야 합니다.</p>
                                 </div>
                             </div>
-                        </section> -->
+                        </section> 
 
                         <section class="upd_care_age">
                             <div class="row">
@@ -270,6 +215,60 @@
                             </div>
                         </section>
                     </form>
+
+                    <!-- modal -->
+                    <div id="mom_activity_modal" class="modal fade" tabindex="-1" role="dialog" 
+                    aria-labelledby="modalLabel" aria-hidden="true">
+                        <!-- mocal-dialog -->
+                        <div class="modal-dialog">
+                            <!-- modal-content -->
+                            <div class="modal-content">
+                                 <!--제목-->
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                    style="padding: 10px 0;">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <h4 class="modal-title" id="modalLabel" 
+                                    style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+                                        원하는 활동이란?
+                                    </h4>
+                                </div>
+                                
+                                <!-- 내용 -->
+                                <div class="modal-body" style="padding: 20px 20px;">
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">실내놀이</span> <span style="font-size: 0.8em; color: #777;">그림 그리기, 게임하기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">등하원 돕기</span> <span style="font-size: 0.8em; color: #777;">유치원 데려다주기, 데리고오기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">책 읽기</span> <span style="font-size: 0.8em; color: #777;">아이가 좋아하는 책 읽어주기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">야외활동</span> <span style="font-size: 0.8em; color: #777;">놀이동산, 키즈카페 가기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">한글놀이</span> <span style="font-size: 0.8em; color: #777;">한글 카드놀이, 받아쓰기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">영어놀이</span> <span style="font-size: 0.8em; color: #777;">영어노래 부르기, 영어책 읽어주기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">학습지도</span> <span style="font-size: 0.8em; color: #777;">면학분위기 조성, 숙제 도와주기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">체육놀이</span> <span style="font-size: 0.8em; color: #777;">공놀이, 놀이터 나가기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">간단 청소</span> <span style="font-size: 0.8em; color: #777;">아이 장난감 치우기, 청소기 돌리기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">밥 챙겨주기</span> <span style="font-size: 0.8em; color: #777;">있는 반찬으로 밥 챙겨주기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">간단 설거지</span> <span style="font-size: 0.8em; color: #777;">젖병세척, 아이먹은 그릇 씻기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">장기입주</span> <span style="font-size: 0.8em; color: #777;">함께 살면서 종일 봐주기</span></div>
+                                    <hr>
+                                    <div><span style="font-size: 0.9em; font-weight: bold;">단기입주</span> <span style="font-size: 0.8em; color: #777;">2-3일 종일 봐주기</span></div>
+                                </div>
+                            </div>
+                            <!-- //modal-content end -->
+                        </div>
+                        <!-- //modal-dailog end-->
+                    </div>
+                    <!-- // modal end -->
                     
                 </div>
             </div>

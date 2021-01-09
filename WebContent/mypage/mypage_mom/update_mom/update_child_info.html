@@ -23,181 +23,22 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
         <!-- css 참조 -->
-        <link rel="stylesheet" href="../../css/update_mom.css">
+        <link rel="stylesheet" href="../../css/upd_mom_appl.css">
+        
+        <style>
+            h4 {
+                display: block;
+                text-align: left;
+                font-size: 0.9em;
+                color: #666;
+                margin: 34px 0 11px;
+            }
 
-        <style type="text/css">
-        /** for 후기 관리 페이지 (review.html) --------------------------------------*/
-        /** 공통 for 후기 관리 */
-        .wrap_want_wage {
-            padding: 20px 20px;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-
-        .number_children_wrap {
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        }
-
-        .btn_children_off {
-        width: calc(50% - 3px);
-        height: 50px;
-        background-color: #f1f3f5;
-        border: 0;
-        color: #646464;
-        font-size: 1.1em;
-        font-weight: 600;
-        }
-
-        .btn_children_on {
-        width: calc(50% - 3px);
-        height: 50px;
-        background-color: #ff7000;
-        color: #fff;
-        font-size: 1.1em;
-        font-weight: 600;
-        transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-        }
-
-        .title {
-        margin: 30px auto 37px;
-        text-align: center;
-        }
-
-        .title .noselect_title {
-        font-weight: 600;
-        line-height: 18px;
-        color: #949494;
-        letter-spacing: -0.2px;
-        font-size: 0.9em;
-        }
-
-        .title .select_title p {
-        font-weight: 600;
-        line-height: 18px;
-        color: #949494;
-        letter-spacing: -0.2px;
-        font-size: 0.8em;
-        margin: 0;
-        }
-
-        .children_age_block {
-        margin: 0 auto;
-        width: 100%;
-        max-width: 375px;
-        padding: 0 23px;
-        box-sizing: border-box;
-        }
-
-        .title_block {
-        margin: 28px 0 8px;
-        text-align: left;
-        }
-
-        .select_children_age_wrap {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        }
-
-        .select_list {
-        width: calc(50% - 4px);
-        height: 50px;
-        }
-
-        .select_list select {
-        width: 100%;
-        padding: 0.8em 0.5em;
-        border: 1px solid #999;
-        font-family: inherit;
-        background: url("/ezen-android2020-2/join/img/arrow.jpg") no-repeat 95% 50%;
-        border-radius: 0px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        }
-
-        .payment_wrap {
-        margin: auto;
-        }
-
-        .show_content {
-        opacity: 1;
-        transition: opacity 0.3s ease-in-out 0s;
-        }
-
-        h4 {
-        display: block;
-        text-align: left;
-        font-size: 0.9em;
-        color: #666;
-        margin: 34px 0 11px;
-        }
-
-        .help_box {
-        display: inline-block;
-        }
-
-        .help_btn {
-        background-color: rgba(0, 0, 0, 0);
-        }
-
-        .payment_input_wrap {
-        border: 1px solid #d5d5d5;
-        height: 48px;
-        line-height: 48px;
-        width: 100%;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: flex-end;
-        }
-
-        .payment_input {
-        border: none;
-        text-align: right;
-        width: 100%;
-        font-size: 1.4em;
-        font-weight: 600;
-        color: #2b2b2b;
-        }
-
-        .payment_fix {
-        display: inline-block;
-        margin: 3px 20px 5px 8px;
-        font-size: 1.3em;
-        font-weight: 600;
-        line-height: 48px;
-        }
-
-        .disc_box {
-        display: flex;
-        align-items: center;
-        margin: 15px 0;
-        }
-
-        .disc_box label {
-        font-size: 1.1em;
-        font-weight: 600;
-        margin-left: 10px;
-        }
-
-        /*선택 전까지 숨기기*/
-        .hide_content {
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease-in-out;
-        }
-        /*선택 후 보여주기*/
-        .show_content {
-        opacity: 1;
-        transition: opacity 0.3s ease-in-out;
-        }
-
-
-		</style>
+            .payment_box i {
+                font-size: 1.2em;
+                color: #838383;
+            }
+        </style>
     </head>
 
     <body>
@@ -206,9 +47,9 @@
                 <div class="wrap_upd_profile_cont">
                     <form action="#">
                          <!-- header -->
-                        <header class="update_mom_tl">
+                        <header class="mp_detail_tl">
                             <div class="row">
-                                <div class="col-xs-12 update_mom_tl_in">
+                                <div class="col-xs-12 mp_detail_tl_in">
                                     <a href="../update_appl.html">
                                         <i class="fas fa-times"></i>
                                     </a>
@@ -241,33 +82,47 @@
                                     <!--버튼 select시 공지내용 변경 - ajax-->
                                     
                                     <!--end 동적 요소 위치-->
-                    
-                    
-                                    <div class="payment_wrap">
-                                        <div class="payment_box hide_content">
-                                            <h4>맘시터에게 지급할 희망 시급을 적어 주세요.
-                                                <div class="help_box">
-                                                    <a data-toggle="modal" href="#help_modal"><button class="help_btn">
-                                                            <span class="sr-only">도움말</span>
-                                                            <img src="/ezen-android2020-2/join/img/help.png" alt="도움말">
-                                                        </button></a>
-                                                </div>
-                                            </h4>
-                                            <div class="payment_input_wrap">
-                                                <input type="text" class="payment_input" value="10,000" id="payment_input">
-                                                <span class="payment_fix">원</span>
-                                            </div>
-                                            <div class="disc_box">
-                                                <input type="checkbox" value="discussion" id="discussion"><label for="discussion">시급 협의
-                                                    가능</label>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </section>   
                         <!-- end content1 -->
                     </form>
+
+                    <!-- modal -->
+                    <div id="child_modal" class="modal fade" tabindex="-1" role="dialog" 
+                    aria-labelledby="modalLabel" aria-hidden="true">
+                    <!-- mocal-dialog -->
+                    <div class="modal-dialog">
+                        <!-- modal-content -->
+                        <div class="modal-content">
+                            <!--제목-->
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                style="padding: 10px 0;">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <h4 class="modal-title" id="modalLabel" 
+                                style="font-size: 1.2em; font-weight: bold; padding: 10px 0; color: #000;">
+                                    아래 시급 기준을 확인해주세요.
+                                </h4>
+                            </div>
+                            
+                            <!-- 내용 -->
+                            <div class="modal-body">
+                                <div style="margin-bottom: 20px;">
+                                    <h5 style="font-weight: bold; margin-bottom: 10px;">돌봄 아이 시급 1명일 경우</h5>
+                                    <p style="color: #838383; font-size: 0.9em;">최저시급 8,720원 이상 필수</p>
+                                </div>
+                                <div style="margin-bottom: 20px;">
+                                    <h5 style="font-weight: bold; margin-bottom: 10px;">돌봄 아이 시급 2명일 경우</h5>
+                                    <p style="color: #838383; font-size: 0.9em;">최저시급 8,720 x 1.5배인 13,000원 이상 필수</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //modal-content end -->
+                    </div>
+                    <!-- //modal-dailog end-->
+                </div>
                     
                 </div>
             </div>
@@ -340,19 +195,6 @@
                         }
                     });
     
-                });
-    
-                //select box 출생년도, 출생월 선택이 되면 show_content
-                $(document).on('change','#year, #month', function(){
-                    //드롭다운의 선택값
-                    var yaer = $("#year").val();
-                    console.log(year);
-                    var month = $("#month").val();
-                    //가져온 값이 존재한다면?
-                    if (yaer != "" && month != "") {
-                        $(this).parents().find(".payment_box").removeClass("hide_content");
-                        $(this).parents().find(".payment_box").addClass("show_content");
-                    };
                 });
     
             });

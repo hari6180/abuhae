@@ -96,12 +96,13 @@
                                                 <div class="si_rev_no_info">
                                                     <h5>서울특별시 강남구</h5>
                                                     <p class="star" style="color: #ff7000;">★★★★</p>
+                                                    <p>작성일시 ㅣ 2020.11.23 22:00</p>
                                                     <p class="rev_text">친절하시고, 간식도 잘 챙겨주셔서 정말 좋았습니다! 하지만 아이가 오르기를 너무 좋아하더라구요,, 다람쥐인줄</p>
                                                 </div>
                                             </div>
                                             <div class="rev_button">
                                                 <a href="#" style="width:100%;">
-                                                    <button class="rev_no_btn" type="button">
+                                                    <button id="remove_btn" class="rev_no_btn" type="button">
                                                         삭제하기
                                                     </button>
                                                 </a>
@@ -168,7 +169,16 @@
                     var target2 = $(this).find("a").attr("href");
                     $(target2).removeClass("hide");
                     $(".rev_tab_panel_con > div").not($(target2)).addClass("hide");
-                });            
+                });  
+                
+                /** 삭제 버튼 */
+                $("#remove_btn").click(function(e) {
+                    var result = confirm("정말 삭제하시겠습니까?")
+
+                    if (result) {
+                        $(this).parents().find("#tab_page_2").find(".si_rev_no").remove();
+                    }
+                }); 
             });
         </script>
 	</body>

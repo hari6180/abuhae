@@ -25,12 +25,32 @@
 
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="../../page_detail/css/page_detail_for_sitter.css" />	
+<style>
+	.profil_photo {
+		position: relative;
+	}
+
+	.sue_btn {
+		position: absolute;
+		bottom: 320px;
+		right: 0;
+	}
+</style>
 </head>
 	
 <body>		
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
+				<div id="menu"></div>
 				<div class="profil_photo">
+					<div class="sue_btn pull-right" style="margin-top: 100px;">
+						<a href="#siren_modal" data-toggle="modal">
+							<button type="button" class="btn btn-dark btn-xs" id="siren">
+								<img src="/ezen-android2020-2/page_detail/img/siren.png" width="13" height="15"/>
+									   신고
+							</button>
+						</a>
+					</div>
 					  <div class="profil_img">			  
 						<img src="../../page_detail/img/chat_mom.png" width="100%"/>
 					  </div>
@@ -652,6 +672,28 @@
 				</div>
 			</div> <!-- fin. fixed_box -->
 			</div>
+			<!-- /.modal -->
+			<div id="siren_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<!-- .modal-dialog -->
+				<div class="modal-dialog">
+					<!-- .modal-content -->
+					<div class="modal-content">
+						<div class="modal-body">
+							<p style="text-align: center; padding-top: 10px; font-weight: bold;">
+								부모회원만 신고가 가능합니다.
+							</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick="location.href='profile_mps.html'">
+								확인
+							</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->	
 				<!-- /.modal -->
 				<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<!-- .modal-dialog -->
@@ -660,12 +702,12 @@
 						<div class="modal-content">
 							<div class="modal-body">
 								<p style="text-align: center; padding-top: 10px; font-weight: bold;">
-									이용권이 있는 회원만 신청 가능합니다.
+									부모회원만 신청이 가능합니다.
 								</p>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick="location.href='test.html'">
-									이용권 구매하러 가기
+								<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick="location.href='profile_mps.html'">
+									확인
 								</button>
 							</div>
 						</div>
@@ -680,6 +722,10 @@
 		<!-- Javascript -->
 		<script src="../../assets/js/jquery.min.js"></script>
 		<script type="text/javascript">
+		$(function() {
+			$("#menu").load("../../index_header.html");
+		});
+		
 		jQuery(function($) {
 			
 			  $('#swapHeart').on('click', function() {

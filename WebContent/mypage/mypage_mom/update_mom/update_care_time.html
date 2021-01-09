@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
         <!-- css 참조 -->
-        <link rel="stylesheet" href="../../css/update_mom.css">
+        <link rel="stylesheet" href="../../css/upd_mom_appl.css">
 
         <!--flatpickr-->
 	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -32,153 +32,7 @@
         <style type="text/css">
         /** for 후기 관리 페이지 (review.html) --------------------------------------*/
         /** 공통 for 후기 관리 */
-        .wrap_upd_ct .upd_ct_tab_panel .calc_box {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        }
 
-        .wrap_upd_ct .regu_title {
-        font-weight: 600;
-        font-size: 1em;
-        color: #646464;
-        }
-
-        .wrap_upd_ct .date_box {
-        display: block;
-        border: 1px solid #ffcfb8;
-        background-color: #fff0e8;
-        border-radius: 2px;
-        width: 130px;
-        height: 37px;
-        text-align: center;
-        color: #ff7000;
-        font-weight: 600;
-        font-size: 0.9em;
-        }
-
-        .wrap_upd_ct .day_btn_group {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: nowrap;
-        margin: 13px 0;
-        }
-
-        .wrap_upd_ct .day_btn {
-        width: 36px;
-        height: 36px;
-        border: 0;
-        border-radius: 36px;
-        background-color: #eee;
-        color: #646464;
-        font-weight: 600;
-        font-size: 0.9em;
-        }
-
-        .wrap_upd_ct .time_select_box {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-around;
-        }
-
-        .wrap_upd_ct .middle_bar {
-        border-right: 1px solid #efefef;
-        }
-
-        .wrap_upd_ct .select_time {
-        width: 133px;
-        height: 38px;
-        border: 1px solid #ffcfb8;
-        background-color: #fff0e8;
-        margin-top: 6px;
-        color: #ff7000;
-        font-weight: 600;
-        text-align: center;
-        }
-
-        .wrap_upd_ct .select_time select {
-        width: 100%;
-        padding: 0.5em 0.5em;
-        border: none;
-        font-family: inherit;
-        background: url("/ezen-android2020-2/join/img/arrow.png") no-repeat 95% 50%;
-        border-radius: 0px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        }
-        .wrap_upd_ct .select_time option {
-        color: #222;
-        }
-
-        .wrap_upd_ct .jojung_box {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        background-color: #f1f3f5;
-        margin: 15px 0;
-        border-radius: 14px;
-        padding: 10px;
-        cursor: pointer;
-        }
-
-        .wrap_upd_ct .box_check {
-        background-color: #fff9f5;
-        }
-
-        .wrap_upd_ct .jojung_check {
-        display: inline-block;
-        position: relative;
-        width: 25px;
-        height: 22px;
-        border-radius: 22px;
-        background-color: #cfcfcf;
-        transition: background-color 0.3s;
-        padding: 0;
-        margin-right: 8px;
-        }
-
-        .wrap_upd_ct .check_check {
-        background-color: #ff7000;
-        }
-
-        .wrap_upd_ct .jojung_check::after {
-        content: "";
-        width: 10px;
-        height: 5px;
-        position: absolute;
-        border-left: 2px solid #fff;
-        border-bottom: 2px solid #fff;
-        left: 6px;
-        top: 7px;
-        transform: rotate(315deg);
-        }
-
-        .wrap_upd_ct .jojung_text {
-        font-size: 0.9em;
-        font-weight: 600;
-        color: #9d9d9d;
-        }
-
-        /*선택 전까지 숨기기*/
-        .hide_content {
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease-in-out;
-        }
-        /*선택 후 보여주기*/
-        .show_content {
-        opacity: 1;
-        transition: opacity 0.3s ease-in-out;
-        }
-
-        .calen {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            padding: 20px;
-
-        }
 
         .flatpickr-day.selected,
 		.flatpickr-day.selected:focus,
@@ -212,9 +66,9 @@
                 <div class="wrap_upd_ct">
                     <form action="#">
                          <!-- header -->
-                        <header class="update_mom_tl">
+                        <header class="mp_detail_tl">
                             <div class="row">
-                                <div class="col-xs-12 update_mom_tl_in">
+                                <div class="col-xs-12 mp_detail_tl_in">
                                     <a href="../update_appl.html">
                                         <i class="fas fa-times"></i>
                                     </a>

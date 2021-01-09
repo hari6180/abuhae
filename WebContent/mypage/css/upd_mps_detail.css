@@ -36,7 +36,7 @@ a:hover {
 
 .mp_detail_tl {
   width: 100%;
-  padding: 15px 0 20px;
+  padding: 15px 10px 20px;
 }
 
 .mp_detail_tl .mp_detail_tl_in {
@@ -48,8 +48,8 @@ a:hover {
 .mp_detail_tl .mp_detail_tl_in a i {
   text-decoration: none;
   color: black;
-  font-size: 1.4em;
-  margin-top: 7px;
+  font-size: 1.6em;
+  margin-top: 5px;
 }
 
 .mp_detail_tl .mp_detail_tl_in h3 {
@@ -79,6 +79,11 @@ a:hover {
 .wrap_upd_pwd .group1_upd_pwd .pwd_con_in input,
 label {
   margin: 8px 0;
+}
+
+.wrap_upd_pwd .group1_upd_pwd .pwd_con_in input::placeholder {
+  color: #ccc;
+  font-size: 0.9em;
 }
 
 .wrap_upd_pwd .group1_upd_pwd button {
@@ -268,7 +273,7 @@ label {
 .wrap_like_mom .grouop1_like_mom {
   background-color: #eee;
   min-height: 600px;
-  padding: 10px 10px;
+  padding: 10px 0px;
 }
 
 /** 전체 / 구직 중인 일자리만 탭 버튼 */
@@ -316,7 +321,7 @@ label {
   position: relative;
   top: 20px;
   margin: 10px;
-  padding: 20px 20px;
+  padding: 20px 10px;
 }
 
 .wrap_like_mom .grouop1_like_mom .lm_tab_panel .lm_page_box {
@@ -452,10 +457,7 @@ label {
 
 /** 탭 버튼 내용 영역 */
 .group2_fund .fund_tab .fund_tab_panel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 20px;
+  padding: 10px 10px;
   min-height: 200px;
   text-align: center;
   color: #bcbcbc;
@@ -463,6 +465,37 @@ label {
 
 .group2_fund .fund_tab .fund_tab_panel i {
   font-size: 80px;
+}
+
+.group2_fund .fund_tab .fund_tab_panel .fund_money {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.group2_fund .fund_tab .fund_tab_panel .fund_money .icon_fund {
+  text-align: left;
+}
+
+.group2_fund .fund_tab .fund_tab_panel .fund_money .money_cont {
+  text-align: left;
+}
+
+.group2_fund .fund_tab .fund_tab_panel .fund_money .how_much {
+  text-align: right;
+}
+
+.group2_fund .fund_tab .fund_tab_panel .fund_money .how_much p {
+  color: #838383;
+}
+
+.group2_fund .fund_tab .fund_tab_panel .icon_fund i {
+  font-size: 2em;
+}
+
+.group2_fund .fund_tab .fund_tab_panel .fund_money p {
+  font-size: 1.1em;
+  color: #000;
 }
 
 .group2_fund .fund_tab .fund_tab_panel p {
@@ -494,7 +527,7 @@ label {
 .wrap_coupon .group2_coupon {
   background-color: #eee;
   min-height: 400px;
-  padding: 20px;
+  padding: 10px;
   margin-top: 20px;
 }
 
@@ -630,9 +663,40 @@ label {
 /** 인증 관리  ----------------------------------------------------------------------*/
 /** 공통 for 내 인증관리 */
 .wrap_certify {
-  padding: 20px 20px;
   margin: 0 auto;
   max-width: 600px;
+}
+
+.wrap_certify .certify_tip {
+  padding: 10px 0 5px;
+  margin: 0;
+  background-color: #3b4049;
+  color: #ffffff;
+  font-size: 0.9em;
+}
+
+.wrap_certify .certify_tip .tip_cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.wrap_certify .certify_tip .tip_cont div {
+  margin-right: 10px;
+}
+
+.wrap_certify .certify_tip .tip_cont div span {
+  color: rgb(255, 230, 0);
+}
+
+.wrap_certify .certify_tip .tip_cont div i {
+  margin-top: 3px;
+  color: rgb(255, 255, 94);
+  font-size: 1.3em;
+}
+
+.wrap_certify .certify_tip .tip_cont div:last-child {
+  margin-right: 0;
 }
 
 .wrap_certify p,
@@ -654,12 +718,11 @@ button {
 .wrap_certify .group1_certify .certify_cont1 .my_certi {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .my_certi_left {
-  width: 20%;
-  text-align: center;
+  width: 25%;
+  text-align: left;
 }
 
 .my_certi_right {
@@ -760,7 +823,6 @@ button {
 
 /** 신고 내역  ----------------------------------------------------------------------*/
 .wrap_sue {
-  padding: 20px 20px;
   margin: 0 auto;
   max-width: 600px;
 }
@@ -802,7 +864,6 @@ button {
 /** 계정 관리  ----------------------------------------------------------------------*/
 /** 공통 for 내 계정 관리 */
 .wrap_mng_account {
-  padding: 20px 0;
   margin: 0 auto;
   max-width: 600px;
 }
@@ -943,7 +1004,6 @@ button {
 
 /** 결제 내역  ----------------------------------------------------------------------*/
 
-/** 공통 for 내 인증관리 */
 .wrap_payment {
   margin: 0 auto;
   max-width: 600px;
@@ -958,3 +1018,237 @@ button {
 }
 
 /** end 결제 내역  ------------------------------------------------------------------*/
+
+/** 거절사유 입력 -------------------------------------------------------------------*/
+.wrap_deny {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.wrap_deny .group1_deny {
+  padding: 20px 0 10px;
+}
+
+.wrap_deny .group1_deny {
+  text-align: center;
+}
+
+.wrap_deny .group1_deny h5 {
+  font-weight: bold;
+}
+
+.wrap_deny .group1_deny .deny_radio {
+  text-align: left;
+  padding: 20px 0 30px;
+}
+
+.wrap_deny .group1_deny .deny_radio input[type="radio"] {
+  margin-right: 10px;
+}
+
+.wrap_deny .group1_deny .deny_radio input[type="radio"] + label {
+  font-size: 0.9em;
+}
+
+.wrap_deny .group1_deny .deny_text h5 {
+  margin-bottom: 10px;
+}
+
+.wrap_deny .group1_deny .deny_text p {
+  font-size: 0.8em;
+  color: rgb(255, 44, 143);
+}
+
+.wrap_deny .group1_deny .deny_text textarea {
+  width: 100%;
+  padding: 20px;
+  background-color: #eee;
+  border: 0;
+}
+
+.wrap_deny .group1_deny .deny_text textarea::placeholder {
+  font-size: 0.8em;
+}
+
+.wrap_deny .group1_deny button {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  background-color: rgb(14, 151, 115);
+  color: #ffffff;
+  font-size: 1.3em;
+}
+/** end 거절사유 입력 ---------------------------------------------------------------*/
+
+/** 회원 탈퇴 -----------------------------------------------------------------------*/
+
+.wrap_leave_abu {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 10px;
+}
+
+.check_leave {
+  padding: 20px 0;
+  margin-top: 70px;
+}
+
+.check_leave_title {
+  text-align: center;
+}
+
+.check_leave_title h3 {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.check_leave_title p {
+  color: #79797;
+  font-size: 0.95em;
+}
+
+.check_leave_cont {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  padding: 10px;
+}
+
+.check_leave_cont li {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  font-size: 0.95em;
+  color: #797979;
+}
+.check_leave_cont li:first-child {
+  margin-top: 10px;
+}
+
+.check_leave_cont li span {
+  margin-right: 10px;
+}
+
+.check_leave_cont li:last-child {
+  margin-bottom: 0;
+}
+
+.leave_question {
+  background-color: #eee;
+  padding: 20px 0;
+  border: 1px solid #ccc;
+  border-top: 0;
+}
+
+.leave_question h4 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.leave_question p {
+  font-size: 0.8em;
+  color: #aaaaaa;
+}
+
+.recheck_title p {
+  margin-top: 20px;
+  font-size: 0.95em;
+  color: #aaaaaa;
+}
+
+.recheck_title h3 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.recheck_cont {
+  background-color: #eee;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.recheck_cont ul li {
+  margin-left: 20px;
+  padding: 5px;
+  color: #797979;
+}
+
+.recheck_reason {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.recheck_reason label {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.recheck_reason input[type="text"] {
+  line-height: 50px;
+  margin-top: 10px;
+  border: 1px solid #838383;
+  padding: 0 15px;
+}
+
+.recheck_reason p {
+  margin-top: 20px;
+  font-size: 0.95em;
+  color: #797979;
+}
+
+.recheck_reason button {
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #ff7000;
+  color: #ffffff;
+}
+/** end 회원 탈퇴 -------------------------------------------------------------------*/
+
+/** 맘시터 서비스 이용 동의 ----------------------------------------------------------*/
+.wrap_agree_service {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.wrap_agree_service .agree_service_con1 {
+  padding: 20px 15px;
+  background-color: #eee;
+}
+
+.wrap_agree_service .agree_service_con1 div {
+  margin-bottom: 30px;
+}
+
+.wrap_agree_service .agree_service_con1 div:last-child {
+  margin-bottom: 0;
+}
+
+.wrap_agree_service .agree_service_con1 div h5 {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.wrap_agree_service .agree_service_con1 div p {
+  font-size: 0.9em;
+}
+
+.type_agree {
+  padding: 20px;
+}
+
+.type_agree p {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+/** end 맘시터 서비스 이용 동의 ------------------------------------------------------*/

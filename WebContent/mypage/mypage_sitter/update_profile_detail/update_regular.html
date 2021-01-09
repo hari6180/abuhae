@@ -19,136 +19,13 @@
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
+        <!-- css 참조 -->
+        <link rel="stylesheet" href="../../css/upd_sitter_profile.css">
+
         <!--flatpickr-->
 	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
         <style type="text/css">
-         /* 초기 설정 -----------------------------------------------------*/
-         .body, html, * {
-            margin: 0;
-            padding: 0;
-
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            padding: 0;
-            margin: 0;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        a {
-            color: black;
-        }
-
-        a:hover {
-            text-decoration: none;
-            color: black;
-        }
-
-        /** header --------------------------------------------------------------------*/
-
-        .mp_detail_tl {
-            width: 100%;
-        }
-        
-        .mp_detail_tl .mp_detail_tl_in {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in a i {
-            text-decoration: none;
-            color: black;
-            font-size: 1.5em;
-            margin-top: 7px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in h3 {
-            font-weight: bold;
-        }
-
-        .mp_detail_tl button {
-            background-color: rgb(255, 112, 0);
-            width: 70px;
-            height: 35px;
-            border: 0;
-            border-radius: 15px;
-            color: #ffffff;
-        }
-
-        /** 공통 for 후기 관리 */
-        .wrap_upd_regular {
-            padding: 20px 20px;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-
-        .wrap_upd_regular .regular_tl {
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-
-        .wrap_upd_regular .startdate {
-            display: block;
-            border: 0;
-            width: 130px;
-            height: 37px;
-            text-align: center;
-            color: #ff7000;
-            font-weight: 600;
-            font-size: 1.1em;
-        }
-
-        .wrap_upd_regular .available_time_in {
-            display: flex;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .wrap_upd_regular .timelist {
-            padding: 20px 30px;
-        }
-
-        .wrap_upd_regular .timelist select {
-            width: 135px;
-            height: 35px;
-            margin-top: 6px;
-            border: 1px solid rgb(255, 207, 184);
-            background-color: rgb(255, 240, 232);
-            color: #ff7000;
-        }
-
-        .wrap_upd_regular .available_days_in {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            padding-top: 20px;
-        }
-
-        .wrap_upd_regular .available_days_in input[type="checkbox"] {
-            display: none;
-        }
-
-        .wrap_upd_regular .available_days_in input[type="checkbox"]+label {
-            background-color: #eee;
-            width: 35px;
-            height: 35px;
-            text-align: center;
-            padding-top: 6px;
-            border-radius: 50px;
-        }
-
-        .wrap_upd_regular .available_days_in input[type="checkbox"]:checked+label {
-            background-color: #ff7000;
-            color: #ffffff;
-        }
 
         .flatpickr-day.selected,
 		.flatpickr-day.selected:focus,
@@ -165,32 +42,7 @@
 
 		.flatpickr-day.today {
 			border-color: #ff7000;
-		}
-
-        .term_list {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px 0;
         }
-
-        .term_list input[type="radio"] {
-            display: none;
-        }
-
-        .term_list input[type="radio"]+label {
-            min-height: 36px;
-            width: 25%;
-            text-align: center;
-            padding-top: 6px;
-            border: 1px solid #d1d1d1;
-        }
-
-        .term_list input[type="radio"]:checked+label {
-            background-color: #ff7000;
-            border: 0;
-            color: #fff;
-        }
-
 		</style>
     </head>
 

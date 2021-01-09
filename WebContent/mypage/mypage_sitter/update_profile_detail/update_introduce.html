@@ -19,88 +19,13 @@
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
+        <!-- css 참조 -->
+        <link rel="stylesheet" href="../../css/upd_sitter_profile.css">
         <style type="text/css">
-         /* 초기 설정 -----------------------------------------------------*/
-         .body, html, * {
-            margin: 0;
-            padding: 0;
-
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            padding: 0;
-            margin: 0;
-        }
-
-        a {
-            color: black;
-        }
-
-        a:hover {
-            text-decoration: none;
-            color: black;
-        }
-
-        /** header --------------------------------------------------------------------*/
-
-        .mp_detail_tl {
-            width: 100%;
-        }
-        
-        .mp_detail_tl .mp_detail_tl_in {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in a i {
-            text-decoration: none;
-            color: black;
-            font-size: 1.5em;
-            margin-top: 7px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in h3 {
-            font-weight: bold;
-        }
-
-        .mp_detail_tl button {
-            background-color: rgb(255, 112, 0);
-            width: 70px;
-            height: 35px;
-            border: 0;
-            border-radius: 15px;
-            color: #ffffff;
-        }
-
+         
         /** for 후기 관리 페이지 (review.html) --------------------------------------*/
         /** 공통 for 후기 관리 */
-        .wrap_care_age {
-            padding: 20px 20px;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-        .introduce_text textarea {
-            width: 100%;
-            background-color: #f1f3f5;
-            border: 0;
-        }
-
-        .introduce_text a span {
-            display: flex;
-            justify-content: center;
-            padding: 40px 0;
-            color: #ff7000;
-            text-decoration: underline;
-        }
-
-        /** modal-body */
-        #introduce_modal .modal-body {
-            background-color: #eee;
-        }
+        
 
 		</style>
     </head>
@@ -108,7 +33,7 @@
     <body>
         <div id="app">
             <div class="container">
-                <div class="wrap_care_age">
+                <div class="wrap_experience">
                     <form action="#">
                          <!-- header -->
                         <header class="mp_detail_tl">
@@ -129,7 +54,10 @@
                                 <div class="col-xs-12">
                                     <textarea name="introduce" id="introduce" cols="30" rows="10"
                                     placeholder="자기소개 작성 시 부모님에게 2배 더 많은 신청을 받게 됩니다."></textarea>
-                                    <p>자기소개 내용에 연락처, 이메일 카카오ID 등을 작성할 경우 회원 자격을 영구적으로 잃게 됩니다.</p>
+                                    <div class="intro_ban">
+                                        <div><i class="fas fa-ban"></i></div>
+                                        <p>자기소개 내용에 연락처, 이메일 카카오ID 등을 작성할 경우 회원 자격을 영구적으로 잃게 됩니다.</p>
+                                    </div>
                                     <a href="#introduce_modal" data-toggle="modal"><span>다른 맘시터 자기소개 내용 확인하기</span></a>
                                 </div>
                             </div>

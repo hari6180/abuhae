@@ -21,6 +21,13 @@
 
         <!-- css 참조 -->
         <link rel="stylesheet" type="text/css" href="../css/upd_mps_detail.css">
+
+        <style>
+            .mp_detail_tl {
+                border-bottom: 1px solid #ccc;
+                margin-bottom: 40px;
+            }
+        </style>
     </head>
 
     <body>
@@ -44,7 +51,7 @@
                    <section class="group1_upd_pwd">
                         <div class="row">
                             <div class="col-xs-12">
-                                <form action="#">
+                                <form action="#" id="mom_pwd_form">
                                     <div class="upd_pwd_cont">
                                         <div class="pwd_con_in">
                                             <label for="now_pw">현재 비밀번호</label> <br/>
@@ -61,7 +68,7 @@
                                             <label for="show_pw">비밀번호 보기</label>
                                         </div>
                                     </div>
-                                    <button type="button" id="pwd_btn">변경하기</button>
+                                    <button type="submit" id="pwd_btn">변경하기</button>
                                 </form>  
                             </div>
                         </div>
@@ -90,11 +97,22 @@
                    }
                 });
                 
-                $("#pwd_btn").click(function() {
-                    var result = confirm("비밀번호를 변경하시겠습니까?");
 
-                    if(result) {
-                        location.href = "../../login/login.html";
+                $("#mom_pwd_form").submit(function(e) {
+                    e.preventDefault();
+
+                    var now = $("#now_pw").val();
+
+                    if(now != "ezen2020") {
+                        alert("현재 비밀번호를 확인해주세요. (임시 비밀번호 : ezen2020)"); // 임시 비밀번호(ezen2020)와 다를 경우 확인 메세지 띄우기
+                        $("#now_pw").focus();
+                        return false;
+                    } else {
+                        var result = confirm("비밀번호를 변경하시겠습니까?");
+
+                        if(result) {
+                            location.href = "../../login/login.html";
+                        } 
                     }
                 });
             });

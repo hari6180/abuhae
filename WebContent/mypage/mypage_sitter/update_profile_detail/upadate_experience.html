@@ -21,115 +21,22 @@
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
+        <!-- css 참조 -->
+        <link rel="stylesheet" href="../../css/upd_sitter_profile.css">
         <style type="text/css">
-         /* 초기 설정 -----------------------------------------------------*/
-         .body, html, * {
-            margin: 0;
-            padding: 0;
+            .datepicker {
+                display: flex;
+                justify-content: space-around;
+                font-size: 1.1em;
+            }
 
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            padding: 0;
-            margin: 0;
-        }
-
-        a {
-            color: black;
-        }
-
-        a:hover {
-            text-decoration: none;
-            color: black;
-        }
-
-        /** header --------------------------------------------------------------------*/
-
-        .mp_detail_tl {
-            width: 100%;
-        }
-        
-        .mp_detail_tl .mp_detail_tl_in {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in a i {
-            text-decoration: none;
-            color: black;
-            font-size: 1.5em;
-            margin-top: 7px;
-        }
-
-        .mp_detail_tl .mp_detail_tl_in h3 {
-            font-weight: bold;
-        }
-
-        .mp_detail_tl button {
-            background-color: rgb(255, 112, 0);
-            width: 70px;
-            height: 35px;
-            border: 0;
-            border-radius: 15px;
-            color: #ffffff;
-        }
-
-        /** for 후기 관리 페이지 (review.html) --------------------------------------*/
-        /** 공통 for 후기 관리 */
-        .wrap_care_age {
-            padding: 20px 20px;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-
-        #exp_btn {
-            width: 100%;
-            height: 50px;
-            background-color: #fff;
-            border: 1px solid #ff7000;
-            color: #ff7000;
-        }
-
-        .exp_list {
-            padding: 10px 0;
-        }
-
-        .exp_cont {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .exp_cont input[type="text"] {
-            border: 0;
-            border-bottom: 2px solid #ccc;
-            line-height: 30px;
-            padding: 5px 15px;
-            font-size: 1.2em;
-        }
-
-        .exp_cont input::placeholder {
-            font-size: 0.9em;
-        }
-
-        .datepicker {
-            display: flex;
-            justify-content: space-around;
-            font-size: 1.3em;
-        }
-
-        .datepicker input[type="text"] {
-            border: 0;
-            color: #ff7000;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-
-		</style>
+            .datepicker input[type="text"] {
+                border: 0;
+                color: #ff7000;
+                text-align: center;
+                margin-bottom: 50px;
+            }   
+        </style>
     </head>
 
     <body>
@@ -165,9 +72,7 @@
                                     <button id="exp_btn" type="button" data-tab="experience_form">+ 경험 내용 추가하기</button>
                                 </div>
                             </div>
-                        </section>
-
-                     
+                        </section>       
                     </form>
                     
                 </div>
@@ -177,12 +82,12 @@
         <!-- Handlebars template-->
         <script type="text/x-handlebars-template" id="list-item-tmpl">
             <div class="exp_cont">
-                <label for="type_exp" style="font-size: 1.2em; margin-bottom: 10px;">
+                <label for="type_exp" style="font-size: 1.1em; margin-bottom: 10px;">
                     {{title1}}</label>
                  <input type="text" id="type_exp" name="type_exp" placeholder="예) 키즈카페, 교육기관, 봉사활동">
             </div>
             <div class="exp_list">
-                <h4 style="font-size: 1.2em; font-weight: bold;">{{title2}}</h4>
+                <h4 style="font-size: 1.1em; font-weight: bold;">{{title2}}</h4>
                 <div class="datepicker">
                     <input type="text" name="startdate" class="startDate" required />
                     <span><i class="fas fa-long-arrow-alt-right"></i></span>
