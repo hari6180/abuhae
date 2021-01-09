@@ -25,6 +25,7 @@ a:hover {
 .col-xs-12 {
   margin: 27px 0;
   width: 100%;
+  overflow: hidden;
 }
 
 /*선택 전까지 숨기기*/
@@ -242,7 +243,7 @@ a:hover {
 .what_want {
   display: block;
   text-align: center;
-  font-size: 1.25em;
+  font-size: 1.1em;
   font-weight: 600;
 }
 
@@ -668,7 +669,7 @@ input[type="checkbox"]:checked + label:after {
 }
 
 #description .desc_textarea {
-  font-size: 1em;
+  font-size: 0.85em;
   font-weight: 600;
   padding: 6px 16px;
   margin: 0 16px;

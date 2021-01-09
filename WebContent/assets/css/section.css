@@ -14,6 +14,7 @@ section {
 
 section .col-xs-12 {
   padding: 0;
+  overflow: hidden;
 }
 
 div > img {
