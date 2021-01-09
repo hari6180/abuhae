@@ -22,14 +22,17 @@
 <!-- sweetalert 사용 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
  <!-- header css 적용 -->
- <link rel="stylesheet" href="../../assets/css/index_header.css">
+ <link rel="stylesheet" href="../css/upd_mpm_detail.css">
 
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="../../page_detail/css/mom_page_detail.css" />
 <style type="text/css">
-	.main {
-		padding-top: 80px;
-	}
+	/** for header */
+	.mp_detail_tl {
+        margin: 0;
+        padding: 20px 20px;
+    }
+	/** end for header */
 
 	#modal_ok {
 		color: #008f69;
@@ -136,7 +139,18 @@
 <body>		
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
-				<div id="menu"></div>
+				<!-- header -->
+                <header class="mp_detail_tl" style="border-bottom: 1px solid #ccc;">
+                    <div class="row">
+                        <div class="col-xs-12 mp_detail_tl_in">
+                            <a href="mom_mypage.html">
+                                <i class="fas fa-angle-left"></i>
+                            </a>
+                            <h3 class="center-block">내 신청서 수정</h3>
+                        </div>
+                    </div>
+				</header>
+				<!--end header-->
 				
 				<!-- Main start-->
 				<div class="main">

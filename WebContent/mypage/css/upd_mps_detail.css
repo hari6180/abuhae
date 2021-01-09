@@ -177,8 +177,84 @@ label {
 .wrap_get_mom .group1_get_mom .gm_appl .gm_endtime {
   margin-top: 10px;
   color: #e93c3c;
-  font-size: 1em;
+  font-size: 0.8em;
 }
+
+.wrap_get_mom .group1_get_mom .gm_appl .wait_response {
+  margin-top: 10px;
+  color: #0099ff;
+  font-size: 0.8em;
+}
+
+.wrap_get_mom .group1_get_mom .gm_appl .response {
+  margin-top: 10px;
+  width: 60%;
+  height: 30px;
+  border: 0;
+  border-radius: 3px;
+  background-color: #0099ff;
+  color: #ffffff;
+  font-size: 0.8em;
+}
+
+/** modal */
+.wrap_get_mom .modal-content {
+  padding: 0;
+  margin: 0;
+}
+
+.wrap_get_mom .modal-content .modal-header {
+  padding: 0;
+  margin: 0;
+  background-color: #026155;
+}
+
+.wrap_get_mom .modal-content .modal-header .fund_500 {
+  padding: 10px 0;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.8em;
+}
+
+.wrap_get_mom .modal-content .modal-header .fund_500 i {
+  color: #ffdf29;
+  margin-right: 5px;
+}
+
+.wrap_get_mom .modal-content .modal-body {
+  background-color: #009b88;
+  color: #ffffff;
+  font-size: 0.85em;
+  text-align: center;
+}
+
+.wrap_get_mom .modal-content .modal_btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.wrap_get_mom .modal-content .modal_btn button {
+  width: 40%;
+  height: 30px;
+  background-color: #009b88;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.wrap_get_mom .modal-content .fund_500 {
+  background-color: #026155;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wrap_get_mom .modal-content .modal_btn button:last-child {
+  margin-right: 0;
+}
+
 /** end 내 구직 현황 --------------------------------------------------------------*/
 
 /** 찜한 일자리 --------------------------------------------------------------------*/
@@ -693,6 +769,14 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 0.9em;
+  color: #3b4049;
+}
+
+.wrap_sue .sue_content .sue_con_in h4 {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .wrap_sue .sue_content .sue_con_in .sue_con_prof {
@@ -710,9 +794,8 @@ button {
   background-color: rgb(224, 224, 224);
   height: 32px;
   border-radius: 16px;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 4px;
+  padding: 9px 10px 0;
+  font-size: 0.7em;
 }
 /** end 신고 내역  ------------------------------------------------------------------*/
 

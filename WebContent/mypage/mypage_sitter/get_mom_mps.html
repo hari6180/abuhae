@@ -83,7 +83,9 @@
                                                 <p>전○리 부모</p>
                                                 <p>희망시급:11,000원</p>
                                                 <p>지원시간:2020.12.25 17:07</p>
-                                                <p class="gm_endtime">응답시간이 초과되었습니다.</p>
+                                                <p class="gm_endtime">부모님이 개인사정으로 정해진 시간 내에 답변하지 못했습니다.
+                                                    다른 부모님을 찾아보세요.
+                                                </p>
                                             </div>
                                         </div>   
                                     </div>
@@ -94,9 +96,27 @@
                                         <div class="gm_appl">
                                             <img src="../img/profile.png" alt="임시프로필">
                                             <div class="gm_info">
-                                                <p>조○상 부모</p>
+                                                <p>김○아 부모</p>
                                                 <p>희망시급:9,000원</p>
-                                                <p>지원시간:2020.12.19 10:27</p>
+                                                <p>지원시간:2020.01.06 17:54</p>
+                                                <p class="wait_response">
+                                                    부모님이 내 답변을 기다리고 있습니다. <br>
+                                                    답변 마감 시간 : 2020.01.09 17:54 <!--답변 마감 시간은 신청일로 부터 3일-->
+                                                </p>
+                                                <a href="#res_modal" data-toggle="modal"><button type="button" class="response">답변하기</button></a>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="gm_appl">
+                                            <img src="../img/profile.png" alt="임시프로필">
+                                            <div class="gm_info">
+                                                <p>남○재 부모</p>
+                                                <p>희망시급:10,000원</p>
+                                                <p>지원시간:2020.10.19 10:27</p>
+                                                <p class="gm_endtime">
+                                                    - 답변시간 초과 - <br>
+                                                    아쉽게 답변시간을 놓치셨습니다.
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -106,6 +126,32 @@
                         </div>
                     </section>
                     <!-- end content1 -->
+
+                    <!-- modal -->
+                    <div id="res_modal" class="modal fade" tabindex="-1" role="dialog" 
+                    aria-labelledby="modalLabel" aria-hidden="true">
+                        <!-- mocal-dialog -->
+                        <div class="modal-dialog">
+                            <!-- modal-content -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div class="fund_500"><i class="fas fa-coins"></i>지금 응답하면, 적립금 500원</div>
+                                </div>
+
+                                <!-- 내용 -->
+                                <div class="modal-body">
+                                    <p>응답가능 시간 2 : 58 : 16초 남음</p>
+                                    <p>맘시터 구인 1일째 - 희망시급 10,000원</p>
+                                    <div class="modal_btn">
+                                        <button id="interview_no">거절</button>
+                                        <button id="interview_ok">수락</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //modal-content end -->
+                        </div>
+                        <!-- //modal-dailog end-->
+                    </div>
                 </div>
             </div>
         </div>
