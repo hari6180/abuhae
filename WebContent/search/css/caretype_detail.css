@@ -43,7 +43,7 @@ img {
 
 #caretype .ct_header {
   margin: 0px auto;
-
+  max-width: 600px;
   width: 100%;
   position: relative;
   height: 64px;

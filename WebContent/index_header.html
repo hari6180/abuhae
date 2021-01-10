@@ -18,9 +18,13 @@
         </div>
         <div class="flex_row">
           <a href="http://localhost:8080/ezen-android2020-2/join/join.html"><button id="header_join" class="join">가입하기</button></a>
-          <a href="#"><i id="header_search" class="fas fa-search header_search_btn"></i></a>
+          <i id="header_search" class="fas fa-search header_search_btn"></i>
         </div>
       </div>
+    </div>
+    <div class="searchbar_wrap" style="display: none">
+      <div class="search_block search_sitter"><img src="/ezen-android2020-2/assets/img/header_sittersearch.png" />맘시터 찾기</div>
+      <div class="search_block search_job"><img src="/ezen-android2020-2/assets/img/header_jobsearch.png" />일자리 찾기</div>
     </div>
   </header>
   <!-- header end-->
@@ -50,14 +54,14 @@
         <div class="modal_body">
           <div class="sitter_search">
             <a href="#" id="stsc_btn">
-              <img src="/ezen-android2020-2/assets/img/index-sittersearch.svg" />
+              <img src="/ezen-android2020-2/assets/img/index-sittersearch.png" />
               <p>맘시터 찾기</p>
             </a>
           </div>
 
           <div class="job_search">
             <a href="#" id="jobsc_btn">
-              <img src="/ezen-android2020-2/assets/img/index-jobsearch.svg" />
+              <img src="/ezen-android2020-2/assets/img/index-jobsearch.png" />
               <p>일자리 찾기</p>
             </a>
           </div>
@@ -116,11 +120,11 @@
     $("#jobsc_btn").click(function (e) {
       location.replace("http://localhost:8080/ezen-android2020-2/search/job_search.html");
     });
-    $("#buy_btn").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/buy/buy.html");
-    });
     $("#intro_btn").click(function (e) {
       location.replace("http://localhost:8080/ezen-android2020-2/abu-service/introduce.html");
+    });
+    $("#buy_btn").click(function (e) {
+      location.replace("http://localhost:8080/ezen-android2020-2/buy/buy.html");
     });
     $("#notice_btn").click(function (e) {
       location.replace("http://localhost:8080/ezen-android2020-2/customer/notice_site.html");
@@ -139,5 +143,20 @@
       location.replace("http://localhost:8080/ezen-android2020-2/admin/admin_login.html");
     });
     //프론트 테스트용 임시 링크 끝
+  });
+</script>
+<script>
+  //검색바 클릭시 밑에 찾기 아이콘
+  $(function () {
+    $("#header_search").on("click", function () {
+      $(".searchbar_wrap").slideToggle(300);
+    });
+
+    $(".search_sitter").click(function () {
+      location.href = "/ezen-android2020-2/search/sitter_search.html";
+    });
+    $(".search_job").click(function () {
+      location.href = "/ezen-android2020-2/search/job_search.html";
+    });
   });
 </script>

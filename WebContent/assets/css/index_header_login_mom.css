@@ -68,6 +68,34 @@ a:hover {
   font-size: 1.5em;
 }
 
+#menu {
+  border-bottom: 1px solid #d8d8d8;
+}
+.searchbar_wrap {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  cursor: pointer;
+}
+.search_sitter {
+  border-right: 1px solid #d8d8d8;
+}
+
+.search_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  background-color: #fff;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.search_block img {
+  width: 28px;
+  height: 28px;
+}
+
 /* header end ---------------------------------------------------------*/
 
 /* modal -------------------------------------------------------------------------------------*/
