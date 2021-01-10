@@ -128,7 +128,7 @@
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
         $(function () {
-            //시급 입력시 콤마 자동으로 찍히기
+            //시급 입력시 콤마 자동으로 찍히기 - 선아
             $("#payment_input").on("blur", function () {
                 var val = $(this).val();
                 if (val.length != 0) {
@@ -149,7 +149,7 @@
             });
 
 
-            //아이명수 클릭시 버튼 색상 바뀜
+            //아이명수 클릭시 버튼 색상 적용 및 ajax 페이지 변환 - 선아
             $(".childeren_num1, .childeren_num2").on("click", function () {
                 var select = $(this).hasClass("childeren_num1");
 
@@ -187,7 +187,7 @@
 
             });
 
-            //select box 출생년도, 출생월 선택이 되면 show_content
+            //select box 출생년도, 출생월 선택이 되면 show_content - 선아
             $(document).on('change','#year, #month', function(){
                 //드롭다운의 선택값
                 var yaer = $("#year").val();

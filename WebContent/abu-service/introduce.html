@@ -24,7 +24,7 @@
 
     <style type="text/css">
         .container {
-            margin: 0;
+            margin: auto;
             padding: 0;
         }
 
@@ -74,7 +74,7 @@
             //브라우저 로드시 헤더 받아오기
             $("#menu").load("/ezen-android2020-2/index_header.html");
 
-            //브라우저 로드시 에이작스 받아오기 
+            //브라우저 로드시 에이작스 받아오기 - 선아
             //default는 어떤 점이 좋나요?
             $(document).ready(function () {
                 $.ajax({
@@ -91,6 +91,7 @@
                 
             });
 
+            //클릭시에 ajax 받아오기
             $(".service_btn").click(function (e) {
                 var serv_btn = $(this).attr('data-tab');
                 //content ajax로 불러오기
@@ -107,7 +108,7 @@
                         }
                     });
                 });
-
+                //클릭시 어느 페이지 보고 있는지 css 설정 - 선아
                 if(serv_btn=='introduce_what') {
                     $(".click").css('left','0');
                 } else {

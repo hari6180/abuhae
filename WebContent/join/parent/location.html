@@ -247,6 +247,7 @@
     <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+        //location 선택시 css 이벤트 - 선아
         $(function () {
             //시 클릭했을 때
             $(".loc_btn").on("click", function () {
@@ -254,7 +255,7 @@
                 //선택이 안되어있을때
                 if (select == false) {
                     //선택이 되어있는 요소 탐색
-                    var loc = $("#si").find("button").removeClass("select_loaction");
+                    var loc = $("#si").find("button").removeClass("select_location");
                     //console.log(loc);
                     $(this).addClass("select_loaction");
                     //시 선택하면 gu 보이게
@@ -269,7 +270,7 @@
                 //선택이 안되어있을때
                 if (select == false) {
                     //선택이 되어있는 요소 탐색
-                    var loc = $("#gu").find("button").removeClass("select_loaction");
+                    var loc = $("#gu").find("button").removeClass("select_location");
                     //console.log(loc);
                     $(this).addClass("select_loaction");
                     //구 선택하면 동 보이게
@@ -285,7 +286,7 @@
                 //선택이 안되어있을때
                 if (select == false) {
                     //선택이 되어있는 요소 탐색
-                    var loc = $("#dong").find("button").removeClass("select_loaction");
+                    var loc = $("#dong").find("button").removeClass("select_location");
                     //console.log(loc);
                     $(this).addClass("select_loaction");
 

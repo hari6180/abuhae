@@ -91,7 +91,8 @@
 	<script type="text/javascript">
 		function addCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
+		}
+		//금액 입력 검사 - 선아
         $(function () {
             //시급 입력시 콤마 자동으로 찍히기
             $("#payment_input").on("blur", function () {

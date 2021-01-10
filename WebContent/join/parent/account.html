@@ -138,7 +138,7 @@
                     /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test(value) ||
                     /^\d{2,3}\d{3,4}\d{4}$/i.test(value);
             });
-
+            //로그인 입력시 규칙 검사 - 선아
             $("#join_form").validate({
                 //입력 검사 규칙
                 rules: {
@@ -191,7 +191,7 @@
 
             }); //end validate
 
-            //입력요소 전부 입력 완료시 버튼 활성화
+            //입력요소 전부 입력 완료시 버튼 활성화 - 선아
             $("input").on("blur", function () {
                 if ($("#user_id").val() != '' && $("#user_pw").val() != '' && $("#user_pw_re").val() != '' && $("#name").val() != '' && $("#email").val() != '' &&$("#tel").val() != '' &&$("#birthdate").val() != '' ) {
                     $(".next_btn").prop("disabled", false);
