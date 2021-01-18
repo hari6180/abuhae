@@ -310,12 +310,14 @@ a:hover {
         }
         .article_img img {
             border-radius: 50%;
+            width: 100%;
         }
         .article_img {
             padding: 0;
         }
         .article_title {
             padding: 0;
+            padding-left: 10px;
         }
         .article_title p {
             margin: 0;
@@ -327,10 +329,12 @@ a:hover {
         }
         .section_body {
             padding: 40px 15px;
+            text-decoration: none;
         }
         .section_body p {
             margin: 15px 0;
             font-size: 1.1em;
+            text-decoration: none;
         }
         .section_body p a {
             font-weight: bold;
