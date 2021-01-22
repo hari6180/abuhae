@@ -92,14 +92,11 @@ button {
 
 /* activity_type_wrap ----------------------------------------------------------*/
 
-.activity_type_wrap a {
+.activity_type_wrap a div {
   width: 100%;
   display: flex;
   padding: 0 15px;
-  align-items: center;
-  overflow-x: hidden !important;
 }
-
 .activity_type_btn_group {
   overflow: scroll hidden;
   width: 90%;
