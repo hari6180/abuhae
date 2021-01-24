@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -18,14 +19,14 @@
 
     <!-- noto Sans 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
-    <!--join sitter 참조-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_sitter.css" />
+    <!-- join css -->
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_parent.css" />
 
     <style type="text/css">
         .container {
             padding: 0;
         }
-        
+
         .col-xs-12 {
             margin: 48px 0;
         }
@@ -51,11 +52,11 @@
                 <header class="account_header">
                     <img src="/ezen-android2020-2/join/img/parent_join_end.png">
                     <h4 class="account_title">
-                        일자리를 찾기 위한 내용 작성이 끝났습니다.<br>
+                        맘시터를 찾기 위한 내용 작성이 끝났습니다.<br>
                         이제, 마지막 내용만 작성하시면 가입이 완료됩니다.
                     </h4>
                 </header>
-                <form id="join_form">
+                <form id="join_form" method="post">
                     <div class="input_box">
                         <div class="input_group">
                             <label for="user_id">아이디</label>&nbsp;&nbsp;<label class="error" for="user_id"
@@ -114,7 +115,7 @@
                     </div>
                 </form>
                 <!--end inputbox-->
-                <a href="agreement.html"><button class="next_btn" disabled>다음</button></a>
+                <a href="agreement.jsp"><button class="next_btn" disabled>다음</button></a>
             </div>
         </div> <!-- fin. col-xs-12 -->
     </div>
@@ -138,8 +139,7 @@
                     /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test(value) ||
                     /^\d{2,3}\d{3,4}\d{4}$/i.test(value);
             });
-            
-            //가입 정보 입력시 유효성 검사 - 선아
+            //로그인 입력시 규칙 검사 - 선아
             $("#join_form").validate({
                 //입력 검사 규칙
                 rules: {
@@ -192,7 +192,7 @@
 
             }); //end validate
 
-            //입력요소 전부 입력 완료시 버튼 활성화
+            //입력요소 전부 입력 완료시 버튼 활성화 - 선아
             $("input").on("blur", function () {
                 if ($("#user_id").val() != '' && $("#user_pw").val() != '' && $("#user_pw_re").val() != '' && $("#name").val() != '' && $("#email").val() != '' &&$("#tel").val() != '' &&$("#birthdate").val() != '' ) {
                     $(".next_btn").prop("disabled", false);

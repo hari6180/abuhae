@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -22,6 +23,9 @@
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
         <!--login css-->
         <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/login/login.css" />
+        <!-- Javascript -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
 
 		<style type="text/css">
             .container {
@@ -34,7 +38,9 @@
 
 	<body>
 		<div id="login" class="container">
-            <div id="menu"></div>
+            <div id="menu">
+                <%@ include file="/index_header.jsp"%>
+            </div>
             <div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
                 <h2 class="title">로그인</h2>
 
@@ -46,19 +52,17 @@
                 <button class="next_btn" id="login_btn">로그인</button>
 
                 <div class="other_action">
-                    <a href="find.html" class="otehr_login underline">로그인 정보를 잊으셨나요?</a>
+                    <a href="find.jsp" class="otehr_login underline">로그인 정보를 잊으셨나요?</a>
                     <a href="/ezen-android2020-2/join/join.html" class="otehr_login">회원가입</a>
                 </div>
 				
 			</div> <!-- fin. col-xs-12 -->
 		</div>
 	
-		<!-- Javascript -->
-		<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
-        <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+
         <script type="text/javascript">
             $(function(){
-                $("#menu").load("../index_header.html");
+                //$("#menu").load("../index_header.html");
 
                 $("#login_btn").on("click", function(){
                     if($("#userid").val() == "mom" && $("#password").val() == "sitter") {

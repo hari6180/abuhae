@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -139,7 +140,7 @@
                     선택을 <span class="select_text">5배 더 많이</span> 받을 수 있습니다.</p>
                 <a data-toggle="modal" href="#help_modal"><button class="guide_prof">좋은 프로필 사진 올리는 방법!</button></a>
                 <button class="next_btn now_upload">지금 올리기</button>
-                <a href="introduce.html"><button class="next_btn_later">나중에 하기</button></a>
+                <a href="introduce.jsp"><button class="next_btn_later">나중에 하기</button></a>
             </div>
 
         </div> <!-- fin. col-xs-12 -->

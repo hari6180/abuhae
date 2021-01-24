@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -129,7 +130,7 @@
                 <a data-toggle="modal" href="#help_modal">
                     <button class="type_desc">어떤 유형을 선택해야할지 고민이신가요?</button></a>
                 <!--end 설명 모달창-->
-                <a href="activity_age.html"><button class="next_btn">다음</button></a>
+                <a href="activity_age.jsp"><button class="next_btn">다음</button></a>
             </div>
         </div> <!-- fin. col-xs-12 -->
     </div>

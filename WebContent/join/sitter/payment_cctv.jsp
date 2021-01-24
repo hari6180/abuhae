@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -80,7 +81,7 @@
 				</div>
 			</div>
 			<!--end cctv-->
-			<a href="profile_img.html"><button class="next_btn">다음</button></a>
+			<a href="profile_img.jsp"><button class="next_btn">다음</button></a>
 
 		</div> <!-- fin. col-xs-12 -->
 	</div>

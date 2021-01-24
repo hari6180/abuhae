@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -258,7 +259,7 @@
                         <!--end 동-->
                     </div>
                 </div>
-                <a href="schedule.html"><button class="next_btn" disabled>다음</button></a>
+                <a href="schedule.jsp"><button class="next_btn" disabled>다음</button></a>
             </div>
         </div> <!-- fin. col-xs-12 -->
 

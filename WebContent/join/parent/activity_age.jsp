@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -187,7 +188,7 @@
                         <input type="checkbox" value="60" class="want_age" id="60age"> <label for="60age">60대</label>
                     </div>
 
-                    <a href="/ezen-android2020-2/join/parent/children.html"><button class="next_btn"
+                    <a href="/ezen-android2020-2/join/parent/children.jsp"><button class="next_btn"
                             type="submit">다음</button></a>
                 </div>
             </div>

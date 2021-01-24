@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -24,6 +25,9 @@
     <link rel="stylesheet" href="/ezen-android2020-2/assets/css/index_header.css">
     <!-- 아이콘 사용 -->
     <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script>
+    <!-- Javascript -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
 
     <style type="text/css">
         .container {
@@ -36,7 +40,9 @@
 
 <body>
     <div id="find" class="container">
-        <div id="menu"></div>
+        <div id="menu">
+            <%@ include file="/index_header.jsp"%>
+        </div>
         <div class="col-xs-12">
             <!-- xs-12로 모바일 맞춤 -->
             <!--end header-->
@@ -85,13 +91,9 @@
 
         </div> <!-- fin. col-xs-12 -->
     </div>
-
-    <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            $("#menu").load("../index_header.html");
+            //$("#menu").load("../index_header.html");
 
             $("#find_account").on("click", function () {
                 if ($("#name").val() == "정지우" && $("#birthdate").val() == "19700101" && $("#tel").val() == "01012345678") {

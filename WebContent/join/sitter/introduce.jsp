@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -145,7 +146,7 @@
 
                 <a data-toggle="modal" href="#other_introduce_modal"><p class="other_intro">다른 시터 자기소개 내용 확인하기</p></a>
 
-                <a href="account.html"><button class="next_btn">나중에 입력할게요.</button></a>
+                <a href="account.jsp"><button class="next_btn">나중에 입력할게요.</button></a>
             </div>
 
 

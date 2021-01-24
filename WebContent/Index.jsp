@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -29,6 +31,9 @@
 	<link rel="stylesheet" href="assets/css/section.css">
 	<!--footer css-->
 	<link rel="stylesheet" href="assets/css/index_footer.css">
+	<!-- Javascript -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
 
 	<style type="text/css">
 		html,
@@ -48,7 +53,9 @@
 <body>
 	<div id="app">
 		<div class="container">
-			<div id="menu"></div>
+			<div id="menu">
+				<%@ include file="index_header.jsp"%>
+			</div>
 
 			<!--section-->
 			<section class="row">
@@ -294,15 +301,13 @@
 			</footer>
 		</div>
 	</div>
-	<!-- Javascript -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
+	
 	<!--slick slider-->
 	<script type="text/javascript" src="assets/plugin/slick/slick.min.js"></script>
 	<script type="text/javascript">
 		$(function () {
 			//브라우저 로드시 헤더 받아오기
-			$("#menu").load("index_header.html");
+			//$("#menu").load("index_header.html");
 
 			//브라우저 로드시 에이작스 받아오기 
 			//default는 부모 가이드

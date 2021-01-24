@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -128,7 +129,7 @@
 						<span class="jojung_text">본 일정은 맘시터에 맞춰서 얼마든지 조정할 수 있어요.</span>
 					</div>
 
-					<a href="description.html"><button class="next_btn">다음</button></a>
+					<a href="description.jsp"><button class="next_btn">다음</button></a>
 				</div>
 				<!--end hide content-->
 			</div>

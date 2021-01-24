@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -13,11 +14,11 @@
     <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
+    <!--절대 경로 수정 1220 선아-->
     <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+
     <!-- noto Sans 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
-    <!-- icon 참조 -->
-    <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
     <!--join sitter 참조-->
     <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_sitter.css" />
 
@@ -27,23 +28,16 @@
 </head>
 
 <body>
-    <div id="start" class="container">
-            <div class="col-xs-12">
-                <!-- xs-12로 모바일 맞춤 -->
-                <div class="join_title">
-                    <img src="../img/sitter_join_start.png">
-                    <h3>하루에 3시간만 일해도 월 60만원!</h3>
-                    <p>든든한 맘시터로 활동해 보세요.</p>
-                </div>
-
-                <!--다음 회원가입으로 진행-->
-                <a href="sitter_type.html"><button class="start_join_btn">회원가입 시작하기 ></button></a>
-                <!--로그인 페이지로 이동-->
-                <a href="/ezen-android2020-2/login/login.html"><button class="already_join_btn">이미 맘시터 회원이신가요?</button></a>
-
-            </div> <!-- fin. col-xs-12 -->
+    <div id="success" class="container">
+        <div class="col-xs-12">
+            <!-- xs-12로 모바일 맞춤 -->
+            <div class="img_box">
+                <img src="../img/join-sitter-img.png">
+            </div>
+            <h3 class="success_title">가입이 완료되었습니다!</h3>
+            <a href="/ezen-android2020-2/login/login.jsp"><button class="next_btn">아이를부탁해 이용하러 가기</button></a>
+        </div> <!-- fin. col-xs-12 -->
     </div>
-    <!--end container-->
 
     <!-- Javascript -->
     <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->

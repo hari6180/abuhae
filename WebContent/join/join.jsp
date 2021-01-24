@@ -21,6 +21,9 @@
     <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
     <!--join css-->
     <link rel="stylesheet" href="/ezen-android2020-2/join/css/join_parent.css">
+    <!-- Javascript -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
 
     <style type="text/css">
         .col-xs-12 {
@@ -56,7 +59,7 @@
                                     </div>
                                 </button></a>
                             <hr>
-                            <a href="sitter/start.html">
+                            <a href="sitter/start.jsp">
                                 <button class="join_siter">
                                     <div class="join_group">
                                         <div>
@@ -72,7 +75,7 @@
                         </div>
                         <div class="already_join">
                             <span>이미 맘시터 회원이신가요?</span><br>
-                            <a href="/ezen-android2020-2/login/login.html">로그인</a>
+                            <a href="/ezen-android2020-2/login/login.jsp">로그인</a>
                         </div>
                     </div>
                 </div> <!-- fin. col-xs-12 -->
@@ -80,10 +83,6 @@
         </div>
         <!--end container-->
     </div>
-
-    <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(function () {
             //헤더 로드

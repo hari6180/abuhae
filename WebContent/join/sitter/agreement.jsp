@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -18,8 +19,8 @@
 
     <!-- noto Sans 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
-    <!--join sitter 참조-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_sitter.css" />
+    <!-- join css -->
+    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_parent.css" />
 
     <style type="text/css">
         html,
@@ -31,9 +32,11 @@
             padding: 0;
             margin: 0;
         }
-        .container, .col-xs-12 {
+        .container{
             padding: 0;
-            margin: 0;
+            margin: auto;
+        } .col-xs-12 {
+            padding: 0;
         }
 
         .what_want {
@@ -90,7 +93,7 @@
                     </div>
                 </div>
                 <br>
-                <a href="success.html"><button class="next_btn">다음</button></a>
+                <a href="success.jsp"><button class="next_btn">다음</button></a>
             </div> <!-- fin. col-xs-12 -->
     </div>
 
