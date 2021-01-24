@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%
+	
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -9,24 +14,24 @@
 	<title>아이를 부탁해</title>
 
 	<!-- 모바일 웹 페이지 설정 -->
-	<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-	<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+	<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
 	<!-- bootstrap -->
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
 	<!-- noto Sans 웹 폰트 적용 -->
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
 	<!--slick slider-->
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/plugin/slick/slick.css" />
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/plugin/slick/slick-theme.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/plugin/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/plugin/slick/slick-theme.css" />
 	<!-- fontawesome(글리피콘) 적용 -->
 	<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
 	<!-- animaition 적용-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
 	<!--section-->
-	<link rel="stylesheet" href="/ezen-android2020-2/assets/css/section.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/section.css">
 	<!-- css 적용 -->
-	<link rel="stylesheet" href="/ezen-android2020-2/buy/css/mom_ticket.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/buy/css/mom_ticket.css">
 	
 </head>
 
@@ -102,7 +107,7 @@
 							<div class="mom_buy_select_btn"></div>
 						</div>
 					</div> <!-- fin. mom_buy_box -->
-					<button type="button" class="buy_btn" onclick = "location.href = 'receipt.html'">
+					<button type="button" class="buy_btn" onclick = "location.href = 'receipt.jsp'">
 					 <p class="buy_btn_style">  
 					   결제하기
 					 </p>
@@ -203,7 +208,7 @@
 		</div>
 	</div>
 	<!-- Javascript -->
-	<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			
@@ -257,8 +262,8 @@
 			
 		})
 	</script>
-	<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
 	<!--slick slider-->
-	<script type="text/javascript" src="/ezen-android2020-2/assets/plugin/slick/slick.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/plugin/slick/slick.min.js"></script>
 </body>
 </html>

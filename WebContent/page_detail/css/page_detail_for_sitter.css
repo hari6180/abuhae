@@ -854,6 +854,7 @@
 					z-index: 14;
 					box-sizing: border-box;
 					box-shadow: 0 -2px 3px 0 hsla(0,0%,63.9%,0.5);
+					left: 0px;
 				}
 				.fixed_area {
 					display: flex;

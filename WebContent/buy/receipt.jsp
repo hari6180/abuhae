@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%
+	
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -9,22 +14,22 @@
 	<title>아이를 부탁해</title>
 
 	<!-- 모바일 웹 페이지 설정 -->
-	<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-	<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+	<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
 	<!-- bootstrap -->
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
 	<!-- noto Sans 웹 폰트 적용 -->
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
 	<!--slick slider-->
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/plugin/slick/slick.css" />
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/plugin/slick/slick-theme.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/plugin/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/plugin/slick/slick-theme.css" />
 	<!-- fontawesome(글리피콘) 적용 -->
 	<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 	
 	<!-- sweetalert 사용 -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<!-- css 적용 -->
-	<link rel="stylesheet" href="/ezen-android2020-2/buy/css/receipt.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/buy/css/receipt.css">
 </head>
 
 <body>
@@ -33,7 +38,7 @@
 			<div class="receipt_area col-xs-12">
 				<div class="receipt_title">
 					<div style="margin-top: 8px; margin-right: 8px; margin-left: -16px;">
-						<button type="button" class="back_btn" onclick = "location.href = 'buy.html'">
+						<button type="button" class="back_btn" onclick = "history.back() ">
 							<i class="fas fa-times"></i>
 						</button>
 					</div>
@@ -114,7 +119,7 @@
 								</p>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default col-xs-6" data-dismiss="modal" id="btn_interview" onclick="location.href='/ezen-android2020-2/search/sitter_search.html'">
+								<button type="button" class="btn btn-default col-xs-6" data-dismiss="modal" id="btn_interview" onclick="location.href='/ezen-android2020-2/search/sitter_search.jsp'">
 									인터뷰 지원하러 가기 <span style="color: #ff7000"><i class="fas fa-angle-double-right"></i></span>
 								</button>
 							</div>
@@ -147,7 +152,7 @@
 		</div>
 	</div>
 	<!-- Javascript -->
-	<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
@@ -213,8 +218,8 @@
 		}); // fin. index안에 option 위치 값 index로 받아서 if문 따라서 할인금액, 총 금액 변경
 	});
 	</script>
-	<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
 	<!--slick slider-->
-	<script type="text/javascript" src="/ezen-android2020-2/assets/plugin/slick/slick.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/plugin/slick/slick.min.js"></script>
 </body>
 </html>

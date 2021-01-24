@@ -1,10 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 아이콘 사용 -->
+	<!-- noto Sans 웹 폰트 적용 -->
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+	
+	<!-- 아이콘 사용 -->
 	<script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
-<meta charset="UTF-8">
-
 
 	<style>
 		.tab_area {
@@ -137,28 +143,15 @@
 	   	height: 1px;
 	   	background: #ccc;
 	   }
-	   .btn_more {
-	   	ouline: none;
-	   	border: none;
-	   	width: 100%;
-	   	background: rgb(242,242,242);
-	   	cursor: pointer;
-	   	font-weight: bold;
-	   	font-size: 1em;
-	   	color: rgb(102, 102, 102);
-	   	line-height: 21px;
-	   	border-radius: 3px;
-	   	height: 50px;
-	   	box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 2px;
-	   }
+	   
 	</style>
 
 </head>
 <body>
-	<div class="tab_area">
+	<div class="tab_area col-xs-12">
 		<div class="info">
 			<div class="profileimg">
-				<img width="60" height="60" style="border-radius: 50%;" src="/ezen-android2020-2/page_detail/img/people_review.png" />
+				<img width="60" height="60" style="border-radius: 50%;" src="<%=request.getContextPath()%>/page_detail/img/people_review.png" />
 			</div>
 			<div class="profileinfo">
 				<div class="top">
@@ -189,7 +182,7 @@
 		<div class="tab_area">
 			<div class="info">
 				<div class="profileimg">
-				<img width="60" height="60" style="border-radius: 50%;" src="/ezen-android2020-2/page_detail/img/people_review.png" />
+				<img width="60" height="60" style="border-radius: 50%;" src="<%=request.getContextPath()%>/page_detail/img/people_review.png" />
 			</div>
 			<div class="profileinfo">
 				<div class="top">
@@ -223,7 +216,7 @@
 		<div class="tab_area">
 			<div class="info">
 				<div class="profileimg">
-				<img width="60" height="60" style="border-radius: 50%;" src="/ezen-android2020-2/page_detail/img/people_review.png" />
+				<img width="60" height="60" style="border-radius: 50%;" src="<%=request.getContextPath()%>/page_detail/img/people_review.png" />
 			</div>
 			<div class="profileinfo">
 				<div class="top">
@@ -249,7 +242,6 @@
 			</div>
 			</div><!-- fin. info -->
 		</div> <!-- fin. tab_area -->
-		<button class="btn_more" onClick="location.href='tab_more.html'">후기 더 보기</button>
 	</div>
 </body>
 </html>

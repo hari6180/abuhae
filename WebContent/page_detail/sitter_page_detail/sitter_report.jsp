@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%
+	
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,14 +12,14 @@
 <title>아이를부탁해</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
 
 <!-- noto Sans 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
 
 <!-- 아이콘 사용 -->
 <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
@@ -23,7 +28,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/page_detail/css/siren.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/page_detail/css/siren.css" />
 </head>
 	
 <body>		
@@ -31,8 +36,8 @@
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="siren_header">
 					<div class="x_btn_area">
-						<button type="button" class="x_btn" onclick = "location.href = 'sitter_page_detail_for_mom.html'">
-							<img src="/ezen-android2020-2/page_detail/img/x-btn.jpg" width="28" height="28"/>
+						<button type="button" class="x_btn" onclick = "history.back() ">
+							<img src="<%=request.getContextPath()%>/page_detail/img/x-btn.jpg" width="28" height="28"/>
 						</button>
 					</div> <!-- fin. x_btn_area -->
 					<div class="header_text_area col-xs-12">
@@ -46,7 +51,7 @@
 				</div> <!-- fin. siren_header -->
 				<div class="siren_body">
 					<div class="siren_body_profil">
-						<img width="80" height="80" src="/ezen-android2020-2/page_detail/img/chat_mom03.jpg" />
+						<img width="80" height="80" src="<%=request.getContextPath()%>/page_detail/img/chat_mom03.jpg" />
 						<br/>
 						<span class="sitter_number">
 							no.53213
@@ -103,7 +108,7 @@
 		    	}
 		    }		    
 		</script>
-		<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script>
-		<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script> 
+		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+		<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
 	</body>
 </html>

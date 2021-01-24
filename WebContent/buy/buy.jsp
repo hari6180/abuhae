@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%
+	
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -9,35 +14,32 @@
 	<title>아이를 부탁해</title>
 
 	<!-- 모바일 웹 페이지 설정 -->
-	<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-	<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+	<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
 	<!-- bootstrap -->
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
 	<!-- noto Sans 웹 폰트 적용 -->
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
 	<!--slick slider-->
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/plugin/slick/slick.css" />
-	<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/plugin/slick/slick-theme.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/plugin/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/plugin/slick/slick-theme.css" />
 	<!-- fontawesome(글리피콘) 적용 -->
 	<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 	<!-- animaition 적용-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
 	<!--section-->
-	<link rel="stylesheet" href="/ezen-android2020-2/assets/css/section.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/section.css">
 	<!-- css 적용 -->
-	<link rel="stylesheet" href="/ezen-android2020-2/buy/css/buy.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/buy/css/buy.css">
+	<!-- jQuery  -->
+	<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
 </head>
 
 <body>
 	<div id="app">
 		<div class="container col-xs-12">
 			<header>
-			  <div id="menu">
-				<div class="header_wrap col-xs-12">
-					<div class="header">
-					</div>
-				</div>
-			  </div>
+			  <%@ include file="/index_header.jsp" %>
 			</header>
 			<!-- header end-->
 			<div class="buy_tab_box">
@@ -165,7 +167,6 @@
 		</div>
 	</div>
 	<!-- Javascript -->
-	<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function () {
 			
@@ -185,7 +186,7 @@
 					});
 					$.ajax({
 						type : 'GET',                 //get방식으로 통신
-						url : activeTab + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+						url : activeTab + ".jsp",    //탭의 data-tab속성의 값으로 된 jsp파일로 통신
 						dataType : "html",            //html형식으로 값 읽기
 						error : function() {          //통신 실패시 ㅠㅠ
 							alert('통신실패!');
@@ -196,24 +197,22 @@
 					});
 				});
 				$('#default').click(); 
-			
-			$("#menu").load("../index_header.html");
 
 			//모달의 로그인 버튼 클릭시
 			$("#login_btn").on("click", function () {
-				location.replace('/ezen-android2020-2/login/login.html');
+				location.replace('<%=request.getContextPath()%>/login/login.jsp');
 			});
 
 			//모달의 회원가입 버튼 클릭시
 			$("#go_to_join").on("click", function () {
-				location.replace('/ezen-android2020-2/join/join.html');
+				location.replace('<%=request.getContextPath()%>/join/join.jsp');
 			});
 
 		});
 	</script>
-	<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
 	<!--slick slider-->
-	<script type="text/javascript" src="/ezen-android2020-2/assets/plugin/slick/slick.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/plugin/slick/slick.min.js"></script>
 	
 </body>
 

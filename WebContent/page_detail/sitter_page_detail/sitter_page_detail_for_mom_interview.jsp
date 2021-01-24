@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%
+	
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,14 +12,14 @@
 <title>아이를부탁해</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
 
 <!-- noto Sans 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
 
 <!-- 아이콘 사용 -->
 <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
@@ -23,24 +28,24 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/page_detail/css/page_detail_for_mom.css" />	
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/page_detail/css/page_detail_for_mom.css" />	
 </head>
 	
 <body>		
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
-					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = 'sitter_report_for_mom.html'">
-				 	<img src="/ezen-android2020-2/page_detail/img/siren.png" width="13" height="15"/>
+					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = 'sitter_report.jsp'">
+				 	<img src="<%=request.getContextPath()%>/page_detail/img/siren.png" width="13" height="15"/>
 				            신고
 				  	</button>
 				</div>
-				  <button type="button" class="x_btn" onclick = "location.href = 'http://localhost:8080/ezen-android2020-2/search/sitter_search.html'">
-						<img src="/ezen-android2020-2/page_detail/img/x-btn.jpg" width="28" height="28"/>
+				  <button type="button" class="x_btn" onclick = "history.back() ">
+						<img src="<%=request.getContextPath()%>/page_detail/img/x-btn.jpg" width="28" height="28"/>
 					</button>
 				<div class="profil_photo">
 				  <div class="profil_img">			  
-					<img src="/ezen-android2020-2/page_detail/img/chat_mom03.jpg" width="100%"/>
+					<img src="<%=request.getContextPath()%>/page_detail/img/chat_mom03.jpg" width="100%"/>
 				  </div>
 				</div> <!-- fin. profil_photo -->
 				<div class="profil_info">
@@ -95,7 +100,7 @@
 					<div class="human_box">
 						<div class="human">
 							<div class="human_area">
-								<div><img width="70" height="70" src="/ezen-android2020-2/page_detail/img/certification.png"/></div>	
+								<div><img width="70" height="70" src="<%=request.getContextPath()%>/page_detail/img/certification.png"/></div>	
 							<div class="human_text_area">
 								<div class="human_text_title">본인 인증 완료</div>
 								<div class="human_text">맘시터 고객안전관리팀에서 
@@ -112,7 +117,7 @@
 							<div class="main_mom">
 								<div class="main_mom_area">
 									<div height= 40px;>
-									<img width="90" src="/ezen-android2020-2/page_detail/img/certification_mom.png"/>
+									<img width="90" src="<%=request.getContextPath()%>/page_detail/img/certification_mom.png"/>
 									</div>
 									<div class="main_mom_text_area">
 										<div class="mom_text_title">엄마 인증 완료</div>
@@ -139,7 +144,7 @@
 							</div> <!-- fin. main_mom -->	
 							<div class="main_other_area">
 								<div height= 40px;>
-								<img width="100" src="/ezen-android2020-2/page_detail/img/certification_human.png"/>
+								<img width="100" src="<%=request.getContextPath()%>/page_detail/img/certification_human.png"/>
 								</div>
 								<div class="main_other_text_area">
 									<div class="other_text_title">등초본 인증 완료</div>
@@ -476,7 +481,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="/ezen-android2020-2/page_detail/img/innerplayicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/innerplayicon_s.png"/>
 												</div>
 												<span>실내놀이</span>
 											</div>
@@ -484,7 +489,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="/ezen-android2020-2/page_detail/img/koreanicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/koreanicon_s.png"/>
 												</div>
 												<span>한글놀이</span>
 											</div>
@@ -492,7 +497,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="/ezen-android2020-2/page_detail/img/cleanicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/cleanicon_s.png"/>
 												</div>
 												<span>간단 청소</span>
 											</div>
@@ -500,7 +505,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="/ezen-android2020-2/page_detail/img/longhouseicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/longhouseicon_s.png"/>
 												</div>
 												<span>장기입주</span>
 											</div>
@@ -511,7 +516,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="/ezen-android2020-2/page_detail/img/guideicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/guideicon_s.png"/>
 												</div>
 												<span>등하원 돕기</span>
 											</div>
@@ -519,7 +524,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_ok_box">
-												<img src="/ezen-android2020-2/page_detail/img/englishicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/englishicon_s.png"/>
 												</div>
 												<span>영어놀이</span>
 											</div>
@@ -527,7 +532,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="/ezen-android2020-2/page_detail/img/eaticon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/eaticon_s.png"/>
 												</div>
 												<span>밥 챙겨주기</span>
 											</div>
@@ -535,7 +540,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="/ezen-android2020-2/page_detail/img/houseicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/houseicon_s.png"/>
 												</div>
 												<span>단기입주</span>
 											</div>
@@ -546,7 +551,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="/ezen-android2020-2/page_detail/img/readicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/readicon_s.png"/>
 												</div>
 												<span>책읽기</span>
 											</div>
@@ -554,7 +559,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="/ezen-android2020-2/page_detail/img/studyicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/studyicon_s.png"/>
 												</div>
 												<span>학습지도</span>
 											</div>
@@ -562,7 +567,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="/ezen-android2020-2/page_detail/img/dishicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/dishicon_s.png"/>
 												</div>
 												<span>간단 설거지</span>
 											</div>
@@ -573,7 +578,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="/ezen-android2020-2/page_detail/img/ousideicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/page_detail/img/ousideicon_s.png"/>
 												</div>
 												<span>야외활동</span>
 											</div>
@@ -581,7 +586,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="/ezen-android2020-2/page_detail/img/ballicon_s.png" />
+												<img src="<%=request.getContextPath()%>/page_detail/img/ballicon_s.png" />
 												</div>
 												<span>체육놀이</span>
 											</div>
@@ -722,7 +727,7 @@
 							</div>
 						</div> <!-- fin. fixed_btn_jim -->					
 						<div class="interview_btn">
-							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href = 'sitter_interview.html'">
+							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href = 'sitter_interview.jsp'">
 								<div>
 									<div class="btn_text_box">
 										<span><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">인터뷰 신청하기</a></span>
@@ -736,7 +741,7 @@
 		</div>
 	
 		<!-- Javascript -->
-		<script src="/ezen-android2020-2/assets/js/jquery.min.js"></script>
+		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
 		<script type="text/javascript">
 		jQuery(function($) {
 			
@@ -765,7 +770,7 @@
 					$(this).css('background-color', 'rgb(255,238,224)');
 					$.ajax({
 						type : 'GET',                 //get방식으로 통신
-						url : activeTab + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+						url : activeTab + ".jsp",    //탭의 data-tab속성의 값으로 된 jsp파일로 통신
 						dataType : "html",            //html형식으로 값 읽기
 						error : function() {          //통신 실패시 ㅠㅠ
 							alert('통신실패!');
@@ -779,6 +784,6 @@
 			}); // fin. 탭 기능
 		</script>
 		 <!-- jquery 파일명 수정 -->
-		<script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script> 
+		<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
 	</body>
 </html>

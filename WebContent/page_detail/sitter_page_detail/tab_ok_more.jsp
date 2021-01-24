@@ -1,18 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 아이콘 사용 -->
-	<script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
 <meta charset="UTF-8">
+
+	<!-- noto Sans 웹 폰트 적용 -->
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+	
+	<!-- 아이콘 사용 -->
+	<script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
 
 	<style>
 		.tab_area {
 		display: flex;
 		flex-direction: column;
-		
 	   }
 	   .info {
-	   padding: 25px 0px;
+	  	padding: 25px 0px;
 	   	display: flex;
 	   	margin-bottom: 5px;
 	   	width: 100%;
@@ -154,63 +162,81 @@
 
 </head>
 <body>
-	<div class="tab_area">
+	<div class="tab_area col-xs-12">
 		<div class="info">
 			<div class="profileimg">
-				<img width="60" height="60" style="border-radius: 50%;" src="/ezen-android2020-2/page_detail/img/people_review.png" />
+				<img width="60" height="60" style="border-radius: 50%;" src="<%=request.getContextPath()%>/page_detail/img/people_review.png" />
 			</div>
 			<div class="profileinfo">
 				<div class="top">
-					<div class="name">김<i class="far fa-circle"></i>경</div>
+					<div class="name">정<i class="far fa-circle"></i>우</div>
 					<div class="child">
-						유아 2명
+						영아 2명
 						<div class="divider"></div>
-						인터뷰 후기
+						채용 후기
 					</div>
 				</div> <!-- fin. top -->
 				<div class="sub">
 					<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 					<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 					<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+					<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 					<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-					<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-					<span class="sub_date">한 달 전</span>
+					<span class="sub_date">4달 전</span>
 				</div> <!-- fin. sub -->
 				<div class="desc">
-					<span>인터뷰도 잘 응해주셨고 친절하셨었는데 시간이 맞지 않았어요.</span>
+					<span>시간보다도 먼저 오셔서 아이들을 너무 잘 돌봐주셨어요.</span>
+					<br>
+					<span>쌍둥이 남아 13개월차라 한창 돌아다니고 활력이 넘칠때인데 업어서 재워주시고 아이들을 너무 예뻐해주셔서 감사해요.</span>
+					<br>
+					<span>시간이 지났는데도 더 있다가 가주시고 다음에 또 뵙고 싶네요. ^^</span>
 					<br>
 				</div> <!-- fin. desc -->
+				<div class="sitter">
+					<div class="profileBlock">
+						<img src="<%=request.getContextPath()%>/page_detail/img/sitter.png" />
+					</div>
+					<div class="contentBlock">
+						<div class="arrow"></div>
+						<div class="titleBlock">
+							<span class="title">시터 답변</span>
+							<span class="writeDate">3달 전</span>
+						</div> <!-- fin. titleBlock -->
+						<div class="content">
+							<span>감사합니다 <br></span>
+							<span>항상 건강하시고 행복하세요~~ <br></span>
+						</div> <!-- fin. content -->
+					</div>
+				</div> <!-- fin. sitter -->
 			</div>
 		</div> <!-- fin. info -->
-		
+
 		<div class="divider_long"></div>
 		
 		<div class="tab_area">
 			<div class="info">
 				<div class="profileimg">
-				<img width="60" height="60" style="border-radius: 50%;" src="/ezen-android2020-2/page_detail/img/people_review.png" />
+				<img width="60" height="60" style="border-radius: 50%;" src="<%=request.getContextPath()%>/page_detail/img/people_review.png" />
 			</div>
 			<div class="profileinfo">
 				<div class="top">
-					<div class="name">이<i class="far fa-circle"></i>연</div>
+					<div class="name">문<i class="far fa-circle"></i>실</div>
 					<div class="child">
-						영아 1명
+						영아 2명
 						<div class="divider"></div>
-						인터뷰 후기
+						채용 후기
 					</div>
 				</div> <!-- fin. top -->
 				<div class="sub">
 					<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 					<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 					<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-					<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-					<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-					<span class="sub_date">5달 전</span>
+					<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+					<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+					<span class="sub_date">4달 전</span>
 				</div> <!-- fin. sub -->
 				<div class="desc">
-					<span>다른분을 채용하게 되어서 못 뵀었어요.</span>
-					<br>
-					<span>다음에 인연이 됐음 좋겠습니다.</span>
+					<span>아이 목욕도 해주시고 잘 돌봐주셨어요~</span>
 					<br>
 				</div> <!-- fin. desc -->
 			</div>
@@ -219,18 +245,18 @@
 		
 		<div class="divider_long"></div>
 		
-			<div class="tab_area">
+				<div class="tab_area">
 			<div class="info">
 				<div class="profileimg">
-				<img width="60" height="60" style="border-radius: 50%;" src="/ezen-android2020-2/page_detail/img/people_review.png" />
+				<img width="60" height="60" style="border-radius: 50%;" src="<%=request.getContextPath()%>/page_detail/img/people_review.png" />
 			</div>
 			<div class="profileinfo">
 				<div class="top">
-					<div class="name">정<i class="far fa-circle"></i>우</div>
+					<div class="name">김<i class="far fa-circle"></i>희</div>
 					<div class="child">
-						영아 1명,유아 1명
+						영아 2명
 						<div class="divider"></div>
-						인터뷰 후기
+						채용 후기
 					</div>
 				</div> <!-- fin. top -->
 				<div class="sub">
@@ -242,13 +268,12 @@
 					<span class="sub_date">6달 전</span>
 				</div> <!-- fin. sub -->
 				<div class="desc">
-					<span>시간이 맞지 않아 연결되지 않았습니다...</span>
+					<span>급하게 요청드렸었는데 잘 봐주셔서 감사합니다 :)</span>
 					<br>
 				</div> <!-- fin. desc -->
 			</div>
 			</div><!-- fin. info -->
 		</div> <!-- fin. tab_area -->
-		<button class="btn_more" onClick="location.href='tab_more_for_sitter.html'">후기 더 보기</button>
 	</div>
 </body>
 </html>
