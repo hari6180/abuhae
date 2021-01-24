@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -7,12 +9,12 @@
 
     <title>아이를부탁해</title>
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
     <!-- fontawesome(글리피콘) 적용 -->
     <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
@@ -26,15 +28,15 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- ajax Helper -->
-    <script src="../plugins/ajax/ajax_helper.js"></script>
-    <link rel="stylesheet" type="text/css" href="../plugins/ajax/ajax_helper.css" />
+    <script src="<%=request.getContextPath()%>/plugins/ajax/ajax_helper.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/plugins/ajax/ajax_helper.css" />
   </head>
 
   <!--grid 사용시 col-xs-nn 사용-->
   <body>
     <div id="app">
       <div class="container">
-        <div id="menu"></div>
+        <%@ include file="/index_header.jsp" %>
 
         <!-- search -->
         <div id="search">
@@ -257,7 +259,7 @@
                       <div>
                         <input type="checkbox" id="check1" class="act_btn" name="check_ab" value="innerplay" />
                         <label for="check1" class="want_label"
-                          ><img class="want_img" src="../join/img/innerplayicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/innerplayicon_n.png" />
                           <div class="want_text">실내놀이</div></label
                         >
                       </div>
@@ -266,7 +268,7 @@
                       <div>
                         <input type="checkbox" id="check2" class="act_btn" name="check_ab" value="guide" />
                         <label for="check2" class="want_label"
-                          ><img class="want_img" src="../join/img/guideicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/guideicon_n.png" />
                           <div class="want_text">등하원돕기</div></label
                         >
                       </div>
@@ -275,7 +277,7 @@
                       <div>
                         <input type="checkbox" id="check3" class="act_btn" name="check_ab" value="read" />
                         <label for="check3" class="want_label"
-                          ><img class="want_img" src="../join/img/readicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/readicon_n.png" />
                           <div class="want_text">책읽기</div></label
                         >
                       </div>
@@ -284,7 +286,7 @@
                       <div>
                         <input type="checkbox" id="check4" class="act_btn" name="check_ab" value="outside" />
                         <label for="check4" class="want_label"
-                          ><img class="want_img" src="../join/img/ousideicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/ousideicon_n.png" />
                           <div class="want_text">야외활동</div></label
                         >
                       </div>
@@ -293,7 +295,7 @@
                       <div>
                         <input type="checkbox" id="check5" class="act_btn" name="check_ab" value="korean" />
                         <label for="check5" class="want_label"
-                          ><img class="want_img" src="../join/img/koreanicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/koreanicon_n.png" />
                           <div class="want_text">한글놀이</div></label
                         >
                       </div>
@@ -302,7 +304,7 @@
                       <div>
                         <input type="checkbox" id="check6" class="act_btn" name="check_ab" value="english" />
                         <label for="check6" class="want_label"
-                          ><img class="want_img" src="../join/img/englishicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/englishicon_n.png" />
                           <div class="want_text">영어놀이</div></label
                         >
                       </div>
@@ -311,7 +313,7 @@
                       <div>
                         <input type="checkbox" id="check7" class="act_btn" name="check_ab" value="study" />
                         <label for="check7" class="want_label"
-                          ><img class="want_img" src="../join/img/studyicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/studyicon_n.png" />
                           <div class="want_text">학습지도</div></label
                         >
                       </div>
@@ -320,7 +322,7 @@
                       <div>
                         <input type="checkbox" id="check8" class="act_btn" name="check_ab" value="sport" />
                         <label for="check8" class="want_label"
-                          ><img class="want_img" src="../join/img/ballicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/ballicon_n.png" />
                           <div class="want_text">체육놀이</div></label
                         >
                       </div>
@@ -329,7 +331,7 @@
                       <div>
                         <input type="checkbox" id="check9" class="act_btn" name="check_ab" value="simple_cleaning" />
                         <label for="check9" class="want_label"
-                          ><img class="want_img" src="../join/img/cleanicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/cleanicon_n.png" />
                           <div class="want_text">간단 청소</div></label
                         >
                       </div>
@@ -338,7 +340,7 @@
                       <div>
                         <input type="checkbox" id="check10" class="act_btn" name="check_ab" value="eat" />
                         <label for="check10" class="want_label"
-                          ><img class="want_img" src="../join/img/eaticon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/eaticon_n.png" />
                           <div class="want_text">밥 챙겨주기</div></label
                         >
                       </div>
@@ -347,7 +349,7 @@
                       <div>
                         <input type="checkbox" id="check11" class="act_btn" name="check_ab" value="do_dish" />
                         <label for="check11" class="want_label"
-                          ><img class="want_img" src="../join/img/dishicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/dishicon_n.png" />
                           <div class="want_text">간단 설거지</div></label
                         >
                       </div>
@@ -356,7 +358,7 @@
                       <div>
                         <input type="checkbox" id="check12" class="act_btn" name="check_ab" value="long_move_in" />
                         <label for="check12" class="want_label"
-                          ><img class="want_img" src="../join/img/longhouseicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/longhouseicon_n.png" />
                           <div class="want_text">장기입주</div></label
                         >
                       </div>
@@ -365,7 +367,7 @@
                       <div>
                         <input type="checkbox" id="check13" class="act_btn" name="check_ab" value="short_move_in" />
                         <label for="check13" class="want_label"
-                          ><img class="want_img" src="../join/img/houseicon_n.png" />
+                          ><img class="want_img" src="<%=request.getContextPath()%>/join/img/houseicon_n.png" />
                           <div class="want_text">단기입주</div></label
                         >
                       </div>
@@ -839,9 +841,9 @@
     <!--row end-->
 
     <!-- Javascript -->
-    <script src="../assets/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
-    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function () {
         // 무한 스크롤 1218 하리
@@ -873,7 +875,8 @@
 
       $(function () {
         // 헤더 메뉴 load처리 1224 하리
-        $("#menu").load("/ezen-android2020-2/index_header.html");
+        // $("#menu").load("/ezen-android2020-2/index_header.html"); - 210124 include 변경
+        
         // 상세 페이지 연동 1220 하리
         $(".sitter_item_group").on("click", function () {
           location.href = "http://localhost:8080/ezen-android2020-2/page_detail/sitter_page_detail/sitter_page_detail_for_mom.html";
@@ -1059,7 +1062,7 @@
 
             $.ajax({
               type: "GET", //get방식으로 통신
-              url: "../join/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
+              url: "<%=request.getContextPath()%>/join/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
               dataType: "html", //html형식으로 값 읽기
               error: function () {
                 //통신 실패시 ㅠㅠ

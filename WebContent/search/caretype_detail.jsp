@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -7,12 +9,12 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
     <!-- fontawesome(글리피콘) 적용 -->
     <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
@@ -31,7 +33,7 @@
           <div id="caretype" class="d">
             <!--header-->
             <div class="ct_header">
-              <a href="http://localhost:8080/ezen-android2020-2/search/sitter_search.html">
+              <a href="http://localhost:8080<%=request.getContextPath()%>/search/sitter_search.html">
                 <i class="fas fa-chevron-left"></i>
               </a>
               <h2>돌봄유형 상세 설명</h2>
@@ -130,8 +132,8 @@
       </div>
     </div>
     <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
   </body>
 </html>

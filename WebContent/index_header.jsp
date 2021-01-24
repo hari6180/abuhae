@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
+
 <!-- header css -->
-<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/index_header.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/index_header.css" />
 
 <div id="header">
   <!-- header : 하리-->
@@ -12,19 +14,19 @@
             <p><i class="fas fa-bars"> </i></p>
           </a>
 
-          <a href="http://localhost:8080/ezen-android2020-2/Index.html">
-            <img src="/ezen-android2020-2/img/logo (1).png" class="logo" />
+          <a href="http://localhost:8080<%=request.getContextPath()%>/Index.jsp">
+            <img src="<%=request.getContextPath()%>/img/logo (1).png" class="logo" />
           </a>
         </div>
         <div class="flex_row">
-          <a href="http://localhost:8080/ezen-android2020-2/join/join.html"><button id="header_join" class="join">가입하기</button></a>
+          <a href="http://localhost:8080<%=request.getContextPath()%>/join/join.jsp"><button id="header_join" class="join">가입하기</button></a>
           <i id="header_search" class="fas fa-search header_search_btn"></i>
         </div>
       </div>
     </div>
     <div class="searchbar_wrap" style="display: none">
-      <div class="search_block search_sitter"><img src="/ezen-android2020-2/assets/img/header_sittersearch.png" />맘시터 찾기</div>
-      <div class="search_block search_job"><img src="/ezen-android2020-2/assets/img/header_jobsearch.png" />일자리 찾기</div>
+      <div class="search_block search_sitter"><img src="<%=request.getContextPath()%>/assets/img/header_sittersearch.png" />맘시터 찾기</div>
+      <div class="search_block search_job"><img src="<%=request.getContextPath()%>/assets/img/header_jobsearch.png" />일자리 찾기</div>
     </div>
   </header>
   <!-- header end-->
@@ -54,14 +56,14 @@
         <div class="modal_body">
           <div class="sitter_search">
             <a href="#" id="stsc_btn">
-              <img src="/ezen-android2020-2/assets/img/index-sittersearch.png" />
+              <img src="<%=request.getContextPath()%>/assets/img/index-sittersearch.png" />
               <p>맘시터 찾기</p>
             </a>
           </div>
 
           <div class="job_search">
             <a href="#" id="jobsc_btn">
-              <img src="/ezen-android2020-2/assets/img/index-jobsearch.png" />
+              <img src="<%=request.getContextPath()%>/assets/img/index-jobsearch.png" />
               <p>일자리 찾기</p>
             </a>
           </div>
@@ -109,38 +111,38 @@
 <script>
   $(function () {
     $("#login_btn").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/login/login.html");
+      location.replace("http://localhost:8080<%=request.getContextPath()%>/login/login.jsp");
     });
     $("#join_btn").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/join/join.html");
+      location.replace("http://localhost:8080<%=request.getContextPath()%>/join/join.jsp");
     });
     $("#stsc_btn").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/search/sitter_search.html");
+      location.replace("http://localhost:8080<%=request.getContextPath()%>/search/sitter_search.jsp");
     });
     $("#jobsc_btn").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/search/job_search.html");
+      location.replace("http://localhost:8080<%=request.getContextPath()%>/search/job_search.jsp");
     });
     $("#intro_btn").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/abu-service/introduce.html");
+      location.replace("http://localhost:8080<%=request.getContextPath()%>/abu-service/introduce.jsp");
     });
     $("#buy_btn").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/buy/buy.html");
+      location.replace("http://localhost:8080<%=request.getContextPath()%>/buy/buy.jsp");
     });
     $("#notice_btn").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/customer/notice_site.html");
+      location.replace("http://localhost:8080<%=request.getContextPath()%>/customer/notice_site.jsp");
     });
     $("#cus_btn").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/customer/customer_center.html");
+      location.replace("http://localhost:8080<%=request.getContextPath()%>/customer/customer_center.jsp");
     });
     // 프론트 테스트용 임시 링크
     $("#mommp").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/mypage/mypage_mom/mom_mypage.html");
+      location.replace("http://localhost:8080<%=request.getContextPath()%>/mypage/mypage_mom/mom_mypage.jsp");
     });
     $("#stmp").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/mypage/mypage_sitter/sitter_mypage.html");
+      location.replace("http://localhost:8080<%=request.getContextPath()%>/mypage/mypage_sitter/sitter_mypage.jsp");
     });
     $("#manpg").click(function (e) {
-      location.replace("http://localhost:8080/ezen-android2020-2/admin/admin_login.html");
+      location.replace("http://localhost:8080<%=request.getContextPath()%>/admin/admin_login.jsp");
     });
     //프론트 테스트용 임시 링크 끝
   });
@@ -153,10 +155,10 @@
     });
 
     $(".search_sitter").click(function () {
-      location.href = "/ezen-android2020-2/search/sitter_search.html";
+      location.href = "<%=request.getContextPath()%>/search/sitter_search.jsp";
     });
     $(".search_job").click(function () {
-      location.href = "/ezen-android2020-2/search/job_search.html";
+      location.href = "<%=request.getContextPath()%>/search/job_search.jsp";
     });
   });
 </script>
