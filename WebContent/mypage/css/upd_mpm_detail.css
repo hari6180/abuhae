@@ -113,19 +113,29 @@ a:hover {
 .wrap_get_sitter .group1_get_sitter .gs_appl {
   display: flex;
   flex-direction: row;
-  padding: 20px 0;
+  justify-content: left;
+  padding: 20px 10px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
 }
 
-.wrap_get_sitter .group1_get_sitter .gs_appl img {
+.wrap_get_sitter .group1_get_sitter .appl_img {
+  width: 20%;
+}
+
+.wrap_get_sitter .group1_get_sitter .appl_img img {
   width: 50px;
   height: 50px;
   padding: 5px;
   background-color: #eee;
   border-radius: 50%;
-  margin-right: 30px;
 }
 
-.wrap_get_sitter .group1_get_sitter .gs_appl p:first-child {
+.wrap_get_sitter .group1_get_sitter .gs_appl_cont {
+  width: 80%;
+}
+
+.wrap_get_sitter .group1_get_sitter .gs_appl .si_name {
   font-size: 1.1em;
   font-weight: bold;
 }
@@ -136,9 +146,40 @@ a:hover {
 }
 
 .wrap_get_sitter .group1_get_sitter .gs_appl .gm_endtime {
-  margin-top: 10px;
+  margin-top: 15px;
   color: #e93c3c;
   font-size: 1em;
+}
+
+.wrap_get_sitter .group1_get_sitter .deny {
+  background-color: #eee;
+  margin-top: 15px;
+  font-size: 1em;
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+.wrap_get_sitter .group1_get_sitter .success {
+  background-color: #dcf0ef;
+  width: 100%;
+  margin-top: 15px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+.wrap_get_sitter .group1_get_sitter .success .si_phone {
+  margin-top: 5px;
+}
+
+.wrap_get_sitter .group1_get_sitter .success span {
+  color: #e93c3c;
+  font-size: 0.8em;
+}
+
+.wrap_get_sitter .group1_get_sitter .success mark {
+  background-color: rgb(245, 245, 184);
 }
 /** end 내 구직 현황 --------------------------------------------------------------*/
 

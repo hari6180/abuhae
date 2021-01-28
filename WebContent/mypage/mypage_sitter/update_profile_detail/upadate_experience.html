@@ -94,6 +94,19 @@
                     <input type="text" name="enddate" class="endDate" required>
                 </div>
             </div>
+			<script>
+					$('.startDate').flatpickr({
+                        dateFormat: "Y.m.d",
+                        maxDate: new Date().fp_incr(30),
+                        defaultDate: new Date(),
+                    });
+
+                   	 $('.endDate').flatpickr({
+                        dateFormat: "Y.m.d",
+                        maxDate: new Date().fp_incr(30),
+                        defaultDate: new Date(),
+                    });
+			</script>
         </script>
 
 		<!-- Javascript -->
@@ -114,24 +127,28 @@
             };
 
             $(function() {
-                $("#exp_btn").click(function() {
+            	$("#exp_btn").click(function() {
+            		
+            		/**
+            		$('.startDate').flatpickr({
+                        dateFormat: "Y.m.d",
+                        maxDate: new Date().fp_incr(30),
+                        defaultDate: new Date(),
+                    });
+
+                   	 $('.endDate').flatpickr({
+                        dateFormat: "Y.m.d",
+                        maxDate: new Date().fp_incr(30),
+                        defaultDate: new Date(),
+                    });
+                   	 여기에 들어가도 동작함.
+                   	 */
+            		
                     
                     var template = Handlebars.compile($("#list-item-tmpl").html());
                     var html = template(content); 
-
+                        
                     $("#con1").append(html);
-
-                    $('.startDate').flatpickr({
-                    dateFormat: "Y.m.d",
-                    maxDate: new Date().fp_incr(30),
-                    defaultDate: new Date(),
-                    });
-
-                    $('.endDate').flatpickr({
-                    dateFormat: "Y.m.d",
-                    maxDate: new Date().fp_incr(30),
-                    defaultDate: new Date(),
-                    });
                 });
             });
         </script>
