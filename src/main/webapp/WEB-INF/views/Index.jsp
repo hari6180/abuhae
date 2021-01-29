@@ -11,29 +11,29 @@
 	<title>아이를 부탁해</title>
 
 	<!-- 모바일 웹 페이지 설정 -->
-	<link rel="shortcut icon" href="assets/ico/favicon.ico" />
-	<link rel="apple-touch-icon-precomposed" href="assets/ico/favicon.ico" />
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 	<!-- bootstrap -->
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 	<!-- noto Sans 웹 폰트 적용 -->
 	<link rel="stylesheet" type="text/css" href="assets/css/notosans.css" />
 	<!--slick slider-->
-	<link rel="stylesheet" type="text/css" href="assets/plugin/slick/slick.css" />
-	<link rel="stylesheet" type="text/css" href="assets/plugin/slick/slick-theme.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick-theme.css" />
 	<!--header css-->
-	<link rel="stylesheet" href="assets/css/index_header.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index_header.css">
 	<!-- fontawesome(글리피콘) 적용 -->
 	<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
 	<!-- animaition 적용-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
 	<!--section-->
-	<link rel="stylesheet" href="assets/css/section.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/section.css">
 	<!--footer css-->
-	<link rel="stylesheet" href="assets/css/index_footer.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index_footer.css">
 	<!-- Javascript -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
 	<style type="text/css">
 		html,
@@ -63,10 +63,10 @@
 				<div class="col-xs-12 banner_slider">
 					<button type="button" data-role="none" class="slick-arrow slick-prev"
 						style="display: block;">Previous</button>
-					<div><img src="img/main_banner_1.jpg" alt="슬라이더1"></div>
-					<div><img src="img/main_banner_2.png" alt="슬라이더2"></div>
-					<div><img src="img/main_banner_3.png" alt="슬라이더3"></div>
-					<div><img src="img/main_banner_4.png" alt="슬라이더4"></div>
+					<div><img src="assets/img/main_banner_1.jpg" alt="슬라이더1"></div>
+					<div><img src="assets/img/main_banner_2.png" alt="슬라이더2"></div>
+					<div><img src="assets/img/main_banner_3.png" alt="슬라이더3"></div>
+					<div><img src="assets/img/main_banner_4.png" alt="슬라이더4"></div>
 					<button type="button" data-role="none" class="slick-arrow slick-next"
 						style="display: block;">Next</button>
 					<!--현재위치 버튼 현재 구현이 안됨 추가 구현-->
@@ -90,57 +90,57 @@
 				<!--활동 선택 옆에 자리 넘치는 거 확인 -->
 				<div class="col-xs-12">
 					<div class="row wantactive">
-						<a href="/ezen-android2020-2/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
 							<div class="want_box">
-								<img src="img/want_active_1.png" class="want_img" alt="등하원">
+								<img src="assets/img/want_active_1.png" class="want_img" alt="등하원">
 								<div class="want_text_box">
 									<span class="want_text">등하원</span>
-									<img src="img/btn_arrow.png" class="btn_arrow" alt="이동">
+									<img src="assets/img/btn_arrow.png" class="btn_arrow" alt="이동">
 								</div>
 							</div>
 						</a>
-						<a href="/ezen-android2020-2/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
 							<div class="want_box">
-								<img src="img/want_active_2.png" class="want_img" alt="실내놀이">
+								<img src="assets/img/want_active_2.png" class="want_img" alt="실내놀이">
 								<div class="want_text_box">
 									<span class="want_text">실내놀이</span>
-									<img src="img/btn_arrow.png" class="btn_arrow" alt="이동">
+									<img src="assets/img/btn_arrow.png" class="btn_arrow" alt="이동">
 								</div>
 							</div>
 						</a>
-						<a href="/ezen-android2020-2/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
 							<div class="want_box">
-								<img src="img/want_active_3.png" class="want_img" alt="야외활동">
+								<img src="assets/img/want_active_3.png" class="want_img" alt="야외활동">
 								<div class="want_text_box">
 									<span class="want_text">야외활동</span>
-									<img src="img/btn_arrow.png" class="btn_arrow" alt="이동">
+									<img src="assets/img/btn_arrow.png" class="btn_arrow" alt="이동">
 								</div>
 							</div>
 						</a>
-						<a href="/ezen-android2020-2/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
 							<div class="want_box">
-								<img src="img/want_active_4.png" class="want_img" alt="학습지도">
+								<img src="assets/img/want_active_4.png" class="want_img" alt="학습지도">
 								<div class="want_text_box">
 									<span class="want_text">학습지도</span>
-									<img src="img/btn_arrow.png" class="btn_arrow" alt="이동">
+									<img src="assets/img/btn_arrow.png" class="btn_arrow" alt="이동">
 								</div>
 							</div>
 						</a>
-						<a href="/ezen-android2020-2/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
 							<div class="want_box">
-								<img src="img/want_active_5.png" class="want_img" alt="영어놀이">
+								<img src="assets/img/want_active_5.png" class="want_img" alt="영어놀이">
 								<div class="want_text_box">
 									<span class="want_text">영어놀이</span>
-									<img src="img/btn_arrow.png" class="btn_arrow" alt="이동">
+									<img src="assets/img/btn_arrow.png" class="btn_arrow" alt="이동">
 								</div>
 							</div>
 						</a>
-						<a href="/ezen-android2020-2/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
 							<div class="want_box">
-								<img src="img/want_active_6.png" class="want_img" alt="가사돌봄">
+								<img src="assets/img/want_active_6.png" class="want_img" alt="가사돌봄">
 								<div class="want_text_box">
 									<span class="want_text">가사돌봄</span>
-									<img src="img/btn_arrow.png" class="btn_arrow" alt="이동">
+									<img src="assets/img/btn_arrow.png" class="btn_arrow" alt="이동">
 								</div>
 							</div>
 						</a>
@@ -156,7 +156,7 @@
 				<div class="col-xs-12">
 					<div class="guide_box">
 						<h3 class="guide_title">
-							<img class="guide_titme_img" src="img/icon-m-phone.png" alt="맘시터 가이드">
+							<img class="guide_titme_img" src="assets/img/icon-m-phone.png" alt="맘시터 가이드">
 							<br>
 							아이를 부탁해 이렇게&nbsp;
 							<strong class="unber_bar">이용하세요!</strong>
@@ -185,19 +185,19 @@
 						<div>
 							<div class="qna_box">
 								<div class="qna_img_box">
-									<img class="qna_img" src="img/icon-qa-1.png">
+									<img class="qna_img" src="assets/img/icon-qa-1.png">
 								</div>
 								<span><strong>맘시터</strong>를 어떻게 믿죠?</span>
 							</div>
 							<div class="qna_box">
 								<div class="qna_img_box">
-									<img class="qna_img" src="img/icon-qa-2.png">
+									<img class="qna_img" src="assets/img/icon-qa-2.png">
 								</div>
 								<span><strong>부모님</strong>을 어떻게 믿죠?</span>
 							</div>
 							<div class="qna_box">
 								<div class="qna_img_box">
-									<img class="qna_img" src="img/icon-qa-3.png">
+									<img class="qna_img" src="assets/img/icon-qa-3.png">
 								</div>
 								<span>맘시터 <strong>이용권/지원권</strong>은<br>
 									무엇인가요?</span>
@@ -205,7 +205,7 @@
 						</div>
 						<div class="bor_box_right"></div>
 					</div>
-					<a href="/ezen-android2020-2/customer/question_sitter.html" class="btn btn-primary btn-lg">FAQ 더 알아보기</a>
+					<a href="${pageContext.request.contextPath}/customer/question_sitter.html" class="btn btn-primary btn-lg">FAQ 더 알아보기</a>
 				</div>
 				<!--end 맘시터가 궁금하신가요?-->
 			</section>
@@ -217,7 +217,7 @@
 						<div class="row">
 							<div class="ft_logo">
 								<div class="col-lg-6 col-xs-6 pull-left">
-									<img src="img/logo (1).png" alt="로고">
+									<img src="assets/img/logo(1).png" alt="로고">
 								</div>
 								<div class="col-xl-6 col-xs-6">
 									<div class="ft_icon">
@@ -232,10 +232,10 @@
 							<div class="col-md-12 col-xs-12">
 								<div class="ft_button">
 									<div class="store_link">
-									<a href="#"><img src="img/index-android_pc.png" alt="안드로이드앱 다운로드 버튼"></a>
+									<a href="#"><img src="assets/img/index-android_pc.png" alt="안드로이드앱 다운로드 버튼"></a>
 								</div>
 								<div class="store_link">
-									<a href="#"><img src="img/index-ios_pc.png" alt="ios 다운로드 버튼"></a>
+									<a href="#"><img src="assets/img/index-ios_pc.png" alt="ios 다운로드 버튼"></a>
 								</div>
 								</div>
 							</div>
@@ -244,19 +244,19 @@
 							<div class="col-md-12 col-xs-6">
 								<div class="ft_list">
 									<h4 class="ft_list_tl">서비스 종류</h4>
-									<li><a href="/ezen-android2020-2/search/sitter_search.html" class="ft_list_con">신생아/영아 풀타임 돌봄</a></li>
-									<li><a href="/ezen-android2020-2/search/sitter_search.html" class="ft_list_con">신생아/영아 보조 돌봄</a></li>
-									<li><a href="/ezen-android2020-2/search/sitter_search.html" class="ft_list_con">등하원 돌봄</a></li>
-									<li><a href="/ezen-android2020-2/search/sitter_search.html" class="ft_list_con">놀이/학습 돌봄</a></li>
-									<li><a href="/ezen-android2020-2/search/sitter_search.html" class="ft_list_con">긴급/단기 돌봄</a></li>
+									<li><a href="${pageContext.request.contextPath}/search/sitter_search.html" class="ft_list_con">신생아/영아 풀타임 돌봄</a></li>
+									<li><a href="${pageContext.request.contextPath}/search/sitter_search.html" class="ft_list_con">신생아/영아 보조 돌봄</a></li>
+									<li><a href="${pageContext.request.contextPath}/search/sitter_search.html" class="ft_list_con">등하원 돌봄</a></li>
+									<li><a href="${pageContext.request.contextPath}/search/sitter_search.html" class="ft_list_con">놀이/학습 돌봄</a></li>
+									<li><a href="${pageContext.request.contextPath}/search/sitter_search.html" class="ft_list_con">긴급/단기 돌봄</a></li>
 								</div>
 							</div>
 							<div class="col-md-12 col-xs-6">
 								<div class="ft_list">
 									<h4 class="ft_list_tl">맘시터 정보</h4>
-									<li><a href="/ezen-android2020-2/abu-service/introduce.html" class="ft_list_con">서비스 소개</a></li>
+									<li><a href="${pageContext.request.contextPath}/abu-service/introduce.html" class="ft_list_con">서비스 소개</a></li>
 									<li><a href="https://www.notion.so/2d568de1bcaa4de181b33c72be346c66" class="ft_list_con">개발 과정</a></li>
-									<li><a href="/ezen-android2020-2/abu-service/team.html" class="ft_list_con">개발자 정보</a></li>
+									<li><a href="${pageContext.request.contextPath}/abu-service/team.html" class="ft_list_con">개발자 정보</a></li>
 								</div>
 							</div>
 						</div>
@@ -265,13 +265,13 @@
 								<div class="ft_list">
 									<h4 class="ft_list_tl">고객센터</h4>
 									<li>
-										<a href="/ezen-android2020-2/customer/notice_site.html" class="ft_list_con">공지사항 ㅣ</a>
-										<a href="/ezen-android2020-2/customer/guide.html" class="ft_list_con">이용가이드 ㅣ</a>
-										<a href="/ezen-android2020-2/customer/question_sitter.html" class="ft_list_con">자주 묻는 질문</a>
+										<a href="${pageContext.request.contextPath}/customer/notice_site.html" class="ft_list_con">공지사항 ㅣ</a>
+										<a href="${pageContext.request.contextPath}/customer/guide.html" class="ft_list_con">이용가이드 ㅣ</a>
+										<a href="${pageContext.request.contextPath}/customer/question_sitter.html" class="ft_list_con">자주 묻는 질문</a>
 									</li>
 									<li>
-										<a href="/ezen-android2020-2/abu-service/agreement.html" class="ft_list_con">이용약관 ㅣ</a>
-										<a href="/ezen-android2020-2/abu-service/privacy.html" class="ft_list_con">개인정보처리방침 ㅣ</a>
+										<a href="${pageContext.request.contextPath}/abu-service/agreement.html" class="ft_list_con">이용약관 ㅣ</a>
+										<a href="${pageContext.request.contextPath}/abu-service/privacy.html" class="ft_list_con">개인정보처리방침 ㅣ</a>
 										<a href="#" class="ft_list_con">1:1문의</a>
 									</li>
 									<li class="ft_list_con ft_time">
@@ -303,7 +303,7 @@
 	</div>
 	
 	<!--slick slider-->
-	<script type="text/javascript" src="assets/plugin/slick/slick.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js"></script>
 	<script type="text/javascript">
 		$(function () {
 			//브라우저 로드시 헤더 받아오기
