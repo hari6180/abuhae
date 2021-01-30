@@ -10,17 +10,17 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
     <!--절대 경로 수정 1220 선아-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
     <!--join sitter 참조-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_sitter.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/join_sitter.css" />
     <!-- 아이콘 사용 -->
     <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script>
 
@@ -65,42 +65,42 @@
                 <!--내용-->
                 <div class="modal-body">
                     <div class="prof_desc">
-                        <img src="/ezen-android2020-2/join/img/ex1.jpg"></img>
+                        <img src="${pageContext.request.contextPath}/assets/img/ex1.jpg"></img>
                         <div class="prof_guide_desc">
                             <i class="far fa-circle"></i><br>
                             <div class="age_desc">본인의 얼굴 정면이<br>나온 모습</div>
                         </div>
                     </div>
                     <div class="prof_desc">
-                        <img src="/ezen-android2020-2/join/img/ex2.jpg">
+                        <img src="${pageContext.request.contextPath}/assets/img/ex2.jpg">
                         <div class="prof_guide_desc">
                             <i class="fas fa-times"></i><br>
                             <div class="age_desc">이모티콘이<br>포함된 사진</div>
                         </div>
                     </div>
                     <div class="prof_desc">
-                        <img src="/ezen-android2020-2/join/img/ex3.jpg">
+                        <img src="${pageContext.request.contextPath}/assets/img/ex3.jpg">
                         <div class="prof_guide_desc">
                             <i class="fas fa-times"></i>
                             <div class="age_desc">얼굴이<br>가려진 경우</div>
                         </div>
                     </div>
                     <div class="prof_desc">
-                        <img src="/ezen-android2020-2/join/img/ex4.jpg">
+                        <img src="${pageContext.request.contextPath}/assets/img/ex4.jpg">
                         <div class="prof_guide_desc">
                             <i class="fas fa-times"></i>
                             <div class="age_desc">여러 명이<br>한께 찍은 경우</div>
                         </div>
                     </div>
                     <div class="prof_desc">
-                        <img src="/ezen-android2020-2/join/img/ex5.jpg">
+                        <img src="${pageContext.request.contextPath}/assets/img/ex5.jpg">
                         <div class="prof_guide_desc">
                             <i class="fas fa-times"></i>
                             <div class="age_desc">먼 거리에서<br>찍은 경우</div>
                         </div>
                     </div>
                     <div class="prof_desc">
-                        <img src="/ezen-android2020-2/join/img/ex6.jpg">
+                        <img src="${pageContext.request.contextPath}/assets/img/ex6.jpg">
                         <div class="prof_guide_desc">
                             <i class="fas fa-times"></i>
                             <div class="age_desc">인물 식별이<br>어려울 경우</div>
@@ -133,7 +133,7 @@
                 <div class="upload_prof">
                     <div class="prof_box">
                         <input type="file" id="file" accept="image/*" class="input_file">
-                        <img id="profile_img_upload" src="/ezen-android2020-2/join/img/user.png">
+                        <img id="profile_img_upload" src="${pageContext.request.contextPath}/assets/img/user.png">
                     </div>
                 </div>
                 <p>내 사진을 올리면 부모회원의<br>
@@ -147,8 +147,8 @@
     </div>
 
     <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(function () {
             $('.next_btn').click(function (e) {

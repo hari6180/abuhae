@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -9,23 +10,23 @@
 
 		<!-- 모바일 웹 페이지 설정 -->
 		<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 		<!-- bootstrap -->
 		<!--절대 경로 수정 1220 선아-->
-		<link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 		<!-- noto Sans 웹 폰트 적용 -->
-        <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         <!--header css-->
-        <link rel="stylesheet" href="/ezen-android2020-2/assets/css/index_header.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index_header.css">
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
         <!--login css-->
-        <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/login/login.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/login/login.css" />
         <!-- Javascript -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
 		<style type="text/css">
             .container {
@@ -53,7 +54,7 @@
 
                 <div class="other_action">
                     <a href="find.jsp" class="otehr_login underline">로그인 정보를 잊으셨나요?</a>
-                    <a href="/ezen-android2020-2/join/join.html" class="otehr_login">회원가입</a>
+                    <a href="${pageContext.request.contextPath}/join/join.html" class="otehr_login">회원가입</a>
                 </div>
 				
 			</div> <!-- fin. col-xs-12 -->

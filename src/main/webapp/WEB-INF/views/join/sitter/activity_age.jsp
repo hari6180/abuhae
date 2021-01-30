@@ -10,17 +10,17 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href=${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
     <!--절대 경로 수정 1220 선아-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
     <!--join sitter 참조-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_sitter.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/join_sitter.css" />
     <!-- 아이콘 사용 -->
     <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script>
 
@@ -171,7 +171,7 @@
                     <div class="help_box">
                         <a data-toggle="modal" href="#help_modal1"><button class="help_btn">
                                 <span class="sr-only">도움말</span>
-                                <img src="/ezen-android2020-2/join/img/help.png" alt="도움말">
+                                <img src="${pageContext.request.contextPath}/assets/img/help.png" alt="도움말">
                             </button></a>
                     </div>
                 </h3>
@@ -200,7 +200,7 @@
                     <div class="help_box">
                         <a data-toggle="modal" href="#help_modal2"><button class="help_btn">
                                 <span class="sr-only">도움말</span>
-                                <img src="/ezen-android2020-2/join/img/help.png" alt="도움말">
+                                <img src="${pageContext.request.contextPath}/assets/img/help.png" alt="도움말">
                             </button></a>
                     </div>
                 </h3>
@@ -210,21 +210,21 @@
                     <div class="active_line">
                         <div class="want_btn">
                             <button class="act_btn select_btn" value="innerplay"><img class="want_img"
-                                    src="/ezen-android2020-2/join/img/innerplayicon_s.png"></button>
+                                    src="${pageContext.request.contextPath}/assets/img/innerplayicon_s.png"></button>
                             <div class="want_text select_text">실내놀이</div>
                             <div class="want_btn">
                                 <button class="act_btn" value="korean"><img class="want_img"
-                                        src="/ezen-android2020-2/join/img/koreanicon_n.png"></button>
+                                        src="${pageContext.request.contextPath}/assets/img/koreanicon_n.png"></button>
                                 <div class="want_text">한글놀이</div>
                             </div>
                             <div class="want_btn">
                                 <button class="act_btn" value="simple_cleaning"><img class="want_img"
-                                        src="/ezen-android2020-2/join/img/cleanicon_n.png"></button>
+                                        src="${pageContext.request.contextPath}/assets/img/cleanicon_n.png"></button>
                                 <div class="want_text">간단청소</div>
                             </div>
                             <div class="want_btn">
                                 <button class="act_btn" value="long_move_in"><img class="want_img"
-                                        src="/ezen-android2020-2/join/img/longhouseicon_n.png"></button>
+                                        src="${pageContext.request.contextPath}/assets/img/longhouseicon_n.png"></button>
                                 <div class="want_text">장기입주</div>
                             </div>
                         </div>
@@ -232,21 +232,21 @@
                     <div class="active_line">
                         <div class="want_btn">
                             <button class="act_btn select_btn" value="guide"><img class="want_img"
-                                    src="/ezen-android2020-2/join/img/guideicon_s.png"></button>
+                                    src="${pageContext.request.contextPath}/assets/img/guideicon_s.png"></button>
                             <div class="want_text select_text">등하원 돕기</div>
                             <div class="want_btn">
                                 <button class="act_btn" value="english"><img class="want_img"
-                                        src="/ezen-android2020-2/join/img/englishicon_n.png"></button>
+                                        src="${pageContext.request.contextPath}/assets/img/englishicon_n.png"></button>
                                 <div class="want_text">영어놀이</div>
                             </div>
                             <div class="want_btn">
                                 <button class="act_btn" value="eat"><img class="want_img"
-                                        src="/ezen-android2020-2/join/img/eaticon_n.png"></button>
+                                        src="${pageContext.request.contextPath}/assets/img/eaticon_n.png"></button>
                                 <div class="want_text">밥 챙겨주기</div>
                             </div>
                             <div class="want_btn">
                                 <button class="act_btn" value="short_move_in"><img class="want_img"
-                                        src="/ezen-android2020-2/join/img/houseicon_n.png"></button>
+                                        src="${pageContext.request.contextPath}/assets/img/houseicon_n.png"></button>
                                 <div class="want_text">단기입주</div>
                             </div>
                         </div>
@@ -254,29 +254,29 @@
                     <div class="active_line">
                         <div class="want_btn">
                             <button class="act_btn select_btn" value="read"><img class="want_img"
-                                    src="/ezen-android2020-2/join/img/readicon_s.png"></button>
+                                    src="${pageContext.request.contextPath}/assets/img/readicon_s.png"></button>
                             <div class="want_text select_text">책읽기</div>
                         </div>
                         <div class="want_btn">
                             <button class="act_btn" value="study"><img class="want_img"
-                                    src="/ezen-android2020-2/join/img/studyicon_n.png"></button>
+                                    src="${pageContext.request.contextPath}/assets/img/studyicon_n.png"></button>
                             <div class="want_text">학습지도</div>
                         </div>
                         <div class="want_btn">
                             <button class="act_btn" value="do_dish"><img class="want_img"
-                                    src="/ezen-android2020-2/join/img/dishicon_n.png"></button>
+                                    src="${pageContext.request.contextPath}/assets/img/dishicon_n.png"></button>
                             <div class="want_text">간단설거지</div>
                         </div>
                     </div>
                     <div class="active_line">
                         <div class="want_btn">
                             <button class="act_btn" value="outside"><img class="want_img"
-                                    src="/ezen-android2020-2/join/img/ousideicon_n.png"></button>
+                                    src="${pageContext.request.contextPath}/assets/img/ousideicon_n.png"></button>
                             <div class="want_text">야외활동</div>
                         </div>
                         <div class="want_btn">
                             <button class="act_btn" value="sport"><img class="want_img"
-                                    src="/ezen-android2020-2/join/img/ballicon_n.png"></button>
+                                    src="${pageContext.request.contextPath}/assets/img/ballicon_n.png"></button>
                             <div class="want_text">체육놀이</div>
                         </div>
                     </div>
@@ -288,8 +288,8 @@
     </div>
 
     <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(function () {
             //활동 버튼 클릭

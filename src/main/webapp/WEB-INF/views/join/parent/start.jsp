@@ -11,17 +11,17 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
     <!-- icon 참조 -->
     <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
     
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_parent.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/join/css/join_parent.css" />
 
     <style type="text/css">
         html,
@@ -41,22 +41,22 @@
             <div class="col-xs-12">
                 <!-- xs-12로 모바일 맞춤 -->
                 <div class="join_title">
-                    <img src="../img/parent_join_start.png">
+                    <img src="${pageContext.request.contextPath}/assets/img/parent_join_start.png">
                     <h3>회원님과 꼭 맞는 맘시터를 찾기 위해<br>몇가지 질문으로 시작하겠습니다.</h3>
                 </div>
 
                 <!--다음 회원가입으로 진행-->
                 <a href="activity_age.html"><button class="start_join_btn">회원가입 시작하기 ></button></a>
                 <!--로그인 페이지로 이동-->
-                <a href="/ezen-android2020-2/login/login.html"><button class="already_join_btn">이미 맘시터 회원이신가요?</button></a>
+                <a href="${pageContext.request.contextPath}/login/login.html"><button class="already_join_btn">이미 맘시터 회원이신가요?</button></a>
 
             </div> <!-- fin. col-xs-12 -->
     </div>
     <!--end container-->
 
     <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 </body>
 
 </html>

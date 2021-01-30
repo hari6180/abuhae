@@ -10,16 +10,16 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
     <!-- join css -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_parent.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/join_parent.css" />
     <style type="text/css">
         .modal {
             top:30%;
@@ -100,7 +100,7 @@
                             <div class="help_box">
                                 <a data-toggle="modal" href="#help_modal"><button class="help_btn">
                                         <span class="sr-only">도움말</span>
-                                        <img src="/ezen-android2020-2/join/img/help.png" alt="도움말">
+                                        <img src="${pageContext.request.contextPath}/assets/img/help.png" alt="도움말">
                                     </button></a>
                             </div>
                         </h4>
@@ -122,8 +122,8 @@
     </div>
 
     <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         function addCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

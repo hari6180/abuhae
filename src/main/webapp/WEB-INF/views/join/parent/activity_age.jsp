@@ -10,17 +10,17 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/WebContent/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
     <!-- icon 참조 -->
     <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
     <!-- join css -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_parent.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/join_parent.css" />
 
     <style type="text/css">
         html,
@@ -118,7 +118,7 @@
                     <div class="help_box">
                         <a data-toggle="modal" href="#help_modal"><button class="help_btn">
                                 <span class="sr-only">도움말</span>
-                                <img src="/ezen-android2020-2/join/img/help.png" alt="도움말">
+                                <img src="${pageContext.request.contextPath}/assets/img/help.png" alt="도움말">
                             </button></a>
                     </div>
                     <br>
@@ -129,42 +129,42 @@
                 <div class="want_act_box">
                     <div class="want_btn">
                         <button class="act_btn" value="innerplay"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/innerplayicon_n.png"></button>
+                                src="${pageContext.request.contextPath}/assets/img/innerplayicon_n.png"></button>
                         <div class="want_text">실내놀이</div>
                     </div>
                     <div class="want_btn">
                         <button class="act_btn" value="guide"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/guideicon_n.png"></button>
+                                src="${pageContext.request.contextPath}/assets/img/guideicon_n.png"></button>
                         <div class="want_text">등하원 돕기</div>
                     </div>
                     <div class="want_btn">
                         <button class="act_btn" value="english"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/englishicon_n.png"></button>
+                                src="${pageContext.request.contextPath}/assets/img/englishicon_n.png"></button>
                         <div class="want_text">영어놀이</div>
                     </div>
                     <div class="want_btn">
                         <button class="act_btn" value="korean"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/koreanicon_n.png"></button>
+                                src="${pageContext.request.contextPath}/assets/img/koreanicon_n.png"></button>
                         <div class="want_text">한글놀이</div>
                     </div>
                     <div class="want_btn">
                         <button class="act_btn" value="study"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/studyicon_n.png"></button>
+                                src="${pageContext.request.contextPath}/assets/img/studyicon_n.png"></button>
                         <div class="want_text">학습지도</div>
                     </div>
                     <div class="want_btn">
                         <button class="act_btn" value="outside"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/ousideicon_n.png"></button>
+                                src="${pageContext.request.contextPath}/assets/img/ousideicon_n.png"></button>
                         <div class="want_text">야외활동</div>
                     </div>
                     <div class="want_btn">
                         <button class="act_btn" value="eat"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/eaticon_n.png"></button>
+                                src="${pageContext.request.contextPath}/assets/img/eaticon_n.png"></button>
                         <div class="want_text">밥 챙겨주기</div>
                     </div>
                     <div class="want_btn">
                         <button class="act_btn" value="read"><img class="want_img"
-                                src="/ezen-android2020-2/join/img/readicon_n.png"></button>
+                                src="${pageContext.request.contextPath}/assets/img/readicon_n.png"></button>
                         <div class="want_text">책읽기</div>
                     </div>
                 </div>
@@ -188,7 +188,7 @@
                         <input type="checkbox" value="60" class="want_age" id="60age"> <label for="60age">60대</label>
                     </div>
 
-                    <a href="/ezen-android2020-2/join/parent/children.jsp"><button class="next_btn"
+                    <a href="${pageContext.request.contextPath}/assets/parent/children.jsp"><button class="next_btn"
                             type="submit">다음</button></a>
                 </div>
             </div>
@@ -196,8 +196,8 @@
     </div>
 
     <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <!--sweetalert plugin-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">

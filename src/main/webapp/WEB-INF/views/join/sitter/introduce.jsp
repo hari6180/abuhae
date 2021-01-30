@@ -10,19 +10,19 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
     <!--절대 경로 수정 1220 선아-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
     <!--fontawwsome-->
     <script src="https://kit.fontawesome.com/ac95729007.js" crossorigin="anonymous"></script>
 
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
     <!--join sitter 참조-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/join/css/join_sitter.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/join_sitter.css" />
     <!-- fontawesome(글리피콘) 적용 -->
     <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
@@ -63,7 +63,7 @@
                 <div class="intro_ex_box">
                     <div class="intro_ex_title">
                         <div class="img_cir">
-                        <img src="/ezen-android2020-2/join/img/ex1.jpg" alt="예제" class="intro_img">
+                        <img src="${pageContext.request.contextPath}/assets/img/ex1.jpg" alt="예제" class="intro_img">
                         </div>
                         <div>
                             <strong>선생님 맘시터</strong><br>
@@ -77,7 +77,7 @@
                 <div class="intro_ex_box">
                     <div class="intro_ex_title">
                         <div class="img_cir">
-                        <img src="/ezen-android2020-2/join/img/ex1.jpg" alt="예제" class="intro_img">
+                        <img src="${pageContext.request.contextPath}/assets/img/ex1.jpg" alt="예제" class="intro_img">
                         </div>
                         <div>
                             <strong>엄마 맘시터</strong><br>
@@ -91,7 +91,7 @@
                 <div class="intro_ex_box">
                     <div class="intro_ex_title">
                         <div class="img_cir">
-                        <img src="/ezen-android2020-2/join/img/ex1.jpg" alt="예제" class="intro_img">
+                        <img src="${pageContext.request.contextPath}/assets/img/ex1.jpg" alt="예제" class="intro_img">
                         </div>
                         <div>
                             <strong>대학생 맘시터</strong><br>
@@ -105,7 +105,7 @@
                 <div class="intro_ex_box">
                     <div class="intro_ex_title">
                         <div class="img_cir">
-                        <img src="/ezen-android2020-2/join/img/ex1.jpg" alt="예제" class="intro_img">
+                        <img src="${pageContext.request.contextPath}/assets/img/ex1.jpg" alt="예제" class="intro_img">
                         </div>
                         <div>
                             <strong>일반 맘시터</strong><br>
@@ -154,8 +154,8 @@
     </div>
 
     <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 </body>
 
 </html>
