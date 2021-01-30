@@ -1,4 +1,4 @@
-package study.team.abu.model;
+package study.team.abuhae.model;
 
 import lombok.Data;
 
