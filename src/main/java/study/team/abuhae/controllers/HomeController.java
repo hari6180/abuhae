@@ -1,4 +1,4 @@
-package study.team.abuhae;
+package study.team.abuhae.controllers;
 
 import java.text.DateFormat;
 import java.util.Date;
