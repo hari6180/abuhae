@@ -53,7 +53,7 @@
 					<div class="col-xs-12">
 						<ul class="block_list">
 							<li class="block_item">
-								<a href="'${pageContext.request.contextPath}/customer/guide.do'" class="block_item_link">
+								<a href="${pageContext.request.contextPath}/customer/guide.do" class="block_item_link">
 									<span class="block_item_title">이용가이드</span>
 								</a>
 							</li>

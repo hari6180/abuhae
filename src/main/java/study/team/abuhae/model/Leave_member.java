@@ -3,7 +3,7 @@ package study.team.abuhae.model;
 import lombok.Data;
 
 @Data
-public class leave_member {
+public class Leave_member {
 	private int leav_mem;
 	private String id;
 	private String name;

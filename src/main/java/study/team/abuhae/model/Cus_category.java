@@ -3,7 +3,7 @@ package study.team.abuhae.model;
 import lombok.Data;
 
 @Data
-public class cus_category {
+public class Cus_category {
 	private int cateno;
 	private String category;
 	

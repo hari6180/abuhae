@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 
 
 @Controller
-public class cus_sub_categoryController {
+public class Cus_sub_categoryController {
 	
 	
 }

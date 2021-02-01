@@ -163,9 +163,14 @@ td {
 
 /** 신고회원 관리 */
 .group_report {
-  margin-top: 30px;
+    margin-top: 30px;
+    padding-right: 10px;
+    padding-left: 240px;
 }
-
+.group_member {
+	padding-right: 10px;
+    padding-left: 240px;
+}
 .btn_list {
   display: flex;
   justify-content: flex-end;
@@ -195,7 +200,10 @@ td {
   height: 1px;
   margin-bottom: 15px;
 }
-
+.header_yun {
+  padding-left: 265px;
+  padding-top: 5px;
+}
 /**------------------------- 탈퇴회원관리 ---------------------------------------------------*/
 
 /** 탈퇴회원관리 페이지 공통 설정값 */

@@ -1,5 +1,5 @@
 package study.team.abuhae.controllers;
 
-public class cus_catgoryController {
+public class Cus_catgoryController {
 
 }
