@@ -1,11 +1,13 @@
 package study.team.abuhae.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper=true)
 @Data
 public class Sitter_info extends Member {
 	private int sitterno;
-	private String sitter_type;
+	private char sitter_type;
 	private String want_act;
 	private String want_age;
 	private String si;
