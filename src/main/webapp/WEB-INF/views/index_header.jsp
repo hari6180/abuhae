@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
 
 <!-- header css -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/index_header.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/index_header.css" />
 
 <div id="header">
   <!-- header : 하리-->
@@ -14,19 +14,19 @@
             <p><i class="fas fa-bars"> </i></p>
           </a>
 
-          <a href="http://localhost:8080<%=request.getContextPath()%>/Index.jsp">
-            <img src="<%=request.getContextPath()%>/img/logo (1).png" class="logo" />
+          <a href="${pageContext.request.contextPath}/">
+            <img src="${pageContext.request.contextPath}/assets/img/logo(1).png" class="logo" />
           </a>
         </div>
         <div class="flex_row">
-          <a href="http://localhost:8080<%=request.getContextPath()%>/join/join.jsp"><button id="header_join" class="join">가입하기</button></a>
+          <a href="${pageContext.request.contextPath}/join/join.do"><button id="header_join" class="join">가입하기</button></a>
           <i id="header_search" class="fas fa-search header_search_btn"></i>
         </div>
       </div>
     </div>
     <div class="searchbar_wrap" style="display: none">
-      <div class="search_block search_sitter"><img src="<%=request.getContextPath()%>/assets/img/header_sittersearch.png" />맘시터 찾기</div>
-      <div class="search_block search_job"><img src="<%=request.getContextPath()%>/assets/img/header_jobsearch.png" />일자리 찾기</div>
+      <div class="search_block search_sitter"><img src="${pageContext.request.contextPath}/assets/img/header_sittersearch.png" />맘시터 찾기</div>
+      <div class="search_block search_job"><img src="${pageContext.request.contextPath}/assets/img/header_jobsearch.png" />일자리 찾기</div>
     </div>
   </header>
   <!-- header end-->
@@ -56,14 +56,14 @@
         <div class="modal_body">
           <div class="sitter_search">
             <a href="#" id="stsc_btn">
-              <img src="<%=request.getContextPath()%>/assets/img/index-sittersearch.png" />
+              <img src="${pageContext.request.contextPath}/assets/img/index-sittersearch.png" />
               <p>맘시터 찾기</p>
             </a>
           </div>
 
           <div class="job_search">
             <a href="#" id="jobsc_btn">
-              <img src="<%=request.getContextPath()%>/assets/img/index-jobsearch.png" />
+              <img src="${pageContext.request.contextPath}/assets/img/index-jobsearch.png" />
               <p>일자리 찾기</p>
             </a>
           </div>
@@ -111,38 +111,38 @@
 <script>
   $(function () {
     $("#login_btn").click(function (e) {
-      location.replace("http://localhost:8080<%=request.getContextPath()%>/login/login.jsp");
+      location.replace("${pageContext.request.contextPath}/login/login.do");
     });
     $("#join_btn").click(function (e) {
-      location.replace("http://localhost:8080<%=request.getContextPath()%>/join/join.jsp");
+      location.replace("${pageContext.request.contextPath}/join/join.do");
     });
     $("#stsc_btn").click(function (e) {
-      location.replace("http://localhost:8080<%=request.getContextPath()%>/search/sitter_search.jsp");
+      location.replace("${pageContext.request.contextPath}/search/sitter_search.do");
     });
     $("#jobsc_btn").click(function (e) {
-      location.replace("http://localhost:8080<%=request.getContextPath()%>/search/job_search.jsp");
+      location.replace("${pageContext.request.contextPath}/search/job_search.do");
     });
     $("#intro_btn").click(function (e) {
-      location.replace("http://localhost:8080<%=request.getContextPath()%>/abu-service/introduce.jsp");
+      location.replace("${pageContext.request.contextPath}/abu-service/introduce.do");
     });
     $("#buy_btn").click(function (e) {
-      location.replace("http://localhost:8080<%=request.getContextPath()%>/buy/buy.jsp");
+      location.replace("${pageContext.request.contextPath}/buy/buy.do");
     });
     $("#notice_btn").click(function (e) {
-      location.replace("http://localhost:8080<%=request.getContextPath()%>/customer/notice_site.jsp");
+      location.replace("${pageContext.request.contextPath}/customer/notice_site.do");
     });
     $("#cus_btn").click(function (e) {
-      location.replace("http://localhost:8080<%=request.getContextPath()%>/customer/customer_center.jsp");
+      location.replace("${pageContext.request.contextPath}/customer/customer_center.do");
     });
     // 프론트 테스트용 임시 링크
     $("#mommp").click(function (e) {
-      location.replace("http://localhost:8080<%=request.getContextPath()%>/mypage/mypage_mom/mom_mypage.jsp");
+      location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do");
     });
     $("#stmp").click(function (e) {
-      location.replace("http://localhost:8080<%=request.getContextPath()%>/mypage/mypage_sitter/sitter_mypage.jsp");
+      location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do");
     });
     $("#manpg").click(function (e) {
-      location.replace("http://localhost:8080<%=request.getContextPath()%>/admin/admin_login.jsp");
+      location.replace("${pageContext.request.contextPath}/admin/admin_login.do");
     });
     //프론트 테스트용 임시 링크 끝
   });
@@ -155,10 +155,10 @@
     });
 
     $(".search_sitter").click(function () {
-      location.href = "<%=request.getContextPath()%>/search/sitter_search.jsp";
+      location.href = "${pageContext.request.contextPath}/search/sitter_search.do";
     });
     $(".search_job").click(function () {
-      location.href = "<%=request.getContextPath()%>/search/job_search.jsp";
+      location.href = "${pageContext.request.contextPath}/search/job_search.do";
     });
   });
 </script>

@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@
+taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -10,13 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>아이를부탁해</title>
 
-	<!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+    <!-- 모바일 웹 페이지 설정 -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
     <!-- fontawesome(글리피콘) 적용 -->
     <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
@@ -24,14 +22,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
 
     <!-- job_search.css-->
-    <link rel="stylesheet" type="text/css" href="css/job_search.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/job_search.css" />
 
     <!-- sweetalert 사용 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- ajax Helper -->
-    <script src="<%=request.getContextPath()%>/plugins/ajax/ajax_helper.js"></script>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/plugins/ajax/ajax_helper.css" />
+    <script src="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.css" />
   </head>
 
   <!--grid 사용시 col-xs-nn 사용-->
@@ -423,7 +421,7 @@
               <div class="job_item_group">
                 <div class="item_body">
                   <div class="profile_img_group">
-                    <img src="img/profile.jpg" />
+                    <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
                     <div class="applicant_group">
                       <div class="applicant">0명 지원</div>
                     </div>
@@ -482,7 +480,7 @@
               <div class="job_item_group">
                 <div class="item_body">
                   <div class="profile_img_group">
-                    <img src="img/profile.jpg" />
+                    <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
                     <div class="applicant_group">
                       <div class="applicant">0명 지원</div>
                     </div>
@@ -541,7 +539,7 @@
               <div class="job_item_group">
                 <div class="item_body">
                   <div class="profile_img_group">
-                    <img src="img/profile.jpg" />
+                    <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
                     <div class="applicant_group">
                       <div class="applicant">0명 지원</div>
                     </div>
@@ -624,9 +622,9 @@
     <!--row end-->
 
     <!-- Javascript -->
-    <script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
-    <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script type="text/Javascript">
       $(document).ready(function () {
         // 무한 스크롤 1218 하리
@@ -659,11 +657,11 @@
 
       $(function () {
         // 헤더 메뉴 load처리 1224 하리
-        //$("#menu").load("<%=request.getContextPath()%>/index_header.html"); - 210124 include 변경
+        //$("#menu").load("${pageContext.request.contextPath}/index_header.html"); - 210124 include 변경
 
         // 상세 페이지 연동 1220 하리
         $(".job_item_group").on("click", function () {
-          location.href = "http://localhost:8080<%=request.getContextPath()%>/page_detail/mom_page_detail/mom_page_detail_graph.html";
+          location.href = "${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_page_detail_graph.do";
         });
 
         /** 상세 검색 ------------------------------------------------------------------- */
@@ -759,7 +757,7 @@
 
             $.ajax({
               type: "GET", //get방식으로 통신
-              url: "<%=request.getContextPath()%>join/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
+              url: "${pageContext.request.contextPath}join/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
               dataType: "html", //html형식으로 값 읽기
               error: function () {
                 //통신 실패시 ㅠㅠ

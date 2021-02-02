@@ -9,18 +9,18 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 
     <!-- fontawesome(글리피콘) 적용 -->
     <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
     <!-- css 적용 -->
-    <link rel="stylesheet" type="text/css" href="css/caretype_sitter.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/caretype_sitter.css" />
 
     <style type="text/css"></style>
   </head>
@@ -34,7 +34,7 @@
           <div id="caretype" class="">
             <!--header-->
             <div class="ct_header">
-              <a href="http://localhost:8080<%=request.getContextPath()%>/search/sitter_search.html">
+              <a href="${pageContext.request.contextPath}/search/sitter_search.do">
                 <i class="fas fa-chevron-left"></i>
               </a>
               <h2>돌봄유형 선택</h2>
@@ -45,7 +45,7 @@
                 <div class="title_group">
                   <div class="title">
                     <span class="title_text">어떤 돌봄이 필요하세요?</span>
-                    <a href="caretype_detail.html"><i class="fas fa-question-circle"></i></a>
+                    <a href="${pageContext.request.contextPath}/search/caretype_detail.do"><i class="fas fa-question-circle"></i></a>
                   </div>
                   <p class="title_desc">돌봄유형을 선택하시면, 맞춤 시터를 보여드려요</p>
                 </div>
@@ -56,7 +56,7 @@
                   <div class="ct_group">
                     <div class="ct_item">
                       <div class="icon">
-                        <img src="img/noun_School_3628460.png" />
+                        <img src="${pageContext.request.contextPath}/assets/img/noun_School_3628460.png" />
                       </div>
                       <div class="ct_text_group">
                         <p class="main_text">주 5일 등하원</p>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="ct_item">
                       <div class="icon">
-                        <img src="img/noun_Toddler toy_768159.png" />
+                        <img src="${pageContext.request.contextPath}/assets/img/noun_Toddler toy_768159.png" />
                       </div>
                       <div class="ct_text_group">
                         <p class="main_text">놀이/학습시터</p>
@@ -81,7 +81,7 @@
                   <div class="ct_group">
                     <div class="ct_item">
                       <div class="icon">
-                        <img src="img/noun_mom and daughter_3585284.png" />
+                        <img src="${pageContext.request.contextPath}/assets/img/noun_mom and daughter_3585284.png" />
                       </div>
                       <div class="ct_text_group">
                         <p class="main_text">풀타임</p>
@@ -90,7 +90,7 @@
                     </div>
                     <div class="ct_item">
                       <div class="icon">
-                        <img src="img/noun_help_2402270.png" />
+                        <img src="${pageContext.request.contextPath}/assets/img/noun_help_2402270.png" />
                       </div>
                       <div class="ct_text_group">
                         <p class="main_text">보조</p>
@@ -106,7 +106,7 @@
                   <div class="ct_group">
                     <div class="ct_item">
                       <div class="icon siren">
-                        <img src="img/noun_Siren_3116161.png" />
+                        <img src="${pageContext.request.contextPath}/assets/img/noun_Siren_3116161.png" />
                       </div>
                       <div class="ct_text_group">
                         <p class="main_text">긴급/단기</p>
@@ -125,19 +125,19 @@
       </div>
     </div>
     <!-- Javascript -->
-    <script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
-    <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
       $(function () {
         $(".icon").click(function (e) {
           $(this).addClass("selected_icon");
-          location.href = "http://localhost:8080<%=request.getContextPath()%>/search/sitter_search.html";
+          location.href = "${pageContext.request.contextPath}/search/sitter_search.do";
         });
 
         $(".all_btn").click(function (e) {
           e.preventDefault();
-          location.href = "http://localhost:8080<%=request.getContextPath()%>/search/sitter_search.html";
+          location.href = "${pageContext.request.contextPath}/search/sitter_search.do";
         });
       });
     </script>

@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
     <!-- header css -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/index_header_login_sitter.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/index_header_login_sitter.css" />
   </head>
   <body>
     <div id="header">
@@ -16,19 +16,19 @@
                 <p><i class="fas fa-bars"> </i></p>
               </a>
 
-              <a href="http://localhost:8080<%=request.getContextPath()%>/Index.jsp">
-                <img src="<%=request.getContextPath()%>/assets/img/logo(1).png" class="logo" />
+              <a href="${pageContext.request.contextPath}/">
+                <img src="${pageContext.request.contextPath}/assets/img/logo(1).png"" class="logo" />
               </a>
             </div>
             <div class="flex_row">
-              <a href="http://localhost:8080<%=request.getContextPath()%>/join/join.jsp"><button id="header_join" class="join">가입하기</button></a>
+              <a href="${pageContext.request.contextPath}/join/join.do"><button id="header_join" class="join">가입하기</button></a>
               <i id="header_search" class="fas fa-search header_search_btn"></i>
             </div>
           </div>
         </div>
         <div class="searchbar_wrap" style="display: none">
-          <div class="search_block search_sitter"><img src="<%=request.getContextPath()%>/assets/img/header_sittersearch.png" />맘시터 찾기</div>
-          <div class="search_block search_job"><img src="<%=request.getContextPath()%>/assets/img/header_jobsearch.png" />일자리 찾기</div>
+          <div class="search_block search_sitter"><img src="${pageContext.request.contextPath}/assets/img/header_sittersearch.png" />맘시터 찾기</div>
+          <div class="search_block search_job"><img src="${pageContext.request.contextPath}/assets/img/header_jobsearch.png" />일자리 찾기</div>
         </div>
       </header>
       <!-- header end-->
@@ -63,21 +63,21 @@
               <div class="icon_link_group">
                 <div class="user_menu" id="menu_mypage">
                   <div class="img_bg">
-                    <img src="<%=request.getContextPath()%>/assets/img/noun_Human.png" />
+                    <img src="${pageContext.request.contextPath}/assets/img/noun_Human.png" />
                   </div>
                   <span class="um_txt">마이페이지</span>
                 </div>
                 <div class="user_menu" id="menu_application">
                   
                   <div class="img_bg">
-                    <img src="<%=request.getContextPath()%>/assets/img/noun_Pen.png" />
+                    <img src="${pageContext.request.contextPath}/assets/img/noun_Pen.png" />
                   </div>
                   <span class="um_txt">신청서 수정</span>
                 </div>
                 <div class="user_menu" id="menu_buy">
 
                   <div class="img_bg">
-                    <img src="<%=request.getContextPath()%>/assets/img/noun_ticket.png" />
+                    <img src="${pageContext.request.contextPath}/assets/img/noun_ticket.png" />
                   </div>
 
                   <span class="um_txt">지원권 구매</span>
@@ -114,41 +114,41 @@
     </div>
     <!--삭제 예정-->
     <!-- Javascript -->
-    <script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
-    <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <!--삭제 예정-->
     <script>
       $(function () {
         $("#logout_btn").click(function (e) {
-          location.replace("http://localhost:8080<%=request.getContextPath()%>/index.jsp");
+          location.replace("${pageContext.request.contextPath}/index.do");
         });
         $("#jobsc_btn").click(function (e) {
-          location.replace("http://localhost:8080<%=request.getContextPath()%>/search/job_search.jsp");
+          location.replace("${pageContext.request.contextPath}/search/job_search.do");
         });
         $("#menu_mypage").click(function (e) {
-          location.replace("http://localhost:8080<%=request.getContextPath()%>/mypage/mypage_sitter/sitter_mypage.jsp");
+          location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do");
         });
         $("#menu_application").click(function (e) {
-          location.replace("http://localhost:8080<%=request.getContextPath()%>/mypage/mypage_sitter/update_profile.jsp");
+          location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile.do");
         });
         $("#menu_buy").click(function (e) {
-          location.replace("http://localhost:8080<%=request.getContextPath()%>/buy/sitter_ticket.jsp");
+          location.replace("${pageContext.request.contextPath}/buy/sitter_ticket.do");
         });
         $("#menu_cert").click(function (e) {
-          location.replace("http://localhost:8080<%=request.getContextPath()%>/mypage/mypage_sitter/certify.jsp");
+          location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/certify.do");
         });
         $("#other_sitter").click(function (e) {
-          location.replace("http://localhost:8080<%=request.getContextPath()%>/search/sitter_search.jsp");
+          location.replace("${pageContext.request.contextPath}/search/sitter_search.do");
         });
         $("#intro_btn").click(function (e) {
-          location.replace("http://localhost:8080<%=request.getContextPath()%>/abu-service/introduce.jsp");
+          location.replace("${pageContext.request.contextPath}/abu-service/introduce.do");
         });
         $("#notice_btn").click(function (e) {
-          location.replace("http://localhost:8080<%=request.getContextPath()%>/customer/notice_site.jsp");
+          location.replace("${pageContext.request.contextPath}/customer/notice_site.do");
         });
         $("#cus_btn").click(function (e) {
-          location.replace("http://localhost:8080<%=request.getContextPath()%>/customer/customer_center.jsp");
+          location.replace("${pageContext.request.contextPath}/customer/customer_center.do");
         });
       });
     </script>
