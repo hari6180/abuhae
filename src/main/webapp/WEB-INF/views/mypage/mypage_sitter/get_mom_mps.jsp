@@ -9,20 +9,20 @@
 		<title>아이를부탁해</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 		<!-- noto Sans 웹 폰트 적용 -->
-        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
         <!-- css 참조 -->
-        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/mypage/css/upd_mps_detail.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/upd_mps_detail.css">
 
         <style type="text/css">
 
@@ -42,7 +42,7 @@
                      <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="sitter_mypage.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">내 구직 현황</h3>
@@ -71,7 +71,7 @@
                                     <!-- 내가 지원한 -->
                                     <div class="gm_tab_page" id="gm_tab_page_1">
                                         <div class="gm_appl">
-                                            <img src="../img/profile.png" alt="임시프로필">
+                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
                                             <div class="gm_info">
                                                 <p>김○선 부모</p>
                                                 <p>희망시급:10,000원</p>
@@ -80,7 +80,7 @@
                                         </div> 
                                         <hr>
                                         <div class="gm_appl">
-                                            <img src="../img/profile.png" alt="임시프로필">
+                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
                                             <div class="gm_info">
                                                 <p>전○리 부모</p>
                                                 <p>희망시급:11,000원</p>
@@ -96,7 +96,7 @@
                                     <!-- 내게 신청한-->
                                     <div class="gm_tab_page hide" id="gm_tab_page_2" class="hide">
                                         <div class="gm_appl">
-                                            <img src="../img/profile.png" alt="임시프로필">
+                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
                                             <div class="gm_info">
                                                 <p>김○아 부모</p>
                                                 <p>희망시급:9,000원</p>
@@ -110,7 +110,7 @@
                                         </div>
                                         <hr>
                                         <div class="gm_appl">
-                                            <img src="../img/profile.png" alt="임시프로필">
+                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
                                             <div class="gm_info">
                                                 <p>남○재 부모</p>
                                                 <p>희망시급:10,000원</p>
@@ -145,7 +145,8 @@
                                     <p>응답가능 시간 2 : 58 : 16초 남음</p>
                                     <p>맘시터 구인 1일째 - 희망시급 10,000원</p>
                                     <div class="modal_btn">
-                                        <button type="button" id="interview_no" onclick="location.href='reason_deny.jsp'">거절</button>
+                                        <button type="button" id="interview_no" 
+                                        onclick="location.href='${pageContext.request.contextPath}/mypage/mypage_sitter/reason_deny.do'">거절</button>
                                         <button type="button" id="interview_ok">수락</button>
                                     </div>
                                 </div>
@@ -181,9 +182,9 @@
 
                     if (result) {
                         alert("수락하였습니다.");
-                        location.href="get_mom_mps.jsp";
+                        location.href="${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do";
                     } else {
-                        location.href="get_mom_mps.jsp";
+                        location.href="${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do";
                     }
                 });
             });

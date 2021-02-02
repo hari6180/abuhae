@@ -9,14 +9,14 @@
 		<title>아이를부탁해</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 		<!-- noto Sans 웹 폰트 적용 -->
-        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
@@ -180,7 +180,7 @@
                                     <h3>등/초본 인증</h3>
                                     <p>"올리신 서류의 세부내용은 노출되지 않으니 안심하세요."</p>
                                 </div>
-                                <a href="certify.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/certify.do">
                                     <i class="fas fa-times"></i>
                                 </a>
                             </div>
@@ -209,7 +209,7 @@
                                                 <i class="fas fa-file-import"></i> 사진 추가하기
                                             </label>
                                         </div>
-                                        <img src="../img/cert-resident-1.png" alt="주민등록등본 예시" style="width: 100%;">
+                                        <img src="${pageContext.request.contextPath}/assets/img/mypage_img/cert-resident-1.png" alt="주민등록등본 예시" style="width: 100%;">
                                     </div>
 
                                     <!-- 두번째 내용 -->
@@ -217,7 +217,7 @@
                                         <p class="resi_one_con order_resi">2번째</p>
                                         <h4 class="resi_one_con">등(초)본에 적혀있는 현주소를 <br/>아래 입력칸에 똑같이 적어주세요.</h4>
                                         <input type="text" name="real_resident" class="resi_one_con resi_button2" placeholder="여기에 똑같이 적어주세요.">
-                                        <img src="../img/certi_resident_2.png" alt="주민등록등본 예시" style="width: 100%;">
+                                        <img src="${pageContext.request.contextPath}/assets/img/mypage_img/certi_resident_2.png" alt="주민등록등본 예시" style="width: 100%;">
                                         <p class="resi_one_con add_resi">
                                             올리신 등(초)본 현주소와 적어주신 내용이<br/>
                                             일치되어야 인증처리가 완료됩니다.
@@ -229,7 +229,7 @@
                                         <p class="resi_one_con order_resi">3번째</p>
                                         <h4 class="resi_one_con">등(초)본 우측 상단에 적혀있는 발급일자를 <br/>
                                             아래 입력칸에 똑같이 입력해주세요.</h4>
-                                        <img class="resi_one_con" src="../img/certi_resident_3.png" alt="주민등록등본 예시" style="width: 100%;">
+                                        <img class="resi_one_con" src="${pageContext.request.contextPath}/assets/img/mypage_img/certi_resident_3.png" alt="주민등록등본 예시" style="width: 100%;">
                                         <div class="resi_date_slec">
                                             <select name="resi_year" id="resi_year" class="selc_con">
                                                 <option>년도</option>

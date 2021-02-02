@@ -23,6 +23,10 @@
 
         <!-- css 참조 -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_mps_detail.css">
+    
+    	<!-- Javascript -->
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     </head>
 
     <body>

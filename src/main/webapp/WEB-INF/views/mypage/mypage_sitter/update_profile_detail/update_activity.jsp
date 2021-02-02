@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -7,20 +9,20 @@
 		<title>아이를부탁해</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="../../../assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="../../../assets/ico/favicon.ico" />
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="../../../assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 		<!-- noto Sans 웹 폰트 적용 -->
-        <link rel="stylesheet" type="text/css" href="../../../assets/css/notosans.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
         <!-- css 참조 -->
-        <link rel="stylesheet" href="../../css/upd_sitter_profile.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_sitter_profile.css">
 
     </head>
 
@@ -33,7 +35,7 @@
                         <header class="mp_detail_tl">
                             <div class="row">
                                 <div class="col-xs-12 mp_detail_tl_in">
-                                    <a href="../update_profile.html">
+                                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile.do">
                                         <i class="fas fa-times"></i>
                                     </a>
                                     <h3 class="center-block">원하는 활동 수정</h3>
@@ -60,25 +62,25 @@
                                     <div class="age_line">
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age11" name="want_care_age" value="babyage1">
-                                            <label for="care_age11"><img class="want_img" src="../../../join/img/innerplayicon_n.png" alt=""></label>
+                                            <label for="care_age11"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/innerplayicon_n.png" alt=""></label>
                                             <div class="care_age_text">실내놀이</div>
                                         </div>
             
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age12" name="want_care_age" value="babyage2">
-                                            <label for="care_age12"><img class="want_img" src="../../../join/img/koreanicon_n.png" alt=""></label>
+                                            <label for="care_age12"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/koreanicon_n.png" alt=""></label>
                                             <div class="care_age_text">한글놀이</div>
                                         </div>
             
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age13" name="want_care_age" value="babyage3">
-                                            <label for="care_age13"><img class="want_img" src="../../../join/img/cleanicon_n.png" alt=""></label>
+                                            <label for="care_age13"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/cleanicon_n.png" alt=""></label>
                                             <div class="care_age_text">간단청소</div>
                                         </div>
             
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age14" name="want_care_age" value="babyage2">
-                                            <label for="care_age14"><img class="want_img" src="../../../join/img/longhouseicon_n.png" alt=""></i></label>
+                                            <label for="care_age14"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/longhouseicon_n.png" alt=""></i></label>
                                             <div class="care_age_text">장기입주</div>
                                         </div>
                                     </div>
@@ -86,25 +88,25 @@
                                     <div class="age_line">
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age21" name="want_care_age" value="babyage1">
-                                            <label for="care_age21"><img class="want_img" src="../../../join/img/guideicon_n.png" alt=""></label>
+                                            <label for="care_age21"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/guideicon_n.png" alt=""></label>
                                             <div class="care_age_text">등하원돕기</div>
                                         </div>
             
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age22" name="want_care_age" value="babyage2">
-                                            <label for="care_age22"><img class="want_img" src="../../../join/img/englishicon_n.png" alt=""></label>
+                                            <label for="care_age22"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/englishicon_n.png" alt=""></label>
                                             <div class="care_age_text">영어놀이</div>
                                         </div>
             
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age23" name="want_care_age" value="babyage3">
-                                            <label for="care_age23"><img class="want_img" src="../../../join/img/eaticon_n.png" alt=""></label>
+                                            <label for="care_age23"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/eaticon_n.png" alt=""></label>
                                             <div class="care_age_text">밥 챙겨주기</div>
                                         </div>
             
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age24" name="want_care_age" value="babyage2">
-                                            <label for="care_age24"><img class="want_img" src="../../../join/img/houseicon_n.png" alt=""></i></label>
+                                            <label for="care_age24"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/houseicon_n.png" alt=""></i></label>
                                             <div class="care_age_text">단기입주</div>
                                         </div>
                                     </div>
@@ -112,19 +114,19 @@
                                     <div class="age_line">
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age31" name="want_care_age" value="babyage1">
-                                            <label for="care_age31"><img class="want_img" src="../../../join/img/readicon_n.png" alt=""></label>
+                                            <label for="care_age31"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/readicon_n.png" alt=""></label>
                                             <div class="care_age_text">책읽기</div>
                                         </div>
             
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age32" name="want_care_age" value="babyage2">
-                                            <label for="care_age32"><img class="want_img" src="../../../join/img/studyicon_n.png" alt=""></label>
+                                            <label for="care_age32"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/studyicon_n.png" alt=""></label>
                                             <div class="care_age_text">학습지도</div>
                                         </div>
             
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age33" name="want_care_age" value="babyage3">
-                                            <label for="care_age33"><img class="want_img" src="../../../join/img/dishicon_n.png" alt=""></label>
+                                            <label for="care_age33"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/dishicon_n.png" alt=""></label>
                                             <div class="care_age_text">간단설거지</div>
                                         </div>
                                     </div>
@@ -132,13 +134,13 @@
                                     <div class="age_line">
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age41" name="want_care_age" value="babyage1">
-                                            <label for="care_age41"><img class="want_img" src="../../../join/img/ousideicon_n.png" alt=""></label>
+                                            <label for="care_age41"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/ousideicon_n.png" alt=""></label>
                                             <div class="care_age_text">야외활동</div>
                                         </div>
             
                                         <div class="care_age_btn">
                                             <input type="checkbox" class="care_age" id="care_age42" name="want_care_age" value="babyage2">
-                                            <label for="care_age42"><img class="want_img" src="../../../join/img/ballicon_n.png" alt=""></label>
+                                            <label for="care_age42"><img class="want_img" src="${pageContext.request.contextPath}/assets/img/ballicon_n.png" alt=""></label>
                                             <div class="care_age_text">체육놀이</div>
                                         </div>
                                     </div>
@@ -206,8 +208,8 @@
         </div>
 
 		<!-- Javascript -->
-		<script src="../../../assets/js/jquery.min.js"></script>
-        <script src="../../../assets/js/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
         <script>
              $(function () {
             //활동 버튼 클릭

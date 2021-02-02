@@ -9,20 +9,20 @@
 		<title>아이를부탁해</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 		<!-- noto Sans 웹 폰트 적용 -->
-        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
         <!-- css 참조 -->
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/mypage/css/upd_mps_detail.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_mps_detail.css">
     </head>
 
     <body>
@@ -33,7 +33,7 @@
                     <header class="mp_detail_tl" style="border-bottom: 1px solid #ccc;">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="sitter_mypage.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do">
                                     <i class="fas fa-angle-left"></i>
                                 </a>
                                 <h3 class="center-block">계정 관리</h3>
@@ -52,7 +52,7 @@
                                             <h4>사용 중인 지원권 없음</h4>
                                         </div>
                                         <div class="acc_con_right col-xs-6">
-                                            <a href="<%=request.getContextPath()%>/buy/buy.jsp">
+                                            <a href="${pageContext.request.contextPath}/buy/buy.do">
                                                 <button type="button">지원권 구매하기</button>
                                             </a>
                                         </div>
@@ -143,17 +143,17 @@
                         <section class="group_account_foot">
                             <div class="row">
                                 <div class="col-xs-12 account_ft_in">
-                                    <a class="account_ft_btn" href="upadate_passoword.jsp">
+                                    <a class="account_ft_btn" href="${pageContext.request.contextPath}/mypage/mypage_sitter/upadate_passoword.do">
                                         <p>비밀번호 변경</p>
                                         <i class="fas fa-angle-right"></i>
                                     </a>
                                     <div class="line"></div>
-                                    <a class="account_ft_btn" href="leave_abu.jsp">
+                                    <a class="account_ft_btn" href="${pageContext.request.contextPath}/mypage/mypage_sitter/leave_abu.do">
                                         <p>회원탈퇴 신청</p>
                                         <i class="fas fa-angle-right"></i>
                                     </a>
                                     <div class="line"></div>
-                                    <a class="account_ft_btn" href="agree_service.jsp">
+                                    <a class="account_ft_btn" href="${pageContext.request.contextPath}/mypage/mypage_sitter/agree_service.do">
                                         <p>아부해 서비스 이용 동의</p>
                                         <i class="fas fa-angle-right"></i>
                                     </a>

@@ -9,20 +9,20 @@
 		<title>아이를부탁해</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 		<!-- noto Sans 웹 폰트 적용 -->
-        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
          <!-- css 참조 -->
-         <link rel="stylesheet" href="<%=request.getContextPath()%>/mypage/css/upd_mps_detail.css">
+         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_mps_detail.css">
     </head>
 
     <body>
@@ -33,7 +33,7 @@
                     <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="sitter_mypage.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">내 맘시터 채용 횟수</h3>
@@ -53,7 +53,7 @@
                                 <div class="cm_page_cont">
                                     <div class="lm_page_box">
                                         <div class="cm_page_box_left">
-                                            <img src="../img/profile.png" alt="임시프로필">
+                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
                                             <br>
                                             <span style="margin-top: 10px; width: 70px; padding: 5px 10px; background-color: #888888; border-radius: 15px;
                                             color: #ffffff; font-size: 0.7em; font-weight: bold;">
