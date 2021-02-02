@@ -254,7 +254,7 @@
 			</div>
 			</div><!-- fin. info -->
 		</div> <!-- fin. tab_area -->
-		<button class="btn_more" onClick="location.href='tab_more.jsp'">후기 더 보기</button>
+		<button class="btn_more" onClick="location.href='tab_more.do'">후기 더 보기</button>
 	</div>
 </body>
 </html>

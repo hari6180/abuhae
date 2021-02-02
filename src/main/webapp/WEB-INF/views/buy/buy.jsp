@@ -186,7 +186,7 @@
 					});
 					$.ajax({
 						type : 'GET',                 //get방식으로 통신
-						url : activeTab + ".jsp",    //탭의 data-tab속성의 값으로 된 jsp파일로 통신
+						url : activeTab + ".do",    //탭의 data-tab속성의 값으로 된 jsp파일로 통신
 						dataType : "html",            //html형식으로 값 읽기
 						error : function() {          //통신 실패시 ㅠㅠ
 							alert('통신실패!');

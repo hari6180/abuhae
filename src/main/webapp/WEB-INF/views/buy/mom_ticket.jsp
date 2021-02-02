@@ -107,7 +107,7 @@
 							<div class="mom_buy_select_btn"></div>
 						</div>
 					</div> <!-- fin. mom_buy_box -->
-					<button type="button" class="buy_btn" onclick = "location.href = 'receipt.jsp'">
+					<button type="button" class="buy_btn" onclick = "location.href = 'receipt.do'">
 					 <p class="buy_btn_style">  
 					   결제하기
 					 </p>
