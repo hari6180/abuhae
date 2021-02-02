@@ -199,17 +199,28 @@
 						</div>
 
 						<table class="table table-bordered table-hover">
+							<colgroup>
+									<col style="width: 42px;">
+									<col style="width: 100px;">
+									<col style="width: 60px;">
+									<col style="width: 75px;">
+									<col style="width: 120px">
+									<col style="width: 100px;">
+									<col style="width: 150px;">
+									<col style="width: 150px;">
+									<col style="width: 150px;">
+								</colgroup>
 							<thead>
 								<tr role="row">
-									<th class="text-center"><input type="checkbox" onclick="allcheck(this)"></th>
-									<th class="text-center">회원번호</th>
-									<th class="text-center">id</th>
-									<th class="text-center">이름</th>
-									<th class="text-center">email</th>
-									<th class="text-center">phone</th>
-									<th class="text-center">프로필/신청서</th>
-									<th class="text-center">신고유형</th>
-									<th class="text-center">신고내용</th>
+									<th scope="col" class="text-center"><input type="checkbox" onclick="allcheck(this)"></th>
+									<th scope="col" class="text-center">회원번호</th>
+									<th scope="col" class="text-center">id</th>
+									<th scope="col" class="text-center">이름</th>
+									<th scope="col" class="text-center">email</th>
+									<th scope="col" class="text-center">phone</th>
+									<th scope="col" class="text-center">프로필/신청서</th>
+									<th scope="col" class="text-center">신고유형</th>
+									<th scope="col" class="text-center">신고내용</th>
 								</tr>
 							</thead>
 							<tbody>

@@ -22,7 +22,8 @@ ul, ol {
 }
 /* 게시판 관리 글씨 위치 */
 .middle {
-	padding-top: 45px;
+    padding-top: 45px;
+    padding-left: 400px;
 }
 /* 게시판 크기 */
 .text_box {

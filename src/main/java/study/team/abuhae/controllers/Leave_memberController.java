@@ -1,5 +1,5 @@
 package study.team.abuhae.controllers;
 
-public class leave_memberController {
+public class Leave_memberController {
 
 }

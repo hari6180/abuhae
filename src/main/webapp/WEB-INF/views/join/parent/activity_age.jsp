@@ -218,7 +218,11 @@
             <!-- jquery 파일명 수정 -->
             <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
             <!--sweetalert plugin-->
-            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <!--Google CDN 서버로부터 jQuery 참조 -->
+    		<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    		<!-- jQuery Ajax Setup -->
+    		<script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
+            <script type="text/javascript"></script>
             <script type="text/javascript">
                 $(function () {
 
@@ -303,7 +307,6 @@
                             url: "${pageContext.request.contextPath}/join/parent/activity_age_ok.do",
                             data: member,
                             dataType : 'json',
-                            contentType: "application/json",
                             type: "POST",
                             success: function (data) {
                                 alert("success");

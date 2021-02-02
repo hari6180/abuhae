@@ -27,14 +27,14 @@
 	<context:component-scan base-package="study.team.abuhae.service.impl"/>
 	<context:component-scan base-package="study.team.abuhae.controllers"/>
 	
-	<!-- 인터셉터 등록 / 0130 지우 
+	<!-- 인터셉터 등록 / 0130 지우 -->
 	<interceptors>
 		<interceptor>
 			<mapping path="/**"/>
 			<beans:bean id="appInterceptor"
 			class="study.team.abuhae.interceptor.AppInterceptor" />
 		</interceptor>
-	</interceptors>-->
+	</interceptors>
 	
 
 	<!-- 스프링에서 처리할 수 없는 요청은 tomcat에 위임 / 0201 선아-->

@@ -6,6 +6,20 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- helper 구동에 필요한 환경설정 값 -->
+	<util:properties id="config">
+		<!-- 인코딩 타입 -->
+		<prop key="encType">UTF-8</prop>
+	</util:properties>
+	
+	<!-- webhelper 주입 설정 -->
+	<bean id="webHelper" class="study.team.abuhae.helper.WebHelper">
+		<property name="encType" value="#{config['encType']}"/>
+	</bean>
+	
+	<!-- regexhelper 주입 -->
+	<bean id="regexHelper" class="study.team.abuhae.helper.RegexHelper"></bean>
+	
 		<!-- DB연동에 필요한 환경설정 값 -->
     <util:properties id="dbConfig">
         <!-- 데이터베이스 호스트 이름 -->

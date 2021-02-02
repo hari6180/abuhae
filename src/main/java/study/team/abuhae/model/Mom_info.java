@@ -1,7 +1,9 @@
 package study.team.abuhae.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper=true)
 @Data
 public class Mom_info extends Member {
 	private int momno;
