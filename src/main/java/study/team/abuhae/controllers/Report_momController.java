@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class Report_momController {
-	
-	@RequestMapping(value = "/page_detail/mom_page_detail/mom_report.do", method = RequestMethod.GET)
-	public String IntroWebsite(Model model) {
+		// 맘 신고 페이지
+		@RequestMapping(value = "/page_detail/mom_page_detail/mom_report.do", method = RequestMethod.GET)
+		public String report_mom(Model model) {
 
-		return "/page_detail/mom_page_detail/mom_report";
-	}
-
-
+			return "/page_detail/mom_page_detail/mom_report";
+		}
 }

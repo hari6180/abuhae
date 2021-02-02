@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class Sitter_ticketController {
+	
+	// 시터 이용권 페이지
 	@RequestMapping(value = "/buy/sitter_ticket.do", method = RequestMethod.GET)
 	public String IntroWebsite(Model model) {
 
