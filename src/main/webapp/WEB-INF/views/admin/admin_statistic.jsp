@@ -18,7 +18,7 @@
 		<!-- noto Sans 웹 폰트 적용 -->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 		<!-- css 참조  -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin/css/admin_statistic.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_statistic.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 		<!-- 구글 폰트 참조 -->
 		<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -32,15 +32,15 @@
 			<header>
 			<%@ include file="../admin/admin_header.jsp"%>
 			</header>
-				<div class="col-md-10 middle">
+				<div class="col-md-10 middle" id="middle_yunjae">
 					<p id="todayIs" style="font-family: 'Acme'; font-size: 2em; text-align: center; color: #5f5f5f; "></p>
-					<div id="chartContainer_connect" style="height: 300px; width: 100%;"></div>
+					<div id="chartContainer_connect" style="height: 300px; width: 700px;"></div>
 					<br/>
-					<div id="chartContainer_age" style="height: 300px; width: 100%;"></div>
+					<div id="chartContainer_age" style="height: 300px; width: 700px;"></div>
 					<br/>
-					<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+					<div id="chartContainer" style="height: 300px; width: 700px;"></div>
 					<br/>
-					<div id="chartContainer_yes" style="height: 300px; width: 100%;"></div>
+					<div id="chartContainer_yes" style="height: 300px; width: 700px;"></div>
 				</div>
 			</div>
 						

@@ -101,7 +101,7 @@
 			<form role="form" class="form_box" method="post">
 				<div class="main_logo">
 					<a href="${pageContext.request.contextPath}/Index.jsp">
-						<img src="${pageContext.request.contextPath}/img/logo (1).png" class="logo" />
+						<img src="${pageContext.request.contextPath}/assets/img/logo (1).png" class="logo" />
 					</a>
 				</div>
 				<div class="form-group">
@@ -123,7 +123,7 @@
 		$(function () {
 			$(".btn-block").on("click", function () {
 				if ($("#user_id").val() == "admin" && $("#user_pw").val() == "123") {
-					location.href = "${pageContext.request.contextPath}/admin/admin_member.jsp";
+					location.href = "${pageContext.request.contextPath}/admin/admin_member.do";
 				} else {
 					alert("아이디 혹은 비밀번호를 확인해 주세요.");
 				}

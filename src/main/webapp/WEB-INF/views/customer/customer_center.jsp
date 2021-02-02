@@ -20,8 +20,8 @@
 
 		<!-- noto Sans 웹 폰트 적용 -->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
-		<link rel="stylesheet" type="text/css" herf="${pageContext.request.contextPath}/customer/css/flexboxgrid.css" />
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/customer/css/customer_center.css" />
+		<link rel="stylesheet" type="text/css" herf="${pageContext.request.contextPath}/assets/css/flexboxgrid.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/customer_center_yj.css" />
 		<!--header css-->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index_header.css">
 		<!-- fontawesome(글리피콘) 적용 -->
@@ -118,7 +118,7 @@
 			$("#mybutton").click(function(e) {
 				$.ajax( {
 					// 결과를 읽어올 URL
-					url: '${pageContext.request.contextPath}/customer/hello.jsp',
+					url: '${pageContext.request.contextPath}/customer/hello.do',
 					// 웹 프로그램에게 데이터를 전송하는 방식
 					// 생략할 경우 get으로 자동 지정됨
 					method: 'get',
@@ -136,12 +136,12 @@
 			}) // end $.#mybutton
 				//모달의 로그인 버튼 클릭시
 				$("#login_btn").on("click", function () {
-					location.replace('${pageContext.request.contextPath}/login/login.jsp');
+					location.replace('${pageContext.request.contextPath}/login/login.do');
 				});
 
 				//모달의 회원가입 버튼 클릭시
 				$("#go_to_join").on("click", function () {
-					location.replace('${pageContext.request.contextPath}/join/join.jsp');
+					location.replace('${pageContext.request.contextPath}/join/join.do');
 				});
 			});
 			</script>

@@ -20,7 +20,7 @@
 		<!-- css 참조  -->
 		<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin/css/admin_coupon.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_coupon.css" />
 		<style>
 
 		</style>
@@ -33,10 +33,14 @@
 		<div class="Title">
 		<h1>이용권 관리 현황 / 쿠폰 발송</h1>
 		<ol class="breadcrumb">
-							<li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-							<li class="active">이용권 관리 현황 / 쿠폰 발송</li>
-							
-						</ol>
+		<li>
+		<i class="fas fa-home"></i>
+		<a href="${pageContext.request.contextPath}/admin_member.do">Home</a>
+		</li>
+		<li class="active">
+		이용권 관리 현황 / 쿠폰 발송
+		</li>	
+		</ol>
 		</div>
 		<div class="dropdown">
 		<select class="filter" id="filter_bbs" name="filter_bbs">

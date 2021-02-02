@@ -23,7 +23,7 @@
 		 <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 		
 		 <!-- css 참조 -->
-		 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin_mng_mem.css">
+		 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_mng_mem.css" />
 		 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 	</head>
 
@@ -37,7 +37,7 @@
 					<div class="title_cont col-xs-12">
 						<h3>전체 회원 관리</h3>
 						<ol class="breadcrumb">
-							<li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin_member.do"><i class="fas fa-home"></i> Home</a></li>
 							<li><a href="#"></i>회원관리</a></li>
 							<li class="active"></i><a href="#">전체 회원 관리</a></li>
 						</ol>

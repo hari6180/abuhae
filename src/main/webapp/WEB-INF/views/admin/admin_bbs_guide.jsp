@@ -22,7 +22,7 @@
 		<!-- fontawesome(글리피콘) 적용 -->
 		<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 		<!-- css 참조  -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin/css/admin_custom_bbs.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_custom_bbs.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 		<style type="text/css">
 		</style>
@@ -132,7 +132,7 @@
 											4
 										</td>
 										<td>
-											부뫃회원 가이드
+											부모회원 가이드
 										</td>
 										<td class="left">
 											<a href="#"><span>아부해 시작하기</span></a>

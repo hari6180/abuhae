@@ -21,7 +21,7 @@
 		<!-- fontawesome(글리피콘) 적용 -->
 		<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 		<!-- css 참조  -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin/css/admin_custom_bbs.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_custom_bbs.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 		<style type="text/css">
 		</style>
@@ -38,7 +38,7 @@
                 <ol class="breadcrumb">
                     <li>
 						<i class="fas fa-home"></i>
-                        <a href="admin_main.html">Home</a>
+                        <a href="${pageContext.request.contextPath}/admin_member.do">Home</a>
                     </li>
                     <li class="active">
                         현재 글쓰기 누른 위치
@@ -71,7 +71,7 @@
 					</div>
 					<hr>
 					<div>
-						<div>
+						<div class="btn_button">
 							<a href="#" class="btn_warning"><span><i class="far fa-file-alt"></i>&nbsp;글쓰기</span></a>
 							<a href="#" class="btn_nomal"><span><i class="fas fa-pen"></i>&nbsp;취소</span></a>
 						</div>

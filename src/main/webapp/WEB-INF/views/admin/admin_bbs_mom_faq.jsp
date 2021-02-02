@@ -21,7 +21,7 @@
 		<!-- fontawesome(글리피콘) 적용 -->
 		<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 		<!-- css 참조  -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin/css/admin_custom_bbs.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_custom_bbs.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 		<style type="text/css">
 		</style>
@@ -38,7 +38,7 @@
                 <ol class="breadcrumb">
                     <li>
 						<i class="fas fa-home"></i>
-                        <a href="admin_main.html">Home</a>
+                        <a href="${pageContext.request.contextPath}/admin_member.do">Home</a>
                     </li>
                     <li class="active">
                         부모회원 자주 묻는 질문

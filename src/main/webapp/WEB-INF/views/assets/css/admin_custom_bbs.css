@@ -29,6 +29,7 @@ li {
 }
 .gleft {
 	padding-left: 220px;
+	padding-top: 20px;
 }
 .content_header > h1 {
   margin: 0;
@@ -115,7 +116,7 @@ option {
   text-align: right;
 }
 
-.btn_nomal {
+.btn_nomal, .btn_warning {
   height: 28px;
   padding: 0 10px;
   color: #1c1c1c;
@@ -258,4 +259,13 @@ tr {
 .active {
   color: #ff5400;
   font-weight: 700;
+}
+.btn_button {
+  float: right;
+}
+.bbs_content {
+  padding-left: 220px;
+}
+#bbs_content {
+  width: 500px;
 }

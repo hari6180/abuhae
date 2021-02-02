@@ -13,7 +13,7 @@ ul, ol {
 }
 /* 전체 박스 크기*/
 .container {
-	height: 1200px;
+	height: 100%;
 }
 /* 왼쪽 사이드 바 */
 .sidebar {
@@ -23,7 +23,7 @@ ul, ol {
 /* 게시판 관리 글씨 위치 */
 .middle {
     padding-top: 45px;
-    padding-left: 400px;
+    padding-left: 300px;
 }
 /* 게시판 크기 */
 .text_box {
@@ -33,4 +33,7 @@ ul, ol {
 /* admin 위치 */
 #connect {
 	float: right;
+}
+#middle_yunjae {
+	padding-left: 300px;
 }

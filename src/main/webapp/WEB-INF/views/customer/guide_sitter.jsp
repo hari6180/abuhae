@@ -17,7 +17,7 @@
 
 		<!-- noto Sans 웹 폰트 적용 -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/customer/css/guide_sitter.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/guide_sitter_yj.css" />
         <!-- fontawesome(글리피콘) 적용 -->
 		<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 	</head>

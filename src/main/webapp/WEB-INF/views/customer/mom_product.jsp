@@ -17,7 +17,7 @@
 
 		<!-- noto Sans 웹 폰트 적용 -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/customer/css/mom_product.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mom_product_yj.css" />
         <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 	</head>
 
