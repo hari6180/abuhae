@@ -236,7 +236,7 @@
                     </div>
                     <!--end 동-->
                 </div>
-                <a href="schedule.jsp"><button class="next_btn" disabled>다음</button></a>
+                <a href="${pageContext.request.contextPath}/join/parent/schedule.do"><button class="next_btn" disabled>다음</button></a>
 
             </div>
 

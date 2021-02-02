@@ -115,7 +115,7 @@
                     </div>
                 </form>
                 <!--end inputbox-->
-                <a href="agreement.jsp"><button class="next_btn" disabled>다음</button></a>
+                <a href="${pageContext.request.contextPath}/join/parent/agreement.do"><button class="next_btn" disabled>다음</button></a>
             </div>
         </div> <!-- fin. col-xs-12 -->
     </div>

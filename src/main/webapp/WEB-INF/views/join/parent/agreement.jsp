@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <br>
-                <a href="success.jsp"><button class="next_btn">다음</button></a>
+                <a href="${pageContext.request.contextPath}/join/parent/success.do"><button class="next_btn">다음</button></a>
             </div> <!-- fin. col-xs-12 -->
     </div>
 

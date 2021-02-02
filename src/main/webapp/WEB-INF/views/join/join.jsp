@@ -20,7 +20,7 @@
     <!-- icon 참조 -->
     <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
     <!--join css-->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/join/css/join_parent.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/join_parent.css">
     <!-- Javascript -->
 	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
@@ -40,14 +40,16 @@
 <body>
     <div class="app">
         <div class="container">
-            <div id="menu"></div>
+            <div id="menu">
+            	<%@ include file="../index_header.jsp"%>
+            </div>
             <div id="join">
                 <div class="col-xs-12">
                     <!-- xs-12로 모바일 맞춤 -->
                     <div class="join_box">
                         <div class="join_button">
-                            <a href="parent/start.jsp">
-                                <button class="join_mom">
+                            <a href="${pageContext.request.contextPath}/join/parent/start.do?type=M">
+                                <button class="join_mom" value="M" name="M">
                                     <div class="join_group">
                                         <div>
                                             <img src="${pageContext.request.contextPath}/assets/img/join-mom-img.png">
@@ -59,8 +61,8 @@
                                     </div>
                                 </button></a>
                             <hr>
-                            <a href="sitter/start.jsp">
-                                <button class="join_siter">
+                            <a href="${pageContext.request.contextPath}/join/sitter/start.do?type=S">
+                                <button class="join_siter" value="S" name="S">
                                     <div class="join_group">
                                         <div>
                                             <img src="${pageContext.request.contextPath}/assets/img/join-sitter-img.png">
@@ -75,7 +77,7 @@
                         </div>
                         <div class="already_join">
                             <span>이미 맘시터 회원이신가요?</span><br>
-                            <a href="${pageContext.request.contextPath}/login/login.jsp">로그인</a>
+                            <a href="${pageContext.request.contextPath}/login/login.do">로그인</a>
                         </div>
                     </div>
                 </div> <!-- fin. col-xs-12 -->

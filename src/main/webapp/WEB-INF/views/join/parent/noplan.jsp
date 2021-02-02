@@ -65,7 +65,7 @@
                         <div class="time_box"><button class="time_btn" value="end_evning">저녁</button></div>
                     </div>
                 </div>
-                <a href="description.jsp"><button class="next_btn">다음</button></a>
+                <a href="description.do"><button class="next_btn">다음</button></a>
             </div>
 
         </div> <!-- fin. col-xs-12 -->

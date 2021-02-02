@@ -52,7 +52,7 @@
                         잃게됩니다.</span>
                 </p>
 
-                <a href="account.jsp"><button class="next_btn">나중에 입력할게요.</button></a>
+                <a href="${pageContext.request.contextPath}/join/parent/account.do"><button class="next_btn">나중에 입력할게요.</button></a>
             </div>
 
 

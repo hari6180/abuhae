@@ -115,7 +115,7 @@
                     </div>
                 </div>
 
-                <a href="location.jsp"><button class="next_btn">다음</button></a>
+                <a href="${pageContext.request.contextPath}/join/parent/location.do"><button class="next_btn">다음</button></a>
             </div>
 
         </div> <!-- fin. col-xs-12 -->

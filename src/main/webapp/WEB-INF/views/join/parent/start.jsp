@@ -21,7 +21,7 @@
     <!-- icon 참조 -->
     <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
     
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/join/css/join_parent.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/join_parent.css" />
 
     <style type="text/css">
         html,
@@ -46,9 +46,9 @@
                 </div>
 
                 <!--다음 회원가입으로 진행-->
-                <a href="activity_age.html"><button class="start_join_btn">회원가입 시작하기 ></button></a>
+                <a href="${pageContext.request.contextPath}/join/parent/activity_age.do"><button class="start_join_btn">회원가입 시작하기 ></button></a>
                 <!--로그인 페이지로 이동-->
-                <a href="${pageContext.request.contextPath}/login/login.html"><button class="already_join_btn">이미 맘시터 회원이신가요?</button></a>
+                <a href="${pageContext.request.contextPath}/login/login.do"><button class="already_join_btn">이미 맘시터 회원이신가요?</button></a>
 
             </div> <!-- fin. col-xs-12 -->
     </div>
