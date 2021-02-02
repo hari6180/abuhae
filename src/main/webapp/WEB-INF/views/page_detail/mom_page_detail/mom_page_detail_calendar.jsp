@@ -35,7 +35,7 @@
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
-					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = 'mom_report.jsp'">
+					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = 'mom_report.do'">
 				 	 <img src="<%=request.getContextPath()%>/assets/img/siren.png" width="13" height="15"/>
 				             신고
 				  	</button>
@@ -470,7 +470,7 @@
 						</div>
 					</div>
 					<div class="interview_btn">
-						<button tabindex="0" type="button" class="btn-interview" onclick = "location.href = 'mom_interview.jsp'">
+						<button tabindex="0" type="button" class="btn-interview" onclick = "location.href = 'mom_interview.do'">
 							<div>
 								<div class="btn_text_box">
 									<span><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">인터뷰 신청하기</a></span>
@@ -493,7 +493,7 @@
 								</p>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick="location.href='<%=request.getContextPath()%>/buy/buy.jsp">
+								<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick="location.href='<%=request.getContextPath()%>/buy/buy.do">
 									지원권 구매하러 가기
 								</button>
 							</div>

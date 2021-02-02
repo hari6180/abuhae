@@ -118,7 +118,7 @@
 					</div> <!-- fin. sitter_buy_desc_area -->
 					<div class="product_block">
 						<div id="thumbnail">
-							<img src="<%=request.getContextPath()%>//img/safe.png" width="50" height="50" alt="보험 썸네일"/>
+							<img src="<%=request.getContextPath()%>/img/safe.png" width="50" height="50" alt="보험 썸네일"/>
 						</div>
 						<div class="product_content">
 							<div class="product_name">맘시터 안전 보험 (3개월)</div>

@@ -35,7 +35,7 @@
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
-					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = 'sitter_report.jsp'">
+					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = 'sitter_report.do'">
 				 	<img src="<%=request.getContextPath()%>/assets/img/siren.png" width="13" height="15"/>
 				            신고
 				  	</button>
@@ -699,7 +699,7 @@
 							</div>
 						</div> <!-- fin. fixed_btn_jim -->					
 						<div class="interview_btn">
-							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href = 'sitter_interview.jsp'">
+							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href = 'sitter_interview.do'">
 								<div>
 									<div class="btn_text_box">
 										<span><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">인터뷰 신청하기</a></span>
@@ -742,7 +742,7 @@
 					$(this).css('background-color', 'rgb(255,238,224)');
 					$.ajax({
 						type : 'GET',                 //get방식으로 통신
-						url : activeTab + ".jsp",    //탭의 data-tab속성의 값으로 된 jsp파일로 통신
+						url : activeTab + ".do",    //탭의 data-tab속성의 값으로 된 jsp파일로 통신
 						dataType : "html",            //html형식으로 값 읽기
 						error : function() {          //통신 실패시 ㅠㅠ
 							alert('통신실패!');
