@@ -60,7 +60,7 @@
 									희망시급 10,000원
 								</span>
 								<div class="btn_area">
-								<button type="button" class="btn" onclick = "location.href = 'http://localhost:8080/<%=request.getContextPath()%>/mypage/mypage_mom/mom_mypage.jsp'">
+								<button type="button" class="btn" onclick = "location.href = 'http://localhost:8080/<%=request.getContextPath()%>/mypage/mypage_mom/mom_mypage.do'">
 									<span class="btn_text">수정</span>
 								</button>
 								</div> <!-- fin. btn_area -->
@@ -90,7 +90,7 @@
 						 매일 낮 12시에 다시 인터뷰 지원을 할 수 있습니다.<br/>
 						 인터뷰 지원권을 구매하면, 매일 하루 6명의 시터회원에게 지원할 수 있습니다.<br/>
 						 </p>
-						 <button type="button" class="btn btn-primary" id="buy_btn" onclick = "location.href = 'http://localhost:8080/<%=request.getContextPath()%>/buy/buy.jsp'">지원권 구매하러 가기</button>
+						 <button type="button" class="btn btn-primary" id="buy_btn" onclick = "location.href = 'http://localhost:8080/<%=request.getContextPath()%>/buy/buy.do'">지원권 구매하러 가기</button>
 						</div>
 						<div class="modal-footer">
 							<p style="font-size: 0.9em; font-weight: bold; padding-bottom: 10px;">

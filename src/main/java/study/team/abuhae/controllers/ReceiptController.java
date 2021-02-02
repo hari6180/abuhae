@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ReceiptController {
+	
+	// 이용권 구매 페이지
 	@RequestMapping(value = "/buy/receipt.do", method = RequestMethod.GET)
-	public String IntroWebsite(Model model) {
+	public String receipt(Model model) {
 
 		return "/buy/receipt";
 	}

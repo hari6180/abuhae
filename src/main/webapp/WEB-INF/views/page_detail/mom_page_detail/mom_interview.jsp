@@ -60,7 +60,7 @@
 									희망시급 10,000원
 								</span>
 								<div class="btn_area">
-								<button type="button" class="btn" onclick = "location.href = 'http://localhost:8080<%=request.getContextPath()%>/mypage/mypage_sitter/sitter_mypage.jsp'">
+								<button type="button" class="btn" onclick = "location.href = 'http://localhost:8080<%=request.getContextPath()%>/mypage/mypage_sitter/sitter_mypage.do'">
 									<span class="btn_text">수정</span>
 								</button>
 								</div> <!-- fin. btn_area -->

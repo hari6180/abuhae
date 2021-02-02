@@ -10,7 +10,7 @@ public class Sitter_ticketController {
 	
 	// 시터 이용권 페이지
 	@RequestMapping(value = "/buy/sitter_ticket.do", method = RequestMethod.GET)
-	public String IntroWebsite(Model model) {
+	public String sitter_ticket(Model model) {
 
 		return "/buy/sitter_ticket";
 	}
