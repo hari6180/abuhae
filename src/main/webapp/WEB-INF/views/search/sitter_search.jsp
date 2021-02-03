@@ -31,6 +31,281 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- ajax Helper -->
     <script src="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.css" />
+    
+        <!-- Javascript -->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        // 무한 스크롤 1218 하리
+        $(document).scroll(function () {
+          var maxHeight = $(document).height();
+          var currentScroll = $(window).scrollTop() + $(window).height();
+
+          if (maxHeight <= currentScroll + 100) {
+            $.ajax({
+              // 결과를 읽어올 URL
+              url: "item_group.html",
+              // 웹 프로그램에게 데이터를 전송하는 방식.
+              // 생략할 경우 get으로 자동 지정됨
+              method: "get",
+              // 전달할 조건값은 JSON 형식으로 구성
+              // 사용하지 않을 경우 명시 자체를 생략할 수 있다.
+              data: {},
+              // 읽어올 내용의 형식(생략할 경우 json)
+              dataType: "html",
+              // 읽어온 내용을 처리하기 위한 함수
+              success: function (req) {
+                // 준비된 요소에게 읽어온 내용을 출력한다.
+                $("#result").append(req);
+              },
+            }); // end $.ajax
+          }
+        });
+      });
+
+      $(function () {
+        // 헤더 메뉴 load처리 1224 하리
+        // $("#menu").load("/ezen-android2020-2/index_header.html"); - 210124 include 변경
+
+        // 상세 페이지 연동 1220 하리
+        $(".sitter_item_group").on("click", function () {
+          location.href = "${pageContext.request.contextPath}/abuhae/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.do";
+        });
+
+        /** 원하는 활동 선택 ------------------------------------------------------------------- */
+        //활동 버튼 클릭
+        $(".act_btn").click(function (e) {
+          //버튼 클릭시 text 색 변경
+          $(this).next().find(".want_text").toggleClass("select_text");
+          //버튼 클릭시 이미지 URL 변경
+          //url 가져오기
+          var img_url = $(this).next().find(".want_img").attr("src");
+          var indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
+          if (indeximg > -1) {
+            var img_src = img_url.replace(/_n/, "_s");
+            $(this).next().find(".want_img").attr("src", img_src);
+          } else {
+            var img_src = img_url.replace(/_s/, "_n");
+            $(this).next().find(".want_img").attr("src", img_src);
+          }
+        });
+        // 리셋 버튼 0109 하리
+        $("#act_reset").click(function (e) {
+          e.preventDefault();
+
+          // 이미지 찾기
+          var $img = $(".want_img");
+          // 이미지 길이
+          var length = $img.length;
+          // console.log(length);
+
+          for (var i = 0; i < length; i++) {
+            var img_url = $img.eq(i).attr("src");
+            var img_src = img_url.replace(/_s/, "_n");
+            $(".want_img").eq(i).attr("src", img_src);
+          }
+
+          $(".act_btn").prop("checked", false);
+          $(".want_text").removeClass("select_text");
+          $(".act_label").removeClass("select_act_type");
+          $(".act_label").removeClass("unselect_act_type");
+        });
+
+        //활동 버튼 반영 1221 하리
+        $("#act_apply").click(function (e) {
+          e.preventDefault();
+          $("#activity_type_modal").modal("hide");
+          const act_btn = $(".activity_type_btn");
+          const result2 = [];
+
+          for (var i = 0; i < act_btn.length; i++) {
+            result2.push($(act_btn[i]).val());
+          }
+
+          for (var i = 0; i < result2.length; i++) {
+            if (!$(".act_label").eq(i).hasClass("select_act_type")) {
+              $(".act_label").eq(i).addClass("unselect_act_type");
+            }
+          }
+        });
+
+        $(".act_btn").change(function change_btn(e) {
+          e.preventDefault();
+          const checked = $(".act_btn:checked");
+          const act_btn = $(".activity_type_btn");
+          const result1 = [];
+          const result2 = [];
+
+          for (var i = 0; i < checked.length; i++) {
+            result1.push($(checked[i]).val());
+          }
+
+          //console.log(result1);
+
+          for (var i = 0; i < act_btn.length; i++) {
+            result2.push($(act_btn[i]).val());
+          }
+
+          //console.log(result2);
+
+          for (var i = 0; i < result1.length; i++) {
+            for (var j = 0; j < result2.length; j++) {
+              if (result1[i] == result2[j]) {
+                $(".act_label").eq(j).addClass("select_act_type");
+              }
+            }
+          }
+          //console.log($(".act_label").eq(j).hasClass("select_act_type"));
+        });
+
+        $(".activity_type_wrap").click(function (e) {
+          $(".act_label").removeClass("select_act_type");
+          $(".act_label").removeClass("unselect_act_type");
+        });
+
+        /** 상세 검색 ------------------------------------------------------------------- */
+
+        // 아이나이 버튼 클릭
+        $(".ages").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("i").toggleClass("select_text_detail");
+          $(this).find("span").toggleClass("select_text_detail");
+        });
+
+        // 돌봄요일 버튼 클릭
+        $(".care_day").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("div").toggleClass("select_text_detail");
+        });
+
+        // 돌봄 시간대 버튼 클릭
+        $(".time_range").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("span").toggleClass("select_text_detail");
+        });
+
+        // 맘시터 유형 버튼 클릭
+        $(".sitter_type").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("span").toggleClass("select_text_detail");
+        });
+
+        // 리셋 버튼 0109 하리
+        $("#reset_detail").click(function (e) {
+          e.preventDefault();
+          $("#sitter_search_detail_modal .modal_content *").removeClass("select_btn_detail");
+          $("#sitter_search_detail_modal .modal_content *").removeClass("select_text_detail");
+          $(".ins_check").prop("checked", false);
+          $(".want_age").prop("checked", false);
+        });
+
+        /** 상세 검색 end ------------------------------------------------------------------- */
+
+        //시 클릭했을 때
+        $(".loc_btn").on("click", function () {
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#si").find("button").removeClass("select_loaction");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
+            //시 선택하면 gu 보이게
+            $("#gu>div").removeClass("hide_content");
+            $("#gu button").removeClass("hide_content");
+            $("#gu>div").addClass("show_content");
+          }
+        });
+        //구 클릭했을 때
+        $("#gu button").on("click", function () {
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
+            //구 선택하면 동 보이게
+            $("#dong>div").removeClass("hide_content");
+            $("#dong button").removeClass("hide_content");
+            $("#dong>div").addClass("show_content");
+          }
+        });
+
+        //동 클릭했을때
+        $("#dong button").on("click", function () {
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#dong").find("button").removeClass("select_loaction hide_content");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
+
+            $.ajax({
+              type: "GET", //get방식으로 통신
+              url: "${pageContext.request.contextPath}/assets/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
+              dataType: "html", //html형식으로 값 읽기
+              error: function () {
+                //통신 실패시 ㅠㅠ
+                alert("통신실패!");
+              },
+              success: function (data) {
+                //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
+                $(".select_box").html(data);
+                var now = $(".next_btn").prop("disabled");
+                //가져온 값 역으로 변경하여 다시 적용
+                $(".next_btn").prop("disabled", !now);
+              },
+            });
+          }
+        });
+
+        // 리셋 0109 하리
+        $("#reset_loc").on("click", function (e) {
+          e.preventDefault();
+          $(".loc_btn").removeClass("select_loaction");
+          $("#gu button").removeClass("select_loaction");
+          $("#gu button").addClass("hide_content");
+          $("#dong button").removeClass("select_loaction");
+          $("#dong button").addClass("hide_content");
+        });
+
+        $(".swapHeart").on("click", function (e) {
+          event.stopPropagation(); // 버블링 방지 1220 하리
+          var $jim = $(this);
+
+          // 찜할 때 alert창과 glyphicon변형
+          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+            $(this).find("span").removeClass("glyphicon-heart-empty");
+            $(this).find("span").addClass("glyphicon-heart");
+            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+          }
+          // 찜 취소할 때 alert창과 glyphicon변형
+          else {
+            swal("찜 하기 취소");
+            $(this).find("span").addClass("glyphicon-heart-empty");
+          }
+        }); // fin. 찜버튼 기능
+
+        // 드롭다운 선택 - 0109 하리
+        $(".dr_option").click(function () {
+          $(this).addClass("active");
+          $(".dr_option").not(this).removeClass("active");
+          $("#orderby").html($(this).find("a").html());
+        });
+      });
+    </script>
   </head>
 
   <!--grid 사용시 col-xs-nn 사용-->
@@ -595,7 +870,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               </div>
               <div class="order_selector_group">
                 <!-- 더미 데이터, 백엔드 연동 필요 -->
-                <div class="total">총 72235명</div>
+                <div class="total">총 ${total_st}명</div>
                 <!-- 드롭다운 -->
                 <div class="dropdown clearfix order_dropdown">
                   <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">후기 순 </a><b class="caret"></b>
@@ -614,7 +889,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <!-- 카드영역 -->
               <div class="sitter_item_group">
                 <div class="item_header">
-                  <div class="cert_label"><img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">세 아이의 엄마</span></div>
+                  <div class="cert_label"><img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">${output.title}</span></div>
                 </div>
                 <hr class="divider" />
                 <div class="item_body">
@@ -622,15 +897,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
                     <div class="responsive_rate_group">
                       <div class="res_text">응답률</div>
-                      <div class="res_rate">88</div>
+                      <div class="res_rate">${output.answer}</div>
                       <div class="res_text">%</div>
                     </div>
                   </div>
                   <div class="profile_info_group">
                     <div class="content_row">
                       <div>
-                        <div class="user_name">정O우</div>
-                        <div class="last_update">6일 전 작성</div>
+                        <div class="user_name">${output.st_name}</div>
+                        <div class="last_update">${output.openingdate}일 전 작성</div>
                       </div>
                       <div class="jim_btn">
                         <button class="swapHeart">
@@ -641,174 +916,44 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                       </div>
                     </div>
                     <div class="content_row location_group">
-                      <span class="location">성남시 분당구 </span>
-                      <span class="location">,용인시 수지구 </span>
-                      <span class="location">,서울특별시 강남구</span>
+                      <span class="location">${output.loc1} </span>
+                      <span class="location">,${output.loc2} </span>
+                      <span class="location">,${output.loc3}</span>
                     </div>
                     <div class="content_row">
-                      <div class="user_age">50세</div>
+                      <div class="user_age">${output.age}세</div>
                       <div class="text_sep"></div>
-                      <div class="wanted_pay">희망 시급 15000원</div>
+                      <div class="wanted_pay">희망 시급 ${output.payment}원</div>
                     </div>
                     <div class="content_row">
                       <div class="review_rate">
+                      <!-- 평점에 따라서 별 색상 css 다르게 주기. 추후 구현 예정 -->
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                       </div>
-                      <span class="review_count">후기 155개</span>
+                      <span class="review_count">후기 ${output.rev_count}개</span>
                     </div>
                   </div>
                 </div>
                 <hr class="divider" />
-                <div class="item_footer">
-                  <div class="cert_info_group">
-                    <div class="cert_text_group">
-                      <div class="cert_label">확인된 인증</div>
-                      <div class="cert_count">2개</div>
-                    </div>
-                    <div class="cert_info_btn_group">
-                      <div class="cert_btn">엄마 인증</div>
-                      <div class="cert_btn">등초본 인증</div>
-                    </div>
-                  </div>
-                </div>
+<!--                 <div class="item_footer"> -->
+<!--                   <div class="cert_info_group"> -->
+<!--                     <div class="cert_text_group"> -->
+<!--                       <div class="cert_label">확인된 인증</div> -->
+<!--                       <div class="cert_count">2개</div> -->
+<!--                     </div> -->
+<!--                     <div class="cert_info_btn_group"> -->
+<!--                       <div class="cert_btn">엄마 인증</div> -->
+<!--                       <div class="cert_btn">등초본 인증</div> -->
+<!--                     </div> -->
+<!--                   </div> -->
+<!--                 </div> -->
               </div>
               <!-- 카드영역 end -->
-              <!-- 카드영역 -->
-              <div class="sitter_item_group">
-                <div class="item_header">
-                  <div class="cert_label"><img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">세 아이의 엄마</span></div>
-                </div>
-                <hr class="divider" />
-                <div class="item_body">
-                  <div class="profile_img_group">
-                    <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
-                    <div class="responsive_rate_group">
-                      <div class="res_text">응답률</div>
-                      <div class="res_rate">88</div>
-                      <div class="res_text">%</div>
-                    </div>
-                  </div>
-                  <div class="profile_info_group">
-                    <div class="content_row">
-                      <div>
-                        <div class="user_name">정O우</div>
-                        <div class="last_update">6일 전 작성</div>
-                      </div>
-                      <div class="jim_btn">
-                        <button class="swapHeart">
-                          <div class="jim">
-                            <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="content_row location_group">
-                      <span class="location">성남시 분당구 </span>
-                      <span class="location">,용인시 수지구 </span>
-                      <span class="location">,서울특별시 강남구</span>
-                    </div>
-                    <div class="content_row">
-                      <div class="user_age">50세</div>
-                      <div class="text_sep"></div>
-                      <div class="wanted_pay">희망 시급 15000원</div>
-                    </div>
-                    <div class="content_row">
-                      <div class="review_rate">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </div>
-                      <span class="review_count">후기 155개</span>
-                    </div>
-                  </div>
-                </div>
-                <hr class="divider" />
-                <div class="item_footer">
-                  <div class="cert_info_group">
-                    <div class="cert_text_group">
-                      <div class="cert_label">확인된 인증</div>
-                      <div class="cert_count">2개</div>
-                    </div>
-                    <div class="cert_info_btn_group">
-                      <div class="cert_btn">엄마 인증</div>
-                      <div class="cert_btn">등초본 인증</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- 카드영역 end -->
-              <!-- 카드영역 -->
-              <div class="sitter_item_group">
-                <div class="item_header">
-                  <div class="cert_label"><img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">세 아이의 엄마</span></div>
-                </div>
-                <hr class="divider" />
-                <div class="item_body">
-                  <div class="profile_img_group">
-                    <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
-                    <div class="responsive_rate_group">
-                      <div class="res_text">응답률</div>
-                      <div class="res_rate">88</div>
-                      <div class="res_text">%</div>
-                    </div>
-                  </div>
-                  <div class="profile_info_group">
-                    <div class="content_row">
-                      <div>
-                        <div class="user_name">정O우</div>
-                        <div class="last_update">6일 전 작성</div>
-                      </div>
-                      <div class="jim_btn">
-                        <button class="swapHeart">
-                          <div class="jim">
-                            <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="content_row location_group">
-                      <span class="location">성남시 분당구 </span>
-                      <span class="location">,용인시 수지구 </span>
-                      <span class="location">,서울특별시 강남구</span>
-                    </div>
-                    <div class="content_row">
-                      <div class="user_age">50세</div>
-                      <div class="text_sep"></div>
-                      <div class="wanted_pay">희망 시급 15000원</div>
-                    </div>
-                    <div class="content_row">
-                      <div class="review_rate">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </div>
-                      <span class="review_count">후기 155개</span>
-                    </div>
-                  </div>
-                </div>
-                <hr class="divider" />
-                <div class="item_footer">
-                  <div class="cert_info_group">
-                    <div class="cert_text_group">
-                      <div class="cert_label">확인된 인증</div>
-                      <div class="cert_count">2개</div>
-                    </div>
-                    <div class="cert_info_btn_group">
-                      <div class="cert_btn">엄마 인증</div>
-                      <div class="cert_btn">등초본 인증</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- 카드영역 end -->
+                       
 
               <div class="app_banner">
                 <div class="banner_group">
@@ -841,279 +986,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     </div>
     <!--row end-->
 
-    <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-    <!-- jquery 파일명 수정 -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        // 무한 스크롤 1218 하리
-        $(document).scroll(function () {
-          var maxHeight = $(document).height();
-          var currentScroll = $(window).scrollTop() + $(window).height();
 
-          if (maxHeight <= currentScroll + 100) {
-            $.ajax({
-              // 결과를 읽어올 URL
-              url: "item_group.html",
-              // 웹 프로그램에게 데이터를 전송하는 방식.
-              // 생략할 경우 get으로 자동 지정됨
-              method: "get",
-              // 전달할 조건값은 JSON 형식으로 구성
-              // 사용하지 않을 경우 명시 자체를 생략할 수 있다.
-              data: {},
-              // 읽어올 내용의 형식(생략할 경우 json)
-              dataType: "html",
-              // 읽어온 내용을 처리하기 위한 함수
-              success: function (req) {
-                // 준비된 요소에게 읽어온 내용을 출력한다.
-                $("#result").append(req);
-              },
-            }); // end $.ajax
-          }
-        });
-      });
-
-      $(function () {
-        // 헤더 메뉴 load처리 1224 하리
-        // $("#menu").load("/ezen-android2020-2/index_header.html"); - 210124 include 변경
-
-        // 상세 페이지 연동 1220 하리
-        $(".sitter_item_group").on("click", function () {
-          location.href = "${pageContext.request.contextPath}/abuhae/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.do";
-        });
-
-        /** 원하는 활동 선택 ------------------------------------------------------------------- */
-        //활동 버튼 클릭
-        $(".act_btn").click(function (e) {
-          //버튼 클릭시 text 색 변경
-          $(this).next().find(".want_text").toggleClass("select_text");
-          //버튼 클릭시 이미지 URL 변경
-          //url 가져오기
-          var img_url = $(this).next().find(".want_img").attr("src");
-          var indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
-          if (indeximg > -1) {
-            var img_src = img_url.replace(/_n/, "_s");
-            $(this).next().find(".want_img").attr("src", img_src);
-          } else {
-            var img_src = img_url.replace(/_s/, "_n");
-            $(this).next().find(".want_img").attr("src", img_src);
-          }
-        });
-        // 리셋 버튼 0109 하리
-        $("#act_reset").click(function (e) {
-          e.preventDefault();
-
-          // 이미지 찾기
-          var $img = $(".want_img");
-          // 이미지 길이
-          var length = $img.length;
-          // console.log(length);
-
-          for (var i = 0; i < length; i++) {
-            var img_url = $img.eq(i).attr("src");
-            var img_src = img_url.replace(/_s/, "_n");
-            $(".want_img").eq(i).attr("src", img_src);
-          }
-
-          $(".act_btn").prop("checked", false);
-          $(".want_text").removeClass("select_text");
-          $(".act_label").removeClass("select_act_type");
-          $(".act_label").removeClass("unselect_act_type");
-        });
-
-        //활동 버튼 반영 1221 하리
-        $("#act_apply").click(function (e) {
-          e.preventDefault();
-          $("#activity_type_modal").modal("hide");
-          const act_btn = $(".activity_type_btn");
-          const result2 = [];
-
-          for (var i = 0; i < act_btn.length; i++) {
-            result2.push($(act_btn[i]).val());
-          }
-
-          for (var i = 0; i < result2.length; i++) {
-            if (!$(".act_label").eq(i).hasClass("select_act_type")) {
-              $(".act_label").eq(i).addClass("unselect_act_type");
-            }
-          }
-        });
-
-        $(".act_btn").change(function change_btn(e) {
-          e.preventDefault();
-          const checked = $(".act_btn:checked");
-          const act_btn = $(".activity_type_btn");
-          const result1 = [];
-          const result2 = [];
-
-          for (var i = 0; i < checked.length; i++) {
-            result1.push($(checked[i]).val());
-          }
-
-          //console.log(result1);
-
-          for (var i = 0; i < act_btn.length; i++) {
-            result2.push($(act_btn[i]).val());
-          }
-
-          //console.log(result2);
-
-          for (var i = 0; i < result1.length; i++) {
-            for (var j = 0; j < result2.length; j++) {
-              if (result1[i] == result2[j]) {
-                $(".act_label").eq(j).addClass("select_act_type");
-              }
-            }
-          }
-          //console.log($(".act_label").eq(j).hasClass("select_act_type"));
-        });
-
-        $(".activity_type_wrap").click(function (e) {
-          $(".act_label").removeClass("select_act_type");
-          $(".act_label").removeClass("unselect_act_type");
-        });
-
-        /** 상세 검색 ------------------------------------------------------------------- */
-
-        // 아이나이 버튼 클릭
-        $(".ages").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
-          //버튼 클릭시 text 색 변경
-          $(this).find("i").toggleClass("select_text_detail");
-          $(this).find("span").toggleClass("select_text_detail");
-        });
-
-        // 돌봄요일 버튼 클릭
-        $(".care_day").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
-          //버튼 클릭시 text 색 변경
-          $(this).find("div").toggleClass("select_text_detail");
-        });
-
-        // 돌봄 시간대 버튼 클릭
-        $(".time_range").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
-          //버튼 클릭시 text 색 변경
-          $(this).find("span").toggleClass("select_text_detail");
-        });
-
-        // 맘시터 유형 버튼 클릭
-        $(".sitter_type").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
-          //버튼 클릭시 text 색 변경
-          $(this).find("span").toggleClass("select_text_detail");
-        });
-
-        // 리셋 버튼 0109 하리
-        $("#reset_detail").click(function (e) {
-          e.preventDefault();
-          $("#sitter_search_detail_modal .modal_content *").removeClass("select_btn_detail");
-          $("#sitter_search_detail_modal .modal_content *").removeClass("select_text_detail");
-          $(".ins_check").prop("checked", false);
-          $(".want_age").prop("checked", false);
-        });
-
-        /** 상세 검색 end ------------------------------------------------------------------- */
-
-        //시 클릭했을 때
-        $(".loc_btn").on("click", function () {
-          var select = $(this).hasClass("select_location");
-          //선택이 안되어있을때
-          if (select == false) {
-            //선택이 되어있는 요소 탐색
-            var loc = $("#si").find("button").removeClass("select_loaction");
-            //console.log(loc);
-            $(this).addClass("select_loaction");
-            //시 선택하면 gu 보이게
-            $("#gu>div").removeClass("hide_content");
-            $("#gu button").removeClass("hide_content");
-            $("#gu>div").addClass("show_content");
-          }
-        });
-        //구 클릭했을 때
-        $("#gu button").on("click", function () {
-          var select = $(this).hasClass("select_location");
-          //선택이 안되어있을때
-          if (select == false) {
-            //선택이 되어있는 요소 탐색
-            var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
-            //console.log(loc);
-            $(this).addClass("select_loaction");
-            //구 선택하면 동 보이게
-            $("#dong>div").removeClass("hide_content");
-            $("#dong button").removeClass("hide_content");
-            $("#dong>div").addClass("show_content");
-          }
-        });
-
-        //동 클릭했을때
-        $("#dong button").on("click", function () {
-          var select = $(this).hasClass("select_location");
-          //선택이 안되어있을때
-          if (select == false) {
-            //선택이 되어있는 요소 탐색
-            var loc = $("#dong").find("button").removeClass("select_loaction hide_content");
-            //console.log(loc);
-            $(this).addClass("select_loaction");
-
-            $.ajax({
-              type: "GET", //get방식으로 통신
-              url: "${pageContext.request.contextPath}/assets/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
-              dataType: "html", //html형식으로 값 읽기
-              error: function () {
-                //통신 실패시 ㅠㅠ
-                alert("통신실패!");
-              },
-              success: function (data) {
-                //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
-                $(".select_box").html(data);
-                var now = $(".next_btn").prop("disabled");
-                //가져온 값 역으로 변경하여 다시 적용
-                $(".next_btn").prop("disabled", !now);
-              },
-            });
-          }
-        });
-
-        // 리셋 0109 하리
-        $("#reset_loc").on("click", function (e) {
-          e.preventDefault();
-          $(".loc_btn").removeClass("select_loaction");
-          $("#gu button").removeClass("select_loaction");
-          $("#gu button").addClass("hide_content");
-          $("#dong button").removeClass("select_loaction");
-          $("#dong button").addClass("hide_content");
-        });
-
-        $(".swapHeart").on("click", function (e) {
-          event.stopPropagation(); // 버블링 방지 1220 하리
-          var $jim = $(this);
-
-          // 찜할 때 alert창과 glyphicon변형
-          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
-            $(this).find("span").removeClass("glyphicon-heart-empty");
-            $(this).find("span").addClass("glyphicon-heart");
-            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
-          }
-          // 찜 취소할 때 alert창과 glyphicon변형
-          else {
-            swal("찜 하기 취소");
-            $(this).find("span").addClass("glyphicon-heart-empty");
-          }
-        }); // fin. 찜버튼 기능
-
-        // 드롭다운 선택 - 0109 하리
-        $(".dr_option").click(function () {
-          $(this).addClass("active");
-          $(".dr_option").not(this).removeClass("active");
-          $("#orderby").html($(this).find("a").html());
-        });
-      });
-    </script>
   </body>
 </html>

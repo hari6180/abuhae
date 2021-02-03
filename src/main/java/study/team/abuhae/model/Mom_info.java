@@ -17,7 +17,7 @@ public class Mom_info extends Member {
 	private String dong;
 	private String schedule;
 	private String schedule_ok;
-	private String introduce;
+	private String descrip;
 	private String sitter_gender;
 	private String interview_type;
 	private String care_type;

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberInsertMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="MemberMap"
+		type="study.team.abuhae.model.Member">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="memberno" column="memberno" />
+		<result property="type" column="type" />
+		<result property="id" column="id" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="birthdate" column="birthdate" />
+		<result property="job_opening" column="job_opening" />
+	</resultMap>
+
+	<resultMap id="MomMap"
+		type="study.team.abuhae.model.Mom_info">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="momno" column="momno" />
+		<result property="want_act" column="want_act" />
+		<result property="want_age" column="want_age" />
+		<result property="kids_num" column="kids_num" />
+		<result property="kids_age" column="kids_age" />
+		<result property="payment" column="payment" />
+		<result property="si" column="si" />
+		<result property="gu" column="gu" />
+		<result property="dong" column="dong" />
+		<result property="schedule" column="schedule" />
+		<result property="schedule_ok" column="schedule_ok" />
+		<result property="sitter_gender" column="sitter_gender" />
+		<result property="interview_type" column="interview_type" />
+		<result property="care_type" column="care_type" />
+		<result property="openingdate" column="openingdate" />
+		<result property="memberno" column="memberno" />
+	</resultMap>
+
+	<resultMap id="SitterMap"
+		type="study.team.abuhae.model.Sitter_info">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="sitterno" column="sitterno" />
+		<result property="sitter_type" column="sitter_type" />
+		<result property="want_act" column="want_act" />
+		<result property="want_age" column="want_age" />
+		<result property="payment" column="payment" />
+		<result property="si" column="si" />
+		<result property="gu" column="gu" />
+		<result property="dong" column="dong" />
+		<result property="schedule" column="schedule" />
+		<result property="schedule_set" column="schedule_set" />
+		<result property="introduce" column="introduce" />
+		<result property="cctv" column="cctv" />
+		<result property="openingdate" column="openingdate" />
+		<result property="memberno" column="memberno" />
+	</resultMap>
+
+	<!-- 데이터 저장을 위한 기능 정의 -->
+
+	<!-- 멤버(공통) -->
+	<insert id="insertMember"
+		parameterType="study.team.abuhae.model.Member" useGeneratedKeys="true"
+		keyProperty="memberno">
+		INSERT INTO Member (type, id, password, name, email,
+		phone, birthdate, job_opening)
+		VALUES (#{type}, #{id}, #{password},
+		#{name}, #{email}, #{phone},
+		#{birthdate},
+		#{job_opening});
+	</insert>
+
+
+	<!-- 맘 회원 -->
+	<insert id="insertMom"
+		parameterType="study.team.abuhae.model.Mom_info"
+		useGeneratedKeys="true" keyProperty="momno">
+		INSERT INTO Mom_info (want_act,
+		want_age, kids_num, kids_age,
+		payment, si, gu, dong, schedule,
+		schedule_ok, sitter_gender,
+		interview_type, care_type,
+		openingdate, memberno) VALUES (#{want_act}, #{want_age},
+		#{kids_num},
+		#{kids_age}, #{payment}, #{si}, #{gu}, #{dong}, #{schedule},
+		#{schedule_ok}, #{sitter_gender},#{interview_type},#{care_type},#{openingdate}, #{memberno});
+	</insert>
+
+	<!-- 시터 회원 -->
+	<insert id="insertSitter"
+		parameterType="study.team.abuhae.model.Sitter_info"
+		useGeneratedKeys="true" keyProperty="sitterno">
+		INSERT INTO Sitter_info (sitter_type,
+		want_act, want_age, payment, si, gu, dong, schedule,
+		schedule_set,
+		introduce, cctv, openingdate, memberno)
+		VALUES (#{sitter_type}, #{want_act},
+		#{want_age}, #{payment}, #{si}, #{gu},
+		#{dong},
+		#{schedule},
+		#{schedule_set}, #{introduce}, #{cctv}, #{openingdate}, #{memberno});
+	</insert>
+
+
+</mapper>
