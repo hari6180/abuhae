@@ -30,11 +30,11 @@
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.html">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/question_sitter.html">시터회원</a>
+                        <a href="${pageContext.request.contextPath}/customer/question_sitter.do">시터회원</a>
                     </li>
                     <span>></span>
                     <li>
@@ -53,7 +53,7 @@
                         <h1>돌봄활동과 활동비</h1>
                         </div>
                         <div class="col-xs-12 section_title">
-                            <a href="${pageContext.request.contextPath}/customer/sitter_activity_ch2.html">[돌봄활동] 시터는 어떤 돌봄활동을 하는 건가요?</a>
+                            <a href="${pageContext.request.contextPath}/customer/sitter_activity_ch2.do">[돌봄활동] 시터는 어떤 돌봄활동을 하는 건가요?</a>
                         </div>
                         <div class="col-xs-12 section_title">
                             <a href="#">[돌봄활동] 식사는 어떻게 해결해야 하나요?</a>

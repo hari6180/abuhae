@@ -30,11 +30,11 @@
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.html">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/question_sitter.html">시터회원</a>
+                        <a href="${pageContext.request.contextPath}/customer/question_sitter.do">시터회원</a>
                     </li>
                     <span>></span>
                     <li>
@@ -53,7 +53,7 @@
                         <h1>일자리 찾기</h1>
                         </div>
                         <div class="col-xs-12 section_title">
-                            <a href="${pageContext.request.contextPath}/customer/question_sitter_ch3.html">[맘시터 인증] 건강인증뱃지를 발급 받고 싶어요.</a>
+                            <a href="${pageContext.request.contextPath}/customer/question_sitter_ch3.do">[맘시터 인증] 건강인증뱃지를 발급 받고 싶어요.</a>
                         </div>
                         <div class="col-xs-12 section_title">
                             <a href="#">[맘시터 찾기] 아부해 시작하기</a>

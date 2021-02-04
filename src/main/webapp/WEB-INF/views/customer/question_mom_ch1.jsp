@@ -30,11 +30,11 @@
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.html">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/guide.html">이용가이드</a>
+                        <a href="${pageContext.request.contextPath}/customer/guide.do">이용가이드</a>
                     </li>
                     <span>></span>
                     <li>
@@ -53,7 +53,7 @@
                         <h1>부모회원 가이드</h1>
                         </div>
                         <div class="col-xs-12 section_title">
-                            <a href="${pageContext.request.contextPath}/customer/guide_mom.html">[부모회원 가이드] 아부해는 어떤 서비스인가요?</a>
+                            <a href="${pageContext.request.contextPath}/customer/guide_mom.do">[부모회원 가이드] 아부해는 어떤 서비스인가요?</a>
                         </div>
                         <div class="col-xs-12 section_title">
                             <a href="#">[부모회원 가이드] 아부해 시작하기</a>

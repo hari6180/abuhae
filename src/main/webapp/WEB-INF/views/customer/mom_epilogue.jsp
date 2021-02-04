@@ -30,11 +30,11 @@
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.html">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/question_mom.html">부모회원</a>
+                        <a href="${pageContext.request.contextPath}/customer/question_mom.do">부모회원</a>
                     </li>
                     <span>></span>
                     <li>
@@ -53,7 +53,7 @@
                         <h1>후기</h1>
                         </div>
                         <div class="col-xs-12 section_title">
-                            <a href="${pageContext.request.contextPath}/customer/mom_epilogue_ch2.html">[후기] 후기는 언제 작성할 수 있나요?</a>
+                            <a href="${pageContext.request.contextPath}/customer/mom_epilogue_ch2.do">[후기] 후기는 언제 작성할 수 있나요?</a>
                         </div>
                         <div class="col-xs-12 section_title">
                             <a href="#">[후기] 후기는 어디에서 작성할 수 있나요?</a>

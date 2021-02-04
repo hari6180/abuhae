@@ -30,11 +30,11 @@
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.html">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/guide.html">이용가이드</a>
+                        <a href="${pageContext.request.contextPath}/customer/guide.do">이용가이드</a>
                     </li>
                     <span>></span>
                     <li>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-xs-12 article">
                         <div class="col-xs-2 article_img">
-                            <img src="${pageContext.request.contextPath}/customer/img/logo2.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/assets/img/logo2.png" width="40" height="40">
                         </div>
                         <div class="col-xs-10 article_title">
                             <p>맘시터</p>

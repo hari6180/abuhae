@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-xs-12 article">
                         <div class="col-xs-2 article_img">
-                            <img src="${pageContext.request.contextPath}/customer/img/logo2.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/assets/img/logo2.png" width="40" height="40">
                         </div>
                         <div class="col-xs-10 article_title">
                             <p>맘시터</p>

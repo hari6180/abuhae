@@ -30,7 +30,7 @@
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.html">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
@@ -52,7 +52,7 @@
                             <h2><a href="#">공지 사항</a></h2>
                     </div>
                     <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/notice_site_ch2.html">[공지] 부모회원 약속알림 설정기능 중단 안내</a>
+                        <a href="${pageContext.request.contextPath}/customer/notice_site_ch2.do">[공지] 부모회원 약속알림 설정기능 중단 안내</a>
                     </div>
                     <div class="col-xs-12 section_title">
                         <a href="#">[공지] 아부해 부모-시터 채팅 서비스 이용정책 안내</a>
@@ -84,7 +84,7 @@
 				$("#mybutton").click(function(e) {
 					$.ajax( {
 						// 결과를 읽어올 URL
-						url: '${pageContext.request.contextPath}/customer/hello2.jsp',
+						url: '${pageContext.request.contextPath}/customer/hello2.do',
 						// 웹 프로그램에게 데이터를 전송하는 방식
 						// 생략할 경우 get으로 자동 지정됨
 						method: 'get',

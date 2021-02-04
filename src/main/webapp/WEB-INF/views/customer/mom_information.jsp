@@ -30,11 +30,11 @@
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.html">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/question_mom.html">부모회원</a>
+                        <a href="${pageContext.request.contextPath}/customer/question_mom.do">부모회원</a>
                     </li>
                     <span>></span>
                     <li>
@@ -53,7 +53,7 @@
                         <h1>회원정보</h1>
                         </div>
                         <div class="col-xs-12 section_title">
-                            <a href="${pageContext.request.contextPath}/customer/mom_information_ch2.html">[회원정보] 로그인 정보가 기억나지 않아요.</a>
+                            <a href="${pageContext.request.contextPath}/customer/mom_information_ch2.do">[회원정보] 로그인 정보가 기억나지 않아요.</a>
                         </div>
                         <div class="col-xs-12 section_title">
                             <a href="#">[회원정보] 휴대폰번호는 어떻게 변경하나요?</a>

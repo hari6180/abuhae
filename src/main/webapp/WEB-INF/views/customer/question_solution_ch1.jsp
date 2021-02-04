@@ -30,11 +30,11 @@
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.html">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/guide.html">이용가이드</a>
+                        <a href="${pageContext.request.contextPath}/customer/guide.do">이용가이드</a>
                     </li>
                     <span>></span>
                     <li>
@@ -53,7 +53,7 @@
                         <h1>해결방법</h1>
                         </div>
                         <div class="col-xs-12 section_title">
-                            <a href="${pageContext.request.contextPath}/customer/guide_solution.html">[문제해결] 부모님께서 급여를 지급하지 않으세요.</a>
+                            <a href="${pageContext.request.contextPath}/customer/guide_solution.do">[문제해결] 부모님께서 급여를 지급하지 않으세요.</a>
                         </div>
                     <div class="col-xs-12 footer">
                     </div>

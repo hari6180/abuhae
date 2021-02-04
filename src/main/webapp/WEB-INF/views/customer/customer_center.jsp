@@ -58,19 +58,19 @@
 								</a>
 							</li>
 							<li class="block_item">
-								<a href="${pageContext.request.contextPath}/customer/question_mom.html" class="block_item_link">
+								<a href="${pageContext.request.contextPath}/customer/question_mom.do" class="block_item_link">
 									<span class="block_item_title">부모회원</span>
 									<span class="block_item_title2">자주 묻는 질문</span>
 								</a>
 							</li>
 							<li class="block_item">
-								<a href="${pageContext.request.contextPath}/customer/question_sitter.html" class="block_item_link">
+								<a href="${pageContext.request.contextPath}/customer/question_sitter.do" class="block_item_link">
 									<span class="block_item_title">시터회원</span>
 									<span class="block_item_title2">자주 묻는 질문</span>
 								</a>
 							</li>
 							<li class="block_item">
-								<a href="${pageContext.request.contextPath}/customer/notice_site.html" class="block_item_link">
+								<a href="${pageContext.request.contextPath}/customer/notice_site.do" class="block_item_link">
 									<span class="block_item_title">공지사항</span>
 								</a>
 							</li>
@@ -85,8 +85,8 @@
 							</div>
 						</div>
 						<div class="activity_list">
-							<a class="activity_item_parent" href="${pageContext.request.contextPath}/customer/notice_site.html">공지사항</a>
-							<a class="activity_item_link" href="${pageContext.request.contextPath}/customer/notice_site_ch2.html">[공지] 아부해 서비스 서버 점검 안내</a>
+							<a class="activity_item_parent" href="${pageContext.request.contextPath}/customer/notice_site.do">공지사항</a>
+							<a class="activity_item_link" href="${pageContext.request.contextPath}/customer/notice_site_ch2.do">[공지] 아부해 서비스 서버 점검 안내</a>
 						</div>
 						<div class="activity_list">
 							<a class="activity_item_parent" href="#">공지사항</a>	

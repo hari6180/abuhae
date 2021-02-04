@@ -30,11 +30,11 @@
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.html">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/question_sitter.html">시터회원</a>
+                        <a href="${pageContext.request.contextPath}/customer/question_sitter.do">시터회원</a>
                     </li>
                     <span>></span>
                     <li>
@@ -53,7 +53,7 @@
                         <h1>채용 및 계약</h1>
                         </div>
                         <div class="col-xs-12 section_title">
-                            <a href="${pageContext.request.contextPath}/customer/sitter_contract_ch2.html">[채용 및 계약] 부모님과 계약서를 작성할 수 있나요?</a>
+                            <a href="${pageContext.request.contextPath}/customer/sitter_contract_ch2.do">[채용 및 계약] 부모님과 계약서를 작성할 수 있나요?</a>
                         </div>
                         <div class="col-xs-12 section_title">
                             <a href="#">[부모회원 가이드] 아부해 시작하기</a>

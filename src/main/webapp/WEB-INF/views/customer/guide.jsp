@@ -29,7 +29,7 @@
 			
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.html">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
@@ -48,10 +48,10 @@
                         <h1>이용가이드</h1>
                         </div>
                         <div class="col-xs-12 section_middle">
-                            <h2><a href="${pageContext.request.contextPath}/customer/question_mom_ch1.html">부모회원 가이드</a></h2>
+                            <h2><a href="${pageContext.request.contextPath}/customer/question_mom_ch1.do">부모회원 가이드</a></h2>
                     </div>
                     <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/guide_mom.html">[부모회원 가이드] 아부해는 어떤 서비스인가요?</a>
+                        <a href="${pageContext.request.contextPath}/customer/guide_mom.do">[부모회원 가이드] 아부해는 어떤 서비스인가요?</a>
                     </div>
                     <div class="col-xs-12 section_title">
                         <a href="#">[부모회원 가이드] 아부해 시작하기</a>
@@ -72,10 +72,10 @@
                         <a href="#">문서 7개 모두 보기</a>
                     </div>
                     <div class="col-xs-12 section_middle">
-                        <h2><a href="${pageContext.request.contextPath}/customer/question_sitter_ch1.html">시터회원 가이드</a></h2>
+                        <h2><a href="${pageContext.request.contextPath}/customer/question_sitter_ch1.do">시터회원 가이드</a></h2>
                     </div>
                     <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/guide_sitter.html">[시터회원 가이드] 아부해는 어떤 서비스인가요?</a>
+                        <a href="${pageContext.request.contextPath}/customer/guide_sitter.do">[시터회원 가이드] 아부해는 어떤 서비스인가요?</a>
                     </div>
                     <div class="col-xs-12 section_title">
                         <a href="#">[시터회원 가이드] 아부해 시작하기</a>
@@ -96,16 +96,16 @@
                         <a href="#">문서 8개 모두 보기</a>
                     </div>
                     <div class="col-xs-12 section_middle">
-                        <h2><a href="${pageContext.request.contextPath}/customer/question_danger_ch1.html">맘시터 주의사항</a></h2>
+                        <h2><a href="${pageContext.request.contextPath}/customer/question_danger_ch1.do">맘시터 주의사항</a></h2>
                     </div>
                     <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/guide_danger.html">맘시터 회원 모두가 절대로 하면 안 되는 행동들</a>
+                        <a href="${pageContext.request.contextPath}/customer/guide_danger.do">맘시터 회원 모두가 절대로 하면 안 되는 행동들</a>
                     </div>
                     <div class="col-xs-12 section_middle">
-                        <h2><a href="${pageContext.request.contextPath}/customer/question_solution_ch1.html">해결방법</a></h2>
+                        <h2><a href="${pageContext.request.contextPath}/customer/question_solution_ch1.do">해결방법</a></h2>
                     </div>
                     <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/guide_solution.html">[문제해결] 부모님께서 급여를 지급하지 않으세요.</a>
+                        <a href="${pageContext.request.contextPath}/customer/guide_solution.do">[문제해결] 부모님께서 급여를 지급하지 않으세요.</a>
                     </div>
                     </div>
                     <div class="col-xs-12 footer">

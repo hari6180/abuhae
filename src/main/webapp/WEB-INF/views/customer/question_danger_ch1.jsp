@@ -30,11 +30,11 @@
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.html">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/guide.html">이용가이드</a>
+                        <a href="${pageContext.request.contextPath}/customer/guide.do">이용가이드</a>
                     </li>
                     <span>></span>
                     <li>
@@ -53,7 +53,7 @@
                         <h1>맘시터 주의사항</h1>
                         </div>
                         <div class="col-xs-12 section_title">
-                            <a href="${pageContext.request.contextPath}/customer/guide_danger.html">맘시터 회원 모두가 절대로 하면 안 되는 행동들</a>
+                            <a href="${pageContext.request.contextPath}/customer/guide_danger.do">맘시터 회원 모두가 절대로 하면 안 되는 행동들</a>
                         </div>
                     <div class="col-xs-12 footer">
                     </div>
