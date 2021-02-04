@@ -1,4 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -74,8 +78,8 @@
                 </div>
                 <h3 class="what_want">몇 명의 아이를 돌봐드릴까요?</h3>
                 <div class="number_children_wrap">
-                    <button class="childeren_num1 btn_children_off" data-tab="select_one">1명</button>
-                    <button class="childeren_num2 btn_children_off" data-tab="select_two">2명</button>
+                    <button class="childeren_num1 btn_children_off" data-tab="select_one" value="1">1명</button>
+                    <button class="childeren_num2 btn_children_off" data-tab="select_two" value="2">2명</button>
                 </div>
                 <!--동적 요소 위치-->
                 <div class="title">
@@ -114,8 +118,15 @@
                         </div>
                     </div>
                 </div>
-
-                <a href="${pageContext.request.contextPath}/join/parent/location.do"><button class="next_btn">다음</button></a>
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/add2_ok.do">
+               		<input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="want_act" name="want_act" value="${want_act}">
+                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                    <input type="hidden" id="kids_num" name="kids_num">
+                    <input type="hidden" id="kids_age" name="kids_age">
+                    <input type="hidden" id="payment" name="payment">
+                <button class="next_btn" type="submit">다음</button>
+                </form>
             </div>
 
         </div> <!-- fin. col-xs-12 -->
@@ -124,6 +135,12 @@
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <!--Google CDN 서버로부터 jQuery 참조 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- jQuery Ajax Form plugin CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+    <!-- jQuery Ajax Setup -->
+    <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <script type="text/javascript">
         function addCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -149,7 +166,7 @@
                 }
             });
 
-
+            var kids_num = 0;
             //아이명수 클릭시 버튼 색상 적용 및 ajax 페이지 변환 - 선아
             $(".childeren_num1, .childeren_num2").on("click", function () {
                 var select = $(this).hasClass("childeren_num1");
@@ -161,7 +178,9 @@
                     $(this).addClass("btn_children_on");
                     $(this).next().removeClass("btn_children_on");
                     $(this).next().addClass("btn_children_off");
-                    ;
+                    kids_num = $(this).attr('value');
+                    console.log(kids_num);
+                    
 
                 } else {
                     //num2 클릭했을 때
@@ -169,6 +188,8 @@
                     $(this).addClass("btn_children_on");
                     $(this).prev().removeClass("btn_children_on");
                     $(this).prev().addClass("btn_children_off");
+                    kids_num = $(this).attr('value');
+                    console.log(kids_num);
                 }
 
                 $(".noselect_title").empty();
@@ -176,8 +197,8 @@
                 var test = $(this).attr('data-tab');
                 $.ajax({
                     type: 'GET',                 //get방식으로 통신
-                    url: test + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
-                    dataType: "html",            //html형식으로 값 읽기
+                    url: test + ".do",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+                    dataType: "text",            //html형식으로 값 읽기
                     error: function () {          //통신 실패시 ㅠㅠ
                         alert('통신실패!');
                     },
@@ -192,7 +213,7 @@
             $(document).on('change','#year, #month', function(){
                 //드롭다운의 선택값
                 var yaer = $("#year").val();
-                console.log(year);
+               // console.log(year);
                 var month = $("#month").val();
                 //가져온 값이 존재한다면?
                 if (yaer != "" && month != "") {
@@ -201,6 +222,41 @@
                 };
             });
 
+            $(".next_btn").click(function (e) {
+                //아이명수
+                $('#kids_num').val(kids_num);
+                //아이나이
+                var kids_year = $("#year option:selected").val();
+                var kids_month = $("#month option:selected").val();
+
+                var kids_age = kids_year + kids_month;
+                $('#kids_age').val(kids_age);
+
+
+                //시급
+                var payment = $('#payment_input').val();
+                $('#payment').val(payment);
+                //console.log($("#want_act").val());
+                //console.log($("#want_age").val());
+
+                });
+
+			/*
+            $("#addform").ajaxForm({
+                method: "POST",
+                success: function (json) {
+                    //alert("success");
+                    console.log(json);
+
+                    //json에 포함된 데이터를 활용, 페이지 이동
+                    if(json.rt == "OK") {
+                        window.location = "${pageContext.request.contextPath}/join/parent/location.do";
+                    }
+                },
+                error: function () {
+                    alert("error")
+                }
+            });*/
         });
 
     </script>

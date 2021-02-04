@@ -236,7 +236,19 @@
                     </div>
                     <!--end 동-->
                 </div>
-                <a href="${pageContext.request.contextPath}/join/parent/schedule.do"><button class="next_btn" disabled>다음</button></a>
+
+                    <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/add3_ok.do">
+                        <input type="hidden" id="type" name="type" value="${type}">
+                        <input type="hidden" id="want_act" name="want_act" value="${want_act}">
+                        <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                        <input type="hidden" id="kids_num" name="kids_num" value="${kids_num}">
+                        <input type="hidden" id="kids_age" name="kids_age" value="${kids_age}">
+                        <input type="hidden" id="payment" name="payment" value="${payment}">
+                        <input type="hidden" id="loc_si" name="si">
+                        <input type="hidden" id="loc_gu" name="gu">
+                        <input type="hidden" id="loc_dong" name="dong">
+                        <button class="next_btn" disabled>다음</button>
+                </form>
 
             </div>
 
@@ -251,6 +263,8 @@
         //location 선택시 css 이벤트 - 선아
         $(function () {
             //시 클릭했을 때
+            var si, gu, dong;
+
             $(".loc_btn").on("click", function () {
                 var select = $(this).hasClass("select_location");
                 //선택이 안되어있을때
@@ -259,6 +273,8 @@
                     var loc = $("#si").find("button").removeClass("select_location");
                     //console.log(loc);
                     $(this).addClass("select_location");
+                    si = $(this).text();
+                    //console.log(si);
                     //시 선택하면 gu 보이게
                     $("#gu>div").removeClass("hide_content");
                     $("#gu>div").addClass("show_content");
@@ -274,6 +290,7 @@
                     var loc = $("#gu").find("button").removeClass("select_location");
                     //console.log(loc);
                     $(this).addClass("select_location");
+                    gu = $(this).text();
                     //구 선택하면 동 보이게
                     $("#dong>div").removeClass("hide_content");
                     $("#dong>div").addClass("show_content");
@@ -290,6 +307,7 @@
                     var loc = $("#dong").find("button").removeClass("select_location");
                     //console.log(loc);
                     $(this).addClass("select_location");
+                    dong = $(this).text();
 
                     //동까지 선택하면 다음 버튼 활성화
                     //다음 버튼의 현재 disabled 값 가져오기
@@ -299,6 +317,15 @@
 
                 }
             });
+
+            $(".next_btn").click(function (e) {
+                //시
+                $('#loc_si').val(si);
+                //구
+                $('#loc_gu').val(gu);
+                //동
+                $('#loc_dong').val(dong);
+                });
         });
     </script>
 </body>

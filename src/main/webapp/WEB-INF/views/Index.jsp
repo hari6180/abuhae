@@ -307,15 +307,15 @@
 	<script type="text/javascript">
 		$(function () {
 			//브라우저 로드시 헤더 받아오기
-			//$("#menu").load("index_header.html");
+			//$("#guide_main").load("mom_guide.do");
 
 			//브라우저 로드시 에이작스 받아오기 
 			//default는 부모 가이드
 			$(document).ready(function () {
 				$.ajax({
 					type: 'GET',                 //get방식으로 통신
-					url: "mom_guide.html",    //부모가이드 보여주기
-					dataType: "html",            //html형식으로 값 읽기
+					url: "mom_guide.do",    //부모가이드 보여주기
+					dataType: "text",            //html형식으로 값 읽기
 					error: function () {          //통신 실패시 ㅠㅠ
 						alert('통신실패!');
 					},
@@ -361,8 +361,8 @@
 				var activebtn = $(this).attr('data-tab');
 				$.ajax({
 					type: 'GET',                 //get방식으로 통신
-					url: activebtn + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
-					dataType: "html",            //html형식으로 값 읽기
+					url: activebtn + ".do",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+					dataType: "text",            //html형식으로 값 읽기
 					error: function () {          //통신 실패시 ㅠㅠ
 						alert('통신실패!');
 					},

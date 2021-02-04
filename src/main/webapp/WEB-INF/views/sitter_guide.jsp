@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -9,20 +11,20 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
     <!--slick slider-->
-    <link rel="stylesheet" type="text/css" href="assets/plugin/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="assets/plugin/slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick-theme.css" />
 
     <!-- bootstrap -->
     <!--절대 경로 수정 1220 선아-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
     <!--section-->
-    <link rel="stylesheet" href="assets/css/section.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/section.css">
 
     <style type="text/css">
         .giude_go_text,
@@ -58,9 +60,9 @@
         <div>
             <div class="guide_inner">
                 <div class="guide_box">
-                    <img class="guide_img" src="img/mom-guide-1.png">
+                    <img class="guide_img" src="${pageContext.request.contextPath}/assets/img/mom-guide-1.png">
                 </div>
-                <a href="join/join.html" class="btn btn-default" role="button">회원가입하기</a>
+                <a href="${pageContext.request.contextPath}/join/join.do" class="btn btn-default" role="button">회원가입하기</a>
 
                 <p class="guide_text"><br>빠르고 간편한 회원가입을 진행해 주세요.</p>
             </div>
@@ -68,7 +70,7 @@
         <div>
             <div class="guide_inner">
                 <div class="guide_box">
-                    <img class="guide_img" src="img/sitter-guide-2.png">
+                    <img class="guide_img" src="${pageContext.request.contextPath}/assets/img/sitter-guide-2.png">
                 </div>
                 <h4>프로필 작성하기</h4>
                 <p class="guide_text"><br>내 활동 지역, 희망시급, 활동 기간 등을 상세하게 작성해 주세요.</p>
@@ -77,7 +79,7 @@
         <div>
             <div class="guide_inner">
                 <div class="guide_box">
-                    <img class="guide_img" src="img/sitter-guide-3.png">
+                    <img class="guide_img" src="${pageContext.request.contextPath}/assets/img/sitter-guide-3.png">
                 </div>
                 <h4>부모 지원하기</h4>
                 <p class="guide_text"><br>지역과 우리동네 등으로 검색해서, 나와 맞는 부모님을 찾아 지원해보세요.</p>
@@ -86,7 +88,7 @@
         <div>
             <div class="guide_inner">
                 <div class="guide_box">
-                    <img class="guide_img" src="img/mom-guide-4.png">
+                    <img class="guide_img" src="${pageContext.request.contextPath}/assets/img/mom-guide-4.png">
                 </div>
                 <h4>인터뷰 후 활동하기</h4>
                 <p class="guide_text"><br>인터뷰 시, 내가 안전하게 아이를 돌볼 수 있는 환경인지 확인한 뒤 맘시터로 활동합니다.</p>
@@ -95,7 +97,7 @@
         <div>
             <div class="guide_inner">
                 <div class="guide_box">
-                    <img class="guide_img" src="img/sitter-guide-5.png">
+                    <img class="guide_img" src="${pageContext.request.contextPath}/assets/img/sitter-guide-5.png">
                 </div>
                 <h4>후기 작성</h4>
                 <p class="guide_text"><br>맘시터도 부모님에 대한 후기를 작성하세요. 내가 작성한 후기는 부모님의 신청서에 노출됩니다.</p>
@@ -103,7 +105,7 @@
         </div>
     </div>
     <div class="guide_go">
-        <a class="giude_go_text btn" href="/ezen-android2020-2/customer/guide_sitter.html" role="button">
+        <a class="giude_go_text btn" href="${pageContext.request.contextPath}/customer/guide_sitter.do" role="button">
             <div>
                 <span class="giude_go_text">시터회원 가이드 보기></span>
             </div>
@@ -111,10 +113,10 @@
     </div>
 
     <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <!--slick slider-->
-    <script type="text/javascript" src="assets/plugin/slick/slick.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js"></script>
     <script type="text/javascript">
         $(function () {
             $(".guide_slider").slick({

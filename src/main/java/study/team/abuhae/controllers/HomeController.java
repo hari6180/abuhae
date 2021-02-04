@@ -37,4 +37,13 @@ public class HomeController {
 		return "Index";
 	}
 	
+	@RequestMapping(value = "/mom_guide.do", method = RequestMethod.GET) 
+	public String mom_guide() {
+		return "mom_guide";
+	}
+	
+	@RequestMapping(value = "/sitter_guide.do", method = RequestMethod.GET) 
+	public String sitter_guide() {
+		return "sitter_guide";
+	}
 }

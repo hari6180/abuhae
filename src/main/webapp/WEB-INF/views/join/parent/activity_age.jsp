@@ -205,12 +205,22 @@
                                 <label for="60age">60대</label>
                             </div>
 
-                            <a href="${pageContext.request.contextPath}/join/parent/activity_age_ok.do"><button
-                                    class="next_btn" type="submit">다음</button></a>
+                            <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/add1_ok.do">
+                            	<input type="hidden" id="type" name="type" value="M">
+                                <input type="hidden" id="want_act" name="want_act">
+                                <input type="hidden" id="want_age" name="want_age">
+                                <input type="hidden" id="kids_num" name="kids_num" value="0">
+                                <input type="hidden" id="kids_age" name="kids_age" value="">
+                                <input type="hidden" id="payment" name="payment" value="0">
+
+                                <button class="next_btn" type="submit">다음</button>
+                            </form>
+                            
                         </div>
                     </div>
                 </div>
                 <!-- fin. col-xs-12 -->
+
             </div>
 
             <!-- Javascript -->
@@ -218,15 +228,18 @@
             <!-- jquery 파일명 수정 -->
             <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
             <!--sweetalert plugin-->
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <!--Google CDN 서버로부터 jQuery 참조 -->
-    		<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <!-- jQuery Ajax Form plugin CDN -->
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
     		<!-- jQuery Ajax Setup -->
     		<script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
             <script type="text/javascript"></script>
             <script type="text/javascript">
                 $(function () {
 
-                    const want_act = [];
+                    const result1 = [];
                     //활동 버튼 클릭
                     $(".act_btn").click(function (e) {
                         var count = $(".select_btn").length;
@@ -262,22 +275,23 @@
                             //console.log(act1);
 
                             for (var i = 0; i < act1.length; i++) {
-                                want_act.push($(act1[i]).val());
+                                result1.push($(act1[i]).val());
                                 //console.log(want_act);
                             }
+                            
+
 
                         } else {
                             swal({
                                 text: '최대 3개의 활동을 선택해 주세요.',
                             });
                         };
-
-
                     });
-
+					
+                    //체크박스 값 가져오기
+                    const result2 = [];
                     //활동, 나이대를 ajax post로 넘기기
                     $(".next_btn").click(function (e) {
-                        e.preventDefault();
 
                         //연령대 체크 여부 검사 - 선아
                         var check_list = $(".want_age:checked");
@@ -288,38 +302,37 @@
                             });
                             return false;
                         }
-                         //체크박스 값 가져오기
-                        const want_age = [];
-                        $(function () {
-                            $("input[name=want_age]:checked").each(function () {
-                                want_age.push($(this).val());
-                            });
-                        });
-
-                        var member = JSON.stringify({
-                            want_act: want_act,
-                            want_age: want_age,
-                        });
-
-                        //console.log(member);
                         
-                        $.ajax({
-                            url: "${pageContext.request.contextPath}/join/parent/activity_age_ok.do",
-                            data: member,
-                            dataType : 'json',
-                            type: "POST",
-                            success: function (data) {
-                                alert("success");
-
-                            },
-                            error: function () {
-                                alert("error")
-                            }
+                        $("input[name=want_age]:checked").each(function (i) {
+                            result2.push($(this).val());
                         });
+                        
 
-
+                        $('#want_act').val(result1);
+                        $('#want_age').val(result2);
+                        //console.log($("#want_act").val());
+                        //console.log($("#want_age").val());
 
                     });
+					/*
+                    $("#addform").ajaxForm({
+                        method: "POST",
+                        success: function (json) {
+                            //alert("success");
+                            console.log(json);
+
+                           //json에 포함된 데이터를 활용, 페이지 이동
+                            if(json.rt == "OK") {
+                                //var re1 = json.item.want_act;
+                                //var re2 = json.item.want_age;
+                                location.href = "${pageContext.request.contextPath}/join/parent/children.do";
+                            }
+
+                        },
+                        error: function () {
+                            alert("error")
+                        }
+                    });*/
                 });
             </script>
         </body>

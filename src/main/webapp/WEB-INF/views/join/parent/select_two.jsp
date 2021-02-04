@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page trimDirectiveWhitespaces="true" %>
+
 <p>아이 생년/월을 입력해 주세요</p>
 <p>출산 예정이라면 예정 년/월을 입력해 주세요.</p>
 
@@ -78,4 +81,3 @@
             </select>
         </div>
     </div>
-</div>

@@ -58,6 +58,20 @@ public class JoinController {
 		return "/join/parent/children";
 	}
 	
+	@RequestMapping(value = "/join/parent/select_one.do", method = RequestMethod.GET)
+	public String m_join_selectOne(Model model, HttpServletResponse response) {
+
+		
+		return "/join/parent/select_one";
+	}
+	
+	@RequestMapping(value = "/join/parent/select_two.do", method = RequestMethod.GET)
+	public String m_join_selectTwo(Model model, HttpServletResponse response) {
+
+		
+		return "/join/parent/select_two";
+	}
+	
 	@RequestMapping(value = "/join/parent/location.do", method = RequestMethod.GET)
 	public String m_join_loc(Model model, HttpServletResponse response) {
 
