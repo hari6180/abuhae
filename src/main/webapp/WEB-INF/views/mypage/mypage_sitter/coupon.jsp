@@ -9,20 +9,20 @@
 		<title>아이를부탁해</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 		<!-- noto Sans 웹 폰트 적용 -->
-        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
         <!-- css 참조 -->
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/mypage/css/upd_mps_detail.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_mps_detail.css">
     </head>
 
     <body>
@@ -33,7 +33,7 @@
                      <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="sitter_mypage.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">내 쿠폰함 <span style="color: #ff7000;">1장</span></h3>
@@ -106,7 +106,7 @@
                     <section class="group2_coupon">
                         <div class="row">
                             <div class="col-xs-12 coupon_cont2">
-                                <a href="<%=request.getContextPath()%>/buy/buy.jsp" class="use_btn">
+                                <a href="${pageContext.request.contextPath}/buy/buy.do" class="use_btn">
                                     <button type="button">쿠폰 사용하러 가기 <i class="fas fa-angle-right"></i></button>
                                 </a>
                                 <div class="coupon_list">
@@ -129,7 +129,7 @@
         </div>
 
 		<!-- Javascript -->
-		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
-        <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	</body>
 </html>

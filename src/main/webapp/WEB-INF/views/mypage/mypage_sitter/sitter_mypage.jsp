@@ -9,14 +9,14 @@
 		<title>아이를부탁해</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 		<!-- noto Sans 웹 폰트 적용 -->
-        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
@@ -25,11 +25,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
 
         <!-- sitter_mypage css 적용 -->
-        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/mypage/css/sitter_mypage.css"></link>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/sitter_mypage.css"></link>
 
-        <style type="text/css">
-
-		</style>
+        <!-- Javascript -->
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -48,7 +48,7 @@
                                 <h3>마이페이지</h3>
                                 <div class="mps_title_cont">
                                     <!--백엔드 연동 필요-->
-                                    <a href="upadate_password.jsp"><span class="glyphicon glyphicon-pencil"></span>비밀번호 변경</a>
+                                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_password.do"><span class="glyphicon glyphicon-pencil"></span>비밀번호 변경</a>
                                     ㅣ
                                     <a href="#" id="mps_logout">로그아웃</a>
                                 </div>
@@ -63,7 +63,7 @@
                             <div class="col-xs-12 mps_profile">
                                 <!--백엔드 연동 필요-->
                                 <div class="mps_prof_info">
-                                    <img src="<%=request.getContextPath()%>/mypage/img/profile.jpg" alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
+                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
                                     <p class="info_sitter">정지우</p>
                                     <p class="info_sitter">no.99999</p>
                                 </div>
@@ -145,7 +145,7 @@
                                             <p>일자리에서 직접 지원하거나<br/> 무제한으로 수락/조율할 수 있어요!</p>
                                         </div>
                                         <!-- 구매하기 상세페이지와 연동 필요 -->
-                                        <a href="<%=request.getContextPath()%>/buy/buy.jsp"><button type="button">구매하기</button></a>
+                                        <a href="${pageContext.request.contextPath}/buy/buy.do"><button type="button">구매하기</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                     <section class="group3_mps">
                         <div class="row">
                             <div class="col-xs-12 mps_menu">
-                                <a href="get_mom_mps.jsp">                              
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do">                              
                                     <i class="fas fa-address-book mps_menu3_list1"></i>
                                     <p class="mps_menu3_list2">내 구직 현황</p>
                                     <i class="fas fa-angle-right mps_menu3_list3"></i>
@@ -165,7 +165,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="like_mom_mps.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/like_mom_mps.do">
                                     <i class="fab fa-gratipay mps_menu_list1"></i>
                                     <p class="mps_menu_list2">찜한 일자리</p>
                                     <p class="mps_menu_list3">2명</p>
@@ -174,7 +174,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="profile_mps.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/profile_mps.do">
                                     <i class="fas fa-user-circle mps_menu3_list1"></i>
                                     <p class="mps_menu3_list2">내 프로필 보기</p>
                                     <i class="fas fa-angle-right mps_menu3_list3"></i>
@@ -182,7 +182,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="update_profile.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile.do">
                                     <i class="fas fa-pen mps_menu_list1"></i>
                                     <p class="mps_menu_list2">내 프로필 수정</p>
                                     <!--백엔드 연동 필요-->
@@ -201,7 +201,7 @@
                         <div class="row">
                             <div class="col-xs-12 mps_menu">
 
-                                <a href="fund.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/fund.do">
                                     <i class="fas fa-comment-dollar mps_menu3_list1" style="color: #fa9547;"></i>
                                     <p class="mps_menu3_list2">내 적립금</p>
                                     <i class="fas fa-angle-right mps_menu3_list3"></i>
@@ -209,7 +209,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="coupon.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/coupon.do">
                                     <i class="fas fa-file-invoice-dollar mps_menu_list1" style="color: #fa9547;"></i>
                                     <p class="mps_menu_list2">내 쿠폰함</p>
                                     <p class="mps_menu_list3" style="color: rgb(255, 129, 0);">1 장</p>
@@ -226,7 +226,7 @@
                     <section class="group3_mps">
                         <div class="row">
                             <div class="col-xs-12 mps_menu">
-                                <a href="review.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/review.do">
                                     <i class="fas fa-star mps_menu3_list1"></i>
                                     <p class="mps_menu3_list2">후기 관리</p>
                                     <i class="fas fa-angle-right mps_menu3_list3"></i>
@@ -234,7 +234,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="certify.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/certify.do">
                                     <i class="fas fa-check-circle mps_menu_list1"></i>
                                     <p class="mps_menu_list2">인증 관리</p>
                                     <!--백엔드 연동 필요-->
@@ -244,7 +244,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
                                 
-                                <a href="count_mom_mps.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/count_mom_mps.do">
                                     <i class="fas fa-user-plus mps_menu_list1"></i>
                                     <p class="mps_menu_list2">내 맘시터 채용 횟수</p>
                                     <!--백엔드 연동 필요-->
@@ -254,7 +254,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="sue.jsp">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sue.do">
                                     <i class="fas fa-bomb mps_menu_list1"></i>
                                     <p class="mps_menu_list2">신고내역</p>
                                     <!--백엔드 연동 필요-->
@@ -270,15 +270,15 @@
                     <section class="group4_mps">
                         <div class="row">
                             <div class="col-xs-12 mps_bottom">
-                                <a href="payment_list.jsp" class="bottom_con_in bt_cash">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/payment_list.do" class="bottom_con_in bt_cash">
                                     <p>결제 내역</p>
                                     <!--백엔드 연동 필요-->
                                     <p class="bt_cash_p">1 건</p>
                                 </a>
-                                <a href="<%=request.getContextPath()%>/customer/notice_site.jsp" class="bottom_con_in">
+                                <a href="${pageContext.request.contextPath}/customer/notice_site.do" class="bottom_con_in">
                                     <p>공지사항</p>
                                 </a>
-                                <a href="manage_account.jsp" class="bottom_con_in">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/manage_account.do" class="bottom_con_in">
                                     <p>계정관리</p>
                                 </a>
                             </div>

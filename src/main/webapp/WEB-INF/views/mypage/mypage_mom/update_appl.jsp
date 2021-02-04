@@ -9,25 +9,26 @@
 <title>아이를부탁해</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 <!-- noto Sans 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 
 <!-- 아이콘 사용 -->
 <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
 
 <!-- sweetalert 사용 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
  <!-- header css 적용 -->
- <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/upd_mpm_detail.css">
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_mpm_detail.css">
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/mom_page_detail.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mom_page_detail_yj.css" />
 <style type="text/css">
 	/** for header */
 	.mp_detail_tl {
@@ -157,7 +158,7 @@
 				<!-- Main start-->
 				<div class="main">
 					<div class="info_box">
-                        <a href="update_mom/update_profile_cont.html" class="box_name_edit1">
+                        <a href="${pageContext.request.contextPath}/mypage/mypage_mom/update_mom/update_profile_cont.do" class="box_name_edit1">
                             <i class="fas fa-pen-square"></i>
                         </a>
 						<div class="box_name">내 신청서 정보</div>
@@ -172,7 +173,7 @@
 						</div>
 					</div>
 					<div class="iwant_box">
-                        <a href="update_mom/update_sitter_age.html" class="box_name_edit2">
+                        <a href="${pageContext.request.contextPath}/mypage/mypage_mom/update_mom/update_sitter_age.do" class="box_name_edit2">
                             <i class="fas fa-pen-square"></i>
                         </a>
 						<div class="box_name">원하는 시터나이</div>
@@ -197,7 +198,7 @@
 						</div>
 					</div> <!-- fin. iwant_box -->
 					<div class="possible_zone_box">
-                        <a href="update_mom/update_location.html" class="box_name_edit3">
+                        <a href="${pageContext.request.contextPath}/mypage/mypage_mom/update_mom/update_location.do" class="box_name_edit3">
                             <i class="fas fa-pen-square"></i>
                         </a>
 						<div class="box_name">돌봄 지역</div>
@@ -211,7 +212,7 @@
 						</div> <!-- fin. possible_zone_area -->
 					</div> <!-- fin. possible_zone_box -->
 					<div class="active_box">
-                        <a href="update_mom/update_care_time.html" class="box_name_edit4">
+                        <a href="${pageContext.request.contextPath}/mypage/mypage_mom/update_mom/update_care_time.do" class="box_name_edit4">
                             <i class="fas fa-pen-square"></i>
                         </a>
 						<div class="box_name">활동 가능 시간</div>
@@ -302,7 +303,7 @@
 						</div> <!-- fin. active_area -->
 					</div> <!-- fin. active_box -->
 					<div class="possible_age_box">
-                        <a href="update_mom/update_child_info.html" class="box_name_edit5">
+                        <a href="${pageContext.request.contextPath}/mypage/mypage_mom/update_mom/update_child_info.do" class="box_name_edit5">
                             <i class="fas fa-pen-square"></i>
                         </a>
                     <div class="box_name">아이 정보</div>
@@ -324,7 +325,7 @@
 					</div> <!-- fin. possible_age_area -->
 				</div> <!-- fin. possible_age_box -->
 					<div class="possible_age_box">
-                        <a href="update_mom/update_activity.html" class="box_name_edit5">
+                        <a href="${pageContext.request.contextPath}/mypage/mypage_mom/update_mom/update_activity.do" class="box_name_edit5">
                             <i class="fas fa-pen-square"></i>
                         </a>
 						<div class="box_name">원하는 활동</div>
@@ -452,7 +453,7 @@
 						</div> <!-- fin. possible_active_area -->
 					</div> <!-- fin. possible_active_box -->
 					<div class="possible_age_box">
-					<a href="update_mom/update_request.html" class="box_name_edit5">
+					<a href="${pageContext.request.contextPath}/mypage/mypage_mom/update_mom/update_request.do" class="box_name_edit5">
 						<i class="fas fa-pen-square"></i>
 					</a>
 					<div class="box_name">그 외 요청사항</div>

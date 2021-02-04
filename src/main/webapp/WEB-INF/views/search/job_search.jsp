@@ -30,6 +30,200 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- ajax Helper -->
     <script src="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.css" />
+    
+        <!-- Javascript -->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script type="text/Javascript">
+      $(document).ready(function () {
+        // 무한 스크롤 1218 하리
+        $(document).scroll(function () {
+          var maxHeight = $(document).height();
+          var currentScroll = $(window).scrollTop() + $(window).height();
+
+          if (maxHeight <= currentScroll + 10) {
+            $.ajax({
+              // 결과를 읽어올 URL
+              url: "job_item_group.html",
+              // 웹 프로그램에게 데이터를 전송하는 방식.
+              // 생략할 경우 get으로 자동 지정됨
+              method: "get",
+              // 전달할 조건값은 JSON 형식으로 구성
+              // 사용하지 않을 경우 명시 자체를 생략할 수 있다.
+              data: {},
+              // 읽어올 내용의 형식(생략할 경우 json)
+              dataType: "html",
+              // 읽어온 내용을 처리하기 위한 함수
+              success: function (req) {
+                // 준비된 요소에게 읽어온 내용을 출력한다.
+                $("#result").append(req);
+              },
+            }); // end $.ajax
+          }
+        });
+      });
+
+
+      $(function () {
+        // 헤더 메뉴 load처리 1224 하리
+        //$("#menu").load("${pageContext.request.contextPath}/index_header.html"); - 210124 include 변경
+
+        // 상세 페이지 연동 1220 하리
+        $(".job_item_group").on("click", function () {
+          location.href = "${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_page_detail_graph.do";
+        });
+
+        /** 상세 검색 ------------------------------------------------------------------- */
+
+        // 아이나이 버튼 클릭
+        $(".ages").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("i").toggleClass("select_text_detail");
+          $(this).find("span").toggleClass("select_text_detail");
+        });
+
+        // 돌봄요일 버튼 클릭
+        $(".care_day").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("div").toggleClass("select_text_detail");
+        });
+
+        // 돌봄 시간대 버튼 클릭
+        $(".time_range").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("span").toggleClass("select_text_detail");
+        });
+
+        // 돌봄 종류 버튼 클릭
+        $(".activity_type_btn").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_act_btn");
+          //버튼 클릭시 text 색 변경
+          $(this).find("i").toggleClass("select_act_btn");
+        });
+
+                // 리셋 버튼 0109 하리
+                $("#reset_detail").click(function (e) {
+          e.preventDefault();
+          $("#job_search_detail_modal .modal_content *").removeClass("select_btn_detail");
+          $("#job_search_detail_modal .modal_content *").removeClass("select_text_detail");
+          $("#job_search_detail_modal .modal_content *").removeClass("select_act_btn");
+          $(".kids").prop("checked", false);
+          $("#min_pay").val('');
+          $("#max_pay").val('');
+        });
+
+        /** 상세 검색 end ------------------------------------------------------------------- */
+
+        /** 주소 선택 모달 ------------------------------------------------------------------- */
+
+        //시 클릭했을 때
+        $(".loc_btn").on("click", function () {
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#si").find("button").removeClass("select_loaction");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
+            //시 선택하면 gu 보이게
+            $("#gu>div").removeClass("hide_content");
+            $("#gu button").removeClass("hide_content");
+            $("#gu>div").addClass("show_content");
+          }
+        });
+        //구 클릭했을 때
+        $("#gu button").on("click", function () {
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
+            //구 선택하면 동 보이게
+            $("#dong>div").removeClass("hide_content");
+            $("#dong button").removeClass("hide_content");
+            $("#dong>div").addClass("show_content");
+          }
+        });
+
+        //동 클릭했을때
+        $("#dong button").on("click", function () {
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#dong").find("button").removeClass("select_loaction hide_content");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
+
+            $.ajax({
+              type: "GET", //get방식으로 통신
+              url: "${pageContext.request.contextPath}join/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
+              dataType: "html", //html형식으로 값 읽기
+              error: function () {
+                //통신 실패시 ㅠㅠ
+                alert("통신실패!");
+              },
+              success: function (data) {
+                //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
+                $(".select_box").html(data);
+                var now = $(".next_btn").prop("disabled");
+                //가져온 값 역으로 변경하여 다시 적용
+                $(".next_btn").prop("disabled", !now);
+              },
+            });
+          }
+        });
+
+
+		// 리셋 0109 하리
+        $("#reset_loc").on("click", function (e) {
+          e.preventDefault();
+          $(".loc_btn").removeClass("select_loaction");
+          $("#gu button").removeClass("select_loaction");
+          $("#gu button").addClass("hide_content");
+          $("#dong button").removeClass("select_loaction");
+          $("#dong button").addClass("hide_content");
+        });
+        /** 주소 선택 모달 end ------------------------------------------------------------------- */
+
+        /** 찜하기 ------------------------------------------------------------------- */
+        $(".swapHeart").on("click", function (e) {
+          event.stopPropagation(); // 버블링 방지 1220 하리
+          var $jim = $(this);
+
+          // 찜할 때 alert창과 glyphicon변형
+          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+            $(this).find("span").removeClass("glyphicon-heart-empty");
+            $(this).find("span").addClass("glyphicon-heart");
+            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+          }
+          // 찜 취소할 때 alert창과 glyphicon변형
+          else {
+            swal("찜 하기 취소");
+            $(this).find("span").addClass("glyphicon-heart-empty");
+          }
+        });
+        /** 찜하기 end ------------------------------------------------------------------- */
+
+        // 드롭다운 선택 - 0109 하리
+         $(".dr_option").click(function () {
+          $(this).addClass("active");
+        $(".dr_option").not(this).removeClass("active");
+           $("#orderby").html($(this).find("a").html());
+         });
+
+      });
+    </script>
   </head>
 
   <!--grid 사용시 col-xs-nn 사용-->
@@ -404,7 +598,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
               <div class="order_selector_group">
                 <!-- 더미 데이터, 백엔드 연동 필요 -->
-                <div class="total">총 3038명</div>
+                <div class="total">총 ${output.total_mom}명</div>
                 <!-- 드롭다운 -->
                 <div class="dropdown clearfix order_dropdown">
                   <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">후기 순 </a><b class="caret"></b>
@@ -423,30 +617,30 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <div class="profile_img_group">
                     <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
                     <div class="applicant_group">
-                      <div class="applicant">0명 지원</div>
+                      <div class="applicant">${output.apply}명 지원</div>
                     </div>
                   </div>
                   <div class="profile_info_group">
                     <div class="content_row">
                       <div>
-                        <div class="kids_count">영아 1명</div>
+                        <div class="kids_count">${output.kid_type} ${output.kids}명</div>
                         <div class="text_sep"></div>
-                        <div class="last_update">8분 전</div>
+                        <div class="last_update">${output.regtime} 전</div>
                       </div>
                     </div>
                     <div class="content_row">
-                      <div class="find_text">실내놀이 맘시터 찾습니다.</div>
+                      <div class="find_text">${output.findment}</div>
                     </div>
                     <div class="content_row location_group">
-                      <span class="location">성남시 분당구 </span>
+                      <span class="location">${output.loc} </span>
                       <div class="text_sep"></div>
-                      <span class="user_name"> 정○우</span>
+                      <span class="user_name"> ${output.mom_name}</span>
                       <div class="text_sep"></div>
-                      <span class="start_date">12/29 시작</span>
+                      <span class="start_date">${output.openingdate} 시작</span>
                     </div>
                     <div class="content_row">
                       <i class="fas fa-won-sign"></i>
-                      <div class="wanted_pay">희망 시급 15000원</div>
+                      <div class="wanted_pay">희망 시급 ${output.payment}원</div>
                     </div>
                   </div>
                 </div>
@@ -454,9 +648,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <div class="item_footer">
                   <div class="time_info_group">
                     <div class="time_text_group">
-                      <div class="frequency">정기적</div>
+                      <div class="frequency">${output.frequency}</div>
                     </div>
                     <div class="care_days_group">
+                    <!-- 조건에 따라 css 색상 변환 처리 -->
                       <span class="care_days">월</span>
                       <span class="care_days">화</span>
                       <span class="care_days">수</span>
@@ -476,124 +671,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 </div>
               </div>
               <!-- 카드영역 end -->
-              <!-- 카드영역 -->
-              <div class="job_item_group">
-                <div class="item_body">
-                  <div class="profile_img_group">
-                    <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
-                    <div class="applicant_group">
-                      <div class="applicant">0명 지원</div>
-                    </div>
-                  </div>
-                  <div class="profile_info_group">
-                    <div class="content_row">
-                      <div>
-                        <div class="kids_count">영아 1명</div>
-                        <div class="text_sep"></div>
-                        <div class="last_update">8분 전</div>
-                      </div>
-                    </div>
-                    <div class="content_row">
-                      <div class="find_text">실내놀이 맘시터 찾습니다.</div>
-                    </div>
-                    <div class="content_row location_group">
-                      <span class="location">성남시 분당구 </span>
-                      <div class="text_sep"></div>
-                      <span class="user_name"> 정○우</span>
-                      <div class="text_sep"></div>
-                      <span class="start_date">12/29 시작</span>
-                    </div>
-                    <div class="content_row">
-                      <i class="fas fa-won-sign"></i>
-                      <div class="wanted_pay">희망 시급 15000원</div>
-                    </div>
-                  </div>
-                </div>
-                <hr class="divider" />
-                <div class="item_footer">
-                  <div class="time_info_group">
-                    <div class="time_text_group">
-                      <div class="frequency">정기적</div>
-                    </div>
-                    <div class="care_days_group">
-                      <span class="care_days">월</span>
-                      <span class="care_days">화</span>
-                      <span class="care_days">수</span>
-                      <span class="care_days">목</span>
-                      <span class="care_days">금</span>
-                      <span class="care_days">토</span>
-                      <span class="care_days">일</span>
-                    </div>
-                  </div>
-                  <div class="jim_btn">
-                    <button class="swapHeart">
-                      <div class="jim">
-                        <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!-- 카드영역 end -->
-              <!-- 카드영역 -->
-              <div class="job_item_group">
-                <div class="item_body">
-                  <div class="profile_img_group">
-                    <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
-                    <div class="applicant_group">
-                      <div class="applicant">0명 지원</div>
-                    </div>
-                  </div>
-                  <div class="profile_info_group">
-                    <div class="content_row">
-                      <div>
-                        <div class="kids_count">영아 1명</div>
-                        <div class="text_sep"></div>
-                        <div class="last_update">8분 전</div>
-                      </div>
-                    </div>
-                    <div class="content_row">
-                      <div class="find_text">실내놀이 맘시터 찾습니다.</div>
-                    </div>
-                    <div class="content_row location_group">
-                      <span class="location">성남시 분당구 </span>
-                      <div class="text_sep"></div>
-                      <span class="user_name"> 정○우</span>
-                      <div class="text_sep"></div>
-                      <span class="start_date">12/29 시작</span>
-                    </div>
-                    <div class="content_row">
-                      <i class="fas fa-won-sign"></i>
-                      <div class="wanted_pay">희망 시급 15000원</div>
-                    </div>
-                  </div>
-                </div>
-                <hr class="divider" />
-                <div class="item_footer">
-                  <div class="time_info_group">
-                    <div class="time_text_group">
-                      <div class="frequency">정기적</div>
-                    </div>
-                    <div class="care_days_group">
-                      <span class="care_days">월</span>
-                      <span class="care_days">화</span>
-                      <span class="care_days">수</span>
-                      <span class="care_days">목</span>
-                      <span class="care_days">금</span>
-                      <span class="care_days">토</span>
-                      <span class="care_days">일</span>
-                    </div>
-                  </div>
-                  <div class="jim_btn">
-                    <button class="swapHeart">
-                      <div class="jim">
-                        <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!-- 카드영역 end -->
+             
 
               <div class="app_banner">
                 <img
@@ -621,198 +699,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     </div>
     <!--row end-->
 
-    <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-    <!-- jquery 파일명 수정 -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-    <script type="text/Javascript">
-      $(document).ready(function () {
-        // 무한 스크롤 1218 하리
-        $(document).scroll(function () {
-          var maxHeight = $(document).height();
-          var currentScroll = $(window).scrollTop() + $(window).height();
 
-          if (maxHeight <= currentScroll + 10) {
-            $.ajax({
-              // 결과를 읽어올 URL
-              url: "job_item_group.html",
-              // 웹 프로그램에게 데이터를 전송하는 방식.
-              // 생략할 경우 get으로 자동 지정됨
-              method: "get",
-              // 전달할 조건값은 JSON 형식으로 구성
-              // 사용하지 않을 경우 명시 자체를 생략할 수 있다.
-              data: {},
-              // 읽어올 내용의 형식(생략할 경우 json)
-              dataType: "html",
-              // 읽어온 내용을 처리하기 위한 함수
-              success: function (req) {
-                // 준비된 요소에게 읽어온 내용을 출력한다.
-                $("#result").append(req);
-              },
-            }); // end $.ajax
-          }
-        });
-      });
-
-
-      $(function () {
-        // 헤더 메뉴 load처리 1224 하리
-        //$("#menu").load("${pageContext.request.contextPath}/index_header.html"); - 210124 include 변경
-
-        // 상세 페이지 연동 1220 하리
-        $(".job_item_group").on("click", function () {
-          location.href = "${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_page_detail_graph.do";
-        });
-
-        /** 상세 검색 ------------------------------------------------------------------- */
-
-        // 아이나이 버튼 클릭
-        $(".ages").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
-          //버튼 클릭시 text 색 변경
-          $(this).find("i").toggleClass("select_text_detail");
-          $(this).find("span").toggleClass("select_text_detail");
-        });
-
-        // 돌봄요일 버튼 클릭
-        $(".care_day").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
-          //버튼 클릭시 text 색 변경
-          $(this).find("div").toggleClass("select_text_detail");
-        });
-
-        // 돌봄 시간대 버튼 클릭
-        $(".time_range").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
-          //버튼 클릭시 text 색 변경
-          $(this).find("span").toggleClass("select_text_detail");
-        });
-
-        // 돌봄 종류 버튼 클릭
-        $(".activity_type_btn").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_act_btn");
-          //버튼 클릭시 text 색 변경
-          $(this).find("i").toggleClass("select_act_btn");
-        });
-
-                // 리셋 버튼 0109 하리
-                $("#reset_detail").click(function (e) {
-          e.preventDefault();
-          $("#job_search_detail_modal .modal_content *").removeClass("select_btn_detail");
-          $("#job_search_detail_modal .modal_content *").removeClass("select_text_detail");
-          $("#job_search_detail_modal .modal_content *").removeClass("select_act_btn");
-          $(".kids").prop("checked", false);
-          $("#min_pay").val('');
-          $("#max_pay").val('');
-        });
-
-        /** 상세 검색 end ------------------------------------------------------------------- */
-
-        /** 주소 선택 모달 ------------------------------------------------------------------- */
-
-        //시 클릭했을 때
-        $(".loc_btn").on("click", function () {
-          var select = $(this).hasClass("select_location");
-          //선택이 안되어있을때
-          if (select == false) {
-            //선택이 되어있는 요소 탐색
-            var loc = $("#si").find("button").removeClass("select_loaction");
-            //console.log(loc);
-            $(this).addClass("select_loaction");
-            //시 선택하면 gu 보이게
-            $("#gu>div").removeClass("hide_content");
-            $("#gu button").removeClass("hide_content");
-            $("#gu>div").addClass("show_content");
-          }
-        });
-        //구 클릭했을 때
-        $("#gu button").on("click", function () {
-          var select = $(this).hasClass("select_location");
-          //선택이 안되어있을때
-          if (select == false) {
-            //선택이 되어있는 요소 탐색
-            var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
-            //console.log(loc);
-            $(this).addClass("select_loaction");
-            //구 선택하면 동 보이게
-            $("#dong>div").removeClass("hide_content");
-            $("#dong button").removeClass("hide_content");
-            $("#dong>div").addClass("show_content");
-          }
-        });
-
-        //동 클릭했을때
-        $("#dong button").on("click", function () {
-          var select = $(this).hasClass("select_location");
-          //선택이 안되어있을때
-          if (select == false) {
-            //선택이 되어있는 요소 탐색
-            var loc = $("#dong").find("button").removeClass("select_loaction hide_content");
-            //console.log(loc);
-            $(this).addClass("select_loaction");
-
-            $.ajax({
-              type: "GET", //get방식으로 통신
-              url: "${pageContext.request.contextPath}join/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
-              dataType: "html", //html형식으로 값 읽기
-              error: function () {
-                //통신 실패시 ㅠㅠ
-                alert("통신실패!");
-              },
-              success: function (data) {
-                //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
-                $(".select_box").html(data);
-                var now = $(".next_btn").prop("disabled");
-                //가져온 값 역으로 변경하여 다시 적용
-                $(".next_btn").prop("disabled", !now);
-              },
-            });
-          }
-        });
-
-
-                    // 리셋 0109 하리
-        $("#reset_loc").on("click", function (e) {
-          e.preventDefault();
-          $(".loc_btn").removeClass("select_loaction");
-          $("#gu button").removeClass("select_loaction");
-          $("#gu button").addClass("hide_content");
-          $("#dong button").removeClass("select_loaction");
-          $("#dong button").addClass("hide_content");
-        });
-        /** 주소 선택 모달 end ------------------------------------------------------------------- */
-
-        /** 찜하기 ------------------------------------------------------------------- */
-        $(".swapHeart").on("click", function (e) {
-          event.stopPropagation(); // 버블링 방지 1220 하리
-          var $jim = $(this);
-
-          // 찜할 때 alert창과 glyphicon변형
-          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
-            $(this).find("span").removeClass("glyphicon-heart-empty");
-            $(this).find("span").addClass("glyphicon-heart");
-            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
-          }
-          // 찜 취소할 때 alert창과 glyphicon변형
-          else {
-            swal("찜 하기 취소");
-            $(this).find("span").addClass("glyphicon-heart-empty");
-          }
-        });
-        /** 찜하기 end ------------------------------------------------------------------- */
-
-        // 드롭다운 선택 - 0109 하리
-         $(".dr_option").click(function () {
-          $(this).addClass("active");
-        $(".dr_option").not(this).removeClass("active");
-           $("#orderby").html($(this).find("a").html());
-         });
-
-      });
-    </script>
   </body>
 </html>

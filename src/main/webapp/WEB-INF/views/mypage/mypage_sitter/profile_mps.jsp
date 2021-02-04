@@ -10,14 +10,14 @@
 <title>아이를부탁해</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 <!-- noto Sans 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 
 <!-- 아이콘 사용 -->
 <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
@@ -26,15 +26,15 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/page_detail/css/page_detail_for_sitter.css" />	
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/page_detail_for_sitter.css" />	
 <style>
-	.profil_photo {
+	.container {
 		position: relative;
 	}
 
 	.sue_btn {
 		position: absolute;
-		bottom: 82%;
+		bottom: 98%;
 		right: 0;
 	}
 </style>
@@ -48,13 +48,13 @@
 					<div class="sue_btn pull-right" style="margin-top: 100px;">
 						<a href="#siren_modal" data-toggle="modal">
 							<button type="button" class="btn btn-dark btn-xs" id="siren">
-								<img src="/ezen-android2020-2/page_detail/img/siren.png" width="13" height="15"/>
+								<img src="${pageContext.request.contextPath}/assets/img/siren.png" width="13" height="15"/>
 									   신고
 							</button>
 						</a>
 					</div>
 					  <div class="profil_img">			  
-						<img src="<%=request.getContextPath()%>/page_detail/img/chat_mom.png" width="100%"/>
+						<img src="${pageContext.request.contextPath}/assets/img/chat_mom.png" width="100%"/>
 					  </div>
 				</div> <!-- fin. profil_photo -->
 				<div class="profil_info">
@@ -109,7 +109,7 @@
 					<div class="human_box">
 						<div class="human">
 							<div class="human_area">
-								<div><img width="70" height="70" src="../../page_detail/img/certification.png"/></div>	
+								<div><img width="70" height="70" src="${pageContext.request.contextPath}/assets/img/certification.png"/></div>	
 							<div class="human_text_area">
 								<div class="human_text_title">본인 인증 완료</div>
 								<div class="human_text">맘시터 고객안전관리팀에서 
@@ -126,7 +126,7 @@
 							<div class="main_mom">
 								<div class="main_mom_area">
 									<div height= 40px;>
-									<img width="90" src="../../page_detail/img/certification_mom.png"/>
+									<img width="90" src="${pageContext.request.contextPath}/assets/img/certification_mom.png"/>
 									</div>
 									<div class="main_mom_text_area">
 										<div class="mom_text_title">엄마 인증 완료</div>
@@ -153,7 +153,7 @@
 							</div> <!-- fin. main_mom -->	
 							<div class="main_other_area">
 								<div height= 40px;>
-								<img width="100" src="../../page_detail/img/certification_human.png"/>
+								<img width="100" src="${pageContext.request.contextPath}/assets/img/certification_human.png"/>
 								</div>
 								<div class="main_other_text_area">
 									<div class="other_text_title">등초본 인증 완료</div>
@@ -490,7 +490,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="../../page_detail/img/innerplayicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/innerplayicon_s.png"/>
 												</div>
 												<span>실내놀이</span>
 											</div>
@@ -498,7 +498,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="../../page_detail/img/koreanicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/koreanicon_s.png"/>
 												</div>
 												<span>한글놀이</span>
 											</div>
@@ -506,7 +506,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="../../page_detail/img/cleanicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/cleanicon_s.png"/>
 												</div>
 												<span>간단 청소</span>
 											</div>
@@ -514,7 +514,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="../../page_detail/img/longhouseicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/longhouseicon_s.png"/>
 												</div>
 												<span>장기입주</span>
 											</div>
@@ -525,7 +525,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="../../page_detail/img/guideicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/guideicon_s.png"/>
 												</div>
 												<span>등하원 돕기</span>
 											</div>
@@ -533,7 +533,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="../../page_detail/img/englishicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/englishicon_s.png"/>
 												</div>
 												<span>영어놀이</span>
 											</div>
@@ -541,7 +541,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="/ezen-android2020-2/page_detail/img/eaticon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/eaticon_s.png"/>
 												</div>
 												<span>밥 챙겨주기</span>
 											</div>
@@ -549,7 +549,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="../../page_detail/img/houseicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/houseicon_s.png"/>
 												</div>
 												<span>단기입주</span>
 											</div>
@@ -560,7 +560,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="../../page_detail/img/readicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/readicon_s.png"/>
 												</div>
 												<span>책읽기</span>
 											</div>
@@ -568,7 +568,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="../../page_detail/img/studyicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/studyicon_s.png"/>
 												</div>
 												<span>학습지도</span>
 											</div>
@@ -576,7 +576,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="../../page_detail/img/dishicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/dishicon_s.png"/>
 												</div>
 												<span>간단 설거지</span>
 											</div>
@@ -587,7 +587,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="../../page_detail/img/ousideicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/ousideicon_s.png"/>
 												</div>
 												<span>야외활동</span>
 											</div>
@@ -595,7 +595,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="../../page_detail/img/ballicon_s.png" />
+												<img src="${pageContext.request.contextPath}/assets/img/ballicon_s.png" />
 												</div>
 												<span>체육놀이</span>
 											</div>
@@ -686,7 +686,7 @@
 							</p>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick="location.href='profile_mps.html'">
+							<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick="location.href='${pageContext.request.contextPath}/mypage/mypage_sitter/profile_mps.do'">
 								확인
 							</button>
 						</div>
@@ -708,7 +708,7 @@
 								</p>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick="location.href='profile_mps.html'">
+								<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick="location.href='${pageContext.request.contextPath}/mypage/mypage_sitter/profile_mps.do'">
 									확인
 								</button>
 							</div>
@@ -728,45 +728,6 @@
 			$("#menu").load("../../index_header.html");
 		});-->
 		
-		jQuery(function($) {
-			
-			  $('#swapHeart').on('click', function() {
-			    var $jim = $(this)
-			    
-			    // 찜할 때 alert창과 glyphicon변형
-			    if($(this).find('span').hasClass("glyphicon-heart-empty")) {
-			    	$(this).find('span').removeClass("glyphicon-heart-empty");
-			    	$(this).find('span').addClass("glyphicon-heart");
-		            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
-			    }
-			 	// 찜 취소할 때 alert창과 glyphicon변형
-		        else{
-		           	swal("찜 하기 취소");
-		            $(this).find('span').addClass("glyphicon-heart-empty");
-		        }
-		    
-			  }); // fin. 찜버튼 기능
-			  			  
-			  $('.tabmenu').click(function() {
-					var activeTab = $(this).attr('data-tab');
-					$('#default').css('background-color', 'white');
-					$('#tab02').css('background-color', 'white');
-					$('#tab03').css('background-color', 'white');
-					$(this).css('background-color', 'rgb(255,238,224)');
-					$.ajax({
-						type : 'GET',                 //get방식으로 통신
-						url : activeTab + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
-						dataType : "html",            //html형식으로 값 읽기
-						error : function() {          //통신 실패시 ㅠㅠ
-							alert('통신실패!');
-						},
-						success : function(data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
-							$('#tabcontent').html(data);
-						}
-					});
-				});
-				$('#default').click(); 
-			}); // fin. 탭 기능
 		</script>
 		 <!-- jquery 파일명 수정 -->
 		<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 

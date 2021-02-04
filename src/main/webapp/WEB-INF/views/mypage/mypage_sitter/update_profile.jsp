@@ -10,14 +10,14 @@
 <title>아이를부탁해</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 <!-- noto Sans 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 
 <!-- 아이콘 사용 -->
 <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
@@ -26,8 +26,8 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- 상세페이지 css 참조 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/page_detail/css/page_detail_for_sitter.css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/mypage/css/upd_mps_detail.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/page_detail_for_sitter.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_mps_detail.css">
 
 <style>
     .mp_detail_tl {
@@ -165,7 +165,7 @@
                 <header class="mp_detail_tl" style="border-bottom: 1px solid #ccc;">
                     <div class="row">
                         <div class="col-xs-12 mp_detail_tl_in">
-                            <a href="sitter_mypage.jsp">
+                            <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do">
                                 <i class="fas fa-angle-left"></i>
                             </a>
                             <h3 class="center-block">프로필 수정</h3>
@@ -175,18 +175,18 @@
 
                 <div class="info_box">
                     <div class="box_name">내 사진</div>
-                    <a href="update_profile_detail/update_profile_img.html" class="box_name_edit">
+                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile_detail/update_profile_img.do" class="box_name_edit">
                         <i class="fas fa-pen-square"></i>
                     </a>
                     <div class="profil_photo">
                         <div class="profil_img">			  
-                            <img src="../../page_detail/img/chat_mom.png" width="100%" style="padding: 15px"/>
+                            <img src="${pageContext.request.contextPath}/assets/img/chat_mom.png" width="100%" style="padding: 15px"/>
                         </div>
                     </div> 
                 </div>
                 <div class="iwant_box">
                     <div class="box_name">선호하는 돌봄유형</div>
-                    <a href="update_profile_detail/choice_care.html" class="box_name_edit_iwant">
+                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile_detail/choice_care.do" class="box_name_edit_iwant">
                         <i class="fas fa-pen-square"></i>
                     </a>
                     <div class="iwant_area">
@@ -204,7 +204,7 @@
                 </div>
                 <div class="active_box">
                     <div class="box_name">활동 가능 시간</div>
-                    <a href="update_profile_detail/update_regular.html" class="box_name_edit_act">
+                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile_detail/update_regular.do" class="box_name_edit_act">
                         <i class="fas fa-pen-square"></i>
                     </a>
                     <div class="active_area">
@@ -450,7 +450,7 @@
                 </div> <!-- fin. active_box -->
                 <div class="possible_age_box">
                     <div class="box_name">돌봄 가능 연령</div>
-                    <a href="update_profile_detail/update_care_age.html" class="box_name_edit_age">
+                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile_detail/update_care_age.do" class="box_name_edit_age">
                         <i class="fas fa-pen-square"></i>
                     </a>
                     <div class="possible_age_area">
@@ -490,7 +490,7 @@
                 </div> <!-- fin. possible_age_box -->
                 <div class="possible_age_box">
                     <div class="box_name">가능한 활동</div>
-                    <a href="update_profile_detail/update_activity.html" class="box_name_edit_age">
+                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile_detail/update_activity.do" class="box_name_edit_age">
                         <i class="fas fa-pen-square"></i>
                     </a>
                     <div class="possible_age_area">
@@ -499,7 +499,7 @@
                                 <div class="active_ok">
                                     <div class="active_ok_img">
                                         <div class="active_ok_box">
-                                        <img src="../../page_detail/img/innerplayicon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/innerplayicon_s.png"/>
                                         </div>
                                         <span>실내놀이</span>
                                     </div>
@@ -507,7 +507,7 @@
                                 <div class="active_no">
                                     <div class="active_no_img">
                                         <div class="active_no_box">
-                                        <img src="../../page_detail/img/koreanicon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/koreanicon_s.png"/>
                                         </div>
                                         <span>한글놀이</span>
                                     </div>
@@ -515,7 +515,7 @@
                                 <div class="active_ok">
                                     <div class="active_ok_img">
                                         <div class="active_ok_box">
-                                        <img src="../../page_detail/img/cleanicon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/cleanicon_s.png"/>
                                         </div>
                                         <span>간단 청소</span>
                                     </div>
@@ -523,7 +523,7 @@
                                 <div class="active_no">
                                     <div class="active_no_img">
                                         <div class="active_no_box">
-                                        <img src="../../page_detail/img/longhouseicon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/longhouseicon_s.png"/>
                                         </div>
                                         <span>장기입주</span>
                                     </div>
@@ -534,7 +534,7 @@
                                 <div class="active_no">
                                     <div class="active_no_img">
                                         <div class="active_no_box">
-                                        <img src="../../page_detail/img/guideicon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/guideicon_s.png"/>
                                         </div>
                                         <span>등하원 돕기</span>
                                     </div>
@@ -542,7 +542,7 @@
                                 <div class="active_no">
                                     <div class="active_no_img">
                                         <div class="active_no_box">
-                                        <img src="../../page_detail/img/englishicon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/englishicon_s.png"/>
                                         </div>
                                         <span>영어놀이</span>
                                     </div>
@@ -550,7 +550,7 @@
                                 <div class="active_ok">
                                     <div class="active_ok_img">
                                         <div class="active_ok_box">
-                                        <img src="/ezen-android2020-2/page_detail/img/eaticon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/eaticon_s.png"/>
                                         </div>
                                         <span>밥 챙겨주기</span>
                                     </div>
@@ -558,7 +558,7 @@
                                 <div class="active_no">
                                     <div class="active_no_img">
                                         <div class="active_no_box">
-                                        <img src="../../page_detail/img/houseicon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/houseicon_s.png"/>
                                         </div>
                                         <span>단기입주</span>
                                     </div>
@@ -569,7 +569,7 @@
                                 <div class="active_ok">
                                     <div class="active_ok_img">
                                         <div class="active_ok_box">
-                                        <img src="../../page_detail/img/readicon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/readicon_s.png"/>
                                         </div>
                                         <span>책읽기</span>
                                     </div>
@@ -577,7 +577,7 @@
                                 <div class="active_no">
                                     <div class="active_no_img">
                                         <div class="active_no_box">
-                                        <img src="../../page_detail/img/studyicon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/studyicon_s.png"/>
                                         </div>
                                         <span>학습지도</span>
                                     </div>
@@ -585,7 +585,7 @@
                                 <div class="active_ok">
                                     <div class="active_ok_img">
                                         <div class="active_ok_box">
-                                        <img src="../../page_detail/img/dishicon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/dishicon_s.png"/>
                                         </div>
                                         <span>간단 설거지</span>
                                     </div>
@@ -596,7 +596,7 @@
                                 <div class="active_ok">
                                     <div class="active_ok_img">
                                         <div class="active_ok_box">
-                                        <img src="../../page_detail/img/ousideicon_s.png"/>
+                                        <img src="${pageContext.request.contextPath}/assets/img/ousideicon_s.png"/>
                                         </div>
                                         <span>야외활동</span>
                                     </div>
@@ -604,7 +604,7 @@
                                 <div class="active_no">
                                     <div class="active_no_img">
                                         <div class="active_no_box">
-                                        <img src="../../page_detail/img/ballicon_s.png" />
+                                        <img src="${pageContext.request.contextPath}/assets/img/ballicon_s.png" />
                                         </div>
                                         <span>체육놀이</span>
                                     </div>
@@ -616,7 +616,7 @@
                 </div> <!-- fin. possible_active_box -->
                 <div class="iwant_box">
                     <div class="box_name">희망시급</div>
-                    <a href="update_profile_detail/update_wage.html" class="box_name_edit_iwant">
+                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile_detail/update_wage.do" class="box_name_edit_iwant">
                         <i class="fas fa-pen-square"></i>
                     </a>
                     <div class="iwant_area">
@@ -635,7 +635,7 @@
                 </div>
                 <div class="iwant_box">
                     <div class="box_name">관련 경험</div>
-                    <a href="update_profile_detail/upadate_experience.html" class="box_name_edit_iwant">
+                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile_detail/update_experience.do" class="box_name_edit_iwant">
                         <i class="fas fa-pen-square"></i>
                     </a>
                     <div class="iwant_area">
@@ -649,7 +649,7 @@
                 </div>
                 <div class="iwant_box">
                     <div class="box_name">간단 자기소개</div>
-                    <a href="update_profile_detail/update_introduce.html" class="box_name_edit_iwant">
+                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile_detail/update_introduce.do" class="box_name_edit_iwant">
                         <i class="fas fa-pen-square"></i>
                     </a>
                     <div class="iwant_area">
@@ -663,7 +663,7 @@
                 </div>
                 <div class="possible_zone_box">
                     <div class="box_name">활동 가능 지역</div>
-                    <a href="update_profile_detail/update_location.html" class="box_name_edit_zone">
+                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile_detail/update_location.do" class="box_name_edit_zone">
                         <i class="fas fa-pen-square"></i>
                     </a>
                     <div class="possible_zone_area">
