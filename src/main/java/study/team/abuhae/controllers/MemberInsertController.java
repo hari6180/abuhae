@@ -16,7 +16,9 @@ public class MemberInsertController {
 	@Autowired
 	MemberInsertService memberInsertService;
 
-	/** 멤버를 DB에 추가하는 컨트롤러 **/
+	/** 멤버를 DB에 추가하는 컨트롤러 2021-02-04 하리
+	 *  void라 view가 없습니다. 
+	 *  프로젝트 실행하고 value 안 url 주소창에 입력하여 추가하세요. **/
 	@RequestMapping(value = "/member_insert.do", method = RequestMethod.GET)
 	public void member_insert(Model model) {
 

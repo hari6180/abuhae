@@ -9,7 +9,7 @@ import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.MemberInsertService;
 
-/** 대량의 회원 데이터 입력을 제공하기 위한 Service 계층에 대한 구현체 */
+/** 대량의 회원 데이터 입력을 제공하기 위한 Service 계층에 대한 구현체 2021-02-04 하리*/
 @Slf4j
 @Service
 public class MemberInsertServiceImpl implements MemberInsertService {
