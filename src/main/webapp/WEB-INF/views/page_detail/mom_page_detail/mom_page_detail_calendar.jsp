@@ -35,7 +35,7 @@
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
-					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = 'mom_report.do'">
+					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = '${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report.do'">
 				 	 <img src="<%=request.getContextPath()%>/assets/img/siren.png" width="13" height="15"/>
 				             신고
 				  	</button>

@@ -14,4 +14,26 @@ public class BuyController {
 
 		return "/buy/buy";
 	}
+	
+	// 맘 이용권 페이지 
+		@RequestMapping(value = "/buy/mom_ticket.do", method = RequestMethod.GET)
+		public String mom_ticket(Model model) {
+
+			return "/buy/mom_ticket";
+	}
+		
+	// 시터 이용권 페이지
+	@RequestMapping(value = "/buy/sitter_ticket.do", method = RequestMethod.GET)
+	public String sitter_ticket(Model model) {
+
+		return "/buy/sitter_ticket";
+	}
+	
+	// 이용권 구매 페이지
+		@RequestMapping(value = "/buy/receipt.do", method = RequestMethod.GET)
+		public String receipt(Model model) {
+
+			return "/buy/receipt";
+	}
+	
 }
