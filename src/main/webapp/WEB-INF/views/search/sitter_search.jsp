@@ -71,7 +71,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
         // 상세 페이지 연동 1220 하리
         $(".sitter_item_group").on("click", function () {
-          location.href = "${pageContext.request.contextPath}/abuhae/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.do";
+          location.href = "${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.do";
         });
 
         /** 원하는 활동 선택 ------------------------------------------------------------------- */

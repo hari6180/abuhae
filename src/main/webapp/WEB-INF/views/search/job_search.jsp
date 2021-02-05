@@ -71,7 +71,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
         // 상세 페이지 연동 1220 하리
         $(".job_item_group").on("click", function () {
-          location.href = "${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_page_detail_graph.do";
+          location.href = "${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_page_detail_calendar.do";
         });
 
         /** 상세 검색 ------------------------------------------------------------------- */
