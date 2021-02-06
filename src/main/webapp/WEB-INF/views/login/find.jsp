@@ -20,7 +20,7 @@
     <!-- noto Sans 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
     <!--login css-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/login/login.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/login.css" />
     <!--header css-->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index_header.css">
     <!-- 아이콘 사용 -->
@@ -84,11 +84,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
         </div> <!-- fin. col-xs-12 -->
     </div>
     <script type="text/javascript">
@@ -104,8 +99,6 @@
                     $("#shwide").next().addClass("show_content");
                 }
             });
-
-
         });
     </script>
 </body>

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -9,18 +11,21 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
     <!--절대 경로 수정 1220 선아-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/abu-service/css/introduce.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/introduce.css" />
     <!-- fontawesome(글리피콘) 적용 -->
     <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
+    <!-- Javascript -->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
     <style type="text/css">
         .container {
@@ -36,7 +41,7 @@
 
 <body>
     <div class="container">
-        <div id="menu"></div>
+        <div id="menu"><%@ include file="../index_header.jsp"%></div>
         <section>
             <div id="service" class="col-xs-12">
                 <!-- xs-12로 모바일 맞춤 -->
@@ -45,7 +50,7 @@
                     <div>바쁜 부모님들이</div>
                     <div>믿을 수 있는 아이돌보미를</div>
                     <div class="service_desc_bold">쉽고 빠르게 찾을 수 있는 서비스입니다.</div>
-                    <div class="service_img"><img src="/ezen-android2020-2/abu-service/img/momsitter_about.png"></div>
+                    <div class="service_img"><img src="${pageContext.request.contextPath}/assets/img/momsitter_about.png"></div>
                     <div class="service_desc">각자의 상황마다 요청시간과 돌봄내용이 다양한 부모님들의 다양한 니즈를, 다양한 특기와 장점을 가진 아이돌보미들이 도움을 줄 수 있도록
                         연결하는 공유경제 서비스입니다.</div>
                 </div>
@@ -66,20 +71,15 @@
         </section>
     </div>
 
-    <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
+    
     <script type="text/javascript">
         $(function () {
-            //브라우저 로드시 헤더 받아오기
-            $("#menu").load("/ezen-android2020-2/index_header.html");
-
             //브라우저 로드시 에이작스 받아오기 - 선아
             //default는 어떤 점이 좋나요?
             $(document).ready(function () {
                 $.ajax({
                     type: 'GET',                 //get방식으로 통신
-                    url: "introduce_what.html",    //부모가이드 보여주기
+                    url: "${pageContext.request.contextPath}/abu-service/introduce_what.do",    //부모가이드 보여주기
                     dataType: "html",            //html형식으로 값 읽기
                     error: function () {          //통신 실패시 ㅠㅠ
                         alert('통신실패!');
@@ -98,7 +98,7 @@
                 $(document).ready(function () {
                     $.ajax({
                         type: 'GET',                 //get방식으로 통신
-                        url: serv_btn + ".html",    //부모가이드 보여주기
+                        url: "${pageContext.request.contextPath}/abu-service/"+serv_btn + ".do",    //부모가이드 보여주기
                         dataType: "html",            //html형식으로 값 읽기
                         error: function () {          //통신 실패시 ㅠㅠ
                             alert('통신실패!');
@@ -117,7 +117,7 @@
             });
             
             $(document).on('click','.go_momsitter', function(){
-                location.href="/ezen-android2020-2/join/join.html";
+                location.href="${pageContext.request.contextPath}/join/join.html";
             });
 
             

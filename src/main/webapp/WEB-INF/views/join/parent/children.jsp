@@ -118,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/add2_ok.do">
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/location.do">
                		<input type="hidden" id="type" name="type" value="${type}">
                     <input type="hidden" id="want_act" name="want_act" value="${want_act}">
                     <input type="hidden" id="want_age" name="want_age" value="${want_age}">

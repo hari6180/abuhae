@@ -56,7 +56,19 @@
                         이제, 마지막 내용만 작성하시면 가입이 완료됩니다.
                     </h4>
                 </header>
-                <form id="join_form" method="post">
+                <form id="join_form" method="post" action="${pageContext.request.contextPath}/join/parent/agreement.do">
+                    <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="want_act" name="want_act" value="${want_act}">
+                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                    <input type="hidden" id="kids_num" name="kids_num" value="${kids_num}">
+                    <input type="hidden" id="kids_age" name="kids_age" value="${kids_age}">
+                    <input type="hidden" id="payment" name="payment" value="${payment}">
+                    <input type="hidden" id="loc_si" name="si" value="${si}">
+                    <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                    <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                    <input type="hidden" id="schedule" name="schedule" value="${schedule}">
+                    <input type="hidden" id="schedule_ok" name="schedule_ok" value="${schedule_ok}">
+                    <input type="hidden" id="descrip" name="description" value="${description}">
                     <div class="input_box">
                         <div class="input_group">
                             <label for="user_id">아이디</label>&nbsp;&nbsp;<label class="error" for="user_id"
@@ -113,9 +125,10 @@
                             </div>
                         </div>
                     </div>
+                    <button type="submit" class="next_btn" disabled>다음</button>
                 </form>
                 <!--end inputbox-->
-                <a href="${pageContext.request.contextPath}/join/parent/agreement.do"><button class="next_btn" disabled>다음</button></a>
+                
             </div>
         </div> <!-- fin. col-xs-12 -->
     </div>
@@ -124,8 +137,8 @@
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <!--validate플러그인 참조-->
-    <script src="${pageContext.request.contextPath}/assets/plugins/validate/jquery.validate.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/validate/additional-methods.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugin/validate/jquery.validate.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugin/validate/additional-methods.min.js"></script>
     <script type="text/javascript">
         $(function () {
 
@@ -196,8 +209,25 @@
             $("input").on("blur", function () {
                 if ($("#user_id").val() != '' && $("#user_pw").val() != '' && $("#user_pw_re").val() != '' && $("#name").val() != '' && $("#email").val() != '' &&$("#tel").val() != '' &&$("#birthdate").val() != '' ) {
                     $(".next_btn").prop("disabled", false);
-                };
-        });
+                }; 
+            });
+
+            $(".next_btn").click(function (e) {
+                var userid = $("#user_id").val();
+                var userpw = $("#user_pw").val();
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var tel = $("#tel").val();
+                var birthdate = $("#birthdate").val();
+
+                $("#user_id").val(userid);
+                $("#user_pw").val(userpw);
+                $("#name").val(name);
+                $("#email").val(email);
+                $("#tel").val(tel);
+                $("#birthdate").val(birthdate);
+            });
+
     });
 
     </script>

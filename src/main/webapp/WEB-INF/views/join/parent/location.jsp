@@ -237,7 +237,7 @@
                     <!--end 동-->
                 </div>
 
-                    <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/add3_ok.do">
+                    <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/schedule.do">
                         <input type="hidden" id="type" name="type" value="${type}">
                         <input type="hidden" id="want_act" name="want_act" value="${want_act}">
                         <input type="hidden" id="want_age" name="want_age" value="${want_age}">
@@ -247,7 +247,7 @@
                         <input type="hidden" id="loc_si" name="si">
                         <input type="hidden" id="loc_gu" name="gu">
                         <input type="hidden" id="loc_dong" name="dong">
-                        <button class="next_btn" disabled>다음</button>
+                        <button type="submit" class="next_btn" disabled>다음</button>
                 </form>
 
             </div>

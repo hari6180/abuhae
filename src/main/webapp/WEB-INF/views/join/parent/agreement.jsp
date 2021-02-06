@@ -91,7 +91,27 @@
                     </div>
                 </div>
                 <br>
-                <a href="${pageContext.request.contextPath}/join/parent/success.do"><button class="next_btn">다음</button></a>
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/add_ok.do">
+                    <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="want_act" name="want_act" value="${want_act}">
+                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                    <input type="hidden" id="kids_num" name="kids_num" value="${kids_num}">
+                    <input type="hidden" id="kids_age" name="kids_age" value="${kids_age}">
+                    <input type="hidden" id="payment" name="payment" value="${payment}">
+                    <input type="hidden" id="loc_si" name="si" value="${si}">
+                    <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                    <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                    <input type="hidden" id="schedule" name="schedule" value="${schedule}">
+                    <input type="hidden" id="schedule_ok" name="schedule_ok" value="${schedule_ok}">
+                    <input type="hidden" id="descrip" name="description" value="${description}">
+                    <input type="hidden" id="user_id" name="user_id" value="${user_id}">
+                    <input type="hidden" id="user_pw" name="user_pw" value="${user_pw}">
+                    <input type="hidden" id="name" name="name" value="${name}">
+                    <input type="hidden" id="email" name="email" value="${email}">
+                    <input type="hidden" id="tel" name="tel" value="${tel}">
+                    <input type="hidden" id="birthdate" name="birthdate" value="${birthdate}">
+                    <button type="submit" class="next_btn">다음</button>
+                </form>
             </div> <!-- fin. col-xs-12 -->
     </div>
 

@@ -21,7 +21,9 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 	<!--join.css-->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/join_parent.css" />
-	<!--flatpickr-->
+	<!-- Javascript -->
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 	<style type="text/css">
@@ -89,7 +91,7 @@
 							<div class="regu_title">시작시간</div>
 							<!--시간-->
 							<div class="select_time">
-								<select>
+								<select id="starttime">
 									<option value="10:00">오전 10:00</option>
 									<option value="10:30">오전 10:30</option>
 									<option value="11:00" selected>오전 11:00</option>
@@ -109,7 +111,7 @@
 								<div class="regu_title">종료시간</div>
 							</div>
 							<div class="select_time">
-								<select>
+								<select id="endtime">
 									<option value="20:00">오후 20:00</option>
 									<option value="20:30">오후 20:30</option>
 									<option value="21:00" selected>오후 21:00</option>
@@ -129,7 +131,20 @@
 						<span class="jojung_text">본 일정은 맘시터에 맞춰서 얼마든지 조정할 수 있어요.</span>
 					</div>
 
-					<a href="description.do"><button class="next_btn">다음</button></a>
+					<form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/description.do">
+                        <input type="hidden" id="type" name="type" value="${type}">
+                        <input type="hidden" id="want_act" name="want_act" value="${want_act}">
+                        <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                        <input type="hidden" id="kids_num" name="kids_num" value="${kids_num}">
+                        <input type="hidden" id="kids_age" name="kids_age" value="${kids_age}">
+                        <input type="hidden" id="payment" name="payment" value="${payment}">
+                        <input type="hidden" id="loc_si" name="si" value="${si}">
+                        <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                        <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                        <input type="hidden" id="schedule" name="schedule">
+                        <input type="hidden" id="schedule_ok" name="schedule_ok">
+                        <button type="submit" class="next_btn">다음</button>
+                </form>
 				</div>
 				<!--end hide content-->
 			</div>
@@ -137,14 +152,8 @@
 		</div> <!-- fin. col-xs-12 -->
 
 	</div>
-
-	<!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-	<!--flatpickr-->
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<script type="text/javascript">
-		//날짜 선택 - flatpickr 사용 - 선아
 		$(function () {
 			$('#datepicker').flatpickr({
 				dateFormat: "Y/m/d",
@@ -153,6 +162,7 @@
 				defaultDate: new Date().fp_incr(6) //지금으로부터 6일이 기본
 			});
 
+			const result1 = [];
 			//요일 선택시 
 			$(".day_btn").on("click", function () {
 				$(this).toggleClass("select_btn");
@@ -165,17 +175,60 @@
 					$("#content").removeClass("hide_content");
 					$("#content").addClass("show_content");
 				}
+				var day = $(this);
+				for (var i = 0; i < day.length; i++) {
+                	result1.push($(day[i]).val());
+                    //console.log(result1);
+                }
 			});
 
 			//일정 조정 선택
 			$(".jojung_box").on("click", function () {
 				$(this).toggleClass("box_check");
 				$(this).find(".jojung_check").toggleClass("check_check");
+				
 			});
+
+			$(".next_btn").click(function (e) {
+                //스케쥴 json 조립
+				//시작 날짜
+				var startdate = $(".date_box").val();
+				//요일
+				var day = result1;
+				//빈도
+				var frequency = "regular";
+				//시간
+				var time = [];
+				var starttime = $("#starttime option:selected").val();
+                var endtime = $("#endtime option:selected").val();
+				time.push(starttime);
+				time.push(endtime);
+
+
+				if($(".jojung_box").hasClass("box_check")==true) {
+					//일정조정 가능 
+					$("#schedule_ok").val("Y");
+				} else {
+					$("#schedule_ok").val("N");
+				}
+
+				var schedule = { 
+					startdate : startdate, 
+					frequency : frequency, 
+					 // 배열은 아래와 같이 구조화 할 수 있습니다.
+					day : day,
+					time : time
+				};
+				
+				var scheduleStr = JSON.stringify(schedule);
+				
+				$("#schedule").val(scheduleStr);
+
+
+                });
 		});
-
-
 	</script>
+	
 </body>
 
 </html>

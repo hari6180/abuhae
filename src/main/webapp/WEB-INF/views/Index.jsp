@@ -90,7 +90,7 @@
 				<!--활동 선택 옆에 자리 넘치는 거 확인 -->
 				<div class="col-xs-12">
 					<div class="row wantactive">
-						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.do" class="col-xs-4">
 							<div class="want_box">
 								<img src="assets/img/want_active_1.png" class="want_img" alt="등하원">
 								<div class="want_text_box">
@@ -99,7 +99,7 @@
 								</div>
 							</div>
 						</a>
-						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.do" class="col-xs-4">
 							<div class="want_box">
 								<img src="assets/img/want_active_2.png" class="want_img" alt="실내놀이">
 								<div class="want_text_box">
@@ -108,7 +108,7 @@
 								</div>
 							</div>
 						</a>
-						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.do" class="col-xs-4">
 							<div class="want_box">
 								<img src="assets/img/want_active_3.png" class="want_img" alt="야외활동">
 								<div class="want_text_box">
@@ -117,7 +117,7 @@
 								</div>
 							</div>
 						</a>
-						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.do" class="col-xs-4">
 							<div class="want_box">
 								<img src="assets/img/want_active_4.png" class="want_img" alt="학습지도">
 								<div class="want_text_box">
@@ -126,7 +126,7 @@
 								</div>
 							</div>
 						</a>
-						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.do" class="col-xs-4">
 							<div class="want_box">
 								<img src="assets/img/want_active_5.png" class="want_img" alt="영어놀이">
 								<div class="want_text_box">
@@ -135,7 +135,7 @@
 								</div>
 							</div>
 						</a>
-						<a href="${pageContext.request.contextPath}/search/sitter_search.html" class="col-xs-4">
+						<a href="${pageContext.request.contextPath}/search/sitter_search.do" class="col-xs-4">
 							<div class="want_box">
 								<img src="assets/img/want_active_6.png" class="want_img" alt="가사돌봄">
 								<div class="want_text_box">
@@ -205,7 +205,7 @@
 						</div>
 						<div class="bor_box_right"></div>
 					</div>
-					<a href="${pageContext.request.contextPath}/customer/question_sitter.html" class="btn btn-primary btn-lg">FAQ 더 알아보기</a>
+					<a href="${pageContext.request.contextPath}/customer/question_sitter.do" class="btn btn-primary btn-lg">FAQ 더 알아보기</a>
 				</div>
 				<!--end 맘시터가 궁금하신가요?-->
 			</section>
@@ -244,19 +244,19 @@
 							<div class="col-md-12 col-xs-6">
 								<div class="ft_list">
 									<h4 class="ft_list_tl">서비스 종류</h4>
-									<li><a href="${pageContext.request.contextPath}/search/sitter_search.html" class="ft_list_con">신생아/영아 풀타임 돌봄</a></li>
-									<li><a href="${pageContext.request.contextPath}/search/sitter_search.html" class="ft_list_con">신생아/영아 보조 돌봄</a></li>
-									<li><a href="${pageContext.request.contextPath}/search/sitter_search.html" class="ft_list_con">등하원 돌봄</a></li>
-									<li><a href="${pageContext.request.contextPath}/search/sitter_search.html" class="ft_list_con">놀이/학습 돌봄</a></li>
-									<li><a href="${pageContext.request.contextPath}/search/sitter_search.html" class="ft_list_con">긴급/단기 돌봄</a></li>
+									<li><a href="${pageContext.request.contextPath}/search/sitter_search.do" class="ft_list_con">신생아/영아 풀타임 돌봄</a></li>
+									<li><a href="${pageContext.request.contextPath}/search/sitter_search.do" class="ft_list_con">신생아/영아 보조 돌봄</a></li>
+									<li><a href="${pageContext.request.contextPath}/search/sitter_search.do" class="ft_list_con">등하원 돌봄</a></li>
+									<li><a href="${pageContext.request.contextPath}/search/sitter_search.do" class="ft_list_con">놀이/학습 돌봄</a></li>
+									<li><a href="${pageContext.request.contextPath}/search/sitter_search.do" class="ft_list_con">긴급/단기 돌봄</a></li>
 								</div>
 							</div>
 							<div class="col-md-12 col-xs-6">
 								<div class="ft_list">
 									<h4 class="ft_list_tl">맘시터 정보</h4>
-									<li><a href="${pageContext.request.contextPath}/abu-service/introduce.html" class="ft_list_con">서비스 소개</a></li>
+									<li><a href="${pageContext.request.contextPath}/abu-service/introduce.do" class="ft_list_con">서비스 소개</a></li>
 									<li><a href="https://www.notion.so/2d568de1bcaa4de181b33c72be346c66" class="ft_list_con">개발 과정</a></li>
-									<li><a href="${pageContext.request.contextPath}/abu-service/team.html" class="ft_list_con">개발자 정보</a></li>
+									<li><a href="${pageContext.request.contextPath}/abu-service/team.do" class="ft_list_con">개발자 정보</a></li>
 								</div>
 							</div>
 						</div>
@@ -265,13 +265,13 @@
 								<div class="ft_list">
 									<h4 class="ft_list_tl">고객센터</h4>
 									<li>
-										<a href="${pageContext.request.contextPath}/customer/notice_site.html" class="ft_list_con">공지사항 ㅣ</a>
-										<a href="${pageContext.request.contextPath}/customer/guide.html" class="ft_list_con">이용가이드 ㅣ</a>
-										<a href="${pageContext.request.contextPath}/customer/question_sitter.html" class="ft_list_con">자주 묻는 질문</a>
+										<a href="${pageContext.request.contextPath}/customer/notice_site.do" class="ft_list_con">공지사항 ㅣ</a>
+										<a href="${pageContext.request.contextPath}/customer/guide.do" class="ft_list_con">이용가이드 ㅣ</a>
+										<a href="${pageContext.request.contextPath}/customer/question_sitter.do" class="ft_list_con">자주 묻는 질문</a>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/abu-service/agreement.html" class="ft_list_con">이용약관 ㅣ</a>
-										<a href="${pageContext.request.contextPath}/abu-service/privacy.html" class="ft_list_con">개인정보처리방침 ㅣ</a>
+										<a href="${pageContext.request.contextPath}/abu-service/agreement.do" class="ft_list_con">이용약관 ㅣ</a>
+										<a href="${pageContext.request.contextPath}/abu-service/privacy.do" class="ft_list_con">개인정보처리방침 ㅣ</a>
 										<a href="#" class="ft_list_con">1:1문의</a>
 									</li>
 									<li class="ft_list_con ft_time">

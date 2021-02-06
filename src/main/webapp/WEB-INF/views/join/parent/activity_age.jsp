@@ -205,14 +205,10 @@
                                 <label for="60age">60대</label>
                             </div>
 
-                            <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/add1_ok.do">
+                            <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/children.do">
                             	<input type="hidden" id="type" name="type" value="M">
                                 <input type="hidden" id="want_act" name="want_act">
                                 <input type="hidden" id="want_age" name="want_age">
-                                <input type="hidden" id="kids_num" name="kids_num" value="0">
-                                <input type="hidden" id="kids_age" name="kids_age" value="">
-                                <input type="hidden" id="payment" name="payment" value="0">
-
                                 <button class="next_btn" type="submit">다음</button>
                             </form>
                             

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -9,17 +11,17 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
     <!--절대 경로 수정 1220 선아-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
     <!-- sitter_search.css-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/search/css/sitter_search.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/sitter_search.css" />
 
     <style type="text/css">
 
@@ -34,14 +36,14 @@
                 <div class="sitter_item_group">
                     <div class="item_header">
                         <div class="cert_label"><img
-                                src="/ezen-android2020-2/search/img/icon-cert-label (1).png" /><span class="cert_text">네
+                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">네
                                 아이의
                                 엄마</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
                         <div class="profile_img_group">
-                            <img src="/ezen-android2020-2/assets/img/team_suna.jpg" />
+                            <img src="${pageContext.request.contextPath}/assets/img/team_suna.jpg" />
                             <div class="responsive_rate_group">
                                 <div class="res_text">응답률</div>
                                 <div class="res_rate">100</div>
@@ -101,14 +103,14 @@
                 <div class="sitter_item_group">
                     <div class="item_header">
                         <div class="cert_label"><img
-                                src="/ezen-android2020-2/search/img/icon-cert-label (1).png" /><span class="cert_text">네
+                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">네
                                 아이의
                                 엄마</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
                         <div class="profile_img_group">
-                            <img src="/ezen-android2020-2/assets/img/team_yoonjae.jpg" />
+                            <img src="${pageContext.request.contextPath}/assets/img/team_yoonjae.jpg" />
                             <div class="responsive_rate_group">
                                 <div class="res_text">응답률</div>
                                 <div class="res_rate">100</div>
@@ -168,14 +170,14 @@
                 <div class="sitter_item_group">
                     <div class="item_header">
                         <div class="cert_label"><img
-                                src="/ezen-android2020-2/search/img/icon-cert-label (1).png" /><span class="cert_text">네
+                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">네
                                 아이의
                                 엄마</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
                         <div class="profile_img_group">
-                            <img src="/ezen-android2020-2/assets/img/team_daye.jpg" />
+                            <img src="${pageContext.request.contextPath}/assets/img/team_daye.jpg" />
                             <div class="responsive_rate_group">
                                 <div class="res_text">응답률</div>
                                 <div class="res_rate">100</div>
@@ -235,14 +237,14 @@
                 <div class="sitter_item_group">
                     <div class="item_header">
                         <div class="cert_label"><img
-                                src="/ezen-android2020-2/search/img/icon-cert-label (1).png" /><span class="cert_text">네
+                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">네
                                 아이의
                                 엄마</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
                         <div class="profile_img_group">
-                            <img src="/ezen-android2020-2/assets/img/team_hari.jpg" />
+                            <img src="${pageContext.request.contextPath}/assets/img/team_hari.jpg" />
                             <div class="responsive_rate_group">
                                 <div class="res_text">응답률</div>
                                 <div class="res_rate">100</div>
@@ -302,14 +304,14 @@
                 <div class="sitter_item_group">
                     <div class="item_header">
                         <div class="cert_label"><img
-                                src="/ezen-android2020-2/search/img/icon-cert-label (1).png" /><span class="cert_text">네
+                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">네
                                 아이의
                                 엄마</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
                         <div class="profile_img_group">
-                            <img src="/ezen-android2020-2/assets/img/team_jiwoo.jpg" />
+                            <img src="${pageContext.request.contextPath}/assets/img/team_jiwoo.jpg" />
                             <div class="responsive_rate_group">
                                 <div class="res_text">응답률</div>
                                 <div class="res_rate">100</div>
@@ -372,9 +374,6 @@
         </div> <!-- fin. col-xs-12 -->
     </div>
 
-    <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -9,16 +10,16 @@
     <title>아이를부탁해</title>
 
     <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
     <!-- bootstrap -->
     <!--절대 경로 수정 1220 선아-->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
     <!-- noto Sans 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/assets/css/notosans.css" />
-    <link rel="stylesheet" type="text/css" href="/ezen-android2020-2/abu-service/css/agree.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/agree.css" />
     <!-- fontawesome(글리피콘) 적용 -->
 	<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
     <style type="text/css">
@@ -38,7 +39,7 @@
                 <p><strong>맘시터</strong> <strong>서비스 이용약관</strong></p>
                 <p><strong>- 제1장 총 칙 -</strong></p>
                 <p>제1조 (목적)</p>
-                <p>이 약관은 주식회사 아이를부탁해(이하 "회사")의 웹사이트 "아부해"(<a href="/ezen-android2020-2/Index.html">https://www.abuhea.com</a>) 또는
+                <p>이 약관은 주식회사 아이를부탁해(이하 "회사")의 웹사이트 "아부해"(<a href="${pageContext.request.contextPath}/">https://www.abuhea.com</a>) 또는
                     스마트폰 등 이동통신기기를 통해 제공되는 "맘시터" 모바일 애플리케이션을 통해 회사가 운영, 제공하는 인터넷 관련 서비스(이하 "맘시터 서비스" 또는 "서비스")을 이용함에 있어
                     이용자의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.</p>
                 <p>제2조 (정의)</p>
@@ -716,11 +717,6 @@
         </div> <!-- fin. col-xs-12 -->
     </div>
 
-    <!-- Javascript -->
-    <script src="/ezen-android2020-2/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="/ezen-android2020-2/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-    </script>
 </body>
 
 </html>

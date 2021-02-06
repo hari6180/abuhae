@@ -887,7 +887,7 @@ input[type="checkbox"]:checked + label:after {
   padding: 0.5em 0.5em;
   border: none;
   font-family: inherit;
-  background: url("/ezen-android2020-2/join/img/arrow.png") no-repeat 95% 50%;
+  background: url("../img/arrow.png") no-repeat 95% 50%;
   border-radius: 0px;
   -webkit-appearance: none;
   -moz-appearance: none;

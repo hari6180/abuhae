@@ -9,7 +9,7 @@
 		<title>아이를부탁해</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="/ezen-android2020-2/assets/ico/favicon.ico" />
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 		<!-- bootstrap -->
@@ -23,7 +23,7 @@
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
         <!--login css-->
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/login/login.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/login.css" />
         <!-- Javascript -->
 		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
@@ -53,8 +53,8 @@
                 <button class="next_btn" id="login_btn">로그인</button>
 
                 <div class="other_action">
-                    <a href="find.jsp" class="otehr_login underline">로그인 정보를 잊으셨나요?</a>
-                    <a href="${pageContext.request.contextPath}/join/join.html" class="otehr_login">회원가입</a>
+                    <a href="${pageContext.request.contextPath}/login/find.do" class="otehr_login underline">로그인 정보를 잊으셨나요?</a>
+                    <a href="${pageContext.request.contextPath}/join/join.do" class="otehr_login">회원가입</a>
                 </div>
 				
 			</div> <!-- fin. col-xs-12 -->
@@ -67,7 +67,7 @@
 
                 $("#login_btn").on("click", function(){
                     if($("#userid").val() == "mom" && $("#password").val() == "sitter") {
-                        location.href="/ezen-android2020-2/Index.html";
+                        location.href="${pageContext.request.contextPath}/";
                     } else {
                         alert("아이디 혹은 비밀번호를 확인해 주세요.");
                     }

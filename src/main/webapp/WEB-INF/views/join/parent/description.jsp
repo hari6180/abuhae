@@ -45,14 +45,29 @@
                 </div>
                 <div class="no_require">선택작성 항목</div>
                 <h3 class="what_want">맘시터가 알아야 할 내용이 있나요?</h3>
-                <textarea placeholder="아이 성별, 나이(개월 수), 성격, 특이사항 등을 적어주세요." class="desc_textarea"
+                <textarea id="description" placeholder="아이 성별, 나이(개월 수), 성격, 특이사항 등을 적어주세요." class="desc_textarea"
                     maxlength="1000"></textarea>
                 <p class="warning">
                     <i class="fas fa-times"></i><span>&nbsp;&nbsp;신청서 내용에 연락처, 이메일, 카카오ID 등을 작성할 경우 회원 자격을 영구적으로
                         잃게됩니다.</span>
                 </p>
 
-                <a href="${pageContext.request.contextPath}/join/parent/account.do"><button class="next_btn">나중에 입력할게요.</button></a>
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/account.do">
+                    <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="want_act" name="want_act" value="${want_act}">
+                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                    <input type="hidden" id="kids_num" name="kids_num" value="${kids_num}">
+                    <input type="hidden" id="kids_age" name="kids_age" value="${kids_age}">
+                    <input type="hidden" id="payment" name="payment" value="${payment}">
+                    <input type="hidden" id="loc_si" name="si" value="${si}">
+                    <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                    <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                    <input type="hidden" id="schedule" name="schedule" value="${schedule}">
+                    <input type="hidden" id="schedule_ok" name="schedule_ok" value="${schedule_ok}">
+                    <input type="hidden" id="descrip" name="description">
+                    <button type="submit" class="next_btn">나중에 입력할게요.</button>
+            </form>
+                
             </div>
 
 
@@ -62,6 +77,21 @@
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var desc = null;
+            $("#description").on("keyup", function(){
+                $(".next_btn").empty();
+                $(".next_btn").html("다음");
+                desc = $(this).val();
+            });
+
+            $(".next_btn").click(function (e) {
+                $("#descrip").val(desc);
+                });
+        });
+
+    </script>
 </body>
 
 </html>
