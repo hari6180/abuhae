@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2021-02-01 10:38
+-- Generated: 2021-02-06 18:43
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -164,8 +164,8 @@ CREATE TABLE IF NOT EXISTS `ABU`.`mom_info` (
   `memberno` INT(11) NOT NULL COMMENT '회원 일련번호',
   `want_act` VARCHAR(45) NOT NULL COMMENT '원하는 활동',
   `want_age` VARCHAR(255) NOT NULL COMMENT '원하는 시터 나이대\\n',
-  `kids_num` INT(11) NOT NULL COMMENT '아이 수',
-  `kids_age` DATE NOT NULL COMMENT '아이 나이',
+  `kids_num` ENUM('1', '2') NOT NULL COMMENT '아이 수',
+  `kids_age` CHAR(6) NOT NULL COMMENT '아이 나이',
   `payment` INT(11) NOT NULL COMMENT '시터에게 지불하기 원하는 시급',
   `si` VARCHAR(10) NOT NULL COMMENT '시(행정구역)',
   `gu` VARCHAR(45) NOT NULL COMMENT '구(행정구역)\\n',
