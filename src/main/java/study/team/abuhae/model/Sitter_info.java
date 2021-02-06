@@ -3,22 +3,37 @@ package study.team.abuhae.model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+//부모 멤버변수까지 동일한지 비교하기 위해 넣어준 어노테이션.
+//Data 어노테이션을 쓰고 상속처리 할 경우 해당 속성을 지정해주어야한다. - 0206 Hari
+
 @EqualsAndHashCode(callSuper=true)
 @Data
-public class Sitter_info extends Member {
-	private int sitterno;
-	private char sitter_type;
-	private String want_act;
-	private String want_age;
-	private String si;
-	private String gu;
-	private String dong;
-	private int payment;
-	private String cctv;
-	private String schedule;
-	private String schedule_set;
-	private String introduce;
-	private int answer;
-	private String openingdate;
 
+/**
+* @author Hari
+* 시터 회원가입시 받는 데이터를 정의한 Beans.
+* sitterno를 PK값으로 사용, 다른 테이블과 JOIN한다.
+*/
+
+public class Sitter_info extends Member {
+	private int sitterno;				// 시터회원 일련번호 PRI
+	private String sitter_type;			// 시터 타입 (대학생, 부모님 등)
+	private String want_act;			// 가능한 돌봄 유형
+	private String want_age;			// 돌보기 원하는 나이 (신생아, 영아 등)
+	private String si;					// 시
+	private String gu;					// 구
+	private String dong;				// 동
+	private int payment;				// 원하는 시급
+	private String cctv;				// CCTV 동의 여부
+	private char schedule;				// 활동 가능 시간 (1, 2, 3, 4)
+	private String schedule_set;		// 원하는 시간 직접 입력 (JSON)
+	private String introduce;			// 자기소개
+	private int answer;					// 응답률
+	private String openingdate; 		// 신청서 등록 시간
+
+	/** 2) JOIN절에 따른 추가 컬럼 */
+	// 찾기 기능의 JOIN - 0206 hari
+	private int rev_rate;				// 별점(소숫점 이하 반올림)
+	private int rev_count;				// 후기 수
+	private String profile_img_file;	// 프로필 이미지 파일(수정 예상)
 }

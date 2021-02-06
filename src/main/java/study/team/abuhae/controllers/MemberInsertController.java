@@ -26,13 +26,13 @@ public class MemberInsertController {
 		Mom_info input = new Mom_info();
 		for (int i = 1; i <= 100; i++) {
 			input.setId("mom" + i);
-			input.setType("M");
+			input.setType('M');
 			input.setPassword("mom123");
 			input.setName("전하리" + i);
 			input.setEmail("aaa@aaa.aa");
 			input.setPhone("010-8888-8888");
 			input.setBirthdate("1997-06-18");
-			input.setJob_opening("Y");
+			input.setJob_opening('Y');
 
 			input.setWant_act("야외활동");
 			input.setWant_age("20대");
@@ -44,9 +44,9 @@ public class MemberInsertController {
 			input.setDong("성내2동");
 			input.setSchedule("{ \"startdate\" : \"2021-01-21\",\r\n" + "	\"frequency\" : \"정기적으로\",\r\n"
 					+ "	\"day\" : [\"wed\", \"thu\"],\r\n" + "	\"time\" : [\"11:00\", \"21:00\"] \r\n" + "}");
-			input.setSchedule_ok("Y");
-			input.setSitter_gender("F");
-			input.setInterview_type("1");
+			input.setSchedule_ok('Y');
+			input.setSitter_gender('F');
+			input.setInterview_type('1');
 			input.setCare_type("주1회");
 			input.setOpeningdate("2021-02-04");
 			int memberno = input.getMemberno();
@@ -64,13 +64,13 @@ public class MemberInsertController {
 		Sitter_info input2 = new Sitter_info();
 		for (int i = 1; i <= 100; i++) {
 			input2.setId("sitter" + i);
-			input2.setType("S");
+			input2.setType('S');
 			input2.setPassword("sitter123");
 			input2.setName("김선아" + i);
 			input2.setEmail("bbb@aaa.aa");
 			input2.setPhone("010-8888-8888");
 			input2.setBirthdate("1993-11-24");
-			input2.setJob_opening("Y");
+			input2.setJob_opening('Y');
 
 			input2.setWant_act("야외활동");
 			input2.setWant_age("20대");
@@ -78,7 +78,7 @@ public class MemberInsertController {
 			input2.setSi("서울시");
 			input2.setGu("강동구");
 			input2.setDong("성내2동");
-			input2.setSchedule("5");
+			input2.setSchedule('5');
 			input2.setSchedule_set("{ \"startdate\" : \"2021-01-21\",\r\n" + "	\"frequency\" : \"정기적으로\",\r\n"
 					+ "	\"day\" : [\"wed\", \"thu\"],\r\n" + "	\"time\" : [\"11:00\", \"21:00\"] \r\n" + "}");
 			input2.setIntroduce("안녕하세요 짱짱 시터입니다.");
