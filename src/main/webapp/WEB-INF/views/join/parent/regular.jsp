@@ -190,7 +190,8 @@
 			});
 
 			$(".next_btn").click(function (e) {
-                //스케쥴 json 조립
+                //e.preventDefault();
+				//스케쥴 json 조립
 				//시작 날짜
 				var startdate = $(".date_box").val();
 				//요일
@@ -221,8 +222,10 @@
 				};
 				
 				var scheduleStr = JSON.stringify(schedule);
-				
-				$("#schedule").val(scheduleStr);
+				//console.log(scheduleStr);
+				var schedulerep = scheduleStr.replace(/\"/gi, '\'' );
+				//console.log(schedulerep);
+				$("#schedule").val(schedulerep);
 
 
                 });

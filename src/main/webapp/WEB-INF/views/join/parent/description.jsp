@@ -87,6 +87,7 @@
             });
 
             $(".next_btn").click(function (e) {
+                //e.preventDefault();
                 $("#descrip").val(desc);
                 });
         });

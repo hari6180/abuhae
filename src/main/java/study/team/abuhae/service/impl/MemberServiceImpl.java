@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import study.team.abuhae.model.Member;
+import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.service.MemberService;
 
 @Slf4j
@@ -18,9 +18,6 @@ public class MemberServiceImpl implements MemberService {
 	//mybatis 세션 객체 주입 설정
 	@Autowired
 	SqlSession sqlsession;
-	
-	
-
 
 	/*
 	 * 회원 기본 정보 조회 (MemberTable)
@@ -85,6 +82,28 @@ public class MemberServiceImpl implements MemberService {
 		
 		
 		return result;
+	}
+
+	@Override
+	public int addMom(Mom_info input) throws Exception {
+		int result1 = 0;
+		int result2 = 0;
+
+		try {
+			result1 = sqlsession.insert("MemberMapper.insertMember", input);
+			result2 = sqlsession.insert("MemberMapper.insertMom", input);
+			if (result1 == 0 && result2 == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+
+		return result1;
 	}
 
 	
