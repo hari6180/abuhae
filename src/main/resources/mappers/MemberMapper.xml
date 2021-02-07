@@ -105,6 +105,24 @@
 		#{schedule_set}, #{introduce}, #{cctv}, #{openingdate}, #{memberno});
 	</insert>
 	
+	<select id="getIdCheck"
+        parameterType="study.team.abuhae.model.Member"
+        resultType="int">
+        SELECT count(*) from member where id=#{id};
+    </select>
+    
+    <select id="getEmailCheck"
+        parameterType="study.team.abuhae.model.Member"
+        resultType="int">
+        SELECT count(*) from member where email=#{email};
+    </select>
+    
+    <select id="getPhoneCheck"
+        parameterType="study.team.abuhae.model.Member"
+        resultType="int">
+        SELECT count(*) from member where phone=#{phone};
+    </select>
+	
 	
 
 

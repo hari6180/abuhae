@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <br>
-                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/add_ok.do">
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/account.do">
                     <input type="hidden" id="type" name="type" value="${type}">
                     <input type="hidden" id="want_act" name="want_act" value="${want_act}">
                     <input type="hidden" id="want_age" name="want_age" value="${want_age}">
@@ -104,13 +104,7 @@
                     <input type="hidden" id="schedule" name="schedule" value="${schedule}">
                     <input type="hidden" id="schedule_ok" name="schedule_ok" value="${schedule_ok}">
                     <input type="hidden" id="descrip" name="description" value="${description}">
-                    <input type="hidden" id="user_id" name="user_id" value="${user_id}">
-                    <input type="hidden" id="user_pw" name="user_pw" value="${user_pw}">
-                    <input type="hidden" id="name" name="name" value="${name}">
-                    <input type="hidden" id="email" name="email" value="${email}">
-                    <input type="hidden" id="tel" name="tel" value="${tel}">
-                    <input type="hidden" id="birthdate" name="birthdate" value="${birthdate}">
-                    <button type="submit" class="next_btn">다음</button>
+                    <button type="submit" class="next_btn" disabled>다음</button>
                 </form>
             </div> <!-- fin. col-xs-12 -->
     </div>
@@ -118,12 +112,15 @@
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    
     <script type="text/javascript">
         $(function(){
             //올체크 상태 변경되었을 떄 이벤트 - 선아
             $("#all_check").change(function(){
                 //모든 hobby의 상태를 올체크와 동일하게
                 $(".agree").prop('checked', $(this).prop('checked'));
+                var now = $(".next_btn").prop('disabled');
+                $(".next_btn").prop('disabled', !now);
             });
         });
     </script>

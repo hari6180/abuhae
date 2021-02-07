@@ -56,7 +56,7 @@
                         이제, 마지막 내용만 작성하시면 가입이 완료됩니다.
                     </h4>
                 </header>
-                <form id="join_form" method="post" action="${pageContext.request.contextPath}/join/parent/agreement.do">
+                <form id="join_form" action="${pageContext.request.contextPath}/join/parent/add_ok">
                     <input type="hidden" id="type" name="type" value="${type}">
                     <input type="hidden" id="want_act" name="want_act" value="${want_act}">
                     <input type="hidden" id="want_age" name="want_age" value="${want_age}">
@@ -132,13 +132,17 @@
             </div>
         </div> <!-- fin. col-xs-12 -->
     </div>
-
-    <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+	<!--Google CDN 서버로부터 jQuery 참조 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <!--validate플러그인 참조-->
     <script src="${pageContext.request.contextPath}/assets/plugin/validate/jquery.validate.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/plugin/validate/additional-methods.min.js"></script>
+    
+    <!-- jQuery Ajax Form plugin CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+    <!-- jQuery Ajax Setup -->
+    <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <script type="text/javascript">
         $(function () {
 
@@ -226,6 +230,17 @@
                 $("#email").val(email);
                 $("#tel").val(tel);
                 $("#birthdate").val(birthdate);
+
+                $("#join_form").ajaxForm({
+                //전송 메서드 지정
+                method: "POST",
+                success: function(json) {
+                    console.log(json);
+                    if(json.rt=="OK") {
+                        window.location="${pageContext.request.contextPath}/join/parent/success.do";
+                    }
+                }
+            });
             });
 
     });

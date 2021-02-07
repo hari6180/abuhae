@@ -29,4 +29,24 @@ public interface MemberService {
 	 */
 	public int addMom(Mom_info input) throws Exception;
 	
+	/*
+	 * id 중복 체크
+	 * @param member 저장정보 담는 beans
+	 * @return int
+	 */
+	public int idCheck(Member input) throws Exception;
+	
+	/*
+	 * email 중복 체크
+	 * @param member 저장정보 담는 beans
+	 * @return int
+	 */
+	public int emailCheck(Member input) throws Exception;
+	
+	/*
+	 * phone 중복 체크
+	 * @param member 저장정보 담는 beans
+	 * @return int
+	 */
+	public int phoneCheck(Member input) throws Exception;
 }
