@@ -35,5 +35,7 @@ public class Sitter_info extends Member {
 	// 찾기 기능의 JOIN - 0206 hari
 	private int rev_rate;				// 별점(소숫점 이하 반올림)
 	private int rev_count;				// 후기 수
+	private int resino;					// 인증
 	private String profile_img_file;	// 프로필 이미지 파일(수정 예상)
+	
 }

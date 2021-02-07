@@ -1,83 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
+<!-- 검색페이지용 Mapper 2021-02-06 하리 -->
 <mapper namespace="SearchMapper">
 
 	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
-	<resultMap id="SearchMap" type="study.team.abuhae.model.Member">
+	<resultMap id="MemberMap"
+		type="study.team.abuhae.model.Member">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="memberno" column="memberno" />
 		<result property="type" column="type" />
 		<result property="id" column="id" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="birthdate" column="birthdate" />
+		<result property="job_opening" column="job_opening" />
 	</resultMap>
+
+	<resultMap id="SitterMap"
+		type="study.team.abuhae.model.Sitter_info">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="sitterno" column="sitterno" />
+		<result property="sitter_type" column="sitter_type" />
+		<result property="want_act" column="want_act" />
+		<result property="want_age" column="want_age" />
+		<result property="si" column="si" />
+		<result property="gu" column="gu" />
+		<result property="dong" column="dong" />
+		<result property="payment" column="payment" />
+		<result property="cctv" column="cctv" />
+		<result property="schedule" column="schedule" />
+		<result property="schedule_set" column="schedule_set" />
+		<result property="introduce" column="introduce" />
+		<result property="answer" column="answer" />
+		<result property="openingdate" column="openingdate" />
+		<result property="memberno" column="memberno" />
+		<result property="rev_rate" column="rev_rate" />
+		<result property="rev_count" column="rev_no" /> <!-- 컬럼 이름 다르니 주의!! -->
+		<result property="resino" column="resino" />
+	</resultMap>
+
+	<resultMap id="MomMap"
+		type="study.team.abuhae.model.Mom_info">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="momno" column="momno" />
+		<result property="want_act" column="want_act" />
+		<result property="want_age" column="want_age" />
+		<result property="kids_num" column="kids_num" />
+		<result property="kids_age" column="kids_age" />
+		<result property="kids_age2" column="kids_age2" />
+		<result property="payment" column="payment" />
+		<result property="si" column="si" />
+		<result property="gu" column="gu" />
+		<result property="schedule" column="schedule" />
+		<result property="schedule_ok" column="schedule_ok" />
+		<result property="sitter_gender" column="sitter_gender" />
+		<result property="interview_type" column="interview_type" />
+		<result property="care_type" column="care_type" />
+		<result property="openingdate" column="openingdate" />
+		<result property="memberno" column="memberno" />
+	</resultMap>
+
+
+
+	<!-- 데이터 검색을 위한 기능 정의 -->
 	
-	<!-- 단일행 조회를 위한 기능 정의 -->
-	<select id="selectItem" parameterType="study.team.abuhae.model.Member"
-	resultMap="SearchMap">
-		SELECT deptno, dname, loc FROM department WHERE deptno=#{deptno};
+	
+	<!-- 시터 회원 -->
+	<select id="searchSitter"
+		parameterType="study.team.abuhae.model.Sitter_info"
+		resultMap="SitterMap">
+	SELECT s.memberno, type, CONCAT(LEFT(name,1), 'O', RIGHT(name,1)) AS name, email, phone, FLOOR(
+	(CAST(REPLACE(current_date,'-','') AS unsigned) -
+	CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2 AS birthdate,
+	job_opening, sitterno, sitter_type, want_act, want_age, si, gu, dong,
+	payment, cctv, answer, CASE
+	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
+	WHEN TIMESTAMPDIFF(minute, openingdate, now()) < 60 THEN
+	CONCAT(TIMESTAMPDIFF(minute, openingdate, now()), '분 전')
+	WHEN TIMESTAMPDIFF(hour, openingdate, now()) < 24 THEN
+	CONCAT(TIMESTAMPDIFF(hour, openingdate, now()), '시간 전')
+	WHEN TIMESTAMPDIFF(day, openingdate, now()) < 30 THEN]]>
+	CONCAT(TIMESTAMPDIFF(day, openingdate, now()), '일 전')
+	ELSE CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
+	END AS openingdate FROM sitter_info s
+	INNER JOIN member m ON s.memberno=m.memberno 
+<!-- 		INNER JOIN review r ON s.sitterno=r.sitterno
+		INNER JOIN resi_cert c ON s.sitterno=c.sitterno -->
 	</select>
-	
-	<!-- 다중행 조회를 위한 기능 정의 -->
-	<select id="selectList" parameterType="study.team.abuhae.model.Member"
-	resultMap="SearchMap">
-	SELECT deptno, dname, loc FROM department
-	
-	<where>
-		<if test="dname != null and dname != ''">
-			dname LIKE concat('%', #{dname}, '%')
-		</if>
-		
-		<if test="loc != null and loc!= ''">
-			OR loc LIKE concat('%', #{loc}, '%')
-		</if>
-	
-	</where>
-	
-	ORDER BY deptno DESC
-	
-	<if test="listCount > 0"> 
-		LIMIT #{offset}, #{listCount}
-	</if>
-		
+
+
+	<!-- 맘 회원 -->
+	<select id="searchMom"
+		parameterType="study.team.abuhae.model.Mom_info"
+		resultMap="MomMap">
+	SELECT m.memberno, type, CONCAT(LEFT(name,1), 'O', RIGHT(name,1)) AS name,
+	job_opening, momno, want_act, want_age, kids_num, kids_age, si, gu, 
+	schedule, schedule_ok, payment, care_type, CASE
+	<!-- 연산자 태그인식 방지-->
+	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
+	WHEN TIMESTAMPDIFF(minute, openingdate, now()) < 60 THEN
+	CONCAT(TIMESTAMPDIFF(minute, openingdate, now()), '분 전')
+	WHEN TIMESTAMPDIFF(hour, openingdate, now()) < 24 THEN
+	CONCAT(TIMESTAMPDIFF(hour, openingdate, now()), '시간 전')
+	WHEN TIMESTAMPDIFF(day, openingdate, now()) < 30 THEN]]>
+	CONCAT(TIMESTAMPDIFF(day, openingdate, now()), '일 전')
+	ELSE CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
+	END AS openingdate FROM mom_info m
+	INNER JOIN member mb ON m.memberno=mb.memberno 
+<!-- 		INNER JOIN review r ON m.momno=r.sitterno
+		INNER JOIN resi_cert c ON m.momno=c.sitterno -->
 	</select>
-	<!-- 데이터 저장을 위한 기능 정의 -->
-	<insert id="insertItem" parameterType="study.team.abuhae.model.Member"
-	useGeneratedKeys="true" keyProperty="deptno">
-		INSERT INTO department (dname, loc) VALUES (#{dname}, #{loc});
-	</insert>
-	
-	<!-- 데이터 삭제를 위한 기능 정의 -->
-	<delete id="deleteItem" parameterType="study.team.abuhae.model.Member">
-		DELETE FROM department WHERE deptno=#{deptno};
-	</delete>
-	
-	<!-- 데이터 갱신을 위한 기능 정의 -->
-	<update id="updateItem" parameterType="study.team.abuhae.model.Member">
-		UPDATE department SET dname=#{dname}, loc=#{loc} WHERE deptno=#{deptno};
-	</update>
-	
-	<!-- 데이터 수 조회하기 -->
-	<!-- 
-		조건에 맞는 데이터 수를 집계하여 int 타입으로 반환한다.
-		count, max, min, sum, avg 함수를 사용한 경우 Mapper에서는
-		resultMap이 아닌 resultType으로 반환한다.
-	 -->
-	 <select id="selectCountAll" parameterType="study.team.abuhae.model.Member"
-	 resultType="int">
-	 	SELECT COUNT(*) FROM department
-	 	
-	 	<where>
-			<if test="dname != null and dname != ''">
-				dname LIKE concat('%', #{dname}, '%')
-			</if>
-			
-			<if test="loc != null and loc!= ''">
-				OR loc LIKE concat('%', #{loc}, '%')
-			</if>
-		
-		</where>
-	 
-	 </select>
+
+
 
 </mapper>

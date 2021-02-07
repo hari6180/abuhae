@@ -28,16 +28,17 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- sweetalert 사용 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- ajax Helper -->
+  <%--   <!-- ajax Helper -->
     <script src="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.css" />
-    
+     --%>
         <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-      $(document).ready(function () {
+
+/*       $(document).ready(function () {
         // 무한 스크롤 1218 하리
         $(document).scroll(function () {
           var maxHeight = $(document).height();
@@ -63,12 +64,21 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             }); // end $.ajax
           }
         });
-      });
-
+      }); */
+      
+      function random(n1, n2) {
+          return parseInt(Math.random() * (n2 - n1 + 1)) + n1;
+        }
+      
       $(function () {
         // 헤더 메뉴 load처리 1224 하리
         // $("#menu").load("/ezen-android2020-2/index_header.html"); - 210124 include 변경
-
+		
+		// 시터 타이틀 랜덤 출력 0206 하리 (반복문 돌아서 안되는듯..)
+      	var num = random(0,3);
+      	var title = ["믿음직한 시터", "든든한 시터", "약속된 시터", "보장된 시터"];
+        $(".cert_text").html(title[random(0,3)]);
+        
         // 상세 페이지 연동 1220 하리
         $(".sitter_item_group").on("click", function () {
           location.href = "${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.do";
@@ -887,9 +897,34 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <!-- 드롭다운 end-->
               </div>
               <!-- 카드영역 -->
+              <c:choose>
+              <c:when test="${output == null || fn:length(output) == 0}">
+              	<h1>조회결과가 없습니다.</h1>
+              </c:when>
+              <c:otherwise>
+              <%-- 조회 결과에 따른 반복 처리 --%>
+              <c:forEach var="item" items="${output}" varStatus="status">
+              <%-- 출력을 위해 준비한 데이터들 --%>
+              <c:set var ="name" value="${item.name}" />
+              <c:set var ="openingdate" value="${item.openingdate}" />
+              <c:set var ="si" value="${item.si}" />
+              <c:set var ="gu" value="${item.gu}" />
+              <c:set var ="dong" value="${item.dong}" />
+              <c:set var ="age" value="${item.birthdate}" />
+              <c:set var ="payment" value="${item.payment}" />
+              <c:set var ="answer" value="${item.answer}" />
+              
+              <%-- 상세페이지로 이동하기 위한 URL --%>
+              <c:url value="/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.do" var="viewUrl">
+              	<c:param name="sitterno" value="${item.sitterno}" />
+              </c:url>
+              
               <div class="sitter_item_group">
                 <div class="item_header">
-                  <div class="cert_label"><img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">${output.title}</span></div>
+                  <div class="cert_label">
+                  	<img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" />
+                  	<span id="sitter_title" class="cert_text"></span>
+                  </div>
                 </div>
                 <hr class="divider" />
                 <div class="item_body">
@@ -897,15 +932,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
                     <div class="responsive_rate_group">
                       <div class="res_text">응답률</div>
-                      <div class="res_rate">${output.answer}</div>
+                       <div class="res_rate">${answer}</div>
                       <div class="res_text">%</div>
                     </div>
                   </div>
                   <div class="profile_info_group">
                     <div class="content_row">
                       <div>
-                        <div class="user_name">${output.st_name}</div>
-                        <div class="last_update">${output.openingdate}일 전 작성</div>
+                        <div class="user_name">${name}</div>
+                        <div class="last_update">${openingdate} 작성</div>
                       </div>
                       <div class="jim_btn">
                         <button class="swapHeart">
@@ -916,14 +951,12 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                       </div>
                     </div>
                     <div class="content_row location_group">
-                      <span class="location">${output.loc1} </span>
-                      <span class="location">,${output.loc2} </span>
-                      <span class="location">,${output.loc3}</span>
+                      <span class="location">${si}&nbsp${gu}&nbsp${dong}</span>
                     </div>
                     <div class="content_row">
-                      <div class="user_age">${output.age}세</div>
+                      <div class="user_age">${age}세</div>
                       <div class="text_sep"></div>
-                      <div class="wanted_pay">희망 시급 ${output.payment}원</div>
+                      <div class="wanted_pay">희망 시급 ${payment}원</div>
                     </div>
                     <div class="content_row">
                       <div class="review_rate">
@@ -934,24 +967,27 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                       </div>
-                      <span class="review_count">후기 ${output.rev_count}개</span>
+					 <span class="review_count">후기 ${payment}개</span>
                     </div>
                   </div>
                 </div>
                 <hr class="divider" />
-<!--                 <div class="item_footer"> -->
-<!--                   <div class="cert_info_group"> -->
-<!--                     <div class="cert_text_group"> -->
-<!--                       <div class="cert_label">확인된 인증</div> -->
-<!--                       <div class="cert_count">2개</div> -->
-<!--                     </div> -->
-<!--                     <div class="cert_info_btn_group"> -->
-<!--                       <div class="cert_btn">엄마 인증</div> -->
-<!--                       <div class="cert_btn">등초본 인증</div> -->
-<!--                     </div> -->
-<!--                   </div> -->
-<!--                 </div> -->
+				<div class="item_footer">
+                  <div class="cert_info_group">
+                    <div class="cert_text_group">
+                      <div class="cert_label">확인된 인증</div>
+                      <div class="cert_count">2개</div>
+                    </div>
+                    <div class="cert_info_btn_group">
+                      <div class="cert_btn">엄마 인증</div>
+                      <div class="cert_btn">등초본 인증</div>
+                    </div>
+                  </div>
+                </div>
               </div>
+              </c:forEach>
+              </c:otherwise>
+               </c:choose>
               <!-- 카드영역 end -->
                        
 

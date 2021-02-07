@@ -27,10 +27,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- sweetalert 사용 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- ajax Helper -->
+   <%--  <!-- ajax Helper -->
     <script src="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.css" />
-    
+ --%>    
         <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
@@ -38,7 +38,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <script type="text/Javascript">
       $(document).ready(function () {
         // 무한 스크롤 1218 하리
-        $(document).scroll(function () {
+    /*     $(document).scroll(function () {
           var maxHeight = $(document).height();
           var currentScroll = $(window).scrollTop() + $(window).height();
 
@@ -59,7 +59,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 // 준비된 요소에게 읽어온 내용을 출력한다.
                 $("#result").append(req);
               },
-            }); // end $.ajax
+            }); // end $.ajax */
           }
         });
       });
@@ -109,8 +109,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $(this).find("i").toggleClass("select_act_btn");
         });
 
-                // 리셋 버튼 0109 하리
-                $("#reset_detail").click(function (e) {
+       	// 리셋 버튼 0109 하리
+		$("#reset_detail").click(function (e) {
           e.preventDefault();
           $("#job_search_detail_modal .modal_content *").removeClass("select_btn_detail");
           $("#job_search_detail_modal .modal_content *").removeClass("select_text_detail");
@@ -598,7 +598,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
               <div class="order_selector_group">
                 <!-- 더미 데이터, 백엔드 연동 필요 -->
-                <div class="total">총 ${output.total_mom}명</div>
+                <div class="total">총 ${total_mom}명</div>
                 <!-- 드롭다운 -->
                 <div class="dropdown clearfix order_dropdown">
                   <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">후기 순 </a><b class="caret"></b>
@@ -612,35 +612,61 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <!-- 드롭다운 end-->
               </div>
               <!-- 카드영역 -->
+              <c:choose>
+              <c:when test="${output == null || fn:length(output) == 0}">
+              	<h1>조회결과가 없습니다.</h1>
+              </c:when>
+              <c:otherwise>
+              <%-- 조회 결과에 따른 반복 처리 --%>
+              <c:forEach var="item" items="${output}" varStatus="status">
+              <%-- 출력을 위해 준비한 데이터들 --%>
+              <c:set var ="kids_age" value="${item.kids_age}" />
+              <c:set var ="kids_num" value="${item.kids_num}" />
+              <c:set var ="openingdate" value="${item.openingdate}" />
+              <c:set var ="want_act" value="${item.want_act}" />
+			  <c:set var ="si" value="${item.si}" />
+              <c:set var ="gu" value="${item.gu}" />
+              <c:set var ="name" value="${item.name}" />
+              <c:set var ="startdate" value="${item.schedule}" />
+              <c:set var ="frequency" value="${item.schedule_ok}" />
+			  <c:set var ="payment" value="${item.payment}" />
+			 <%--협의가능 데이터 추가되면 넣을것 --%>
+              
+              <%-- 상세페이지로 이동하기 위한 URL --%>
+              <c:url value="/page_detail/mom_page_detail/mom_page_detail_calendar.do" var="viewUrl">
+              	<c:param name="momno" value="${item.momno}" />
+              </c:url>
+              
               <div class="job_item_group">
                 <div class="item_body">
                   <div class="profile_img_group">
                     <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
                     <div class="applicant_group">
-                      <div class="applicant">${output.apply}명 지원</div>
+                      <div class="applicant">${d}명 지원</div>
                     </div>
                   </div>
                   <div class="profile_info_group">
                     <div class="content_row">
                       <div>
-                        <div class="kids_count">${output.kid_type} ${output.kids}명</div>
+                        <div class="kids_count">${kids_age} ${kids_num}명</div>
                         <div class="text_sep"></div>
-                        <div class="last_update">${output.regtime} 전</div>
+                        <div class="last_update">${openingdate}</div>
                       </div>
                     </div>
                     <div class="content_row">
-                      <div class="find_text">${output.findment}</div>
+                      <div class="find_text">${want_act} &nbsp 맘시터 찾습니다.</div>
                     </div>
                     <div class="content_row location_group">
-                      <span class="location">${output.loc} </span>
+                      <span class="location">${si} &nbsp ${gu}</span>
                       <div class="text_sep"></div>
-                      <span class="user_name"> ${output.mom_name}</span>
+                      <span class="user_name"> ${name}</span>
                       <div class="text_sep"></div>
-                      <span class="start_date">${output.openingdate} 시작</span>
+                      <span class="start_date">${startdate} 시작</span>
                     </div>
                     <div class="content_row">
                       <i class="fas fa-won-sign"></i>
-                      <div class="wanted_pay">희망 시급 ${output.payment}원</div>
+                      <div class="wanted_pay">희망 시급 ${payment}원</div>
+                      <!-- 협의가능 추가해야함!! -->
                     </div>
                   </div>
                 </div>
@@ -648,7 +674,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <div class="item_footer">
                   <div class="time_info_group">
                     <div class="time_text_group">
-                      <div class="frequency">${output.frequency}</div>
+                      <div class="frequency">${frequency}</div>
                     </div>
                     <div class="care_days_group">
                     <!-- 조건에 따라 css 색상 변환 처리 -->
@@ -670,6 +696,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   </div>
                 </div>
               </div>
+				  </c:forEach>
+              	</c:otherwise>
+               </c:choose>
               <!-- 카드영역 end -->
              
 

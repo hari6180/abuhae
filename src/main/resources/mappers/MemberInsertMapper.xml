@@ -57,7 +57,7 @@
 		<result property="introduce" column="introduce" />
 		<result property="cctv" column="cctv" />
 		<result property="openingdate" column="openingdate" />
-		<result property="memberno" column="memberno" />
+		<result property="memberno" column="memberno" /> 
 	</resultMap>
 
 	<!-- 데이터 저장을 위한 기능 정의 -->
