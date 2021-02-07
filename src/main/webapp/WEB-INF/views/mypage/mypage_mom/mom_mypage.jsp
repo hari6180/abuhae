@@ -65,8 +65,8 @@
                                         <img src="<%=request.getContextPath()%>/assets/img/mypage_img/profile.png" alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
                                         <div class="prof_info_cont">
                                             <div class="mom_info_dt">
-                                                <p class="info_mom" style="font-size: 1em;">송○예</p>
-                                                <p class="info_mom">no.01</p>
+                                                <p class="info_mom" style="font-size: 1em;">${output.name}</p>
+                                                <p class="info_mom">no. ${output.momno}</p>
                                             </div>
                                             <p>무제한 이용권 (6개월)</p>
                                         </div>

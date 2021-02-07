@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -28,7 +29,7 @@
  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_mpm_detail.css">
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mom_page_detail_yj.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/page_detail_for_mom.css" />
 <style type="text/css">
 	/** for header */
 	.mp_detail_tl {
@@ -166,8 +167,8 @@
 							<div class="info_text_box">
 								<div class="info_text upd_appl">
                                     <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="">
-                                    <p>영어놀이, 등하원 돕기, 학습지도 맘시터 찾습니다.</p>
-                                    <p>정○우 ㅣ no.99999</p>
+                                    <p>${output.apply_title}</p>
+                                    <p>${output.name} ㅣ no.${output.momno}</p>
 								</div>
 							</div>
 						</div>
@@ -180,7 +181,7 @@
 						<div class="iwant_area">
 							<div class="sitter_age_area">
 								<div class="sitter_age_no_area">
-									20대
+									${output.want_age}
 								</div>
 								<div class="sitter_age_ok_area">
 									30대
@@ -206,7 +207,7 @@
 							<div>
 								<div class="zone_line">
 									<span style="color: #028071;"><i class="fas fa-map-marker-alt"></i></span> 
-									<div id="zone_line_blank">인천광역시 남동구</div>
+									<div id="zone_line_blank">${output.si} ${output.gu } ${output.dong}</div>
 								</div>
 							</div>
 						</div> <!-- fin. possible_zone_area -->
@@ -461,7 +462,9 @@
 						<div>							
 							<div class="other_line">
 								<label class="want_gender_line">희망 맘시터 성별 : </label>
-								<span class="want_gender">여자</span>
+								<span class="want_gender">
+									${output.sitter_gender}
+								</span>
 							</div>
 							<div class="other_line">
 								<label class="want_care_line">희망 맘시터 성별 : </label>
