@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="DetailMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="MemberMap"
+		type="study.team.abuhae.model.Member">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="memberno" column="memberno" />
+		<result property="type" column="type" />
+		<result property="id" column="id" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="birthdate" column="birthdate" />
+		<result property="job_opening" column="job_opening" />
+	</resultMap>
+
+	<resultMap id="MomMap"
+		type="study.team.abuhae.model.Mom_info">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="momno" column="momno" />
+		<result property="want_act" column="want_act" />
+		<result property="want_age" column="want_age" />
+		<result property="kids_num" column="kids_num" />
+		<result property="kids_age" column="kids_age" />
+		<result property="payment" column="payment" />
+		<result property="si" column="si" />
+		<result property="gu" column="gu" />
+		<result property="dong" column="dong" />
+		<result property="schedule" column="schedule" />
+		<result property="schedule_ok" column="schedule_ok" />
+		<result property="sitter_gender" column="sitter_gender" />
+		<result property="interview_type" column="interview_type" />
+		<result property="care_type" column="care_type" />
+		<result property="openingdate" column="openingdate" />
+		<result property="memberno" column="memberno" />
+	</resultMap>
+
+	<resultMap id="SitterMap"
+		type="study.team.abuhae.model.Sitter_info">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="sitterno" column="sitterno" />
+		<result property="sitter_type" column="sitter_type" />
+		<result property="want_act" column="want_act" />
+		<result property="want_age" column="want_age" />
+		<result property="payment" column="payment" />
+		<result property="si" column="si" />
+		<result property="gu" column="gu" />
+		<result property="dong" column="dong" />
+		<result property="schedule" column="schedule" />
+		<result property="schedule_set" column="schedule_set" />
+		<result property="introduce" column="introduce" />
+		<result property="cctv" column="cctv" />
+		<result property="openingdate" column="openingdate" />
+		<result property="memberno" column="memberno" />
+	</resultMap>
+	
+	<resultMap type="study.team.abuhae.model.Review" id="ReviewMap">
+	
+		<result property="revno" column="revno"/>		
+	</resultMap>
+	
+	<!-- 시터 상세페이지 -->
+	<select id="selectItem" parameterType="study.team.abuhae.model.Sitter_info"
+		resultMap="SitterMap">
+		SELECT CONCAT(LEFT(name,1),'O',RIGHT(name,1)) AS name, sitter_type, count(revno) AS review_count,
+			FLOOR( (CAST(REPLACE(CURRENT_DATE,'-','') AS UNSIGNED) - 
+			CAST(REPLACE(birthdate,'-','') AS UNSIGNED)) / 10000 ) AS age, s.sitterno,
+			openingdate, cctv
+			FROM sitter_info s 
+			INNER JOIN review r ON r.sitterno=s.sitterno
+			INNER JOIN member m ON m.memberno=s.memberno
+	</select>
+	
+</mapper>

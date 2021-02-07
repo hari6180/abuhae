@@ -50,8 +50,8 @@
 				</div> <!-- fin. profil_photo -->
 				<div class="profil_info">
 					<div class="info_name">
-						<div class="name" style="font-size:1.4em;">정<i class="far fa-circle"></i>우</div>
-						<div class="name_siter">엄마 맘시터</div>
+						<div class="name" style="font-size:1.4em;">${output.name}</div>
+						<div class="name_siter">${output.sitter_type} 맘시터</div>
 						<div class="response">
 							응답률
 							96%
@@ -66,12 +66,12 @@
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
 						<div class="review_ea">
-								후기 20개
+								후기 ${output.revno}개
 						</div>
 						<div class="line"></div>
-						<div class="age">50세</div>
+						<div class="age">${output.birthdate}세</div>
 						<div class="line"></div>
-						<div class="number">no.53213</div>
+						<div class="number">no.${output.sitterno}</div>
 					</div><!-- fin. info_star -->
 				</div> <!-- fin. profil_info -->
 				
