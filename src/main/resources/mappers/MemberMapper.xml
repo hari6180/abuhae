@@ -125,10 +125,10 @@
         SELECT count(*) from member where phone=#{phone};
     </select>
 	
-	<!-- 특정 아이디에 대한 단일행 조회 -->
+    <!-- 특정 아이디에 대한 단일행 조회 -->
 	<select id="selectIDItem"
         parameterType="study.team.abuhae.model.Member"
-        resultMap="MemberMap">
+        resultMap="MomMap">
         select * from member where id=#{id};
     </select>
 	

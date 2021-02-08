@@ -25,8 +25,8 @@ public class MemberServiceImpl implements MemberService {
 	 * @return 조회한 내용
 	 */
 	@Override
-	public Member getMemberItem(Member input) throws Exception {
-		Member result = null;
+	public Mom_info getMemberLogin(Mom_info input) throws Exception {
+		Mom_info result = null;
 		
 		try {
 			result = sqlsession.selectOne("MemberMapper.selectIDItem", input);
@@ -61,7 +61,7 @@ public class MemberServiceImpl implements MemberService {
 		List<Member> result = null;
 		
 		try {
-            result = sqlsession.selectList("ProfessorMapper.selectList", input);
+            result = sqlsession.selectList("MemberMapper.selectList", input);
 
             if (result == null) {
                 throw new NullPointerException("result=null");

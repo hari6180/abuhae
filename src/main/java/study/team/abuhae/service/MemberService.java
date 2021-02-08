@@ -7,7 +7,7 @@ import study.team.abuhae.model.Mom_info;
 
 public interface MemberService {
 	//회원 단일 조회
-	public Member getMemberItem(Member input) throws Exception;
+	public Member getMemberLogin(Mom_info input) throws Exception;
 	
 	//회원 리스트 조회
 	public List<Member> getMemberList(Member input) throws Exception;

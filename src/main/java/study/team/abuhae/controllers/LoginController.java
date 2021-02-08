@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.helper.WebHelper;
-import study.team.abuhae.model.Member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.service.MemberService;
 
@@ -24,6 +24,8 @@ public class LoginController {
 	MemberService memberService;
 	@Autowired
 	WebHelper webHelper;
+	@Value("#{servletContext.contextPath}")
+    String contextPath;
 
 	@RequestMapping(value = "/login/login.do", method = RequestMethod.GET)
 	public ModelAndView login(Model model, HttpServletResponse response) {
@@ -43,11 +45,11 @@ public class LoginController {
 		input.setPassword(user_pw);
 
 		// 조회된 데이터 저장 객체
-		Member output = null;
+		Mom_info output = null;
 
 		try {
 			// 특정 아이디에 대한 결과 조회
-			output = memberService.getMemberItem(input);
+			output = (Mom_info) memberService.getMemberLogin(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -60,9 +62,9 @@ public class LoginController {
 			session.setAttribute("loginNo", output.getMemberno()); // 로그인한 회원 number 세션
 		}
 		
-		String msg = output.getName()+"님 환영합니다.";
+		String url = contextPath;
 		
-		return webHelper.redirect("${pageContext.request.contextPath}/abuhae", msg);
+		return webHelper.redirect(url, null);
 
 	}
 
