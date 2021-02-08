@@ -44,13 +44,14 @@
             </div>
             <div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
                 <h2 class="title">로그인</h2>
-
+                <form method="POST" action="${pageContext.request.contextPath}/login/login_ok.do">
                 <div class="login_box">
-                    <input type="text" id="userid" name="userid" placeholder="아이디를 입력해 주세요.">
+                    <input type="text" id="userid" name="user_id" placeholder="아이디를 입력해 주세요.">
                     <hr>
-                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+                    <input type="password" id="password" name="user_pw" placeholder="비밀번호를 입력하세요">
                 </div>
-                <button class="next_btn" id="login_btn">로그인</button>
+                <button class="next_btn" type="submit" id="login_btn">로그인</button>
+                </form>
 
                 <div class="other_action">
                     <a href="${pageContext.request.contextPath}/login/find.do" class="otehr_login underline">로그인 정보를 잊으셨나요?</a>
@@ -65,14 +66,14 @@
             $(function(){
                 //$("#menu").load("../index_header.html");
 
-                $("#login_btn").on("click", function(){
-                    if($("#userid").val() == "mom" && $("#password").val() == "sitter") {
-                        location.href="${pageContext.request.contextPath}/";
-                    } else {
-                        alert("아이디 혹은 비밀번호를 확인해 주세요.");
-                    }
+                //$("#login_btn").on("click", function(){
+                    //if($("#userid").val() == "mom" && $("#password").val() == "sitter") {
+                        //location.href="${pageContext.request.contextPath}/";
+                    //} else {
+                        //alert("아이디 혹은 비밀번호를 확인해 주세요.");
+                    //}
                     
-                });
+                //});
             });
         </script>
 	</body>

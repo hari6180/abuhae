@@ -1,6 +1,5 @@
 package study.team.abuhae.controllers;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,7 +113,6 @@ public class JoinRestController {
 		mominfo.setMemberno(memberno);
 
 		// log.debug(mominfo.toString());
-		Mom_info output = null;
 
 		try {
 			// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
@@ -124,9 +122,8 @@ public class JoinRestController {
 			return webhelper.getJsonError(e.getLocalizedMessage());
 		}
 
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("item", output);
+		
 
-		return webhelper.getJsonData(map);
+		return webhelper.getJsonData();
 	}
 }

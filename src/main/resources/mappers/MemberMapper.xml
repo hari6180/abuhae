@@ -105,6 +105,8 @@
 		#{schedule_set}, #{introduce}, #{cctv}, #{openingdate}, #{memberno});
 	</insert>
 	
+	
+	<!-- 가입시 중복 체크  -->
 	<select id="getIdCheck"
         parameterType="study.team.abuhae.model.Member"
         resultType="int">
@@ -123,7 +125,49 @@
         SELECT count(*) from member where phone=#{phone};
     </select>
 	
+	<!-- 특정 아이디에 대한 단일행 조회 -->
+	<select id="selectIDItem"
+        parameterType="study.team.abuhae.model.Member"
+        resultMap="MemberMap">
+        select * from member where id=#{id};
+    </select>
 	
-
+	<!-- 맘 회원 목록 다중행 조회를 위한 기능 정의 // 회원명 검색 // 페이징 기능 @선아 02/08 -->
+    <select id="selectListMom"
+        parameterType="study.team.abuhae.model.Member"
+        resultMap="MemberMap">
+        SELECT * from member m
+        INNER JOIN mom_info mi ON m.memberno = mi.memberno
+        <where>
+            <if test="name != null and name != ''">
+                name LIKE concat('%', #{name}, '%')
+            </if>
+        </where>
+        
+        ORDER BY memberno DESC
+        
+        <if test="listCount > 0">
+            LIMIT #{offset}, #{listCount}
+        </if>
+    </select>
+    
+    <!-- 시터 회원 목록 다중행 조회를 위한 기능 정의 // 회원명 검색 // 페이징 기능 @선아 02/08 -->
+    <select id="selectListSitter"
+        parameterType="study.team.abuhae.model.Member"
+        resultMap="MemberMap">
+        SELECT * from member m
+        INNER JOIN sitter_info si ON m.memberno = si.memberno
+        <where>
+            <if test="name != null and name != ''">
+                name LIKE concat('%', #{name}, '%')
+            </if>
+        </where>
+        
+        ORDER BY memberno DESC
+        
+        <if test="listCount > 0">
+            LIMIT #{offset}, #{listCount}
+        </if>
+    </select>
 
 </mapper>
