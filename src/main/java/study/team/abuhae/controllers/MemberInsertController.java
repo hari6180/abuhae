@@ -26,19 +26,19 @@ public class MemberInsertController {
 		Mom_info input = new Mom_info();
 		for (int i = 1; i <= 100; i++) {
 			input.setId("mom" + i);
-			input.setType('M');
 			input.setPassword("mom123");
 			input.setName("전하리" + i);
 			input.setEmail("aaa@aaa.aa");
 			input.setPhone("010-8888-8888");
 			input.setBirthdate("1997-06-18");
+			input.setProfile_img('Y');
 			input.setJob_opening('Y');
-
 			input.setWant_act("야외활동");
 			input.setWant_age("20대");
 			input.setKids_num(1);
 			input.setKids_age("201501");
 			input.setPayment(10000);
+			input.setPayment_ok('Y');
 			input.setSi("서울시");
 			input.setGu("강동구");
 			input.setDong("성내2동");
@@ -49,6 +49,7 @@ public class MemberInsertController {
 			input.setInterview_type('1');
 			input.setCare_type("주1회");
 			input.setOpeningdate("2021-02-04");
+			input.setGender('F');
 			int memberno = input.getMemberno();
 			input.setMemberno(memberno);
 
@@ -64,17 +65,17 @@ public class MemberInsertController {
 		Sitter_info input2 = new Sitter_info();
 		for (int i = 1; i <= 100; i++) {
 			input2.setId("sitter" + i);
-			input2.setType('S');
 			input2.setPassword("sitter123");
 			input2.setName("김선아" + i);
 			input2.setEmail("bbb@aaa.aa");
 			input2.setPhone("010-8888-8888");
 			input2.setBirthdate("1993-11-24");
+			input2.setProfile_img('Y');
 			input2.setJob_opening('Y');
-
 			input2.setWant_act("야외활동");
 			input2.setWant_age("20대");
 			input2.setPayment(10000);
+			input2.setPayment_ok('Y');
 			input2.setSi("서울시");
 			input2.setGu("강동구");
 			input2.setDong("성내2동");
@@ -84,6 +85,7 @@ public class MemberInsertController {
 			input2.setIntroduce("안녕하세요 짱짱 시터입니다.");
 			input2.setCctv("Y");
 			input2.setOpeningdate("2021-02-04");
+			input2.setGender('F');
 			int memberno2 = input2.getMemberno();
 			input.setMemberno(memberno2);
 

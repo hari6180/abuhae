@@ -11,7 +11,6 @@ import lombok.Data;
 @Data
 public abstract class Member {
 	private int memberno;		// 회원 일련번호 PRI
-	private char type;			// 맘 or 시터 구분 ('M' or 'S')
 	private String id;			// 아이디
 	private String password;	// 비밀번호
 	private String name;		// 이름
@@ -22,4 +21,8 @@ public abstract class Member {
 	private String enddate;		// 이용권 종료 날짜
 	private char profile_img;	// 프로필 이미지 ('Y' or 'N')
 	private char job_opening;	// 구인구직 여부 ('Y' or 'N')
+	private char ticket_type; 	// 이용권 종류 ('1', '3', '6')
+	private String ticket_price;// 이용권 금액
+	private char gender;		// 성별 ('F', 'M')
 }
+

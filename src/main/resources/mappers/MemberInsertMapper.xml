@@ -10,7 +10,6 @@
 		type="study.team.abuhae.model.Member">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="memberno" column="memberno" />
-		<result property="type" column="type" />
 		<result property="id" column="id" />
 		<result property="password" column="password" />
 		<result property="name" column="name" />
@@ -18,6 +17,7 @@
 		<result property="phone" column="phone" />
 		<result property="birthdate" column="birthdate" />
 		<result property="job_opening" column="job_opening" />
+		<result property="gender" column="gender" />
 	</resultMap>
 
 	<resultMap id="MomMap"
@@ -29,6 +29,7 @@
 		<result property="kids_num" column="kids_num" />
 		<result property="kids_age" column="kids_age" />
 		<result property="payment" column="payment" />
+		<result property="payment_ok" column="payment_ok" />
 		<result property="si" column="si" />
 		<result property="gu" column="gu" />
 		<result property="dong" column="dong" />
@@ -49,6 +50,7 @@
 		<result property="want_act" column="want_act" />
 		<result property="want_age" column="want_age" />
 		<result property="payment" column="payment" />
+		<result property="payment_ok" column="payment_ok" />
 		<result property="si" column="si" />
 		<result property="gu" column="gu" />
 		<result property="dong" column="dong" />
@@ -66,12 +68,12 @@
 	<insert id="insertMember"
 		parameterType="study.team.abuhae.model.Member" useGeneratedKeys="true"
 		keyProperty="memberno">
-		INSERT INTO Member (type, id, password, name, email,
-		phone, birthdate, job_opening)
-		VALUES (#{type}, #{id}, #{password},
+		INSERT INTO Member (id, password, name, email,
+		phone, birthdate, job_opening, gender)
+		VALUES (#{id}, #{password},
 		#{name}, #{email}, #{phone},
 		#{birthdate},
-		#{job_opening});
+		#{job_opening}, #{gender});
 	</insert>
 
 
@@ -81,12 +83,12 @@
 		useGeneratedKeys="true" keyProperty="momno">
 		INSERT INTO Mom_info (want_act,
 		want_age, kids_num, kids_age,
-		payment, si, gu, dong, schedule,
+		payment, payment_ok, si, gu, dong, schedule,
 		schedule_ok, sitter_gender,
 		interview_type, care_type,
 		openingdate, memberno) VALUES (#{want_act}, #{want_age},
 		#{kids_num},
-		#{kids_age}, #{payment}, #{si}, #{gu}, #{dong}, #{schedule},
+		#{kids_age}, #{payment}, #{payment_ok}, #{si}, #{gu}, #{dong}, #{schedule},
 		#{schedule_ok}, #{sitter_gender},#{interview_type},#{care_type},#{openingdate}, #{memberno});
 	</insert>
 
@@ -99,7 +101,7 @@
 		schedule_set,
 		introduce, cctv, openingdate, memberno)
 		VALUES (#{sitter_type}, #{want_act},
-		#{want_age}, #{payment}, #{si}, #{gu},
+		#{want_age}, #{payment}, #{payment_ok}, #{si}, #{gu},
 		#{dong},
 		#{schedule},
 		#{schedule_set}, #{introduce}, #{cctv}, #{openingdate}, #{memberno});

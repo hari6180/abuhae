@@ -28,7 +28,7 @@ public class Mom_info extends Member {
 	private String dong;			// 동
 	private String schedule;		// 가능한 시간대 입력(JSON)
 	private char   schedule_ok;		// 일정 조정 가능 여부 ('Y' or 'N')
-	private String descrip;			// 시터가 알아야할 사항
+	private String descript;			// 시터가 알아야할 사항
 	private char   sitter_gender;	// 원하는 시터 성별 ('M' or 'F')
 	private char   interview_type;	// 원하는 인터뷰 방식
 	private String care_type;		// 원하는 돌봄 타입
@@ -36,8 +36,7 @@ public class Mom_info extends Member {
 	private String apply_title;		// 신청서 제목
 	private String apply_content;	// 신청서 내용
 	private String kids_age2;		// 아이가 2명일시 넣는 생년월일
-	
-
+	private char payment_ok; 		// 시급협의 여부 ('N', 'Y')
 	
 
 }

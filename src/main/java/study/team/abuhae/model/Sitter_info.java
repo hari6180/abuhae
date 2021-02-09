@@ -30,6 +30,7 @@ public class Sitter_info extends Member {
 	private String introduce;			// 자기소개
 	private int answer;					// 응답률
 	private String openingdate; 		// 신청서 등록 시간
+	private char payment_ok; 			// 시급협의 여부 ('N', 'Y')
 
 	/** 2) JOIN절에 따른 추가 컬럼 */
 	// 찾기 기능의 JOIN - 0206 hari
