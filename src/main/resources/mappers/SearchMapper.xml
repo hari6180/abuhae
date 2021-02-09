@@ -67,8 +67,6 @@
 
 
 	<!-- 데이터 검색을 위한 기능 정의 -->
-	
-	
 	<!-- 시터 회원 -->
 	<select id="searchSitter"
 		parameterType="study.team.abuhae.model.Sitter_info"
@@ -115,6 +113,34 @@
 		INNER JOIN resi_cert c ON m.momno=c.sitterno -->
 	</select>
 
+	<!-- 총 회원 수 세기 -->
+	<!-- 맘 -->
+	<select id="selectCountAllMom"
+        parameterType="study.team.abuhae.model.Mom_info" resultType="int">
+        SELECT COUNT(*)
+        FROM Mom_info m
+        INNER JOIN member mb ON m.memberno=mb.memberno 
+        
+<!--         <where>
+            <if test="name != null and name != ''">
+                name LIKE concat('%', #{name}, '%')
+            </if>
+        </where> -->
+    </select>
+    
+    <!-- 시터 -->
+	<select id="selectCountAllSitter"
+        parameterType="study.team.abuhae.model.Sitter_info" resultType="int">
+        SELECT COUNT(*)
+        FROM sitter_info s
+        INNER JOIN member m ON s.memberno=m.memberno 
+        
+<!--         <where>
+            <if test="name != null and name != ''">
+                name LIKE concat('%', #{name}, '%')
+            </if>
+        </where> -->
+    </select>
 
 
 </mapper>

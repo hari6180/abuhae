@@ -71,5 +71,47 @@ public class SearchServiceImpl implements SearchService {
 
 		return result;
 	}
+	
+	/**
+	 * @author Hari
+	 * 맘시터 찾기 페이지 카드 총 갯수 조회
+	 * @param Sitter_info
+	 * @return int
+	 * @throws Exception
+	 */
+	@Override
+	public int getSitterCount(Sitter_info input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("SearchMapper.selectCountAllSitter", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
+	/**
+	 * @author Hari
+	 * 일자리 찾기 페이지 카드 총 갯수 조회
+	 * @param Mom_info
+	 * @return int
+	 * @throws Exception
+	 */
+	@Override
+	public int getMomCount(Mom_info input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("SearchMapper.selectCountAllMom", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
 
 }

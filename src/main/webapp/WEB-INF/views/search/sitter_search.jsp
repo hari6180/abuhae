@@ -880,7 +880,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               </div>
               <div class="order_selector_group">
                 <!-- 더미 데이터, 백엔드 연동 필요 -->
-                <div class="total">총 ${total_st}명</div>
+                <div class="total">총 ${st_total}명</div>
                 <!-- 드롭다운 -->
                 <div class="dropdown clearfix order_dropdown">
                   <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">후기 순 </a><b class="caret"></b>

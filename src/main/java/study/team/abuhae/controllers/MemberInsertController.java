@@ -37,7 +37,7 @@ public class MemberInsertController {
 			input.setWant_act("야외활동");
 			input.setWant_age("20대");
 			input.setKids_num(1);
-			input.setKids_age("2015-01-24");
+			input.setKids_age("201501");
 			input.setPayment(10000);
 			input.setSi("서울시");
 			input.setGu("강동구");

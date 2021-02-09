@@ -33,16 +33,20 @@ public class SearchController {
 	public String sitter_search(Model model, HttpServletResponse response) {
 		// 조회 결과가 저장될 객체 
 		List<Sitter_info> output = null;
-		
+		int stTotalCount = 0;
 		try {
 			// 데이터 조회하기
 			output = searchService.searchSitter(null);
+			
+			// 전체 게시글 수 조회
+			stTotalCount = searchService.getSitterCount(null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		// View 처리
 		model.addAttribute("output", output);
+		model.addAttribute("st_total", stTotalCount);
 		return "search/sitter_search";
 	}
 	
@@ -51,16 +55,21 @@ public class SearchController {
 	public String job_search(Model model, HttpServletResponse response) {
 		// 조회 결과가 저장될 객체 
 		List<Mom_info> output = null;
+		int momTotalCount = 0;
 		
 		try {
 			// 데이터 조회하기
 			output = searchService.searchMom(null);
+			
+			// 전체 게시글 수 조회
+			momTotalCount = searchService.getMomCount(null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		// View 처리
 		model.addAttribute("output", output);
+		model.addAttribute("mom_total", momTotalCount);
 		return "search/job_search";
 	}
 	

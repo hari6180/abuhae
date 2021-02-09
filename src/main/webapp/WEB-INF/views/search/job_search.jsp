@@ -597,8 +597,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               </div>
 
               <div class="order_selector_group">
-                <!-- 더미 데이터, 백엔드 연동 필요 -->
-                <div class="total">총 ${total_mom}명</div>
+                <div class="total">총 ${mom_total}명</div>
                 <!-- 드롭다운 -->
                 <div class="dropdown clearfix order_dropdown">
                   <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">후기 순 </a><b class="caret"></b>
@@ -619,8 +618,16 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <c:otherwise>
               <%-- 조회 결과에 따른 반복 처리 --%>
               <c:forEach var="item" items="${output}" varStatus="status">
+              <%-- 아이 나이 계산 아!!!!!!!!!!!!안된다!!!!!!!!!!--%>
+              <jsp:useBean id="today" class="java.util.Date" />
+              <c:set var ="kids_date" value="${item.kids_age}" />
+              
+              <fmt:formatDate value="${today}" var="now" pattern="yyyyMMdd" />
+			  <fmt:formatDate value="${kids_date}" var="date" pattern="yyyyMMdd" />
+ 
+
+              <c:set var = "kid_age" value="${(now - date)}" />
               <%-- 출력을 위해 준비한 데이터들 --%>
-              <c:set var ="kids_age" value="${item.kids_age}" />
               <c:set var ="kids_num" value="${item.kids_num}" />
               <c:set var ="openingdate" value="${item.openingdate}" />
               <c:set var ="want_act" value="${item.want_act}" />
@@ -648,7 +655,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <div class="profile_info_group">
                     <div class="content_row">
                       <div>
-                        <div class="kids_count">${kids_age} ${kids_num}명</div>
+                        <div class="kids_count">${kid_age} ${kids_num}명</div>
                         <div class="text_sep"></div>
                         <div class="last_update">${openingdate}</div>
                       </div>
