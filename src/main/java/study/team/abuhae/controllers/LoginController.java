@@ -50,22 +50,22 @@ public class LoginController {
 		try {
 			// 특정 아이디에 대한 결과 조회
 			output = (Mom_info) memberService.getMemberLogin(input);
+			
+			if (output != null) {
+				// 조회된 데이터가 널이 아니라면 로그인 성공
+				//session.setAttribute("islogin", output);
+				session.setAttribute("isLogin", true); // 로그인 여부 세션
+				session.setAttribute("loginID", output.getId()); // 로그인한 회원 id 세션
+				session.setAttribute("loginType", output.getType()); // 로그인한 회원 type 세션
+				session.setAttribute("loginNo", output.getMemberno()); // 로그인한 회원 number 세션
+		
+			}
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		if (output != null) {
-			// 조회된 데이터가 널이 아니라면 로그인 성공
-			session.setAttribute("isLogin", true); // 로그인 여부 세션
-			session.setAttribute("loginID", output.getId()); // 로그인한 회원 id 세션
-			session.setAttribute("loginType", output.getType()); // 로그인한 회원 type 세션
-			session.setAttribute("loginNo", output.getMemberno()); // 로그인한 회원 number 세션
-		}
-		
 		String url = contextPath;
-		
 		return webHelper.redirect(url, null);
-
 	}
 
 	@RequestMapping(value = "/login/find.do", method = RequestMethod.GET)

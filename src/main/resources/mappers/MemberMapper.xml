@@ -29,6 +29,7 @@
 		<result property="kids_num" column="kids_num" />
 		<result property="kids_age" column="kids_age" />
 		<result property="payment" column="payment" />
+		<result property="payment_ok" column="payment_ok" />
 		<result property="si" column="si" />
 		<result property="gu" column="gu" />
 		<result property="dong" column="dong" />
@@ -81,12 +82,12 @@
 		useGeneratedKeys="true" keyProperty="momno">
 		INSERT INTO Mom_info (want_act,
 		want_age, kids_num, kids_age,
-		payment, si, gu, dong, schedule,
+		payment, payment_ok, si, gu, dong, schedule,
 		schedule_ok, sitter_gender,
 		interview_type, care_type,
 		openingdate, memberno) VALUES (#{want_act}, #{want_age},
 		#{kids_num},
-		#{kids_age}, #{payment}, #{si}, #{gu}, #{dong}, #{schedule},
+		#{kids_age}, #{payment}, #{payment_ok} #{si}, #{gu}, #{dong}, #{schedule},
 		#{schedule_ok}, #{sitter_gender},#{interview_type},#{care_type},#{openingdate}, #{memberno});
 	</insert>
 

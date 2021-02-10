@@ -113,7 +113,7 @@
                             <span class="payment_fix">원</span>
                         </div>
                         <div class="disc_box">
-                            <input type="checkbox" value="discussion" id="discussion"><label for="discussion">시급 협의
+                            <input type="checkbox" value="discussion" id="discussion" name="payment_ok"><label for="discussion">시급 협의
                                 가능</label>
                         </div>
                     </div>
@@ -125,6 +125,7 @@
                     <input type="hidden" id="kids_num" name="kids_num">
                     <input type="hidden" id="kids_age" name="kids_age">
                     <input type="hidden" id="payment" name="payment">
+                    <input type="hidden" id="payment_ok" name="payment_ok">
                 <button class="next_btn" type="submit">다음</button>
                 </form>
             </div>
@@ -238,6 +239,11 @@
                 $('#payment').val(payment);
                 //console.log($("#want_act").val());
                 //console.log($("#want_age").val());
+
+                //시급협의 여부
+                if($("input:checkbox[name=payment_ok]").is(":checked") == true) {
+                    $("#payment_ok").val('Y');
+                };
 
                 });
 

@@ -101,7 +101,9 @@ public class JoinController {
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
-			@RequestParam(value = "payment") String paymentstr) {
+			@RequestParam(value = "payment") String paymentstr,
+			@RequestParam(value = "payment_ok") char payment_ok
+			) {
 
 		paymentstr = paymentstr.replace(",", "");
 		int payment = Integer.parseInt(paymentstr);
@@ -125,6 +127,7 @@ public class JoinController {
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
 		model.addAttribute("payment", payment);
+		model.addAttribute("payment_ok", payment_ok);
 
 		return new ModelAndView("/join/parent/location");
 		// return webHelper.getJsonData(map);
@@ -139,6 +142,7 @@ public class JoinController {
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
 			@RequestParam(value = "payment") String paymentstr, 
+			@RequestParam(value = "payment_ok") char payment_ok,
 			@RequestParam(value = "si") String si,
 			@RequestParam(value = "gu") String gu, 
 			@RequestParam(value = "dong") String dong) {
@@ -153,6 +157,7 @@ public class JoinController {
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
 		mominfo.setPayment(payment);
+		mominfo.setPayment_ok(payment_ok);
 		mominfo.setSi(si);
 		mominfo.setGu(gu);
 		mominfo.setDong(dong);
@@ -168,6 +173,7 @@ public class JoinController {
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
 		model.addAttribute("payment", payment);
+		model.addAttribute("payment_ok", payment_ok);
 		model.addAttribute("si", si);
 		model.addAttribute("gu", gu);
 		model.addAttribute("dong", dong);
@@ -185,6 +191,7 @@ public class JoinController {
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
 			@RequestParam(value = "payment") String paymentstr,
+			@RequestParam(value = "payment_ok") char payment_ok,
 			@RequestParam(value = "si") String si,
 			@RequestParam(value = "gu") String gu, 
 			@RequestParam(value = "dong") String dong) {
@@ -199,6 +206,7 @@ public class JoinController {
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
 		mominfo.setPayment(payment);
+		mominfo.setPayment_ok(payment_ok);
 		mominfo.setSi(si);
 		mominfo.setGu(gu);
 		mominfo.setDong(dong);
@@ -215,6 +223,7 @@ public class JoinController {
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
 		model.addAttribute("payment", payment);
+		model.addAttribute("payment_ok", payment_ok);
 		model.addAttribute("si", si);
 		model.addAttribute("gu", gu);
 		model.addAttribute("dong", dong);
@@ -242,6 +251,7 @@ public class JoinController {
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
 			@RequestParam(value = "payment") String paymentstr, 
+			@RequestParam(value = "payment_ok") char payment_ok,
 			@RequestParam(value = "si") String si,
 			@RequestParam(value = "gu") String gu, 
 			@RequestParam(value = "dong") String dong,
@@ -258,6 +268,7 @@ public class JoinController {
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
 		mominfo.setPayment(payment);
+		mominfo.setPayment_ok(payment_ok);
 		mominfo.setSi(si);
 		mominfo.setGu(gu);
 		mominfo.setDong(dong);
@@ -276,6 +287,7 @@ public class JoinController {
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
 		model.addAttribute("payment", payment);
+		model.addAttribute("payment_ok", payment_ok);
 		model.addAttribute("si", si);
 		model.addAttribute("gu", gu);
 		model.addAttribute("dong", dong);
@@ -293,6 +305,7 @@ public class JoinController {
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
 			@RequestParam(value = "payment") String paymentstr, 
+			@RequestParam(value = "payment_ok") char payment_ok,
 			@RequestParam(value = "si") String si,
 			@RequestParam(value = "gu") String gu, 
 			@RequestParam(value = "dong") String dong,
@@ -309,6 +322,7 @@ public class JoinController {
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
 		mominfo.setPayment(payment);
+		mominfo.setPayment_ok(payment_ok);
 		mominfo.setSi(si);
 		mominfo.setGu(gu);
 		mominfo.setDong(dong);
@@ -328,6 +342,7 @@ public class JoinController {
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
 		model.addAttribute("payment", payment);
+		model.addAttribute("payment_ok", payment_ok);
 		model.addAttribute("si", si);
 		model.addAttribute("gu", gu);
 		model.addAttribute("dong", dong);
@@ -346,6 +361,7 @@ public class JoinController {
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
 			@RequestParam(value = "payment") String paymentstr, 
+			@RequestParam(value = "payment_ok") char payment_ok,
 			@RequestParam(value = "si") String si,
 			@RequestParam(value = "gu") String gu, 
 			@RequestParam(value = "dong") String dong,
@@ -363,6 +379,7 @@ public class JoinController {
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
 		mominfo.setPayment(payment);
+		mominfo.setPayment_ok(payment_ok);
 		mominfo.setSi(si);
 		mominfo.setGu(gu);
 		mominfo.setDong(dong);
@@ -381,6 +398,7 @@ public class JoinController {
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
 		model.addAttribute("payment", payment);
+		model.addAttribute("payment_ok", payment_ok);
 		model.addAttribute("si", si);
 		model.addAttribute("gu", gu);
 		model.addAttribute("dong", dong);
