@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
     <!-- header css -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/index_header_login_mom.css" />
@@ -21,7 +24,6 @@
               </a>
             </div>
             <div class="flex_row">
-              <a href="${pageContext.request.contextPath}/join/join.do"><button id="header_join" class="join">가입하기</button></a>
               <i id="header_search" class="fas fa-search header_search_btn"></i>
             </div>
           </div>
@@ -43,7 +45,7 @@
             <div class="modal_header">
               <div class="user_name_group">
                 <p class="welcome">안녕하세요</p>
-                <p class="cus_name">전하리 부모님</p>
+                <p class="cus_name">${output.name} 부모님</p>
               </div>
               <a href="#" id="logout_btn"
                 ><button type="button" class="modal_btn">
@@ -119,7 +121,7 @@
     <script>
       $(function () {
         $("#logout_btn").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/index.do");
+          location.replace("${pageContext.request.contextPath}/logout");
         });
         $("#stsc_btn").click(function (e) {
           location.replace("${pageContext.request.contextPath}/search/sitter_search.do");
@@ -146,6 +148,7 @@
         $("#cus_btn").click(function (e) {
           location.replace("${pageContext.request.contextPath}/customer/customer_center.do");
         });
+        
       });
     </script>
   </body>

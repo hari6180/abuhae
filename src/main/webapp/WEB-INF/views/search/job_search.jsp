@@ -626,10 +626,12 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <c:set var="si" value="${item.si}" />
                     <c:set var="gu" value="${item.gu}" />
                     <c:set var="name" value="${item.name}" />
-                    <c:set var="startdate" value="${item.schedule}" />
+                    <c:set var="schedule" value="${item.schedule}" />
+                    <c:set var="startdate" value="${fn:substring(schedule,6,11)}" />
                     <c:set var="frequency" value="${item.schedule_ok}" />
                     <c:set var="payment" value="${item.payment}" />
-                    <%--협의가능 데이터 추가되면 넣을것 --%> <%-- 상세페이지로 이동하기 위한 URL --%>
+                    <c:set var="payment_ok" value="${item.payment_ok}" />
+     				<%-- 상세페이지로 이동하기 위한 URL --%>
                     <c:url value="/page_detail/mom_page_detail/mom_page_detail_calendar.do" var="viewUrl">
                       <c:param name="momno" value="${item.momno}" />
                     </c:url>
@@ -654,7 +656,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                             <div class="find_text">${want_act} &nbsp 맘시터 찾습니다.</div>
                           </div>
                           <div class="content_row location_group">
-                            <span class="location">${si} &nbsp ${gu}</span>
+                            <span class="location">${si}&nbsp${gu}</span>
                             <div class="text_sep"></div>
                             <span class="user_name"> ${name}</span>
                             <div class="text_sep"></div>
@@ -662,8 +664,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                           </div>
                           <div class="content_row">
                             <i class="fas fa-won-sign"></i>
-                            <div class="wanted_pay">희망 시급 ${payment}원</div>
-                            <!-- 협의가능 추가해야함!! -->
+                            <div class="wanted_pay">희망 시급 ${payment}원
+                            <c:if test="${fn:contains(payment_ok,'Y')}">
+								&nbsp/&nbsp협의가능  	
+                            </c:if>
+                            </div>
                           </div>
                         </div>
                       </div>

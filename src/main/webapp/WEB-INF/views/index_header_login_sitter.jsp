@@ -21,7 +21,6 @@
               </a>
             </div>
             <div class="flex_row">
-              <a href="${pageContext.request.contextPath}/join/join.do"><button id="header_join" class="join">가입하기</button></a>
               <i id="header_search" class="fas fa-search header_search_btn"></i>
             </div>
           </div>
@@ -43,7 +42,7 @@
             <div class="modal_header">
               <div class="user_name_group">
                 <p class="welcome">안녕하세요</p>
-                <p class="cus_name">정지우 시터님</p>
+                <p class="cus_name">${output.name} 시터님</p>
               </div>
               <a href="#" id="logout_btn"
                 ><button type="button" class="modal_btn">
@@ -121,7 +120,7 @@
     <script>
       $(function () {
         $("#logout_btn").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/index.do");
+          location.replace("${pageContext.request.contextPath}/logout");
         });
         $("#jobsc_btn").click(function (e) {
           location.replace("${pageContext.request.contextPath}/search/job_search.do");
