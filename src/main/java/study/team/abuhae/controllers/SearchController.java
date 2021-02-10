@@ -56,6 +56,7 @@ public class SearchController {
 		// 조회 결과가 저장될 객체 
 		List<Mom_info> output = null;
 		int momTotalCount = 0;
+		int applyCount = 0;
 		
 		try {
 			// 데이터 조회하기
@@ -63,6 +64,10 @@ public class SearchController {
 			
 			// 전체 게시글 수 조회
 			momTotalCount = searchService.getMomCount(null);
+			
+			// 지원자 수 조회
+			applyCount = searchService.getApplyCount(null);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

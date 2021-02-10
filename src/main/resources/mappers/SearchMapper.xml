@@ -151,6 +151,19 @@
 		<!-- <where> <if test="name != null and name != ''"> name LIKE concat('%', 
 			#{name}, '%') </if> </where> -->
 	</select>
+	
+	<!-- 맘 지원자 수 -->
+		<select id="CountApplyToMom"
+		parameterType="study.team.abuhae.model.Connect" resultType="int">
+		SELECT COUNT(*)
+		FROM connect c
+		INNER JOIN mom_info m ON
+		c.momno=m.momno
+		WHERE who='s' AND c.momno=#{momno}
+
+		<!-- <where> <if test="name != null and name != ''"> name LIKE concat('%', 
+			#{name}, '%') </if> </where> -->
+	</select>
 
 
 </mapper>
