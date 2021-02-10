@@ -222,7 +222,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         /** 상세 검색 end ------------------------------------------------------------------- */
 
         //시 클릭했을 때
-        $(".loc_btn").on("click", function () {
+        $(".loc_btn").on("click", function (e) {
+          e.preventDefault();
           var select = $(this).hasClass("select_location");
           //선택이 안되어있을때
           if (select == false) {
@@ -237,7 +238,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           }
         });
         //구 클릭했을 때
-        $("#gu button").on("click", function () {
+        $("#gu button").on("click", function (e) {
+          e.preventDefault();
           var select = $(this).hasClass("select_location");
           //선택이 안되어있을때
           if (select == false) {
@@ -253,7 +255,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         });
 
         //동 클릭했을때
-        $("#dong button").on("click", function () {
+        $("#dong button").on("click", function (e) {
+          e.preventDefault();
           var select = $(this).hasClass("select_location");
           //선택이 안되어있을때
           if (select == false) {

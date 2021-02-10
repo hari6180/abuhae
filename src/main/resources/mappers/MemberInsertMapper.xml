@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 데이터 대량 주입용 Mapper 2021-02-04 하리 -->
+<!-- 데이터 대량 주입용 Mapper 0204 hari -->
 <mapper namespace="MemberInsertMapper">
 
 	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
@@ -105,7 +105,7 @@
 		useGeneratedKeys="true" keyProperty="sitterno">
 		INSERT INTO Sitter_info
 		(sitter_type,
-		want_act, want_age, payment, si, gu, dong, schedule,
+		want_act, want_age, payment, payment_ok, si, gu, dong, schedule,
 		schedule_set,
 		introduce, cctv, openingdate, memberno)
 		VALUES

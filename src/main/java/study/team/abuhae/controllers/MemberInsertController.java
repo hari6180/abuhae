@@ -33,7 +33,6 @@ public class MemberInsertController {
 			input.setPhone("010-8888-8888");
 			input.setBirthdate("1997-06-18");
 			input.setGender('F');
-			input.setProfile_img('Y');
 			input.setJob_opening('Y');
 			input.setWant_act("야외활동");
 			input.setWant_age("20대");
@@ -44,13 +43,23 @@ public class MemberInsertController {
 			input.setSi("서울시");
 			input.setGu("강동구");
 			input.setDong("성내2동");
-			input.setSchedule("{ \"startdate\" : \"2021-01-21\",\r\n" + "	\"frequency\" : \"정기적으로\",\r\n"
-					+ "	\"day\" : [\"wed\", \"thu\"],\r\n" + "	\"time\" : [\"11:00\", \"21:00\"] \r\n" + "}");
+			input.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"time\": [\"11:00\", \"21:00\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input.setSchedule_ok('Y');
 			input.setSitter_gender('F');
 			input.setInterview_type('1');
 			input.setCare_type("주1회");
 			input.setOpeningdate("2021-02-04");
+			
+			/*
+			 * Schedule sd = new Schedule(); Day day = new Day(); Time time = new Time();
+			 * String[] darr = {"tue", "fri", "sun"}; String[] tarr = {"11:00", "21:00"};
+			 * 
+			 * day.setDay(darr); time.setTime(tarr);
+			 * 
+			 * sd.setStartdate("2021-02-10"); sd.setFrequency("regular"); sd.setDay();
+			 * 
+			 * input.setSchedule(sd);
+			 */
 			
 			int memberno = input.getMemberno();
 			input.setMemberno(memberno);
@@ -74,8 +83,8 @@ public class MemberInsertController {
 			input2.setPhone("010-8888-8888");
 			input2.setBirthdate("1993-11-24");
 			input2.setGender('F');
-			input2.setProfile_img('Y');
 			input2.setJob_opening('Y');
+			input2.setSitter_type("대학생");
 			input2.setWant_act("야외활동");
 			input2.setWant_age("20대");
 			input2.setPayment(10000);
@@ -84,8 +93,7 @@ public class MemberInsertController {
 			input2.setGu("강동구");
 			input2.setDong("성내2동");
 			input2.setSchedule('5');
-			input2.setSchedule_set("{ \"startdate\" : \"2021-01-21\",\r\n" + "	\"frequency\" : \"정기적으로\",\r\n"
-					+ "	\"day\" : [\"wed\", \"thu\"],\r\n" + "	\"time\" : [\"11:00\", \"21:00\"] \r\n" + "}");
+			input2.setSchedule_set("{\"day\": [\"tue\", \"fri\", \"sun\"], \"time\": [\"11:00\", \"21:00\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input2.setIntroduce("안녕하세요 짱짱 시터입니다.");
 			input2.setCctv("Y");
 			input2.setOpeningdate("2021-02-04");

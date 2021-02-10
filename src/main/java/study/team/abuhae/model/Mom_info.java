@@ -1,5 +1,9 @@
 package study.team.abuhae.model;
 
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -26,7 +30,7 @@ public class Mom_info extends Member {
 	private String si;				// 시
 	private String gu;				// 구
 	private String dong;			// 동
-	private String schedule;		// 가능한 시간대 입력(JSON)
+
 	private char   schedule_ok;		// 일정 조정 가능 여부 ('Y' or 'N')
 	private String description;		// 시터가 알아야할 사항
 	private char   sitter_gender;	// 원하는 시터 성별 ('M' or 'F')
@@ -37,6 +41,23 @@ public class Mom_info extends Member {
 	private String apply_content;	// 신청서 내용
 	private String kids_age2;		// 아이가 2명일시 넣는 생년월일
 	private char payment_ok; 		// 시급협의 여부 ('N', 'Y')
+	private String schedule;		// 가능한 시간대 입력(JSON) 
 	
-
+	// GSON 라이브러리를 활용해 JSON을 쉽게 파싱해봅시다. - 0210 hari
+	/*
+	 * @Data public class Schedule {
+	 * 
+	 * @SerializedName("startdate") private String startdate; // 구인 시작일자
+	 * 
+	 * @SerializedName("frequency") private String frequency; // 주기 (정기적으로 등등)
+	 * 
+	 * @SerializedName("day") private List<Day> day; // 원하는 요일
+	 * 
+	 * @SerializedName("time") private List<Time> time; // 원하는 시간
+	 * 
+	 * @Data public class Day { private String[] day; }
+	 * 
+	 * @Data public class Time { private String[] time; } }
+	 */
+	
 }

@@ -216,7 +216,7 @@
         </dependency>
         
         
-                <!-- Retrofit2 -->
+        <!-- Retrofit2 -->
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
