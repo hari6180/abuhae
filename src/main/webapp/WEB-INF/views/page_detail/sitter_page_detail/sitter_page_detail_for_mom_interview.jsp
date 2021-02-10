@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%
-	
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -66,7 +64,7 @@
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
 						<div class="review_ea">
-								후기 ${output.revno}개
+								후기 개
 						</div>
 						<div class="line"></div>
 						<div class="age">${output.birthdate}세</div>
@@ -90,8 +88,14 @@
 						</div>
 						<div class="line_three"></div>
 						<div class="cctv_area">
+						<c:if test="${output.cctv=='Y'}">
 							<div id="cctv" style="color: #ff7000"><span style="color: #ff7000;"><i class="fas fa-video"></i></span> CCTV</div>
 							<div id="agree" style="color: #ff7000">동의함</div>
+						</c:if>
+						<c:if test="${output.cctv=='N'}">
+							<div id="cctv" style="color: #3b3b3b"><span style="color: #555;"><i class="fas fa-video"></i></span> CCTV</div>
+							<div id="agree" style="color: #3b3b3b">동의 안함</div>
+						</c:if>
 						</div>
 					</div>
 				</div>
@@ -111,6 +115,7 @@
 						</div>
 					</div>
 					<!-- ------------- -->
+					<c:if test="${output.resino!=''}">
 					<div class="main_box">
 						<div class="box_name">핵심 인증</div>
 						<div class="main_area">
@@ -130,25 +135,21 @@
 							</div> <!-- fin. main_other -->						
 						</div>
 					</div>
+					</c:if>
+					<c:if test="${output.introduce!=''}">
 					<div class="info_box">
 						<div class="box_name">간단 자기소개</div>
 						<div class="info_area">
 							<div class="info_text_box">
 								<div class="info_text">
-									<span>세아이를 키운 엄마로서 아이들을 돌봄과 동시에 필요한 전문적인 학습도 도와줄수 있습니다
-									(수학전공, 수학학원 최근까지 운영 초등생 전과목 중고등 이과수학까지 지도 가능 
-									영어책 리딩 문제없어요 중등교사 자격증 소지) 
-									<br/>
-									</span>
 									<span>
-									맞벌이 가정의 육아의 어려움을 충분히 공감하며 맡겨진 아이를 책임감을 갖고 정성을 다해 돌보겠습니다. 
-									밝고 쾌활한 성격으로 동화구연(아이 눈높이에 맞게)이나 역할놀이도 재밌게 잘하고 노래 하는것도 좋아합니다.
-									(교회 성가대봉사 20년) 차 가지고 이동하며(운전경력 24년) 돌봄 시간에 따라 시급조정 가능합니다. 
+										${output.introduce}
 									</span>
 								</div>
 							</div>
 						</div>
 					</div>
+					</c:if>
 					<div class="iwant_box">
 						<div class="box_name">선호하는 돌봄유형</div>
 						<div class="iwant_area">
@@ -577,7 +578,7 @@
 									<div class="zone_link">
 										<div><i class="fas fa-star"></i> 1 순위</div>
 									</div>
-									<div>인천광역시 남동구</div>
+									<div>${output.si} ${output.gu}</div>
 								</div>
 								<hr>
 							</div>
@@ -640,10 +641,10 @@
 								<div class="experience_line">
 									<div class="experience_text">
 										<div class="experience_point"></div>
-										<div>1세 쌍둥이 여아, 8개월 여아 자매 정기돌봄</div>
+										<div>${output.expe_contents}</div>
 									</div> <!-- fin. experience_text -->
 									<div class="experience_date">
-										2019.01.04 ~ 2020.10.10
+										${output.expe_start_date} ~ ${output.expe_end_date}
 									</div>
 								</div> <!-- fin. experience_line --> 
 							</div> <!-- fin. experience_main -->
@@ -677,14 +678,14 @@
 					<div class="fixed_area">
 						<div class="fixed_area_age">
 							<div class="fixed_name">
-								정<i class="far fa-circle"></i>우
+								${output.name}
 							</div>
 							<div class="fixed_age">
-								(50세, 여)
+								(${output.birthdate}세, 여)
 							</div>
 						</div>
 						<div class="fixed_money">
-							희망시급 : 99,900원
+							희망시급 : ${output.payment}원
 						</div>
 					</div> <!-- fin. fixed_area -->
 					<div class="fixed_btn">
@@ -695,7 +696,7 @@
 								</div>									
 							</button>
 							<div class="jim_number">
-								999
+								${output.heartno}
 							</div>
 						</div> <!-- fin. fixed_btn_jim -->					
 						<div class="interview_btn">

@@ -9,7 +9,6 @@
 		type="study.team.abuhae.model.Member">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="memberno" column="memberno" />
-		<result property="type" column="type" />
 		<result property="id" column="id" />
 		<result property="password" column="password" />
 		<result property="name" column="name" />
@@ -57,6 +56,17 @@
 		<result property="cctv" column="cctv" />
 		<result property="openingdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
+		<result property="rev_rate" column="rev_rate" />
+		<result property="rev_count" column="rev_count" />
+		<result property="profile_img_file" column="profile_img_count" />
+		<result property="expe_contents" column="expe_contents" />
+		<result property="expe_start_date" column="expe_start_date" />
+		<result property="expe_end_date" column="expe_end_date" />
+		<result property="heartno" column="heartno" />
+		<result property="who" column="who" />
+		<result property="applydate" column="applydate" />
+		<result property="accept" column="accept" />
+		<result property="resino" column="resino" />
 	</resultMap>
 	
 	<resultMap type="study.team.abuhae.model.Review" id="ReviewMap">
@@ -67,13 +77,17 @@
 	<!-- 시터 상세페이지 -->
 	<select id="selectItem" parameterType="study.team.abuhae.model.Sitter_info"
 		resultMap="SitterMap">
-		SELECT CONCAT(LEFT(name,1),'O',RIGHT(name,1)) AS name, sitter_type, count(revno) AS review_count,
+		SELECT CONCAT(LEFT(name,1),'O',RIGHT(name,1)) AS name, sitter_type, count(revno),
 			FLOOR( (CAST(REPLACE(CURRENT_DATE,'-','') AS UNSIGNED) - 
-			CAST(REPLACE(birthdate,'-','') AS UNSIGNED)) / 10000 ) AS age, s.sitterno,
-			openingdate, cctv
+			CAST(REPLACE(birthdate,'-','') AS UNSIGNED)) / 10000 ) + 2 AS birthdate, s.sitterno,
+			openingdate, cctv, expe_contents, c.resino, introduce, expe_start_date, expe_end_date,
+			count(heartno) AS heartno
 			FROM sitter_info s 
 			INNER JOIN review r ON r.sitterno=s.sitterno
 			INNER JOIN member m ON m.memberno=s.memberno
+			INNER JOIN sitter_experience e ON e.sitterno=s.sitterno
+			INNER JOIN resi_cert c ON c.sitterno=s.sitterno
+			INNER JOIN heart h ON h.sitterno=s.sitterno
 	</select>
 	
 </mapper>
