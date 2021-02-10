@@ -58,12 +58,22 @@ public class LoginController {
 				session.setAttribute("loginID", output.getId()); // 로그인한 회원 id 세션
 				session.setAttribute("loginType", output.getType()); // 로그인한 회원 type 세션
 				session.setAttribute("loginNo", output.getMemberno()); // 로그인한 회원 number 세션
+				session.setAttribute("output", output);
 		
 			}
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
+		String url = contextPath;
+		return webHelper.redirect(url, null);
+	}
+	
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
+		
 		String url = contextPath;
 		return webHelper.redirect(url, null);
 	}

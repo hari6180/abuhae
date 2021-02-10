@@ -68,20 +68,19 @@ html, body {
 	<div id="app">
 		<div class="container">
 			<div id="menu">
-				<c:choose>
-					<c:if test="${isLogin ==true }">
+				<c:if test="${isLogin ==true }">
+					<c:choose>
 						<c:when test="${fn:contains(loginType, 'M')}">
 							<%@ include file="index_header_login_mom.jsp"%>
 						</c:when>
 						<c:when test="${fn:contains(loginType, 'S')}">
 							<%@ include file="index_header_login_sitter.jsp"%>
 						</c:when>
-
-					</c:if>
-					<c:otherwise>
-						<%@ include file="index_header.jsp"%>
-					</c:otherwise>
-				</c:choose>
+					</c:choose>
+				</c:if>
+				<c:if test="${isLogin == null }">
+					<%@ include file="index_header.jsp"%>
+				</c:if>
 
 			</div>
 
