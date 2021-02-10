@@ -83,12 +83,12 @@
 		INSERT INTO Mom_info (want_act,
 		want_age, kids_num, kids_age,
 		payment, payment_ok, si, gu, dong, schedule,
-		schedule_ok, sitter_gender,
+		schedule_ok, description, sitter_gender,
 		interview_type, care_type,
 		openingdate, memberno) VALUES (#{want_act}, #{want_age},
 		#{kids_num},
-		#{kids_age}, #{payment}, #{payment_ok} #{si}, #{gu}, #{dong}, #{schedule},
-		#{schedule_ok}, #{sitter_gender},#{interview_type},#{care_type},#{openingdate}, #{memberno});
+		#{kids_age}, #{payment}, #{payment_ok}, #{si}, #{gu}, #{dong}, #{schedule},
+		#{schedule_ok}, #{description}, #{sitter_gender},#{interview_type},#{care_type},#{openingdate}, #{memberno});
 	</insert>
 
 	<!-- 시터 회원 -->

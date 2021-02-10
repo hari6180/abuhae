@@ -206,6 +206,8 @@
 				time.push(starttime);
 				time.push(endtime);
 
+				startdate = startdate.replace(/\//gi, '-');
+
 
 				if($(".jojung_box").hasClass("box_check")==true) {
 					//일정조정 가능 

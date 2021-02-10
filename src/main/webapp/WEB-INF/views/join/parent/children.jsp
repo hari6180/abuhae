@@ -244,6 +244,9 @@
                 if($("input:checkbox[name=payment_ok]").is(":checked") == true) {
                     $("#payment_ok").val('Y');
                 };
+                if($("input:checkbox[name=payment_ok]").is(":checked") == false) {
+                    $("#payment_ok").val('N');
+                };
 
                 });
 
