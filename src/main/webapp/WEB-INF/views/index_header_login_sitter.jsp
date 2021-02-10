@@ -151,5 +151,20 @@
         });
       });
     </script>
+    <script>
+  //검색바 클릭시 밑에 찾기 아이콘
+  $(function () {
+    $("#header_search").on("click", function () {
+      $(".searchbar_wrap").slideToggle(300);
+    });
+
+    $(".search_sitter").click(function () {
+      location.href = "${pageContext.request.contextPath}/search/sitter_search.do";
+    });
+    $(".search_job").click(function () {
+      location.href = "${pageContext.request.contextPath}/search/job_search.do";
+    });
+  });
+</script>
   </body>
 </html>
