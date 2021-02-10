@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -54,7 +55,18 @@
 	<div id="app">
 		<div class="container">
 			<div id="menu">
-				<%@ include file="index_header.jsp"%>
+				<c:choose>
+					<c:when test="${isLogin} != true">
+						<%@ include file="index_header.jsp"%>
+					</c:when>
+					<c:when test="${loginType} == M">
+						<%@ include file="index_header_login_mom.jsp"%>
+					</c:when>
+					<c:when test="${loginType} == S">
+						<%@ include file="index_header_login_sitter.jsp"%>
+					</c:when>
+				</c:choose>
+				
 			</div>
 
 			<!--section-->

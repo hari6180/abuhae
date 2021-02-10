@@ -314,7 +314,7 @@ public class JoinController {
 		mominfo.setDong(dong);
 		mominfo.setSchedule(schedule);
 		mominfo.setSchedule_ok(schedule_ok);
-		mominfo.setDescrip(description);
+		mominfo.setDescription(description);
 
 		// 저장된 결과 조회하기 위한 객체
 		//Mom_info output = null;
@@ -368,7 +368,7 @@ public class JoinController {
 		mominfo.setDong(dong);
 		mominfo.setSchedule(schedule);
 		mominfo.setSchedule_ok(schedule_ok);
-		mominfo.setDescrip(description);
+		mominfo.setDescription(description);
 
 		// 저장된 결과 조회하기 위한 객체
 		// Mom_info output = null;

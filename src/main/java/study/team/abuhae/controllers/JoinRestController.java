@@ -98,7 +98,7 @@ public class JoinRestController {
 		mominfo.setDong(dong);
 		mominfo.setSchedule(schedule);
 		mominfo.setSchedule_ok(schedule_ok);
-		mominfo.setDescrip(description);
+		mominfo.setDescription(description);
 
 		mominfo.setPassword(user_pw);
 		mominfo.setName(name);
