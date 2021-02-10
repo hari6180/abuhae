@@ -25,12 +25,14 @@ public class MemberInsertController {
 		// 저장할 값들을 Beans에 담는다.
 		Mom_info input = new Mom_info();
 		for (int i = 1; i <= 100; i++) {
+			input.setType('M');
 			input.setId("mom" + i);
 			input.setPassword("mom123");
 			input.setName("전하리" + i);
 			input.setEmail("aaa@aaa.aa");
 			input.setPhone("010-8888-8888");
 			input.setBirthdate("1997-06-18");
+			input.setGender('F');
 			input.setProfile_img('Y');
 			input.setJob_opening('Y');
 			input.setWant_act("야외활동");
@@ -49,7 +51,7 @@ public class MemberInsertController {
 			input.setInterview_type('1');
 			input.setCare_type("주1회");
 			input.setOpeningdate("2021-02-04");
-			input.setGender('F');
+			
 			int memberno = input.getMemberno();
 			input.setMemberno(memberno);
 
@@ -64,12 +66,14 @@ public class MemberInsertController {
 		// 저장할 값들을 Beans에 담는다.
 		Sitter_info input2 = new Sitter_info();
 		for (int i = 1; i <= 100; i++) {
+			input2.setType('S');
 			input2.setId("sitter" + i);
 			input2.setPassword("sitter123");
 			input2.setName("김선아" + i);
 			input2.setEmail("bbb@aaa.aa");
 			input2.setPhone("010-8888-8888");
 			input2.setBirthdate("1993-11-24");
+			input2.setGender('F');
 			input2.setProfile_img('Y');
 			input2.setJob_opening('Y');
 			input2.setWant_act("야외활동");
@@ -85,7 +89,6 @@ public class MemberInsertController {
 			input2.setIntroduce("안녕하세요 짱짱 시터입니다.");
 			input2.setCctv("Y");
 			input2.setOpeningdate("2021-02-04");
-			input2.setGender('F');
 			int memberno2 = input2.getMemberno();
 			input.setMemberno(memberno2);
 

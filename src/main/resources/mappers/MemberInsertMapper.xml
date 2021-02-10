@@ -10,14 +10,15 @@
 		type="study.team.abuhae.model.Member">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="memberno" column="memberno" />
+		<result property="type" column="type" />
 		<result property="id" column="id" />
 		<result property="password" column="password" />
 		<result property="name" column="name" />
 		<result property="email" column="email" />
 		<result property="phone" column="phone" />
 		<result property="birthdate" column="birthdate" />
-		<result property="job_opening" column="job_opening" />
 		<result property="gender" column="gender" />
+		<result property="job_opening" column="job_opening" />
 	</resultMap>
 
 	<resultMap id="MomMap"
@@ -59,7 +60,7 @@
 		<result property="introduce" column="introduce" />
 		<result property="cctv" column="cctv" />
 		<result property="openingdate" column="openingdate" />
-		<result property="memberno" column="memberno" /> 
+		<result property="memberno" column="memberno" />
 	</resultMap>
 
 	<!-- 데이터 저장을 위한 기능 정의 -->
@@ -68,12 +69,14 @@
 	<insert id="insertMember"
 		parameterType="study.team.abuhae.model.Member" useGeneratedKeys="true"
 		keyProperty="memberno">
-		INSERT INTO Member (id, password, name, email,
-		phone, birthdate, job_opening, gender)
-		VALUES (#{id}, #{password},
-		#{name}, #{email}, #{phone},
-		#{birthdate},
-		#{job_opening}, #{gender});
+		INSERT INTO Member (id, type, password, name, email,
+		phone,
+		birthdate, gender, job_opening)
+		VALUES (#{id}, #{type}, #{password},
+		#{name},
+		#{email}, #{phone},
+		#{birthdate},  #{gender},
+		#{job_opening});
 	</insert>
 
 
@@ -83,28 +86,36 @@
 		useGeneratedKeys="true" keyProperty="momno">
 		INSERT INTO Mom_info (want_act,
 		want_age, kids_num, kids_age,
-		payment, payment_ok, si, gu, dong, schedule,
+		payment, payment_ok, si, gu, dong,
+		schedule,
 		schedule_ok, sitter_gender,
 		interview_type, care_type,
 		openingdate, memberno) VALUES (#{want_act}, #{want_age},
 		#{kids_num},
-		#{kids_age}, #{payment}, #{payment_ok}, #{si}, #{gu}, #{dong}, #{schedule},
-		#{schedule_ok}, #{sitter_gender},#{interview_type},#{care_type},#{openingdate}, #{memberno});
+		#{kids_age}, #{payment}, #{payment_ok}, #{si}, #{gu}, #{dong},
+		#{schedule},
+		#{schedule_ok},
+		#{sitter_gender},#{interview_type},#{care_type},#{openingdate},
+		#{memberno});
 	</insert>
 
 	<!-- 시터 회원 -->
 	<insert id="insertSitter"
 		parameterType="study.team.abuhae.model.Sitter_info"
 		useGeneratedKeys="true" keyProperty="sitterno">
-		INSERT INTO Sitter_info (sitter_type,
+		INSERT INTO Sitter_info
+		(sitter_type,
 		want_act, want_age, payment, si, gu, dong, schedule,
 		schedule_set,
 		introduce, cctv, openingdate, memberno)
-		VALUES (#{sitter_type}, #{want_act},
-		#{want_age}, #{payment}, #{payment_ok}, #{si}, #{gu},
+		VALUES
+		(#{sitter_type}, #{want_act},
+		#{want_age}, #{payment}, #{payment_ok},
+		#{si}, #{gu},
 		#{dong},
 		#{schedule},
-		#{schedule_set}, #{introduce}, #{cctv}, #{openingdate}, #{memberno});
+		#{schedule_set}, #{introduce},
+		#{cctv}, #{openingdate}, #{memberno});
 	</insert>
 
 
