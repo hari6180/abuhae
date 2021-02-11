@@ -39,7 +39,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <script type="text/Javascript">
           $(document).ready(function () {
             // 무한 스크롤 1218 하리
-        /*     $(document).scroll(function () {
+            $(document).scroll(function () {
               var maxHeight = $(document).height();
               var currentScroll = $(window).scrollTop() + $(window).height();
 
@@ -60,7 +60,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     // 준비된 요소에게 읽어온 내용을 출력한다.
                     $("#result").append(req);
                   },
-                }); // end $.ajax */
+                }); // end $.ajax
               }
             });
           });
@@ -111,7 +111,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             });
 
            	// 리셋 버튼 0109 하리
-      $("#reset_detail").click(function (e) {
+      			$("#reset_detail").click(function (e) {
               e.preventDefault();
               $("#job_search_detail_modal .modal_content *").removeClass("select_btn_detail");
               $("#job_search_detail_modal .modal_content *").removeClass("select_text_detail");
@@ -126,64 +126,67 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             /** 주소 선택 모달 ------------------------------------------------------------------- */
 
             //시 클릭했을 때
-            $(".loc_btn").on("click", function () {
-              var select = $(this).hasClass("select_location");
-              //선택이 안되어있을때
-              if (select == false) {
-                //선택이 되어있는 요소 탐색
-                var loc = $("#si").find("button").removeClass("select_loaction");
-                //console.log(loc);
-                $(this).addClass("select_loaction");
-                //시 선택하면 gu 보이게
-                $("#gu>div").removeClass("hide_content");
-                $("#gu button").removeClass("hide_content");
-                $("#gu>div").addClass("show_content");
-              }
-            });
-            //구 클릭했을 때
-            $("#gu button").on("click", function () {
-              var select = $(this).hasClass("select_location");
-              //선택이 안되어있을때
-              if (select == false) {
-                //선택이 되어있는 요소 탐색
-                var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
-                //console.log(loc);
-                $(this).addClass("select_loaction");
-                //구 선택하면 동 보이게
-                $("#dong>div").removeClass("hide_content");
-                $("#dong button").removeClass("hide_content");
-                $("#dong>div").addClass("show_content");
-              }
-            });
+        $(".loc_btn").on("click", function (e) {
+          e.preventDefault();
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#si").find("button").removeClass("select_loaction");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
+            //시 선택하면 gu 보이게
+            $("#gu>div").removeClass("hide_content");
+            $("#gu button").removeClass("hide_content");
+            $("#gu>div").addClass("show_content");
+          }
+        });
+        //구 클릭했을 때
+        $("#gu button").on("click", function (e) {
+          e.preventDefault();
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
+            //구 선택하면 동 보이게
+            $("#dong>div").removeClass("hide_content");
+            $("#dong button").removeClass("hide_content");
+            $("#dong>div").addClass("show_content");
+          }
+        });
 
-            //동 클릭했을때
-            $("#dong button").on("click", function () {
-              var select = $(this).hasClass("select_location");
-              //선택이 안되어있을때
-              if (select == false) {
-                //선택이 되어있는 요소 탐색
-                var loc = $("#dong").find("button").removeClass("select_loaction hide_content");
-                //console.log(loc);
-                $(this).addClass("select_loaction");
+        //동 클릭했을때
+        $("#dong button").on("click", function (e) {
+          e.preventDefault();
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#dong").find("button").removeClass("select_loaction hide_content");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
 
-                $.ajax({
-                  type: "GET", //get방식으로 통신
-                  url: "${pageContext.request.contextPath}join/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
-                  dataType: "html", //html형식으로 값 읽기
-                  error: function () {
-                    //통신 실패시 ㅠㅠ
-                    alert("통신실패!");
-                  },
-                  success: function (data) {
-                    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
-                    $(".select_box").html(data);
-                    var now = $(".next_btn").prop("disabled");
-                    //가져온 값 역으로 변경하여 다시 적용
-                    $(".next_btn").prop("disabled", !now);
-                  },
-                });
-              }
+            $.ajax({
+              type: "GET", //get방식으로 통신
+              url: "${pageContext.request.contextPath}/assets/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
+              dataType: "html", //html형식으로 값 읽기
+              error: function () {
+                //통신 실패시 ㅠㅠ
+                alert("통신실패!");
+              },
+              success: function (data) {
+                //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
+                $(".select_box").html(data);
+                var now = $(".next_btn").prop("disabled");
+                //가져온 값 역으로 변경하여 다시 적용
+                $(".next_btn").prop("disabled", !now);
+              },
             });
+          }
+        });
 
 
       // 리셋 0109 하리
@@ -231,21 +234,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
   <body>
     <div id="app">
       <div class="container">
-		<div id="menu">
-				<c:if test="${isLogin ==true }">
-					<c:choose>
-						<c:when test="${fn:contains(loginType, 'M')}">
-							<%@ include file="index_header_login_mom.jsp"%>
-						</c:when>
-						<c:when test="${fn:contains(loginType, 'S')}">
-							<%@ include file="index_header_login_sitter.jsp"%>
-						</c:when>
-					</c:choose>
-				</c:if>
-				<c:if test="${isLogin == null }">
-					<%@ include file="index_header.jsp"%>
-				</c:if>
-		</div>
+        <div id="menu">
+          <c:if test="${isLogin ==true }">
+            <c:choose>
+              <c:when test="${fn:contains(loginType, 'M')}"> <%@ include file="../index_header_login_mom.jsp"%> </c:when>
+              <c:when test="${fn:contains(loginType, 'S')}"> <%@ include file="../index_header_login_sitter.jsp"%> </c:when>
+            </c:choose>
+          </c:if>
+          <c:if test="${isLogin == null }"> <%@ include file="../index_header.jsp"%> </c:if>
+        </div>
 
         <!-- search -->
         <div id="search">
@@ -254,7 +251,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <!-- location modal -->
               <div id="location_modal" class="modal col-xs-12" data-toggle="tab" tabindex="-1" role="dialog" aria-labelledby="location_label" aria-hidden="true">
                 <div class="location_header">
-                  <button id="reset_loc" class="reset" type="reset">
+                  <button class="reset" type="reset" id="reset_loc">
                     <i class="fas fa-undo-alt"></i>
                   </button>
                   <h1>돌봄 지역</h1>
@@ -263,7 +260,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   </button>
                 </div>
                 <!--지역 선택-->
-                <div class="location_box">
+                <div id="location_box" method="get">
                   <!--시,도-->
                   <div class="location_group" id="si">
                     <div>
@@ -443,7 +440,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   </div>
                   <!--end 동-->
                 </div>
-                <!-- fin. col-xs-12 -->
+                <!-- col-xs-12 end -->
               </div>
               <!-- location modal end -->
 
@@ -645,7 +642,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <c:set var="frequency" value="${item.schedule_ok}" />
                     <c:set var="payment" value="${item.payment}" />
                     <c:set var="payment_ok" value="${item.payment_ok}" />
-     				<%-- 상세페이지로 이동하기 위한 URL --%>
+                    <c:set var="applySt" value="${item.applySt}" />
+                    <c:set var="frequency2" value="${item.frequency}" />
+                    <%-- 상세페이지로 이동하기 위한 URL --%>
                     <c:url value="/page_detail/mom_page_detail/mom_page_detail_calendar.do" var="viewUrl">
                       <c:param name="momno" value="${item.momno}" />
                     </c:url>
@@ -655,7 +654,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                         <div class="profile_img_group">
                           <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
                           <div class="applicant_group">
-                            <div class="applicant">${d}명 지원</div>
+                            <div class="applicant">${applySt}명 지원</div>
                           </div>
                         </div>
                         <div class="profile_info_group">
@@ -678,10 +677,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                           </div>
                           <div class="content_row">
                             <i class="fas fa-won-sign"></i>
-                            <div class="wanted_pay">희망 시급 ${payment}원
-                            <c:if test="${fn:contains(payment_ok,'Y')}">
-								&nbsp/&nbsp협의가능  	
-                            </c:if>
+                            <div class="wanted_pay">
+                              희망 시급 ${payment}원
+                              <c:if test="${fn:contains(payment_ok,'Y')}"> &nbsp/&nbsp협의가능 </c:if>
                             </div>
                           </div>
                         </div>
@@ -690,7 +688,19 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                       <div class="item_footer">
                         <div class="time_info_group">
                           <div class="time_text_group">
-                            <div class="frequency">${frequency}</div>
+                            <div class="frequency">
+                            <c:choose>
+							    <c:when test="${fn:contains(frequency2, 'regular')}">
+							        정기적
+							    </c:when>
+							    <c:when test="${fn:contains(frequency2, 'shortTerm')}">
+							        단기
+							    </c:when>
+							    <c:otherwise>
+							        협의
+							    </c:otherwise>
+							</c:choose>
+                            </div>
                           </div>
                           <div class="care_days_group">
                             <!-- 조건에 따라 css 색상 변환 처리 -->

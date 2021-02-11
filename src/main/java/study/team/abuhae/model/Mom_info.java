@@ -42,11 +42,12 @@ public class Mom_info extends Member {
 	private String kids_age2;		// 아이가 2명일시 넣는 생년월일
 	private char payment_ok; 		// 시급협의 여부 ('N', 'Y')
 	private String schedule;		// 가능한 시간대 입력(JSON) 
+	private String frequency;		// 스케줄 주기
 	
 	/** 2) JOIN절에 따른 추가 컬럼 */
 	// 찾기 기능의 JOIN - 0210 hari
-	private String who;				// 누가 찜했는지 확인용 ('M' or 'S')
-	
+	private int applySt;			// 맘이 게시한 일자리에 지원한 시터 수
+
 	// GSON 라이브러리를 활용해 JSON을 쉽게 파싱해봅시다. - 0210 hari
 	/*
 	 * @Data public class Schedule {

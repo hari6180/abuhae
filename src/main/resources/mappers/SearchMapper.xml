@@ -40,7 +40,7 @@
 		<result property="openingdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
 		<result property="rev_rate" column="rev_rate" />
-		<result property="rev_count" column="rev_no" /> <!-- 컬럼 이름 다르니 주의!! -->
+		<result property="rev_count" column="rev_count" />
 		<result property="resino" column="resino" />
 	</resultMap>
 
@@ -64,6 +64,8 @@
 		<result property="care_type" column="care_type" />
 		<result property="openingdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
+		<result property="applySt" column="cntno"/>
+		<result property="frequency" column="frequency" />
 	</resultMap>
 
 
@@ -92,7 +94,8 @@
 		ELSE
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS
-		openingdate FROM sitter_info s
+		openingdate, (SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND r_who='M') AS rev_count,
+		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND r_who='M') AS rev_rate FROM sitter_info s
 		INNER JOIN member m ON
 		s.memberno=m.memberno
 		<!-- INNER JOIN review r ON s.sitterno=r.sitterno INNER JOIN resi_cert 
@@ -105,9 +108,9 @@
 		parameterType="study.team.abuhae.model.Mom_info" resultMap="MomMap">
 		SELECT m.memberno, type, CONCAT(LEFT(name,1), 'O', RIGHT(name,1)) AS
 		name,
-		job_opening, momno, want_act, want_age, kids_num, kids_age, si,
+		job_opening, m.momno, want_act, want_age, kids_num, kids_age, si,
 		gu,
-		json_extract(schedule, '$.startdate') AS schedule, schedule_ok,
+		json_extract(schedule, '$.startdate') AS schedule, json_extract(schedule, '$.frequency') AS frequency, schedule_ok,
 		payment, payment_ok, care_type, CASE
 		<!-- 연산자 태그인식 방지 -->
 	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
@@ -120,7 +123,7 @@
 		ELSE
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS
-		openingdate FROM mom_info m
+		openingdate, (SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno AND who='s') AS applySt FROM mom_info m
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
 		<!-- INNER JOIN review r ON m.momno=r.sitterno INNER JOIN resi_cert c ON 
@@ -151,19 +154,20 @@
 		<!-- <where> <if test="name != null and name != ''"> name LIKE concat('%', 
 			#{name}, '%') </if> </where> -->
 	</select>
-	
-	<!-- 맘 지원자 수 -->
-		<select id="CountApplyToMom"
-		parameterType="study.team.abuhae.model.Connect" resultType="int">
-		SELECT COUNT(*)
-		FROM connect c
-		INNER JOIN mom_info m ON
-		c.momno=m.momno
-		WHERE who='s' AND c.momno=#{momno}
 
-		<!-- <where> <if test="name != null and name != ''"> name LIKE concat('%', 
-			#{name}, '%') </if> </where> -->
+	<!-- 일자리 찾기 맘에게 지원한 시터 수 -->
+	<select id="CountApplyToMom"
+		parameterType="study.team.abuhae.model.Mom_info" resultType="int">
+		SELECT
+		COUNT(*) AS applySt FROM mom_info m
+		INNER JOIN connect c ON
+		m.momno=c.momno
+		WHERE who='s'
 	</select>
+
+	<!-- <where> <if test="name != null and name != ''"> name LIKE concat('%', 
+		#{name}, '%') </if> </where> -->
+
 
 
 </mapper>

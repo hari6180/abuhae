@@ -18,20 +18,19 @@ public class SearchServiceImpl implements SearchService {
 	/** for MyBatis Mapper */
 	@Autowired
 	SqlSession sqlSession;
-	
+
 	/**
-	 * @author Hari
-	 * 맘시터 찾기 페이지 카드 출력을 위한 시터 데이터 조회
+	 * @author Hari 맘시터 찾기 페이지 카드 출력을 위한 시터 데이터 조회
 	 * @return 조회 결과에 대한 컬렉션
 	 * @throws Exception
 	 */
 	@Override
 	public List<Sitter_info> searchSitter(Sitter_info input) throws Exception {
 		List<Sitter_info> result = null;
-		
+
 		try {
 			result = sqlSession.selectList("SearchMapper.searchSitter", input);
-			
+
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
@@ -45,20 +44,19 @@ public class SearchServiceImpl implements SearchService {
 
 		return result;
 	}
-	
+
 	/**
-	 * @author Hari
-	 * 일자리 찾기 페이지 카드 출력을 위한 맘 데이터 조회
+	 * @author Hari 일자리 찾기 페이지 카드 출력을 위한 맘 데이터 조회
 	 * @return 조회 결과에 대한 컬렉션
 	 * @throws Exception
 	 */
 	@Override
 	public List<Mom_info> searchMom(Mom_info input) throws Exception {
 		List<Mom_info> result = null;
-		
+
 		try {
 			result = sqlSession.selectList("SearchMapper.searchMom", input);
-			
+
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
@@ -72,10 +70,9 @@ public class SearchServiceImpl implements SearchService {
 
 		return result;
 	}
-	
+
 	/**
-	 * @author Hari
-	 * 맘시터 찾기 페이지 카드 총 갯수 조회
+	 * @author Hari 맘시터 찾기 페이지 카드 총 갯수 조회
 	 * @param Sitter_info
 	 * @return int
 	 * @throws Exception
@@ -83,7 +80,7 @@ public class SearchServiceImpl implements SearchService {
 	@Override
 	public int getSitterCount(Sitter_info input) throws Exception {
 		int result = 0;
-		
+
 		try {
 			result = sqlSession.selectOne("SearchMapper.selectCountAllSitter", input);
 		} catch (Exception e) {
@@ -93,10 +90,9 @@ public class SearchServiceImpl implements SearchService {
 
 		return result;
 	}
-	
+
 	/**
-	 * @author Hari
-	 * 일자리 찾기 페이지 카드 총 갯수 조회
+	 * @author Hari 일자리 찾기 페이지 카드 총 갯수 조회
 	 * @param Mom_info
 	 * @return int
 	 * @throws Exception
@@ -104,7 +100,7 @@ public class SearchServiceImpl implements SearchService {
 	@Override
 	public int getMomCount(Mom_info input) throws Exception {
 		int result = 0;
-		
+
 		try {
 			result = sqlSession.selectOne("SearchMapper.selectCountAllMom", input);
 		} catch (Exception e) {
@@ -114,28 +110,21 @@ public class SearchServiceImpl implements SearchService {
 
 		return result;
 	}
-	
-	/**
-	 * @author Hari
-	 * 일자리 찾기 페이지 지원한 시터 수 산출
-	 * @param Connect
-	 * @return int
-	 * @throws Exception
-	 */
-	@Override
-	public int getApplyCount(Connect input) throws Exception {
-		int result = 0;
-		
-		try {
-			result = sqlSession.selectOne("SearchMapper.CountApplyToMom", input);
-		} catch (Exception e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 조회에 실패했습니다.");
-		}
 
-		return result;
-	}
-	
-	
+	/*	*//**
+			 * @author Hari 일자리 찾기 페이지 지원한 시터 수 산출
+			 * @param Connect
+			 * @return int
+			 * @throws Exception
+			 *//*
+				 * @Override public int getApplyCount(Connect input) throws Exception { int
+				 * result = 0;
+				 * 
+				 * try { result = sqlSession.selectOne("SearchMapper.CountApplyToMom", input); }
+				 * catch (Exception e) { log.error(e.getLocalizedMessage()); throw new
+				 * Exception("데이터 조회에 실패했습니다."); }
+				 * 
+				 * return result; }
+				 */
 
 }

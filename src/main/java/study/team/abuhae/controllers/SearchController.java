@@ -65,8 +65,9 @@ public class SearchController {
 			// 전체 게시글 수 조회
 			momTotalCount = searchService.getMomCount(null);
 			
-			// 지원자 수 조회
-			applyCount = searchService.getApplyCount(null);
+			/*
+			 * // 지원자 수 조회 applyCount = searchService.getApplyCount(null);
+			 */
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -737,7 +737,7 @@ button {
   color: #000;
 }
 
-#location_modal .location_box {
+#location_modal #location_box {
   width: 100%;
   overflow: hidden;
   display: flex;
