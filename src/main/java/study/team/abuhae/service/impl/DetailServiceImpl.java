@@ -38,4 +38,6 @@ public class DetailServiceImpl implements DetailService {
 		return result;
 	}
 
+
+
 }

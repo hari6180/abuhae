@@ -29,10 +29,12 @@ public class Page_detail_sitterController {
 		
 		// 조회결과를 저장할 객체 선언 
 		Sitter_info output = null;
+		Sitter_info test = null;
 		
 		try {
 			// 데이터 조회 
 			output = detailService.getSitterItem(input);
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -40,6 +42,7 @@ public class Page_detail_sitterController {
 		model.addAttribute("output", output);
 		return "/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview";
 	}
+	
 	
 	// 시터 상세페이지 > 인터뷰 페이지
 	@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_interview.do", method = RequestMethod.GET)

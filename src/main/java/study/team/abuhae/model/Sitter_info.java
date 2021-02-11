@@ -48,4 +48,6 @@ public class Sitter_info extends Member {
 	private String applydate; // 지원날짜 
 	private String accept; // 지원승인여부
 
+	
+
 }

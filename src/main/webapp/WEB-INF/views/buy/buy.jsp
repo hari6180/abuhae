@@ -39,7 +39,21 @@
 	<div id="app">
 		<div class="container col-xs-12">
 			<header>
-			  <%@ include file="../index_header.jsp" %>
+			  <div id="menu">
+				<c:if test="${isLogin ==true }">
+					<c:choose>
+						<c:when test="${fn:contains(loginType, 'M')}">
+							<%@ include file="index_header_login_mom.jsp"%>
+						</c:when>
+						<c:when test="${fn:contains(loginType, 'S')}">
+							<%@ include file="index_header_login_sitter.jsp"%>
+						</c:when>
+					</c:choose>
+				</c:if>
+				<c:if test="${isLogin == null }">
+					<%@ include file="index_header.jsp"%>
+				</c:if>
+			</div>
 			</header>
 			<!-- header end-->
 			<div class="buy_tab_box">

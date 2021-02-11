@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -57,14 +58,48 @@
 					</div><!-- fin. info_name -->		
 					<div class="info_star">
 						<div class="star">
+						<c:if test="${output.rev_rate=='1'}">
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+						</div>
+						</c:if>
+						<c:if test="${output.rev_rate=='2'}">
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+						</div>
+						</c:if>
+						<c:if test="${output.rev_rate=='3'}">
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+						</div>
+						</c:if>
+						<c:if test="${output.rev_rate=='4'}">
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
+						</c:if>
+						<c:if test="${output.rev_rate=='5'}">
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+						</div>
+						</c:if>
 						<div class="review_ea">
-								후기 개
+								후기 ${output.revno}개
 						</div>
 						<div class="line"></div>
 						<div class="age">${output.birthdate}세</div>
@@ -79,12 +114,12 @@
 					<div class="three_area">
 						<div class="views_area">
 							<div id="views"><i class="fas fa-user-friends"></i> 조회수</div>
-							<div id="views_number">93742</div>
+							<div id="views_number"></div>
 						</div>
 						<div class="line_three"></div>
 						<div class="clock_area">
 							<div id="clock"><i class="far fa-clock"></i> 프로필 작성</div>
-							<div id="date">한 달 전</div>
+							<div id="date">${output.openingdate}</div>
 						</div>
 						<div class="line_three"></div>
 						<div class="cctv_area">
@@ -413,6 +448,8 @@
 					<div class="possible_age_area">
 						<div>
 							<div class="age_line">
+				
+							<c:if test="${output.want_age == 'baby'}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-baby fa-3x"></i>
@@ -420,6 +457,17 @@
 									<br>
 									<span>신생아</span>
 								</div>
+								</c:if>
+								<c:if test="${output.want_age != 'baby'}">
+								<div class="ages col-xs-3">
+									<div style="margin-bottom: -10px">
+									<span style="color: #ccc"><i class="fas fa-baby fa-3x"></i></span>
+									</div>
+									<br>
+									<span style="color: #ccc">신생아</span>
+								</div>
+								</c:if>
+							
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-baby-carriage fa-3x"></i>
@@ -449,8 +497,21 @@
 						<div class="box_name">가능한 활동</div>
 						<div class="possible_age_area">
 							<div>
+							
 								<div class="possible_active_main">
+								<c:forEach var="item" items="${fn:split(output.want_act,',')}" />
 									<div class="active_line col-xs-3">
+										<c:if test="${item!='innerplay'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/innerplayicon_s.png"/>
+												</div>
+												<span>실내놀이</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${item=='innerplay'}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -459,6 +520,8 @@
 												<span>실내놀이</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item!='korea'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -467,6 +530,18 @@
 												<span>한글놀이</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item=='korea'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/koreanicon_s.png"/>
+												</div>
+												<span>한글놀이</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${item==clean}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -475,6 +550,18 @@
 												<span>간단 청소</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item!=clean}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/cleanicon_s.png"/>
+												</div>
+												<span>간단 청소</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${item!=longhome}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -483,9 +570,31 @@
 												<span>장기입주</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item==longhome}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/longhouseicon_s.png"/>
+												</div>
+												<span>장기입주</span>
+											</div>
+										</div>
+										</c:if>
 									</div>
 									<!-- --- -->
 									<div class="active_line col-xs-3">
+										<c:if test="${item==walk}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/guideicon_s.png"/>
+												</div>
+												<span>등하원 돕기</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${item!=walk}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -494,14 +603,28 @@
 												<span>등하원 돕기</span>
 											</div>
 										</div>
-										<div class="active_no">
-											<div class="active_no_img">
+										</c:if>
+										<c:if test="${item==english}">
+										<div class="active_ok">
+											<div class="active_ok_img">
 												<div class="active_ok_box">
 												<img src="<%=request.getContextPath()%>/assets/img/englishicon_s.png"/>
 												</div>
 												<span>영어놀이</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item!=english}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/englishicon_s.png"/>
+												</div>
+												<span>영어놀이</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${item.want_act==eat}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -510,6 +633,18 @@
 												<span>밥 챙겨주기</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item.want_act!=eat}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/eaticon_s.png"/>
+												</div>
+												<span>밥 챙겨주기</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${item!=home}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -518,9 +653,21 @@
 												<span>단기입주</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item==home}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/houseicon_s.png"/>
+												</div>
+												<span>단기입주</span>
+											</div>
+										</div>
+										</c:if>
 									</div>
 									<!-- ----- -->
 									<div class="active_line col-xs-3">
+										<c:if test="${item==read}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -529,6 +676,18 @@
 												<span>책읽기</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item!=read}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/readicon_s.png"/>
+												</div>
+												<span>책읽기</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${item!=study}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -537,6 +696,18 @@
 												<span>학습지도</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item==study}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/studyicon_s.png"/>
+												</div>
+												<span>학습지도</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${item==dish}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -545,9 +716,31 @@
 												<span>간단 설거지</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item!=dish}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/dishicon_s.png"/>
+												</div>
+												<span>간단 설거지</span>
+											</div>
+										</div>
+										</c:if>
 									</div>
 									<!-- ------- -->
 									<div class="active_line col-xs-3">
+										<c:if test="${item!=play}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/ousideicon_s.png"/>
+												</div>
+												<span>야외활동</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${item==play}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -556,6 +749,8 @@
 												<span>야외활동</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item!=ball}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -564,9 +759,22 @@
 												<span>체육놀이</span>
 											</div>
 										</div>
+										</c:if>
+										<c:if test="${item==ball}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/ballicon_s.png" />
+												</div>
+												<span>체육놀이</span>
+											</div>
+										</div>
+										</c:if>
 									</div>
 									<!-- ---- -->
+									
 								</div>
+								
 							</div>
 						</div> <!-- fin. possible_active_area -->
 					</div> <!-- fin. possible_active_box -->
@@ -578,7 +786,7 @@
 									<div class="zone_link">
 										<div><i class="fas fa-star"></i> 1 순위</div>
 									</div>
-									<div>${output.si} ${output.gu}</div>
+									<div>${output.si}&nbsp;${output.gu}</div>
 								</div>
 								<hr>
 							</div>
@@ -587,7 +795,7 @@
 									<div class="zone_link_2n3">
 										<div><i class="fas fa-map-marker-alt"></i>  2 순위</div>
 									</div>
-									<div>인천광역시 연수구</div>
+									<div>${output.si}&nbsp;${output.gu}</div>
 								</div>
 								<hr>
 							</div>
@@ -596,7 +804,7 @@
 									<div class="zone_link_2n3">
 										<div><i class="fas fa-map-marker-alt"></i>  3 순위</div>
 									</div>
-									<div>인천광역시 남구</div>
+									<div>${output.si}&nbsp;${output.gu}</div>
 								</div>
 							</div>
 						</div> <!-- fin. possible_zone_area -->
@@ -626,7 +834,7 @@
 						<div class="famille_area">
 							<div class="famille_main">
 								<div class="famille_date col-xs-12">
-									1999년 10월 28일 부터 <span style="font-weight: bold; color: #ff7000;">현재까지</span>
+									${output.openingdate} 부터 <span style="font-weight: bold; color: #ff7000;">현재까지</span>
 								</div>
 								<div class="famille_number">
 									99
@@ -717,8 +925,9 @@
 		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
 		<script type="text/javascript">
 		jQuery(function($) {
-			
+				
 			  $('#swapHeart').on('click', function() {
+				
 			    var $jim = $(this)
 			    
 			    // 찜할 때 alert창과 glyphicon변형
@@ -726,6 +935,7 @@
 			    	$(this).find('span').removeClass("glyphicon-heart-empty");
 			    	$(this).find('span').addClass("glyphicon-heart");
 		            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+		            
 			    }
 			 	// 찜 취소할 때 alert창과 glyphicon변형
 		        else{
