@@ -111,20 +111,5 @@ public class SearchServiceImpl implements SearchService {
 		return result;
 	}
 
-	/*	*//**
-			 * @author Hari 일자리 찾기 페이지 지원한 시터 수 산출
-			 * @param Connect
-			 * @return int
-			 * @throws Exception
-			 *//*
-				 * @Override public int getApplyCount(Connect input) throws Exception { int
-				 * result = 0;
-				 * 
-				 * try { result = sqlSession.selectOne("SearchMapper.CountApplyToMom", input); }
-				 * catch (Exception e) { log.error(e.getLocalizedMessage()); throw new
-				 * Exception("데이터 조회에 실패했습니다."); }
-				 * 
-				 * return result; }
-				 */
 
 }

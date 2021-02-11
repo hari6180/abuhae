@@ -98,8 +98,12 @@
 		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND r_who='M') AS rev_rate FROM sitter_info s
 		INNER JOIN member m ON
 		s.memberno=m.memberno
-		<!-- INNER JOIN review r ON s.sitterno=r.sitterno INNER JOIN resi_cert 
-			c ON s.sitterno=c.sitterno -->
+		
+		ORDER BY sitterno
+		
+		<if test="listCount > 0" >
+			LIMIT #{offset}, ${listCount}
+		</if>
 	</select>
 
 
@@ -126,8 +130,11 @@
 		openingdate, (SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno AND who='s') AS applySt FROM mom_info m
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
-		<!-- INNER JOIN review r ON m.momno=r.sitterno INNER JOIN resi_cert c ON 
-			m.momno=c.sitterno -->
+		ORDER BY momno
+		
+		<if test="listCount > 0" >
+			LIMIT #{offset}, ${listCount}
+		</if>
 	</select>
 
 	<!-- 총 회원 수 세기 -->

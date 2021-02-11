@@ -28,43 +28,26 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- sweetalert 사용 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <%--
+    
     <!-- ajax Helper -->
-    <script src="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.css" />
-    --%>
+    <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/ajax/ajax_helper.css" />
+   
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-      /*       $(document).ready(function () {
-        // 무한 스크롤 1218 하리
-        $(document).scroll(function () {
-          var maxHeight = $(document).height();
-          var currentScroll = $(window).scrollTop() + $(window).height();
+    
+   
 
-          if (maxHeight <= currentScroll + 100) {
-            $.ajax({
-              // 결과를 읽어올 URL
-              url: "item_group.html",
-              // 웹 프로그램에게 데이터를 전송하는 방식.
-              // 생략할 경우 get으로 자동 지정됨
-              method: "get",
-              // 전달할 조건값은 JSON 형식으로 구성
-              // 사용하지 않을 경우 명시 자체를 생략할 수 있다.
-              data: {},
-              // 읽어올 내용의 형식(생략할 경우 json)
-              dataType: "html",
-              // 읽어온 내용을 처리하기 위한 함수
-              success: function (req) {
-                // 준비된 요소에게 읽어온 내용을 출력한다.
-                $("#result").append(req);
-              },
-            }); // end $.ajax
-          }
-        });
-      }); */
+    <!--Google CDN 서버로부터 jQuery 참조 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Handlebar CDN 참조 -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
+
+    
+    <script type="text/javascript">
+  
 
       function random(n1, n2) {
         return parseInt(Math.random() * (n2 - n1 + 1)) + n1;
@@ -889,7 +872,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 </a>
               </div>
               <div class="order_selector_group">
-                <!-- 더미 데이터, 백엔드 연동 필요 -->
                 <div class="total">총 ${st_total}명</div>
                 <!-- 드롭다운 -->
                 <div class="dropdown clearfix order_dropdown">
@@ -999,8 +981,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 </c:otherwise>
               </c:choose>
               <!-- 카드영역 end -->
+				<div id="result"></div>
 
-              <div class="app_banner">
+
+
+<%--               <div class="app_banner">
                 <div class="banner_group">
                   <div>
                     <div class="banner_text_group">
@@ -1014,9 +999,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   </div>
                   <img src="${pageContext.request.contextPath}/assets/img/s-list-1-banner-image@3x (1).png" />
                 </div>
-              </div>
-              <div id="result1"></div>
-              <div id="result"></div>
+              </div> --%>
+
               <div>
                 <a data-toggle="modal" href="#sitter_search_detail_modal">
                   <button class="detail_btn">상세 검색</button>
@@ -1030,5 +1014,99 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       <!-- col-xs-12 end -->
     </div>
     <!--row end-->
+        <!-- Handlebar 템플릿 코드 -->
+	<script id="sitter-list-tmpl" type="text/x-handlebars-template">
+		{{#each item}}
+ <div class="sitter_item_group">
+                      <div class="item_header">
+                        <div class="cert_label">
+                          <img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" />
+                          <span id="sitter_title" class="cert_text"></span>
+                        </div>
+                      </div>
+                      <hr class="divider" />
+                      <div class="item_body">
+                        <div class="profile_img_group">
+                          <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
+                          <div class="responsive_rate_group">
+                            <div class="res_text">응답률</div>
+                            <div class="res_rate">${answer}</div>
+                            <div class="res_text">%</div>
+                          </div>
+                        </div>
+                        <div class="profile_info_group">
+                          <div class="content_row">
+                            <div>
+                              <div class="user_name">${name}</div>
+                              <div class="last_update">${openingdate} 작성</div>
+                            </div>
+                            <div class="jim_btn">
+                              <button class="swapHeart">
+                                <div class="jim">
+                                  <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
+                                </div>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="content_row location_group">
+                            <span class="location">${si}&nbsp${gu}&nbsp${dong}</span>
+                          </div>
+                          <div class="content_row">
+                            <div class="user_age">${age}세</div>
+                            <div class="text_sep"></div>
+                            <div class="wanted_pay">희망 시급 ${payment}원</div>
+                          </div>
+                          <div class="content_row">
+                            <div class="review_rate">
+                              <!-- 평점에 따라서 별 색상 css 다르게 주기. 추후 구현 예정 -->
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </div>
+                            <span class="review_count">후기 ${payment}개</span>
+                          </div>
+                        </div>
+                      </div>
+                      <hr class="divider" />
+                      <div class="item_footer">
+                        <div class="cert_info_group">
+                          <div class="cert_text_group">
+                            <div class="cert_label">확인된 인증</div>
+                            <div class="cert_count">2개</div>
+                          </div>
+                          <div class="cert_info_btn_group">
+                            <div class="cert_btn">엄마 인증</div>
+                            <div class="cert_btn">등초본 인증</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+		{{/each}}
+	</script>
+	<script>
+    $(document).ready(function () {
+        // 무한 스크롤 1218 하리
+        $(document).scroll(function () {
+          var maxHeight = $(document).height();
+          var currentScroll = $(window).scrollTop() + $(window).height();
+  		  var nowPage = 1;		// 현재 페이지의 기본값
+
+
+          if (maxHeight <= currentScroll + 100) {
+			// Restful API에 GET방식 요청
+			$.get("${pageContext.request.contextPath}/search/sitter_search", {
+				"page": nowPage 								// 페이지 번호는 GET 파라미터로 전송한다.
+			}, function(json) {
+				var source = $("#sitter-list-tmpl").html();		// 템플릿 코드 가져오기
+				var template = Handlebars.compile(source);		// 템플릿 코드 컴파일
+				var result = template(json);			// 템플릿 컴파일 결과물에 json 전달
+				$("#result").append(result);			// 최종 결과물을 #list 요소에 추가한다
+			});
+          }
+        });
+      });
+	</script>
   </body>
 </html>
