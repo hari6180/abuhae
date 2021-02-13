@@ -28,6 +28,11 @@
         .container {
             padding: 0;
         }
+        button:disabled,
+        button[disabled] {
+            background-color: #cccccc;
+            color: #666666;
+        }
     </style>
 </head>
 

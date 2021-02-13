@@ -65,7 +65,21 @@
                         <div class="time_box"><button class="time_btn" value="end_evning">저녁</button></div>
                     </div>
                 </div>
-                <a href="description.do"><button class="next_btn">다음</button></a>
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/description.do">
+                    <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="want_act" name="want_act" value="${want_act}">
+                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                    <input type="hidden" id="kids_num" name="kids_num" value="${kids_num}">
+                    <input type="hidden" id="kids_age" name="kids_age" value="${kids_age}">
+                    <input type="hidden" id="payment" name="payment" value="${payment}">
+                    <input type="hidden" id="payment_ok" name="payment_ok" value="${payment_ok}">
+                    <input type="hidden" id="loc_si" name="si" value="${si}">
+                    <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                    <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                    <input type="hidden" id="schedule" name="schedule">
+                    <input type="hidden" id="schedule_ok" name="schedule_ok">
+                    <button type="submit" class="next_btn">다음</button>
+            </form>
             </div>
 
         </div> <!-- fin. col-xs-12 -->
@@ -79,6 +93,39 @@
             $(".time_btn").on("click", function(){
                 $(this).toggleClass("select_btn");
             });
+
+            $(".next_btn").click(function (e) {
+                //e.preventDefault();
+				//스케쥴 json 조립
+				//원하는 시간
+				var wanttime = $(".select_btn").val();
+
+				//빈도
+				var frequency = "noplan";
+
+
+
+				if($(".jojung_box").hasClass("box_check")==true) {
+					//일정조정 가능 
+					$("#schedule_ok").val("Y");
+				} else {
+					$("#schedule_ok").val("N");
+				}
+
+				var schedule = { 
+					wanttime : wanttime, 
+					frequency : frequency, 
+				};
+				
+				var scheduleStr = JSON.stringify(schedule);
+				//console.log(scheduleStr);
+				var schedulerep = scheduleStr.replace(/\"/gi, '\'' );
+				//console.log(schedulerep);
+				$("#schedule").val(schedulerep);
+
+
+
+                });
         });
     </script>
 </body>

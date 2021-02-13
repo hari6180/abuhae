@@ -26,7 +26,12 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/join_parent.css" />
     <style type="text/css">
         .modal {
-            top:30%;
+            top: 30%;
+        }
+        button:disabled,
+        button[disabled] {
+            background-color: #cccccc;
+            color: #666666;
         }
     </style>
 </head>
@@ -94,7 +99,7 @@
                     </div>
                 </div>
                 <!--버튼 select시 공지내용 변경 - ajax-->
-                
+
                 <!--end 동적 요소 위치-->
 
 
@@ -113,21 +118,24 @@
                             <span class="payment_fix">원</span>
                         </div>
                         <div class="disc_box">
-                            <input type="checkbox" value="discussion" id="discussion" name="payment_ok"><label for="discussion">시급 협의
+                            <input type="checkbox" value="discussion" id="discussion" name="payment_ok"><label
+                                for="discussion">시급 협의
                                 가능</label>
                         </div>
                     </div>
+
+                    <form id="addform" method="post"
+                        action="${pageContext.request.contextPath}/join/parent/location.do">
+                        <input type="hidden" id="type" name="type" value="${type}">
+                        <input type="hidden" id="want_act" name="want_act" value="${want_act}">
+                        <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                        <input type="hidden" id="kids_num" name="kids_num">
+                        <input type="hidden" id="kids_age" name="kids_age">
+                        <input type="hidden" id="payment" name="payment">
+                        <input type="hidden" id="payment_ok" name="payment_ok">
+                        <button class="next_btn" type="submit" disabled>다음</button>
+                    </form>
                 </div>
-                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/location.do">
-               		<input type="hidden" id="type" name="type" value="${type}">
-                    <input type="hidden" id="want_act" name="want_act" value="${want_act}">
-                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
-                    <input type="hidden" id="kids_num" name="kids_num">
-                    <input type="hidden" id="kids_age" name="kids_age">
-                    <input type="hidden" id="payment" name="payment">
-                    <input type="hidden" id="payment_ok" name="payment_ok">
-                <button class="next_btn" type="submit">다음</button>
-                </form>
             </div>
 
         </div> <!-- fin. col-xs-12 -->
@@ -181,7 +189,7 @@
                     $(this).next().addClass("btn_children_off");
                     kids_num = $(this).attr('value');
                     console.log(kids_num);
-                    
+
 
                 } else {
                     //num2 클릭했을 때
@@ -211,15 +219,20 @@
             });
 
             //select box 출생년도, 출생월 선택이 되면 show_content - 선아
-            $(document).on('change','#year, #month', function(){
+            $(document).on('change', '#year, #month', function () {
                 //드롭다운의 선택값
                 var yaer = $("#year").val();
-               // console.log(year);
+                // console.log(year);
                 var month = $("#month").val();
                 //가져온 값이 존재한다면?
                 if (yaer != "" && month != "") {
                     $(this).parents().find(".payment_box").removeClass("hide_content");
                     $(this).parents().find(".payment_box").addClass("show_content");
+                    
+                    //select 값 채워지면 다음 버튼 활성화
+                    var now = $(".next_btn").prop('disabled');
+                    //가져온 값 역으로 변경하여 다시 적용
+                    $(".next_btn").prop('disabled', !now);
                 };
             });
 
@@ -241,16 +254,16 @@
                 //console.log($("#want_age").val());
 
                 //시급협의 여부
-                if($("input:checkbox[name=payment_ok]").is(":checked") == true) {
+                if ($("input:checkbox[name=payment_ok]").is(":checked") == true) {
                     $("#payment_ok").val('Y');
                 };
-                if($("input:checkbox[name=payment_ok]").is(":checked") == false) {
+                if ($("input:checkbox[name=payment_ok]").is(":checked") == false) {
                     $("#payment_ok").val('N');
                 };
 
-                });
+            });
 
-			/*
+            /*
             $("#addform").ajaxForm({
                 method: "POST",
                 success: function (json) {

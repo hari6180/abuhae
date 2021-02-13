@@ -177,7 +177,7 @@
 	</select>
 
 	<select id="selectCountAll"
-		parameterType="study.team.abuhae.model.Member" resultMap="int">
+		parameterType="study.team.abuhae.model.Member" resultType="int">
 		select count(*) from member m inner join mom_info mi on
 		m.memberno=mi.memberno
 	</select>

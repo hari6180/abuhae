@@ -70,7 +70,7 @@
                         <!--시작 시간-->
                         <div class="regu_title">시작시간</div>
                         <!--시간-->
-                        <div class="select_time">
+                        <div class="select_time" id="starttime">
                             <select>
                                 <option value="10:00">오전 10:00</option>
                                 <option value="10:30">오전 10:30</option>
@@ -90,7 +90,7 @@
                         <div>
                             <div class="regu_title">종료시간</div>
                         </div>
-                        <div class="select_time">
+                        <div class="select_time" id="endtime">
                             <select>
                                 <option value="20:00">오후 20:00</option>
                                 <option value="20:30">오후 20:30</option>
@@ -110,7 +110,21 @@
                 <span class="jojung_check"></span>
                 <span class="jojung_text">본 일정은 맘시터에 맞춰서 얼마든지 조정할 수 있어요.</span>
             </div>
-            <a href="description.do"><button class="next_btn">다음</button></a>
+            <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/description.do">
+                <input type="hidden" id="type" name="type" value="${type}">
+                <input type="hidden" id="want_act" name="want_act" value="${want_act}">
+                <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                <input type="hidden" id="kids_num" name="kids_num" value="${kids_num}">
+                <input type="hidden" id="kids_age" name="kids_age" value="${kids_age}">
+                <input type="hidden" id="payment" name="payment" value="${payment}">
+                <input type="hidden" id="payment_ok" name="payment_ok" value="${payment_ok}">
+                <input type="hidden" id="loc_si" name="si" value="${si}">
+                <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                <input type="hidden" id="schedule" name="schedule">
+                <input type="hidden" id="schedule_ok" name="schedule_ok">
+                <button type="submit" class="next_btn">다음</button>
+        </form>
 
         </div> <!-- fin. col-xs-12 -->
     </div>
@@ -122,9 +136,10 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript">
         $(function () {
+
             $(".calrendar_block").flatpickr({
                 inline: true,
-                dateFormat: "Y/m/d",
+                dateFormat: "Y-m-d",
                 minDate: "today",
                 maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
                 mode: "multiple", //여러개 선택 가능
@@ -136,6 +151,46 @@
 				$(this).toggleClass("box_check");
 				$(this).find(".jojung_check").toggleClass("check_check");
 			});
+
+            $(".next_btn").click(function (e) {
+                //e.preventDefault();
+				//스케쥴 json 조립
+				//시작 날짜
+				var selectdate = $(".calrendar_block").val();
+
+				//빈도
+				var frequency = "shortTerm";
+				//시간
+				var time = [];
+				var starttime = $("#starttime option:selected").val();
+                var endtime = $("#endtime option:selected").val();
+				time.push(starttime);
+				time.push(endtime);
+
+
+				if($(".jojung_box").hasClass("box_check")==true) {
+					//일정조정 가능 
+					$("#schedule_ok").val("Y");
+				} else {
+					$("#schedule_ok").val("N");
+				}
+
+				var schedule = { 
+					selectdate : selectdate, 
+					frequency : frequency, 
+					 // 배열은 아래와 같이 구조화 할 수 있습니다.
+					time : time
+				};
+				
+				var scheduleStr = JSON.stringify(schedule);
+				//console.log(scheduleStr);
+				var schedulerep = scheduleStr.replace(/\"/gi, '\'' );
+				//console.log(schedulerep);
+				$("#schedule").val(schedulerep);
+
+
+
+                });
         });
     </script>
 </body>
