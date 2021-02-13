@@ -8,6 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Data
 @Slf4j
+/*
+ * DB에서 kids_age 끌어와 아이 연령대 구하는 helper 
+ * made by suna 20210212
+ * 사용시 객체이름.getKids_age()로 사용
+ */
 public class AgeHelper {
 	
 	//연령 구분
@@ -55,10 +60,5 @@ public class AgeHelper {
 		}
 		
 		//log.debug(this.toString());
-		
-		
-	
-	}
-
-	
+	}	
 }
