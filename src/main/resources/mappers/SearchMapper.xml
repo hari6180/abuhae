@@ -75,7 +75,7 @@
 	<select id="searchSitter"
 		parameterType="study.team.abuhae.model.Sitter_info"
 		resultMap="SitterMap">
-		SELECT s.memberno, type, CONCAT(LEFT(name,1), 'O', RIGHT(name,1)) AS
+		SELECT s.memberno, type, CONCAT(LEFT(name,1), 'O', RIGHT(name,2)) AS
 		name, email, phone, FLOOR(
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
@@ -99,8 +99,31 @@
 		INNER JOIN member m ON
 		s.memberno=m.memberno
 		
-		ORDER BY sitterno
+		ORDER BY 
 		
+		<choose>
+			<when test="order != null and order == 'update'">
+				openingdate
+			</when>
+			<when test="order != null and order == 'review'">
+				rev_rate DESC
+			</when>
+<!-- 			<when test="order != null and order == 'cert'">
+			인증 수 고려...				
+			</when> -->
+			<when test="order != null and order == 'response'">
+				answer DESC
+			</when>
+			<when test="order != null and order == 'lowpay'">
+				payment
+			</when>
+			<when test="order != null and order == 'highpay'">
+				payment DESC
+			</when>						
+			<otherwise>
+				rev_rate DESC
+			</otherwise>
+		</choose>
 		<if test="listCount > 0" >
 			LIMIT #{offset}, ${listCount}
 		</if>
@@ -130,7 +153,19 @@
 		openingdate, (SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno AND who='s') AS applySt FROM mom_info m
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
-		ORDER BY momno
+		ORDER BY 
+		
+		<choose>
+			<when test="order != null and order == 'lowpay'">
+				payment
+			</when>
+			<when test="order != null and order == 'highpay'">
+				payment DESC
+			</when>						
+			<otherwise>
+				openingdate DESC
+			</otherwise>
+		</choose>
 		
 		<if test="listCount > 0" >
 			LIMIT #{offset}, ${listCount}

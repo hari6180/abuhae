@@ -26,6 +26,11 @@ public abstract class Member {
 	private char ticket_type; 	// 이용권 종류 ('1', '3', '6')
 	private String ticket_price;// 이용권 금액
 	
+	// 정렬조건
+	private static String order;	
+	
+	
+	
 	/** LIMIT 절에서 사용할 조회 시작 위치 */
 	private static int offset;
 	
@@ -46,6 +51,14 @@ public abstract class Member {
 
 	public static void setListCount(int listCount) {
 		Member.listCount = listCount;
+	}
+
+	public static String getOrder() {
+		return order;
+	}
+
+	public static void setOrder(String order) {
+		Member.order = order;
 	}
 }
 

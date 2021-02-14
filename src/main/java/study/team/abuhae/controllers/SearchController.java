@@ -35,7 +35,9 @@ public class SearchController {
 	@RequestMapping(value = "/search/sitter_search.do", method = RequestMethod.GET)
 	public ModelAndView sitter_search(Model model,
 			// 페이지 구현에서 사용할 현재 페이지 번호
-			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+			@RequestParam(value = "page", defaultValue = "1") int nowPage,
+			// 정렬 조건
+			@RequestParam(value = "order", defaultValue = "null") String order) {
 
 		int stTotalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수
@@ -56,6 +58,9 @@ public class SearchController {
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Sitter_info.setOffset(pageData.getOffset());
 			Sitter_info.setListCount(pageData.getListCount());
+			
+			// 정렬조건의 값을 Beans에 저장
+			Sitter_info.setOrder(order);
 
 			// 데이터 조회하기
 			output = searchService.searchSitter(input);
@@ -74,12 +79,14 @@ public class SearchController {
 	@RequestMapping(value = "/search/job_search.do", method = RequestMethod.GET)
 	public ModelAndView job_search(Model model,
 			// 페이지 구현에서 사용할 현재 페이지 번호
-			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+			@RequestParam(value = "page", defaultValue = "1") int nowPage,
+			// 정렬 조건
+			@RequestParam(value = "order", defaultValue = "null") String order) {
 
 		int momTotalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
-		
+
 		// 조회에 필요한 조건값을 Beans에 담는다.
 		Mom_info input = new Mom_info();
 
@@ -106,6 +113,7 @@ public class SearchController {
 		/** 3) View 처리 */
 		model.addAttribute("output", output);
 		model.addAttribute("mom_total", momTotalCount);
+		model.addAttribute("order", order);
 		return new ModelAndView("search/job_search");
 	}
 

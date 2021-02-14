@@ -15,13 +15,18 @@ public class MemberInsertController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	MemberInsertService memberInsertService;
+	
+	public int random(int n1, int n2) {
+		int a = (int)((Math.random() * (n2 - n1 + 1)) + n1);
+		return a; 
+      }
 
 	/** 멤버를 DB에 추가하는 컨트롤러 2021-02-04 하리
 	 *  void라 view가 없습니다. 
 	 *  프로젝트 실행하고 value 안 url 주소창에 입력하여 추가하세요. **/
 	@RequestMapping(value = "/member_insert.do", method = RequestMethod.GET)
 	public void member_insert(Model model) {
-
+		
 		// 저장할 값들을 Beans에 담는다.
 		Mom_info input = new Mom_info();
 		for (int i = 1; i <= 100; i++) {
@@ -38,7 +43,11 @@ public class MemberInsertController {
 			input.setWant_age("20대");
 			input.setKids_num(1);
 			input.setKids_age("201501");
-			input.setPayment(10000);
+			
+			// 시급 랜덤입력
+			int payment = random(9000,20000);
+			input.setPayment(payment);
+			
 			input.setPayment_ok('Y');
 			input.setSi("서울시");
 			input.setGu("강동구");
@@ -48,7 +57,12 @@ public class MemberInsertController {
 			input.setSitter_gender('F');
 			input.setInterview_type('1');
 			input.setCare_type("주1회");
-			input.setOpeningdate("2021-02-04");
+			
+			// 프로필 업데이트 날짜 랜덤입력
+			int month = random(1,12);
+			int day = random(1,28);
+			String openingdate = "2020-" + month + "-" + day;
+			input.setOpeningdate(openingdate);
 			
 			/*
 			 * Schedule sd = new Schedule(); Day day = new Day(); Time time = new Time();
@@ -87,7 +101,11 @@ public class MemberInsertController {
 			input2.setSitter_type("대학생");
 			input2.setWant_act("야외활동");
 			input2.setWant_age("20대");
-			input2.setPayment(10000);
+			
+			// 시급 랜덤입력
+			int payment = random(9000,20000);
+			
+			input2.setPayment(payment);
 			input2.setPayment_ok('Y');
 			input2.setSi("서울시");
 			input2.setGu("강동구");
@@ -96,9 +114,15 @@ public class MemberInsertController {
 			input2.setSchedule_set("{\"day\": [\"tue\", \"fri\", \"sun\"], \"time\": [\"11:00\", \"21:00\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input2.setIntroduce("안녕하세요 짱짱 시터입니다.");
 			input2.setCctv("Y");
-			input2.setOpeningdate("2021-02-04");
+			
+			// 프로필 업데이트 날짜 랜덤입력
+			int month = random(1,12);
+			int day = random(1,28);
+			String openingdate = "2020-" + month + "-" + day;
+			input2.setOpeningdate(openingdate);
+			
 			int memberno2 = input2.getMemberno();
-			input.setMemberno(memberno2);
+			input2.setMemberno(memberno2);
 
 			try {
 				// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.

@@ -27,23 +27,20 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- sweetalert 사용 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    
     <!-- ajax Helper -->
     <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/ajax/ajax_helper.css" />
-   
+
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-    
+
     <!--Google CDN 서버로부터 jQuery 참조 -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Handlebar CDN 참조 -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
 
-    
-    
     <script type="text/Javascript">
           $(function () {
             // 헤더 메뉴 load처리 1224 하리
@@ -668,17 +665,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                         <div class="time_info_group">
                           <div class="time_text_group">
                             <div class="frequency">
-                            <c:choose>
-							    <c:when test="${fn:contains(frequency2, 'regular')}">
-							        정기적
-							    </c:when>
-							    <c:when test="${fn:contains(frequency2, 'shortTerm')}">
-							        단기
-							    </c:when>
-							    <c:otherwise>
-							        협의
-							    </c:otherwise>
-							</c:choose>
+                              <c:choose>
+                                <c:when test="${fn:contains(frequency2, 'regular')}"> 정기적 </c:when>
+                                <c:when test="${fn:contains(frequency2, 'shortTerm')}"> 단기 </c:when>
+                                <c:otherwise> 협의 </c:otherwise>
+                              </c:choose>
                             </div>
                           </div>
                           <div class="care_days_group">
@@ -706,7 +697,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               </c:choose>
               <!-- 카드영역 end -->
               <div id="result"></div>
-<!-- 
+              <!-- 
               <div class="app_banner">
                 <img
                   srcset="
@@ -732,108 +723,139 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       <!-- col-xs-12 end -->
     </div>
     <!--row end-->
-<!-- Handlebar 템플릿 코드 -->
-	<script id="job-list-tmpl" type="text/x-handlebars-template">
-{{#each item}}
-    <div class="job_item_group">
-    <div class="item_body">
-      <div class="profile_img_group">
-        <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
-        <div class="applicant_group">
-          <div class="applicant">${applySt}명 지원</div>
-        </div>
-      </div>
-      <div class="profile_info_group">
-        <div class="content_row">
-          <div>
-            <div class="kids_count">${kid_age} ${kids_num}명</div>
-            <div class="text_sep"></div>
-            <div class="last_update">${openingdate}</div>
+    <!-- Handlebar 템플릿 코드 -->
+    <script id="job-list-tmpl" type="text/x-handlebars-template">
+      {{#each item}}
+        <div class="job_item_group">
+          <div class="item_body">
+            <div class="profile_img_group">
+              <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
+              <div class="applicant_group">
+                <div class="applicant">
+                  ${applySt}명 지원
+                </div>
+              </div>
+            </div>
+            <div class="profile_info_group">
+              <div class="content_row">
+                <div>
+                  <div class="kids_count">
+                    ${kid_age} ${kids_num}명
+                  </div>
+                  <div class="text_sep"></div>
+                  <div class="last_update">
+                    ${openingdate}
+                  </div>
+                </div>
+              </div>
+              <div class="content_row">
+                <div class="find_text">
+                  ${want_act} &nbsp 맘시터 찾습니다.
+                </div>
+              </div>
+              <div class="content_row location_group">
+                <span class="location">
+                  ${si}&nbsp${gu}
+                </span>
+                <div class="text_sep"></div>
+                <span class="user_name">
+                  ${name}
+                </span>
+                <div class="text_sep"></div>
+                <span class="start_date">
+                  ${startdate} 시작
+                </span>
+              </div>
+              <div class="content_row">
+                <i class="fas fa-won-sign"></i>
+                <div class="wanted_pay">
+                  희망 시급 ${payment}원
+                  <c:if test="${fn:contains(payment_ok,'Y')}">
+                    &nbsp/&nbsp협의가능
+                  </c:if>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="divider" />
+          <div class="item_footer">
+            <div class="time_info_group">
+              <div class="time_text_group">
+                <div class="frequency">
+                  <c:choose>
+                    <c:when test="${fn:contains(frequency2, 'regular')}">
+                      정기적
+                    </c:when>
+                    <c:when test="${fn:contains(frequency2, 'shortTerm')}">
+                      단기
+                    </c:when>
+                    <c:otherwise>
+                      협의
+                    </c:otherwise>
+                  </c:choose>
+                </div>
+              </div>
+              <div class="care_days_group">
+                <!-- 조건에 따라 css 색상 변환 처리 -->
+                <span class="care_days">
+                  월
+                </span>
+                <span class="care_days">
+                  화
+                </span>
+                <span class="care_days">
+                  수
+                </span>
+                <span class="care_days">
+                  목
+                </span>
+                <span class="care_days">
+                  금
+                </span>
+                <span class="care_days">
+                  토
+                </span>
+                <span class="care_days">
+                  일
+                </span>
+              </div>
+            </div>
+            <div class="jim_btn">
+              <button class="swapHeart">
+                <div class="jim">
+                  <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
-        <div class="content_row">
-          <div class="find_text">${want_act} &nbsp 맘시터 찾습니다.</div>
-        </div>
-        <div class="content_row location_group">
-          <span class="location">${si}&nbsp${gu}</span>
-          <div class="text_sep"></div>
-          <span class="user_name"> ${name}</span>
-          <div class="text_sep"></div>
-          <span class="start_date">${startdate} 시작</span>
-        </div>
-        <div class="content_row">
-          <i class="fas fa-won-sign"></i>
-          <div class="wanted_pay">
-            희망 시급 ${payment}원
-            <c:if test="${fn:contains(payment_ok,'Y')}"> &nbsp/&nbsp협의가능 </c:if>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr class="divider" />
-    <div class="item_footer">
-      <div class="time_info_group">
-        <div class="time_text_group">
-          <div class="frequency">
-          <c:choose>
-			    <c:when test="${fn:contains(frequency2, 'regular')}">
-			        정기적
-			    </c:when>
-			    <c:when test="${fn:contains(frequency2, 'shortTerm')}">
-			        단기
-			    </c:when>
-			    <c:otherwise>
-			        협의
-			    </c:otherwise>
-			</c:choose>
-          </div>
-        </div>
-        <div class="care_days_group">
-          <!-- 조건에 따라 css 색상 변환 처리 -->
-          <span class="care_days">월</span>
-          <span class="care_days">화</span>
-          <span class="care_days">수</span>
-          <span class="care_days">목</span>
-          <span class="care_days">금</span>
-          <span class="care_days">토</span>
-          <span class="care_days">일</span>
-        </div>
-      </div>
-      <div class="jim_btn">
-        <button class="swapHeart">
-          <div class="jim">
-            <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
-          </div>
-        </button>
-      </div>
-    </div>
-  </div>
-		{{/each}}
-  </script>
-	<script>
-    $(document).ready(function () {
+      {{/each}}
+    </script>
+    <script>
+      $(document).ready(function () {
         // 무한 스크롤 1218 하리
         $(document).scroll(function () {
           var maxHeight = $(document).height();
           var currentScroll = $(window).scrollTop() + $(window).height();
-  		  var nowPage = 1;		// 현재 페이지의 기본값
-
+          var nowPage = 1; // 현재 페이지의 기본값
 
           if (maxHeight <= currentScroll + 100) {
-			// Restful API에 GET방식 요청
-			$.get("${pageContext.request.contextPath}/search/job_search", {
-				"page": nowPage 								// 페이지 번호는 GET 파라미터로 전송한다.
-			}, function(json) {
-				var source = $("#job-list-tmpl").html();		// 템플릿 코드 가져오기
-				var template = Handlebars.compile(source);		// 템플릿 코드 컴파일
-				var result = template(json);			// 템플릿 컴파일 결과물에 json 전달
-				$("#result").append(result);			// 최종 결과물을 #list 요소에 추가한다
-			});
+            // Restful API에 GET방식 요청
+            $.get(
+              "${pageContext.request.contextPath}/search/job_search",
+              {
+                page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
+              },
+              function (json) {
+                var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
+                var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                $("#result").append(result); // 최종 결과물을 #list 요소에 추가한다
+              }
+            );
           }
         });
       });
-	</script>
-
-    
+    </script>
   </body>
 </html>

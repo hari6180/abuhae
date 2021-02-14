@@ -28,27 +28,21 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- sweetalert 사용 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    
     <!-- ajax Helper -->
     <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/ajax/ajax_helper.css" />
-   
+
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-    
-   
 
     <!--Google CDN 서버로부터 jQuery 참조 -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Handlebar CDN 참조 -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
 
-    
     <script type="text/javascript">
-  
-
       function random(n1, n2) {
         return parseInt(Math.random() * (n2 - n1 + 1)) + n1;
       }
@@ -293,13 +287,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             $(this).find("span").addClass("glyphicon-heart-empty");
           }
         }); // fin. 찜버튼 기능
-
-        // 드롭다운 선택 - 0109 하리
-        $(".dr_option").click(function () {
-          $(this).addClass("active");
-          $(".dr_option").not(this).removeClass("active");
-          $("#orderby").html($(this).find("a").html());
-        });
       });
     </script>
   </head>
@@ -878,12 +865,12 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">후기 순 </a><b class="caret"></b>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="orderby">
                     <!-- 아이템 항목 나열 -->
-                    <li class="dr_option" role="presentation" value="update"><a role="menuitem" tabindex="-1" href="#">프로필 업데이트 순</a></li>
-                    <li class="dr_option active" role="presentation" value="review"><a role="menuitem" tabindex="-1" href="#">후기 순</a></li>
-                    <li class="dr_option" role="presentation" value="cert"><a role="menuitem" tabindex="-1" href="#">인증 수 순</a></li>
-                    <li class="dr_option" role="presentation" value="response"><a role="menuitem" tabindex="-1" href="#">응답률 순</a></li>
-                    <li class="dr_option" role="presentation" value="lowpay"><a role="menuitem" tabindex="-1" href="#">시급 낮은 순</a></li>
-                    <li class="dr_option" role="presentation" value="highpay"><a role="menuitem" tabindex="-1" href="#">시급 높은 순</a></li>
+                    <li class="dr_option" role="presentation" data-order="update"><a role="menuitem" tabindex="-1" href="#">프로필 업데이트 순</a></li>
+                    <li class="dr_option active" role="presentation" data-order="review"><a role="menuitem" tabindex="-1" href="#">후기 순</a></li>
+                    <li class="dr_option" role="presentation" data-order="cert"><a role="menuitem" tabindex="-1" href="#">인증 수 순</a></li>
+                    <li class="dr_option" role="presentation" data-order="response"><a role="menuitem" tabindex="-1" href="#">응답률 순</a></li>
+                    <li class="dr_option" role="presentation" data-order="lowpay"><a role="menuitem" tabindex="-1" href="#">시급 낮은 순</a></li>
+                    <li class="dr_option" role="presentation" data-order="highpay"><a role="menuitem" tabindex="-1" href="#">시급 높은 순</a></li>
                   </ul>
                 </div>
                 <!-- 드롭다운 end-->
@@ -910,8 +897,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <c:url value="/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.do" var="viewUrl">
                       <c:param name="sitterno" value="${item.sitterno}" />
                     </c:url>
-
-                    <div class="sitter_item_group">
+					<div id="order">
+                    <div id="sitter_item_group" class="sitter_item_group">
                       <div class="item_header">
                         <div class="cert_label">
                           <img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" />
@@ -980,12 +967,12 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   </c:forEach>
                 </c:otherwise>
               </c:choose>
+            </div>
               <!-- 카드영역 end -->
-				<div id="result"></div>
+              <div id="result"></div>
 
-
-
-<%--               <div class="app_banner">
+              <%--
+              <div class="app_banner">
                 <div class="banner_group">
                   <div>
                     <div class="banner_text_group">
@@ -999,7 +986,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   </div>
                   <img src="${pageContext.request.contextPath}/assets/img/s-list-1-banner-image@3x (1).png" />
                 </div>
-              </div> --%>
+              </div>
+              --%>
 
               <div>
                 <a data-toggle="modal" href="#sitter_search_detail_modal">
@@ -1014,99 +1002,153 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       <!-- col-xs-12 end -->
     </div>
     <!--row end-->
-        <!-- Handlebar 템플릿 코드 -->
-	<script id="sitter-list-tmpl" type="text/x-handlebars-template">
-		{{#each item}}
- <div class="sitter_item_group">
-                      <div class="item_header">
-                        <div class="cert_label">
-                          <img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" />
-                          <span id="sitter_title" class="cert_text"></span>
-                        </div>
-                      </div>
-                      <hr class="divider" />
-                      <div class="item_body">
-                        <div class="profile_img_group">
-                          <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
-                          <div class="responsive_rate_group">
-                            <div class="res_text">응답률</div>
-                            <div class="res_rate">${answer}</div>
-                            <div class="res_text">%</div>
-                          </div>
-                        </div>
-                        <div class="profile_info_group">
-                          <div class="content_row">
-                            <div>
-                              <div class="user_name">${name}</div>
-                              <div class="last_update">${openingdate} 작성</div>
-                            </div>
-                            <div class="jim_btn">
-                              <button class="swapHeart">
-                                <div class="jim">
-                                  <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
-                                </div>
-                              </button>
-                            </div>
-                          </div>
-                          <div class="content_row location_group">
-                            <span class="location">${si}&nbsp${gu}&nbsp${dong}</span>
-                          </div>
-                          <div class="content_row">
-                            <div class="user_age">${age}세</div>
-                            <div class="text_sep"></div>
-                            <div class="wanted_pay">희망 시급 ${payment}원</div>
-                          </div>
-                          <div class="content_row">
-                            <div class="review_rate">
-                              <!-- 평점에 따라서 별 색상 css 다르게 주기. 추후 구현 예정 -->
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                            </div>
-                            <span class="review_count">후기 ${payment}개</span>
-                          </div>
-                        </div>
-                      </div>
-                      <hr class="divider" />
-                      <div class="item_footer">
-                        <div class="cert_info_group">
-                          <div class="cert_text_group">
-                            <div class="cert_label">확인된 인증</div>
-                            <div class="cert_count">2개</div>
-                          </div>
-                          <div class="cert_info_btn_group">
-                            <div class="cert_btn">엄마 인증</div>
-                            <div class="cert_btn">등초본 인증</div>
-                          </div>
-                        </div>
-                      </div>
+    <!-- Handlebar 템플릿 코드 -->
+    <script id="sitter-list-tmpl" type="text/x-handlebars-template">
+      {{#each item}}
+        <div class="sitter_item_group">
+          <div class="item_header">
+            <div class="cert_label">
+              <img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" />
+              <span id="sitter_title" class="cert_text"></span>
+            </div>
+          </div>
+          <hr class="divider" />
+          <div class="item_body">
+            <div class="profile_img_group">
+              <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
+              <div class="responsive_rate_group">
+                <div class="res_text">
+                  응답률
+                </div>
+                <div class="res_rate">
+                  ${answer}
+                </div>
+                <div class="res_text">
+                  %
+                </div>
+              </div>
+            </div>
+            <div class="profile_info_group">
+              <div class="content_row">
+                <div>
+                  <div class="user_name">
+                    ${name}
+                  </div>
+                  <div class="last_update">
+                    ${openingdate} 작성
+                  </div>
+                </div>
+                <div class="jim_btn">
+                  <button class="swapHeart">
+                    <div class="jim">
+                      <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
                     </div>
-		{{/each}}
-	</script>
-	<script>
-    $(document).ready(function () {
+                  </button>
+                </div>
+              </div>
+              <div class="content_row location_group">
+                <span class="location">
+                  ${si}&nbsp${gu}&nbsp${dong}
+                </span>
+              </div>
+              <div class="content_row">
+                <div class="user_age">
+                  ${age}세
+                </div>
+                <div class="text_sep"></div>
+                <div class="wanted_pay">
+                  희망 시급 ${payment}원
+                </div>
+              </div>
+              <div class="content_row">
+                <div class="review_rate">
+                  <!-- 평점에 따라서 별 색상 css 다르게 주기. 추후 구현 예정 -->
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="review_count">
+                  후기 ${payment}개
+                </span>
+              </div>
+            </div>
+          </div>
+          <hr class="divider" />
+          <div class="item_footer">
+            <div class="cert_info_group">
+              <div class="cert_text_group">
+                <div class="cert_label">
+                  확인된 인증
+                </div>
+                <div class="cert_count">
+                  2개
+                </div>
+              </div>
+              <div class="cert_info_btn_group">
+                <div class="cert_btn">
+                  엄마 인증
+                </div>
+                <div class="cert_btn">
+                  등초본 인증
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </script>
+    <script>
+      $(document).ready(function () {
         // 무한 스크롤 1218 하리
         $(document).scroll(function () {
           var maxHeight = $(document).height();
           var currentScroll = $(window).scrollTop() + $(window).height();
-  		  var nowPage = 1;		// 현재 페이지의 기본값
-
+          var nowPage = 1; // 현재 페이지의 기본값
 
           if (maxHeight <= currentScroll + 100) {
-			// Restful API에 GET방식 요청
-			$.get("${pageContext.request.contextPath}/search/sitter_search", {
-				"page": nowPage 								// 페이지 번호는 GET 파라미터로 전송한다.
-			}, function(json) {
-				var source = $("#sitter-list-tmpl").html();		// 템플릿 코드 가져오기
-				var template = Handlebars.compile(source);		// 템플릿 코드 컴파일
-				var result = template(json);			// 템플릿 컴파일 결과물에 json 전달
-				$("#result").append(result);			// 최종 결과물을 #list 요소에 추가한다
-			});
+            // Restful API에 GET방식 요청
+            $.get(
+              "${pageContext.request.contextPath}/search/sitter_search",
+              {
+                page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
+              },
+              function (json) {
+                var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+                var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                $("#result").append(result); // 최종 결과물을 #list 요소에 추가한다
+              }
+            );
           }
         });
       });
-	</script>
+
+      $(function () {
+        // 드롭다운 선택 - 0109 하리
+        $(".dr_option").click(function () {
+          $(this).addClass("active");
+          $(".dr_option").not(this).removeClass("active");
+          $("#orderby").html($(this).find("a").html());
+          // 정렬 조건 지정 0212
+          var current = $(this);
+          var order = current.data("order");
+          console.log(order);
+          $.get(
+            "${pageContext.request.contextPath}/search/sitter_search",
+            {
+              order: order, // 페이지 번호는 GET 파라미터로 전송한다.
+            },
+            function (json) {
+                var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+                var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                $("#order").html(result); // 최종 결과물을 #list 요소에 추가한다
+              }
+          );
+        });
+      });
+    </script>
   </body>
 </html>

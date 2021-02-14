@@ -43,7 +43,10 @@ public class SearchRestController {
             // 검색어
             @RequestParam(value="keyword", required=false) String keyword,
             // 페이지 구현에서 사용할 현재 페이지 번호
-            @RequestParam(value="page", defaultValue="1") int nowPage) {
+            @RequestParam(value="page", defaultValue="1") int nowPage,
+            // 정렬 조건
+            @RequestParam(value = "order", defaultValue = "null") String order) {
+        
         
         /** 1) 페이지 구현에 필요한 변수값 생성 */
         int totalCount = 0;              // 전체 게시글 수
@@ -67,6 +70,9 @@ public class SearchRestController {
             Sitter_info.setOffset(pageData.getOffset());
             Sitter_info.setListCount(pageData.getListCount());
             
+			// 정렬조건의 값을 Beans에 저장
+			Sitter_info.setOrder(order);
+            
             // 데이터 조회하기
             output = searchService.searchSitter(input);
         } catch (Exception e) {
@@ -78,6 +84,7 @@ public class SearchRestController {
         data.put("keyword", keyword);
         data.put("item", output);
         data.put("meta", pageData);
+        data.put("order", order);
 
         return webHelper.getJsonData(data);
     }
@@ -88,7 +95,9 @@ public class SearchRestController {
             // 검색어
             @RequestParam(value="keyword", required=false) String keyword,
             // 페이지 구현에서 사용할 현재 페이지 번호
-            @RequestParam(value="page", defaultValue="1") int nowPage) {
+            @RequestParam(value="page", defaultValue="1") int nowPage,
+            // 정렬 조건
+            @RequestParam(value = "order", defaultValue = "null") String order){
         
         /** 1) 페이지 구현에 필요한 변수값 생성 */
         int totalCount = 0;              // 전체 게시글 수
