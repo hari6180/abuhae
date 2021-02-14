@@ -94,8 +94,8 @@
 		ELSE
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS
-		openingdate, (SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND r_who='M') AS rev_count,
-		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND r_who='M') AS rev_rate FROM sitter_info s
+		openingdate, (SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_count,
+		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate FROM sitter_info s
 		INNER JOIN member m ON
 		s.memberno=m.memberno
 		

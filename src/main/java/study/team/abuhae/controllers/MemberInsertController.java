@@ -39,7 +39,7 @@ public class MemberInsertController {
 			input.setBirthdate("1997-06-18");
 			input.setGender('F');
 			input.setJob_opening('Y');
-			input.setWant_act("야외활동");
+			input.setWant_act("야외활동"); // 영어로 불러옴 , ","이어지니까 스플릿으로 파싱 
 			input.setWant_age("20대");
 			input.setKids_num(1);
 			input.setKids_age("201501");

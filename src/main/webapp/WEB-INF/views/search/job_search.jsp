@@ -27,14 +27,16 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- sweetalert 사용 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <!-- Javascript -->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>    
+
     <!-- ajax Helper -->
     <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/ajax/ajax_helper.css" />
 
-    <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-    <!-- jquery 파일명 수정 -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+
 
     <!--Google CDN 서버로부터 jQuery 참조 -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
