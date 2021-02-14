@@ -29,7 +29,6 @@ public class Page_detail_sitterController {
 		
 		// 조회결과를 저장할 객체 선언 
 		Sitter_info output = null;
-		Sitter_info test = null;
 		
 		try {
 			// 데이터 조회 

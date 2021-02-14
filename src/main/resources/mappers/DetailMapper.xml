@@ -69,6 +69,7 @@
 		<result property="applydate" column="applydate" />
 		<result property="accept" column="accept" />
 		<result property="resino" column="resino" />
+		<result property="cntno" column="cntno" />
 	</resultMap>
 	
 	<resultMap type="study.team.abuhae.model.Review" id="ReviewMap">
@@ -81,7 +82,7 @@
 		resultMap="SitterMap">
 		SELECT CONCAT(LEFT(name,1),'O',RIGHT(name,1)) AS name, sitter_type, count(revno) AS revno,
 			FLOOR( (CAST(REPLACE(CURRENT_DATE,'-','') AS UNSIGNED) - 
-			CAST(REPLACE(birthdate,'-','') AS UNSIGNED)) / 10000 ) + 2 AS birthdate, s.sitterno, rev_rate,
+			CAST(REPLACE(birthdate,'-','') AS UNSIGNED)) / 10000 ) + 2 AS birthdate, s.sitterno, rev_rate, cntno
 			openingdate, cctv, expe_contents, c.resino, introduce, type, SUBSTRING_INDEX('want_act', ',', 1) AS want_act, expe_start_date, expe_end_date,
 			count(heartno) AS heartno, payment, si, gu, m.gender, rev_rate, CASE
 	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
@@ -101,6 +102,7 @@
 			INNER JOIN sitter_experience e ON e.sitterno=s.sitterno
 			INNER JOIN resi_cert c ON c.sitterno=s.sitterno
 			INNER JOIN heart h ON h.sitterno=s.sitterno
+			INNER JOIN connect n ON n.sitterno=s.sitterno
 	</select>
 	
 	<select id="test" parameterType="study.team.abuhae.model.Sitter_info"

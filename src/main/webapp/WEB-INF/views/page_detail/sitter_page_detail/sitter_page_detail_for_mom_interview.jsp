@@ -21,7 +21,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
 
 <!-- 아이콘 사용 -->
-<script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
+<script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script>
 
 <!-- sweetalert 사용 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -497,7 +497,6 @@
 						<div class="box_name">가능한 활동</div>
 						<div class="possible_age_area">
 							<div>
-							
 								<div class="possible_active_main">
 								<c:forEach var="item" items="${fn:split(output.want_act,',')}" />
 									<div class="active_line col-xs-3">
@@ -837,7 +836,7 @@
 									${output.openingdate} 부터 <span style="font-weight: bold; color: #ff7000;">현재까지</span>
 								</div>
 								<div class="famille_number">
-									99
+									${output.cntno}
 								</div>
 							</div>
 						</div> <!-- fin. famille_area -->
