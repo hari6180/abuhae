@@ -482,7 +482,7 @@ a:hover {
 
 .wrap_review .group1_review .rev_tab_panel .rev_no_btn {
   height: 36px;
-  width: 30%;
+  width : 100%;
   border: 0;
   border-radius: 8px;
   margin-top: 15px;
@@ -490,16 +490,36 @@ a:hover {
   color: #fff;
 }
 
-.wrap_review .group1_review .rev_tab_panel .mng_btn {
-	width: 100%;
-	display: felx;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+/** 별점 */
+/**.wrap_review .modal-content .modal-body .rev_rate .rate_radio {
+	display: none;
 }
 
-/** 별점 */
-.star {
+.wrap_review .modal-content .modal-body .rev_rate .rate_radio+label {
+	color: #eee;
+}
+
+.wrap_review .modal-content .modal-body .rev_rate .rate_radio.select + label {
+	color: #ff7000;
+} */
+
+.wrap_review .modal-content .modal-body .rev_rate .rate_radio {
+	display: none;
+}
+
+.wrap_review .modal-content .modal-body .rev_rate {
+	color: #eee;
+}
+
+.wrap_review .modal-content .modal-body .rev_rate .rate_radio+label {
+	color: #ff7000;
+}
+
+.wrap_review .modal-content .modal-body .rev_rate .rate_radio:checked ~ label {
+	color: #eee;
+}
+
+.wrap_review .modal-content .modal-body .rev_rate .rate_radio:checked+label {
 	color: #ff7000;
 }
 

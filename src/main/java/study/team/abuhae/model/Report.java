@@ -13,4 +13,6 @@ public class Report {
 	private int momno;
 	private int sitterno;
 	
+	/** join 절에 따른 멤버변수 추가 - 다예 */
+	private String name;
 }

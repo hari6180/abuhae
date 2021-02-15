@@ -14,4 +14,16 @@ public class Review {
 	private String contents;   // 후기 내용
 	private int momno;   // 맘회원 일련번호
 	private int sitterno;   // 시터회원 일련번호
+	
+	/** join을 위한 멤버변수 추가 (다예) */
+	private String name;		// 이름
+	private String birthdate;
+	
+	private String si;					// 시
+	private String gu;					// 구
+	private String dong;				// 동
+	
+	private int cntno;
+	private String applydate;
+	private String accept;
 }

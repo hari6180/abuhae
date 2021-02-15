@@ -9,14 +9,20 @@
 		type="study.team.abuhae.model.Member">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="memberno" column="memberno" />
-		<result property="type" column="type" />
+		<result property="type" column="type"/>
 		<result property="id" column="id" />
 		<result property="password" column="password" />
 		<result property="name" column="name" />
 		<result property="email" column="email" />
 		<result property="phone" column="phone" />
 		<result property="birthdate" column="birthdate" />
+		<result property="startdate" column="startdate" />
+		<result property="enddate" column="enddate" />
+		<result property="profile_img" column="profile_img" />
 		<result property="job_opening" column="job_opening" />
+		<result property="ticket_type" column="ticket_type" />
+		<result property="ticket_price" column="ticket_price" />
+		<result property="gender" column="gender" />
 	</resultMap>
 
 	<resultMap id="MomMpageMap"
@@ -33,12 +39,15 @@
 		<result property="dong" column="dong" />
 		<result property="schedule" column="schedule" />
 		<result property="schedule_ok" column="schedule_ok" />
+		<result property="description" column="description" />
 		<result property="sitter_gender" column="sitter_gender" />
 		<result property="interview_type" column="interview_type" />
 		<result property="care_type" column="care_type" />
 		<result property="openingdate" column="openingdate" />
 		<result property="apply_title" column="apply_title"/>
 		<result property="apply_content" column="apply_content"/>
+		<result property="kids_age2" column="kids_age2"/>
+		<result property="payment_ok" column="payment_ok"/>
 		<result property="memberno" column="memberno" />
 	</resultMap>
 	
@@ -55,16 +64,42 @@
 		</where>
 	</select>
 
-	<!-- 회원정보 수정 -->
-	<update id="updateInfo"
-		parameterType="study.team.abuhae.model.Mom_info" useGeneratedKeys="true"
+	<!-- 비밀번호 수정 -->
+	<update id="updatePassword"
+		parameterType="study.team.abuhae.model.Member" useGeneratedKeys="true"
 		keyProperty="memberno">
-		UPDATE INTO Member (type, id, password, name, email,
-		phone, birthdate, job_opening)
-		VALUES (#{type}, #{id}, #{password},
-		#{name}, #{email}, #{phone},
-		#{birthdate},
-		#{job_opening});
+		update member set password='#{password}' 
+		<where>
+			memberno=#{memberno}
+		</where>
+	</update>
+	
+	<!-- 쿠폰조회 -->
+	<select id="selectCouponList"
+	parameterType="study.team.abuhae.model.Coupon" resultMap="MomMpageMap">
+		select coup_name, coup_condition, coup_price, reg_date, exp_date from coupon
+		
+		<where>
+			memberno = #{memberno}
+		</where>
+	</select>
+	
+	<!-- 신고내역 조회 -->
+	<select id="selectReportList"
+	parameterType="study.team.abuhae.model.Report">
+		select reportno, r.type, r.contents, r.momno, r.sitterno, m.name from report r
+		inner join sitter_info s ON r.sitterno=s.sitterno 
+		inner join member m on m.memberno=s.memberno
+		<where>
+			momno=#{momno} and who='M'
+		</where>
+	</select>
+	
+	<!-- 구직중/구인중 토글기능 -->
+	<update id="updateJobopening"
+	parameterType="study.team.abuhae.model.Member" useGeneratedKeys="true"
+		keyProperty="memberno">
+		update member set job_opening='#{job_opening}' where memberno=#{memberno};
 	</update>
 </mapper>
 
