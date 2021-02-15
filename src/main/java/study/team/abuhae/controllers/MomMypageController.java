@@ -226,8 +226,25 @@ public class MomMypageController {
 	
 	/** 결제 내역 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/payment_list.do", method = RequestMethod.GET)
-	public String payment_list_mom(Locale locale, Model model) {
+	public String payment_list_mom(Model model, HttpServletResponse response,
+			@RequestParam(value = "memberno") int memberno) {
 
+		// 데이터 조회에 필요한 조건값 Beans에 저장
+		Mom_info input = new Mom_info();
+		input.setMemberno(memberno);;
+		
+		// 조회 결과를 저장할 객체 선언
+		List<Mom_info> output = null;
+		
+		try {
+			output = momMypageService.getBuyList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// View 처리 
+		model.addAttribute("output" ,output);
+		
 		return "mypage/mypage_mom/payment_list";
 	}
 	

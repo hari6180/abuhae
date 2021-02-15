@@ -23,5 +23,8 @@ public interface MomMypageService {
 /** 비밀번호 수정 */
 	public int updateMomPassword(Mom_info input) throws Exception;
 	
+/** 결제 내역 목록 조히 */
+	public List<Mom_info> getBuyList(Mom_info input) throws Exception;
+	
 }
 
