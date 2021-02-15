@@ -20,7 +20,8 @@ public interface MomMypageService {
 /** 쿠폰 목록 조회 */
 	public List<Coupon> getCouponList(Coupon input) throws Exception;
 	
-
+/** 비밀번호 수정 */
+	public int updateMomPassword(Mom_info input) throws Exception;
 	
 }
 
