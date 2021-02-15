@@ -19,7 +19,7 @@ public class Page_detail_sitterController {
 	DetailService detailService;
 	
 	// 시터 상세페이지
-	@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_detail.do", method = RequestMethod.GET)
 	public String sitter_detail(Model model, HttpServletResponse response,
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		
@@ -39,7 +39,7 @@ public class Page_detail_sitterController {
 		}
 			
 		model.addAttribute("output", output);
-		return "/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview";
+		return "/page_detail/sitter_page_detail/sitter_detail";
 	}
 	
 	
