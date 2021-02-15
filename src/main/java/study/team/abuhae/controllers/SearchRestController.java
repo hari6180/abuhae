@@ -45,7 +45,7 @@ public class SearchRestController {
             // 페이지 구현에서 사용할 현재 페이지 번호
             @RequestParam(value="page", defaultValue="1") int nowPage,
             // 정렬 조건
-            @RequestParam(value = "order", defaultValue = "null") String order) {
+            @RequestParam(value = "order", defaultValue="null") String order) {
         
         
         /** 1) 페이지 구현에 필요한 변수값 생성 */
@@ -84,7 +84,6 @@ public class SearchRestController {
         data.put("keyword", keyword);
         data.put("item", output);
         data.put("meta", pageData);
-        data.put("order", order);
 
         return webHelper.getJsonData(data);
     }

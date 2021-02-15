@@ -59,7 +59,7 @@ public class MemberInsertController {
 			input.setCare_type("주1회");
 			
 			// 프로필 업데이트 날짜 랜덤입력
-			int month = random(1,12);
+			int month = random(3,12);
 			int day = random(1,28);
 			String openingdate = "2020-" + month + "-" + day;
 			input.setOpeningdate(openingdate);

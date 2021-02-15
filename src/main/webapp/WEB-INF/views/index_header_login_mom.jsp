@@ -45,7 +45,7 @@
             <div class="modal_header">
               <div class="user_name_group">
                 <p class="welcome">안녕하세요</p>
-                <p class="cus_name">${output.name} 부모님</p>
+                <p class="cus_name">${login.name} 부모님</p>
               </div>
               <a href="#" id="logout_btn"
                 ><button type="button" class="modal_btn">

@@ -878,6 +878,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <!-- 드롭다운 end-->
               </div>
               <!-- 카드영역 -->
+
               <c:choose>
                 <c:when test="${output == null || fn:length(output) == 0}">
                   <h1>조회결과가 없습니다.</h1>
@@ -894,6 +895,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <c:set var="age" value="${item.birthdate}" />
                     <c:set var="payment" value="${item.payment}" />
                     <c:set var="answer" value="${item.answer}" />
+                    <c:set var="rev_rate" value="${item.rev_rate}" />
 
                     <%-- 상세페이지로 이동하기 위한 URL --%>
                     <c:url value="/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.do" var="viewUrl">
@@ -940,15 +942,52 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                             <div class="wanted_pay">희망 시급 ${payment}원</div>
                           </div>
                           <div class="content_row">
-                            <div class="review_rate">
-                              <!-- 평점에 따라서 별 색상 css 다르게 주기. 추후 구현 예정 -->
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                            </div>
-                            <span class="review_count">후기 ${payment}개</span>
+							<c:if test="${rev_rate=='1' or rev_rate==0}">
+							<div class="review_rate">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+							<c:if test="${rev_rate=='2'}">
+							<div class="review_rate">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+							<c:if test="${rev_rate=='3'}">
+							<div class="review_rate">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+							<c:if test="${rev_rate=='4'}">
+							<div class="review_rate">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+							<c:if test="${rev_rate=='5'}">
+							<div class="review_rate">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+                            <span class="review_count">후기 ${answer}개</span>
                           </div>
                         </div>
                       </div>
@@ -969,7 +1008,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   </c:forEach>
                 </c:otherwise>
               </c:choose>
-            </div>
+
               <!-- 카드영역 end -->
               <div id="result"></div>
 
@@ -1007,98 +1046,119 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- Handlebar 템플릿 코드 -->
     <script id="sitter-list-tmpl" type="text/x-handlebars-template">
       {{#each item}}
-        <div class="sitter_item_group">
-          <div class="item_header">
-            <div class="cert_label">
-              <img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" />
-              <span id="sitter_title" class="cert_text"></span>
-            </div>
-          </div>
-          <hr class="divider" />
-          <div class="item_body">
-            <div class="profile_img_group">
-              <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
-              <div class="responsive_rate_group">
-                <div class="res_text">
-                  응답률
-                </div>
-                <div class="res_rate">
-                  ${answer}
-                </div>
-                <div class="res_text">
-                  %
-                </div>
-              </div>
-            </div>
-            <div class="profile_info_group">
-              <div class="content_row">
-                <div>
-                  <div class="user_name">
-                    ${name}
-                  </div>
-                  <div class="last_update">
-                    ${openingdate} 작성
-                  </div>
-                </div>
-                <div class="jim_btn">
-                  <button class="swapHeart">
-                    <div class="jim">
-                      <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
+              <c:choose>
+                <c:when test="${output == null || fn:length(output) == 0}">
+                  <h1>조회결과가 없습니다.</h1>
+                </c:when>
+                <c:otherwise>
+					<div id="order">
+                    <div id="sitter_item_group" class="sitter_item_group">
+                      <div class="item_header">
+                        <div class="cert_label">
+                          <img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" />
+                          <span id="sitter_title" class="cert_text"></span>
+                        </div>
+                      </div>
+                      <hr class="divider" />
+                      <div class="item_body">
+                        <div class="profile_img_group">
+                          <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
+                          <div class="responsive_rate_group">
+                            <div class="res_text">응답률</div>
+                            <div class="res_rate">${answer}</div>
+                            <div class="res_text">%</div>
+                          </div>
+                        </div>
+                        <div class="profile_info_group">
+                          <div class="content_row">
+                            <div>
+                              <div class="user_name">${name}</div>
+                              <div class="last_update">${openingdate} 작성</div>
+                            </div>
+                            <div class="jim_btn">
+                              <button class="swapHeart">
+                                <div class="jim">
+                                  <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
+                                </div>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="content_row location_group">
+                            <span class="location">${si}&nbsp${gu}&nbsp${dong}</span>
+                          </div>
+                          <div class="content_row">
+                            <div class="user_age">${age}세</div>
+                            <div class="text_sep"></div>
+                            <div class="wanted_pay">희망 시급 ${payment}원</div>
+                          </div>
+                          <div class="content_row">
+							<c:if test="${rev_rate=='1' or rev_rate==0}">
+							<div class="review_rate">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+							<c:if test="${rev_rate=='2'}">
+							<div class="review_rate">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+							<c:if test="${rev_rate=='3'}">
+							<div class="review_rate">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+							<c:if test="${rev_rate=='4'}">
+							<div class="review_rate">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+							<c:if test="${rev_rate=='5'}">
+							<div class="review_rate">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+                            <span class="review_count">후기 ${answer}개</span>
+                          </div>
+                        </div>
+                      </div>
+                      <hr class="divider" />
+                      <div class="item_footer">
+                        <div class="cert_info_group">
+                          <div class="cert_text_group">
+                            <div class="cert_label">확인된 인증</div>
+                            <div class="cert_count">2개</div>
+                          </div>
+                          <div class="cert_info_btn_group">
+                            <div class="cert_btn">엄마 인증</div>
+                            <div class="cert_btn">등초본 인증</div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </button>
-                </div>
-              </div>
-              <div class="content_row location_group">
-                <span class="location">
-                  ${si}&nbsp${gu}&nbsp${dong}
-                </span>
-              </div>
-              <div class="content_row">
-                <div class="user_age">
-                  ${age}세
-                </div>
-                <div class="text_sep"></div>
-                <div class="wanted_pay">
-                  희망 시급 ${payment}원
-                </div>
-              </div>
-              <div class="content_row">
-                <div class="review_rate">
-                  <!-- 평점에 따라서 별 색상 css 다르게 주기. 추후 구현 예정 -->
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-                <span class="review_count">
-                  후기 ${payment}개
-                </span>
-              </div>
+
+                </c:otherwise>
+              </c:choose>
             </div>
-          </div>
-          <hr class="divider" />
-          <div class="item_footer">
-            <div class="cert_info_group">
-              <div class="cert_text_group">
-                <div class="cert_label">
-                  확인된 인증
-                </div>
-                <div class="cert_count">
-                  2개
-                </div>
-              </div>
-              <div class="cert_info_btn_group">
-                <div class="cert_btn">
-                  엄마 인증
-                </div>
-                <div class="cert_btn">
-                  등초본 인증
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       {{/each}}
     </script>
     <script>
@@ -1115,12 +1175,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               "${pageContext.request.contextPath}/search/sitter_search",
               {
                 page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
+                order: order, // 정렬 조건은 GET 파라미터로 전송한다.
               },
               function (json) {
                 var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
                 var template = Handlebars.compile(source); // 템플릿 코드 컴파일
                 var result = template(json); // 템플릿 컴파일 결과물에 json 전달
-                $("#result").append(result); // 최종 결과물을 #list 요소에 추가한다
+                $("#result").append(result); // 최종 결과물을 추가한다
               }
             );
           }
@@ -1130,23 +1191,20 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       $(function () {
         // 드롭다운 선택 - 0109 하리
         $(".dr_option").click(function () {
-          $(this).addClass("active");
+/*           $(this).addClass("active");
           $(".dr_option").not(this).removeClass("active");
-          $("#orderby").html($(this).find("a").html());
+          $("#orderby").html($(this).find("a").html()); */
           // 정렬 조건 지정 0212
           var current = $(this);
           var order = current.data("order");
-          console.log(order);
+          // console.log(order);
           $.get(
             "${pageContext.request.contextPath}/search/sitter_search",
             {
-              order: order, // 페이지 번호는 GET 파라미터로 전송한다.
+              order: order, // 정렬 조건은 GET 파라미터로 전송한다.
             },
             function (json) {
-                var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-                var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-                var result = template(json); // 템플릿 컴파일 결과물에 json 전달
-                $("#order").html(result); // 최종 결과물을 #list 요소에 추가한다
+				window.location = "${pageContext.request.contextPath}/search/sitter_search.do?order=" + order; 
               }
           );
         });

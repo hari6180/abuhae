@@ -103,7 +103,7 @@
 		
 		<choose>
 			<when test="order != null and order == 'update'">
-				openingdate
+				openingdate DESC
 			</when>
 			<when test="order != null and order == 'review'">
 				rev_rate DESC
