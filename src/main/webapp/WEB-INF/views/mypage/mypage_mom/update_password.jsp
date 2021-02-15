@@ -53,7 +53,7 @@
                    <section class="group1_upd_pwd">
                         <div class="row">
                             <div class="col-xs-12">
-                                <form action="#" id="mom_pwd_form">
+                                <form action="${pageContext.request.contextPath}/mypage/mypage_mom/update_password_ok.do" id="mom_pwd_form">
                                     <div class="upd_pwd_cont">
                                         <div class="pwd_con_in">
                                             <label for="now_pw">현재 비밀번호</label> <br/>
@@ -100,7 +100,7 @@
                 });
                 
 
-                $("#mom_pwd_form").submit(function(e) {
+                /**$("#mom_pwd_form").submit(function(e) {
                     e.preventDefault();
 
                     var now = $("#now_pw").val();
@@ -116,7 +116,7 @@
                             location.href = "../../login/login.html";
                         } 
                     }
-                });
+                }); */
             });
         </script>
 	</body>

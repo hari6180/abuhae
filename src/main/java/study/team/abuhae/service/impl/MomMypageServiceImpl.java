@@ -104,4 +104,43 @@ public class MomMypageServiceImpl implements MomMypageService {
 		return result;
 	}
 
+	@Override
+	public int updateMomPassword(Mom_info input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.update("MypageMapper.updatePassword", input);
+			
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			} 
+		}  catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public List<Mom_info> getBuyList(Mom_info input) throws Exception {
+		List<Mom_info> result = null;
+		
+		try {
+			result = sqlSession.selectList("MypageMapper.selectCouponList", input);
+			
+			if (result==null) {
+				throw new NullPointerException("result=null");
+			}  
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
 }

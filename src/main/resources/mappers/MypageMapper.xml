@@ -55,12 +55,11 @@
 	<select id="selectItem" 
 	parameterType="study.team.abuhae.model.Mom_info" resultMap="MomMpageMap">
 		SELECT m.memberno, m.name, m.type, m.id, m.password, m.email, m.phone, m.birthdate, m.job_opening,
-		 mi.momno, mi.want_act, mi.want_age, mi.kids_num, mi.kids_age, mi.payment, mi.si, mi.gu, mi.dong, mi.schedule, 
-		 mi.schedule_ok, mi.sitter_gender, mi.interview_type, mi.care_type, mi.openingdate, mi.apply_title, mi.apply_content FROM mom_info mi
+		 mi.momno FROM mom_info mi
 		INNER JOIN member m ON m.memberno=mi.memberno
 		
 		<where>
-			momno = #{momno}
+			m.memberno = #{memberno}
 		</where>
 	</select>
 
@@ -68,7 +67,7 @@
 	<update id="updatePassword"
 		parameterType="study.team.abuhae.model.Member" useGeneratedKeys="true"
 		keyProperty="memberno">
-		update member set password='#{password}' 
+		update member set password='#{new_pw}' 
 		<where>
 			memberno=#{memberno}
 		</where>
@@ -101,6 +100,16 @@
 		keyProperty="memberno">
 		update member set job_opening='#{job_opening}' where memberno=#{memberno};
 	</update>
+	
+	<!-- 결제내역 조회 -->
+	<select id="selectBuyList"
+	parameterType="study.team.abuhae.model.Mom_info">
+		select m.ticket_type, m.ticket_price, m.startdate, m.enddate FROM mom_info mi
+		INNER JOIN member m ON mi.memberno=m.memberno
+		<where>
+			memberno=#{memberno} 
+		</where>
+	</select>
 </mapper>
 
 

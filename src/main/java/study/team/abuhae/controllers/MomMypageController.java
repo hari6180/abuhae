@@ -59,7 +59,7 @@ public class MomMypageController {
 	}
 	
 	/** 비밀번호 변경 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/update_password.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/mypage/mypage_mom/update_password.do", method = RequestMethod.GET)
 	public ModelAndView update_password_mom(Model model, HttpSession session,
 			@RequestParam(value = "memberno", defaultValue = "0") int memberno) {
 
@@ -75,13 +75,39 @@ public class MomMypageController {
 		// 조회 결과 저장
 		Mom_info output = null;
 		
-		
+		try {
+			output = momMypageService.getMemberItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
 		
 		/** 3) View 처리 */
 		
-		return "mypage/mypage_mom/update_password";
+		return new ModelAndView("mypage/mypage_mom/update_password");
 	}
 	
+	@RequestMapping(value = "/mypage/mypage_mom/update_password_ok.do", method = RequestMethod.POST)
+	public ModelAndView update_password_mom_ok(Model model, HttpSession session,
+			@RequestParam(value = "now_pw") String now_pw,
+			@RequestParam(value = "new_pw") String password) {
+		Mom_info input = new Mom_info();
+		// 현재 비밀번호 확인하기
+		String np = input.getPassword();
+		if (np != now_pw) { return webHelper.redirect(null, "현재 비밀번호를 확인하세요."); }
+		
+		// 수정할 값들을 Beans에 담기
+		input.setPassword(password);
+		
+		try {
+			// 데이터 수정
+			momMypageService.updateMomPassword(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		String redirectUrl = contextPath + "/mypage/mypage_mom/mom_mypage.do?memberno=" + input.getMemberno();
+		return webHelper.redirect(redirectUrl, "비밀번호가 수정되었습니다.");
+	}
 	
 	/** 내 구인 현황 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/get_sitter_mpm.do", method = RequestMethod.GET)
@@ -200,8 +226,25 @@ public class MomMypageController {
 	
 	/** 결제 내역 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/payment_list.do", method = RequestMethod.GET)
-	public String payment_list_mom(Locale locale, Model model) {
+	public String payment_list_mom(Model model, HttpServletResponse response,
+			@RequestParam(value = "memberno") int memberno) {
 
+		// 데이터 조회에 필요한 조건값 Beans에 저장
+		Mom_info input = new Mom_info();
+		input.setMemberno(memberno);;
+		
+		// 조회 결과를 저장할 객체 선언
+		List<Mom_info> output = null;
+		
+		try {
+			output = momMypageService.getBuyList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// View 처리 
+		model.addAttribute("output" ,output);
+		
 		return "mypage/mypage_mom/payment_list";
 	}
 	

@@ -76,11 +76,6 @@
 	                                <!--백엔드 연동 필요-->
 	                                <div class="mpm_prof_info">
 	                                    <div class="mpm_info_left">
-	                                    	<% 
-										        //세션값 가져오기
-										      int memberno = (int)session.getAttribute("loginNo");
-										    %>
-			                                    
 	                                        <img src="<%=request.getContextPath()%>/assets/img/mypage_img/profile.png" alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
 	                                        <div class="prof_info_cont">
 	                                            <div class="mom_info_dt">
