@@ -942,7 +942,16 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                             <div class="wanted_pay">희망 시급 ${payment}원</div>
                           </div>
                           <div class="content_row">
-							<c:if test="${rev_rate=='1' or rev_rate==0}">
+                          	<c:if test="${rev_rate=='0'}">
+							<div class="review_rate">
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+							<c:if test="${rev_rate=='1'}">
 							<div class="review_rate">
 								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
@@ -1092,7 +1101,16 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                             <div class="wanted_pay">희망 시급 ${payment}원</div>
                           </div>
                           <div class="content_row">
-							<c:if test="${rev_rate=='1' or rev_rate==0}">
+							<c:if test="${rev_rate==0}">
+							<div class="review_rate">
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</div>
+							</c:if>
+							<c:if test="${rev_rate=='1'}">
 							<div class="review_rate">
 								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
@@ -1162,12 +1180,34 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       {{/each}}
     </script>
     <script>
+    $(function () {
+        // 드롭다운 선택 - 0109 하리
+        $(".dr_option").click(function () {
+		  $(this).addClass("active");
+          $(".dr_option").not(this).removeClass("active");
+          $("#orderby").html($(this).find("a").html());
+          // 정렬 조건 지정 0212
+          var current = $(this);
+          var order = current.data("order");
+          // console.log(order);
+          $.get(
+            "${pageContext.request.contextPath}/search/sitter_search",
+            {
+              order: order, // 정렬 조건은 GET 파라미터로 전송한다.
+            },
+            function (json) {
+				window.location = "${pageContext.request.contextPath}/search/sitter_search.do?order=" + order; 
+              }
+          );
+        });
       $(document).ready(function () {
         // 무한 스크롤 1218 하리
         $(document).scroll(function () {
           var maxHeight = $(document).height();
           var currentScroll = $(window).scrollTop() + $(window).height();
           var nowPage = 1; // 현재 페이지의 기본값
+          var current = $(".dr_option.active");
+          var order = current.data("order");
 
           if (maxHeight <= currentScroll + 100) {
             // Restful API에 GET방식 요청
@@ -1188,26 +1228,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         });
       });
 
-      $(function () {
-        // 드롭다운 선택 - 0109 하리
-        $(".dr_option").click(function () {
-/*           $(this).addClass("active");
-          $(".dr_option").not(this).removeClass("active");
-          $("#orderby").html($(this).find("a").html()); */
-          // 정렬 조건 지정 0212
-          var current = $(this);
-          var order = current.data("order");
-          // console.log(order);
-          $.get(
-            "${pageContext.request.contextPath}/search/sitter_search",
-            {
-              order: order, // 정렬 조건은 GET 파라미터로 전송한다.
-            },
-            function (json) {
-				window.location = "${pageContext.request.contextPath}/search/sitter_search.do?order=" + order; 
-              }
-          );
-        });
+
       });
     </script>
   </body>
