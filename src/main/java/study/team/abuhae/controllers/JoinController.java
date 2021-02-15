@@ -1,4 +1,6 @@
 package study.team.abuhae.controllers;
+import java.net.http.HttpRequest;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +103,7 @@ public class JoinController {
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
+			@RequestParam(value = "kids_age2") String kids_age2,
 			@RequestParam(value = "payment") String paymentstr,
 			@RequestParam(value = "payment_ok") char payment_ok
 			) {
@@ -114,6 +117,7 @@ public class JoinController {
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
+		mominfo.setKids_age(kids_age2);
 		mominfo.setPayment(payment);
 
 		// 저장된 결과 조회하기 위한 객체
@@ -126,6 +130,7 @@ public class JoinController {
 		model.addAttribute("want_age", want_age);
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
+		model.addAttribute("kids_age2", kids_age2);
 		model.addAttribute("payment", payment);
 		model.addAttribute("payment_ok", payment_ok);
 
@@ -141,6 +146,7 @@ public class JoinController {
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
+			@RequestParam(value = "kids_age2") String kids_age2,
 			@RequestParam(value = "payment") String paymentstr, 
 			@RequestParam(value = "payment_ok") char payment_ok,
 			@RequestParam(value = "si") String si,
@@ -156,6 +162,7 @@ public class JoinController {
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
+		mominfo.setKids_age(kids_age2);
 		mominfo.setPayment(payment);
 		mominfo.setPayment_ok(payment_ok);
 		mominfo.setSi(si);
@@ -172,156 +179,33 @@ public class JoinController {
 		model.addAttribute("want_age", want_age);
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
+		model.addAttribute("kids_age2", kids_age2);
 		model.addAttribute("payment", payment);
 		model.addAttribute("payment_ok", payment_ok);
 		model.addAttribute("si", si);
 		model.addAttribute("gu", gu);
 		model.addAttribute("dong", dong);
 
-		return new ModelAndView("/join/parent/schedule");
+		return new ModelAndView("/join/parent/schedule2");
 		// return webHelper.getJsonData(map);
 		// return "/join/parent/children";
 	}
+	
+	@RequestMapping(value = "/join/parent/regular.do", method = RequestMethod.GET)
+	public String m_join_regular(Model model, HttpServletResponse response ) {
 
-	@RequestMapping(value = "/join/parent/regular.do", method = RequestMethod.POST)
-	public String m_join_regular(Model model, 
-			@RequestParam(value = "type") char type,
-			@RequestParam(value = "want_act") String want_act, 
-			@RequestParam(value = "want_age") String want_age,
-			@RequestParam(value = "kids_num") int kids_num, 
-			@RequestParam(value = "kids_age") String kids_age,
-			@RequestParam(value = "payment") String paymentstr,
-			@RequestParam(value = "payment_ok") char payment_ok,
-			@RequestParam(value = "si") String si,
-			@RequestParam(value = "gu") String gu, 
-			@RequestParam(value = "dong") String dong) {
-
-		paymentstr = paymentstr.replace(",", "");
-		int payment = Integer.parseInt(paymentstr);
-
-		// 저장할 값 beans에 담기
-		mominfo.setType(type);
-		mominfo.setWant_act(want_act);
-		mominfo.setWant_age(want_age);
-		mominfo.setKids_num(kids_num);
-		mominfo.setKids_age(kids_age);
-		mominfo.setPayment(payment);
-		mominfo.setPayment_ok(payment_ok);
-		mominfo.setSi(si);
-		mominfo.setGu(gu);
-		mominfo.setDong(dong);
-
-		// 저장된 결과 조회하기 위한 객체
-		// Mom_info output = null;
-
-		log.debug(mominfo.toString());
-
-
-		model.addAttribute("type", type);
-		model.addAttribute("want_act", want_act);
-		model.addAttribute("want_age", want_age);
-		model.addAttribute("kids_num", kids_num);
-		model.addAttribute("kids_age", kids_age);
-		model.addAttribute("payment", payment);
-		model.addAttribute("payment_ok", payment_ok);
-		model.addAttribute("si", si);
-		model.addAttribute("gu", gu);
-		model.addAttribute("dong", dong);
 
 		return "/join/parent/regular";
 	}
 
-	@RequestMapping(value = "/join/parent/shortTerm.do", method = RequestMethod.POST)
-	public String m_join_shortTerm(Model model, 
-			@RequestParam(value = "type") char type,
-			@RequestParam(value = "want_act") String want_act, 
-			@RequestParam(value = "want_age") String want_age,
-			@RequestParam(value = "kids_num") int kids_num, 
-			@RequestParam(value = "kids_age") String kids_age,
-			@RequestParam(value = "payment") String paymentstr,
-			@RequestParam(value = "payment_ok") char payment_ok,
-			@RequestParam(value = "si") String si,
-			@RequestParam(value = "gu") String gu, 
-			@RequestParam(value = "dong") String dong) {
+	@RequestMapping(value = "/join/parent/shortTerm.do", method = RequestMethod.GET)
+	public String m_join_shortTerm(Model model, HttpServletResponse response) {
 		
-		paymentstr = paymentstr.replace(",", "");
-		int payment = Integer.parseInt(paymentstr);
-
-		// 저장할 값 beans에 담기
-		mominfo.setType(type);
-		mominfo.setWant_act(want_act);
-		mominfo.setWant_age(want_age);
-		mominfo.setKids_num(kids_num);
-		mominfo.setKids_age(kids_age);
-		mominfo.setPayment(payment);
-		mominfo.setPayment_ok(payment_ok);
-		mominfo.setSi(si);
-		mominfo.setGu(gu);
-		mominfo.setDong(dong);
-
-		// 저장된 결과 조회하기 위한 객체
-		// Mom_info output = null;
-
-		log.debug(mominfo.toString());
-
-
-		model.addAttribute("type", type);
-		model.addAttribute("want_act", want_act);
-		model.addAttribute("want_age", want_age);
-		model.addAttribute("kids_num", kids_num);
-		model.addAttribute("kids_age", kids_age);
-		model.addAttribute("payment", payment);
-		model.addAttribute("payment_ok", payment_ok);
-		model.addAttribute("si", si);
-		model.addAttribute("gu", gu);
-		model.addAttribute("dong", dong);
-
 		return "/join/parent/shortTerm";
 	}
 
-	@RequestMapping(value = "/join/parent/noplan.do", method = RequestMethod.POST)
-	public String m_join_noplan(Model model, 
-			@RequestParam(value = "type") char type,
-			@RequestParam(value = "want_act") String want_act, 
-			@RequestParam(value = "want_age") String want_age,
-			@RequestParam(value = "kids_num") int kids_num, 
-			@RequestParam(value = "kids_age") String kids_age,
-			@RequestParam(value = "payment") String paymentstr,
-			@RequestParam(value = "payment_ok") char payment_ok,
-			@RequestParam(value = "si") String si,
-			@RequestParam(value = "gu") String gu, 
-			@RequestParam(value = "dong") String dong) {
-		paymentstr = paymentstr.replace(",", "");
-		int payment = Integer.parseInt(paymentstr);
-
-		// 저장할 값 beans에 담기
-		mominfo.setType(type);
-		mominfo.setWant_act(want_act);
-		mominfo.setWant_age(want_age);
-		mominfo.setKids_num(kids_num);
-		mominfo.setKids_age(kids_age);
-		mominfo.setPayment(payment);
-		mominfo.setPayment_ok(payment_ok);
-		mominfo.setSi(si);
-		mominfo.setGu(gu);
-		mominfo.setDong(dong);
-
-		// 저장된 결과 조회하기 위한 객체
-		// Mom_info output = null;
-
-		log.debug(mominfo.toString());
-
-
-		model.addAttribute("type", type);
-		model.addAttribute("want_act", want_act);
-		model.addAttribute("want_age", want_age);
-		model.addAttribute("kids_num", kids_num);
-		model.addAttribute("kids_age", kids_age);
-		model.addAttribute("payment", payment);
-		model.addAttribute("payment_ok", payment_ok);
-		model.addAttribute("si", si);
-		model.addAttribute("gu", gu);
-		model.addAttribute("dong", dong);
+	@RequestMapping(value = "/join/parent/noplan.do", method = RequestMethod.GET)
+	public String m_join_noplan(Model model, HttpServletResponse response) {
 		
 		return "/join/parent/noplan";
 	}
@@ -333,6 +217,7 @@ public class JoinController {
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
+			@RequestParam(value = "kids_age2") String kids_age2,
 			@RequestParam(value = "payment") String paymentstr, 
 			@RequestParam(value = "payment_ok") char payment_ok,
 			@RequestParam(value = "si") String si,
@@ -350,6 +235,7 @@ public class JoinController {
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
+		mominfo.setKids_age(kids_age2);
 		mominfo.setPayment(payment);
 		mominfo.setPayment_ok(payment_ok);
 		mominfo.setSi(si);
@@ -369,6 +255,7 @@ public class JoinController {
 		model.addAttribute("want_age", want_age);
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
+		model.addAttribute("kids_age2", kids_age2);
 		model.addAttribute("payment", payment);
 		model.addAttribute("payment_ok", payment_ok);
 		model.addAttribute("si", si);
@@ -387,6 +274,7 @@ public class JoinController {
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
+			@RequestParam(value = "kids_age2") String kids_age2,
 			@RequestParam(value = "payment") String paymentstr, 
 			@RequestParam(value = "payment_ok") char payment_ok,
 			@RequestParam(value = "si") String si,
@@ -404,6 +292,7 @@ public class JoinController {
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
+		mominfo.setKids_age(kids_age2);
 		mominfo.setPayment(payment);
 		mominfo.setPayment_ok(payment_ok);
 		mominfo.setSi(si);
@@ -424,6 +313,7 @@ public class JoinController {
 		model.addAttribute("want_age", want_age);
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
+		model.addAttribute("kids_age2", kids_age2);
 		model.addAttribute("payment", payment);
 		model.addAttribute("payment_ok", payment_ok);
 		model.addAttribute("si", si);
@@ -443,6 +333,7 @@ public class JoinController {
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
+			@RequestParam(value = "kids_age2") String kids_age2,
 			@RequestParam(value = "payment") String paymentstr, 
 			@RequestParam(value = "payment_ok") char payment_ok,
 			@RequestParam(value = "si") String si,
@@ -461,6 +352,7 @@ public class JoinController {
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
+		mominfo.setKids_age(kids_age2);
 		mominfo.setPayment(payment);
 		mominfo.setPayment_ok(payment_ok);
 		mominfo.setSi(si);
@@ -480,6 +372,7 @@ public class JoinController {
 		model.addAttribute("want_age", want_age);
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
+		model.addAttribute("kids_age2", kids_age2);
 		model.addAttribute("payment", payment);
 		model.addAttribute("payment_ok", payment_ok);
 		model.addAttribute("si", si);

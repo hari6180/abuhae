@@ -63,6 +63,7 @@
                     <input type="hidden" id="want_age" name="want_age" value="${want_age}">
                     <input type="hidden" id="kids_num" name="kids_num" value="${kids_num}">
                     <input type="hidden" id="kids_age" name="kids_age" value="${kids_age}">
+                    <input type="hidden" id="kids_age2" name="kids_age2" value="${kids_age2}">
                     <input type="hidden" id="payment" name="payment" value="${payment}">
                     <input type="hidden" id="payment_ok" name="payment_ok" value="${payment_ok}">
                     <input type="hidden" id="loc_si" name="si" value="${si}">

@@ -131,6 +131,7 @@
                         <input type="hidden" id="want_age" name="want_age" value="${want_age}">
                         <input type="hidden" id="kids_num" name="kids_num">
                         <input type="hidden" id="kids_age" name="kids_age">
+                        <input type="hidden" id="kids_age2" name="kids_age2">
                         <input type="hidden" id="payment" name="payment">
                         <input type="hidden" id="payment_ok" name="payment_ok">
                         <button class="next_btn" type="submit" disabled>다음</button>
@@ -188,7 +189,7 @@
                     $(this).next().removeClass("btn_children_on");
                     $(this).next().addClass("btn_children_off");
                     kids_num = $(this).attr('value');
-                    console.log(kids_num);
+                    //console.log(kids_num);
 
 
                 } else {
@@ -198,7 +199,7 @@
                     $(this).prev().removeClass("btn_children_on");
                     $(this).prev().addClass("btn_children_off");
                     kids_num = $(this).attr('value');
-                    console.log(kids_num);
+                    //console.log(kids_num);
                 }
 
                 $(".noselect_title").empty();
@@ -219,33 +220,73 @@
             });
 
             //select box 출생년도, 출생월 선택이 되면 show_content - 선아
-            $(document).on('change', '#year, #month', function () {
-                //드롭다운의 선택값
-                var yaer = $("#year").val();
-                // console.log(year);
-                var month = $("#month").val();
-                //가져온 값이 존재한다면?
-                if (yaer != "" && month != "") {
-                    $(this).parents().find(".payment_box").removeClass("hide_content");
-                    $(this).parents().find(".payment_box").addClass("show_content");
-                    
-                    //select 값 채워지면 다음 버튼 활성화
-                    var now = $(".next_btn").prop('disabled');
-                    //가져온 값 역으로 변경하여 다시 적용
-                    $(".next_btn").prop('disabled', !now);
+            $(document).on('change', '#year, #month, #year2, #month2', function () {
+                if (kids_num==1) {
+                    //드롭다운의 선택값
+                    var yaer = $("#year").val();
+                    // console.log(year);
+                    var month = $("#month").val();
+                    //가져온 값이 존재한다면?
+                    if (yaer != "" && month != "") {
+                        $(this).parents().find(".payment_box").removeClass("hide_content");
+                        $(this).parents().find(".payment_box").addClass("show_content");
+
+                        //select 값 채워지면 다음 버튼 활성화
+                        var now = $(".next_btn").prop('disabled');
+                        //가져온 값 역으로 변경하여 다시 적용
+                        $(".next_btn").prop('disabled', !now);
+                    };
                 };
+                if (kids_num==2) {
+                    //드롭다운의 선택값
+                    var yaer2 = $("#year2").val();
+                    // console.log(year);
+                    var month2 = $("#month2").val();
+                    //가져온 값이 존재한다면?
+                    if (yaer2 != "" && month2 != "") {
+                        $(this).parents().find(".payment_box").removeClass("hide_content");
+                        $(this).parents().find(".payment_box").addClass("show_content");
+
+                        //select 값 채워지면 다음 버튼 활성화
+                        var now = $(".next_btn").prop('disabled');
+                        //가져온 값 역으로 변경하여 다시 적용
+                        $(".next_btn").prop('disabled', !now);
+                    };
+                }
+
             });
 
             $(".next_btn").click(function (e) {
+                //e.preventDefault();
                 //아이명수
                 $('#kids_num').val(kids_num);
-                //아이나이
-                var kids_year = $("#year option:selected").val();
-                var kids_month = $("#month option:selected").val();
 
-                var kids_age = kids_year + kids_month;
-                $('#kids_age').val(kids_age);
+                var num = $('#kids_num').val();
 
+                if (num == 1) {
+                    //아이나이
+                    var kids_year = $("#year option:selected").val();
+                    var kids_month = $("#month option:selected").val();
+
+                    var kids_age = kids_year + kids_month;
+                    $('#kids_age').val(kids_age);
+                    $('#kids_age2').val(null);
+                }
+
+                if (num == 2) {
+                    //아이나이
+                    var kids_year1 = $("#year1 option:selected").val();
+                    var kids_month1 = $("#month1 option:selected").val();
+
+                    var kids_year2 = $("#year2 option:selected").val();
+                    var kids_month2 = $("#month2 option:selected").val();
+
+                    var kids_age1 = kids_year1 + kids_month1;
+                    var kids_age2 = kids_year2 + kids_month2;
+                    $('#kids_age').val(kids_age1);
+                    $('#kids_age2').val(kids_age2);
+                    //console.log($('#kids_age').val());
+                }
 
                 //시급
                 var payment = $('#payment_input').val();
