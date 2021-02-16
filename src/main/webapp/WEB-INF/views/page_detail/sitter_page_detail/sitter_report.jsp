@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%
-	
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -54,10 +53,10 @@
 						<img width="80" height="80" src="<%=request.getContextPath()%>/assets/img/chat_mom03.jpg" />
 						<br/>
 						<span class="sitter_number">
-							no.53213
+							no.${output.sitterno}
 						</span>
 						<span class="sitter_name">
-							정<i class="far fa-circle"></i>우
+							${output.name}
 						</span>
 					</div> <!-- fin. siren_body_profil -->
 					<div class="siren_type">
