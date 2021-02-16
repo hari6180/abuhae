@@ -1,19 +1,66 @@
 package study.team.abuhae.controllers;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.support.ServletContextLiveBeansView;
+import org.springframework.web.servlet.ModelAndView;
+
+import study.team.abuhae.helper.RegexHelper;
+import study.team.abuhae.helper.WebHelper;
+import study.team.abuhae.model.Cus_category;
+import study.team.abuhae.model.Cus_sub_category;
+import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.service.CustomerService;
 
 
 
 @Controller
 public class Cus_sub_categoryController {
+	/** 객체 주입 */
+	@Autowired WebHelper webHelper;
+	@Autowired RegexHelper regexHelper;
+	@Autowired CustomerService customerService;
+	@Value("#{servletContext.contextPath}")
+	String contextPath;
+	
 	@RequestMapping(value = "/customer/guide.do", method = RequestMethod.GET)
-	public String guide(Model model) {
-
-		return "customer/guide";
+	public ModelAndView guide(Model model, HttpServletResponse response, HttpServletRequest request) {
+		// 조건값 Beans에 저장하기
+		List<Cus_category> out = null;
+		
+		try {
+			// 데이터 조회 
+			out = customerService.getCusSubCateList(null);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		List<Cus_sub_category> output = null;
+		
+		try {
+			// 데이터 조회 
+			output = customerService.getCusBbslist(null);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** View 처리 */
+		model.addAttribute("out", out);
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("customer/guide");
 	}
+	
 	@RequestMapping(value = "/customer/mom_information.do", method = RequestMethod.GET)
 	public String mom_information(Model model) {
 

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -19,6 +22,15 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/guide_yj.css" />
         <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
+        
+        <style type="text/css">
+        	ul, li {
+        		list-style: none;
+        		padding: 0;
+        		margin: 0;
+        	}
+        	
+        </style>
 	</head>
 
 	<body>
@@ -45,68 +57,192 @@
                     </div>
                     <div class="col-xs-12 section">
                         <div class="section_header">
-                        <h1>이용가이드</h1>
+                        <!-- 큰 카테고리 -->
+                        <c:choose>
+                   			<c:when test="${out==null || fn:length(output) == 0}">
+                   				<p>조회결과가 없습니다.</p>
+                   			</c:when>
+                   			
+                   			<c:otherwise>
+                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
+                   					
+                   					<%-- 상세페이지 URL --%>
+                   					<c:if test="${item_cate.cateno == 1 && item_cate.subcateno==1}">
+                   						<h1>${item_cate.category}</h1>
+                   					</c:if>
+                   				</c:forEach>
+                   			</c:otherwise>
+                   		</c:choose>
                         </div>
                         <div class="col-xs-12 section_middle">
-                            <h2><a href="${pageContext.request.contextPath}/customer/question_mom_ch1.do">부모회원 가이드</a></h2>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/guide_mom.do">[부모회원 가이드] 아부해는 어떤 서비스인가요?</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[부모회원 가이드] 아부해 시작하기</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[부모회원 가이드] 시터님에게 인터뷰 신청하기</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[부모회원 가이드] 시터님에게 인터뷰 지원받기</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[부모회원 가이드] 인터뷰 보기</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[부모회원 가이드] 시터님 채용하기</a>
-                    </div>
-                    <div class="col-xs-12 section_title_2">
-                        <a href="#">문서 7개 모두 보기</a>
-                    </div>
-                    <div class="col-xs-12 section_middle">
-                        <h2><a href="${pageContext.request.contextPath}/customer/question_sitter_ch1.do">시터회원 가이드</a></h2>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/guide_sitter.do">[시터회원 가이드] 아부해는 어떤 서비스인가요?</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[시터회원 가이드] 아부해 시작하기</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[시터회원 가이드] 맘시터 인증받기</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[시터회원 가이드] 부모님에게 인터뷰 지원하기</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[시터회원 가이드] 부모님에게 인터뷰 신청 받기</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[시터회원 가이드] 인터뷰 보기</a>
-                    </div>
-                    <div class="col-xs-12 section_title_2">
-                        <a href="#">문서 8개 모두 보기</a>
-                    </div>
-                    <div class="col-xs-12 section_middle">
-                        <h2><a href="${pageContext.request.contextPath}/customer/question_danger_ch1.do">맘시터 주의사항</a></h2>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/guide_danger.do">맘시터 회원 모두가 절대로 하면 안 되는 행동들</a>
-                    </div>
-                    <div class="col-xs-12 section_middle">
-                        <h2><a href="${pageContext.request.contextPath}/customer/question_solution_ch1.do">해결방법</a></h2>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/guide_solution.do">[문제해결] 부모님께서 급여를 지급하지 않으세요.</a>
-                    </div>
+                            
+                            <div class="col-xs-12 section_title">
+	                        	<!--  <a href="${pageContext.request.contextPath}/customer/guide_mom.do">[부모회원 가이드] 아부해는 어떤 서비스인가요?</a>-->
+	                    		<h2><a href="${pageContext.request.contextPath}/customer/question_sitter_ch1.do">
+		                        	<c:choose>
+			                   			<c:when test="${out==null || fn:length(output) == 0}">
+			                   				<p>조회결과가 없습니다.</p>
+			                   			</c:when>
+			                   			
+			                   			<c:otherwise>
+			                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
+			                   					
+			                   					<%-- 상세페이지 URL --%>
+			                   					<c:if test="${item_cate.cateno == 1 && item_cate.subcateno==1}">
+			                   						${item_cate.sub_category}
+			                   					</c:if>
+			                   				</c:forEach>
+			                   			</c:otherwise>
+			                   		</c:choose>
+		                        </a></h2>
+
+	                    		
+	                    		<c:choose>
+	                    			<c:when test="${output==null || fn:length(output) == 0}">
+	                    				<p>조회결과가 없습니다.</p>
+	                    			</c:when>
+	                    			
+	                    			<c:otherwise>
+	                    				<c:forEach var="item" items="${output}" varStatus="status">
+	                    					
+	                    					<%-- 상세페이지 URL --%>
+	                    					<c:if test="${item.subcateno == 1}">
+	                    						<ul>
+		                    						<li>[${item.sub_category}] ${item.title}</li>
+		                    					</ul>
+	                    					</c:if>
+	                    					
+	                    				</c:forEach>
+	                    			</c:otherwise>
+	                    		</c:choose>
+	                    	</div>
+	                    	<div class="col-xs-12 section_title_2">
+	                       		<a href="#">문서 7개 모두 보기</a>
+	                    	</div>
+	                    </div>
+                    
+	                    <div class="col-xs-12 section_middle">
+	                        <h2><a href="${pageContext.request.contextPath}/customer/question_sitter_ch1.do">
+	                        	<c:choose>
+		                   			<c:when test="${out==null || fn:length(output) == 0}">
+		                   				<p>조회결과가 없습니다.</p>
+		                   			</c:when>
+		                   			
+		                   			<c:otherwise>
+		                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
+		                   					
+		                   					<%-- 상세페이지 URL --%>
+		                   					<c:if test="${item_cate.cateno == 1 && item_cate.subcateno==2}">
+		                   						${item_cate.sub_category}
+		                   					</c:if>
+		                   				</c:forEach>
+		                   			</c:otherwise>
+		                   		</c:choose>
+	                        </a></h2>
+	                        <div class="col-xs-12 section_title">
+	                        	
+		                        <c:choose>
+	                    			<c:when test="${output==null || fn:length(output) == 0}">
+	                    				<p>조회결과가 없습니다.</p>
+	                    			</c:when>
+	                    			
+	                    			<c:otherwise>
+	                    				<c:forEach var="item" items="${output}" varStatus="status">
+	                    					
+	                    					<%-- 상세페이지 URL --%>
+	                    					<c:if test="${item.subcateno == 2}">
+	                    						<ul>
+		                    						<li>[${item.sub_category}] ${item.title}</li>
+		                    					</ul>
+	                    					</c:if>
+	                    				</c:forEach>
+	                    			</c:otherwise>
+	                    		</c:choose>
+		                    </div>
+		                     <div class="col-xs-12 section_title_2">
+		                        <a href="#">문서 8개 모두 보기</a>
+		                    </div>
+	                    </div>
+                    
+                    
+                   
+	                    <div class="col-xs-12 section_middle">
+	                        <h2><a href="${pageContext.request.contextPath}/customer/question_danger_ch1.do">
+	                        	<c:choose>
+		                   			<c:when test="${out==null || fn:length(output) == 0}">
+		                   				<p>조회결과가 없습니다.</p>
+		                   			</c:when>
+		                   			
+		                   			<c:otherwise>
+		                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
+		                   					
+		                   					<%-- 상세페이지 URL --%>
+		                   					<c:if test="${item_cate.cateno == 1 && item_cate.subcateno==3}">
+		                   						${item_cate.sub_category}
+		                   					</c:if>
+		                   				</c:forEach>
+		                   			</c:otherwise>
+	                   			</c:choose>
+	                        </a></h2>
+	                        <div class="col-xs-12 section_title">
+	                        	<c:choose>
+	                    			<c:when test="${output==null || fn:length(output) == 0}">
+	                    				<p>조회결과가 없습니다.</p>
+	                    			</c:when>
+	                    			
+	                    			<c:otherwise>
+	                    				<c:forEach var="item" items="${output}" varStatus="status">
+	                    					
+	                    					<%-- 상세페이지 URL --%>
+	                    					<c:if test="${item.subcateno == 3}">
+	                    						<ul>
+		                    						<li>[${item.sub_category}] ${item.title}</li>
+		                    					</ul>
+	                    					</c:if>
+	                    				</c:forEach>
+	                    			</c:otherwise>
+	                    		</c:choose>
+		                    </div>
+	                    </div>
+	                    
+	                     <div class="col-xs-12 section_middle">
+		                        <h2><a href="${pageContext.request.contextPath}/customer/question_solution_ch1.do">
+		                        	<c:choose>
+			                   			<c:when test="${out==null || fn:length(output) == 0}">
+			                   				<p>조회결과가 없습니다.</p>
+			                   			</c:when>
+			                   			
+			                   			<c:otherwise>
+			                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
+			                   					
+			                   					<%-- 상세페이지 URL --%>
+			                   					<c:if test="${item_cate.cateno == 1 && item_cate.subcateno==4}">
+			                   						${item_cate.sub_category}
+			                   					</c:if>
+			                   				</c:forEach>
+			                   			</c:otherwise>
+		                   			</c:choose>
+		                        </a></h2>
+		                        <div class="col-xs-12 section_title">
+			                        <c:choose>
+		                    			<c:when test="${output==null || fn:length(output) == 0}">
+		                    				<p>조회결과가 없습니다.</p>
+		                    			</c:when>
+		                    			
+		                    			<c:otherwise>
+		                    				<c:forEach var="item" items="${output}" varStatus="status">
+		                    					
+		                    					<%-- 상세페이지 URL --%>
+		                    					<c:if test="${item.subcateno == 4}">
+		                    						<ul>
+			                    						<li>[${item.sub_category}] ${item.title}</li>
+			                    					</ul>
+		                    					</c:if>
+		                    				</c:forEach>
+		                    			</c:otherwise>
+		                    		</c:choose>
+			                    </div>
+	                     </div>
                     </div>
                     <div class="col-xs-12 footer">
                     </div>
