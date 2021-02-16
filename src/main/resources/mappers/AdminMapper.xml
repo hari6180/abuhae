@@ -12,6 +12,76 @@
 		<result property="adminid" column="adminid" />
 		<result property="adminpw" column="adminpw" />
 	</resultMap>
+	
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="LeaveMap"
+		type="study.team.abuhae.model.Leave_member">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="leav_mem" column="leav_mem" />
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="reason" column="reason" />
+		<result property="leave_date" column="leave_date" />
+	</resultMap>
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="MemberMap"
+		type="study.team.abuhae.model.Member">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="memberno" column="memberno" />
+		<result property="type" column="type" />
+		<result property="id" column="id" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="birthdate" column="birthdate" />
+		<result property="job_opening" column="job_opening" />
+		<result property="r_type" column="r_type" />
+		<result property="contents" column="contents" />
+	</resultMap>
+
+	<resultMap id="MomMap"
+		type="study.team.abuhae.model.Mom_info">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="momno" column="momno" />
+		<result property="want_act" column="want_act" />
+		<result property="want_age" column="want_age" />
+		<result property="kids_num" column="kids_num" />
+		<result property="kids_age" column="kids_age" />
+		<result property="payment" column="payment" />
+		<result property="payment_ok" column="payment_ok" />
+		<result property="si" column="si" />
+		<result property="gu" column="gu" />
+		<result property="dong" column="dong" />
+		<result property="schedule" column="schedule" />
+		<result property="schedule_ok" column="schedule_ok" />
+		<result property="sitter_gender" column="sitter_gender" />
+		<result property="interview_type" column="interview_type" />
+		<result property="care_type" column="care_type" />
+		<result property="openingdate" column="openingdate" />
+		<result property="memberno" column="memberno" />
+	</resultMap>
+
+	<resultMap id="SitterMap"
+		type="study.team.abuhae.model.Sitter_info">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="sitterno" column="sitterno" />
+		<result property="sitter_type" column="sitter_type" />
+		<result property="want_act" column="want_act" />
+		<result property="want_age" column="want_age" />
+		<result property="payment" column="payment" />
+		<result property="si" column="si" />
+		<result property="gu" column="gu" />
+		<result property="dong" column="dong" />
+		<result property="schedule" column="schedule" />
+		<result property="schedule_set" column="schedule_set" />
+		<result property="introduce" column="introduce" />
+		<result property="cctv" column="cctv" />
+		<result property="openingdate" column="openingdate" />
+		<result property="memberno" column="memberno" />
+	</resultMap>
 
 	
 	<!-- 특정 아이디에 대한 단일행 조회 -->
@@ -19,7 +89,37 @@
 		parameterType="study.team.abuhae.model.Admin_info" resultMap="AdminMap">
 		select * from admin_info where adminid=#{adminid};
 	</select>
+	
+	<!-- 신고 테이블 조회 -->
+	<select id="selectCountReport"
+		parameterType="study.team.abuhae.model.Report" resultType="int">
+		select count(*) from report where who=#{who};
 
+	</select>
+	
+	
+	<!-- 맘 회원이 신고한 신고리스트
+		신고한 자가 누군지에 따라 구분하는 기능 필요 -> 추후 구현 예정
+	 -->
+	<select id="selectSingoListMom"
+		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
+		select m.memberno, m.id, m.name, m.email, m.phone, m.job_opening, rp.type as r_type, rp.contents 
+		from member m
+		inner join mom_info mi on mi.memberno = m.memberno
+		inner join report rp on mi.momno = rp.momno
+		where who  ='M';
+	</select>
 
+	<!-- 탈퇴회원수 조회 -->
+	<select id="selectCountLeaveMember"
+		parameterType="study.team.abuhae.model.Leave_member" resultType="int">
+		select count(*) from leave_member
+	</select>
+	
+	<!-- 탈퇴회원수 조회 -->
+	<select id="selectLeaveMember"
+		parameterType="study.team.abuhae.model.Leave_member" resultMap="LeaveMap">
+		select * from leave_member
+	</select>
 
 </mapper>

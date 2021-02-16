@@ -39,6 +39,36 @@ a:hover {
 
 /** ------------------------------------전체 회원 관리 ---------------------------*/
 
+.filter {
+  padding: 0 30px 0 10px;
+  background: #fff url(../img/select.png) no-repeat right 10px center;
+  display: inline;
+  height: 32px;
+  margin: 0;
+  border: 1px solid #d4d4d4;
+  color: #2e3039;
+  font-size: 14px;
+  line-height: 30px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+option {
+  font-weight: normal;
+  display: block;
+  white-space: pre;
+  min-height: 1.2em;
+  padding: 0 2px 1px;
+}
+
+.state {
+  margin: 10px 0;
+  line-height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
 /** 페이지 공통 설정값*/
 .wrap_member {
   padding: 20px;
@@ -163,13 +193,13 @@ td {
 
 /** 신고회원 관리 */
 .group_report {
-    margin-top: 30px;
-    padding-right: 10px;
-    padding-left: 240px;
+  margin-top: 30px;
+  padding-right: 10px;
+  padding-left: 240px;
 }
 .group_member {
-	padding-right: 10px;
-    padding-left: 240px;
+  padding-right: 10px;
+  padding-left: 240px;
 }
 .btn_list {
   display: flex;

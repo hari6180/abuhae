@@ -4,16 +4,20 @@ import java.util.List;
 
 import study.team.abuhae.model.Member;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.Sitter_info;
 
 public interface MemberService {
 	//회원 단일 조회
 	public Member getMemberLogin(Mom_info input) throws Exception;
 	
 	//회원 리스트 조회
-	public List<Member> getMemberList(Member input) throws Exception;
+	public List<Mom_info> getMomList(Mom_info input) throws Exception;
 	
-	//회원 수 조회
-	public int getMemberCount(Member input) throws Exception;
+	//맘회원 수 조회
+	public int getMomCount(Mom_info input) throws Exception;
+	
+	//맘회원 수 조회
+	public int getSitterCount(Sitter_info input) throws Exception;
 	
 	//회원 데이터 수정
 	public int editMember(Member input) throws Exception;
