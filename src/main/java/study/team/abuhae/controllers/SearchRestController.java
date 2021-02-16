@@ -25,10 +25,6 @@ public class SearchRestController {
     // --> import study.spring.springhelper.helper.WebHelper;
     @Autowired  WebHelper webHelper;
 
-    /** RegexHelper 주입 */
-    // --> import study.spring.springhelper.helper.RegexHelper;
-    @Autowired  RegexHelper regexHelper;
-
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	SearchService searchService;

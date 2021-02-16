@@ -879,144 +879,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               </div>
               <!-- 카드영역 -->
 
-              <c:choose>
-                <c:when test="${output == null || fn:length(output) == 0}">
-                  <h1>조회결과가 없습니다.</h1>
-                </c:when>
-                <c:otherwise>
-                  <%-- 조회 결과에 따른 반복 처리 --%>
-                  <c:forEach var="item" items="${output}" varStatus="status">
-                    <%-- 출력을 위해 준비한 데이터들 --%>
-                    <c:set var="name" value="${item.name}" />
-                    <c:set var="openingdate" value="${item.openingdate}" />
-                    <c:set var="si" value="${item.si}" />
-                    <c:set var="gu" value="${item.gu}" />
-                    <c:set var="dong" value="${item.dong}" />
-                    <c:set var="age" value="${item.birthdate}" />
-                    <c:set var="payment" value="${item.payment}" />
-                    <c:set var="answer" value="${item.answer}" />
-                    <c:set var="rev_rate" value="${item.rev_rate}" />
 
-                    <%-- 상세페이지로 이동하기 위한 URL --%>
-                    <c:url value="/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.do" var="viewUrl">
-                      <c:param name="sitterno" value="${item.sitterno}" />
-                    </c:url>
-					<div id="order">
-                    <div id="sitter_item_group" class="sitter_item_group">
-                      <div class="item_header">
-                        <div class="cert_label">
-                          <img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" />
-                          <span id="sitter_title" class="cert_text"></span>
-                        </div>
-                      </div>
-                      <hr class="divider" />
-                      <div class="item_body">
-                        <div class="profile_img_group">
-                          <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
-                          <div class="responsive_rate_group">
-                            <div class="res_text">응답률</div>
-                            <div class="res_rate">${answer}</div>
-                            <div class="res_text">%</div>
-                          </div>
-                        </div>
-                        <div class="profile_info_group">
-                          <div class="content_row">
-                            <div>
-                              <div class="user_name">${name}</div>
-                              <div class="last_update">${openingdate} 작성</div>
-                            </div>
-                            <div class="jim_btn">
-                              <button class="swapHeart">
-                                <div class="jim">
-                                  <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
-                                </div>
-                              </button>
-                            </div>
-                          </div>
-                          <div class="content_row location_group">
-                            <span class="location">${si}&nbsp${gu}&nbsp${dong}</span>
-                          </div>
-                          <div class="content_row">
-                            <div class="user_age">${age}세</div>
-                            <div class="text_sep"></div>
-                            <div class="wanted_pay">희망 시급 ${payment}원</div>
-                          </div>
-                          <div class="content_row">
-                          	<c:if test="${rev_rate=='0'}">
-							<div class="review_rate">
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-							<c:if test="${rev_rate=='1'}">
-							<div class="review_rate">
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-							<c:if test="${rev_rate=='2'}">
-							<div class="review_rate">
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-							<c:if test="${rev_rate=='3'}">
-							<div class="review_rate">
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-							<c:if test="${rev_rate=='4'}">
-							<div class="review_rate">
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-							<c:if test="${rev_rate=='5'}">
-							<div class="review_rate">
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-                            <span class="review_count">후기 ${answer}개</span>
-                          </div>
-                        </div>
-                      </div>
-                      <hr class="divider" />
-                      <div class="item_footer">
-                        <div class="cert_info_group">
-                          <div class="cert_text_group">
-                            <div class="cert_label">확인된 인증</div>
-                            <div class="cert_count">2개</div>
-                          </div>
-                          <div class="cert_info_btn_group">
-                            <div class="cert_btn">엄마 인증</div>
-                            <div class="cert_btn">등초본 인증</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </c:forEach>
-                </c:otherwise>
-              </c:choose>
 
               <!-- 카드영역 end -->
               <div id="result"></div>
@@ -1055,11 +918,28 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- Handlebar 템플릿 코드 -->
     <script id="sitter-list-tmpl" type="text/x-handlebars-template">
       {{#each item}}
-              <c:choose>
+<%--              <c:choose>
                 <c:when test="${output == null || fn:length(output) == 0}">
                   <h1>조회결과가 없습니다.</h1>
                 </c:when>
                 <c:otherwise>
+                  <%-- 조회 결과에 따른 반복 처리 --%>
+<%--                  <c:forEach var="item" items="${output}" varStatus="status">
+                    <%-- 출력을 위해 준비한 데이터들 --%>
+<%--                    <c:set var="name" value="${item.name}" />
+                    <c:set var="openingdate" value="${item.openingdate}" />
+                    <c:set var="si" value="${item.si}" />
+                    <c:set var="gu" value="${item.gu}" />
+                    <c:set var="dong" value="${item.dong}" />
+                    <c:set var="age" value="${item.birthdate}" />
+                    <c:set var="payment" value="${item.payment}" />
+                    <c:set var="answer" value="${item.answer}" />
+                    <c:set var="rev_rate" value="${item.rev_rate}" />
+
+                    <%-- 상세페이지로 이동하기 위한 URL --%>
+<%--                    <c:url value="/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.do" var="viewUrl">
+                      <c:param name="sitterno" value="${item.sitterno}" />
+                    </c:url> --%>
 					<div id="order">
                     <div id="sitter_item_group" class="sitter_item_group">
                       <div class="item_header">
@@ -1074,15 +954,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                           <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
                           <div class="responsive_rate_group">
                             <div class="res_text">응답률</div>
-                            <div class="res_rate">${answer}</div>
+                            <div class="res_rate">{{answer}}</div>
                             <div class="res_text">%</div>
                           </div>
                         </div>
                         <div class="profile_info_group">
                           <div class="content_row">
                             <div>
-                              <div class="user_name">${name}</div>
-                              <div class="last_update">${openingdate} 작성</div>
+                              <div class="user_name">{{name}}</div>
+                              <div class="last_update">{{openingdate}}작성</div>
                             </div>
                             <div class="jim_btn">
                               <button class="swapHeart">
@@ -1093,69 +973,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                             </div>
                           </div>
                           <div class="content_row location_group">
-                            <span class="location">${si}&nbsp${gu}&nbsp${dong}</span>
+                            <span class="location">{{si}}&nbsp{{gu}}&nbsp{{dong}}</span>
                           </div>
                           <div class="content_row">
-                            <div class="user_age">${age}세</div>
+                            <div class="user_age">{{age}}세</div>
                             <div class="text_sep"></div>
-                            <div class="wanted_pay">희망 시급 ${payment}원</div>
+                            <div class="wanted_pay">희망 시급 {{payment}}원</div>
                           </div>
                           <div class="content_row">
-							<c:if test="${rev_rate==0}">
-							<div class="review_rate">
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-							<c:if test="${rev_rate=='1'}">
-							<div class="review_rate">
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-							<c:if test="${rev_rate=='2'}">
-							<div class="review_rate">
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-							<c:if test="${rev_rate=='3'}">
-							<div class="review_rate">
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-							<c:if test="${rev_rate=='4'}">
-							<div class="review_rate">
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-							<c:if test="${rev_rate=='5'}">
-							<div class="review_rate">
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							</div>
-							</c:if>
-                            <span class="review_count">후기 ${answer}개</span>
+                            <span class="review_count">후기 {{answer}}개</span>
                           </div>
                         </div>
                       </div>
@@ -1173,13 +999,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                         </div>
                       </div>
                     </div>
-
+<%--                  </c:forEach>
                 </c:otherwise>
-              </c:choose>
-            </div>
+              </c:choose> --%>
       {{/each}}
     </script>
     <script>
+    let nowPage = 1; // 현재 페이지의 기본값
+    var order = "openingdate";
+    
     $(function () {
         // 드롭다운 선택 - 0109 하리
         $(".dr_option").click(function () {
@@ -1188,48 +1016,42 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $("#orderby").html($(this).find("a").html());
           // 정렬 조건 지정 0212
           var current = $(this);
-          var order = current.data("order");
+          order = current.data("order");
           // console.log(order);
+		  // Restful API에 GET방식 요청
           $.get(
             "${pageContext.request.contextPath}/search/sitter_search",
             {
-              order: order, // 정렬 조건은 GET 파라미터로 전송한다.
+              "order": order, // 정렬 조건은 GET 파라미터로 전송한다.
+              "page": nowPage // 페이지 번호는 GET 파라미터로 전송한다.
             },
             function (json) {
-				window.location = "${pageContext.request.contextPath}/search/sitter_search.do?order=" + order; 
-              }
-          );
-        });
-      $(document).ready(function () {
-        // 무한 스크롤 1218 하리
-        $(document).scroll(function () {
-          var maxHeight = $(document).height();
-          var currentScroll = $(window).scrollTop() + $(window).height();
-          var nowPage = 1; // 현재 페이지의 기본값
-          var current = $(".dr_option.active");
-          var order = current.data("order");
-
-          if (maxHeight <= currentScroll + 100) {
-            // Restful API에 GET방식 요청
-            $.get(
-              "${pageContext.request.contextPath}/search/sitter_search",
-              {
-                page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
-                order: order, // 정렬 조건은 GET 파라미터로 전송한다.
-              },
-              function (json) {
+/* 				window.location = "${pageContext.request.contextPath}/search/sitter_search.do?order=" + order;  */
                 var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
                 var template = Handlebars.compile(source); // 템플릿 코드 컴파일
                 var result = template(json); // 템플릿 컴파일 결과물에 json 전달
                 $("#result").append(result); // 최종 결과물을 추가한다
-              }
-            );
-          }
-        });
-      });
-
-
-      });
+                // 무한 스크롤 1218 하리
+                $(document).scroll(function () {
+                  nowPage++;          
+                  var maxHeight = $(document).height();
+                  var currentScroll = $(window).scrollTop() + $(window).height();
+                  if (maxHeight <= currentScroll + 100) {
+                	  
+                	  $.get(
+           	            "${pageContext.request.contextPath}/search/sitter_search",
+           	            {
+           	              "page": nowPage // 페이지 번호는 GET 파라미터로 전송한다.
+           	            },   function (json) {
+           	                var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+           	                var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+           	                var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+           	                $("#result").append(result); // 최종 결과물을 추가한다
+                  })
+                });
+              );
+        	);
+      	});
     </script>
   </body>
 </html>

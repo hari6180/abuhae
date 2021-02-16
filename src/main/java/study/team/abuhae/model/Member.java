@@ -29,7 +29,9 @@ public abstract class Member {
 	// 정렬조건
 	private static String order;	
 	
-	
+	// JOIN절에 의한 추가 멤버변수
+	private String r_type;  	// 신고 유형
+	private String contents; 	// 신고 내용
 	
 	/** LIMIT 절에서 사용할 조회 시작 위치 */
 	private static int offset;

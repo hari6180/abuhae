@@ -125,7 +125,7 @@
 			</otherwise>
 		</choose>
 		<if test="listCount > 0" >
-			LIMIT #{offset}, ${listCount}
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 
@@ -168,7 +168,7 @@
 		</choose>
 		
 		<if test="listCount > 0" >
-			LIMIT #{offset}, ${listCount}
+			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
 
