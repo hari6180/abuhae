@@ -19,6 +19,7 @@
 		<result property="birthdate" column="birthdate" />
 		<result property="gender" column="gender" />
 		<result property="job_opening" column="job_opening" />
+		<result property="signup_date" column="signup_date" />
 	</resultMap>
 
 	<resultMap id="MomMap"
@@ -71,12 +72,12 @@
 		keyProperty="memberno">
 		INSERT INTO Member (id, type, password, name, email,
 		phone,
-		birthdate, gender, job_opening)
+		birthdate, gender, job_opening, signup_date)
 		VALUES (#{id}, #{type}, #{password},
 		#{name},
 		#{email}, #{phone},
 		#{birthdate},  #{gender},
-		#{job_opening});
+		#{job_opening}, #{signup_date});
 	</insert>
 
 

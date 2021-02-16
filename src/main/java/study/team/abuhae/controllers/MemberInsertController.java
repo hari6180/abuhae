@@ -63,6 +63,7 @@ public class MemberInsertController {
 			int day = random(1,28);
 			String openingdate = "2020-" + month + "-" + day;
 			input.setOpeningdate(openingdate);
+			input.setSignup_date(openingdate);
 			
 			/*
 			 * Schedule sd = new Schedule(); Day day = new Day(); Time time = new Time();
@@ -123,6 +124,7 @@ public class MemberInsertController {
 			
 			int memberno2 = input2.getMemberno();
 			input2.setMemberno(memberno2);
+			input2.setSignup_date(openingdate);
 
 			try {
 				// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
