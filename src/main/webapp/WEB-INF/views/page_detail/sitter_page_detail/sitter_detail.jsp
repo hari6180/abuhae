@@ -894,12 +894,7 @@
 								${output.name}
 							</div>
 							<div class="fixed_age">
-<<<<<<< Updated upstream:src/main/webapp/WEB-INF/views/page_detail/sitter_page_detail/sitter_detail.jsp
 								(${output.birthdate}세, <c:if test="${fn:contains(output.gender,'F')}">여</c:if><c:if test="${fn:contains(output.gender,'M')}">남</c:if>)
-=======
-								(${output.birthdate}세, <c:if test="${fn:contains(output.gender, 'F')}">여</c:if> <c:if test="${fn:contains(output.gender, 'M')}">남</c:if>
-								)
->>>>>>> Stashed changes:src/main/webapp/WEB-INF/views/page_detail/sitter_page_detail/sitter_page_detail_for_mom_interview.jsp
 							</div>
 						</div>
 						<div class="fixed_money">

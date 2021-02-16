@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.DetailService;
@@ -21,13 +20,8 @@ public class Page_detail_sitterController {
 	
 	// 시터 상세페이지
 	@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_detail.do", method = RequestMethod.GET)
-<<<<<<< Updated upstream
 	public String sitter_detail(Model model, HttpServletResponse response,
 		@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
-=======
-	public ModelAndView sitter_detail(Model model, HttpServletResponse response,
-			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
->>>>>>> Stashed changes
 		
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 		Sitter_info input = new Sitter_info();
@@ -44,11 +38,7 @@ public class Page_detail_sitterController {
 			e.printStackTrace();
 		}
 		model.addAttribute("output", output);
-<<<<<<< Updated upstream
 		return "/page_detail/sitter_page_detail/sitter_detail";
-=======
-		return new ModelAndView("/page_detail/sitter_page_detail/sitter_detail");
->>>>>>> Stashed changes
 	}
 	
 	

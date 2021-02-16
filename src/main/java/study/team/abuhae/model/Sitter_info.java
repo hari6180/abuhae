@@ -48,10 +48,9 @@ public class Sitter_info extends Member {
 	private String applydate; // 지원날짜 
 	private String accept; // 지원승인여부
 	private int revno; // 리뷰갯수 
-	private int cntno; // 매칭 갯수 
 	private String favorite_act; // 선호하는 돌봄 유형
+	private int cntno; // 매칭 갯수  
 	
-
 	
 
 }
