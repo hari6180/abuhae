@@ -52,14 +52,14 @@
 								<img width="80" height="80" src="<%=request.getContextPath()%>/assets/img/chat_mom03.jpg" />
 								<br/>
 								<span class="interview_info">
-									${output.openingdate} 작성
+									${output.openingdate_test} 작성
 									<br/>
 									${output.si}&nbsp;${output.gu}
 									<br/>
 									희망시급 ${output.payment}원
 								</span>
 								<div class="btn_area">
-								<button type="button" class="btn" onclick = "location.href = 'http://localhost:8080/<%=request.getContextPath()%>/mypage/mypage_mom/mom_mypage.do'">
+								<button type="button" class="btn" onclick = "location.href='${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${output.sitterno}';">
 									<span class="btn_text">수정</span>
 								</button>
 								</div> <!-- fin. btn_area -->

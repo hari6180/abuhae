@@ -34,7 +34,7 @@
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
-					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = '${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_report.do'">
+					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href='${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_report.do?sitterno=${output.sitterno}';">
 				 	<img src="<%=request.getContextPath()%>/assets/img/siren.png" width="13" height="15"/>
 				            신고
 				  	</button>
@@ -127,7 +127,7 @@
 						<div class="line_three"></div>
 						<div class="clock_area">
 							<div id="clock"><i class="far fa-clock"></i> 프로필 작성</div>
-							<div id="date">${output.openingdate}</div>
+							<div id="date">${output.openingdate_test}</div>
 						</div>
 						<div class="line_three"></div>
 						<div class="cctv_area">
@@ -779,9 +779,7 @@
 										</c:if>
 									</div>
 									<!-- ---- -->
-									
 								</div>
-								
 							</div>
 						</div> <!-- fin. possible_active_area -->
 					</div> <!-- fin. possible_active_box -->
@@ -915,7 +913,7 @@
 							</div>
 						</div> <!-- fin. fixed_btn_jim -->					
 						<div class="interview_btn">
-							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href = 'sitter_interview.do'">
+							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_interview.do?sitterno=${output.sitterno}';">
 								<div>
 									<div class="btn_text_box">
 										<span><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">인터뷰 신청하기</a></span>
