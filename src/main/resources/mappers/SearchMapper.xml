@@ -153,7 +153,7 @@
 		openingdate, (SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno AND who='s') AS applySt FROM mom_info m
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
-		ORDER BY 
+		ORDER BY
 		
 		<choose>
 			<when test="order != null and order == 'lowpay'">

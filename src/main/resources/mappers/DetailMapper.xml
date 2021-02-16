@@ -112,6 +112,7 @@
 		ELSE
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS
+<<<<<<< Updated upstream
 		openingdate_test, (SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_count,
 		(SELECT COUNT(heartno) FROM heart h WHERE s.sitterno=h.sitterno AND who='M') AS heartno,
 		(SELECT expe_contents FROM sitter_experience e WHERE e.sitterno=s.sitterno) AS expe_contents,
@@ -124,6 +125,17 @@
 		<where>
 			s.sitterno=#{sitterno}
 		</where>
+=======
+		openingdate
+			FROM sitter_info s 
+			INNER JOIN review r ON r.sitterno=s.sitterno
+			INNER JOIN member m ON m.memberno=s.memberno
+			INNER JOIN sitter_experience e ON e.sitterno=s.sitterno
+			INNER JOIN resi_cert c ON c.sitterno=s.sitterno
+			INNER JOIN heart h ON h.sitterno=s.sitterno
+			INNER JOIN connect n ON n.sitterno=s.sitterno
+			WHERE sitterno=#{sitterno}
+>>>>>>> Stashed changes
 	</select>
 	
 	<select id="selectReportItem" parameterType="study.team.abuhae.model.Sitter_info"
