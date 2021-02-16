@@ -13,4 +13,8 @@ enddate 오타 수정
 
 21/2/16 추가 사항
 member 테이블에서 signup_date 컬럼 추가
+leave_member 테이블에서 reason, leave_date 컬럼 추가
+sitter_info 테이블에서 favorite_act 컬럼 추가 
+
+
 
