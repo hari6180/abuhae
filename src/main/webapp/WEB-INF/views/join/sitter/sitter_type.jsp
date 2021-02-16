@@ -130,7 +130,11 @@
                 <a data-toggle="modal" href="#help_modal">
                     <button class="type_desc">어떤 유형을 선택해야할지 고민이신가요?</button></a>
                 <!--end 설명 모달창-->
-                <a href="activity_age.jsp"><button class="next_btn">다음</button></a>
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/sitter/activity_age.do">
+                    <input type="hidden" id="type" name="type" value="S">
+                    <input type="hidden" id="sitter_type" name="sitter_type">
+                    <button class="next_btn" type="submit">다음</button>
+                </form>
             </div>
         </div> <!-- fin. col-xs-12 -->
     </div>
@@ -138,6 +142,15 @@
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script>
+        $(".next_btn").click(function (e) {
+
+            var sittertype = $('input[name="type"]:checked').val();
+
+            $('#sitter_type').val(sittertype);
+        });
+
+    </script>
 </body>
 
 </html>

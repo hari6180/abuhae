@@ -38,9 +38,9 @@
                 </div>
 
                 <!--다음 회원가입으로 진행-->
-                <a href="sitter_type.jsp"><button class="start_join_btn">회원가입 시작하기 ></button></a>
+                <a href="sitter_type.do"><button class="start_join_btn">회원가입 시작하기 ></button></a>
                 <!--로그인 페이지로 이동-->
-                <a href="${pageContext.request.contextPath}/login/login.jsp"><button class="already_join_btn">이미 맘시터 회원이신가요?</button></a>
+                <a href="${pageContext.request.contextPath}/login/login.do"><button class="already_join_btn">이미 맘시터 회원이신가요?</button></a>
 
             </div> <!-- fin. col-xs-12 -->
     </div>

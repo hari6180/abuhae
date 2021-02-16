@@ -26,7 +26,7 @@
 
     <style type="text/css">
         .fa-3x {
-            font-size: 2.1em;
+            font-size: 2.0em;
         }
 
         .fa-3x {
@@ -36,6 +36,11 @@
 
         #help_modal1 .modal {
             top:20%;
+        }
+        button:disabled,
+        button[disabled] {
+            background-color: #cccccc;
+            color: #666666;
         }
     </style>
 </head>
@@ -177,21 +182,21 @@
                 </h3>
 
                 <!--아이 연령 선택-->
-                <div class="want_act_box">
+                <div class="want_act_box age_box">
                     <div class="want_btn">
-                        <button class="act_btn" value="got_baby"><i class="fas fa-baby fa-3x"></i></button>
+                        <button class="act_btn want_age" value="got_baby"><i class="fas fa-baby fa-3x"></i></button>
                         <div class="want_text">신생아</div>
                     </div>
                     <div class="want_btn">
-                        <button class="act_btn select_btn" value="baby"><i class="fas fa-baby-carriage fa-3x"></i></button>
-                        <div class="want_text select_text">영아</div>
+                        <button class="act_btn want_age" value="baby"><i class="fas fa-baby-carriage fa-3x"></i></button>
+                        <div class="want_text">영아</div>
                     </div>
                     <div class="want_btn">
-                        <button class="act_btn select_btn" value="children"><i class="fas fa-child fa-3x"></i></button>
-                        <div class="want_text select_text">유아</div>
+                        <button class="act_btn want_age" value="children"><i class="fas fa-child fa-3x"></i></button>
+                        <div class="want_textt">유아</div>
                     </div>
                     <div class="want_btn">
-                        <button class="act_btn" value="adult"><i class="fas fa-school fa-3x"></i></button>
+                        <button class="act_btn want_age" value="adult"><i class="fas fa-school fa-3x"></i></button>
                         <div class="want_text">초등학생</div>
                     </div>
                 </div>
@@ -206,12 +211,12 @@
                 </h3>
 
                 <!--돌봄 유형 선택-->
-                <div class="want_act_box">
+                <div class="want_act_box act_box">
                     <div class="active_line">
                         <div class="want_btn">
-                            <button class="act_btn select_btn" value="innerplay"><img class="want_img"
-                                    src="${pageContext.request.contextPath}/assets/img/innerplayicon_s.png"></button>
-                            <div class="want_text select_text">실내놀이</div>
+                            <button class="act_btn" value="innerplay"><img class="want_img"
+                                    src="${pageContext.request.contextPath}/assets/img/innerplayicon_n.png"></button>
+                            <div class="want_text">실내놀이</div>
                             <div class="want_btn">
                                 <button class="act_btn" value="korean"><img class="want_img"
                                         src="${pageContext.request.contextPath}/assets/img/koreanicon_n.png"></button>
@@ -231,9 +236,9 @@
                     </div>
                     <div class="active_line">
                         <div class="want_btn">
-                            <button class="act_btn select_btn" value="guide"><img class="want_img"
-                                    src="${pageContext.request.contextPath}/assets/img/guideicon_s.png"></button>
-                            <div class="want_text select_text">등하원 돕기</div>
+                            <button class="act_btn" value="guide"><img class="want_img"
+                                    src="${pageContext.request.contextPath}/assets/img/guideicon_n.png"></button>
+                            <div class="want_text">등하원 돕기</div>
                             <div class="want_btn">
                                 <button class="act_btn" value="english"><img class="want_img"
                                         src="${pageContext.request.contextPath}/assets/img/englishicon_n.png"></button>
@@ -253,9 +258,9 @@
                     </div>
                     <div class="active_line">
                         <div class="want_btn">
-                            <button class="act_btn select_btn" value="read"><img class="want_img"
-                                    src="${pageContext.request.contextPath}/assets/img/readicon_s.png"></button>
-                            <div class="want_text select_text">책읽기</div>
+                            <button class="act_btn" value="read"><img class="want_img"
+                                    src="${pageContext.request.contextPath}/assets/img/readicon_n.png"></button>
+                            <div class="want_text">책읽기</div>
                         </div>
                         <div class="want_btn">
                             <button class="act_btn" value="study"><img class="want_img"
@@ -281,7 +286,13 @@
                         </div>
                     </div>
                 </div>
-                <a href="location.jsp"><button class="next_btn">다음</button></a>
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/sitter/location.do">
+                    <input type="hidden" id="type" name="type" value="S">
+                    <input type="hidden" id="sitter_type" name="sitter_type" value="${sitter_type}">
+                    <input type="hidden" id="want_act" name="want_act">
+                    <input type="hidden" id="want_age" name="want_age">
+                    <button class="next_btn" type="submit" disabled>다음</button>
+                </form>
 
             </div>
         </div> <!-- fin. col-xs-12 -->
@@ -290,8 +301,12 @@
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <!--sweetalert plugin-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">
         $(function () {
+            const result1 = [];
+            const result2 = [];
             //활동 버튼 클릭
             $(".act_btn").click(function (e) {
                 $(this).toggleClass("select_btn");
@@ -301,17 +316,59 @@
                 //버튼 클릭시 이미지 URL 변경 - 선아
                 //url 가져오기
                 var img_url = $(this).find(".want_img").attr('src');
-                var indeximg = img_url.indexOf("_n") //잘라서 _n이 있는지 확인
-                if (indeximg > -1) {
-                    var img_src = img_url.replace(/_n/, "_s");
-                    $(this).find(".want_img").attr('src', img_src);
-                } else {
-                    var img_src = img_url.replace(/_s/, "_n");
-                    $(this).find(".want_img").attr('src', img_src);
+                //이미지 url이 있을 경우
+                if (img_url != null) {
+                    var indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
+                    if (indeximg > -1) {
+                        var img_src = img_url.replace(/_n/, "_s");
+                        $(this).find(".want_img").attr('src', img_src);
+                    } else {
+                        var img_src = img_url.replace(/_s/, "_n");
+                        $(this).find(".want_img").attr('src', img_src);
+                    };
                 };
 
+                //선택한 버튼이 age 버튼이면 age의 value값 넣기
+                if($(this).hasClass("want_age")==true && $(this).hasClass("select_btn")){
+                    var age = $(this);
+                    //console.log(act1);
+
+                    for (var i = 0; i < age.length; i++) {
+                        result1.push($(age[i]).val());
+                        //console.log(want_act);
+                    };
+                }; 
+                
+                if($(this).hasClass("want_age")==false && $(this).hasClass("select_btn")) {
+                    //선택한 버튼이 활동이면 활동에 value값 넣기
+                    var act = $(this);
+                    //console.log(act1);
+
+                    for (var i = 0; i < act.length; i++) {
+                        result2.push($(act[i]).val());
+                        //console.log(want_act);
+                    };
+                };
+
+                //disable 풀어주기
+                if (result1 != "" && result2 != "") {
+                    //버튼 선택값이 없으면 다음 버튼 활성화
+                    var now = $(".next_btn").prop('disabled');
+                    //가져온 값 역으로 변경하여 다시 적용
+                    $(".next_btn").prop('disabled', !now);
+                };
+                
 
             });
+            $(".next_btn").click(function (e) {
+                    e.preventDefault();
+
+                    $('#want_act').val(result1);
+                    $('#want_age').val(result2);
+                    console.log($("#want_act").val());
+                    console.log($("#want_age").val());
+
+                });
         });
     </script>
 </body>

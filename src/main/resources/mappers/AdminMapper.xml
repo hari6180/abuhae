@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Admin mapper - 0216 - 선아 -->
+<mapper namespace="AdminMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="AdminMap"
+		type="study.team.abuhae.model.Admin_info">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="adminid" column="adminid" />
+		<result property="adminpw" column="adminpw" />
+	</resultMap>
+
+	
+	<!-- 특정 아이디에 대한 단일행 조회 -->
+	<select id="selectIDItem"
+		parameterType="study.team.abuhae.model.Admin_info" resultMap="AdminMap">
+		select * from admin_info where adminid=#{adminid};
+	</select>
+
+
+
+</mapper>

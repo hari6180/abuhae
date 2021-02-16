@@ -68,8 +68,8 @@
 			margin: 30px auto;
 		}
 
-		#user_id,
-		#user_pw {
+		#adminid,
+		#adminpw {
 			background-color: #fff;
 			display: block;
 			margin: auto;
@@ -98,21 +98,21 @@
 <body>
 	<div class="app">
 		<div class="container">
-			<form role="form" class="form_box" method="post">
+			<form role="form" class="form_box" method="post" action="${pageContext.request.contextPath}/admin/admin_login_ok.do">
 				<div class="main_logo">
-					<a href="${pageContext.request.contextPath}/Index.jsp">
-						<img src="${pageContext.request.contextPath}/assets/img/logo (1).png" class="logo" />
+					<a href="${pageContext.request.contextPath}/abuhae">
+						<img src="${pageContext.request.contextPath}/assets/img/logo(1).png" class="logo" />
 					</a>
 				</div>
 				<div class="form-group">
 					<label for="user_id">아이디</label>
-					<input type="text" id="user_id" class="input_text" placeholder="아이디를 입력하세요." />
+					<input type="text" id="adminid" name="adminid" class="input_text" placeholder="아이디를 입력하세요." />
 				</div>
 				<div class="form-group">
 					<label for="user_pw">비밀번호</label>
-					<input type="password" id="user_pw" class="input_text" placeholder="비밀번호를 입력하세요." />
+					<input type="password" id="adminpw" name="adminpw" class="input_text" placeholder="비밀번호를 입력하세요." />
 				</div>
-				<button type="button" class="login_btn">로그인</button>
+				<button type="submit" class="login_btn">로그인</button>
 			</form>
 		</div>
 	</div>
@@ -120,16 +120,7 @@
 	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		$(function () {
-			$(".btn-block").on("click", function () {
-				if ($("#user_id").val() == "admin" && $("#user_pw").val() == "123") {
-					location.href = "${pageContext.request.contextPath}/admin/admin_member.do";
-				} else {
-					alert("아이디 혹은 비밀번호를 확인해 주세요.");
-				}
 
-			});
-		});
 	</script>
 </body>
 

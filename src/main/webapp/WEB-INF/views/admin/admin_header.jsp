@@ -35,7 +35,7 @@
             </a>
           </div>
           <div class="info_wrap">
-            <div class="admin_info">관리자님 안녕하세요.</div>
+            <div class="admin_info">${adminID }님 안녕하세요.</div>
             <div>
               <button type="button" class="logout_btn">로그아웃</button>
             </div>
@@ -52,8 +52,8 @@
                 </h4>
               </div>
               <div id="collapseOne" class="panel-collapse collapse">
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin_member.do">전체회원 관리</a></div>
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin_leave.do">탈퇴회원 관리</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_member.do">전체회원 관리</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_leave.do">탈퇴회원 관리</a></div>
               </div>
             </div>
             <!-- 이용권 관리-->
@@ -64,7 +64,7 @@
                 </h4>
               </div>
               <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin_coupon.do">이용권 관리 현황/ 쿠폰 발송</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_coupon.do">이용권 관리 현황/ 쿠폰 발송</a></div>
               </div>
             </div>
             <!-- 고객센터 -->
@@ -75,10 +75,10 @@
                 </h4>
               </div>
               <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin_bbs_guide.do">공지사항</a></div>
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin_bbs_mom_faq.do">부모회원 자주묻는질문</a></div>
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin_bbs_sitter_faq.do">시터회원 자주묻는질문</a></div>
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin_bbs_guide.do">이용가이드</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs_guide.do">공지사항</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs_mom_faq.do">부모회원 자주묻는질문</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs_sitter_faq.do">시터회원 자주묻는질문</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs_guide.do">이용가이드</a></div>
               </div>
             </div>
             <!-- 현황 -->
@@ -89,7 +89,7 @@
                 </h4>
               </div>
               <div id="collapseFour" class="panel-collapse collapse">
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin_statistic.do">현황</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_statistic.do">현황</a></div>
               </div>
             </div>
             <!-- 아코디언 영역 end-->

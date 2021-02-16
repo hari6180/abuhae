@@ -274,9 +274,6 @@
                                 result1.push($(act1[i]).val());
                                 //console.log(want_act);
                             }
-                            
-
-
                         } else {
                             swal({
                                 text: '최대 3개의 활동을 선택해 주세요.',

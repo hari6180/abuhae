@@ -20,7 +20,7 @@ import study.team.abuhae.service.MemberService;
 
 @Slf4j
 @Controller
-public class JoinController {
+public class JoinMomController {
 	// service 객체 패턴 구현체 주입
 	@Autowired
 	MemberService memberService;
@@ -45,10 +45,8 @@ public class JoinController {
 	public String m_join_start(Model model, HttpServletResponse response, 
 			@RequestParam(value = "type") char type) {
 		// 파라미터 저장
-		Member member = new Member() {
-		};
-		member.setType(type);
-		log.debug("선택한 타입 >> " + member.getType());
+		mominfo.setType(type);
+		log.debug("선택한 타입 >> " + mominfo.getType());
 
 		return "/join/parent/start";
 	}
@@ -186,7 +184,7 @@ public class JoinController {
 		model.addAttribute("gu", gu);
 		model.addAttribute("dong", dong);
 
-		return new ModelAndView("/join/parent/schedule2");
+		return new ModelAndView("/join/parent/schedule");
 		// return webHelper.getJsonData(map);
 		// return "/join/parent/children";
 	}
