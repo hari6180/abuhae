@@ -63,17 +63,17 @@
 					<div class="siren_type">
 						<h4 class="siren_title">신고 유형을 선택해주세요.</h4>
 						<div class="siren_type_box">
-							<input id="rd1" type="radio" name="siren_radio" value="siren_radio_01" style="width:18px; height:18px;">
+							<input id="rd1" type="radio" name="siren_radio" value="허위정보를 기재하였습니다." style="width:18px; height:18px;">
 							<label for="rd1">허위정보를 기재하였습니다.</label><br/>
-							<input id="rd2" type="radio" name="siren_radio" value="siren_radio_02" style="width:18px; height:18px;">
+							<input id="rd2" type="radio" name="siren_radio" value="부적절한 사진입니다." style="width:18px; height:18px;">
 							<label for="rd2">부적절한 사진입니다.</label><br/>
-							<input id="rd3" type="radio" name="siren_radio" value="siren_radio_03" style="width:18px; height:18px;">
+							<input id="rd3" type="radio" name="siren_radio" value="부적절한 내용입니다." style="width:18px; height:18px;">
 							<label for="rd3">부적절한 내용입니다.</label><br/>
-							<input id="rd4" type="radio" name="siren_radio" value="siren_radio_04" style="width:18px; height:18px;">
+							<input id="rd4" type="radio" name="siren_radio" value="규정을 위반하였습니다." style="width:18px; height:18px;">
 							<label for="rd4">규정을 위반하였습니다.</label><br/>
-							<input id="rd5" type="radio" name="siren_radio" value="siren_radio_05" style="width:18px; height:18px;">
+							<input id="rd5" type="radio" name="siren_radio" value="맘시터 회원 자격이 없습니다." style="width:18px; height:18px;">
 							<label for="rd5">맘시터 회원 자격이 없습니다.</label><br/>
-							<input id="rd6" type="radio" name="siren_radio" value="siren_radio_06" style="width:18px; height:18px;">
+							<input id="rd6" type="radio" name="siren_radio" value="기타" style="width:18px; height:18px;">
 							<label for="rd6">기타</label><br/>
 						</div> <!-- fin. siren_type_box -->
 					</div> <!-- fin. siren_type -->

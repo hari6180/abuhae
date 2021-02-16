@@ -21,8 +21,32 @@ public class Page_detail_sitterController {
 	// 시터 상세페이지
 	@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_detail.do", method = RequestMethod.GET)
 	public String sitter_detail(Model model, HttpServletResponse response,
-			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		
+		// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
+		Sitter_info input = new Sitter_info();
+		input.setSitterno(sitterno);
+		
+		// 조회결과를 저장할 객체 선언 
+		Sitter_info output = null;
+		
+		try {
+			// 데이터 조회 
+			output = detailService.getSitterItem(input);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("output", output);
+		return "/page_detail/sitter_page_detail/sitter_detail";
+	}
+	
+	
+	// 시터 상세페이지 > 인터뷰 페이지
+	@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_interview.do", method = RequestMethod.GET)
+	public String sitter_interview(Model model, HttpServletResponse response,	
+		@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+	
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 		Sitter_info input = new Sitter_info();
 		input.setSitterno(sitterno);
@@ -39,14 +63,6 @@ public class Page_detail_sitterController {
 		}
 			
 		model.addAttribute("output", output);
-		return "/page_detail/sitter_page_detail/sitter_detail";
-	}
-	
-	
-	// 시터 상세페이지 > 인터뷰 페이지
-	@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_interview.do", method = RequestMethod.GET)
-	public String sitter_interview(Model model) {
-
 		return "/page_detail/sitter_page_detail/sitter_interview";
 	}
 }

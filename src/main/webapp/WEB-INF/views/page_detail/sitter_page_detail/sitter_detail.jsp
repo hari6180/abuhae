@@ -53,12 +53,20 @@
 						<div class="name_siter">${output.sitter_type} 맘시터</div>
 						<div class="response">
 							응답률
-							96%
+							${output.answer}%
 						</div>
 					</div><!-- fin. info_name -->		
 					<div class="info_star">
 						<div class="star">
-						<c:if test="${output.rev_rate=='1'}">
+						<c:if test="${fn:contains(output.rev_rate,'')}">
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+						</div>
+						</c:if>
+						<c:if test="${fn:contains(output.rev_rate,'1')}">
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
@@ -66,7 +74,7 @@
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
 						</c:if>
-						<c:if test="${output.rev_rate=='2'}">
+						<c:if test="${fn:contains(output.rev_rate,'2')}">
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
@@ -74,7 +82,7 @@
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
 						</c:if>
-						<c:if test="${output.rev_rate=='3'}">
+						<c:if test="${fn:contains(output.rev_rate,'3')}">
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
@@ -82,7 +90,7 @@
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
 						</c:if>
-						<c:if test="${output.rev_rate=='4'}">
+						<c:if test="${fn:contains(output.rev_rate,'4')}">
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
@@ -90,7 +98,7 @@
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
 						</c:if>
-						<c:if test="${output.rev_rate=='5'}">
+						<c:if test="${fn:contains(output.rev_rate,'5')}">
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
@@ -99,7 +107,7 @@
 						</div>
 						</c:if>
 						<div class="review_ea">
-								후기 ${output.revno}개
+								후기 ${output.rev_count}개
 						</div>
 						<div class="line"></div>
 						<div class="age">${output.birthdate}세</div>
@@ -888,7 +896,7 @@
 								${output.name}
 							</div>
 							<div class="fixed_age">
-								(${output.birthdate}세, 여)
+								(${output.birthdate}세, <c:if test="${fn:contains(output.gender,'F')}">여</c:if><c:if test="${fn:contains(output.gender,'M')}">남</c:if>)
 							</div>
 						</div>
 						<div class="fixed_money">

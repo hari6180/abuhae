@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%
-	
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -53,11 +52,11 @@
 								<img width="80" height="80" src="<%=request.getContextPath()%>/assets/img/chat_mom03.jpg" />
 								<br/>
 								<span class="interview_info">
-									100일전 작성
+									${output.openingdate} 작성
 									<br/>
-									경기도 파주시
+									${output.si}&nbsp;${output.gu}
 									<br/>
-									희망시급 10,000원
+									희망시급 ${output.payment}원
 								</span>
 								<div class="btn_area">
 								<button type="button" class="btn" onclick = "location.href = 'http://localhost:8080/<%=request.getContextPath()%>/mypage/mypage_mom/mom_mypage.do'">
