@@ -14,29 +14,22 @@
 <title>아이를부탁해</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed"
-	href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 <!-- bootstrap -->
 <!--절대 경로 수정 1220 선아-->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 <!-- noto Sans 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/notosans.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 
 <!-- icon 참조 -->
-<script src="https://kit.fontawesome.com/12ac058ac7.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/admin_mng_mem.css" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_mng_mem.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 </head>
 
 <body>
@@ -49,7 +42,7 @@
 				<div class="title_cont col-xs-12">
 					<h3>신고 회원 관리</h3>
 					<ol class="breadcrumb">
-						<li><a href="${pageContext.request.contextPath}/admin_member.do"><i class="fas fa-home"></i>
+						<li><a href="${pageContext.request.contextPath}/admin_member.do?type=M"><i class="fas fa-home"></i>
 								Home</a></li>
 						<li></i>회원관리</li>
 						<li class="active"></i>신고 회원 관리</li>
@@ -82,8 +75,7 @@
 
 					<div class="btn_list">
 						<button class="rep_btn" type="button">
-							<a href="#"> <i class="fas fa-bell-slash"></i> 프로필 비공개
-							</a>
+							<i class="fas fa-bell-slash"></i> 프로필 비공개
 						</button>
 					</div>
 
@@ -102,8 +94,7 @@
 						</colgroup>
 						<thead>
 							<tr role="row">
-								<th scope="col" class="text-center"><input type="checkbox"
-									onclick="allcheck(this)"></th>
+								<th scope="col" class="text-center"><input type="checkbox" id="all_check"></th>
 								<th scope="col" class="text-center">회원번호</th>
 								<th scope="col" class="text-center">id</th>
 								<th scope="col" class="text-center">이름</th>
@@ -223,12 +214,47 @@
 
 			});
 
-			function allcheck(o) {
-				// 클릭한 체크박스의 table 에서 (바로위 부모요소를 대상)
-				// 이름이 chk 인것을 찾고
-				// 현재 요소의 체크 상태를 찾은 대상에 적용
-				$(o).closest('table').find('[name=chk]').prop('checked', o.checked);
-			};
+			//올체크 상태 변경되었을 떄 이벤트 - 선아
+            $("#all_check").change(function(){
+                //모든 hobby의 상태를 올체크와 동일하게
+                $(".agree").prop('checked', $(this).prop('checked'));
+                var now = $(".next_btn").prop('disabled');
+                $(".next_btn").prop('disabled', !now);
+            });
+
+			
+
+			$(".rep_btn").on("click", function () {
+				//체크된 row의 회원번호 가져오기
+				var checkbox = $("input[name=chk]:checked");
+				var memberno = 0;
+				checkbox.each(function (i) {
+					var tr = checkbox.parent().parent().eq(i); //checkbox의 두단계 상위가 tr
+					var td = tr.children(); //td태그는 tr의 하위
+
+					memberno = td.eq(1).text(); //memberno는 td의 두번째 요소
+				});
+				
+				var who = $("#filter_member").val();
+
+				$.ajax({
+					type: 'POST',
+					url: '${pageContext.request.contextPath}/admin/jobopening_update?memberno='+memberno,
+					success: function(json){
+						// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+						if (json.rt == "OK") {
+							alert(memberno+"회원 비공개 처리 완료");
+							window.location = "${pageContext.request.contextPath}/admin/admin_singo.do?who="+who;
+						}
+						
+					},
+					error : function() { //통신 실패시 ㅠㅠ
+						alert('통신실패!');
+					}
+				});
+
+			});
+
 		});
 	</script>
 </body>

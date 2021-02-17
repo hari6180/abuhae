@@ -130,6 +130,11 @@
 		where who  =#{who};
 	</select>
 	
+	<!-- 신고된 회원 job_opening 비공개 처리 -->
+	<update id="updateSingoMember" parameterType="study.team.abuhae.model.Member">
+		update member set job_opening='N' where memberno=#{memberno};
+	</update>
+	
 	<!-- ========== 신고 회원 관리 ============== -->
 	
 	<!-- ========== 탈퇴 회원 관리 ============== -->
@@ -144,6 +149,12 @@
 		parameterType="study.team.abuhae.model.Leave_member" resultMap="LeaveMap">
 		select * from leave_member
 	</select>
+	
+	<!-- 회원 삭제 -->
+	<delete id="deleteLeaveMember" parameterType="study.team.abuhae.model.Leave_member">
+		delete from leave_member where id=#{id}
+	</delete>
+	
 	<!-- ========== 탈퇴 회원 관리 ============== -->
 	
 	<!-- ========== 이용권 사용중인 회원 관리 / 쿠폰 발급 ============== -->

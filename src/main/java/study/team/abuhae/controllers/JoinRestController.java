@@ -123,9 +123,6 @@ public class JoinRestController {
 		} catch (Exception e) {
 			return webhelper.getJsonError(e.getLocalizedMessage());
 		}
-
-		
-
 		return webhelper.getJsonData();
 	}
 }

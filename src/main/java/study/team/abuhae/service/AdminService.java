@@ -17,11 +17,17 @@ public interface AdminService {
 	//신고수 조회
 	public int getReportCount(Report input) throws Exception;
 	
+	//신고당한 회원 프로필 비공개 처리
+	public int updateReportMember(Mom_info input) throws Exception;
+	
 	//탈퇴회원 목록
 	public List<Leave_member> getLeaveList(Leave_member input) throws Exception;
 		
 	//탈퇴 회원 수 조회
 	public int getLeaveCount(Leave_member input) throws Exception;
+	
+	//탈퇴 회원 삭제
+	public int deleteLeaveMember(Leave_member input) throws Exception;
 	
 	//이용권 사용중인 회원 조회
 	public List<Mom_info> getSubList(Mom_info input) throws Exception;

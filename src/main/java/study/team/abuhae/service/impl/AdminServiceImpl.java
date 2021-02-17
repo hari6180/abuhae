@@ -88,6 +88,28 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 
+
+	@Override
+	public int updateReportMember(Mom_info input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlsession.update("AdminMapper.updateSingoMember", input);
+			
+			if (result==0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
+	
 	//=========탈퇴회원 조회==============
 	@Override
 	public List<Leave_member> getLeaveList(Leave_member input) throws Exception {
@@ -119,6 +141,26 @@ public class AdminServiceImpl implements AdminService {
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	@Override
+	public int deleteLeaveMember(Leave_member input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlsession.update("AdminMapper.deleteLeaveMember", input);
+			
+			if (result==0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
 		}
 		return result;
 	}
@@ -157,5 +199,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return result;
 	}
+
+	
 
 }

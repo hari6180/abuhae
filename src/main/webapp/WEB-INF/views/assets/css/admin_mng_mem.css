@@ -211,17 +211,13 @@ td {
   background-color: #fafafa;
   border-radius: 2px;
   border: 1px solid #999999;
-  color: #ffffff;
+  color: #666666;
   margin-right: 10px;
   margin-bottom: 15px;
 }
 
 .rep_btn:last-child {
   margin-right: 0;
-}
-
-.rep_btn a {
-  color: #666666;
 }
 
 .line {
