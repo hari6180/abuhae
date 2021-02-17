@@ -331,6 +331,20 @@ button {
   float: left;
 }
 
+.care_days_sel {
+  width: 23px;
+  border-radius: 1px;
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: bold;
+  line-height: 1.25;
+  margin: 0 1px;
+  padding: 3px 0;
+  text-align: center;
+  background-color: #ff7000 !important;
+  color: #fff;
+}
+
 .care_days {
   width: 23px;
   border-radius: 1px;
@@ -341,7 +355,7 @@ button {
   margin: 0 1px;
   padding: 3px 0;
   text-align: center;
-  background-color: #ff7000;
+  background-color: #ddd;
   color: #fff;
 }
 

@@ -43,6 +43,7 @@ public class Mom_info extends Member {
 	private char payment_ok; 		// 시급협의 여부 ('N', 'Y')
 	private String schedule;		// 가능한 시간대 입력(JSON) 
 	private String frequency;		// 스케줄 주기
+	private String days;			// 가능한 요일
 	
 	/** 2) JOIN절에 따른 추가 컬럼 */
 	// 찾기 기능의 JOIN - 0210 hari

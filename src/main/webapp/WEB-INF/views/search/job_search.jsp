@@ -599,89 +599,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <!-- 드롭다운 end-->
               </div>
               <!-- 카드영역 -->
-              <%--
-                    <c:set var="schedule" value="${item.schedule}" />
-                    <c:set var="startdate" value="${fn:substring(schedule,6,11)}" />
-                    <c:set var="frequency" value="${item.schedule_ok}" />
-                    <c:set var="payment" value="${item.payment}" />
-                    <c:set var="payment_ok" value="${item.payment_ok}" />
-                    <c:set var="frequency2" value="${item.frequency}" />
-                    상세페이지로 이동하기 위한 URL
-                    <c:url value="/page_detail/mom_page_detail/mom_page_detail_calendar.do" var="viewUrl">
-                      <c:param name="momno" value="${item.momno}" />
-                    </c:url>
-
-                    <div class="job_item_group">
-                      <div class="item_body">
-                        <div class="profile_img_group">
-                          <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
-                          <div class="applicant_group">
-                            <div class="applicant">${applySt}명 지원</div>
-                          </div>
-                        </div>
-                        <div class="profile_info_group">
-                          <div class="content_row">
-                            <div>
-                              <div class="kids_count">${kid_age} ${kids_num}명</div>
-                              <div class="text_sep"></div>
-                              <div class="last_update">${openingdate}</div>
-                            </div>
-                          </div>
-                          <div class="content_row">
-                            <div class="find_text">${want_act} &nbsp 맘시터 찾습니다.</div>
-                          </div>
-                          <div class="content_row location_group">
-                            <span class="location">${si}&nbsp${gu}</span>
-                            <div class="text_sep"></div>
-                            <span class="user_name"> ${name}</span>
-                            <div class="text_sep"></div>
-                            <span class="start_date">${startdate} 시작</span>
-                          </div>
-                          <div class="content_row">
-                            <i class="fas fa-won-sign"></i>
-                            <div class="wanted_pay">
-                              희망 시급 ${payment}원
-                              <c:if test="${fn:contains(payment_ok,'Y')}"> &nbsp/&nbsp협의가능 </c:if>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <hr class="divider" />
-                      <div class="item_footer">
-                        <div class="time_info_group">
-                          <div class="time_text_group">
-                            <div class="frequency">
-                              <c:choose>
-                                <c:when test="${fn:contains(frequency2, 'regular')}"> 정기적 </c:when>
-                                <c:when test="${fn:contains(frequency2, 'shortTerm')}"> 단기 </c:when>
-                                <c:otherwise> 협의 </c:otherwise>
-                              </c:choose>
-                            </div>
-                          </div>
-                          <div class="care_days_group">
-                            <!-- 조건에 따라 css 색상 변환 처리 -->
-                            <span class="care_days">월</span>
-                            <span class="care_days">화</span>
-                            <span class="care_days">수</span>
-                            <span class="care_days">목</span>
-                            <span class="care_days">금</span>
-                            <span class="care_days">토</span>
-                            <span class="care_days">일</span>
-                          </div>
-                        </div>
-                        <div class="jim_btn">
-                          <button class="swapHeart">
-                            <div class="jim">
-                              <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
-                            </div>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </c:forEach>
-                </c:otherwise>
-              </c:choose>
-              --%>
+     
               <!-- 카드영역 end -->
               <div id="result"></div>
               <div id="result2"></div>
@@ -774,26 +692,26 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 </div>
               </div>
               <div class="care_days_group">
-                <!-- 조건에 따라 css 색상 변환 처리 -->
-                <span class="care_days">
+                <!-- 조건에 따라 css 색상 변환 처리 --> 
+                <span class="care_days {{#contains "mon" days }} care_days_sel {{/contains}}">
                   월
                 </span>
-                <span class="care_days">
+                <span class="care_days {{#contains "tue" days }} care_days_sel {{/contains}}">
                   화
                 </span>
-                <span class="care_days">
+                <span class="care_days {{#contains "wed" days }} care_days_sel {{/contains}}">
                   수
                 </span>
-                <span class="care_days">
+                <span class="care_days {{#contains "thu" days }} care_days_sel {{/contains}}">
                   목
                 </span>
-                <span class="care_days">
+                <span class="care_days {{#contains "fri" days }} care_days_sel {{/contains}}">
                   금
                 </span>
-                <span class="care_days">
+                <span class="care_days {{#contains "sat" days }} care_days_sel {{/contains}}">
                   토
-                </span>
-                <span class="care_days">
+                </span> 
+                <span class="care_days {{#contains "sun" days }} care_days_sel {{/contains}}">
                   일
                 </span>
               </div>
@@ -821,6 +739,12 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       Handlebars.registerHelper('trimString', function(passedString) {
     	    var theString = passedString.substring(6,11);
     	    return new Handlebars.SafeString(theString)
+    	});
+      
+      Handlebars.registerHelper('contains', function(needle, haystack, options) {
+    	   needle = Handlebars.escapeExpression(needle);
+    	   haystack = Handlebars.escapeExpression(haystack);
+    	   return (haystack.indexOf(needle) > -1) ? options.fn(this) : options.inverse(this);
     	});
       
       

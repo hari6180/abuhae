@@ -67,7 +67,8 @@
 		<result property="orderdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
 		<result property="applySt" column="cntno"/>
-		<result property="frequency" column="frequency" />
+		<result property="days" column="days" />
+		
 	</resultMap>
 
 
@@ -136,7 +137,8 @@
 		name,
 		job_opening, m.momno, want_act, want_age, kids_num, kids_age, si,
 		gu,
-		json_extract(schedule, '$.startdate') AS schedule, REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency, schedule_ok,
+		json_extract(schedule, '$.startdate') AS schedule, REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
+		REPLACE(json_extract(schedule, '$.day'),'"','') AS days, schedule_ok,
 		payment, payment_ok, care_type, CASE
 		<!-- 연산자 태그인식 방지 -->
 	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
