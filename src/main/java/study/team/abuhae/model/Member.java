@@ -27,6 +27,10 @@ public abstract class Member {
 	private String ticket_price;// 이용권 금액
 	private String signup_date; // 가입일자
 	
+	/** 시터상세에서 사용할 for data_format 함수 적용 - 0217 지우 */
+	private String signup; // 가입일자
+	
+	
 	// 정렬조건
 	private static String order;
 	private String orderdate;

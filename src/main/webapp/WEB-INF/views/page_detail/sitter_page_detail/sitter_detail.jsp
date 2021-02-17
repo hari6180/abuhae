@@ -2,6 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -58,7 +59,7 @@
 					</div><!-- fin. info_name -->		
 					<div class="info_star">
 						<div class="star">
-						<c:if test="${fn:contains(output.rev_rate,'')}">
+						<c:if test="${fn:contains(output.rev_rate,0)}">
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
@@ -66,7 +67,7 @@
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
 						</c:if>
-						<c:if test="${fn:contains(output.rev_rate,'1')}">
+						<c:if test="${fn:contains(output.rev_rate,1)}">
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
@@ -74,7 +75,7 @@
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
 						</c:if>
-						<c:if test="${fn:contains(output.rev_rate,'2')}">
+						<c:if test="${fn:contains(output.rev_rate,2)}">
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
@@ -82,7 +83,7 @@
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
 						</c:if>
-						<c:if test="${fn:contains(output.rev_rate,'3')}">
+						<c:if test="${fn:contains(output.rev_rate,3)}">
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
@@ -90,7 +91,7 @@
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
 						</c:if>
-						<c:if test="${fn:contains(output.rev_rate,'4')}">
+						<c:if test="${fn:contains(output.rev_rate,4)}">
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
@@ -98,7 +99,7 @@
 							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
 						</div>
 						</c:if>
-						<c:if test="${fn:contains(output.rev_rate,'5')}">
+						<c:if test="${fn:contains(output.rev_rate,5)}">
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
@@ -122,12 +123,12 @@
 					<div class="three_area">
 						<div class="views_area">
 							<div id="views"><i class="fas fa-user-friends"></i> 조회수</div>
-							<div id="views_number"></div>
+							<div id="views_number">${output.view}</div>
 						</div>
 						<div class="line_three"></div>
 						<div class="clock_area">
 							<div id="clock"><i class="far fa-clock"></i> 프로필 작성</div>
-							<div id="date">${output.openingdate_test}</div>
+							<div id="date">${output.openingdate}</div>
 						</div>
 						<div class="line_three"></div>
 						<div class="cctv_area">
@@ -193,10 +194,12 @@
 						</div>
 					</div>
 					</c:if>
+					
 					<div class="iwant_box">
 						<div class="box_name">선호하는 돌봄유형</div>
 						<div class="iwant_area">
 							<div class="iwant_text_box">
+							<c:if test="${output.favorite_act=='등하원' || output.favorite_act==null}">
 								<div class="iwant_text_title">
 									"저는<span style="color: #ff7000"> 등하원</span> 돌봄을 가장 선호해요"
 								</div>
@@ -205,6 +208,45 @@
 									<div id="iwant_text_desc">- 주 5일 하루 3~5시간 책임지고 돌볼 수 있어요</div>
 									<div id="iwant_text_desc">- 등하원, 밥챙겨주기, 씻기기, 놀아주기 활동을 할 수 있어요</div>
 								</div>
+								</c:if>
+								<c:if test="${output.favorite_act=='놀이학습'}">
+								<div class="iwant_text_title">
+									"저는<span style="color: #ff7000"> 놀이/학습</span> 돌봄을 가장 선호해요"
+								</div>
+								<div class="iwant_text">
+									<div id="iwant_text_desc">- 2~10세 아이와 특기를 활용해서 즐겁고 학습적인 시간을 보내는 활동</div>
+									<div id="iwant_text_desc">- 주 1~4회 정기적으로 또는 단기로 2~4시간 활동</div>
+								</div>
+								</c:if>
+								<c:if test="${output.favorite_act=='신생아영아풀타임'}">
+								<div class="iwant_text_title">
+									"저는<span style="color: #ff7000"> 신생아/영아 풀타임</span> 돌봄을 가장 선호해요"
+								</div>
+								<div class="iwant_text">
+									<div id="iwant_text_desc">- 0~24개월 아이를 먹이고, 재우고, 놀아주는 활동</div>
+									<div id="iwant_text_desc">- 보통 주 5일 하루 8~10시간 책임지고 돌봄 필요</div>
+									<div id="iwant_text_desc">- 아이 관련 가사활동 필수</div>
+								</div>
+								</c:if>
+								<c:if test="${output.favorite_act=='신생아영아보조'}">
+								<div class="iwant_text_title">
+									"저는<span style="color: #ff7000"> 신생아/영아 보조</span> 돌봄을 가장 선호해요"
+								</div>
+								<div class="iwant_text">
+									<div id="iwant_text_desc">- 0~24개월 아이를 보호자와 함께 또는 혼자 돌봄</div>
+									<div id="iwant_text_desc">- 최근 0~12개월 돌봄 경험 1주일 이상 필수</div>
+									<div id="iwant_text_desc">- 주 1~4회 정기적으로 또는 단기로 2~4시간 활동</div>
+								</div>
+								</c:if>
+								<c:if test="${output.favorite_act=='긴급단기'}">
+								<div class="iwant_text_title">
+									"저는<span style="color: #ff7000"> 긴급/단기</span> 돌봄을 가장 선호해요"
+								</div>
+								<div class="iwant_text">
+									<div id="iwant_text_desc">- 정기 방문이 아닌 1~2회 또는 짧은 기간 동안만 돌봄 활동</div>
+									<div id="iwant_text_desc">- 프로필에 돌봄 가능한 아이 연령과 활동 명시 필요</div>
+								</div>
+								</c:if>
 							</div>
 						</div>
 					</div>
@@ -839,7 +881,7 @@
 						<div class="famille_area">
 							<div class="famille_main">
 								<div class="famille_date col-xs-12">
-									${output.openingdate} 부터 <span style="font-weight: bold; color: #ff7000;">현재까지</span>
+									${output.signup}부터 <span style="font-weight: bold; color: #ff7000;">현재까지</span>
 								</div>
 								<div class="famille_number">
 									${output.cntno}
@@ -898,7 +940,7 @@
 							</div>
 						</div>
 						<div class="fixed_money">
-							희망시급 : ${output.payment}원
+							희망시급 : <fmt:formatNumber value="${output.payment}" pattern="#,###" />원
 						</div>
 					</div> <!-- fin. fixed_area -->
 					<div class="fixed_btn">
@@ -931,9 +973,11 @@
 		<script type="text/javascript">
 		jQuery(function($) {
 				
+				
 			  $('#swapHeart').on('click', function() {
 				
 			    var $jim = $(this)
+			    
 			    
 			    // 찜할 때 alert창과 glyphicon변형
 			    if($(this).find('span').hasClass("glyphicon-heart-empty")) {
