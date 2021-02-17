@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -25,105 +28,90 @@
 
 		</style>
 </head>
-	<body>
+<body>
 <div class="container">
-		<header>
-			<%@ include file="../admin/admin_header.jsp"%>
-			</header>
-		<div class="Title">
+	<header>
+		<%@ include file="../admin/admin_header.jsp" %>
+	</header>
+	<div class="Title">
 		<h1>이용권 관리 현황 / 쿠폰 발송</h1>
 		<ol class="breadcrumb">
-		<li>
-		<i class="fas fa-home"></i>
-		<a href="${pageContext.request.contextPath}/admin_member.do">Home</a>
-		</li>
-		<li class="active">
-		이용권 관리 현황 / 쿠폰 발송
-		</li>	
+			<li>
+				<i class="fas fa-home"></i>
+				<a href="${pageContext.request.contextPath}/admin_member.do">Home</a>
+			</li>
+			<li class="active">
+				이용권 관리 현황 / 쿠폰 발송
+			</li>
 		</ol>
-		</div>
-		<div class="dropdown">
+	</div>
+	<div class="dropdown">
 		<select class="filter" id="filter_bbs" name="filter_bbs">
-		<option value="" selected>전체</option>
-		<option value="find">이용권사용중회원</option>
-		<option value="payment">미사용중회원</option>
-		<option value="apply">만료회원</option>
-		<option value="care">소멸회원</option>
+			<option value="" selected>전체</option>
+			<option value="find">이용권사용중회원</option>
+			<option value="payment">미사용중회원</option>
+			<option value="apply">만료회원</option>
+			<option value="care">소멸회원</option>
 		</select>
-	    <select class="filter" id="filter_bbs" name="filter_bbs">
-		<option value="nomal" selected>기본정렬</option>
-		<option value="startdate">이용권시작일순</option>
-		<option value="enddate">이용권만료일순</option>
-	    </select>
-	    <select class="filter" id="filter_limit" name="filter_limit">
-		<option value="10" selected>10개씩보기</option>
-		<option value="20">20개씩보기</option>
-		<option value="30">30개씩보기</option>
-	    </select>
-        </div>
-		<div id="tabCont2_1" class="tabCont">
+		<select class="filter" id="filter_bbs" name="filter_bbs">
+			<option value="nomal" selected>기본정렬</option>
+			<option value="startdate">이용권시작일순</option>
+			<option value="enddate">이용권만료일순</option>
+		</select>
+		<select class="filter" id="filter_limit" name="filter_limit">
+			<option value="10" selected>10개씩보기</option>
+			<option value="20">20개씩보기</option>
+		</select>
+	</div>
+	<div id="tabCont2_1" class="tabCont">
 		<div class="mTab typeTab eTab">
-		<ul>	
-		<button type="button" class="button">쿠폰발송</button>
-		</ul>
+			<ul>
+				<button type="button" class="button">쿠폰발송</button>
+			</ul>
 		</div>
 		<div id="tabContSub2_1_1" class="tabContSub">
-		<div class="mBoard typeLiset gScroll gCellSingle">
-		<table>
-		<thead>
-		<tr>
-		<th class="col-md-1"><input type="checkbox" onclick="allcheck(this)"></th>
-		<th class="col-md-1">회원번호</th>
-		<th class="col-md-1">이름</th>
-		<th class="col-md-1">아이디</th>
-		<th class="col-md-2">이용권시작일</th>
-		<th class="col-md-2">이용권만료일</th>
-		<th class="col-md-2">쿠폰지급일</th>
-		</tr>
-		</thead>
-		<tbody class="middle center">
-		<tr>
-		<td class="text-center"><input type="checkbox" name="chk"></td>
-		<td class="text-center">1</td>
-	    <td class="text-center">홍길동</td>
-	    <td class="text-center">Iron</td>
-		<td class="text-center">2020-10-10</td>
-		<td class="text-center">2021-03-10</td>
-		<td class="text-center">2020-10-10</td>
-		</tr>
-		<tr>
-		<td class="text-center"><input type="checkbox" name="chk"></td>
-		<td class="text-center">2</td>
-	    <td class="text-center">이춘향</td>
-	    <td class="text-center">Bronze</td>
-		<td class="text-center">2020-11-01</td>
-		<td class="text-center">2021-04-01</td>
-		<td class="text-center">2020-11-01</td>
-		</tr>
-		<tr>
-		<td class="text-center"><input type="checkbox" name="chk"></td>
-		<td class="text-center">3</td>
-	    <td class="text-center">이몽룡</td>
-	    <td class="text-center">Silver</td>
-		<td class="text-center">2020-03-05</td>
-		<td class="text-center">2021-08-05</td>
-		<td class="text-center">2020-03-05</td>
-		</tr>
-		<tr>
-		<td class="text-center"><input type="checkbox" name="chk"></td>
-		<td class="text-center">4</td>
-	    <td class="text-center">오태식</td>
-	    <td class="text-center">Gold</td>
-		<td class="text-center">2020-06-06</td>
-		<td class="text-center">2021-11-06</td>
-		<td class="text-center">2020-06-06</td>
-		</tr>
-		</tbody>
-		</table>
+			<div class="mBoard typeLiset gScroll gCellSingle">
+				<table>
+					<thead>
+						<tr>
+							<th class="col-md-1"><input type="checkbox" onclick="allcheck(this)"></th>
+							<th class="col-md-1">회원번호</th>
+							<th class="col-md-1">이름</th>
+							<th class="col-md-1">아이디</th>
+							<th class="col-md-2">이용권시작일</th>
+							<th class="col-md-2">이용권만료일</th>
+							<th class="col-md-2">쿠폰지급일</th>
+						</tr>
+					</thead>
+					<tbody class="middle center">
+						<c:choose>
+						<%-- 조회결과가 없는 경우 --%>
+							<c:when test="${output == null || fn:length(output) == 0}">
+								<tr>
+									<td colspan="7" align="center">조회결과가 없습니다.</td>
+								</tr>
+							</c:when>
+						<%-- 조회결과가 있는 경우 --%>
+							<c:otherwise>
+							<%-- 조회 결과에 따른 반복 처리 --%>
+								<c:forEach var="item" items="${output}" varStatus="status">
+									<tr>
+										<td class="text-center"><input type="checkbox" name="chk"></td>
+										<td align="center">${item.memberno}</td>
+										<td align="center">${item.name}</td>
+										<td align="center">${item.id}</td>
+										<td align="center">${item.startdate}</td>
+										<td align="center">${item.enddate}</td>
+										<td align="center">${item.enddate}</td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		</div>
-		</div>
-		
+	</div>
 </div>
 		<!-- Javascript -->
 		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
@@ -136,17 +124,6 @@
 			$(o).closest('table').find('[name=chk]').prop('checked', o.checked);
 		}
 		$(document).ready(function() {
-			$('#btn_delete').click(function() {
-				var result = confirm('정말 삭제하시겠습니까?');
-				if(result) {
-					//yes
-					location.replace('admin_main.html');
-				} else {
-					// no
-				}
-			});
-		});
-		$(document).ready(function() {
 			$('.logout').click(function() {
 				var result = confirm('정말 로그아웃 하시겠습니까?');
 				if(result) {
@@ -158,5 +135,5 @@
 			});
 		});
 			</script>
-	</body>
+</body>
 </html>

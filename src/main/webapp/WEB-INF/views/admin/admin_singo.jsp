@@ -64,10 +64,16 @@
 	
 						<!-- 회원 유형 선택 드롭다운 -->
 						<div class="select_list">
-							<select class="filter" id="filter_member" name="filter_member">
-								<option value="M" selected>부모회원</option>
-								<option value="S">시터회원</option>
-	
+							<select class="filter" id="filter_member" name="type">
+								<%-- type에 따라서 option에 selected --%>
+								<c:if test="${who == 'M'}">
+									<option value="M" selected>부모회원</option>
+									<option value="S">시터회원</option>
+								</c:if>
+								<c:if test="${who == 'S'}">
+									<option value="M">부모회원</option>
+									<option value="S" selected>시터회원</option>
+								</c:if>
 							</select>
 						</div>
 						<!-- end 드롭다운 -->
@@ -113,7 +119,7 @@
 								<%-- 조회결과가 없는 경우 --%>
 									<c:when test="${output == null || fn:length(output) == 0}">
 										<tr>
-											<td colspan="7" align="center">조회결과가 없습니다.</td>
+											<td colspan="9" align="center">조회결과가 없습니다.</td>
 										</tr>
 									</c:when>
 									<%-- 조회결과가 있는 경우 --%>
@@ -201,19 +207,29 @@
 	</div>
 
 	<!-- Javascript -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 	<!-- jquery 파일명 수정 -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("#filter_member").on('change', function () {
+				//alert($(this).val());
+				//select 값 가져오기 -> 파라미터
+				var who = $(this).val();
+				//selected 주기 -> 상태유지
+				$(this).attr("selected", "true");
 
-	<script>
+				location.href = '${pageContext.request.contextPath}/admin/admin_singo.do?who=' + who;
+
+			});
+
 			function allcheck(o) {
-			// 클릭한 체크박스의 table 에서 (바로위 부모요소를 대상)
-			// 이름이 chk 인것을 찾고
-			// 현재 요소의 체크 상태를 찾은 대상에 적용
-			$(o).closest('table').find('[name=chk]').prop('checked', o.checked);
-		}
-		</script>
+				// 클릭한 체크박스의 table 에서 (바로위 부모요소를 대상)
+				// 이름이 chk 인것을 찾고
+				// 현재 요소의 체크 상태를 찾은 대상에 적용
+				$(o).closest('table').find('[name=chk]').prop('checked', o.checked);
+			};
+		});
+	</script>
 </body>
 </html>

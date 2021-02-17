@@ -15,40 +15,29 @@
 <title>아이를 부탁해</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed"
-	href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 <!-- noto Sans 웹 폰트 적용 -->
 <link rel="stylesheet" type="text/css" href="assets/css/notosans.css" />
 <!--slick slider-->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/plugin/slick/slick.css" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/plugin/slick/slick-theme.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick-theme.css" />
 <!--header css-->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/index_header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index_header.css">
 <!-- fontawesome(글리피콘) 적용 -->
-<script src="https://kit.fontawesome.com/f27ac0bcc1.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
 <!-- animaition 적용-->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
 <!--section-->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/section.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/section.css">
 <!--footer css-->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/index_footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index_footer.css">
 <!-- Javascript -->
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
 <style type="text/css">
 html, body {
@@ -369,8 +358,7 @@ html, body {
 	</div>
 
 	<!--slick slider-->
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			//브라우저 로드시 헤더 받아오기

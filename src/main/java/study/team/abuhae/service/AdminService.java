@@ -23,5 +23,10 @@ public interface AdminService {
 	//탈퇴 회원 수 조회
 	public int getLeaveCount(Leave_member input) throws Exception;
 	
+	//이용권 사용중인 회원 조회
+	public List<Mom_info> getSubList(Mom_info input) throws Exception;
+	
+	//이용권 사용중인 회원 수 조회
+	public int getSubCount(Mom_info input) throws Exception;
 }
 

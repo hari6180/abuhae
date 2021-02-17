@@ -52,16 +52,13 @@ public class AdminServiceImpl implements AdminService {
 		}
 	}
 	
-	/*
-	 * 신고회원 목록 조회
-	 */
-
+	//========== 신고 회원 목록 조회 =================
 	@Override
 	public List<Mom_info> getReportList(Report input) throws Exception {
 		List<Mom_info> result = null;
 		
 		try {
-			result = sqlsession.selectList("AdminMapper.selectSingoListMom");
+			result = sqlsession.selectList("AdminMapper.selectSingoList", input);
 			
 			//조회결과 없음
 			if(result == null) {
@@ -91,6 +88,7 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 
+	//=========탈퇴회원 조회==============
 	@Override
 	public List<Leave_member> getLeaveList(Leave_member input) throws Exception {
 		List<Leave_member> result = null;
@@ -118,6 +116,41 @@ public class AdminServiceImpl implements AdminService {
 		int result = 0;
 		try {
 			result = sqlsession.selectOne("AdminMapper.selectCountLeaveMember", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	//=======이용권 회원 조회 ============
+	@Override
+	public List<Mom_info> getSubList(Mom_info input) throws Exception {
+		List<Mom_info> result = null;
+		try {
+			result = sqlsession.selectList("AdminMapper.selectSubMember");
+			
+			//조회결과 없음
+			if(result == null) {
+				throw new NullPointerException("result=null");
+			}
+			
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int getSubCount(Mom_info input) throws Exception {
+		int result = 0;
+		try {
+			result = sqlsession.selectOne("AdminMapper.selectCountSubMember", input);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");

@@ -21,6 +21,7 @@ import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
+import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.AdminService;
 import study.team.abuhae.service.MemberService;
 
@@ -39,7 +40,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/admin_member.do", method = RequestMethod.GET)
 	public ModelAndView member(Model model,
 			//회원 검색 조건 -> 회원타입
-			@RequestParam(value = "type", required = false) String type,
+			@RequestParam(value = "type") char type,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage
 			) {
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
@@ -49,15 +50,78 @@ public class AdminController {
 
         /** 2) 데이터 조회하기 */
         // 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+        Mom_info Minput = new Mom_info();
+        Minput.setType(type);
+        
+        Sitter_info Sinput = new Sitter_info();
+        Sinput.setType(type);
+        
+        
+
+        List<Mom_info> Moutput = null;   // 조회결과가 저장될 객체
+        List<Sitter_info> Soutput = null;
+        PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
+
+        try {
+            // 전체 게시글 수 조회
+        	if(type=='M') {
+        		totalCount = memberServcie.getMomCount(Minput);
+        	} else {
+        		totalCount = memberServcie.getSitterCount(Sinput);
+        	}
+            
+            // 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
+            pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+            // SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+            Member.setOffset(pageData.getOffset());
+            Member.setListCount(pageData.getListCount());
+            
+            if(type == 'M') {
+            	//부모회원 조회일때
+            	// 데이터 조회하기
+            	Moutput = memberServcie.getMomList(Minput);
+            } else {
+            	//시터 회원일때
+            	Soutput = memberServcie.getSitterList(Sinput);
+            }
+            
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+
+        /** 3) View 처리 */
+        if(type=='M') {
+        	model.addAttribute("output", Moutput);
+        	model.addAttribute("type", "M");
+        } else {
+        	model.addAttribute("output", Soutput);
+        	model.addAttribute("type", "S");
+        }
+        model.addAttribute("pageData", pageData);
+
+        return new ModelAndView("admin/admin_member");
+	}
+	
+	@RequestMapping(value = "/admin/admin_coupon.do", method = RequestMethod.GET)
+	public ModelAndView coupon(Model model,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+        int totalCount = 0;              // 전체 게시글 수
+        int listCount  = 10;             // 한 페이지당 표시할 목록 수
+        int pageCount  = 5;              // 한 그룹당 표시할 페이지 번호 수
+
+        /** 2) 데이터 조회하기 */
+        // 조회에 필요한 조건값(검색어)를 Beans에 담는다.
         Mom_info input = new Mom_info();
-        input.setName(type);
 
         List<Mom_info> output = null;   // 조회결과가 저장될 객체
         PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
 
         try {
             // 전체 게시글 수 조회
-            totalCount = memberServcie.getMomCount(input);
+            totalCount = adminService.getSubCount(input);
             // 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
             pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 
@@ -66,7 +130,7 @@ public class AdminController {
             Member.setListCount(pageData.getListCount());
             
             // 데이터 조회하기
-            output = memberServcie.getMomList(input);
+            output = adminService.getSubList(input);
         } catch (Exception e) {
             return webHelper.redirect(null, e.getLocalizedMessage());
         }
@@ -75,13 +139,8 @@ public class AdminController {
         model.addAttribute("output", output);
         model.addAttribute("pageData", pageData);
 
-        return new ModelAndView("admin/admin_member");
-	}
-	
-	@RequestMapping(value = "/admin/admin_coupon.do", method = RequestMethod.GET)
-	public String coupon(Model model) {
-
-		return "admin/admin_coupon";
+        return new ModelAndView("admin/admin_coupon");
+		//return "admin/admin_coupon";
 	}
 	
 	@RequestMapping(value = "/admin/admin_bbs_guide.do", method = RequestMethod.GET)
@@ -149,7 +208,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/admin_singo.do", method = RequestMethod.GET)
 	public ModelAndView singo(Model model,
 			//회원 검색 조건 -> 회원타입
-			@RequestParam(value = "who", defaultValue = "M") String who,
+			@RequestParam(value = "who") char who,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
         int totalCount = 0;              // 전체 게시글 수
@@ -181,6 +240,11 @@ public class AdminController {
         }
 
         /** 3) View 처리 */
+        if(who=='M') {
+        	model.addAttribute("who", "M");
+        } else {
+        	model.addAttribute("who", "S");
+        }
         model.addAttribute("output", output);
         model.addAttribute("pageData", pageData);
 
@@ -195,7 +259,7 @@ public class AdminController {
 	}
 	
 	
-	@RequestMapping(value = "/admin/admin_login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String login(Model model) {
 
 		return "admin/admin_login";
@@ -230,7 +294,7 @@ public class AdminController {
 		}
 		
 		//return new ModelAndView("admin/admin_member");
-		return webHelper.redirect("admin_member.do", null);
+		return webHelper.redirect("admin_member.do?type=M", null);
 	}
 	
 	

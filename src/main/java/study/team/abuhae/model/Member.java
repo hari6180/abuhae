@@ -38,10 +38,7 @@ public abstract class Member {
 	// JOIN절에 의한 추가 멤버변수
 	private String r_type;  	// 신고 유형
 	private String contents; 	// 신고 내용
-	
-	/** 시터상세에서 사용할 for data_format 함수 적용 - 0217 지우 */
-	private String signup; // 가입일자
-	
+
 	/** LIMIT 절에서 사용할 조회 시작 위치 */
 	private static int offset;
 	

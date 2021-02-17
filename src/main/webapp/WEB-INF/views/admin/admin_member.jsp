@@ -11,32 +11,28 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>아이를부탁해</title>
+<title>아부해 - 관리자페이지</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed"
-	href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
-
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 <!-- bootstrap -->
 <!--절대 경로 수정 1220 선아-->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 <!-- noto Sans 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/notosans.css" />
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 <!-- icon 참조 -->
-<script src="https://kit.fontawesome.com/12ac058ac7.js"
-	crossorigin="anonymous"></script>
-
+<script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/admin_mng_mem.css" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_mng_mem.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
+<!-- Javascript -->
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+<!-- jquery 파일명 수정 -->
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+<!-- ajax Helper -->
+<script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/ajax/ajax_helper.css" />
 </head>
 
 <body>
@@ -49,9 +45,8 @@
 				<div class="title_cont col-xs-12">
 					<h3>전체 회원 관리</h3>
 					<ol class="breadcrumb">
-						<li><a
-							href="${pageContext.request.contextPath}/admin_member.do"><i
-								class="fas fa-home"></i> Home</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/admin_member.do?type=M">
+							<i class="fas fa-home"></i> Home</a></li>
 						<li></i>회원관리</li>
 						<li class="active"></i>전체 회원 관리</li>
 					</ol>
@@ -65,10 +60,16 @@
 
 						<!-- 회원 유형 선택 드롭다운 -->
 						<div class="select_list">
-							<select class="filter" id="filter_member" name="filter_member">
-								<option value="M" selected>부모회원</option>
-								<option value="S">시터회원</option>
-
+							<select class="filter" id="filter_member" name="type">
+								<%-- type에 따라서 option에 selected --%>
+								<c:if test="${type == 'M'}">
+									<option value="M" selected>부모회원</option>
+									<option value="S">시터회원</option>
+								</c:if>
+								<c:if test="${type == 'S'}">
+									<option value="M">부모회원</option>
+									<option value="S" selected>시터회원</option>
+								</c:if>
 							</select>
 						</div>
 						<!-- end 드롭다운 -->
@@ -175,20 +176,20 @@
 		</div>
 	</div>
 
-	<!-- Javascript -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-	<!-- jquery 파일명 수정 -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#filter_member").on('change', function(){
+				//alert($(this).val());
+				//select 값 가져오기 -> 파라미터
+				var type = $(this).val();
+				//selected 주기 -> 상태유지
+				$(this).attr("selected", "true");
 
-	<script>
-			function allcheck(o) {
-			// 클릭한 체크박스의 table 에서 (바로위 부모요소를 대상)
-			// 이름이 chk 인것을 찾고
-			// 현재 요소의 체크 상태를 찾은 대상에 적용
-			$(o).closest('table').find('[name=chk]').prop('checked', o.checked);
-		}
-		</script>
+				location.href='${pageContext.request.contextPath}/admin/admin_member.do?type='+type;
+
+			});
+		});
+		
+	</script>
 </body>
 </html>

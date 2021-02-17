@@ -10,13 +10,16 @@ public interface MemberService {
 	//회원 단일 조회
 	public Member getMemberLogin(Mom_info input) throws Exception;
 	
-	//회원 리스트 조회
+	//부모회원 리스트 조회
 	public List<Mom_info> getMomList(Mom_info input) throws Exception;
 	
 	//맘회원 수 조회
 	public int getMomCount(Mom_info input) throws Exception;
 	
-	//맘회원 수 조회
+	//부모회원 리스트 조회
+	public List<Sitter_info> getSitterList(Sitter_info input) throws Exception;
+		
+	//시터회원 수 조회
 	public int getSitterCount(Sitter_info input) throws Exception;
 	
 	//회원 데이터 수정

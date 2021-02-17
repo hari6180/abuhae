@@ -52,7 +52,7 @@
                 </h4>
               </div>
               <div id="collapseOne" class="panel-collapse collapse">
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_member.do">전체회원 관리</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_member.do?type=M">전체회원 관리</a></div>
                 <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_singo.do?who=M">신고회원 관리</a></div>
                 <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_leave.do">탈퇴회원 관리</a></div>
               </div>

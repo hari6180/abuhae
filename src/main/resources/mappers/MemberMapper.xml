@@ -136,18 +136,15 @@
 		select * from member where id=#{id};
 	</select>
 
+
+
 	<!-- 맘 회원 목록 다중행 조회를 위한 기능 정의 // 회원명 검색 // 페이징 기능 @선아 02/08 -->
 	<select id="selectListMom"
 		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
-		select m.memberno, m.id, m.name, m.email, m.phone, m.job_opening, 
+		select m.type, m.memberno, m.id, m.name, m.email, m.phone, m.job_opening, 
 		mi.si, mi.gu, mi.dong 
 		from member m
 		inner join mom_info mi on m.memberno = mi.memberno
-		<where>
-			<if test="name != null and name != ''">
-				name LIKE concat('%', #{name}, '%')
-			</if>
-		</where>
 
 		ORDER BY m.memberno ASC
 
@@ -156,32 +153,36 @@
 		</if>
 	</select>
 
-
 	<!-- 시터 회원 목록 다중행 조회를 위한 기능 정의 // 회원명 검색 // 페이징 기능 @선아 02/08 -->
 	<select id="selectListSitter"
-		parameterType="study.team.abuhae.model.Member" resultMap="MemberMap">
-		select m.memberno, m.id, m.name, m.email, m.phone, m.job_opening,
-		concat( si.si, si.gu, si.dong ) AS juso from member m
-		inner join sitter_info si on m.memberno = si.memberno where m.type="s";
-		<where>
-			<if test="name != null and name != ''">
-				name LIKE concat('%', #{name}, '%')
-			</if>
-		</where>
+		parameterType="study.team.abuhae.model.Member" resultMap="SitterMap">
+		select m.type, m.memberno, m.id, m.name, m.email, m.phone, m.job_opening,
+		si.si, si.gu, si.dong
+		from member m
+		inner join sitter_info si on m.memberno = si.memberno
 
-		ORDER BY memberno DESC
+		ORDER BY memberno ASC
 
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
-
-	<select id="selectCountAll"
+	
+	<!-- 부모회원수 조회 -->
+	<select id="selectCountMom"
 		parameterType="study.team.abuhae.model.Member" resultType="int">
 		select count(*) from member m inner join mom_info mi on
 		m.memberno=mi.memberno
 
 	</select>
+	
+	<!-- 시터회원수 조회 -->
+	<select id="selectCountSitter"
+		parameterType="study.team.abuhae.model.Member" resultType="int">
+		select count(*) from member m inner join sitter_info si on
+		m.memberno=si.memberno
 
+	</select>
+	
 
 </mapper>

@@ -89,12 +89,37 @@ public class MemberServiceImpl implements MemberService {
 		int result = 0;
 		
 		try {
-			result = sqlsession.selectOne("MemberMapper.selectCountAll");
+			result = sqlsession.selectOne("MemberMapper.selectCountMom");
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");
 		}
 		
+		return result;
+	}
+	
+	/*
+	 * 시터회원정보 조회 - sitter_info
+	 * @param Member 조회할 멤버의 일련번호를 담고있는 beans
+	 * @return 조회한 내용
+	 */
+	@Override
+	public List<Sitter_info> getSitterList(Sitter_info input) throws Exception {
+		List<Sitter_info> result = null;
+		
+		try {
+            result = sqlsession.selectList("MemberMapper.selectListSitter", input);
+
+            if (result == null) {
+                throw new NullPointerException("result=null");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("조회된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
 		return result;
 	}
 	
@@ -105,8 +130,16 @@ public class MemberServiceImpl implements MemberService {
 	 */
 	@Override
 	public int getSitterCount(Sitter_info input) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		
+		try {
+			result = sqlsession.selectOne("MemberMapper.selectCountSitter");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
 	}
 	
 	
@@ -204,6 +237,8 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return result;
 	}
+
+	
 
 	
 

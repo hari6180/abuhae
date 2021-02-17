@@ -25,6 +25,20 @@
 		<result property="reason" column="reason" />
 		<result property="leave_date" column="leave_date" />
 	</resultMap>
+	
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="CouponMap"
+		type="study.team.abuhae.model.Coupon">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="coupno" column="coupno" />
+		<result property="coup_name" column="coup_name" />
+		<result property="coup_condition" column="coup_condition" />
+		<result property="coup_price" column="coup_price" />
+		<result property="reg_date" column="reg_date" />
+		<result property="exp_date" column="exp_date" />
+		<result property="memberno" column="memberno" />
+	</resultMap>
+	
 	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
 	<resultMap id="MemberMap"
 		type="study.team.abuhae.model.Member">
@@ -83,43 +97,75 @@
 		<result property="memberno" column="memberno" />
 	</resultMap>
 
-	
+	<!-- ========== 관리자 로그인 ============== -->
 	<!-- 특정 아이디에 대한 단일행 조회 -->
 	<select id="selectIDItem"
 		parameterType="study.team.abuhae.model.Admin_info" resultMap="AdminMap">
 		select * from admin_info where adminid=#{adminid};
 	</select>
+	<!-- ========== 관리자 로그인 ============== -->
 	
-	<!-- 신고 테이블 조회 -->
+	<!-- ========== 신고 회원 관리 ============== -->
+	<!-- 신고 수 조회 -->
 	<select id="selectCountReport"
 		parameterType="study.team.abuhae.model.Report" resultType="int">
 		select count(*) from report where who=#{who};
-
 	</select>
 	
-	
-	<!-- 맘 회원이 신고한 신고리스트
-		신고한 자가 누군지에 따라 구분하는 기능 필요 -> 추후 구현 예정
-	 -->
-	<select id="selectSingoListMom"
+	<!-- 신고자 구분에 따라 신고리스트 출력  -->
+	<select id="selectSingoList"
 		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
 		select m.memberno, m.id, m.name, m.email, m.phone, m.job_opening, rp.type as r_type, rp.contents 
 		from member m
-		inner join mom_info mi on mi.memberno = m.memberno
-		inner join report rp on mi.momno = rp.momno
-		where who  ='M';
-	</select>
+		
+		<if test="who == 'M'">
+			inner join mom_info mi on mi.memberno = m.memberno
+			inner join report rp on mi.momno = rp.momno
+		</if>
+		<if test="who == 'S'">
+			inner join sitter_info si on si.memberno = m.memberno
+			inner join report rp on si.sitterno = rp.sitterno
+		</if>
 
+		where who  =#{who};
+	</select>
+	
+	<!-- ========== 신고 회원 관리 ============== -->
+	
+	<!-- ========== 탈퇴 회원 관리 ============== -->
 	<!-- 탈퇴회원수 조회 -->
 	<select id="selectCountLeaveMember"
 		parameterType="study.team.abuhae.model.Leave_member" resultType="int">
 		select count(*) from leave_member
 	</select>
 	
-	<!-- 탈퇴회원수 조회 -->
+	<!-- 탈퇴회원 리스트 조회 -->
 	<select id="selectLeaveMember"
 		parameterType="study.team.abuhae.model.Leave_member" resultMap="LeaveMap">
 		select * from leave_member
 	</select>
+	<!-- ========== 탈퇴 회원 관리 ============== -->
+	
+	<!-- ========== 이용권 사용중인 회원 관리 / 쿠폰 발급 ============== -->
+	<select id="selectSubMember"
+		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
+		select memberno, name, id, startdate, enddate from member 
+		where startdate is not null and enddate is not null;
+	</select>
+	
+	<!-- 이용권 사용중인 회원수 조회 -->
+	<select id="selectCountSubMember"
+		parameterType="study.team.abuhae.model.Member" resultType="int">
+		select count(*) from coupon
+	</select>
+	
+	<!-- 쿠폰 발급 -->
+	<insert id="addCoupon"
+		parameterType="study.team.abuhae.model.Coupon"
+		useGeneratedKeys="true" keyProperty="coupno">
+		insert into coupon (coup_name, coup_condition, coup_price, reg_date, exp_date, memberno) 
+		values ('재구매 쿠폰', '이용권만료 일주일전', 30, now(), date_add(now(), INTERVAL 7 DAY), #{memberno}); 
+	</insert>
+	<!-- ========== 이용권 사용중인 회원 관리 / 쿠폰 발급 ============== -->
 
 </mapper>

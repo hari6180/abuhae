@@ -129,8 +129,8 @@ h3 {
 										</c:forEach>
 									</c:otherwise>
 								</c:choose>
-							</tbody>
-						</table>
+								</tbody>
+							</table>
 						<div class="page">
 							<ul class="pagination">
 								<!-- 페이지 번호 구현 -->
