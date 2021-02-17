@@ -30,13 +30,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>    
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
     <!-- ajax Helper -->
     <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/ajax/ajax_helper.css" />
-
-
 
     <!--Google CDN 서버로부터 jQuery 참조 -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -590,25 +588,26 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <div class="total">총 ${mom_total}명</div>
                 <!-- 드롭다운 -->
                 <div class="dropdown clearfix order_dropdown">
-                  <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">후기 순 </a><b class="caret"></b>
+                  <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">프로필 업데이트 순 </a><b class="caret"></b>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="orderby">
                     <!-- 아이템 항목 나열 -->
-                    <li class="dr_option active" role="presentation" value="update"><a role="menuitem" tabindex="-1" href="#">프로필 업데이트 순</a></li>
-                    <li class="dr_option" role="presentation" value="lowpay"><a role="menuitem" tabindex="-1" href="#">시급 낮은 순</a></li>
-                    <li class="dr_option" role="presentation" value="highpay"><a role="menuitem" tabindex="-1" href="#">시급 높은 순</a></li>
+                    <li class="dr_option active" role="presentation" data-order="update"><a role="menuitem" tabindex="-1" href="#">프로필 업데이트 순</a></li>
+                    <li class="dr_option" role="presentation" data-order="lowpay"><a role="menuitem" tabindex="-1" href="#">시급 낮은 순</a></li>
+                    <li class="dr_option" role="presentation" data-order="highpay"><a role="menuitem" tabindex="-1" href="#">시급 높은 순</a></li>
                   </ul>
                 </div>
                 <!-- 드롭다운 end-->
               </div>
               <!-- 카드영역 -->
+              <%--
               <c:choose>
                 <c:when test="${output == null || fn:length(output) == 0}">
                   <h1>조회결과가 없습니다.</h1>
                 </c:when>
                 <c:otherwise>
-                  <%-- 조회 결과에 따른 반복 처리 --%>
+                  조회 결과에 따른 반복 처리
                   <c:forEach var="item" items="${output}" varStatus="status">
-                    <%-- 출력을 위해 준비한 데이터들 --%>
+                    출력을 위해 준비한 데이터들
                     <c:set var="kids_num" value="${item.kids_num}" />
                     <c:set var="openingdate" value="${item.openingdate}" />
                     <c:set var="want_act" value="${item.want_act}" />
@@ -622,7 +621,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <c:set var="payment_ok" value="${item.payment_ok}" />
                     <c:set var="applySt" value="${item.applySt}" />
                     <c:set var="frequency2" value="${item.frequency}" />
-                    <%-- 상세페이지로 이동하기 위한 URL --%>
+                    상세페이지로 이동하기 위한 URL
                     <c:url value="/page_detail/mom_page_detail/mom_page_detail_calendar.do" var="viewUrl">
                       <c:param name="momno" value="${item.momno}" />
                     </c:url>
@@ -697,8 +696,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   </c:forEach>
                 </c:otherwise>
               </c:choose>
+              --%>
               <!-- 카드영역 end -->
               <div id="result"></div>
+              <div id="result2"></div>
               <!-- 
               <div class="app_banner">
                 <img
@@ -734,7 +735,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
               <div class="applicant_group">
                 <div class="applicant">
-                  ${applySt}명 지원
+                  {{applySt}}명 지원
                 </div>
               </div>
             </div>
@@ -742,36 +743,36 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <div class="content_row">
                 <div>
                   <div class="kids_count">
-                    ${kid_age} ${kids_num}명
+                    {{kid_age}} {{kids_num}}명
                   </div>
                   <div class="text_sep"></div>
                   <div class="last_update">
-                    ${openingdate}
+                    {{openingdate}}
                   </div>
                 </div>
               </div>
               <div class="content_row">
                 <div class="find_text">
-                  ${want_act} &nbsp 맘시터 찾습니다.
+                  {{want_act}} &nbsp 맘시터 찾습니다.
                 </div>
               </div>
               <div class="content_row location_group">
                 <span class="location">
-                  ${si}&nbsp${gu}
+                  {{si}}&nbsp{{gu}}
                 </span>
                 <div class="text_sep"></div>
                 <span class="user_name">
-                  ${name}
+                  {{name}}
                 </span>
                 <div class="text_sep"></div>
                 <span class="start_date">
-                  ${startdate} 시작
+                  {{startdate}} 시작
                 </span>
               </div>
               <div class="content_row">
                 <i class="fas fa-won-sign"></i>
                 <div class="wanted_pay">
-                  희망 시급 ${payment}원
+                  희망 시급 {{payment}}원
                   <c:if test="${fn:contains(payment_ok,'Y')}">
                     &nbsp/&nbsp협의가능
                   </c:if>
@@ -834,26 +835,73 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       {{/each}}
     </script>
     <script>
-      $(document).ready(function () {
-        // 무한 스크롤 1218 하리
-        $(document).scroll(function () {
-          var maxHeight = $(document).height();
-          var currentScroll = $(window).scrollTop() + $(window).height();
-          var nowPage = 1; // 현재 페이지의 기본값
+      let nowPage = 1; // 현재 페이지의 기본값
+      let order = "openingdate";
+      $(function () {
+        $.get(
+          "${pageContext.request.contextPath}/search/job_search",
+          {
+            order: order, // 정렬 조건은 GET 파라미터로 전송한다.
+          },
+          function (json) {
+            var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
+            var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+            var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+            $("#result").empty(); // 결과물 초기화
+            $("#result2").empty(); // 결과물 초기화
+            $("#result").append(result); // 최종 결과물을 추가한다
+          }
+        );
+        // 드롭다운 선택 - 0109 하리
+        $(".dr_option").click(function () {
+          $(this).addClass("active");
+          $(".dr_option").not(this).removeClass("active");
+          $("#orderby").html($(this).find("a").html());
 
-          if (maxHeight <= currentScroll + 100) {
+          // 정렬 조건 지정 0212
+          var current = $(this);
+          order = current.data("order");
+          console.log(order);
+          nowPage = 1;
+          $.get(
+            "${pageContext.request.contextPath}/search/job_search",
+            {
+              order: order, // 정렬 조건은 GET 파라미터로 전송한다.
+            },
+            function (json) {
+              var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
+              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#result").empty(); // 결과물 초기화
+              $("#result2").empty(); // 결과물 초기화
+              $("#result").append(result); // 최종 결과물을 추가한다
+            }
+          );
+        });
+        // 무한 스크롤 1218 하리
+        $(window).scroll(function () {
+          if (Math.round($(window).scrollTop()) + $(window).height() == $(document).height()) {
+            // 이 계산식만 잘 고치면 될거같다. -> 반올림, setTimeout으로 해결! 0217
+            console.log("끝에 도착함");
+            nowPage++;
             // Restful API에 GET방식 요청
-            $.get(
-              "${pageContext.request.contextPath}/search/job_search",
-              {
-                page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
-              },
-              function (json) {
-                var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
-                var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-                var result = template(json); // 템플릿 컴파일 결과물에 json 전달
-                $("#result").append(result); // 최종 결과물을 #list 요소에 추가한다
-              }
+            setTimeout(
+              $.get(
+                "${pageContext.request.contextPath}/search/job_search",
+                {
+                  page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
+                  order: order, // 정렬 조건은 GET 파라미터로 전송한다.
+                },
+                function (json) {
+                  var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
+                  var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                  var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                  $("#result2").append(result); // 최종 결과물을 추가한다
+
+                  // 현재 페이지 번호가 전체 페이지 수에 도달했을시
+                }
+              ),
+              1000
             );
           }
         });

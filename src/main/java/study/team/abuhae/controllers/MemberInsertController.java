@@ -59,9 +59,10 @@ public class MemberInsertController {
 			input.setCare_type("주1회");
 			
 			// 프로필 업데이트 날짜 랜덤입력
-			int month = random(3,12);
-			int day = random(1,28);
-			String openingdate = "2020-" + month + "-" + day;
+			int temp1 = random(3,12);
+			int temp2 = random(1,28);
+			String date = String.format("%02d-%02d", temp1, temp2);
+			String openingdate = "2020-" + date;
 			input.setOpeningdate(openingdate);
 			input.setSignup_date(openingdate);
 			
@@ -117,9 +118,10 @@ public class MemberInsertController {
 			input2.setCctv("Y");
 			
 			// 프로필 업데이트 날짜 랜덤입력
-			int month = random(1,12);
-			int day = random(1,28);
-			String openingdate = "2020-" + month + "-" + day;
+			int temp1 = random(3,12);
+			int temp2 = random(1,28);
+			String date = String.format("%02d-%02d", temp1, temp2);
+			String openingdate = "2020-" + date;
 			input2.setOpeningdate(openingdate);
 			
 			int memberno2 = input2.getMemberno();

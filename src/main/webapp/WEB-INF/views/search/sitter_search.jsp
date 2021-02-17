@@ -54,7 +54,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         // 시터 타이틀 랜덤 출력 0206 하리 (반복문 돌아서 안되는듯..)
         var num = random(0, 3);
         var title = ["믿음직한 시터", "든든한 시터", "약속된 시터", "보장된 시터"];
-        $(".cert_text").html(title[random(0, 3)]);
+        $(document).on("scroll", ".sitter_item_group", function () {
+          $(".cert_text").html(title[random(0, 3)]);
+        });
 
         // 상세 페이지 연동 1220 하리
         $(".sitter_item_group").on("click", function () {
@@ -867,7 +869,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <!-- 아이템 항목 나열 -->
                     <li class="dr_option" role="presentation" data-order="update"><a role="menuitem" tabindex="-1" href="#">프로필 업데이트 순</a></li>
                     <li class="dr_option active" role="presentation" data-order="review"><a role="menuitem" tabindex="-1" href="#">후기 순</a></li>
-                    <li class="dr_option" role="presentation" data-order="cert"><a role="menuitem" tabindex="-1" href="#">인증 수 순</a></li>
                     <li class="dr_option" role="presentation" data-order="response"><a role="menuitem" tabindex="-1" href="#">응답률 순</a></li>
                     <li class="dr_option" role="presentation" data-order="lowpay"><a role="menuitem" tabindex="-1" href="#">시급 낮은 순</a></li>
                     <li class="dr_option" role="presentation" data-order="highpay"><a role="menuitem" tabindex="-1" href="#">시급 높은 순</a></li>
@@ -879,6 +880,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
               <!-- 카드영역 end -->
               <div id="result"></div>
+              <div id="result2"></div>
 
               <%--
               <div class="app_banner">
@@ -941,6 +943,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                             <div class="item_header">
                               <div class="cert_label">
                                 <img src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" />
+                                {{#ifCond v1 v2}}
+                                  {{v1}} is equal to {{v2}}
+                                {{else}}
+                                  {{v1}} is not equal to {{v2}}
+                                {{/ifCond}}
                                 <span id="sitter_title" class="cert_text"></span>
                               </div>
                             </div>
@@ -972,7 +979,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                                   <span class="location">{{si}}&nbsp{{gu}}&nbsp{{dong}}</span>
                                 </div>
                                 <div class="content_row">
-                                  <div class="user_age">{{age}}세</div>
+                                  <div class="user_age">{{birthdate}}세</div>
                                   <div class="text_sep"></div>
                                   <div class="wanted_pay">희망 시급 {{payment}}원</div>
                                 </div>
@@ -1035,7 +1042,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                                 </div>
                               </div>
                             </div>
-                            <hr class="divider" />
+                            <%-- <hr class="divider" />
                             <div class="item_footer">
                               <div class="cert_info_group">
                                 <div class="cert_text_group">
@@ -1047,7 +1054,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                                   <div class="cert_btn">등초본 인증</div>
                                 </div>
                               </div>
-                            </div>
+                            </div> --%>
                           </div>
       <%--                  </c:forEach>
                       </c:otherwise>
@@ -1055,18 +1062,40 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             {{/each}}
     </script>
     <script>
+      Handlebars.registerHelper("ifCond", function (v1, v2, options) {
+        if (v1 === v2) {
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      });
       let nowPage = 1; // 현재 페이지의 기본값
       let order = "openingdate";
       $(function () {
+        $.get(
+          "${pageContext.request.contextPath}/search/sitter_search",
+          {
+            order: order, // 정렬 조건은 GET 파라미터로 전송한다.
+          },
+          function (json) {
+            var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+            var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+            var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+            $("#result").empty(); // 결과물 초기화
+            $("#result2").empty(); // 결과물 초기화
+            $("#result").append(result); // 최종 결과물을 추가한다
+          }
+        );
         // 드롭다운 선택 - 0109 하리
         $(".dr_option").click(function () {
           $(this).addClass("active");
           $(".dr_option").not(this).removeClass("active");
           $("#orderby").html($(this).find("a").html());
+
           // 정렬 조건 지정 0212
           var current = $(this);
           order = current.data("order");
           console.log(order);
+          nowPage = 1;
           $.get(
             "${pageContext.request.contextPath}/search/sitter_search",
             {
@@ -1076,34 +1105,37 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
               var template = Handlebars.compile(source); // 템플릿 코드 컴파일
               var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#result").empty(); // 결과물 초기화
+              $("#result2").empty(); // 결과물 초기화
               $("#result").append(result); // 최종 결과물을 추가한다
             }
           );
         });
-
         // 무한 스크롤 1218 하리
-        $(document).scroll(function () {
-          var maxHeight = $(document).height();
-          var currentScroll = $(window).scrollTop() + $(window).height();
-
-          if (maxHeight <= currentScroll + 100) {
-            // Restful API에 GET방식 요청
-            $.get(
-              "${pageContext.request.contextPath}/search/sitter_search",
-              {
-                page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
-                order: order // 정렬 조건은 GET 파라미터로 전송한다.
-              },
-              function (json) {
-                var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-                var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-                var result = template(json); // 템플릿 컴파일 결과물에 json 전달
-                $("#result").append(result); // 최종 결과물을 추가한다
-
-                // 현재 페이지 번호가 전체 페이지 수에 도달했을시
-              }
-            );
+        $(window).scroll(function () {
+          if (Math.round($(window).scrollTop()) + $(window).height() == $(document).height()) {
+            // 이 계산식만 잘 고치면 될거같다.
+            console.log("끝에 도착함");
             nowPage++;
+            // Restful API에 GET방식 요청
+            setTimeout(
+              $.get(
+                "${pageContext.request.contextPath}/search/sitter_search",
+                {
+                  page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
+                  order: order, // 정렬 조건은 GET 파라미터로 전송한다.
+                },
+                function (json) {
+                  var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+                  var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                  var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                  $("#result2").append(result); // 최종 결과물을 추가한다
+
+                  // 현재 페이지 번호가 전체 페이지 수에 도달했을시
+                }
+              ),
+              1000
+            );
           }
         });
       });

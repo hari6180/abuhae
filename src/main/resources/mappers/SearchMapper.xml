@@ -37,7 +37,8 @@
 		<result property="schedule_set" column="schedule_set" />
 		<result property="introduce" column="introduce" />
 		<result property="answer" column="answer" />
-		<result property="openingdate" column="openingdate" />
+		<result property="openingdate" column="opening" />
+		<result property="orderdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
 		<result property="rev_rate" column="rev_rate" />
 		<result property="rev_count" column="rev_count" />
@@ -62,7 +63,8 @@
 		<result property="sitter_gender" column="sitter_gender" />
 		<result property="interview_type" column="interview_type" />
 		<result property="care_type" column="care_type" />
-		<result property="openingdate" column="openingdate" />
+		<result property="openingdate" column="opening" />
+		<result property="orderdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
 		<result property="applySt" column="cntno"/>
 		<result property="frequency" column="frequency" />
@@ -94,10 +96,10 @@
 		ELSE
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS
-		openingdate, (SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_count,
-		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate FROM sitter_info s
-		INNER JOIN member m ON
-		s.memberno=m.memberno
+		opening, openingdate, (SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_count,
+		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate, 
+		(SELECT COUNT(resino) FROM resi_cert rc WHERE s.sitterno=rc.sitterno AND cert='Y') AS resino FROM sitter_info s
+		INNER JOIN member m ON s.memberno=m.memberno
 		
 		ORDER BY 
 		
@@ -150,7 +152,7 @@
 		ELSE
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS
-		openingdate, (SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno AND who='s') AS applySt FROM mom_info m
+		opening, openingdate, (SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno AND who='s') AS applySt FROM mom_info m
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
 		ORDER BY
@@ -180,9 +182,6 @@
 		FROM Mom_info m
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
-
-		<!-- <where> <if test="name != null and name != ''"> name LIKE concat('%', 
-			#{name}, '%') </if> </where> -->
 	</select>
 
 	<!-- 시터 -->
@@ -192,9 +191,6 @@
 		FROM sitter_info s
 		INNER JOIN member m ON
 		s.memberno=m.memberno
-
-		<!-- <where> <if test="name != null and name != ''"> name LIKE concat('%', 
-			#{name}, '%') </if> </where> -->
 	</select>
 
 	<!-- 일자리 찾기 맘에게 지원한 시터 수 -->
@@ -207,9 +203,15 @@
 		WHERE who='s'
 	</select>
 
-	<!-- <where> <if test="name != null and name != ''"> name LIKE concat('%', 
-		#{name}, '%') </if> </where> -->
-
+	<!-- 시터 인증 여부 -->
+	<select id="CountSitterResi"
+		parameterType="study.team.abuhae.model.Sitter_info" resultType="int">
+		SELECT
+		COUNT(*) AS resino FROM sitter_info s
+		INNER JOIN resi_cert r ON
+		s.sitterno=r.sitterno
+		WHERE cert='Y'
+	</select>
 
 
 </mapper>

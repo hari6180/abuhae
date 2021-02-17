@@ -115,6 +115,9 @@ public class SearchRestController {
             // SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
             Mom_info.setOffset(pageData.getOffset());
             Mom_info.setListCount(pageData.getListCount());
+			
+            // 정렬조건의 값을 Beans에 저장
+			Mom_info.setOrder(order);
             
             // 데이터 조회하기
             output = searchService.searchMom(input);
