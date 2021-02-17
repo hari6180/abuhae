@@ -88,15 +88,15 @@ public class MomMypageController {
 	
 	@RequestMapping(value = "/mypage/mypage_mom/update_password_ok.do", method = RequestMethod.POST)
 	public ModelAndView update_password_mom_ok(Model model, HttpSession session,
-			@RequestParam(value = "now_pw") String now_pw,
-			@RequestParam(value = "new_pw") String password) {
+			//@RequestParam(value = "now_pw") String now_pw,
+			@RequestParam(value = "new_pw") String new_pw) {
 		Mom_info input = new Mom_info();
 		// 현재 비밀번호 확인하기
-		String np = input.getPassword();
-		if (np != now_pw) { return webHelper.redirect(null, "현재 비밀번호를 확인하세요."); }
+		//String np = input.getPassword();
+		//if (np != now_pw) { return webHelper.redirect(null, "현재 비밀번호를 확인하세요."); }
 		
 		// 수정할 값들을 Beans에 담기
-		input.setPassword(password);
+		input.setPassword(new_pw);
 		
 		try {
 			// 데이터 수정
@@ -105,8 +105,9 @@ public class MomMypageController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		String redirectUrl = contextPath + "/mypage/mypage_mom/mom_mypage.do?memberno=" + input.getMemberno();
-		return webHelper.redirect(redirectUrl, "비밀번호가 수정되었습니다.");
+		return new ModelAndView("mypage/mypage_mom/update_password_ok");
+		//String redirectUrl = contextPath + "/mypage/mypage_mom/mom_mypage.do?memberno=" + input.getMemberno();
+		//return webHelper.redirect(redirectUrl, "비밀번호가 수정되었습니다.");
 	}
 	
 	/** 내 구인 현황 페이지 */

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import study.team.abuhae.model.Member;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.MemberService;
 
 @Slf4j
@@ -52,16 +53,16 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	/*
-	 * 회원 기본 정보 리스트 조회 (MemberTable)
+	 * 맘회원정보 조회 - mom_info
 	 * @param Member 조회할 멤버의 일련번호를 담고있는 beans
 	 * @return 조회한 내용
 	 */
 	@Override
-	public List<Member> getMemberList(Member input) throws Exception {
-		List<Member> result = null;
+	public List<Mom_info> getMomList(Mom_info input) throws Exception {
+		List<Mom_info> result = null;
 		
 		try {
-            result = sqlsession.selectList("MemberMapper.selectList", input);
+            result = sqlsession.selectList("MemberMapper.selectListMom", input);
 
             if (result == null) {
                 throw new NullPointerException("result=null");
@@ -79,15 +80,33 @@ public class MemberServiceImpl implements MemberService {
 	
 	
 	/*
-	 * 회원 데이터가 저장되어있는 갯수 조회
+	 * 맘 회원수 조회
 	 * @apram 검색할 내용
 	 * @return int
 	 */
 	@Override
-	public int getMemberCount(Member input) throws Exception {
+	public int getMomCount(Mom_info input) throws Exception {
 		int result = 0;
 		
+		try {
+			result = sqlsession.selectOne("MemberMapper.selectCountAll");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
 		return result;
+	}
+	
+	/*
+	 * 시터 회원수 조회
+	 * @apram 검색할 내용
+	 * @return int
+	 */
+	@Override
+	public int getSitterCount(Sitter_info input) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	
@@ -185,6 +204,8 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return result;
 	}
+
+	
 
 	
 

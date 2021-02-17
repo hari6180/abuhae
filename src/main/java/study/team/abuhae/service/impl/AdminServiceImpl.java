@@ -1,11 +1,16 @@
 package study.team.abuhae.service.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import study.team.abuhae.model.Admin_info;
+import study.team.abuhae.model.Leave_member;
+import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.Report;
 import study.team.abuhae.service.AdminService;
 
 @Slf4j
@@ -45,6 +50,79 @@ public class AdminServiceImpl implements AdminService {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");
 		}
+	}
+	
+	/*
+	 * 신고회원 목록 조회
+	 */
+
+	@Override
+	public List<Mom_info> getReportList(Report input) throws Exception {
+		List<Mom_info> result = null;
+		
+		try {
+			result = sqlsession.selectList("AdminMapper.selectSingoListMom");
+			
+			//조회결과 없음
+			if(result == null) {
+				throw new NullPointerException("result=null");
+			}
+			
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int getReportCount(Report input) throws Exception {
+		int result = 0;
+		try {
+			result = sqlsession.selectOne("AdminMapper.selectCountReport", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public List<Leave_member> getLeaveList(Leave_member input) throws Exception {
+		List<Leave_member> result = null;
+		try {
+			result = sqlsession.selectList("AdminMapper.selectLeaveMember");
+			
+			//조회결과 없음
+			if(result == null) {
+				throw new NullPointerException("result=null");
+			}
+			
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int getLeaveCount(Leave_member input) throws Exception {
+		int result = 0;
+		try {
+			result = sqlsession.selectOne("AdminMapper.selectCountLeaveMember", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
 	}
 
 }

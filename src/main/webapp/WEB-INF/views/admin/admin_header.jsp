@@ -30,14 +30,14 @@
         <!-- xs-12로 모바일 맞춤 -->
         <header class="admin_hd">
           <div class="logo_wrap">
-            <a href="${pageContext.request.contextPath}/Index.jsp">
+            <a href="${pageContext.request.contextPath}/abuhae">
               <img src="${pageContext.request.contextPath}/assets/img/logo (2).png" />
             </a>
           </div>
           <div class="info_wrap">
             <div class="admin_info">${adminID }님 안녕하세요.</div>
             <div>
-              <button type="button" class="logout_btn">로그아웃</button>
+              <a href="${pageContext.request.contextPath}/logout"><button type="button" class="logout_btn">로그아웃</button></a>
             </div>
           </div>
         </header>
@@ -53,6 +53,7 @@
               </div>
               <div id="collapseOne" class="panel-collapse collapse">
                 <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_member.do">전체회원 관리</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_singo.do?who=M">신고회원 관리</a></div>
                 <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_leave.do">탈퇴회원 관리</a></div>
               </div>
             </div>

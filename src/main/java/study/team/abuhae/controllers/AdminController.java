@@ -1,5 +1,7 @@
 package study.team.abuhae.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,9 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import study.team.abuhae.helper.PageData;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Admin_info;
+import study.team.abuhae.model.Leave_member;
+import study.team.abuhae.model.Member;
+import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.Report;
 import study.team.abuhae.service.AdminService;
+import study.team.abuhae.service.MemberService;
 
 @Controller
 public class AdminController {
@@ -22,14 +30,52 @@ public class AdminController {
 	@Autowired
 	AdminService adminService;
 	@Autowired
+	MemberService memberServcie;
+	@Autowired
 	WebHelper webHelper;
 	@Value("#{servletContext.contextPath}")
     String contextPath;
 	
 	@RequestMapping(value = "/admin/admin_member.do", method = RequestMethod.GET)
-	public String member(Model model) {
+	public ModelAndView member(Model model,
+			//회원 검색 조건 -> 회원타입
+			@RequestParam(value = "type", required = false) String type,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage
+			) {
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+        int totalCount = 0;              // 전체 게시글 수
+        int listCount  = 10;             // 한 페이지당 표시할 목록 수
+        int pageCount  = 5;              // 한 그룹당 표시할 페이지 번호 수
 
-		return "admin/admin_member";
+        /** 2) 데이터 조회하기 */
+        // 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+        Mom_info input = new Mom_info();
+        input.setName(type);
+
+        List<Mom_info> output = null;   // 조회결과가 저장될 객체
+        PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
+
+        try {
+            // 전체 게시글 수 조회
+            totalCount = memberServcie.getMomCount(input);
+            // 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
+            pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+            // SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+            Member.setOffset(pageData.getOffset());
+            Member.setListCount(pageData.getListCount());
+            
+            // 데이터 조회하기
+            output = memberServcie.getMomList(input);
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+
+        /** 3) View 처리 */
+        model.addAttribute("output", output);
+        model.addAttribute("pageData", pageData);
+
+        return new ModelAndView("admin/admin_member");
 	}
 	
 	@RequestMapping(value = "/admin/admin_coupon.do", method = RequestMethod.GET)
@@ -63,9 +109,83 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/admin/admin_leave.do", method = RequestMethod.GET)
-	public String leave(Model model) {
+	public ModelAndView leave(Model model,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+        int totalCount = 0;              // 전체 게시글 수
+        int listCount  = 10;             // 한 페이지당 표시할 목록 수
+        int pageCount  = 5;              // 한 그룹당 표시할 페이지 번호 수
 
-		return "admin/admin_leave";
+        /** 2) 데이터 조회하기 */
+        // 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+        Leave_member input = new Leave_member();
+
+        List<Leave_member> output = null;   // 조회결과가 저장될 객체
+        PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
+
+        try {
+            // 전체 게시글 수 조회
+            totalCount = adminService.getLeaveCount(input);
+            // 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
+            pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+            // SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+            Member.setOffset(pageData.getOffset());
+            Member.setListCount(pageData.getListCount());
+            
+            // 데이터 조회하기
+            output = adminService.getLeaveList(input);
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+
+        /** 3) View 처리 */
+        model.addAttribute("output", output);
+        model.addAttribute("pageData", pageData);
+
+        return new ModelAndView("admin/admin_leave");
+		//return "admin/admin_leave";
+	}
+	@RequestMapping(value = "/admin/admin_singo.do", method = RequestMethod.GET)
+	public ModelAndView singo(Model model,
+			//회원 검색 조건 -> 회원타입
+			@RequestParam(value = "who", defaultValue = "M") String who,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+        int totalCount = 0;              // 전체 게시글 수
+        int listCount  = 10;             // 한 페이지당 표시할 목록 수
+        int pageCount  = 5;              // 한 그룹당 표시할 페이지 번호 수
+
+        /** 2) 데이터 조회하기 */
+        // 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+        Report input = new Report();
+        input.setWho(who);
+
+        List<Mom_info> output = null;   // 조회결과가 저장될 객체
+        PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
+
+        try {
+            // 전체 게시글 수 조회
+            totalCount = adminService.getReportCount(input);
+            // 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
+            pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+            // SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+            Member.setOffset(pageData.getOffset());
+            Member.setListCount(pageData.getListCount());
+            
+            // 데이터 조회하기
+            output = adminService.getReportList(input);
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+
+        /** 3) View 처리 */
+        model.addAttribute("output", output);
+        model.addAttribute("pageData", pageData);
+
+        return new ModelAndView("admin/admin_singo");
+		//return "admin/admin_singo";
 	}
 	
 	@RequestMapping(value = "/admin/admin_statistic.do", method = RequestMethod.GET)
@@ -109,7 +229,8 @@ public class AdminController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		return new ModelAndView("admin/admin_member");
+		//return new ModelAndView("admin/admin_member");
+		return webHelper.redirect("admin_member.do", null);
 	}
 	
 	
