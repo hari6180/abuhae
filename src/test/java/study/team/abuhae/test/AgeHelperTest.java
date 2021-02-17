@@ -25,13 +25,8 @@ public class AgeHelperTest {
 
 	@Test
 	public void testA() {
-		String age = "202003";
-		AgeHelper ageHelper = new AgeHelper(age);
-		AgeHelper ageHelper2 = new AgeHelper("201201");
-		AgeHelper ageHelper3 = new AgeHelper("201812");
-		System.out.println(ageHelper.getKids_age());
-		System.out.println(ageHelper2.getKids_age());
-		System.out.println(ageHelper3.getKids_age());
+		AgeHelper agehelper = new AgeHelper();
+		int age = agehelper.kidsAge("201001");
 		
 	}
 	
