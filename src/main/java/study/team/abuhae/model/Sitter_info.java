@@ -52,6 +52,6 @@ public class Sitter_info extends Member {
 	private int cntno; // 매칭 갯수  
 	private int view; // 조회수
 	
-	
+
 
 }

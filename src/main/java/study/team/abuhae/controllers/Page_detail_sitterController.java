@@ -1,5 +1,7 @@
 package study.team.abuhae.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,18 +28,32 @@ public class Page_detail_sitterController {
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 		Sitter_info input = new Sitter_info();
 		input.setSitterno(sitterno);
+		Sitter_info test = new Sitter_info();
+		test.setSitterno(sitterno);
+		Sitter_info count = new Sitter_info();
+		count.setSitterno(sitterno);
+		Sitter_info insert = new Sitter_info();
+		insert.setSitterno(sitterno);
 		
 		// 조회결과를 저장할 객체 선언 
 		Sitter_info output = null;
+		List<Sitter_info> testput = null;
+		int countput = 0;
+		int insertput = 0;
 		
 		try {
 			// 데이터 조회 
 			output = detailService.getSitterItem(input);
+			testput = detailService.getSitterList(input);
+			countput = detailService.editSitter(input);
+			insertput = detailService.addSitter(input);
 		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		model.addAttribute("output", output);
+		model.addAttribute("testput", testput);
+		model.addAttribute("insertput", insertput);
 		return "/page_detail/sitter_page_detail/sitter_detail";
 	}
 	

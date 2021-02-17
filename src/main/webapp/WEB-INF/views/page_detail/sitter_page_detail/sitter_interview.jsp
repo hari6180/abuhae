@@ -52,7 +52,7 @@
 								<img width="80" height="80" src="<%=request.getContextPath()%>/assets/img/chat_mom03.jpg" />
 								<br/>
 								<span class="interview_info">
-									${output.openingdate_test} 작성
+									${output.openingdate} 작성
 									<br/>
 									${output.si}&nbsp;${output.gu}
 									<br/>
