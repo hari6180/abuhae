@@ -33,6 +33,23 @@ public class CustomerController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
+	@RequestMapping(value = "/customer/customer_center.do", method = RequestMethod.GET)
+	public ModelAndView customer_center(Model model) {
+		List<Cus_sub_category> output = null;
+		
+		try {
+			// 데이터 조회 
+			output = customerService.getCusBbslist(null);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** View 처리 */
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("customer/customer_center");
+	}
+	
 	@RequestMapping(value = "/customer/faq.do", method = RequestMethod.GET)
 	public ModelAndView guide(Model model, HttpServletResponse response, HttpServletRequest request) {
 		// 조건값 Beans에 저장하기
@@ -175,8 +192,12 @@ public class CustomerController {
 	/**게시글 목록 전체 조회*/
 	@RequestMapping(value = "/customer/cus_search.do", method = RequestMethod.GET)
 	public ModelAndView cus_view(Model model,
+			// 검색
 			@RequestParam(value = "keyword", required = false) String keyword) {
+		// 페이지 구현에 필요한 변수값 생성
 		
+		
+		// 검색 기능을 위한 데이터 조회
 		Cus_sub_category input = new Cus_sub_category();
 		input.setTitle(keyword);
 		

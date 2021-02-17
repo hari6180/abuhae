@@ -41,32 +41,32 @@
                         <a href="#">회원정보</a>
                     </li>
                 </div>
-                    <div class="col-xs-12 input">
-                        <span class="glyphicon glyphicon-search" id="glyphicon"></span>
-                        <form role="search" class="search search-full" data-search
-                        data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
-                        <input type="search" name="query" id="query" placeholder="검색" aria-label="검색">
-                        </form>
+                <div class="col-xs-12 input">
+                    <span class="glyphicon glyphicon-search" id="glyphicon"></span>
+                    <form role="search" class="search search-full" data-search
+                    data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
+                    <input type="search" name="query" id="query" placeholder="검색" aria-label="검색">
+                    </form>
+                </div>
+                <div class="col-xs-12 section">
+                    <div class="section_header">
+                    <h1>회원정보</h1>
                     </div>
-                    <div class="col-xs-12 section">
-                        <div class="section_header">
-                        <h1>회원정보</h1>
-                        </div>
-                        <div class="col-xs-12 section_title">
-                            <a href="${pageContext.request.contextPath}/customer/sitter_information_ch2.do">[회원정보] 로그인 정보가 기억나지 않아요.</a>
-                        </div>
-                        <div class="col-xs-12 section_title">
-                            <a href="#">[회원정보] 휴대폰번호는 어떻게 변경하나요?</a>
-                        </div>
-                        <div class="col-xs-12 section_title">
-                            <a href="#">[회원정보] 할인코드가 무엇인가요?</a>
-                        </div>
-                        <div class="col-xs-12 section_title">
-                            <a href="#">[회원정보] 회원탈퇴는 어떻게 하나요?</a>
-                        </div>
+                    <div class="col-xs-12 section_title">
+                        <a href="${pageContext.request.contextPath}/customer/sitter_information_ch2.do">[회원정보] 로그인 정보가 기억나지 않아요.</a>
                     </div>
-                    <div class="col-xs-12 footer">
+                    <div class="col-xs-12 section_title">
+                        <a href="#">[회원정보] 휴대폰번호는 어떻게 변경하나요?</a>
                     </div>
+                    <div class="col-xs-12 section_title">
+                        <a href="#">[회원정보] 할인코드가 무엇인가요?</a>
+                    </div>
+                    <div class="col-xs-12 section_title">
+                        <a href="#">[회원정보] 회원탈퇴는 어떻게 하나요?</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 footer">
+                </div>
 			</div> <!-- row 끝 -->
         </div> <!-- container 끝 -->
 

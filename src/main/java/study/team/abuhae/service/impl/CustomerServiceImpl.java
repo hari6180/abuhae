@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import study.team.abuhae.controllers.Cus_bbs;
 import study.team.abuhae.model.Cus_category;
 import study.team.abuhae.model.Cus_sub_category;
 import study.team.abuhae.service.CustomerService;
@@ -80,6 +81,20 @@ public class CustomerServiceImpl implements CustomerService {
 			throw new Exception("데이터 조회에 실패했습니다.");
 		}
 		
+		return result;
+	}
+
+	/** 게시글 수 조회 */
+	@Override
+	public int getCusCount(Cus_bbs input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("CustomerMapper.selectCountAll", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
 		return result;
 	}
 

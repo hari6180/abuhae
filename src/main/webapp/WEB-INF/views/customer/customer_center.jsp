@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%
-
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -26,6 +26,14 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index_header.css">
 		<!-- fontawesome(글리피콘) 적용 -->
 		<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
+		
+		<style type="text/css">
+	       	ul, li {
+	       		list-style: none;
+	       		padding: 0;
+	       		margin: 0;
+	       	}
+       </style>
 
 		</head>
 		
@@ -87,27 +95,34 @@
 							</div>
 						</div>
 						<div class="activity_list">
-							<a class="activity_item_parent" href="${pageContext.request.contextPath}/customer/notice_site.do">공지사항</a>
-							<a class="activity_item_link" href="${pageContext.request.contextPath}/customer/notice_site_ch2.do">[공지] 아부해 서비스 서버 점검 안내</a>
+							<c:choose>
+	                 			<c:when test="${output==null || fn:length(output) == 0}">
+	                 				<p>조회결과가 없습니다.</p>
+	                 			</c:when>
+	                 			
+	                 			<c:otherwise>
+	                 				<c:forEach var="item" items="${output}" varStatus="status">
+	                 					
+	                 					<%-- 상세페이지 URL --%>
+	                 					<c:url value="/customer/cus_view.do" var="viewUrl">
+	                 						<c:param name="boardnum" value="${item.boardnum}"/>
+	                 					</c:url>
+	                 					<fmt:parseNumber var="i" type="number" value="${item.edit_date}" />
+	                 					<c:if test="${item.edit_date < 200 }">
+											<ul>
+												<li>
+													<h5>${item.sub_category}</h5> <br>	
+													<a href="${viewUrl}">[${item.sub_category}] ${item.title}</a>
+												</li>
+												<hr>
+											</ul>
+	                 					</c:if> 
+	                 					
+	                 				</c:forEach>
+	                 			</c:otherwise>
+                 			</c:choose>
 						</div>
-						<div class="activity_list">
-							<a class="activity_item_parent" href="#">공지사항</a>	
-							<a class="activity_item_link" href="#">[공지] 시터님, KF94 마스크 무료신청하세요!</a>
-						</div>
-						<div class="activity_list">
-							<a class="activity_item_parent" href="#">일자리찾기</a>	
-							<a class="activity_item_link" href="#">[맘시터 인증] 건강인증뱃지를 발급 받고 싶어요</a>
-						</div>
-						<div class="activity_list">
-							<a class="activity_item_parent" href="#">해결방법</a>	
-							<a class="activity_item_link" href="#">[문제해결] 부모님께서 급여를 지급하지 않으세요.</a>
-						</div>
-						<div class="activity_list">
-							<a class="activity_item_parent" href="#">공지사항</a>	
-							<a class="activity_item_link" href="#">[공지] 코로나조심또조심123123123123</a>
-						</div>
-						<a link="#" id="mybutton">더보기</a>
-				</section>
+					</section>
 				</div>
 				<div class="footer">
 				</div>

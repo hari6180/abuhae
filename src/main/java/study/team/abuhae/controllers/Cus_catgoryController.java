@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class Cus_catgoryController {
-	@RequestMapping(value = "/customer/customer_center.do", method = RequestMethod.GET)
-	public String customer_center(Model model) {
-
-		return "customer/customer_center";
-	}
 	
 	@RequestMapping(value = "/customer/mom_information.do", method = RequestMethod.GET)
 	public String mom_information(Model model) {

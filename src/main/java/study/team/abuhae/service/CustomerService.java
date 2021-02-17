@@ -15,4 +15,7 @@ public interface CustomerService {
 
 	/** 게시글 상세페이지 조회 */
 	public Cus_sub_category getCusItem(Cus_sub_category input) throws Exception;
+	
+	/** 게시글 갯수 조회 */
+	public int getCusCount(Cus_bbs input) throws Exception;
 }
