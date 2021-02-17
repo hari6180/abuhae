@@ -600,26 +600,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               </div>
               <!-- 카드영역 -->
               <%--
-              <c:choose>
-                <c:when test="${output == null || fn:length(output) == 0}">
-                  <h1>조회결과가 없습니다.</h1>
-                </c:when>
-                <c:otherwise>
-                  조회 결과에 따른 반복 처리
-                  <c:forEach var="item" items="${output}" varStatus="status">
-                    출력을 위해 준비한 데이터들
-                    <c:set var="kids_num" value="${item.kids_num}" />
-                    <c:set var="openingdate" value="${item.openingdate}" />
-                    <c:set var="want_act" value="${item.want_act}" />
-                    <c:set var="si" value="${item.si}" />
-                    <c:set var="gu" value="${item.gu}" />
-                    <c:set var="name" value="${item.name}" />
                     <c:set var="schedule" value="${item.schedule}" />
                     <c:set var="startdate" value="${fn:substring(schedule,6,11)}" />
                     <c:set var="frequency" value="${item.schedule_ok}" />
                     <c:set var="payment" value="${item.payment}" />
                     <c:set var="payment_ok" value="${item.payment_ok}" />
-                    <c:set var="applySt" value="${item.applySt}" />
                     <c:set var="frequency2" value="${item.frequency}" />
                     상세페이지로 이동하기 위한 URL
                     <c:url value="/page_detail/mom_page_detail/mom_page_detail_calendar.do" var="viewUrl">
@@ -766,16 +751,14 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 </span>
                 <div class="text_sep"></div>
                 <span class="start_date">
-                  {{startdate}} 시작
+                  {{{trimString schedule}}} 시작
                 </span>
               </div>
               <div class="content_row">
                 <i class="fas fa-won-sign"></i>
                 <div class="wanted_pay">
                   희망 시급 {{payment}}원
-                  <c:if test="${fn:contains(payment_ok,'Y')}">
-                    &nbsp/&nbsp협의가능
-                  </c:if>
+				  {{#ifCond payment_ok 'Y'}}/협의가능{{/ifCond}}
                 </div>
               </div>
             </div>
@@ -785,17 +768,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             <div class="time_info_group">
               <div class="time_text_group">
                 <div class="frequency">
-                  <c:choose>
-                    <c:when test="${fn:contains(frequency2, 'regular')}">
-                      정기적
-                    </c:when>
-                    <c:when test="${fn:contains(frequency2, 'shortTerm')}">
-                      단기
-                    </c:when>
-                    <c:otherwise>
-                      협의
-                    </c:otherwise>
-                  </c:choose>
+                  {{#ifCond frequency "regular"}}정기적{{/ifCond}}
+				  {{#ifCond frequency "shortTerm"}}단기{{/ifCond}}
+				  {{#ifCond frequency "noplan"}}협의{{/ifCond}}
                 </div>
               </div>
               <div class="care_days_group">
@@ -835,6 +810,20 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       {{/each}}
     </script>
     <script>
+      // Handlebars Helper
+      Handlebars.registerHelper("ifCond", function (v1, v2, options) {
+        if (v1 == v2) {
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      });
+      
+      Handlebars.registerHelper('trimString', function(passedString) {
+    	    var theString = passedString.substring(6,11);
+    	    return new Handlebars.SafeString(theString)
+    	});
+      
+      
       let nowPage = 1; // 현재 페이지의 기본값
       let order = "openingdate";
       $(function () {
@@ -880,7 +869,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         });
         // 무한 스크롤 1218 하리
         $(window).scroll(function () {
-          if (Math.round($(window).scrollTop()) + $(window).height() == $(document).height()) {
+          //console.log(Math.round($(window).scrollTop()) + $(window).height());
+          //console.log($(document).height())
+          if (Math.round($(window).scrollTop()) + $(window).height() + 1 == $(document).height()) {
             // 이 계산식만 잘 고치면 될거같다. -> 반올림, setTimeout으로 해결! 0217
             console.log("끝에 도착함");
             nowPage++;

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import study.team.abuhae.helper.AgeHelper;
 import study.team.abuhae.helper.PageData;
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
@@ -24,6 +25,9 @@ public class SearchRestController {
     // --> import org.springframework.beans.factory.annotation.Autowired;
     // --> import study.spring.springhelper.helper.WebHelper;
     @Autowired  WebHelper webHelper;
+    
+    /** AgeHelper 주입 */
+    @Autowired AgeHelper ageHelper;
 
 	/** Service 패턴 구현체 주입 */
 	@Autowired
@@ -105,7 +109,7 @@ public class SearchRestController {
 
         List<Mom_info> output = null;   // 조회결과가 저장될 객체
         PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
-
+        
         try {
             // 전체 게시글 수 조회
             totalCount = searchService.getMomCount(input);
