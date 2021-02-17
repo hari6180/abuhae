@@ -50,6 +50,7 @@ public class Sitter_info extends Member {
 	private int revno; // 리뷰갯수 
 	private String favorite_act; // 선호하는 돌봄 유형
 	private int cntno; // 매칭 갯수  
+	private int view; // 조회수
 	
 	
 
