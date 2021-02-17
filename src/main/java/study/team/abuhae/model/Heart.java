@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 public class Heart {
 	
-	private int heartno;
-	private String reg_date;
-	private String who;
-	private int momno;
-	private int sitterno;
+	private int heartno; // 찜 일련번호 
+	private String reg_date; // 찜한 날짜
+	private String who; // 찜한 사람 타입 구분
+	private int momno; // 맘 일련번호 
+	private int sitterno; // 시터 일련번호
 
 }

@@ -18,6 +18,7 @@
 		<result property="birthdate" column="birthdate" />
 		<result property="job_opening" column="job_opening" />
 		<result property="gender" column="gender" />
+		<result property="signup_date" column="signup_date" />
 	</resultMap>
 
 	<resultMap id="MomMap"
@@ -39,6 +40,7 @@
 		<result property="care_type" column="care_type" />
 		<result property="openingdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
+		<result property="signup_date" column="signup_date" />
 	</resultMap>
 
 	<resultMap id="SitterMap"
@@ -71,6 +73,7 @@
 		<result property="resino" column="resino" />
 		<result property="cntno" column="cntno" />
 		<result property="favorite_act" column="favorite_act" />
+		<result property="view" column="view" />
 	</resultMap>
 	
 	<resultMap type="study.team.abuhae.model.Sitter_experience" id="ExperienceMap">
@@ -90,6 +93,14 @@
 		<result property="sitterno" column="sitterno"/>				
 	</resultMap>
 	
+	<resultMap type="study.team.abuhae.model.Heart" id="HeartMap">
+		<result property="heartno" column="heartno"/>	
+		<result property="reg_date" column="reg_date"/>	
+		<result property="who" column="who"/>	
+		<result property="momno" column="momno"/>	
+		<result property="sitterno" column="sitterno"/>				
+	</resultMap>
+	
 	<!-- 시터 상세페이지 -->
 	<select id="selectItem" parameterType="study.team.abuhae.model.Sitter_info"
 		resultMap="SitterMap">
@@ -99,8 +110,8 @@
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
 		AS birthdate,
-		job_opening, s.sitterno, sitter_type, want_act, want_age, gender, introduce, favorite_act,
-		si, gu, dong, openingdate,
+		job_opening, s.sitterno, sitter_type, want_act, want_age, gender, introduce,
+		si, gu, dong, favorite_act, signup_date, view,
 		payment, payment_ok, cctv, answer, CASE
 	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
 	WHEN TIMESTAMPDIFF(minute, openingdate, now()) < 60 THEN
@@ -112,15 +123,24 @@
 		ELSE
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS
-		openingdate_simple, (SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_count,
+		openingdate, (SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_count,
 		(SELECT COUNT(heartno) FROM heart h WHERE s.sitterno=h.sitterno AND who='M') AS heartno,
-		(SELECT expe_contents FROM sitter_experience e WHERE e.sitterno=s.sitterno) AS expe_contents,
-		(SELECT expe_start_date FROM sitter_experience e WHERE e.sitterno=s.sitterno) AS expe_start_date,
-		(SELECT expe_end_date FROM sitter_experience e WHERE e.sitterno=s.sitterno) AS expe_end_date,
 		(SELECT COUNT(cntno) FROM connect c WHERE c.sitterno=s.sitterno AND accept='Y') AS cntno,
-		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate
+		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate,
+		(SELECT DATE_FORMAT(signup_date, "%Y년 %m월 %d일") FROM member m WHERE s.memberno=m.memberno) AS signup
 		FROM sitter_info s
 		INNER JOIN member m ON s.memberno=m.memberno
+		<where>
+			s.sitterno=#{sitterno}
+		</where>
+	</select>
+	
+	<select id="selectTest" parameterType="study.team.abuhae.model.Sitter_info"
+		resultMap="SitterMap">
+		SELECT 		
+		expe_contents, expe_start_date, expe_end_date
+		FROM sitter_info s
+		INNER JOIN sitter_experience e ON s.sitterno=e.sitterno
 		<where>
 			s.sitterno=#{sitterno}
 		</where>
@@ -140,8 +160,17 @@
 	      - CHAR_LENGTH ( REPLACE ( sitter_info.want_age , ',' , '' ))>= numbers . n-1)
 	</select>
 	
-	<update id="update" parameterType="study.team.abuhae.model.Sitter_info">
-		UPDATE sitter_info SET test = test+1 WHERE sitterno=#{sitterno}
+	<update id="updateItem" parameterType="study.team.abuhae.model.Sitter_info">
+		UPDATE sitter_info SET view = view+1 
+		<where>
+			sitterno=#{sitterno}
+		</where>
 	</update>
+	
+	<insert id="insertItem" parameterType="study.team.abuhae.model.Sitter_info"
+		useGeneratedKeys="true" keyProperty="heartno">
+		INSERT INTO sitter_info (now(), who, momno, sitterno) 
+		VALUES (#{reg_date}, #{who}, #{momno}, #{sitterno});
+	</insert>
 	
 </mapper>
