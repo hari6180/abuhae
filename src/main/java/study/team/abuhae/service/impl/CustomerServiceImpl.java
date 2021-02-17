@@ -39,7 +39,7 @@ public class CustomerServiceImpl implements CustomerService {
 		return result;
 	}
 
-	/** 게시글 제목 목록 조회 */
+	/** 게시글 목록 조회 */
 	@Override
 	public List<Cus_sub_category> getCusBbslist(Cus_sub_category input) throws Exception {
 		List<Cus_sub_category> result = null;
@@ -48,6 +48,28 @@ public class CustomerServiceImpl implements CustomerService {
 			result = sqlSession.selectList("CustomerMapper.selectSubTitleList", input);
 			
 			if (result == null) {
+				throw new NullPointerException("result=null");
+			} 
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+
+	/** 게시글 상세페이지 */
+	@Override
+	public Cus_sub_category getCusItem(Cus_sub_category input) throws Exception {
+		Cus_sub_category result = null;
+		
+		try {
+			result = sqlSession.selectOne("CustomerMapper.selectCusItem", input);
+			
+			if (result==null) {
 				throw new NullPointerException("result=null");
 			} 
 		} catch (NullPointerException e) {

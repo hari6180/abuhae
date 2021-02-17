@@ -25,6 +25,7 @@
 		<result property="writer" column="writer" />
 		<result property="reg_date" column="reg_date" />
 		<result property="edit_date" column="edit_date" />
+		<result property="category" column="category"/>
 	</resultMap>
 	
 	<resultMap id="CustomerBbsMap"
@@ -41,12 +42,33 @@
 	
 	<select id="selectSubTitleList"
 	parameterType="study.team.abuhae.model.Cus_sub_category" resultMap="CustomerSubCateMap">
-		select cs.subcateno, cb.title, cs.sub_category from cus_sub_category cs inner join cus_bbs cb on cb.subcateno = cs.subcateno
+		select cs.cateno, cb.boardnum, cs.subcateno, cb.title, cb.text, cb.writer, cb.edit_date, cs.sub_category from cus_sub_category cs 
+		inner join cus_bbs cb 
+		on cb.subcateno = cs.subcateno
+		inner join cus_category cc
+		on cs.cateno = cc.cateno
+		
+		<where>
+			<if test="title != null and title != ''">
+				cb.title like concat('%', #{title}, '%');
+			</if>
+		</where>
+		
 	</select>
 	
 	<select id="selectTitleList"
 	parameterType="study.team.abuhae.model.Cus_category" resultMap="CustomerCateMap">
 		select cc.cateno, cs.subcateno, cs.sub_category, cc.category from cus_category cc inner join cus_sub_category cs on cs.cateno = cc.cateno
+	</select>
+	
+	<select id="selectCusItem"
+	parameterType="study.team.abuhae.model.Cus_sub_category" resultMap="CustomerSubCateMap">
+		select cb.boardnum, cs.cateno, cc.category, cs.subcateno, cb.title, cb.text, cb.writer, cb.edit_date, cs.sub_category from cus_sub_category cs 
+		inner join cus_bbs cb on cb.subcateno = cs.subcateno
+		inner join cus_category cc on cs.cateno=cc.cateno
+		<where>
+			cb.boardnum=#{boardnum}
+		</where>
 	</select>
 	
 </mapper>

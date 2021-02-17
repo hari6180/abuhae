@@ -97,4 +97,15 @@ public class Cus_bbs {
 
 		return "customer/sitter_contract_ch2";
 	}
+	
+	@RequestMapping(value = "/customer/question_sitter_ch1.do", method = RequestMethod.GET)
+	public String question_sitter_ch1(Model model) {
+
+		return "customer/question_sitter_ch1";
+	}
+	@RequestMapping(value = "/customer/question_sitter_ch2.do", method = RequestMethod.GET)
+	public String question_sitter_ch2(Model model) {
+
+		return "customer/question_sitter_ch2";
+	}
 }

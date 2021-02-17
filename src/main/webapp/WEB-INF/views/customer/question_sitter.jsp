@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -19,110 +22,96 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/question_sitter_yj.css" />
         <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
+        <style type="text/css">
+        	ul, li {
+        		list-style: none;
+        		padding: 0;
+        		margin: 0;
+        	}
+        	
+        </style>
 	</head>
 
 	<body>
 		<div class="container">
 			<div class="row">
-			<header>
-			  <%@ include file="../index_header.jsp" %>
-			</header>
-			<!-- header end-->
+			
+			<%@ include file="../index_header.jsp" %>
+			
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">아부해 고객센터</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="#">시터회원</a>
+                        시터회원
                     </li>
                 </div>
-                    <div class="col-xs-12 input">
-                        <span class="glyphicon glyphicon-search" id="glyphicon"></span>
-                        <form role="search" class="search search-full" data-search
-                        data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
-                        <input type="search" name="query" id="query" placeholder="검색" aria-label="검색">
-                        </form>
+                <div class="col-xs-12 input">
+                     <form action="${pageContext.request.contextPath}/customer/cus_search.do" role="search" class="search search-full" data-search
+	                data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
+	                	<input type="search" name="keyword" id="keyword" value="${keyword}" placeholder="검색" aria-label="검색">
+	                	<button type="submit">검색</button>
+	                </form>
+                 </div>
+                <div class="col-xs-12 section">
+                    <div class="section_header">
+                    <!-- 두번째 카테고리 (부모 회원) -->
+                    	<h2>시터회원</h2>
                     </div>
-                    <div class="col-xs-12 section">
-                        <div class="section_header">
-                        <h1>시터회원
-                            <p>자주 묻는 질문</p>
-                        </h1>
-                        </div>
-                        <div class="col-xs-12 section_middle">
-                            <h2><a href="${pageContext.request.contextPath}/customer/question_sitter_ch2.do">일자리 찾기</a></h2>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/question_sitter_ch3.do">[맘시터 찾기] 건강인증뱃지를 발급 받고 싶어요.</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[시터 찾기] 최소 돌봄활동 시간이 정해져 있나요?</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[시터 찾기] 당장 시터님이 필요한데 구할 수 있나요?</a>
-                    </div>
-                    <div class="col-xs-12 section_title_2">
-                        <a href="${pageContext.request.contextPath}/customer/question_sitter_ch2.do">문서 7개 모두 보기</a>
-                    </div>
+                    
+                    <!-- 첫번째 서브 카테고리 게시글 목록 조회 -->
                     <div class="col-xs-12 section_middle">
-                        <h2><a href="${pageContext.request.contextPath}/customer/sitter_contract.do">채용 및 계약</a></h2>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/sitter_contract_ch2.do">[채용 및 계약] 시터님과 계약서를 작성할 수 있나요?</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[채용 및 계약] 아부해 활동 계약서를 꼭 작성해야 하나요?</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[채용 및 계약] 아부해 활동계약서를 다운로드받고 싶어요.</a>
-                    </div>
-                    <div class="col-xs-12 section_title_2">
-                        <a href="${pageContext.request.contextPath}/customer/sitter_contract.do">문서 8개 모두 보기</a>
-                    </div>
-                    <div class="col-xs-12 section_middle">
-                        <h2><a href="${pageContext.request.contextPath}/customer/sitter_activity.do">돌봄활동과 활동비</a></h2>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/sitter_activity_ch2.do">[돌봄활동] 자세한 돌봄활동이 궁금해요!</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[돌봄활동] 시터님은 어떤 돌봄활동을 해줄 수 있나요?</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[돌봄활동] 시터님에게 기사일을 요청할 수 있나요?</a>
-                    </div>
-                    <div class="col-xs-12 section_title_2">
-                        <a href="${pageContext.request.contextPath}/customer/sitter_activity.do">문서 7개 모두 보기</a>
-                    </div>
-                    <div class="col-xs-12 section_middle">
-                        <h2><a href="${pageContext.request.contextPath}/customer/sitter_epilogue.do">후기</a></h2>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/sitter_epilogue_ch2.do">[후기] 후기는 언제 작성할 수 있나요?</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[후기] 후기는 어디에서 작성할 수 있나요?</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[후기] 후기를 작성하면 어떤 점이 좋나요?</a>
-                    </div>
-                    <div class="col-xs-12 section_middle">
-                        <h2><a href="${pageContext.request.contextPath}/customer/sitter_information.do">회원정보</a></h2>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="${pageContext.request.contextPath}/customer/sitter_information_ch2.do">[회원정보] 로그인 정보가 기억나지 않아요.</a>
-                    </div>
-                    <div class="col-xs-12 section_title">
-                        <a href="#">[회원정보] 휴대폰번호는 어떻게 변경하나요?</a>
-                    </div>
-                    </div>
-                    <div class="col-xs-12 footer">
-                    </div>
+                    	<!-- sub_category1 -->
+                    	<c:choose>
+                			<c:when test="${out==null || fn:length(output) == 0}">
+                				<p>조회결과가 없습니다.</p> 
+                			</c:when>
+                			
+                			<c:otherwise>
+                				<c:forEach var="item_cate" items="${out}" varStatus="status">
+                					<!-- 카테고리=1(이용가이드) / 서브카테고리=1(이용가이드)의 작성글 제목 조회 -->
+                					<c:if test="${item_cate.cateno==3 && item_cate.subcateno==14}">
+                						<h2>${item_cate.sub_category}</h2>
+                					</c:if>
+                				</c:forEach>
+                			</c:otherwise>
+                		</c:choose>
+                		
+                		<!-- sub_category1의 작성글 -->
+                        <div class="col-xs-12 section_title">
+                 		<c:choose>
+                 			<c:when test="${output==null || fn:length(output) == 0}">
+                 				<p>조회결과가 없습니다.</p>
+                 			</c:when>
+                 			
+                 			<c:otherwise>
+                 				<c:forEach var="item" items="${output}" varStatus="status">
+                 					
+                 					<%-- 상세페이지 URL --%>
+                 					<c:url value="/customer/cus_view.do" var="viewUrl">
+                 						<c:param name="boardnum" value="${item.boardnum}"/>
+                 					</c:url>
+                 					<c:if test="${item.cateno==3&&item.subcateno == 14}">
+                 						<ul>
+                  						<li><a href="${viewUrl}">[${item.sub_category}] ${item.title}</a></li>
+                  					</ul>
+                 					</c:if>
+                 					
+                 				</c:forEach>
+                 			</c:otherwise>
+                 		</c:choose>
+                 	</div>
+                 	<div class="col-xs-12 section_title_2">
+                    		<a href="#">문서 7개 모두 보기</a>
+                 	</div>
+                 </div>
+                </div>
+                <div class="col-xs-12 footer">
+                </div>
 			</div> <!-- row 끝 -->
         </div> <!-- container 끝 -->
-
-		</div>
+	
 	
 		<!-- Javascript -->
 		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		

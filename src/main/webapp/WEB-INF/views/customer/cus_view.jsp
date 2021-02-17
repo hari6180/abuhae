@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -19,6 +22,14 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mom_activity_ch2_yj.css" />
         <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
+        <!-- Javascript -->
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		$(function() {
+			$("#menu").load("../index_header.html");
+		});
+		</script>
 	</head>
 
 	<body>
@@ -30,15 +41,20 @@
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">맘시터</a>
+                        <a href="${pageContext.request.contextPath}/customer/customer_center.do">아부해 고객센터</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="${pageContext.request.contextPath}/customer/question_mom.do">부모회원</a>
+                    	<c:if test="output.cateno==1">
+                    		<c:url value="/customer/faq.do" var="viewUrl">
+           						<c:param name="boardnum" value="${output.boardnum}"/>
+           					</c:url>
+                    	</c:if>
+                        <a href="${viewUrl}">${output.category}</a>
                     </li>
                     <span>></span>
                     <li>
-                        <a href="#">돌봄활동과 활동비</a>
+                        ${output.sub_category}
                     </li>
                 </div>
                     <div class="col-xs-12 input">
@@ -58,24 +74,20 @@
                     </div>
                     <div class="col-xs-12 section">
                         <div class="section_header">
-                        <h1>[돌봄활동] 자세한 돌봄활동이 궁금해요!</h1>
+                        <h1>[${output.sub_category}] ${output.title}</h1>
                         </div>
                     </div>
                     <div class="col-xs-12 article">
                         <div class="col-xs-2 article_img">
-                            <img src="${pageContext.request.contextPath}/assets/img/logo2.png" width="40" height="40">
+                            <img src="${pageContext.request.contextPath}/assets/img/logo2.png" width="" height="40">
                         </div>
                         <div class="col-xs-10 article_title">
-                            <p>맘시터</p>
-                            <p class="date">2020년 08월 26일 23:06</p>
+                            <p>${output.writer}</p>
+                            <p class="date">${output.edit_date}</p>
                     </div>
                     </div>
                     <div class="col-xs-12 section_body">
-                        <p>맘시터는 부모님과 시터님이 서로의 정보를 자유롭게 확인하고 인터뷰를 신청하거나 지원할 수 있도록 도와드리는 정보제공 서비스입니다.</p>
-                        <p><a href="#">>>맘시터 서비스 소개(클릭)</a></p>
-                        <p>부모님은 돌봄활동 신청서를 작성한 후에 <a href="#">[맘시터 찾기]</a>를 통해 나에게 맞는 시터님을 찾아 직접 인터뷰를 신청할 수 있고,</p>
-                        <p>시터님은 프로필을 작성한 후에 <a href="#">[일자리 찾기]</a>를 통해 알맞는 부모님을 찾아 직접 인터뷰를 지원할 수 있습니다.</p>
-                        <p>자세한 이용 방법은 고객센터의 <a href="#">부모회원 이용가이드</a>항목을 통해 확인할 수 있습니다.</p>
+                        ${output.text}
                     </div>
                     <div class="col-xs-12 section_footer">
                         <p>선긋기</p>
@@ -140,13 +152,5 @@
                     </div>
 			</div> <!-- row 끝 -->
         </div> <!-- container 끝 -->
-        <!-- Javascript -->
-		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
-		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-		$(function() {
-			$("#menu").load("../index_header.html");
-		});
-		</script>
 	</body>
 </html>

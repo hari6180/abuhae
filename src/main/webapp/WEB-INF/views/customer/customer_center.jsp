@@ -27,46 +27,48 @@
 		<!-- fontawesome(글리피콘) 적용 -->
 		<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
-</head>
-	<body>
-		<div class="container"> <!-- 페이지 전체 영역 -->
-		<header>
-			<%@ include file="../index_header.jsp"%>
-			</header>
-			<!-- header end-->
-	<div class="section_wrap"> <!-- section 전체영역 -->
-		<div class="col-xs-12"> 
-		<div class="section_main"> <!-- Background-image -->
-		<div class="section_input"> <!-- glyphicon -->
-			<span class="glyphicon glyphicon-search" id="glyphicon"></span>
-			<form role="search" class="search search-full" data-search
-			data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
-			<input type="search" name="query" id="query" placeholder="검색" aria-label="검색">
-		</form>
+		</head>
+		
+		<body>
+			<div class="container"> <!-- 페이지 전체 영역 -->
+			<header>
+				<%@ include file="../index_header.jsp"%>
+				</header>
+				<!-- header end-->
+		<div class="section_wrap"> <!-- section 전체영역 -->
+			<div class="col-xs-12"> 
+			<div class="section_main"> <!-- Background-image -->
+			<div class="section_input"> <!-- glyphicon -->
+			<form action="${pageContext.request.contextPath}/customer/cus_search.do" role="search" class="search search-full" data-search
+                data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
+				<input type="search" name="keyword" id="keyword" value="${keyword}" placeholder="검색" aria-label="검색">
+				<button type="submit">검색</button>
+			</form>
+		</div>
 	</div>
-</div>
-</div>
-</div> <!-- section 전체영역 끝 -->
+	</div>
+	</div> <!-- section 전체영역 끝 -->
 		<div class="activity_wrap"> <!-- activity 전체영역 -->
 			<section class="section_block">
 				<div class="row">
 					<div class="col-xs-12">
 						<ul class="block_list">
 							<li class="block_item">
-								<a href="${pageContext.request.contextPath}/customer/guide.do" class="block_item_link">
-									<span class="block_item_title">이용가이드</span>
+								<a href="${pageContext.request.contextPath}/customer/faq.do" class="block_item_link">
+									<span class="block_item_title">자주묻는 질문</span>
+									<span class="block_item_title2">FAQ</span>
 								</a>
 							</li>
 							<li class="block_item">
 								<a href="${pageContext.request.contextPath}/customer/question_mom.do" class="block_item_link">
 									<span class="block_item_title">부모회원</span>
-									<span class="block_item_title2">자주 묻는 질문</span>
+									<span class="block_item_title2">이용가이드</span>
 								</a>
 							</li>
 							<li class="block_item">
 								<a href="${pageContext.request.contextPath}/customer/question_sitter.do" class="block_item_link">
 									<span class="block_item_title">시터회원</span>
-									<span class="block_item_title2">자주 묻는 질문</span>
+									<span class="block_item_title2">이용가이드</span>
 								</a>
 							</li>
 							<li class="block_item">
