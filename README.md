@@ -16,5 +16,7 @@ member 테이블에서 signup_date 컬럼 추가
 leave_member 테이블에서 reason, leave_date 컬럼 추가
 sitter_info 테이블에서 favorite_act 컬럼 추가 
 
+21/2/17 추가 사항
+sitter_info 테이블에서 view(조회수) 컬럼 추가 
 
 
