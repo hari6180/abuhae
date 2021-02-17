@@ -3,6 +3,7 @@ package study.team.abuhae.service;
 import java.util.List;
 
 import study.team.abuhae.model.Admin_info;
+import study.team.abuhae.model.Coupon;
 import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
@@ -34,5 +35,8 @@ public interface AdminService {
 	
 	//이용권 사용중인 회원 수 조회
 	public int getSubCount(Mom_info input) throws Exception;
+	
+	//쿠폰 발급
+	public int addCoupon(Coupon input) throws Exception;
 }
 

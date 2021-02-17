@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import study.team.abuhae.model.Admin_info;
+import study.team.abuhae.model.Coupon;
 import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
@@ -196,6 +197,18 @@ public class AdminServiceImpl implements AdminService {
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public int addCoupon(Coupon input) throws Exception {
+		int result = 0;
+		try {
+			result = sqlsession.insert("AdminMapper.addCoupon", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 입력에 실패했습니다.");
 		}
 		return result;
 	}

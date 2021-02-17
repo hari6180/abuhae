@@ -17,6 +17,7 @@
 		<result property="phone" column="phone" />
 		<result property="birthdate" column="birthdate" />
 		<result property="job_opening" column="job_opening" />
+		<result property="signup_date" column="signup_date" />
 	</resultMap>
 
 	<resultMap id="MomMap"
@@ -67,11 +68,11 @@
 		parameterType="study.team.abuhae.model.Member" useGeneratedKeys="true"
 		keyProperty="memberno">
 		INSERT INTO Member (type, id, password, name, email,
-		phone, birthdate, job_opening)
+		phone, birthdate, job_opening, signup_date)
 		VALUES (#{type}, #{id}, #{password},
 		#{name}, #{email}, #{phone},
 		#{birthdate},
-		#{job_opening});
+		#{job_opening}, now());
 	</insert>
 
 
@@ -182,6 +183,12 @@
 		select count(*) from member m inner join sitter_info si on
 		m.memberno=si.memberno
 
+	</select>
+	
+	<!-- 아이디 찾기 -->
+	<select id="findID" parameterType="study.team.abuhae.model.Member"
+	resultMap="MomMap">
+		select id from member where name=#{name} and birthdate=#{birthdate} and phone=#{phone};
 	</select>
 	
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import study.team.abuhae.helper.WebHelper;
+import study.team.abuhae.model.Coupon;
 import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.service.AdminService;
@@ -55,5 +56,25 @@ public class AdminRestController {
 		
 		return webHelper.getJsonData();
 	}
+	
+	@RequestMapping(value = "admin/insertcoup", method = RequestMethod.POST)
+	public Map<String, Object> admin_addcoupon(Model model,
+			@RequestParam(value = "memberno") int memberno) {
+
+		Coupon input = new Coupon();
+		input.setMemberno(memberno);
+		
+		try {
+			//쿠폰 발급
+			adminService.addCoupon(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		return webHelper.getJsonData();
+	}
+	
+	
+	
 }
 

@@ -42,7 +42,8 @@ public class JoinRestController {
 			@RequestParam(value = "name") String name, 
 			@RequestParam(value = "email") String email,
 			@RequestParam(value = "tel") String tel,
-			@RequestParam(value = "birthdate") String birthdate) {
+			@RequestParam(value = "birthdate") String birthdate,
+			@RequestParam(value = "signup_date", required = false) String signup_date) {
 
 		// 데이터 가공
 		paymentstr = paymentstr.replace(",", "");

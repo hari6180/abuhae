@@ -55,6 +55,7 @@
                             이름과 생년월일(YYYYMMDD), 휴대폰 번호를 입력하시면, 가입한 계정 정보를 알려드립니다.
                         </p>
                     </div>
+                    <form>
                     <div class="find_box">
                         <label>이름</label><input id="name" type="text" placeholder="이름을 입력하세요.">
                         <hr>
@@ -65,7 +66,8 @@
                             placeholder="휴대폰 번호를 '-' 없이 입력해주세요.">
                         <hr>
                     </div>
-                    <button class="next_btn" id="find_account">계정 찾기</button>
+                    <button class="next_btn" type="submit" id="find_account">계정 찾기</button>
+                    </form>
                 </div>
 
                 <!--알맞은 정보를 입력했을 시에-->

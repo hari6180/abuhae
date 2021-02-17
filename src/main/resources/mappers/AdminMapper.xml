@@ -160,7 +160,8 @@
 	<!-- ========== 이용권 사용중인 회원 관리 / 쿠폰 발급 ============== -->
 	<select id="selectSubMember"
 		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
-		select memberno, name, id, startdate, enddate from member 
+		select m.memberno, name, id, startdate, enddate, reg_date from member m
+		left outer join coupon cp on m.memberno=cp.memberno
 		where startdate is not null and enddate is not null;
 	</select>
 	

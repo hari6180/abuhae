@@ -71,6 +71,7 @@
                     <input type="hidden" id="schedule" name="schedule" value="${schedule}">
                     <input type="hidden" id="schedule_ok" name="schedule_ok" value="${schedule_ok}">
                     <input type="hidden" id="descrip" name="description" value="${description}">
+                    <input type="hidden" id="signup_date" name="signup_date">
                     <div class="input_box">
                         <div class="input_group">
                             <label for="user_id">아이디</label>&nbsp;&nbsp;<label class="error" for="user_id"

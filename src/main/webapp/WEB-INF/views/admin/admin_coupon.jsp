@@ -25,7 +25,9 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_coupon.css" />
 		<style>
-
+			.page {
+				text-align: center;
+			}
 		</style>
 </head>
 <body>
@@ -47,26 +49,15 @@
 	</div>
 	<div class="dropdown">
 		<select class="filter" id="filter_bbs" name="filter_bbs">
-			<option value="" selected>전체</option>
-			<option value="find">이용권사용중회원</option>
-			<option value="payment">미사용중회원</option>
-			<option value="apply">만료회원</option>
-			<option value="care">소멸회원</option>
-		</select>
-		<select class="filter" id="filter_bbs" name="filter_bbs">
-			<option value="nomal" selected>기본정렬</option>
+			<option value="nomal">기본정렬</option>
 			<option value="startdate">이용권시작일순</option>
 			<option value="enddate">이용권만료일순</option>
-		</select>
-		<select class="filter" id="filter_limit" name="filter_limit">
-			<option value="10" selected>10개씩보기</option>
-			<option value="20">20개씩보기</option>
 		</select>
 	</div>
 	<div id="tabCont2_1" class="tabCont">
 		<div class="mTab typeTab eTab">
 			<ul>
-				<button type="button" class="button">쿠폰발송</button>
+				<button id="putcoup" type="button" class="button">쿠폰발송</button>
 			</ul>
 		</div>
 		<div id="tabContSub2_1_1" class="tabContSub">
@@ -74,7 +65,7 @@
 				<table>
 					<thead>
 						<tr>
-							<th class="col-md-1"><input type="checkbox" onclick="allcheck(this)"></th>
+							<th class="col-md-1"><input type="checkbox" id="all_check"></th>
 							<th class="col-md-1">회원번호</th>
 							<th class="col-md-1">이름</th>
 							<th class="col-md-1">아이디</th>
@@ -102,13 +93,72 @@
 										<td align="center">${item.id}</td>
 										<td align="center">${item.startdate}</td>
 										<td align="center">${item.enddate}</td>
-										<td align="center">${item.enddate}</td>
+										<td align="center">${item.reg_date}</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
 					</tbody>
 				</table>
+				<div class="page">
+					<ul class="pagination">
+						<!-- 페이지 번호 구현 -->
+						<%-- 이전 그룹에 대한 링크 --%>
+						<c:choose>
+							<%-- 이전 그룹으로 이동 가능하다면? --%>
+							<c:when test="${pageData.prevPage > 0}">
+								<%-- 이동할 URL 생성 --%>
+								<c:url value="/admin/admin_member.do" var="prevPageUrl">
+									<c:param name="page" value="${pageData.prevPage}" />
+									<c:param name="type" value="${type}" />
+								</c:url>
+								<li class="page-item prev_btn"><a href="${prevPageUrl}">[Prev]</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item disabled"><a>[Prev]</a></li>
+							</c:otherwise>
+						</c:choose>
+
+						<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+						<c:forEach var="i" begin="${pageData.startPage}"
+							end="${pageData.endPage}" varStatus="status">
+							<%-- 이동할 URL 생성 --%>
+							<c:url value="/admin/admin_member.do" var="pageUrl">
+								<c:param name="page" value="${i}" />
+								<c:param name="type" value="${type}" />
+							</c:url>
+
+							<%-- 페이지 번호 출력 --%>
+							<c:choose>
+								<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+								<c:when test="${pageData.nowPage == i}">
+									<li class="page-item active"><a>${i}</a></li>
+								</c:when>
+								<%-- 나머지 페이지의 경우 링크 적용함 --%>
+								<c:otherwise>
+									<li class="page-item"><a href="${pageUrl}">${i}</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+
+						<%-- 다음 그룹에 대한 링크 --%>
+						<c:choose>
+							<%-- 다음 그룹으로 이동 가능하다면? --%>
+							<c:when test="${pageData.nextPage > 0}">
+								<%-- 이동할 URL 생성 --%>
+								<c:url value="/admin/admin_member.do" var="nextPageUrl">
+									<c:param name="page" value="${pageData.nextPage}" />
+									<c:param name="type" value="${type}" />
+								</c:url>
+								<li class="page-item next_btn"><a href="${nextPageUrl}">[Next]</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item disabled"><a>[Next]</a></li>
+							</c:otherwise>
+						</c:choose>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -117,23 +167,43 @@
 		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-		function allcheck(o) {
-			// 클릭한 체크박스의 table 에서 (바로위 부모요소를 대상)
-			// 이름이 chk 인것을 찾고
-			// 현재 요소의 체크 상태를 찾은 대상에 적용
-			$(o).closest('table').find('[name=chk]').prop('checked', o.checked);
-		}
-		$(document).ready(function() {
-			$('.logout').click(function() {
-				var result = confirm('정말 로그아웃 하시겠습니까?');
-				if(result) {
-					//yes
-					location.replace('admin_login.html');
-				} else {
-					// no
-				}
+			$(function(){
+				//올체크 상태 변경되었을 떄 이벤트 - 선아
+				$("#all_check").change(function(){
+					//모든 hobby의 상태를 올체크와 동일하게
+					$(".agree").prop('checked', $(this).prop('checked'));
+					var now = $(".next_btn").prop('disabled');
+					$(".next_btn").prop('disabled', !now);
+				});
+
+				$("#putcoup").on("click", function () {
+					//체크된 row의 회원번호 가져오기
+					var checkbox = $("input[name=chk]:checked");
+					var memberno = null;
+					checkbox.each(function (i) {
+						var tr = checkbox.parent().parent().eq(i); //checkbox의 두단계 상위가 tr
+						var td = tr.children(); //td태그는 tr의 하위
+	
+						memberno = td.eq(1).text(); //id는 td의 두번째 요소
+					});
+	
+					$.ajax({
+						type: 'POST',
+						url: '${pageContext.request.contextPath}/admin/insertcoup?memberno='+memberno,
+						success: function(json){
+							// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+							if (json.rt == "OK") {
+								alert(memberno+"회원 쿠폰 발급 성공");
+								window.location = "${pageContext.request.contextPath}/admin/admin_coupon.do";
+							}
+							
+						},
+						error : function() { //통신 실패시 ㅠㅠ
+							alert('통신실패!');
+						}
+					});
+				});
 			});
-		});
-			</script>
+		</script>
 </body>
 </html>
