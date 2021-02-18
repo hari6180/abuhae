@@ -71,7 +71,7 @@
                 			<c:otherwise>
                 				<c:forEach var="item_cate" items="${out}" varStatus="status">
                 					<!-- 카테고리=1(이용가이드) / 서브카테고리=1(이용가이드)의 작성글 제목 조회 -->
-                					<c:if test="${item_cate.cateno == 2 && item_cate.subcateno==13}">
+                					<c:if test="${item_cate.cateno == 2 && item_cate.subcateno==5}">
                 						<h2>${item_cate.sub_category}</h2>
                 					</c:if>
                 				</c:forEach>
@@ -92,7 +92,7 @@
                  					<c:url value="/customer/cus_view.do" var="viewUrl">
                  						<c:param name="boardnum" value="${item.boardnum}"/>
                  					</c:url>
-                 					<c:if test="${item.cateno==2 && item.subcateno == 13}">
+                 					<c:if test="${item.cateno==2 && item.subcateno == 5}">
                  						<ul>
                   						<li><a href="${viewUrl}">[${item.sub_category}] ${item.title}</a></li>
                   					</ul>

@@ -52,17 +52,37 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value = "/customer/faq.do", method = RequestMethod.GET)
-	public ModelAndView guide(Model model, HttpServletResponse response, HttpServletRequest request) {
+	public ModelAndView guide(Model model, HttpServletResponse response, HttpServletRequest request,
+			// 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		/** 페이징 기능 */
+		// 페이지 구현에 필요한 변수값 생성
+		int totalCount = 0; // 전체 게시글 수 
+		int listCount = 5; // 한 페이지 당 표시할 목록 수 
+		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 		
+		Cus_bbs input = new Cus_bbs();
+		PageData pageData = null; //페이지 번호 계산
+		
+		/** 카테고리 목록 조회 */
 		List<Cus_sub_category> out = null;
 		
 		try {
+			// 전체 게시글 수 조회
+			totalCount = customerService.getCusCount(input);
+			// 페이지 번호 계산 
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			
+			Cus_bbs.setOffset(pageData.getOffset());
+			Cus_bbs.setListCount(pageData.getListCount());
+			
 			// 데이터 조회 
 			out = customerService.getCateList(null);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
+		/** 게시글 목록 조회 */
 		List<Cus_bbs> output = null;
 		
 		try {
@@ -73,6 +93,7 @@ public class CustomerController {
 		}
 		
 		/** View 처리 */
+		model.addAttribute("pageData", pageData);
 		model.addAttribute("out", out);
 		model.addAttribute("output", output);
 		

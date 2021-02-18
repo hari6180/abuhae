@@ -73,6 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
 		return result;
 	}
 
+	/** 카테고리 목록 조회 */
 	@Override
 	public List<Cus_sub_category> getCateList(Cus_sub_category input) throws Exception {
 		List<Cus_sub_category> result = null;
