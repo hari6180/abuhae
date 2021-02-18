@@ -35,11 +35,11 @@ public class MemberInsertController {
 			input.setPassword("mom123");
 			input.setName("전하리" + i);
 			input.setEmail("aaa@aaa.aa");
-			input.setPhone("010-8888-8888");
+			input.setPhone("01088888888");
 			input.setBirthdate("1997-06-18");
 			input.setGender('F');
 			input.setJob_opening('Y');
-			input.setWant_act("야외활동"); // 영어로 불러옴 , ","이어지니까 스플릿으로 파싱 
+			input.setWant_act("innerplay,guide,outside"); // 영어로 불러옴 , ","이어지니까 스플릿으로 파싱 
 			input.setWant_age("20대");
 			input.setKids_num(1);
 			input.setKids_age("201501");
@@ -96,12 +96,12 @@ public class MemberInsertController {
 			input2.setPassword("sitter123");
 			input2.setName("김선아" + i);
 			input2.setEmail("bbb@aaa.aa");
-			input2.setPhone("010-8888-8888");
+			input2.setPhone("01088888888");
 			input2.setBirthdate("1993-11-24");
 			input2.setGender('F');
 			input2.setJob_opening('Y');
 			input2.setSitter_type("대학생");
-			input2.setWant_act("야외활동");
+			input2.setWant_act("innerplay,guide,outside");
 			input2.setWant_age("20대");
 			
 			// 시급 랜덤입력

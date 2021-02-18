@@ -68,7 +68,6 @@
 		<result property="memberno" column="memberno" />
 		<result property="applySt" column="cntno"/>
 		<result property="days" column="days" />
-		
 	</resultMap>
 
 
@@ -101,6 +100,14 @@
 		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate, 
 		(SELECT COUNT(resino) FROM resi_cert rc WHERE s.sitterno=rc.sitterno AND cert='Y') AS resino FROM sitter_info s
 		INNER JOIN member m ON s.memberno=m.memberno
+		
+		<where>
+		<!-- 활동 유형 -->
+			<if test="act != null">
+				want_act LIKE CONCAT('%',#{act},'%')
+			</if>
+		</where>
+		
 		
 		ORDER BY 
 		

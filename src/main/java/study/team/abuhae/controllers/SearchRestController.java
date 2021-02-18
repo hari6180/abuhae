@@ -122,6 +122,19 @@ public class SearchRestController {
             
             // 데이터 조회하기
             output = searchService.searchMom(input);
+            
+            
+            // 아이 나이 계산 with AgeHelper
+            AgeHelper ageHelper = new AgeHelper();
+            
+			  for (int i=0; i<output.size(); i++) {
+				  Mom_info temp = output.get(i);
+				  String age = ageHelper.kidsStr(temp.getKids_age());
+				  temp.setKids_age(age);
+				  output.set(i, temp);
+			  }
+			 
+            
         } catch (Exception e) {
             return webHelper.getJsonError(e.getLocalizedMessage());
         }

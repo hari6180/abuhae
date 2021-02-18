@@ -599,22 +599,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <!-- 드롭다운 end-->
               </div>
               <!-- 카드영역 -->
-     
+
               <!-- 카드영역 end -->
               <div id="result"></div>
               <div id="result2"></div>
-              <!-- 
-              <div class="app_banner">
-                <img
-                  srcset="
-                    https://momsitter-service.s3.ap-northeast-2.amazonaws.com/momsitter-app/static/public/banner/jobsearch-banner_1.png    1x,
-                    https://momsitter-service.s3.ap-northeast-2.amazonaws.com/momsitter-app/static/public/banner/jobsearch-banner_1@3x.png 2x,
-                    https://momsitter-service.s3.ap-northeast-2.amazonaws.com/momsitter-app/static/public/banner/jobsearch-banner_1@3x.png 3x
-                  "
-                  src="https://momsitter-service.s3.ap-northeast-2.amazonaws.com/momsitter-app/static/public/banner/jobsearch-banner_1.png"
-                  alt="배너"
-                />
-              </div> -->
 
               <div>
                 <a data-toggle="modal" href="#job_search_detail_modal">
@@ -646,7 +634,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <div class="content_row">
                 <div>
                   <div class="kids_count">
-                    {{kid_age}} {{kids_num}}명
+                    {{kids_age}} {{kids_num}}명
                   </div>
                   <div class="text_sep"></div>
                   <div class="last_update">
@@ -656,7 +644,20 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               </div>
               <div class="content_row">
                 <div class="find_text">
-                  {{want_act}} &nbsp 맘시터 찾습니다.
+				  {{#contains 'innerplay' want_act}}실내놀이{{/contains}}
+				  {{#contains 'guide' want_act}}등하원돕기{{/contains}}
+				  {{#contains 'read' want_act}}책읽기{{/contains}}
+				  {{#contains 'outside' want_act}}야외활동{{/contains}}
+				  {{#contains 'korean' want_act}}한글놀이{{/contains}}
+				  {{#contains 'english' want_act}}영어놀이{{/contains}}
+				  {{#contains 'study' want_act}}실내놀이{{/contains}}
+				  {{#contains 'sport' want_act}}학습지도{{/contains}}
+				  {{#contains 'simple_cleaning' want_act}}간단 청소{{/contains}}
+				  {{#contains 'eat' want_act}}밥 챙겨주기{{/contains}}
+				  {{#contains 'do_dish' want_act}}간단 설거지{{/contains}}
+				  {{#contains 'long_move_in' want_act}}장기입주{{/contains}}
+				  {{#contains 'short_move_in' want_act}}단기입주{{/contains}}
+                  맘시터 찾습니다.
                 </div>
               </div>
               <div class="content_row location_group">
@@ -676,7 +677,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <i class="fas fa-won-sign"></i>
                 <div class="wanted_pay">
                   희망 시급 {{payment}}원
-				  {{#ifCond payment_ok 'Y'}}/협의가능{{/ifCond}}
+      {{#ifCond payment_ok 'Y'}}/협의가능{{/ifCond}}
                 </div>
               </div>
             </div>
@@ -687,12 +688,12 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <div class="time_text_group">
                 <div class="frequency">
                   {{#ifCond frequency "regular"}}정기적{{/ifCond}}
-				  {{#ifCond frequency "shortTerm"}}단기{{/ifCond}}
-				  {{#ifCond frequency "noplan"}}협의{{/ifCond}}
+      {{#ifCond frequency "shortTerm"}}단기{{/ifCond}}
+      {{#ifCond frequency "noplan"}}협의{{/ifCond}}
                 </div>
               </div>
               <div class="care_days_group">
-                <!-- 조건에 따라 css 색상 변환 처리 --> 
+                <!-- 조건에 따라 css 색상 변환 처리 -->
                 <span class="care_days {{#contains "mon" days }} care_days_sel {{/contains}}">
                   월
                 </span>
@@ -710,7 +711,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 </span>
                 <span class="care_days {{#contains "sat" days }} care_days_sel {{/contains}}">
                   토
-                </span> 
+                </span>
                 <span class="care_days {{#contains "sun" days }} care_days_sel {{/contains}}">
                   일
                 </span>
@@ -735,19 +736,18 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         }
         return options.inverse(this);
       });
-      
-      Handlebars.registerHelper('trimString', function(passedString) {
-    	    var theString = passedString.substring(6,11);
-    	    return new Handlebars.SafeString(theString)
-    	});
-      
-      Handlebars.registerHelper('contains', function(needle, haystack, options) {
-    	   needle = Handlebars.escapeExpression(needle);
-    	   haystack = Handlebars.escapeExpression(haystack);
-    	   return (haystack.indexOf(needle) > -1) ? options.fn(this) : options.inverse(this);
-    	});
-      
-      
+
+      Handlebars.registerHelper("trimString", function (passedString) {
+        var theString = passedString.substring(6, 11);
+        return new Handlebars.SafeString(theString);
+      });
+
+      Handlebars.registerHelper("contains", function (needle, haystack, options) {
+        needle = Handlebars.escapeExpression(needle);
+        haystack = Handlebars.escapeExpression(haystack);
+        return haystack.indexOf(needle) > -1 ? options.fn(this) : options.inverse(this);
+      });
+
       let nowPage = 1; // 현재 페이지의 기본값
       let order = "openingdate";
       $(function () {

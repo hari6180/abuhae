@@ -25,11 +25,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- sitter_search.css-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/sitter_search.css" />
 
-    <!-- sweetalert 사용 -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!--Google CDN 서버로부터 jQuery 참조 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
@@ -37,16 +36,16 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/ajax/ajax_helper.css" />
 
-    <!--Google CDN 서버로부터 jQuery 참조 -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Handlebar CDN 참조 -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
+    <!-- sweetalert 사용 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script type="text/javascript">
       function random(n1, n2) {
         return parseInt(Math.random() * (n2 - n1 + 1)) + n1;
       }
-
+      let act = null;
       $(function () {
         // 헤더 메뉴 load처리 1224 하리
         // $("#menu").load("/ezen-android2020-2/index_header.html"); - 210124 include 변경
@@ -118,6 +117,21 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               $(".act_label").eq(i).addClass("unselect_act_type");
             }
           }
+
+          $.get(
+            "${pageContext.request.contextPath}/search/sitter_search",
+            {
+              act: act, // 정렬 조건은 GET 파라미터로 전송한다.
+            },
+            function (json) {
+              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#result").empty(); // 결과물 초기화
+              $("#result2").empty(); // 결과물 초기화
+              $("#result").append(result); // 최종 결과물을 추가한다
+            }
+          );
         });
 
         $(".act_btn").change(function change_btn(e) {
@@ -507,7 +521,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <!-- location modal end -->
 
               <!-- activity type modal -->
-              <form id="activity_type_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="activity_type_modal_Label" aria-hidden="true">
+              <div id="activity_type_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="activity_type_modal_Label" aria-hidden="true">
                 <!--modal header-->
 
                 <div class="modal_header">
@@ -525,7 +539,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <div class="want_act_box">
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check1" class="act_btn" name="check_ab" value="innerplay" />
+                        <input type="checkbox" id="check1" class="act_btn" name="check_ab" value="innerplay" data-act="innerplay" />
                         <label for="check1" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/innerplayicon_n.png" />
                           <div class="want_text">실내놀이</div></label
@@ -534,7 +548,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check2" class="act_btn" name="check_ab" value="guide" />
+                        <input type="checkbox" id="check2" class="act_btn" name="check_ab" value="guide" data-act="guide" />
                         <label for="check2" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/guideicon_n.png" />
                           <div class="want_text">등하원돕기</div></label
@@ -543,7 +557,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check3" class="act_btn" name="check_ab" value="read" />
+                        <input type="checkbox" id="check3" class="act_btn" name="check_ab" value="read" data-act3="read" />
                         <label for="check3" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/readicon_n.png" />
                           <div class="want_text">책읽기</div></label
@@ -552,7 +566,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check4" class="act_btn" name="check_ab" value="outside" />
+                        <input type="checkbox" id="check4" class="act_btn" name="check_ab" value="outside" data-act4="outside" />
                         <label for="check4" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/ousideicon_n.png" />
                           <div class="want_text">야외활동</div></label
@@ -561,7 +575,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check5" class="act_btn" name="check_ab" value="korean" />
+                        <input type="checkbox" id="check5" class="act_btn" name="check_ab" value="korean" data-act5="korean" />
                         <label for="check5" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/koreanicon_n.png" />
                           <div class="want_text">한글놀이</div></label
@@ -570,7 +584,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check6" class="act_btn" name="check_ab" value="english" />
+                        <input type="checkbox" id="check6" class="act_btn" name="check_ab" value="english" data-act6="english" />
                         <label for="check6" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/englishicon_n.png" />
                           <div class="want_text">영어놀이</div></label
@@ -579,7 +593,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check7" class="act_btn" name="check_ab" value="study" />
+                        <input type="checkbox" id="check7" class="act_btn" name="check_ab" value="study" data-act7="study" />
                         <label for="check7" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/studyicon_n.png" />
                           <div class="want_text">학습지도</div></label
@@ -588,7 +602,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check8" class="act_btn" name="check_ab" value="sport" />
+                        <input type="checkbox" id="check8" class="act_btn" name="check_ab" value="sport" data-act8="sport" />
                         <label for="check8" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/ballicon_n.png" />
                           <div class="want_text">체육놀이</div></label
@@ -597,7 +611,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check9" class="act_btn" name="check_ab" value="simple_cleaning" />
+                        <input type="checkbox" id="check9" class="act_btn" name="check_ab" value="simple_cleaning" data-act9="simple_cleaning" />
                         <label for="check9" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/cleanicon_n.png" />
                           <div class="want_text">간단 청소</div></label
@@ -606,7 +620,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check10" class="act_btn" name="check_ab" value="eat" />
+                        <input type="checkbox" id="check10" class="act_btn" name="check_ab" value="eat" data-act10="eat" />
                         <label for="check10" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/eaticon_n.png" />
                           <div class="want_text">밥 챙겨주기</div></label
@@ -615,7 +629,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check11" class="act_btn" name="check_ab" value="do_dish" />
+                        <input type="checkbox" id="check11" class="act_btn" name="check_ab" value="do_dish" data-act11="do_dish" />
                         <label for="check11" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/dishicon_n.png" />
                           <div class="want_text">간단 설거지</div></label
@@ -624,7 +638,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check12" class="act_btn" name="check_ab" value="long_move_in" />
+                        <input type="checkbox" id="check12" class="act_btn" name="check_ab" value="long_move_in" data-act12="long_move_in" />
                         <label for="check12" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/longhouseicon_n.png" />
                           <div class="want_text">장기입주</div></label
@@ -633,7 +647,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check13" class="act_btn" name="check_ab" value="short_move_in" />
+                        <input type="checkbox" id="check13" class="act_btn" name="check_ab" value="short_move_in" data-act13="short_move_in" />
                         <label for="check13" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/houseicon_n.png" />
                           <div class="want_text">단기입주</div></label
@@ -652,7 +666,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <!--modal footer end-->
                 </div>
                 <!--end modal dialog-->
-              </form>
+              </div>
               <!-- activity type modal end -->
 
               <!-- detail search modal -->
@@ -671,28 +685,28 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <div class="children_age_wrap">
                     <h4>아이 나이</h4>
                     <div class="age_line">
-                      <button class="ages">
+                      <button class="ages" data-age="got_baby">
                         <div style="margin-bottom: -10px">
                           <i class="fas fa-baby fa-3x"></i>
                         </div>
                         <br />
                         <span>신생아</span>
                       </button>
-                      <button class="ages">
+                      <button class="ages" data-age="baby">
                         <div style="margin-bottom: -10px">
                           <i class="fas fa-baby-carriage fa-3x"></i>
                         </div>
                         <br />
                         <span>영아</span>
                       </button>
-                      <button class="ages">
+                      <button class="ages" data-age="children">
                         <div style="margin-bottom: -10px">
                           <i class="fas fa-child fa-3x"></i>
                         </div>
                         <br />
                         <span>유아</span>
                       </button>
-                      <button class="ages">
+                      <button class="ages" data-age="element">
                         <div style="margin-bottom: -10px">
                           <i class="fas fa-school fa-3x"></i>
                         </div>
@@ -706,13 +720,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <div class="care_day_wrap">
                     <h4>돌봄 요일</h4>
                     <div class="care_day_group">
-                      <button class="care_day"><div>월</div></button>
-                      <button class="care_day"><div>화</div></button>
-                      <button class="care_day"><div>수</div></button>
-                      <button class="care_day"><div>목</div></button>
-                      <button class="care_day"><div>금</div></button>
-                      <button class="care_day"><div>토</div></button>
-                      <button class="care_day"><div>일</div></button>
+                      <button class="care_day" data-day="mon"><div>월</div></button>
+                      <button class="care_day" data-day="tue"><div>화</div></button>
+                      <button class="care_day" data-day="wed"><div>수</div></button>
+                      <button class="care_day" data-day="thu"><div>목</div></button>
+                      <button class="care_day" data-day="fri"><div>금</div></button>
+                      <button class="care_day" data-day="sat"><div>토</div></button>
+                      <button class="care_day" data-day="sun"><div>일</div></button>
                     </div>
                   </div>
                   <hr />
@@ -720,9 +734,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <div class="caretime_wrap">
                     <h4>돌봄 시간대</h4>
                     <div class="time_range_group">
-                      <button class="time_range"><span class="time_range_content">07 - 12시</span></button>
-                      <button class="time_range"><span class="time_range_content">12 - 18시</span></button>
-                      <button class="time_range"><span class="time_range_content">18 - 22시</span></button>
+                      <button class="time_range" data-time="morning"><span class="time_range_content">07 - 12시</span></button>
+                      <button class="time_range" data-time="afternoon"><span class="time_range_content">12 - 18시</span></button>
+                      <button class="time_range" data-time="night"><span class="time_range_content">18 - 22시</span></button>
                     </div>
                   </div>
                   <hr />
@@ -731,13 +745,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <h4>맘시터 유형</h4>
                     <div class="sitter_type_group">
                       <div>
-                        <button class="sitter_type">
+                        <button class="sitter_type" data-stType="mom">
                           <div>
                             <i class="fas fa-circle"></i>
                             <span class="sitter_type_content">엄마 맘시터</span>
                           </div>
                         </button>
-                        <button class="sitter_type">
+                        <button class="sitter_type" data-stType="teacher">
                           <div>
                             <i class="fas fa-circle"></i>
                             <span class="sitter_type_content">선생님 맘시터</span>
@@ -745,13 +759,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                         </button>
                       </div>
                       <div>
-                        <button class="sitter_type">
+                        <button class="sitter_type" data-stType="student">
                           <div>
                             <i class="fas fa-circle"></i>
                             <span class="sitter_type_content">대학생 맘시터</span>
                           </div>
                         </button>
-                        <button class="sitter_type">
+                        <button class="sitter_type" data-stType="normal">
                           <div>
                             <i class="fas fa-circle"></i>
                             <span class="sitter_type_content">일반 맘시터</span>
@@ -770,10 +784,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <h4>원하는 맘시터 나이대</h4>
                     <div class="age_range">
                       <div class="want_age_box">
-                        <input type="checkbox" value="20" class="want_age" id="20age" checked /> <label for="20age">20대</label>
-                        <input type="checkbox" value="30" class="want_age" id="30age" checked /> <label for="30age">30대</label>
-                        <input type="checkbox" value="40" class="want_age" id="40age" checked /> <label for="40age">40대</label> <input type="checkbox" value="50" class="want_age" id="50age" />
-                        <label for="50age">50대</label> <input type="checkbox" value="60" class="want_age" id="60age" /> <label for="60age">60대</label>
+                        <input type="checkbox" value="20" class="want_age" id="20age" data-wtage="20" checked /> <label for="20age">20대</label>
+                        <input type="checkbox" value="30" class="want_age" id="30age" data-wtage="30" checked /> <label for="30age">30대</label>
+                        <input type="checkbox" value="40" class="want_age" id="40age" data-wtage="40" checked /> <label for="40age">40대</label>
+                        <input type="checkbox" value="50" class="want_age" id="50age" data-wtage="50" /><label for="50age">50대</label>
+                        <input type="checkbox" value="60" class="want_age" id="60age" data-wtage="60" /> <label for="60age">60대</label>
                       </div>
                     </div>
                   </div>
@@ -958,68 +973,68 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                                 <div class="content_row">
                                   <div class="user_age">{{birthdate}}세</div>
                                   <div class="text_sep"></div>
-                                  <div class="wanted_pay">희망 시급 {{payment}}원 
-								 {{#ifCond payment_ok 'Y'}}
-									/ 협의가능
-								 {{/ifCond}}</div>
+                                  <div class="wanted_pay">희망 시급 {{payment}}원
+      		 {{#ifCond payment_ok 'Y'}}
+      			/ 협의가능
+      		 {{/ifCond}}</div>
 
                                 </div>
                                 <div class="content_row">
-                                						
-						{{#ifCond rev_rate 0}}						
-						<div class="rev_rate">
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-						</div>
-						{{/ifCond}}
-						{{#ifCond rev_rate 1}}	
-						<div class="rev_rate">
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-						</div>
-						{{/ifCond}}
-						{{#ifCond rev_rate 2}}
-						<div class="rev_rate">
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-						</div>
-						{{/ifCond}}
-						{{#ifCond rev_rate 3}}
-						<div class="rev_rate">
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-						</div>
-						{{/ifCond}}
-						{{#ifCond rev_rate 4}}
-						<div class="rev_rate">
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-						</div>
-						{{/ifCond}}
-						{{#ifCond rev_rate 5}}
-						<div class="rev_rate">
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-						</div>
-						{{/ifCond}}
+
+      {{#ifCond rev_rate 0}}
+      <div class="rev_rate">
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      </div>
+      {{/ifCond}}
+      {{#ifCond rev_rate 1}}
+      <div class="rev_rate">
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      </div>
+      {{/ifCond}}
+      {{#ifCond rev_rate 2}}
+      <div class="rev_rate">
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      </div>
+      {{/ifCond}}
+      {{#ifCond rev_rate 3}}
+      <div class="rev_rate">
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      </div>
+      {{/ifCond}}
+      {{#ifCond rev_rate 4}}
+      <div class="rev_rate">
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+      </div>
+      {{/ifCond}}
+      {{#ifCond rev_rate 5}}
+      <div class="rev_rate">
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+      </div>
+      {{/ifCond}}
                                   <span class="review_count">후기 {{answer}}개</span>
                                 </div>
                               </div>
