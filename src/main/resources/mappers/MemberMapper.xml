@@ -69,14 +69,16 @@
 		keyProperty="memberno">
 		INSERT INTO Member (type, id, password, name, email,
 		phone, birthdate, job_opening, signup_date)
-		VALUES (#{type}, #{id}, #{password},
+		VALUES (#{type}, #{id},
+		#{password},
 		#{name}, #{email}, #{phone},
 		#{birthdate},
-		#{job_opening}, now());
+		#{job_opening},
+		now());
 	</insert>
 
 
-	<!-- 맘 회원 가입-->
+	<!-- 맘 회원 가입 -->
 	<insert id="insertMom"
 		parameterType="study.team.abuhae.model.Mom_info"
 		useGeneratedKeys="true" keyProperty="momno">
@@ -96,7 +98,7 @@
 		#{memberno});
 	</insert>
 
-	<!-- 시터 회원 가입-->
+	<!-- 시터 회원 가입 -->
 	<insert id="insertSitter"
 		parameterType="study.team.abuhae.model.Sitter_info"
 		useGeneratedKeys="true" keyProperty="sitterno">
@@ -118,23 +120,27 @@
 	<!-- 가입시 중복 체크 -->
 	<select id="getIdCheck"
 		parameterType="study.team.abuhae.model.Member" resultType="int">
-		SELECT count(*) from member where id=#{id};
+		SELECT
+		count(*) from member where id=#{id};
 	</select>
 
 	<select id="getEmailCheck"
 		parameterType="study.team.abuhae.model.Member" resultType="int">
-		SELECT count(*) from member where email=#{email};
+		SELECT
+		count(*) from member where email=#{email};
 	</select>
 
 	<select id="getPhoneCheck"
 		parameterType="study.team.abuhae.model.Member" resultType="int">
-		SELECT count(*) from member where phone=#{phone};
+		SELECT
+		count(*) from member where phone=#{phone};
 	</select>
 
 	<!-- 특정 아이디에 대한 단일행 조회 -->
 	<select id="selectIDItem"
 		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
-		select * from member where id=#{id};
+		select * from
+		member where id=#{id};
 	</select>
 
 
@@ -142,12 +148,14 @@
 	<!-- 맘 회원 목록 다중행 조회를 위한 기능 정의 // 회원명 검색 // 페이징 기능 @선아 02/08 -->
 	<select id="selectListMom"
 		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
-		select m.type, m.memberno, m.id, m.name, m.email, m.phone, m.job_opening, 
-		mi.si, mi.gu, mi.dong 
+		select m.type, m.memberno, m.id, m.name, m.email, m.phone,
+		m.job_opening,
+		mi.si, mi.gu, mi.dong
 		from member m
 		inner join mom_info mi on m.memberno = mi.memberno
 
-		ORDER BY m.memberno ASC
+		ORDER BY
+		m.memberno ASC
 
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
@@ -157,10 +165,12 @@
 	<!-- 시터 회원 목록 다중행 조회를 위한 기능 정의 // 회원명 검색 // 페이징 기능 @선아 02/08 -->
 	<select id="selectListSitter"
 		parameterType="study.team.abuhae.model.Member" resultMap="SitterMap">
-		select m.type, m.memberno, m.id, m.name, m.email, m.phone, m.job_opening,
+		select m.type, m.memberno, m.id, m.name, m.email, m.phone,
+		m.job_opening,
 		si.si, si.gu, si.dong
 		from member m
-		inner join sitter_info si on m.memberno = si.memberno
+		inner join sitter_info
+		si on m.memberno = si.memberno
 
 		ORDER BY memberno ASC
 
@@ -168,28 +178,36 @@
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
-	
+
 	<!-- 부모회원수 조회 -->
 	<select id="selectCountMom"
 		parameterType="study.team.abuhae.model.Member" resultType="int">
-		select count(*) from member m inner join mom_info mi on
+		select
+		count(*) from member m inner join mom_info mi on
 		m.memberno=mi.memberno
 
 	</select>
-	
+
 	<!-- 시터회원수 조회 -->
 	<select id="selectCountSitter"
 		parameterType="study.team.abuhae.model.Member" resultType="int">
-		select count(*) from member m inner join sitter_info si on
+		select
+		count(*) from member m inner join sitter_info si on
 		m.memberno=si.memberno
 
 	</select>
-	
-	<!-- 아이디 찾기 -->
-	<select id="findID" parameterType="study.team.abuhae.model.Member"
-	resultMap="MomMap">
-		select id from member where name=#{name} and birthdate=#{birthdate} and phone=#{phone};
-	</select>
-	
 
+	<!-- 아이디 찾기 -->
+	<select id="findID"
+		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
+		select id
+		from member where name=#{name} and birthdate=#{birthdate} and
+		phone=#{phone};
+	</select>
+
+
+	<!-- 임시비밀번호로 업데이트 -->
+	<update id="updatePw" parameterType="study.team.abuhae.model.Member">
+		update member set password = #{password} where id = #{id}
+	</update>
 </mapper>

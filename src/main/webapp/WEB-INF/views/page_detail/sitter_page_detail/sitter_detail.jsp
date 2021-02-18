@@ -258,6 +258,7 @@
 									<div class="active_main">
 										<div class="active_main_box" style="display: block;">
 											<div>
+											
 												<div class="day_area">
 													<div class="day_box">
 														<div class="day">
@@ -499,7 +500,7 @@
 						<div>
 							<div class="age_line">
 				
-							<c:if test="${output.want_age == 'baby'}">
+							<c:if test="${ageput.want_age == '신생아'}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-baby fa-3x"></i>
@@ -508,7 +509,7 @@
 									<span>신생아</span>
 								</div>
 								</c:if>
-								<c:if test="${output.want_age != 'baby'}">
+								<c:if test="${ageput.want_age != '신생아'}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<span style="color: #ccc"><i class="fas fa-baby fa-3x"></i></span>
@@ -779,7 +780,7 @@
 									</div>
 									<!-- ------- -->
 									<div class="active_line col-xs-3">
-										<c:if test="${item!=play}">
+										<c:if test="${output.want_act!='야외활동'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -789,7 +790,7 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${item==play}">
+										<c:if test="${output.want_act=='야외활동'}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">

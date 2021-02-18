@@ -196,7 +196,7 @@
                         <div class="want_textt">유아</div>
                     </div>
                     <div class="want_btn">
-                        <button class="act_btn want_age" value="adult"><i class="fas fa-school fa-3x"></i></button>
+                        <button class="act_btn want_age" value="element"><i class="fas fa-school fa-3x"></i></button>
                         <div class="want_text">초등학생</div>
                     </div>
                 </div>

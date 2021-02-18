@@ -36,6 +36,8 @@ public abstract class Member {
 	private String r_type;  	// 신고 유형
 	private String contents; 	// 신고 내용
 
+	private String signup;
+	
 	/** LIMIT 절에서 사용할 조회 시작 위치 */
 	private static int offset;
 	

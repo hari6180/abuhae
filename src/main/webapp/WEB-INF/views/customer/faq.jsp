@@ -72,7 +72,7 @@
 	                   			<c:otherwise>
 	                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
 	                   					<!-- 카테고리=1(이용가이드) / 서브카테고리=1(이용가이드)의 작성글 제목 조회 -->
-	                   					<c:if test="${item_cate.cateno == 1 && item_cate.subcateno==1}">
+	                   					<c:if test="${item_cate.cateno==1 && item_cate.subcateno==1}">
 	                   						<h2>${item_cate.sub_category}</h2>
 	                   					</c:if>
 	                   				</c:forEach>
@@ -118,7 +118,7 @@
 	                   			
 	                   			<c:otherwise>
 	                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
-	                   					<c:if test="${item_cate.cateno == 1 && item_cate.subcateno==2}">
+	                   					<c:if test="${item_cate.cateno==1 && item_cate.subcateno==2}">
 	                   						<h2>${item_cate.sub_category}</h2>
 	                   					</c:if>
 	                   				</c:forEach>
@@ -140,7 +140,7 @@
 	                    						<c:param name="boardnum" value="${item.boardnum}"/>
 	                    					</c:url>
 	                    					<%-- sub_category2의 게시글 --%>
-	                    					<c:if test="${item.cateno==1 && item.subcateno == 2}">
+	                    					<c:if test="${item.subcateno == 2}">
 	                    						<ul>
 		                    						<li><a href="${viewUrl}">[${item.sub_category}] ${item.title}</a></li>
 		                    					</ul>
@@ -165,7 +165,7 @@
 	                   			
 	                   			<c:otherwise>
 	                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
-	                   					<c:if test="${item_cate.cateno == 1 && item_cate.subcateno==3}">
+	                   					<c:if test="${item_cate.cateno==1 && item_cate.subcateno==3}">
 	                   						<h2>${item_cate.sub_category}</h2>
 	                   					</c:if>
 	                   				</c:forEach>
@@ -211,7 +211,7 @@
 	                   			
 	                   			<c:otherwise>
 	                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
-	                   					<c:if test="${item_cate.cateno == 1 && item_cate.subcateno==4}">
+	                   					<c:if test="${item_cate.cateno==1 && item_cate.subcateno==4}">
 	                   						<h2>${item_cate.sub_category}</h2>
 	                   					</c:if>
 	                   				</c:forEach>
@@ -257,7 +257,7 @@
 	                   			
 	                   			<c:otherwise>
 	                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
-	                   					<c:if test="${item_cate.cateno == 1 && item_cate.subcateno==5}">
+	                   					<c:if test="${item_cate.cateno==1 && item_cate.subcateno==5}">
 	                   						<h2>${item_cate.sub_category}</h2>
 	                   					</c:if>
 	                   				</c:forEach>
@@ -303,7 +303,7 @@
 	                   			
 	                   			<c:otherwise>
 	                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
-	                   					<c:if test="${item_cate.cateno == 1 && item_cate.subcateno==6}">
+	                   					<c:if test="${item_cate.cateno==1 && item_cate.subcateno==6}">
 	                   						<h2>${item_cate.sub_category}</h2>
 	                   					</c:if>
 	                   				</c:forEach>

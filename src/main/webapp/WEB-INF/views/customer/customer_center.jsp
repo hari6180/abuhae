@@ -108,10 +108,10 @@
 	                 						<c:param name="boardnum" value="${item.boardnum}"/>
 	                 					</c:url>
 	                 					<fmt:parseNumber var="i" type="number" value="${item.edit_date}" />
-	                 					<c:if test="${item.edit_date < 200 }">
+	                 					<c:if test="${item.edit_date < 15 }">
 											<ul>
 												<li>
-													<h5>${item.sub_category}</h5> <br>	
+													<h4>${item.sub_category}</h4> <br>	
 													<a href="${viewUrl}">[${item.sub_category}] ${item.title}</a>
 												</li>
 												<hr>

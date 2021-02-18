@@ -15,14 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.helper.PageData;
+import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Admin_info;
+import study.team.abuhae.model.Cus_bbs;
+import study.team.abuhae.model.Cus_category;
+import study.team.abuhae.model.Cus_sub_category;
 import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.AdminService;
+import study.team.abuhae.service.CustomerService;
 import study.team.abuhae.service.MemberService;
 
 @Controller
@@ -33,7 +38,11 @@ public class AdminController {
 	@Autowired
 	MemberService memberServcie;
 	@Autowired
+	CustomerService customerService;
+	@Autowired
 	WebHelper webHelper;
+	@Autowired
+	RegexHelper regexHelper;
 	@Value("#{servletContext.contextPath}")
     String contextPath;
 	
@@ -142,30 +151,50 @@ public class AdminController {
         return new ModelAndView("admin/admin_coupon");
 		//return "admin/admin_coupon";
 	}
-	
-	@RequestMapping(value = "/admin/admin_bbs_guide.do", method = RequestMethod.GET)
-	public String guide(Model model) {
 
-		return "admin/admin_bbs_guide";
+	
+	@RequestMapping(value = "/admin/admin_bbs.do", method = RequestMethod.GET)
+	public ModelAndView guide(Model model,
+			@RequestParam(value = "cateno") int cateno,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage
+			) {
+		Cus_bbs input = new Cus_bbs();
+		input.setCateno(cateno);
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+        int totalCount = 0;              // 전체 게시글 수
+        int listCount  = 10;             // 한 페이지당 표시할 목록 수
+        int pageCount  = 5;              // 한 그룹당 표시할 페이지 번호 수
+		
+		List<Cus_bbs> output = null;
+		PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
+		
+		try {
+            // 전체 게시글 수 조회
+            totalCount = adminService.getboardCount(input);
+            // 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
+            pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+            // SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+            Member.setOffset(pageData.getOffset());
+            Member.setListCount(pageData.getListCount());
+            
+            // 데이터 조회하기
+            output = adminService.getBoardList(input);
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+		
+		if(cateno==1) {
+			return new ModelAndView("admin/admin_bbs_guide");
+		} else if(cateno==2) {
+			return new ModelAndView("admin/admin_bbs_notice");
+		} else if(cateno==3) {
+			return new ModelAndView("admin/admin_bbs_mom_faq");
+		} else {
+			return new ModelAndView("admin/admin_bbs_sitter_faq");
+		}
 	}
 	
-	@RequestMapping(value = "/admin/admin_bbs_mom_faq.do", method = RequestMethod.GET)
-	public String mom_faq(Model model) {
-
-		return "admin/admin_bbs_mom_faq";
-	}
-	
-	@RequestMapping(value = "/admin/admin_bbs_notice.do", method = RequestMethod.GET)
-	public String notice(Model model) {
-
-		return "admin/admin_bbs_notice";
-	}
-	
-	@RequestMapping(value = "/admin/admin_bbs_sitter_faq.do", method = RequestMethod.GET)
-	public String sitter_faq(Model model) {
-
-		return "admin/admin_bbs_sitter_faq";
-	}
 	
 	@RequestMapping(value = "/admin/admin_leave.do", method = RequestMethod.GET)
 	public ModelAndView leave(Model model,
@@ -299,8 +328,60 @@ public class AdminController {
 	
 	
 	@RequestMapping(value = "/admin/admin_bbs_write.do", method = RequestMethod.GET)
-	public String write(Model model) {
+	public ModelAndView write(Model model) {
 
-		return "admin/admin_bbs_write";
+		List<Cus_category> output1 = null;
+		List<Cus_sub_category> output2 = null;
+		
+		
+		try {
+			output1 = adminService.getCategory();
+			output2 = adminService.getSubCategory();
+		} catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+		
+		//view 처리
+		model.addAttribute("category", output1);
+		model.addAttribute("subcate", output2);
+		return new ModelAndView("admin/admin_bbs_write");
+		//return "admin/admin_bbs_write";
+	}
+	
+	@RequestMapping(value = "/admin/write_ok.do", method = RequestMethod.POST)
+	public ModelAndView writeOK(Model model,
+			@RequestParam(value = "filter_bbs", defaultValue = "0") int cateno,
+			@RequestParam(value = "filter_sub_bbs", defaultValue = "0") int subcateno,
+			@RequestParam(value = "subject") String subject,
+			@RequestParam(value = "content") String content) {
+		
+		//입력여부 검사
+		if(!regexHelper.isValue(subject)) {
+			return webHelper.redirect(null, "제목을 입력하세요.");
+		}
+		if(!regexHelper.isValue(content)) {
+			return webHelper.redirect(null, "내용을 작성하세요.");
+		}
+	
+		if (cateno == 0)                       
+		{ return webHelper.redirect(null, "카테고리를 선택하세요."); }
+        if (subcateno < 0)                        
+        { return webHelper.redirect(null, "하위카테고리를 선택하세요."); }
+        
+        //데이터 저장
+        Cus_bbs input = new Cus_bbs();
+        input.setCateno(cateno);
+        input.setSubcateno(subcateno);
+        input.setTitle(subject);
+        input.setText(content);
+        
+        try {
+			adminService.addBoard(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+
+		return new ModelAndView("admin/admin_bbs_notice");
 	}
 }

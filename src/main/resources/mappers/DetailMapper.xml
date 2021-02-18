@@ -19,6 +19,7 @@
 		<result property="job_opening" column="job_opening" />
 		<result property="gender" column="gender" />
 		<result property="signup_date" column="signup_date" />
+		<result property="signup" column="signup" />
 	</resultMap>
 
 	<resultMap id="MomMap"
@@ -41,6 +42,7 @@
 		<result property="openingdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
 		<result property="signup_date" column="signup_date" />
+		<result property="heartno" column="heartno" />
 	</resultMap>
 
 	<resultMap id="SitterMap"
@@ -109,9 +111,10 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate,
+		AS birthdate, 
 		job_opening, s.sitterno, sitter_type, want_act, want_age, gender, introduce,
-		si, gu, dong, favorite_act, signup_date, view,
+		si, gu, dong, favorite_act, signup_date, view, 
+		<!-- CONCAT(LEFT(payment,2), ',', RIGHT(payment,3)) AS -->
 		payment, payment_ok, cctv, answer, CASE
 	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
 	WHEN TIMESTAMPDIFF(minute, openingdate, now()) < 60 THEN
@@ -135,6 +138,36 @@
 		</where>
 	</select>
 	
+	<!-- 맘 상세페이지 -->
+	<select id="selectItemMom" parameterType="study.team.abuhae.model.Mom_info"
+		resultMap="MomMap">
+		SELECT m.memberno, type, CONCAT(LEFT(name,1), 'O', RIGHT(name,1)) AS
+		name, email, phone, FLOOR(
+		(CAST(REPLACE(current_date,'-','') AS
+		unsigned) -
+		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
+		AS birthdate, momno,
+		job_opening, want_act, want_age, apply_content, apply_title, want_age,
+		si, gu, dong, signup_date, description,
+		payment, payment_ok, CASE
+	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
+	WHEN TIMESTAMPDIFF(minute, openingdate, now()) < 60 THEN
+	CONCAT(TIMESTAMPDIFF(minute, openingdate, now()), '분 전')
+	WHEN TIMESTAMPDIFF(hour, openingdate, now()) < 24 THEN
+	CONCAT(TIMESTAMPDIFF(hour, openingdate, now()), '시간 전')
+	WHEN TIMESTAMPDIFF(day, openingdate, now()) < 30 THEN]]>
+		CONCAT(TIMESTAMPDIFF(day, openingdate, now()), '일 전')
+		END AS
+		openingdate, startdate,
+		(SELECT COUNT(heartno) FROM heart h WHERE m.momno=h.momno AND who='S') AS heartno,
+		(SELECT COUNT(cntno) FROM connect c WHERE c.momno=m.momno AND who='S') AS cntno
+		FROM mom_info m
+		INNER JOIN member b ON m.memberno=b.memberno
+		<where>
+			m.momno=#{momno}
+		</where>
+	</select>
+	
 	<select id="selectTest" parameterType="study.team.abuhae.model.Sitter_info"
 		resultMap="SitterMap">
 		SELECT 		
@@ -146,7 +179,7 @@
 		</where>
 	</select>
 	
-	<select id="selectReportItem" parameterType="study.team.abuhae.model.Sitter_info"
+	<select id="selectWantAge" parameterType="study.team.abuhae.model.Sitter_info"
 		resultMap="SitterMap">
 		SELECT
    		SUBSTRING_INDEX (SUBSTRING_INDEX(sitter_info.want_age,',',numbers.n),',',-1) want_age
@@ -155,7 +188,7 @@
 	    union  all  select  3  union  all select 4 
 	    union  all  select  5  union  all  select  6
 	    union  all  select  7  union  all  select  8 
-	    union  all  select  9 union  all  select  10) numbers INNER  JOIN sitter_info
+	    union  all  select  9 union  all  select  10) numbers INNER JOIN sitter_info
 	    on CHAR_LENGTH (sitter_info.want_age) 
 	      - CHAR_LENGTH ( REPLACE ( sitter_info.want_age , ',' , '' ))>= numbers . n-1)
 	</select>
@@ -172,5 +205,13 @@
 		INSERT INTO sitter_info (now(), who, momno, sitterno) 
 		VALUES (#{reg_date}, #{who}, #{momno}, #{sitterno});
 	</insert>
+	
+	<insert id="insertReport" parameterType="study.team.abuhae.model.Report"
+		useGeneratedKeys="true" keyProperty="reportno">
+		INSERT INTO report (reportno, who, type, contents, momno, sitterno) 
+		VALUES (#{reportno}, #{who}, #{type}, #{contents}, #{momno}, #{sitterno});
+	</insert>
+	
+	
 	
 </mapper>

@@ -2,12 +2,15 @@ package study.team.abuhae.controllers;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Mom_info;
@@ -20,29 +23,20 @@ public class JoinRestController {
 	@Autowired
 	MemberService memberService;
 	Mom_info mominfo = new Mom_info();
-	
+
 	// 회원가입 최종 OK
 	@RequestMapping(value = "join/parent/add_ok", method = RequestMethod.POST)
-	public Map<String, Object> m_join_success(Model model,
-			@RequestParam(value = "type") char type,
-			@RequestParam(value = "want_act") String want_act,
-			@RequestParam(value = "want_age") String want_age,
-			@RequestParam(value = "kids_num") int kids_num, 
-			@RequestParam(value = "kids_age") String kids_age,
-			@RequestParam(value = "payment") String paymentstr, 
-			@RequestParam(value = "payment_ok") char payment_ok,
-			@RequestParam(value = "si") String si,
-			@RequestParam(value = "gu") String gu, 
-			@RequestParam(value = "dong") String dong,
-			@RequestParam(value = "schedule") String schedulestr, 
+	public Map<String, Object> m_join_success(Model model, @RequestParam(value = "type") char type,
+			@RequestParam(value = "want_act") String want_act, @RequestParam(value = "want_age") String want_age,
+			@RequestParam(value = "kids_num") int kids_num, @RequestParam(value = "kids_age") String kids_age,
+			@RequestParam(value = "payment") String paymentstr, @RequestParam(value = "payment_ok") char payment_ok,
+			@RequestParam(value = "si") String si, @RequestParam(value = "gu") String gu,
+			@RequestParam(value = "dong") String dong, @RequestParam(value = "schedule") String schedulestr,
 			@RequestParam(value = "schedule_ok") char schedule_ok,
 			@RequestParam(value = "description", required = false) String description,
-			@RequestParam(value = "user_id") String user_id, 
-			@RequestParam(value = "user_pw") String user_pw,
-			@RequestParam(value = "name") String name, 
-			@RequestParam(value = "email") String email,
-			@RequestParam(value = "tel") String tel,
-			@RequestParam(value = "birthdate") String birthdate,
+			@RequestParam(value = "user_id") String user_id, @RequestParam(value = "user_pw") String user_pw,
+			@RequestParam(value = "name") String name, @RequestParam(value = "email") String email,
+			@RequestParam(value = "tel") String tel, @RequestParam(value = "birthdate") String birthdate,
 			@RequestParam(value = "signup_date", required = false) String signup_date) {
 
 		// 데이터 가공
@@ -126,4 +120,18 @@ public class JoinRestController {
 		}
 		return webhelper.getJsonData();
 	}
+
+	// 임시비밀번호 발급
+	/* 비밀번호 찾기 */
+	@RequestMapping(value = "login/findpw", method = RequestMethod.POST)
+	public ModelAndView findPwPOST(Model model, HttpServletResponse response,
+			@RequestParam(value = "id") String id) throws Exception {
+		mominfo.setId(id);
+		memberService.findPw(response, mominfo);
+		return webhelper.redirect(null, "임시 비밀번호가 발송되었습니다");
+		
+		
+		
+	}
+
 }

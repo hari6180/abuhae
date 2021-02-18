@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%
-	
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -55,12 +55,12 @@
 								<span class="interview_info">
 									100일전 작성
 									<br/>
-									경기도 파주시
+									${output.si}&nbsp;${output.gu}
 									<br/>
-									희망시급 10,000원
+									희망시급 <fmt:formatNumber value="${output.payment}" pattern="#,###" />원
 								</span>
 								<div class="btn_area">
-								<button type="button" class="btn" onclick = "location.href = 'http://localhost:8080<%=request.getContextPath()%>/mypage/mypage_sitter/sitter_mypage.do'">
+								<button type="button" class="btn" onclick = "location.href='${pageContext.request.contextPath}/mypage/mypage_sitter/mom_mypage.do?momno=${output.momno}';">
 									<span class="btn_text">수정</span>
 								</button>
 								</div> <!-- fin. btn_area -->

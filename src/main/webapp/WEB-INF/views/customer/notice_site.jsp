@@ -58,25 +58,26 @@
                     <!-- 두번째 카테고리 (부모 회원) -->
                     	<h2>공지사항</h2>
                     </div>
-                    
-                    <!-- 첫번째 서브 카테고리 게시글 목록 조회 -->
+                 
+                 <!-- 첫번째 서브 카테고리 게시글 목록 조회 -->
                     <div class="col-xs-12 section_middle">
                     	<!-- sub_category1 -->
-                    	<c:choose>
-                			<c:when test="${out==null || fn:length(output) == 0}">
-                				<p>조회결과가 없습니다.</p> 
-                			</c:when>
-                			
-                			<c:otherwise>
-                				<c:forEach var="item_cate" items="${out}" varStatus="status">
-                					<!-- 카테고리=1(이용가이드) / 서브카테고리=1(이용가이드)의 작성글 제목 조회 -->
-                					<c:if test="${item_cate.cateno==4 && item_cate.subcateno==15}">
-                						<h2>${item_cate.sub_category}</h2>
-                					</c:if>
-                				</c:forEach>
-                			</c:otherwise>
-                		</c:choose>
-                		
+     
+               			<c:choose>
+                   			<c:when test="${out==null || fn:length(output) == 0}">
+                   				<p>조회결과가 없습니다.</p> 
+                   			</c:when>
+                   			
+                   			<c:otherwise>
+                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
+                   					<!-- 카테고리=1(이용가이드) / 서브카테고리=1(이용가이드)의 작성글 제목 조회 -->
+                   					<c:if test="${item_cate.cateno==4 && item_cate.subcateno==15}">
+                   						<h2>${item_cate.sub_category}</h2>
+                   					</c:if>
+                   				</c:forEach>
+                   			</c:otherwise>
+                   		</c:choose>
+                
                 		<!-- sub_category1의 작성글 -->
                         <div class="col-xs-12 section_title">
                  		<c:choose>
@@ -91,7 +92,7 @@
                  					<c:url value="/customer/cus_view.do" var="viewUrl">
                  						<c:param name="boardnum" value="${item.boardnum}"/>
                  					</c:url>
-                 					<c:if test="${item.cateno==4&&item.subcateno == 15}">
+                 					<c:if test="${item.subcateno == 15}">
                  						<ul>
                   						<li><a href="${viewUrl}">[${item.sub_category}] ${item.title}</a></li>
                   					</ul>
@@ -105,6 +106,54 @@
                     		<a href="#">문서 7개 모두 보기</a>
                  	</div>
                  </div>
+                 
+                 <div class="col-xs-12 section_middle">
+                    	<!-- sub_category1 -->
+     
+               			<c:choose>
+                   			<c:when test="${out==null || fn:length(output) == 0}">
+                   				<p>조회결과가 없습니다.</p> 
+                   			</c:when>
+                   			
+                   			<c:otherwise>
+                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
+                   					<!-- 카테고리=1(이용가이드) / 서브카테고리=1(이용가이드)의 작성글 제목 조회 -->
+                   					<c:if test="${item_cate.cateno==4 && item_cate.subcateno==16}">
+                   						<h2>${item_cate.sub_category}</h2>
+                   					</c:if>
+                   				</c:forEach>
+                   			</c:otherwise>
+                   		</c:choose>
+                
+                		<!-- sub_category1의 작성글 -->
+                        <div class="col-xs-12 section_title">
+                 		<c:choose>
+                 			<c:when test="${output==null || fn:length(output) == 0}">
+                 				<p>조회결과가 없습니다.</p>
+                 			</c:when>
+                 			
+                 			<c:otherwise>
+                 				<c:forEach var="item" items="${output}" varStatus="status">
+                 					
+                 					<%-- 상세페이지 URL --%>
+                 					<c:url value="/customer/cus_view.do" var="viewUrl">
+                 						<c:param name="boardnum" value="${item.boardnum}"/>
+                 					</c:url>
+                 					<c:if test="${item.subcateno == 16}">
+                 						<ul>
+                  						<li><a href="${viewUrl}">[${item.sub_category}] ${item.title}</a></li>
+                  					</ul>
+                 					</c:if>
+                 					
+                 				</c:forEach>
+                 			</c:otherwise>
+                 		</c:choose>
+                 	</div>
+                 	<div class="col-xs-12 section_title_2">
+                    		<a href="#">문서 7개 모두 보기</a>
+                 	</div>
+                 </div>
+                 
                 </div>
                 <div class="col-xs-12 footer">
                 </div>

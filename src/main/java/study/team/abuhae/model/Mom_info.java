@@ -69,4 +69,7 @@ public class Mom_info extends Member {
 	 * @Data public class Time { private String[] time; } }
 	 */
 	
+	private int heartno;
+	private int cntno;
+	
 }
