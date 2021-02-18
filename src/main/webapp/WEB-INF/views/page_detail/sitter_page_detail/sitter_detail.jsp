@@ -504,8 +504,7 @@
 					<div class="possible_age_area">
 						<div>
 							<div class="age_line">
-				
-							<c:if test="${ageput.want_age == '신생아'}">
+								<c:if test="${ageput.want_age == '신생아'}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-baby fa-3x"></i>
@@ -555,7 +554,9 @@
 							<div>
 								<div class="possible_active_main">
 									<div class="active_line col-xs-3">
-										<c:if test="${output.want_act1!='실내놀이' || output.want_act2!='실내놀이' || output.want_act3!='실내놀이'}">
+										<c:if test="${output.want_act1!='실내놀이'}">
+										<c:if test="${output.want_act2!='실내놀이'}">
+										<c:if test="${output.want_act3!='실내놀이'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -564,6 +565,8 @@
 												<span>실내놀이</span>
 											</div>
 										</div>
+										</c:if>
+										</c:if>
 										</c:if>
 										<c:if test="${output.want_act1=='실내놀이' || output.want_act2=='실내놀이' || output.want_act3=='실내놀이'}">
 										<div class="active_ok">
@@ -575,7 +578,9 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										<c:if test="${output.want_act1!='한글놀이'}">
+										<c:if test="${output.want_act2!='한글놀이'}">
+										<c:if test="${output.want_act3!='한글놀이'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -585,7 +590,9 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='한글놀이' || output.want_act2=='한글놀이' || output.want_act3=='한글놀이'}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -595,17 +602,9 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
-										<div class="active_ok">
-											<div class="active_ok_img">
-												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/cleanicon_s.png"/>
-												</div>
-												<span>간단 청소</span>
-											</div>
-										</div>
-										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										<c:if test="${output.want_act1!='간단청소'}">
+										<c:if test="${output.want_act2!='간단청소'}">
+										<c:if test="${output.want_act3!='간단청소'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -615,7 +614,21 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='간단청소' || output.want_act2=='간단청소' || output.want_act3=='간단청소'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/cleanicon_s.png"/>
+												</div>
+												<span>간단 청소</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${output.want_act1!='장기입주'}">
+										<c:if test="${output.want_act2!='장기입주'}">
+										<c:if test="${output.want_act3!='장기입주'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -625,7 +638,9 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='장기입주' || output.want_act2=='장기입주' || output.want_act3=='장기입주'}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -638,17 +653,9 @@
 									</div>
 									<!-- --- -->
 									<div class="active_line col-xs-3">
-										<c:if test="${output.want_act2=='실내놀이'}">
-										<div class="active_ok">
-											<div class="active_ok_img">
-												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/guideicon_s.png"/>
-												</div>
-												<span>등하원 돕기</span>
-											</div>
-										</div>
-										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										<c:if test="${output.want_act1!='등하원돕기'}">
+										<c:if test="${output.want_act2!='등하원돕기'}">
+										<c:if test="${output.want_act3!='등하원돕기'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -658,17 +665,21 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='등하원돕기' || output.want_act2=='등하원돕기' || output.want_act3=='등하원돕기'}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/englishicon_s.png"/>
+												<img src="<%=request.getContextPath()%>/assets/img/guideicon_s.png"/>
 												</div>
-												<span>영어놀이</span>
+												<span>등하원 돕기</span>
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										<c:if test="${output.want_act1!='영어놀이'}">
+										<c:if test="${output.want_act2!='영어놀이'}">
+										<c:if test="${output.want_act3!='영어놀이'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -678,17 +689,21 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='영어놀이' || output.want_act2=='영어놀이' || output.want_act3=='영어놀이'}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/eaticon_s.png"/>
+												<img src="<%=request.getContextPath()%>/assets/img/englishicon_s.png"/>
 												</div>
-												<span>밥 챙겨주기</span>
+												<span>영어놀이</span>
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										<c:if test="${output.want_act1!='밥챙겨주기'}">
+										<c:if test="${output.want_act2!='밥챙겨주기'}">
+										<c:if test="${output.want_act3!='밥챙겨주기'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -698,7 +713,21 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='밥챙겨주기' || output.want_act2=='밥챙겨주기' || output.want_act3=='밥챙겨주기'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/eaticon_s.png"/>
+												</div>
+												<span>밥 챙겨주기</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${output.want_act1!='단기입주'}">
+										<c:if test="${output.want_act2!='단기입주'}">
+										<c:if test="${output.want_act3!='단기입주'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -708,7 +737,9 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='단기입주' || output.want_act2=='단기입주' || output.want_act3=='단기입주'}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -721,17 +752,9 @@
 									</div>
 									<!-- ----- -->
 									<div class="active_line col-xs-3">
-										<c:if test="${output.want_act2=='실내놀이'}">
-										<div class="active_ok">
-											<div class="active_ok_img">
-												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/readicon_s.png"/>
-												</div>
-												<span>책읽기</span>
-											</div>
-										</div>
-										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										<c:if test="${output.want_act1!='책읽기'}">
+										<c:if test="${output.want_act2!='책읽기'}">
+										<c:if test="${output.want_act3!='책읽기'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -741,7 +764,21 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='책읽기' || output.want_act2=='책읽기' || output.want_act3=='책읽기'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/readicon_s.png"/>
+												</div>
+												<span>책읽기</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${output.want_act1!='학습지도'}">
+										<c:if test="${output.want_act2!='학습지도'}">
+										<c:if test="${output.want_act3!='학습지도'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -751,7 +788,9 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='학습지도' || output.want_act2=='학습지도' || output.want_act3=='학습지도'}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -761,20 +800,24 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
-										<div class="active_ok">
-											<div class="active_ok_img">
-												<div class="active_ok_box">
+										<c:if test="${output.want_act1!='설거지'}">
+										<c:if test="${output.want_act2!='설거지'}">
+										<c:if test="${output.want_act3!='설거지'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
 												<img src="<%=request.getContextPath()%>/assets/img/dishicon_s.png"/>
 												</div>
 												<span>간단 설거지</span>
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
-										<div class="active_no">
-											<div class="active_no_img">
-												<div class="active_no_box">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='설거지' || output.want_act2=='설거지' || output.want_act3=='설거지'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
 												<img src="<%=request.getContextPath()%>/assets/img/dishicon_s.png"/>
 												</div>
 												<span>간단 설거지</span>
@@ -784,7 +827,9 @@
 									</div>
 									<!-- ------- -->
 									<div class="active_line col-xs-3">
-										<c:if test="${output.want_act2=='실내놀이'}">
+										<c:if test="${output.want_act1!='야외활동'}">
+										<c:if test="${output.want_act2!='야외활동'}">
+										<c:if test="${output.want_act3!='야외활동'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -794,7 +839,9 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='야외활동' || output.want_act2=='야외활동' || output.want_act3=='야외활동'}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
@@ -804,7 +851,9 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										<c:if test="${output.want_act1!='체육놀이'}">
+										<c:if test="${output.want_act2!='체육놀이'}">
+										<c:if test="${output.want_act3!='체육놀이'}">
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
@@ -814,7 +863,9 @@
 											</div>
 										</div>
 										</c:if>
-										<c:if test="${output.want_act2=='실내놀이'}">
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='체육놀이' || output.want_act2=='체육놀이' || output.want_act3=='체육놀이'}">
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">

@@ -172,9 +172,10 @@
 	    union  all  select  7  union  all  select  8 
 	    union  all  select  9 union  all  select  10) numbers INNER JOIN sitter_info
 	    on CHAR_LENGTH (sitter_info.want_age) 
-	      - CHAR_LENGTH ( REPLACE ( sitter_info.want_age , ',' , '' ))>= numbers . n-1)
+	      - CHAR_LENGTH (REPLACE(sitter_info.want_age, ',' ,''))>= numbers.n-1)
 	</select>
 	
+	<!-- 조회수 -->
 	<update id="updateItem" parameterType="study.team.abuhae.model.Sitter_info">
 		UPDATE sitter_info SET view = view+1 
 		<where>
@@ -182,18 +183,18 @@
 		</where>
 	</update>
 	
+	<!-- 찜하기 -->
 	<insert id="insertHeart" parameterType="study.team.abuhae.model.Heart"
 		useGeneratedKeys="true" keyProperty="heartno">
 		INSERT INTO heart (now(), who, momno, sitterno) 
 		VALUES (#{reg_date}, #{who}, #{momno}, #{sitterno});
 	</insert>
 	
+	<!-- 신고하기 -->
 	<insert id="insertReport" parameterType="study.team.abuhae.model.Report"
 		useGeneratedKeys="true" keyProperty="reportno">
 		INSERT INTO report (reportno, who, type, contents, momno, sitterno) 
 		VALUES (#{reportno}, #{who}, #{type}, #{contents}, #{momno}, #{sitterno});
 	</insert>
-	
-	
-	
+
 </mapper>
