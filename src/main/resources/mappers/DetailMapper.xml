@@ -26,7 +26,9 @@
 		type="study.team.abuhae.model.Mom_info">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="momno" column="momno" />
-		<result property="want_act" column="want_act" />
+		<result property="want_act1" column="want_act1" />
+		<result property="want_act2" column="want_act2" />
+		<result property="want_act3" column="want_act3" />
 		<result property="want_age" column="want_age" />
 		<result property="kids_num" column="kids_num" />
 		<result property="kids_age" column="kids_age" />
@@ -50,7 +52,9 @@
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="sitterno" column="sitterno" />
 		<result property="sitter_type" column="sitter_type" />
-		<result property="want_act" column="want_act" />
+		<result property="want_act1" column="want_act1" />
+		<result property="want_act2" column="want_act2" />
+		<result property="want_act3" column="want_act3" />
 		<result property="want_age" column="want_age" />
 		<result property="payment" column="payment" />
 		<result property="si" column="si" />
@@ -65,9 +69,6 @@
 		<result property="rev_rate" column="rev_rate" />
 		<result property="rev_count" column="rev_count" />
 		<result property="profile_img_file" column="profile_img_count" />
-		<result property="expe_contents" column="expe_contents" />
-		<result property="expe_start_date" column="expe_start_date" />
-		<result property="expe_end_date" column="expe_end_date" />
 		<result property="heartno" column="heartno" />
 		<result property="who" column="who" />
 		<result property="applydate" column="applydate" />
@@ -76,14 +77,6 @@
 		<result property="cntno" column="cntno" />
 		<result property="favorite_act" column="favorite_act" />
 		<result property="view" column="view" />
-	</resultMap>
-	
-	<resultMap type="study.team.abuhae.model.Sitter_experience" id="ExperienceMap">
-		<result property="experno" column="experno"/>	
-		<result property="expe_contents" column="expe_contents"/>	
-		<result property="expe_start_date" column="expe_start_date"/>	
-		<result property="expe_end_date" column="expe_end_date"/>	
-		<result property="sitterno" column="sitterno"/>			
 	</resultMap>
 	
 	<resultMap type="study.team.abuhae.model.Report" id="ReportMap">
@@ -112,7 +105,7 @@
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
 		AS birthdate, 
-		job_opening, s.sitterno, sitter_type, want_act, want_age, gender, introduce,
+		job_opening, s.sitterno, sitter_type, want_act1, want_act2, want_act3, want_age, gender, introduce,
 		si, gu, dong, favorite_act, signup_date, view, 
 		<!-- CONCAT(LEFT(payment,2), ',', RIGHT(payment,3)) AS -->
 		payment, payment_ok, cctv, answer, CASE
@@ -147,8 +140,8 @@
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
 		AS birthdate, momno,
-		job_opening, want_act, want_age, apply_content, apply_title, want_age,
-		si, gu, dong, signup_date, description,
+		job_opening, want_act1, want_act2, want_act3, want_age, apply_content, apply_title,
+		si, gu, dong, signup_date, description, sitter_gender, care_type, 
 		payment, payment_ok, CASE
 	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
 	WHEN TIMESTAMPDIFF(minute, openingdate, now()) < 60 THEN
@@ -165,17 +158,6 @@
 		INNER JOIN member b ON m.memberno=b.memberno
 		<where>
 			m.momno=#{momno}
-		</where>
-	</select>
-	
-	<select id="selectTest" parameterType="study.team.abuhae.model.Sitter_info"
-		resultMap="SitterMap">
-		SELECT 		
-		expe_contents, expe_start_date, expe_end_date
-		FROM sitter_info s
-		INNER JOIN sitter_experience e ON s.sitterno=e.sitterno
-		<where>
-			s.sitterno=#{sitterno}
 		</where>
 	</select>
 	
@@ -200,9 +182,9 @@
 		</where>
 	</update>
 	
-	<insert id="insertItem" parameterType="study.team.abuhae.model.Sitter_info"
+	<insert id="insertHeart" parameterType="study.team.abuhae.model.Heart"
 		useGeneratedKeys="true" keyProperty="heartno">
-		INSERT INTO sitter_info (now(), who, momno, sitterno) 
+		INSERT INTO heart (now(), who, momno, sitterno) 
 		VALUES (#{reg_date}, #{who}, #{momno}, #{sitterno});
 	</insert>
 	

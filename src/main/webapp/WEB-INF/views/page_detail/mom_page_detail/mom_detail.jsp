@@ -170,6 +170,7 @@
 											<span id="active_text_style">
 											* 아래 표시된 날에만 돌봐주세요.
 											<br/>
+											<c:if test="${fn:contains(output.schedule_ok,Y)}">
 											<span style="margin-left: 5px;">
 											* 이 일정은 맘시터에 맞춰서 얼마든지 
 											<br/>
@@ -177,6 +178,7 @@
 											조정할 수 있어요.
 											</span>
 											</span>
+											</c:if>
 											</span>
 										</div>
 									</div>
@@ -470,16 +472,25 @@
 					<div class="possible_age_box">
 					<div class="box_name">그 외 요청사항</div>
 					<div class="possible_age_area">
-						<div>							
+						<div>
+						<c:if test="${output.sitter_gender!=null}">							
 							<div class="other_line">
 								<label class="want_gender_line">희망 맘시터 성별 : </label>
+								<c:if test="${fn:contains(output.sitter_gender,'F')}">
 								<span class="want_gender">여자</span>
+								</c:if>
+								<c:if test="${fn:contains(output.sitter_gender,'M')}">
+								<span class="want_gender">남자</span>
+								</c:if>
 							</div>
+						</c:if>
+						<c:if test="${output.care_type!=null}">	
 							<div class="other_line">
 								<label class="want_care_line">희망 돌봄 방식 : </label>
-								<span class="want_care">할머니(할아버지)와 함께 돌봐주세요.</span>
+								<span class="want_care">${output.care_type}</span>
 							</div>		
 						</div>
+						</c:if>
 					</div> <!-- fin. possible_age_area -->
 					</div> <!-- fin. possible_age_box -->
 					</c:if>

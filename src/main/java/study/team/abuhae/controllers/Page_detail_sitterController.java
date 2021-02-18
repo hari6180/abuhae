@@ -29,8 +29,6 @@ public class Page_detail_sitterController {
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 		Sitter_info input = new Sitter_info();
 		input.setSitterno(sitterno);
-		Sitter_info test = new Sitter_info();
-		test.setSitterno(sitterno);
 		Sitter_info count = new Sitter_info();
 		count.setSitterno(sitterno);
 		Sitter_info insert = new Sitter_info();
@@ -40,7 +38,6 @@ public class Page_detail_sitterController {
 
 		// 조회결과를 저장할 객체 선언 
 		Sitter_info output = null;
-		List<Sitter_info> testput = null;
 		int countput = 0;
 		int insertput = 0;
 		Sitter_info ageput = null;
@@ -55,7 +52,6 @@ public class Page_detail_sitterController {
 		try {
 			// 데이터 조회 
 			output = detailService.getSitterItem(input);
-			testput = detailService.getSitterList(input);
 			countput = detailService.editSitter(input);
 			insertput = detailService.addSitter(input);
 			ageput = detailService.getWantAge(input);
@@ -64,7 +60,6 @@ public class Page_detail_sitterController {
 			e.printStackTrace();
 		}
 		model.addAttribute("output", output);
-		model.addAttribute("testput", testput);
 		model.addAttribute("insertput", insertput);
 		model.addAttribute("ageput", ageput);
 		return "/page_detail/sitter_page_detail/sitter_detail";
