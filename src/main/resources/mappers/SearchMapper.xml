@@ -111,7 +111,7 @@
 		INNER JOIN member m ON
 		s.memberno=m.memberno
 
-		<!-- 활동 유형 -->
+		<!-- 활동 유형 && 상세 검색 -->
 		<where>
 			<if test="actList != null">
 				want_act1 || want_act2 || want_act3 in

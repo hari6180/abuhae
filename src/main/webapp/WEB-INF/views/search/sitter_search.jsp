@@ -63,6 +63,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         });
 
         /** 상세 검색 ------------------------------------------------------------------- */
+        const kidsage = []; // 아이나이
+        const caredays = []; // 돌봄 요일
+        const time_range = []; // 돌봄 시간대
+        const sitter_type = []; // 맘시터 유형
+        const sitter_age = []; // 시터나이
 
         // 아이나이 버튼 클릭
         $(".ages").click(function (e) {
@@ -71,6 +76,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           //버튼 클릭시 text 색 변경
           $(this).find("i").toggleClass("select_text_detail");
           $(this).find("span").toggleClass("select_text_detail");
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("span").hasClass("select_text_detail") && kidsage.indexOf($(this).data("age")) == -1) {
+            kidsage.push($(this).data("age"));
+          }
+          if ($(this).find("span").hasClass("select_text_detail") == false) {
+            kidsage.splice(kidsage.indexOf($(this).data("age")), 1);
+          }
+
+          console.log(kidsage);
         });
 
         // 돌봄요일 버튼 클릭
@@ -79,6 +93,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $(this).toggleClass("select_btn_detail");
           //버튼 클릭시 text 색 변경
           $(this).find("div").toggleClass("select_text_detail");
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("div").hasClass("select_text_detail") && caredays.indexOf($(this).data("day")) == -1) {
+            caredays.push($(this).data("day"));
+          }
+          if ($(this).find("div").hasClass("select_text_detail") == false) {
+            caredays.splice(caredays.indexOf($(this).data("day")), 1);
+          }
+
+          console.log(caredays);
         });
 
         // 돌봄 시간대 버튼 클릭
@@ -87,6 +110,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $(this).toggleClass("select_btn_detail");
           //버튼 클릭시 text 색 변경
           $(this).find("span").toggleClass("select_text_detail");
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("span").hasClass("select_text_detail") && time_range.indexOf($(this).data("time")) == -1) {
+            time_range.push($(this).data("time"));
+          }
+          if ($(this).find("span").hasClass("select_text_detail") == false) {
+            time_range.splice(time_range.indexOf($(this).data("time")), 1);
+          }
+
+          console.log(time_range);
         });
 
         // 맘시터 유형 버튼 클릭
@@ -95,6 +127,41 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $(this).toggleClass("select_btn_detail");
           //버튼 클릭시 text 색 변경
           $(this).find("span").toggleClass("select_text_detail");
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("span").hasClass("select_text_detail") && sitter_type.indexOf($(this).data("sttype")) == -1) {
+            sitter_type.push($(this).data("sttype"));
+          }
+          if ($(this).find("span").hasClass("select_text_detail") == false) {
+            sitter_type.splice(sitter_type.indexOf($(this).data("sttype")), 1);
+          }
+          console.log(sitter_type);
+        });
+
+        $("input[name=want_age].checked").each(function (i) {
+          sitter_age.push($(this).val());
+        });
+
+        $("#detail_apply").click(function (e) {
+          e.preventDefault();
+          // 검색 조건은 GET 파라미터로 전송한다.
+          $.get(
+            "${pageContext.request.contextPath}/search/sitter_search",
+            {
+              kidsage: kidsage,
+              caredays: caredays,
+              time_range: time_range,
+              sitter_type: sitter_type,
+              sitter_age: sitter_age,
+            },
+            function (json) {
+              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#result").empty(); // 결과물 초기화
+              $("#result2").empty(); // 결과물 초기화
+              $("#result").append(result); // 최종 결과물을 추가한다
+            }
+          );
         });
 
         // 리셋 버튼 0109 하리
@@ -570,7 +637,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <i class="fas fa-times"></i>
                   </button>
                   <h2>상세검색</h2>
-                  <button class="apply_btn" type="subimt">적용</button>
+                  <button id="detail_apply" class="apply_btn" type="subimt">적용</button>
                 </div>
                 <!--modal header end-->
                 <!--modal content-->
@@ -639,13 +706,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <h4>맘시터 유형</h4>
                     <div class="sitter_type_group">
                       <div>
-                        <button class="sitter_type" data-stType="mom">
+                        <button class="sitter_type" data-sttype="mom">
                           <div>
                             <i class="fas fa-circle"></i>
                             <span class="sitter_type_content">엄마 맘시터</span>
                           </div>
                         </button>
-                        <button class="sitter_type" data-stType="teacher">
+                        <button class="sitter_type" data-sttype="teacher">
                           <div>
                             <i class="fas fa-circle"></i>
                             <span class="sitter_type_content">선생님 맘시터</span>
@@ -653,23 +720,19 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                         </button>
                       </div>
                       <div>
-                        <button class="sitter_type" data-stType="student">
+                        <button class="sitter_type" data-sttype="student">
                           <div>
                             <i class="fas fa-circle"></i>
                             <span class="sitter_type_content">대학생 맘시터</span>
                           </div>
                         </button>
-                        <button class="sitter_type" data-stType="normal">
+                        <button class="sitter_type" data-sttype="normal">
                           <div>
                             <i class="fas fa-circle"></i>
                             <span class="sitter_type_content">일반 맘시터</span>
                           </div>
                         </button>
                       </div>
-                    </div>
-                    <div class="sitter_insurance">
-                      <input type="checkbox" value="ins_check" class="ins_check" id="ins_check" />
-                      <label for="ins_check"><span class="ins_text">보험 가입한 맘시터</span></label>
                     </div>
                   </div>
                   <hr />
@@ -678,11 +741,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <h4>원하는 맘시터 나이대</h4>
                     <div class="age_range">
                       <div class="want_age_box">
-                        <input type="checkbox" value="20" class="want_age" id="20age" data-wtage="20" checked /> <label for="20age">20대</label>
-                        <input type="checkbox" value="30" class="want_age" id="30age" data-wtage="30" checked /> <label for="30age">30대</label>
-                        <input type="checkbox" value="40" class="want_age" id="40age" data-wtage="40" checked /> <label for="40age">40대</label>
-                        <input type="checkbox" value="50" class="want_age" id="50age" data-wtage="50" /><label for="50age">50대</label>
-                        <input type="checkbox" value="60" class="want_age" id="60age" data-wtage="60" /> <label for="60age">60대</label>
+                        <input type="checkbox" value="20" class="want_age" name="want_age" id="20age" data-wtage="20" /> <label for="20age">20대</label>
+                        <input type="checkbox" value="30" class="want_age" name="want_age" id="30age" data-wtage="30" /> <label for="30age">30대</label>
+                        <input type="checkbox" value="40" class="want_age" name="want_age" id="40age" data-wtage="40" /> <label for="40age">40대</label>
+                        <input type="checkbox" value="50" class="want_age" name="want_age" id="50age" data-wtage="50" /> <label for="50age">50대</label>
+                        <input type="checkbox" value="60" class="want_age" name="want_age" id="60age" data-wtage="60" /> <label for="60age">60대</label>
                       </div>
                     </div>
                   </div>
@@ -1079,7 +1142,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
             console.log(result3);
 
-            // 정렬 조건은 GET 파라미터로 전송한다.
+            // 검색 조건은 GET 파라미터로 전송한다.
             $.get(
               "${pageContext.request.contextPath}/search/sitter_search",
               {
