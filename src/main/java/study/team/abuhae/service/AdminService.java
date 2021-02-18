@@ -4,6 +4,9 @@ import java.util.List;
 
 import study.team.abuhae.model.Admin_info;
 import study.team.abuhae.model.Coupon;
+import study.team.abuhae.model.Cus_bbs;
+import study.team.abuhae.model.Cus_category;
+import study.team.abuhae.model.Cus_sub_category;
 import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
@@ -38,5 +41,14 @@ public interface AdminService {
 	
 	//쿠폰 발급
 	public int addCoupon(Coupon input) throws Exception;
+	
+	//카테고리 조회
+	public List<Cus_category> getCategory() throws Exception;
+	
+	//서브카데고리 조회
+	public List<Cus_sub_category> getSubCategory() throws Exception;
+	
+	//게시판 글쓰기
+	public int addBoard(Cus_bbs input) throws Exception;
 }
 

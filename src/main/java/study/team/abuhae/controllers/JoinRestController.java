@@ -129,6 +129,9 @@ public class JoinRestController {
 		mominfo.setId(id);
 		memberService.findPw(response, mominfo);
 		return webhelper.redirect(null, "임시 비밀번호가 발송되었습니다");
+		
+		
+		
 	}
 
 }

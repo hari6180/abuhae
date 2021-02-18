@@ -38,7 +38,7 @@
                 <ol class="breadcrumb">
                     <li>
 						<i class="fas fa-home"></i>
-                        <a href="${pageContext.request.contextPath}/admin_member.do">Home</a>
+                        <a href="${pageContext.request.contextPath}/admin/admin_member.do">Home</a>
                     </li>
                     <li class="active">
                         부모회원 자주 묻는 질문
@@ -55,7 +55,7 @@
 						</div>
 						<div class="gright">
 							<select class="filter" id="filter_bbs" name="filter_bbs">
-								<option value="" selected>카테고리별</option>
+								<option value="">카테고리별</option>
 								<option value="find">맘시터 찾기</option>
 								<option value="payment">부모회원 전용상품</option>
 								<option value="apply">채용 및 계약</option>
@@ -64,20 +64,15 @@
 								<option value="member">회원정보</option>
 							</select>
 							<select class="filter" id="filter_bbs" name="filter_bbs">
-								<option value="nomal" selected>기본정렬</option>
+								<option value="nomal">기본정렬</option>
 								<option value="hit">조회수많은순</option>
 								<option value="recent">최근작성순</option>
-							</select>
-							<select class="filter" id="filter_limit" name="filter_limit">
-								<option value="10" selected>10개씩보기</option>
-								<option value="20">20개씩보기</option>
-								<option value="30">30개씩보기</option>
 							</select>
 						</div>
 					</div>
 					<div class="type_header">
 						<div class="bbs_btn">
-							<a href="#" class="btn_nomal"><span><i class="far fa-file-alt"></i>&nbsp;새글작성</span></a>
+							<a href="${pageContext.request.contextPath}/admin/admin_bbs_write.do" class="btn_nomal"><span><i class="far fa-file-alt"></i>&nbsp;새글작성</span></a>
 							<a href="#" class="btn_nomal"><span><i class="fas fa-pen"></i>&nbsp;수정</span></a>
 							<a href="#" class="btn_nomal"><span><i class="far fa-trash-alt"></i>&nbsp;삭제</span></a>
 						</div>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.helper.WebHelper;
+import study.team.abuhae.model.Cus_bbs;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.service.MemberService;
 
@@ -80,6 +81,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/login/find.do", method = RequestMethod.GET)
 	public String find(Model model, HttpServletResponse response) {
+	
 
 		return "/login/find";
 	}

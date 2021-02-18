@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.helper.PageData;
+import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Admin_info;
+import study.team.abuhae.model.Cus_bbs;
+import study.team.abuhae.model.Cus_category;
+import study.team.abuhae.model.Cus_sub_category;
 import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Member;
 import study.team.abuhae.model.Mom_info;
@@ -34,6 +38,8 @@ public class AdminController {
 	MemberService memberServcie;
 	@Autowired
 	WebHelper webHelper;
+	@Autowired
+	RegexHelper regexHelper;
 	@Value("#{servletContext.contextPath}")
     String contextPath;
 	
@@ -142,6 +148,7 @@ public class AdminController {
         return new ModelAndView("admin/admin_coupon");
 		//return "admin/admin_coupon";
 	}
+
 	
 	@RequestMapping(value = "/admin/admin_bbs_guide.do", method = RequestMethod.GET)
 	public String guide(Model model) {
@@ -299,8 +306,60 @@ public class AdminController {
 	
 	
 	@RequestMapping(value = "/admin/admin_bbs_write.do", method = RequestMethod.GET)
-	public String write(Model model) {
+	public ModelAndView write(Model model) {
 
-		return "admin/admin_bbs_write";
+		List<Cus_category> output1 = null;
+		List<Cus_sub_category> output2 = null;
+		
+		
+		try {
+			output1 = adminService.getCategory();
+			output2 = adminService.getSubCategory();
+		} catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+		
+		//view 처리
+		model.addAttribute("category", output1);
+		model.addAttribute("subcate", output2);
+		return new ModelAndView("admin/admin_bbs_write");
+		//return "admin/admin_bbs_write";
+	}
+	
+	@RequestMapping(value = "/admin/write_ok.do", method = RequestMethod.POST)
+	public ModelAndView writeOK(Model model,
+			@RequestParam(value = "filter_bbs", defaultValue = "0") int cateno,
+			@RequestParam(value = "filter_sub_bbs", defaultValue = "0") int subcateno,
+			@RequestParam(value = "subject") String subject,
+			@RequestParam(value = "content") String content) {
+		
+		//입력여부 검사
+		if(!regexHelper.isValue(subject)) {
+			return webHelper.redirect(null, "제목을 입력하세요.");
+		}
+		if(!regexHelper.isValue(content)) {
+			return webHelper.redirect(null, "내용을 작성하세요.");
+		}
+	
+		if (cateno == 0)                       
+		{ return webHelper.redirect(null, "카테고리를 선택하세요."); }
+        if (subcateno < 0)                        
+        { return webHelper.redirect(null, "하위카테고리를 선택하세요."); }
+        
+        //데이터 저장
+        Cus_bbs input = new Cus_bbs();
+        input.setCateno(cateno);
+        input.setSubcateno(subcateno);
+        input.setTitle(subject);
+        input.setText(content);
+        
+        try {
+			adminService.addBoard(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+
+		return new ModelAndView("admin/admin_bbs_notice");
 	}
 }
