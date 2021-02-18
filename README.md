@@ -22,6 +22,4 @@ sitter_info 테이블에서 view(조회수) 컬럼 추가
 21/2/18 수정 사항
 sitter_experience 테이블에서 삭제
 
-21/2/19 수정 사항
-want_act1,2,3으로 구분 
 
