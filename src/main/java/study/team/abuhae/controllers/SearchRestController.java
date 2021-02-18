@@ -85,8 +85,8 @@ public class SearchRestController {
 					String temp2 = temp1.replace("'", "");
 					actList[i] = temp2;
 					log.info("temp2" + temp2);
+					Sitter_info.setActList(actList);
 				}
-				Sitter_info.setActList(actList);
 			}
 			
             
@@ -103,7 +103,7 @@ public class SearchRestController {
 		// 검색조건의 값을 Beans에 저장
 //		if(actList != null) {
 //			for (int i=0; i<actList.length; i++) {
-//				data.put("act1", actList[0]);
+//				data.put("act"+ i , actList[i]);
 //			}
 //		}
         return webHelper.getJsonData(data);

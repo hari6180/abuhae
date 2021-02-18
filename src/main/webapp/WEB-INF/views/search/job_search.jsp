@@ -644,19 +644,45 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               </div>
               <div class="content_row">
                 <div class="find_text">
-				  {{#contains 'innerplay' want_act}}실내놀이{{/contains}}
-				  {{#contains 'guide' want_act}}등하원돕기{{/contains}}
-				  {{#contains 'read' want_act}}책읽기{{/contains}}
-				  {{#contains 'outside' want_act}}야외활동{{/contains}}
-				  {{#contains 'korean' want_act}}한글놀이{{/contains}}
-				  {{#contains 'english' want_act}}영어놀이{{/contains}}
-				  {{#contains 'study' want_act}}실내놀이{{/contains}}
-				  {{#contains 'sport' want_act}}학습지도{{/contains}}
-				  {{#contains 'simple_cleaning' want_act}}간단 청소{{/contains}}
-				  {{#contains 'eat' want_act}}밥 챙겨주기{{/contains}}
-				  {{#contains 'do_dish' want_act}}간단 설거지{{/contains}}
-				  {{#contains 'long_move_in' want_act}}장기입주{{/contains}}
-				  {{#contains 'short_move_in' want_act}}단기입주{{/contains}}
+      {{#ifCond want_act1 'innerplay' }}실내놀이{{/ifCond}}
+      {{#ifCond want_act1 'guide' }}등하원돕기{{/ifCond}}
+      {{#ifCond want_act1 'read' }}책읽기{{/ifCond}}
+      {{#ifCond want_act1 'outside' }}야외활동{{/ifCond}}
+      {{#ifCond want_act1 'korean' }}한글놀이{{/ifCond}}
+      {{#ifCond want_act1 'english' }}영어놀이{{/ifCond}}
+      {{#ifCond want_act1 'study' }}실내놀이{{/ifCond}}
+      {{#ifCond want_act1 'sport' }}학습지도{{/ifCond}}
+      {{#ifCond want_act1 'simple_cleaning' }}간단 청소{{/ifCond}}
+      {{#ifCond want_act1 'eat' }}밥 챙겨주기{{/ifCond}}
+      {{#ifCond want_act1 'do_dish' }}간단 설거지{{/ifCond}}
+      {{#ifCond want_act1 'long_move_in' }}장기입주{{/ifCond}}
+      {{#ifCond want_act1 'short_move_in' }}단기입주{{/ifCond}}
+          {{#ifCond want_act2 'innerplay' }}실내놀이{{/ifCond}}
+      {{#ifCond want_act2 'guide' }}등하원돕기{{/ifCond}}
+      {{#ifCond want_act2 'read' }}책읽기{{/ifCond}}
+      {{#ifCond want_act2 'outside' }}야외활동{{/ifCond}}
+      {{#ifCond want_act2 'korean' }}한글놀이{{/ifCond}}
+      {{#ifCond want_act2 'english' }}영어놀이{{/ifCond}}
+      {{#ifCond want_act2 'study' }}실내놀이{{/ifCond}}
+      {{#ifCond want_act2 'sport' }}학습지도{{/ifCond}}
+      {{#ifCond want_act2 'simple_cleaning' }}간단 청소{{/ifCond}}
+      {{#ifCond want_act2 'eat' }}밥 챙겨주기{{/ifCond}}
+      {{#ifCond want_act2 'do_dish' }}간단 설거지{{/ifCond}}
+      {{#ifCond want_act2 'long_move_in' }}장기입주{{/ifCond}}
+      {{#ifCond want_act2 'short_move_in' }}단기입주{{/ifCond}}
+          {{#ifCond want_act3 'innerplay' }}실내놀이{{/ifCond}}
+      {{#ifCond want_act3 'guide' }}등하원돕기{{/ifCond}}
+      {{#ifCond want_act3 'read' }}책읽기{{/ifCond}}
+      {{#ifCond want_act3 'outside' }}야외활동{{/ifCond}}
+      {{#ifCond want_act3 'korean' }}한글놀이{{/ifCond}}
+      {{#ifCond want_act3 'english' }}영어놀이{{/ifCond}}
+      {{#ifCond want_act3 'study' }}실내놀이{{/ifCond}}
+      {{#ifCond want_act3 'sport' }}학습지도{{/ifCond}}
+      {{#ifCond want_act3 'simple_cleaning' }}간단 청소{{/ifCond}}
+      {{#ifCond want_act3 'eat' }}밥 챙겨주기{{/ifCond}}
+      {{#ifCond want_act3 'do_dish' }}간단 설거지{{/ifCond}}
+      {{#ifCond want_act3 'long_move_in' }}장기입주{{/ifCond}}
+      {{#ifCond want_act3 'short_move_in' }}단기입주{{/ifCond}}
                   맘시터 찾습니다.
                 </div>
               </div>

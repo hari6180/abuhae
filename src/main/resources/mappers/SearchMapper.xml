@@ -25,7 +25,9 @@
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="sitterno" column="sitterno" />
 		<result property="sitter_type" column="sitter_type" />
-		<result property="want_act" column="want_act" />
+		<result property="want_act1" column="want_act1" />
+		<result property="want_act2" column="want_act2" />
+		<result property="want_act3" column="want_act3" />
 		<result property="want_age" column="want_age" />
 		<result property="si" column="si" />
 		<result property="gu" column="gu" />
@@ -50,7 +52,9 @@
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="momno" column="momno" />
 		<result property="want_act" column="want_act" />
-		<result property="want_age" column="want_age" />
+		<result property="want_act1" column="want_act1" />
+		<result property="want_act2" column="want_act2" />
+		<result property="want_act3" column="want_act3" />
 		<result property="kids_num" column="kids_num" />
 		<result property="kids_age" column="kids_age" />
 		<result property="kids_age2" column="kids_age2" />
@@ -83,7 +87,7 @@
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
 		AS birthdate,
-		job_opening, sitterno, sitter_type, want_act, want_age,
+		job_opening, sitterno, sitter_type, want_act1, want_act2, want_act3, want_age,
 		si, gu, dong,
 		payment, payment_ok, cctv, answer, CASE
 	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
@@ -101,7 +105,8 @@
 		s.sitterno=r.sitterno AND who='M') AS rev_count,
 		(SELECT rev_rate FROM
 		review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate,
-		(SELECT COUNT(resino) FROM resi_cert rc WHERE s.sitterno=rc.sitterno AND
+		(SELECT
+		COUNT(resino) FROM resi_cert rc WHERE s.sitterno=rc.sitterno AND
 		cert='Y') AS resino FROM sitter_info s
 		INNER JOIN member m ON
 		s.memberno=m.memberno
@@ -109,7 +114,7 @@
 		<!-- 활동 유형 -->
 		<where>
 			<if test="actList != null">
-				want_act in
+				want_act1 || want_act2 || want_act3 in
 				<foreach item="item" collection="actList" open="(" close=")"
 					separator=",">
 					#{item}
@@ -151,7 +156,7 @@
 		parameterType="study.team.abuhae.model.Mom_info" resultMap="MomMap">
 		SELECT m.memberno, type, CONCAT(LEFT(name,1), 'O', RIGHT(name,1)) AS
 		name,
-		job_opening, m.momno, want_act, want_age, kids_num, kids_age, si,
+		job_opening, m.momno, want_act1, want_act2, want_act3, want_age, kids_num, kids_age, si,
 		gu,
 		json_extract(schedule, '$.startdate') AS schedule,
 		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,

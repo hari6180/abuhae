@@ -62,142 +62,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           location.href = "${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_detail.do?sitterno=${sitterno}";
         });
 
-        /** 원하는 활동 선택 ------------------------------------------------------------------- */
-        //활동 버튼 클릭
-        $(".act_btn").click(function (e) {
-          var cnt = $("input:checked[name='check_ab']").length;
-
-          if (cnt < 4) {
-            //버튼 클릭시 text 색 변경
-            $(this).next().find(".want_text").toggleClass("select_text");
-            //버튼 클릭시 이미지 URL 변경
-            //url 가져오기
-            var img_url = $(this).next().find(".want_img").attr("src");
-            var indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
-            if (indeximg > -1) {
-              var img_src = img_url.replace(/_n/, "_s");
-              $(this).next().find(".want_img").attr("src", img_src);
-            } else {
-              var img_src = img_url.replace(/_s/, "_n");
-              $(this).next().find(".want_img").attr("src", img_src);
-            }
-          } else {
-            alert("선택은 3개까지 가능합니다.");
-            // 이미지 찾기
-            var $img = $(".want_img");
-            // 이미지 길이
-            var length = $img.length;
-            // console.log(length);
-
-            for (var i = 0; i < length; i++) {
-              var img_url = $img.eq(i).attr("src");
-              var img_src = img_url.replace(/_s/, "_n");
-              $(".want_img").eq(i).attr("src", img_src);
-            }
-            $(".act_btn").prop("checked", false);
-            $(".want_text").removeClass("select_text");
-            $(".act_label").removeClass("select_act_type");
-            $(".act_label").removeClass("unselect_act_type");
-          }
-        });
-
-        $(".act_btn").change(function change_btn(e) {
-          e.preventDefault();
-          const checked = $(".act_btn:checked");
-          const act_btn = $(".activity_type_btn");
-          const result1 = [];
-          const result2 = [];
-
-          for (var i = 0; i < checked.length; i++) {
-            result1.push($(checked[i]).val());
-          }
-
-          console.log(result1);
-
-          for (var i = 0; i < act_btn.length; i++) {
-            result2.push($(act_btn[i]).val());
-          }
-
-          //console.log(result2);
-
-          for (var i = 0; i < result1.length; i++) {
-            for (var j = 0; j < result2.length; j++) {
-              if (result1[i] == result2[j]) {
-                $(".act_label").eq(j).addClass("select_act_type");
-              }
-            }
-          }
-          //console.log($(".act_label").eq(j).hasClass("select_act_type"));
-          //활동 버튼 반영 1221 하리
-          $("#act_apply").click(function (e) {
-            e.preventDefault();
-            $("#activity_type_modal").modal("hide");
-            const act_btn = $(".activity_type_btn");
-            const result2 = [];
-
-            for (var i = 0; i < act_btn.length; i++) {
-              result2.push($(act_btn[i]).val());
-            }
-
-            for (var i = 0; i < result2.length; i++) {
-              if (!$(".act_label").eq(i).hasClass("select_act_type")) {
-                $(".act_label").eq(i).addClass("unselect_act_type");
-              }
-            }
-
-            const result3 = [];
-
-            $("input[name=check_ab]:checked").each(function (i) {
-              result3.push($(this).val());
-            });
-
-            console.log(result3);
-
-            // 정렬 조건은 GET 파라미터로 전송한다.
-            $.get(
-              "${pageContext.request.contextPath}/search/sitter_search",
-              {
-                act: result3,
-              }
-              // function (json) {
-              //   var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-              //   var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-              //   var result = template(json); // 템플릿 컴파일 결과물에 json 전달
-              //   $("#result").empty(); // 결과물 초기화
-              //   $("#result2").empty(); // 결과물 초기화
-              //   $("#result").append(result); // 최종 결과물을 추가한다
-              // }
-            );
-          });
-
-          // 리셋 버튼 0109 하리
-          $("#act_reset").click(function (e) {
-            e.preventDefault();
-
-            // 이미지 찾기
-            var $img = $(".want_img");
-            // 이미지 길이
-            var length = $img.length;
-            // console.log(length);
-
-            for (var i = 0; i < length; i++) {
-              var img_url = $img.eq(i).attr("src");
-              var img_src = img_url.replace(/_s/, "_n");
-              $(".want_img").eq(i).attr("src", img_src);
-            }
-
-            $(".act_btn").prop("checked", false);
-            $(".want_text").removeClass("select_text");
-            $(".act_label").removeClass("select_act_type");
-            $(".act_label").removeClass("unselect_act_type");
-          });
-        });
-
-        $(".activity_type_wrap").click(function (e) {
-          $(".act_label").removeClass("select_act_type");
-          $(".act_label").removeClass("unselect_act_type");
-        });
-
         /** 상세 검색 ------------------------------------------------------------------- */
 
         // 아이나이 버튼 클릭
@@ -1123,6 +987,143 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             }
           );
         });
+
+        /** 원하는 활동 선택 ------------------------------------------------------------------- */
+        //활동 버튼 클릭
+        $(".act_btn").click(function (e) {
+          var cnt = $("input:checked[name='check_ab']").length;
+
+          if (cnt < 4) {
+            //버튼 클릭시 text 색 변경
+            $(this).next().find(".want_text").toggleClass("select_text");
+            //버튼 클릭시 이미지 URL 변경
+            //url 가져오기
+            var img_url = $(this).next().find(".want_img").attr("src");
+            var indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
+            if (indeximg > -1) {
+              var img_src = img_url.replace(/_n/, "_s");
+              $(this).next().find(".want_img").attr("src", img_src);
+            } else {
+              var img_src = img_url.replace(/_s/, "_n");
+              $(this).next().find(".want_img").attr("src", img_src);
+            }
+          } else {
+            alert("선택은 3개까지 가능합니다.");
+            // 이미지 찾기
+            var $img = $(".want_img");
+            // 이미지 길이
+            var length = $img.length;
+            // console.log(length);
+
+            for (var i = 0; i < length; i++) {
+              var img_url = $img.eq(i).attr("src");
+              var img_src = img_url.replace(/_s/, "_n");
+              $(".want_img").eq(i).attr("src", img_src);
+            }
+            $(".act_btn").prop("checked", false);
+            $(".want_text").removeClass("select_text");
+            $(".act_label").removeClass("select_act_type");
+            $(".act_label").removeClass("unselect_act_type");
+          }
+        });
+
+        $(".act_btn").change(function change_btn(e) {
+          e.preventDefault();
+          const checked = $(".act_btn:checked");
+          const act_btn = $(".activity_type_btn");
+          const result1 = [];
+          const result2 = [];
+
+          for (var i = 0; i < checked.length; i++) {
+            result1.push($(checked[i]).val());
+          }
+
+          console.log(result1);
+
+          for (var i = 0; i < act_btn.length; i++) {
+            result2.push($(act_btn[i]).val());
+          }
+
+          //console.log(result2);
+
+          for (var i = 0; i < result1.length; i++) {
+            for (var j = 0; j < result2.length; j++) {
+              if (result1[i] == result2[j]) {
+                $(".act_label").eq(j).addClass("select_act_type");
+              }
+            }
+          }
+          //console.log($(".act_label").eq(j).hasClass("select_act_type"));
+          //활동 버튼 반영 1221 하리
+          $("#act_apply").click(function (e) {
+            e.preventDefault();
+            $("#activity_type_modal").modal("hide");
+            const act_btn = $(".activity_type_btn");
+            const result2 = [];
+
+            for (var i = 0; i < act_btn.length; i++) {
+              result2.push($(act_btn[i]).val());
+            }
+
+            for (var i = 0; i < result2.length; i++) {
+              if (!$(".act_label").eq(i).hasClass("select_act_type")) {
+                $(".act_label").eq(i).addClass("unselect_act_type");
+              }
+            }
+
+            const result3 = [];
+
+            $("input[name=check_ab]:checked").each(function (i) {
+              result3.push($(this).val());
+            });
+
+            console.log(result3);
+
+            // 정렬 조건은 GET 파라미터로 전송한다.
+            $.get(
+              "${pageContext.request.contextPath}/search/sitter_search",
+              {
+                act: result3,
+              },
+              function (json) {
+                var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+                var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                $("#result").empty(); // 결과물 초기화
+                $("#result2").empty(); // 결과물 초기화
+                $("#result").append(result); // 최종 결과물을 추가한다
+              }
+            );
+          });
+
+          // 리셋 버튼 0109 하리
+          $("#act_reset").click(function (e) {
+            e.preventDefault();
+
+            // 이미지 찾기
+            var $img = $(".want_img");
+            // 이미지 길이
+            var length = $img.length;
+            // console.log(length);
+
+            for (var i = 0; i < length; i++) {
+              var img_url = $img.eq(i).attr("src");
+              var img_src = img_url.replace(/_s/, "_n");
+              $(".want_img").eq(i).attr("src", img_src);
+            }
+
+            $(".act_btn").prop("checked", false);
+            $(".want_text").removeClass("select_text");
+            $(".act_label").removeClass("select_act_type");
+            $(".act_label").removeClass("unselect_act_type");
+          });
+        });
+
+        $(".activity_type_wrap").click(function (e) {
+          $(".act_label").removeClass("select_act_type");
+          $(".act_label").removeClass("unselect_act_type");
+        });
+
         // 무한 스크롤 1218 하리
         $(window).scroll(function () {
           if (Math.round($(window).scrollTop()) + $(window).height() == $(document).height()) {
