@@ -181,9 +181,10 @@ public class MomMypageController {
 	
 	/** 후기 관리 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/review.do", method = RequestMethod.GET)
-	public String review_mom(Locale locale, Model model) {
+	public ModelAndView review_mom(Locale locale, Model model) {
 		/** 후기 남길 수 있는 회원 조회 기능 */
 		Sitter_info input = new Sitter_info();
+		
 		/** 후기 남기기 기능 (insert) */
 		
 		/** 작성한 후기 조회 */
@@ -192,7 +193,23 @@ public class MomMypageController {
 		
 		/** 댓글 남기기 기능 */
 		
-		return "mypage/mypage_mom/review";
+		return new ModelAndView("mypage/mypage_mom/review");
+	}
+	
+	@RequestMapping(value = "/mypage/mypage_mom/review_ok.do", method = RequestMethod.POST)
+	public ModelAndView review_ok(Locale locale, Model model) {
+		/** 후기 남길 수 있는 회원 조회 기능 */
+		Sitter_info input = new Sitter_info();
+		
+		/** 후기 남기기 기능 (insert) */
+		
+		/** 작성한 후기 조회 */
+		
+		/** 나에게 작성된 후기 조회 */
+		
+		/** 댓글 남기기 기능 */
+		
+		return new ModelAndView("mypage/mypage_mom/review");
 	}
 	
 	/** 내 채용내역 페이지 */

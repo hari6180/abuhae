@@ -54,15 +54,11 @@
 		inner join cus_category cc
 		on cs.cateno = cc.cateno
 		
-		<where>
+		<where>	
 			<if test="title != null and title != ''">
 				cb.title like concat('%', #{title}, '%')
 			</if>
 		</where>
-		
-		<if test="listCount > 0">
-			limit #{offset}, #{listCount}
-		</if>
 		
 	</select>
 	
@@ -88,8 +84,12 @@
 	parameterType="study.team.abuhae.model.Cus_bbs" resultType="int">
 		select count(*) 
 		from cus_bbs cb
-		inner join cus_sub_category cs on cb.subcateno = cs.subcateno
+		inner join cus_sub_category cs on cb.subcateno = cs.subcateno 
 		inner join cus_category cc on cb.cateno = cc.cateno
+		
+		<where>
+			cb.subcateno=#{subcateno}
+		</where>
 	</select>
 	
 </mapper>
