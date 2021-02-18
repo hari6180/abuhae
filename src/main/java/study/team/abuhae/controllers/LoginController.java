@@ -1,5 +1,7 @@
 package study.team.abuhae.controllers;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,7 +27,7 @@ public class LoginController {
 	@Autowired
 	WebHelper webHelper;
 	@Value("#{servletContext.contextPath}")
-    String contextPath;
+	String contextPath;
 
 	@RequestMapping(value = "/login/login.do", method = RequestMethod.GET)
 	public ModelAndView login(Model model, HttpServletResponse response) {
@@ -35,8 +37,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/login/login_ok.do", method = RequestMethod.POST)
 	private ModelAndView login_ok(Model model, HttpServletResponse response, HttpServletRequest request,
-			@RequestParam(value = "user_id") String user_id, 
-			@RequestParam(value = "user_pw") String user_pw) {
+			@RequestParam(value = "user_id") String user_id, @RequestParam(value = "user_pw") String user_pw) {
 		// session 객체 만들기
 		HttpSession session = request.getSession();
 		// 데이터 조회할 객체
@@ -50,16 +51,16 @@ public class LoginController {
 		try {
 			// 특정 아이디에 대한 결과 조회
 			login = (Mom_info) memberService.getMemberLogin(input);
-			
+
 			if (login != null) {
 				// 조회된 데이터가 널이 아니라면 로그인 성공
-				//session.setAttribute("islogin", output);
+				// session.setAttribute("islogin", output);
 				session.setAttribute("isLogin", true); // 로그인 여부 세션
 				session.setAttribute("loginID", login.getId()); // 로그인한 회원 id 세션
 				session.setAttribute("loginType", login.getType()); // 로그인한 회원 type 세션
 				session.setAttribute("loginNo", login.getMemberno()); // 로그인한 회원 number 세션
 				session.setAttribute("login", login);
-		
+
 			}
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -68,12 +69,11 @@ public class LoginController {
 		String url = contextPath;
 		return webHelper.redirect(url, null);
 	}
-	
-	
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
-		
+
 		String url = contextPath;
 		return webHelper.redirect(url, null);
 	}
@@ -83,4 +83,44 @@ public class LoginController {
 
 		return "/login/find";
 	}
+
+	// 아이디 찾기
+	@RequestMapping(value = "login/find_ok", method = RequestMethod.POST)
+	public ModelAndView m_find_id_ok(Model model, 
+			@RequestParam(value = "name") String name,
+			@RequestParam(value = "birthdate") String birthdate_str, 
+			@RequestParam(value = "tel") String phone) {
+		
+		Mom_info mominfo = new Mom_info();
+		
+		// 데이터 가공
+		String year = birthdate_str.substring(0, 4);
+		String mon = birthdate_str.substring(4, 6);
+		String day = birthdate_str.substring(6, 8);
+
+		String birthdate = year+"-"+mon+"-"+day;
+
+		// 저장할 값 beans에 담기
+		mominfo.setName(name);
+		mominfo.setBirthdate(birthdate);
+		mominfo.setPhone(phone);
+
+		// log.debug(mominfo.toString());
+		Mom_info output = null;
+
+		try {
+			// 요청한 값으로 id 찾아오기
+			output = (Mom_info) memberService.findId(mominfo);
+
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		//view 
+		model.addAttribute("id", output.getId());
+		model.addAttribute("isfind", "OK");
+		return new ModelAndView("login/find");
+	}
+	
+	
 }

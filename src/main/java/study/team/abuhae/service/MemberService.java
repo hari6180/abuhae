@@ -2,6 +2,8 @@ package study.team.abuhae.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import study.team.abuhae.model.Member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Sitter_info;
@@ -56,4 +58,13 @@ public interface MemberService {
 	 * @return int
 	 */
 	public int phoneCheck(Member input) throws Exception;
+	
+	//아이디 찾기
+	public Member findId(Member input) throws Exception;
+	
+	//이메일발송
+	public void sendEmail(Mom_info input, String div) throws Exception;
+
+	//비밀번호찾기
+	public void findPw(HttpServletResponse resp, Mom_info input) throws Exception;
 }

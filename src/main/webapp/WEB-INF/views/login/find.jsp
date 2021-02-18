@@ -1,4 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -35,6 +39,9 @@
             background-color: #f6f6f6;
             min-height: 736px;
         }
+        i {
+            font-style: normal;
+        }
     </style>
 </head>
 
@@ -47,6 +54,7 @@
             <!-- xs-12로 모바일 맞춤 -->
             <!--end header-->
             <div class="find_wrap">
+            <c:if test="${isfind==null }">
                 <div id="shwide" class="show_content">
                     <div class="find_title">
                         <h3>계정 찾기</h3>
@@ -55,23 +63,23 @@
                             이름과 생년월일(YYYYMMDD), 휴대폰 번호를 입력하시면, 가입한 계정 정보를 알려드립니다.
                         </p>
                     </div>
-                    <form>
-                    <div class="find_box">
-                        <label>이름</label><input id="name" type="text" placeholder="이름을 입력하세요.">
-                        <hr>
-                        <label>생년월일 (예, 19860107)</label><input id="birthdate" type="text"
-                            placeholder="생년월일 8자리(YYYYMMDD)를 입력해주세요.">
-                        <hr>
-                        <label>휴대폰번호(예, 01012345678)</label><input id="tel" type="text"
-                            placeholder="휴대폰 번호를 '-' 없이 입력해주세요.">
-                        <hr>
-                    </div>
-                    <button class="next_btn" type="submit" id="find_account">계정 찾기</button>
+                    <form id="findForm" method="POST" action="${pageContext.request.contextPath}/login/find_ok">
+                        <div class="find_box">
+                            <label>이름</label><input id="name" name="name" type="text" placeholder="이름을 입력하세요.">
+                            <hr>
+                            <label>생년월일 (예, 19860107)</label><input id="birthdate" name="birthdate" type="text" placeholder="생년월일 8자리(YYYYMMDD)를 입력해주세요.">
+                            <hr>
+                            <label>휴대폰번호(예, 01012345678)</label><input id="tel" name="tel" type="text" placeholder="휴대폰 번호를 '-' 없이 입력해주세요.">
+                            <hr>
+                        </div>
+                        <button class="next_btn" type="submit" id="find_account">계정 찾기</button>
                     </form>
                 </div>
+                </c:if>
 
-                <!--알맞은 정보를 입력했을 시에-->
-                <div class="hide_content">
+                <!--찾은 정보가 있을시에-->
+                <c:if test="${isfind=='OK' }">
+                <div class="show_content">
                     <div class="find_title">
                         <h3>계정 정보</h3>
                         <p>
@@ -79,17 +87,18 @@
                             (비밀번호 변경은 로그인후 [마이페이지 -> 비밀번호변경]에서 가능합니다.)
                             </p>
 
-                        <div id="find_id">아이디:mom</div>
+                        <div id="find_id">아이디: <i id="getid">${id}</i></div>
 
                         <button class="next_btn_pw" id="find_account_pw">임시 비밀번호 발급</button>
-                        <button class="next_btn" id="find_account">돌아가기</button>
+                        <a href="${pageContext.request.contextPath}/login/find.do"><button class="next_btn" id="find_account">돌아가기</button></a>
                     </div>
                 </div>
+                </c:if>
             </div>
         </div> <!-- fin. col-xs-12 -->
     </div>
     <script type="text/javascript">
-        $(function () {
+        /* $(function () {
             //$("#menu").load("../index_header.html");
 
             $("#find_account").on("click", function () {
@@ -101,7 +110,27 @@
                     $("#shwide").next().addClass("show_content");
                 }
             });
-        });
+        }); */
+
+        $(function(){
+		$(".next_btn_pw").click(function(){
+
+			$.ajax({
+				url : "findpw",
+				type : "POST",
+				data : {
+					id : $("#getid").text()
+				},
+				success : function(result) {
+					alert(result);
+
+				},
+                error : function() { //통신 실패시 ㅠㅠ
+						alert('통신실패!');
+					}
+			})
+		});
+	})
     </script>
 </body>
 

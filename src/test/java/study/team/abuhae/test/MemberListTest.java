@@ -85,6 +85,12 @@ public class MemberListTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+	}
+	
+	@Test
+	public void testF() {
+		String bir = "19931124";
+		String ad = bir.substring(6,8);
+		System.out.println(ad);
 	}
 }

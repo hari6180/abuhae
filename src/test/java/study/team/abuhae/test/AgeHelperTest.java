@@ -26,7 +26,8 @@ public class AgeHelperTest {
 	@Test
 	public void testA() {
 		AgeHelper agehelper = new AgeHelper();
-		int age = agehelper.kidsAge("201001");
+		String age = agehelper.kidsStr("201001");
+		System.out.println(age);
 		
 	}
 	
