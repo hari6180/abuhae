@@ -33,7 +33,7 @@
 			line-height: 25px;
 		}
 		#subject {
-			width: 950px;
+			width: 940px;
 		}
 
 		</style>
@@ -83,7 +83,7 @@
 					<hr>
 					<div>
 						<div class="btn_button">
-							<button class="btn_warning" type="submit"><span><i class="far fa-file-alt"></i>&nbsp;글쓰기</span></button>
+							<button class="btn_warning" type="submit"><span><i class="far fa-file-alt"></i>&nbsp;글수정</span></button>
 							<button class="btn_nomal" type="reset"><span><i class="fas fa-pen"></i>&nbsp;취소</span></button>
 						</div>
 					</div>
@@ -124,7 +124,7 @@
 					var categotySelectBox = $("select[name='filter_bbs']");
 
 					for (var i = 0; i < catelist.length; i++) {
-						categotySelectBox.append("<option value='" + catelist[i].cateno + "' <c:if test='${"+catelist[i].cateno+"=='"+cateno+"'}'>selected</c:if> > " + catelist[i].category + "</option>");
+						categotySelectBox.append("<option value='" + catelist[i].cateno + "'> " + catelist[i].category + "</option>");
 					}
 
 					//*********** 1depth카테고리 선택 후 2depth 생성 START ***********

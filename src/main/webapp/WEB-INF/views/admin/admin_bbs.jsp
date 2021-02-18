@@ -196,9 +196,15 @@
 			</section>
 		</div>
 	
-		<!-- Javascript -->
-		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
+
+		<!-- jquery 파일명 수정 -->		
 		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+		<!--Google CDN 서버로부터 jQuery 참조 -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<!-- jQuery Ajax Form plugin CDN -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+		<!-- jQuery Ajax Setup -->
+		<script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
 		<script>
 			$(function(){
 				//올체크
@@ -218,6 +224,33 @@
 	
 						boardnum = td.eq(1).text(); //boardno는 td의 두번째 요소
 						window.location = "${pageContext.request.contextPath}/admin/edit.do?boardnum="+boardnum;
+					});
+				});
+
+				$("#delete").on('click', function(){
+					var checkbox = $("input[name=chk]:checked");
+					var boardnum = null;
+					checkbox.each(function (i) {
+						var tr = checkbox.parent().parent().eq(i); //checkbox의 두단계 상위가 tr
+						var td = tr.children(); //td태그는 tr의 하위
+
+						boardnum = td.eq(1).text(); //boardno는 td의 두번째 요소
+
+						// 삭제 확인
+						if (!confirm("정말 삭제하시겠습니까?")) {
+							return false;
+						}
+
+						// delete 메서드로 Ajax 요청 --> <form> 전송이 아니므로 직접 구현한다.
+						$.delete("${pageContext.request.contextPath}/admin/delete", {
+							"boardnum": boardnum
+						}, function (json) {
+							if (json.rt == "OK") {
+								alert("삭제되었습니다.");
+								// 삭제 완료 후 페이지 새로고침
+								window.location.reload();
+							}
+						});
 					});
 				});
 			});

@@ -359,6 +359,26 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 
+	@Override
+	public int deleteBoard(Cus_bbs input) throws Exception {
+		int result =0;
+		
+		try {
+			result = sqlsession.delete("CustomerAdMapper.deleteBoard", input);
+			if (result==0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("작성된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 작성에 실패했습니다.");
+		}
+		
+		return result;
+	}
+
 	
 
 

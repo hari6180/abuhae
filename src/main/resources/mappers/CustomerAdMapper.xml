@@ -90,5 +90,10 @@
         WHERE boardnum=#{boardnum}
 	</update>
 	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="study.team.abuhae.model.Cus_bbs">
+		delete from cus_bbs where boardnum=#{boardnum}
+	</delete>
+	
 	
 </mapper>

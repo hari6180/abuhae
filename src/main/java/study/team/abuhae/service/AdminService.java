@@ -63,5 +63,8 @@ public interface AdminService {
 	//게시판 수정
 	public int editBoard(Cus_bbs input) throws Exception;
 	
+	//게시판 삭제
+	public int deleteBoard(Cus_bbs input) throws Exception;
+	
 }
 

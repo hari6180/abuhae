@@ -35,7 +35,7 @@
 		}
 
 		#subject {
-			width: 950px;
+			width: 940px;
 		}
 
 		</style>

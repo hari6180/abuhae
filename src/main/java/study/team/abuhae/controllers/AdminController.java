@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.protobuf.ByteString.Output;
+
 import study.team.abuhae.helper.PageData;
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
@@ -384,8 +386,8 @@ public class AdminController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-
-		return new ModelAndView("admin/admin_bbs");
+        String url = contextPath+"/admin/admin_bbs.do?cateno="+cateno;
+		return webHelper.redirect(url, null);
 	}
 	
 	@RequestMapping(value = "/admin/edit.do", method = RequestMethod.GET)
@@ -459,9 +461,10 @@ public class AdminController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-
-		return new ModelAndView("admin/admin_bbs");
+        String url = contextPath+"/admin/admin_bbs.do?cateno="+cateno;
+		return webHelper.redirect(url, null);
 	}
+	
 	
 	
 }
