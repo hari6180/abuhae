@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%
-	
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -35,7 +35,7 @@
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
-					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href = '${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report.do'">
+					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href='${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report.do?momno=${output.momno}';">
 				 	 <img src="<%=request.getContextPath()%>/assets/img/siren.png" width="13" height="15"/>
 				             신고
 				  	</button>
@@ -49,12 +49,12 @@
 				  </div>
 				</div> <!-- fin. profil_photo -->
 				<div class="profil_info">
-					<p style="font-weight: bold; font-size: 1.2em;">실내놀이 맘시터 찾습니다.</p>
+					<p style="font-weight: bold; font-size: 1.2em;">${output.apply_title}</p>
 				</div> <!-- fin. profil_info -->
 				<div class="mom_info">
-				    <div class="name">정<i class="far fa-circle"></i>우</div>
+				    <div class="name">${output.name}</div>
 					<div class="line"></div>
-					<div class="number">no.53213</div>
+					<div class="number">no.${output.momno}</div>
 				</div>
 				
 				<hr/>
@@ -63,48 +63,85 @@
 					<div class="two_info_area">
 						<div class="views_area">
 							<div id="views"><i class="fas fa-user-friends"></i> 지원자 수</div>
-							<div id="views_number"><span style="color: #00726e;">현재 999명</span></div>
+							<div id="views_number"><span style="color: #00726e;">현재 ${output.cntno}명</span></div>
 						</div>
 						<div class="two_info_style"></div>
 						<div class="clock_area">
 							<div id="clock"><i class="far fa-clock"></i> 신청서 작성</div>
-							<div id="date">한 달 전</div>
+							<div id="date">${output.openingdate}</div>
 						</div>
 					</div>
 				</div>
 				<!-- Main start-->
 				<div class="main">
+				<c:if test="${output.apply_content!=null}">
 					<div class="info_box">
 						<div class="box_name">신청내용</div>
 						<div class="info_area">
 							<div class="info_text_box">
 								<div class="info_text">
 									<span>
-										여아 15개월 엄청 산만함.. 오르기 좋아합니다
+										${output.apply_content}
 									</span>
 								</div>
 							</div>
 						</div>
 					</div>
+					</c:if>
 					<div class="iwant_box">
 						<div class="box_name">원하는 시터나이</div>
 						<div class="iwant_area">
 							<div class="sitter_age_area">
+								<c:if test="${output.want_age!='20대'}">
 								<div class="sitter_age_no_area">
 									20대
 								</div>
+								</c:if>
+								<c:if test="${output.want_age=='20대'}">
+								<div class="sitter_age_ok_area">
+									20대
+								</div>
+								</c:if>
+								<c:if test="${output.want_age!='30대'}">
+								<div class="sitter_age_no_area">
+									30대
+								</div>
+								</c:if>
+								<c:if test="${output.want_age=='30대'}">
 								<div class="sitter_age_ok_area">
 									30대
 								</div>
+								</c:if>
+								<c:if test="${output.want_age!='40대'}">
+								<div class="sitter_age_no_area">
+									40대
+								</div>
+								</c:if>
+								<c:if test="${output.want_age=='40대'}">
 								<div class="sitter_age_ok_area">
 									40대
 								</div>
+								</c:if>
+								<c:if test="${output.want_age!='50대'}">
+								<div class="sitter_age_no_area">
+									50대
+								</div>
+								</c:if>
+								<c:if test="${output.want_age=='50대'}">
 								<div class="sitter_age_ok_area">
 									50대
 								</div>
+								</c:if>
+								<c:if test="${output.want_age!='60대'}">
 								<div class="sitter_age_no_area">
 									60대
 								</div>
+								</c:if>
+								<c:if test="${output.want_age=='60대'}">
+								<div class="sitter_age_ok_area">
+									60대
+								</div>
+								</c:if>
 							</div>
 						</div>
 					</div> <!-- fin. iwant_box -->
@@ -114,7 +151,7 @@
 							<div>
 								<div class="zone_line">
 									<span style="color: #028071;"><i class="fas fa-map-marker-alt"></i></span> 
-									<div id="zone_line_blank">인천광역시 남동구</div>
+									<div id="zone_line_blank">${output.si}&nbsp;${output.gu}</div>
 								</div>
 							</div>
 						</div> <!-- fin. possible_zone_area -->
@@ -429,6 +466,7 @@
 							</div>
 						</div> <!-- fin. talk_area -->
 					</div> <!-- fin. talk_box -->
+					<c:if test="${output.description!=null}">
 					<div class="possible_age_box">
 					<div class="box_name">그 외 요청사항</div>
 					<div class="possible_age_area">
@@ -444,6 +482,7 @@
 						</div>
 					</div> <!-- fin. possible_age_area -->
 					</div> <!-- fin. possible_age_box -->
+					</c:if>
 				</div> <!-- fin. Main -->
 				<!-- ----------하단고정 부분 시작------------ -->
 			<div class="fixed_box col-xs-12">
@@ -453,10 +492,10 @@
 							맘시터 구인 3 일째
 						</div>
 						<div class="fixed_age">
-							희망시급 (협의가능)
+							희망시급 <c:if test="${fn:contains(output.payment_ok,Y)}">(협의가능)</c:if>
 						</div>
 						<div class="fixed_money">
-						99,900원
+						<fmt:formatNumber value="${output.payment}" pattern="#,###" />원
 						</div>
 					</div>
 				</div> <!-- fin. fixed_area -->
@@ -466,11 +505,11 @@
 						    <span class="glyphicon glyphicon-heart-empty" style="color: rgb(0, 143, 105); font-size: 25px;"></span>
 						</button>
 						<div class="jim_number">
-							999
+							${output.heartno}
 						</div>
 					</div>
 					<div class="interview_btn">
-						<button tabindex="0" type="button" class="btn-interview" onclick = "location.href = 'mom_interview.do'">
+						<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_interview.do?momno=${output.momno}';">
 							<div>
 								<div class="btn_text_box">
 									<span><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">인터뷰 신청하기</a></span>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import study.team.abuhae.helper.AgeHelper;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.DetailService;
 
@@ -34,26 +35,38 @@ public class Page_detail_sitterController {
 		count.setSitterno(sitterno);
 		Sitter_info insert = new Sitter_info();
 		insert.setSitterno(sitterno);
-		
+		Sitter_info wantAge = new Sitter_info();
+		wantAge.setSitterno(sitterno);
+
 		// 조회결과를 저장할 객체 선언 
 		Sitter_info output = null;
 		List<Sitter_info> testput = null;
 		int countput = 0;
 		int insertput = 0;
+		Sitter_info ageput = null;
 		
+		/** String src = input.getWant_age();
+		String[] data = src.split(",");
+		
+		for (int i = 0; i < data.length; i++) {
+			System.out.println(data[i]);
+		} */
+	
 		try {
 			// 데이터 조회 
 			output = detailService.getSitterItem(input);
 			testput = detailService.getSitterList(input);
 			countput = detailService.editSitter(input);
 			insertput = detailService.addSitter(input);
-		
+			ageput = detailService.getWantAge(input);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		model.addAttribute("output", output);
 		model.addAttribute("testput", testput);
 		model.addAttribute("insertput", insertput);
+		model.addAttribute("ageput", ageput);
 		return "/page_detail/sitter_page_detail/sitter_detail";
 	}
 	
