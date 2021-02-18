@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
 import study.team.abuhae.helper.AgeHelper;
 import study.team.abuhae.helper.PageData;
 import study.team.abuhae.helper.RegexHelper;
@@ -19,6 +20,7 @@ import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.SearchService;
 
+@Slf4j
 @RestController
 public class SearchRestController {
     /** WebHelper 주입 */
@@ -37,12 +39,16 @@ public class SearchRestController {
     /** 맘시터 찾기 페이지 */
     @RequestMapping(value = "/search/sitter_search", method = RequestMethod.GET)
     public Map<String, Object> get_st_list(
-            // 검색어
-            @RequestParam(value="keyword", required=false) String keyword,
             // 페이지 구현에서 사용할 현재 페이지 번호
             @RequestParam(value="page", defaultValue="1") int nowPage,
             // 정렬 조건
-            @RequestParam(value = "order", defaultValue="null") String order) {
+            @RequestParam(value="order", defaultValue="null") String order,
+            /** (1) 원하는 활동 선택 **/
+            @RequestParam(value="act[]", required=false) String[] actList
+    		) {
+				
+				  
+				 
         
         
         /** 1) 페이지 구현에 필요한 변수값 생성 */
@@ -69,6 +75,20 @@ public class SearchRestController {
             
 			// 정렬조건의 값을 Beans에 저장
 			Sitter_info.setOrder(order);
+			
+			
+			
+			// 검색조건의 값을 Beans에 저장
+			if(actList != null) {
+				for (int i=0; i<actList.length; i++) {
+					String temp1 = actList[i];
+					String temp2 = temp1.replace("'", "");
+					actList[i] = temp2;
+					log.info("temp2" + temp2);
+				}
+				Sitter_info.setActList(actList);
+			}
+			
             
             // 데이터 조회하기
             output = searchService.searchSitter(input);
@@ -78,10 +98,14 @@ public class SearchRestController {
 
         /** 3) JSON 출력하기 */
         Map<String, Object> data = new HashMap<String, Object>();
-        data.put("keyword", keyword);
         data.put("item", output);
         data.put("meta", pageData);
-
+		// 검색조건의 값을 Beans에 저장
+//		if(actList != null) {
+//			for (int i=0; i<actList.length; i++) {
+//				data.put("act1", actList[0]);
+//			}
+//		}
         return webHelper.getJsonData(data);
     }
     

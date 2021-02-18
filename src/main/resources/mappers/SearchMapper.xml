@@ -66,7 +66,7 @@
 		<result property="openingdate" column="opening" />
 		<result property="orderdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
-		<result property="applySt" column="cntno"/>
+		<result property="applySt" column="cntno" />
 		<result property="days" column="days" />
 	</resultMap>
 
@@ -96,21 +96,30 @@
 		ELSE
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS
-		opening, openingdate, (SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_count,
-		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate, 
-		(SELECT COUNT(resino) FROM resi_cert rc WHERE s.sitterno=rc.sitterno AND cert='Y') AS resino FROM sitter_info s
-		INNER JOIN member m ON s.memberno=m.memberno
-		
-		<where>
+		opening,
+		openingdate, (SELECT COUNT(revno) FROM review r WHERE
+		s.sitterno=r.sitterno AND who='M') AS rev_count,
+		(SELECT rev_rate FROM
+		review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate,
+		(SELECT COUNT(resino) FROM resi_cert rc WHERE s.sitterno=rc.sitterno AND
+		cert='Y') AS resino FROM sitter_info s
+		INNER JOIN member m ON
+		s.memberno=m.memberno
+
 		<!-- 활동 유형 -->
-			<if test="act != null">
-				want_act LIKE CONCAT('%',#{act},'%')
+		<where>
+			<if test="actList != null">
+				want_act in
+				<foreach item="item" collection="actList" open="(" close=")"
+					separator=",">
+					#{item}
+				</foreach>
 			</if>
 		</where>
-		
-		
-		ORDER BY 
-		
+
+
+		ORDER BY
+
 		<choose>
 			<when test="order != null and order == 'update'">
 				openingdate DESC
@@ -126,12 +135,12 @@
 			</when>
 			<when test="order != null and order == 'highpay'">
 				payment DESC
-			</when>						
+			</when>
 			<otherwise>
 				rev_rate DESC
 			</otherwise>
 		</choose>
-		<if test="listCount > 0" >
+		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
@@ -144,7 +153,8 @@
 		name,
 		job_opening, m.momno, want_act, want_age, kids_num, kids_age, si,
 		gu,
-		json_extract(schedule, '$.startdate') AS schedule, REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
+		json_extract(schedule, '$.startdate') AS schedule,
+		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
 		REPLACE(json_extract(schedule, '$.day'),'"','') AS days, schedule_ok,
 		payment, payment_ok, care_type, CASE
 		<!-- 연산자 태그인식 방지 -->
@@ -158,24 +168,26 @@
 		ELSE
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS
-		opening, openingdate, (SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno AND who='s') AS applySt FROM mom_info m
+		opening,
+		openingdate, (SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno
+		AND who='s') AS applySt FROM mom_info m
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
 		ORDER BY
-		
+
 		<choose>
 			<when test="order != null and order == 'lowpay'">
 				payment
 			</when>
 			<when test="order != null and order == 'highpay'">
 				payment DESC
-			</when>						
+			</when>
 			<otherwise>
 				openingdate DESC
 			</otherwise>
 		</choose>
-		
-		<if test="listCount > 0" >
+
+		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
@@ -184,7 +196,8 @@
 	<!-- 맘 -->
 	<select id="selectCountAllMom"
 		parameterType="study.team.abuhae.model.Mom_info" resultType="int">
-		SELECT COUNT(*)
+		SELECT
+		COUNT(*)
 		FROM Mom_info m
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
@@ -193,7 +206,8 @@
 	<!-- 시터 -->
 	<select id="selectCountAllSitter"
 		parameterType="study.team.abuhae.model.Sitter_info" resultType="int">
-		SELECT COUNT(*)
+		SELECT
+		COUNT(*)
 		FROM sitter_info s
 		INNER JOIN member m ON
 		s.memberno=m.memberno

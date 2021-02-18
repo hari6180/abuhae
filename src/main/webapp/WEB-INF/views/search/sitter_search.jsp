@@ -45,7 +45,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       function random(n1, n2) {
         return parseInt(Math.random() * (n2 - n1 + 1)) + n1;
       }
-      let act = null;
+
       $(function () {
         // 헤더 메뉴 load처리 1224 하리
         // $("#menu").load("/ezen-android2020-2/index_header.html"); - 210124 include 변경
@@ -65,73 +65,40 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         /** 원하는 활동 선택 ------------------------------------------------------------------- */
         //활동 버튼 클릭
         $(".act_btn").click(function (e) {
-          //버튼 클릭시 text 색 변경
-          $(this).next().find(".want_text").toggleClass("select_text");
-          //버튼 클릭시 이미지 URL 변경
-          //url 가져오기
-          var img_url = $(this).next().find(".want_img").attr("src");
-          var indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
-          if (indeximg > -1) {
-            var img_src = img_url.replace(/_n/, "_s");
-            $(this).next().find(".want_img").attr("src", img_src);
+          var cnt = $("input:checked[name='check_ab']").length;
+
+          if (cnt < 4) {
+            //버튼 클릭시 text 색 변경
+            $(this).next().find(".want_text").toggleClass("select_text");
+            //버튼 클릭시 이미지 URL 변경
+            //url 가져오기
+            var img_url = $(this).next().find(".want_img").attr("src");
+            var indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
+            if (indeximg > -1) {
+              var img_src = img_url.replace(/_n/, "_s");
+              $(this).next().find(".want_img").attr("src", img_src);
+            } else {
+              var img_src = img_url.replace(/_s/, "_n");
+              $(this).next().find(".want_img").attr("src", img_src);
+            }
           } else {
-            var img_src = img_url.replace(/_s/, "_n");
-            $(this).next().find(".want_img").attr("src", img_src);
-          }
-        });
-        // 리셋 버튼 0109 하리
-        $("#act_reset").click(function (e) {
-          e.preventDefault();
+            alert("선택은 3개까지 가능합니다.");
+            // 이미지 찾기
+            var $img = $(".want_img");
+            // 이미지 길이
+            var length = $img.length;
+            // console.log(length);
 
-          // 이미지 찾기
-          var $img = $(".want_img");
-          // 이미지 길이
-          var length = $img.length;
-          // console.log(length);
-
-          for (var i = 0; i < length; i++) {
-            var img_url = $img.eq(i).attr("src");
-            var img_src = img_url.replace(/_s/, "_n");
-            $(".want_img").eq(i).attr("src", img_src);
-          }
-
-          $(".act_btn").prop("checked", false);
-          $(".want_text").removeClass("select_text");
-          $(".act_label").removeClass("select_act_type");
-          $(".act_label").removeClass("unselect_act_type");
-        });
-
-        //활동 버튼 반영 1221 하리
-        $("#act_apply").click(function (e) {
-          e.preventDefault();
-          $("#activity_type_modal").modal("hide");
-          const act_btn = $(".activity_type_btn");
-          const result2 = [];
-
-          for (var i = 0; i < act_btn.length; i++) {
-            result2.push($(act_btn[i]).val());
-          }
-
-          for (var i = 0; i < result2.length; i++) {
-            if (!$(".act_label").eq(i).hasClass("select_act_type")) {
-              $(".act_label").eq(i).addClass("unselect_act_type");
+            for (var i = 0; i < length; i++) {
+              var img_url = $img.eq(i).attr("src");
+              var img_src = img_url.replace(/_s/, "_n");
+              $(".want_img").eq(i).attr("src", img_src);
             }
+            $(".act_btn").prop("checked", false);
+            $(".want_text").removeClass("select_text");
+            $(".act_label").removeClass("select_act_type");
+            $(".act_label").removeClass("unselect_act_type");
           }
-
-          $.get(
-            "${pageContext.request.contextPath}/search/sitter_search",
-            {
-              act: act, // 정렬 조건은 GET 파라미터로 전송한다.
-            },
-            function (json) {
-              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
-              $("#result").empty(); // 결과물 초기화
-              $("#result2").empty(); // 결과물 초기화
-              $("#result").append(result); // 최종 결과물을 추가한다
-            }
-          );
         });
 
         $(".act_btn").change(function change_btn(e) {
@@ -145,7 +112,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             result1.push($(checked[i]).val());
           }
 
-          //console.log(result1);
+          console.log(result1);
 
           for (var i = 0; i < act_btn.length; i++) {
             result2.push($(act_btn[i]).val());
@@ -161,6 +128,69 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             }
           }
           //console.log($(".act_label").eq(j).hasClass("select_act_type"));
+          //활동 버튼 반영 1221 하리
+          $("#act_apply").click(function (e) {
+            e.preventDefault();
+            $("#activity_type_modal").modal("hide");
+            const act_btn = $(".activity_type_btn");
+            const result2 = [];
+
+            for (var i = 0; i < act_btn.length; i++) {
+              result2.push($(act_btn[i]).val());
+            }
+
+            for (var i = 0; i < result2.length; i++) {
+              if (!$(".act_label").eq(i).hasClass("select_act_type")) {
+                $(".act_label").eq(i).addClass("unselect_act_type");
+              }
+            }
+
+            const result3 = [];
+
+            $("input[name=check_ab]:checked").each(function (i) {
+              result3.push($(this).val());
+            });
+
+            console.log(result3);
+
+            // 정렬 조건은 GET 파라미터로 전송한다.
+            $.get(
+              "${pageContext.request.contextPath}/search/sitter_search",
+              {
+                act: result3,
+              }
+              // function (json) {
+              //   var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              //   var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              //   var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              //   $("#result").empty(); // 결과물 초기화
+              //   $("#result2").empty(); // 결과물 초기화
+              //   $("#result").append(result); // 최종 결과물을 추가한다
+              // }
+            );
+          });
+
+          // 리셋 버튼 0109 하리
+          $("#act_reset").click(function (e) {
+            e.preventDefault();
+
+            // 이미지 찾기
+            var $img = $(".want_img");
+            // 이미지 길이
+            var length = $img.length;
+            // console.log(length);
+
+            for (var i = 0; i < length; i++) {
+              var img_url = $img.eq(i).attr("src");
+              var img_src = img_url.replace(/_s/, "_n");
+              $(".want_img").eq(i).attr("src", img_src);
+            }
+
+            $(".act_btn").prop("checked", false);
+            $(".want_text").removeClass("select_text");
+            $(".act_label").removeClass("select_act_type");
+            $(".act_label").removeClass("unselect_act_type");
+          });
         });
 
         $(".activity_type_wrap").click(function (e) {
@@ -557,7 +587,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check3" class="act_btn" name="check_ab" value="read" data-act3="read" />
+                        <input type="checkbox" id="check3" class="act_btn" name="check_ab" value="read" data-act="read" />
                         <label for="check3" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/readicon_n.png" />
                           <div class="want_text">책읽기</div></label
@@ -566,7 +596,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check4" class="act_btn" name="check_ab" value="outside" data-act4="outside" />
+                        <input type="checkbox" id="check4" class="act_btn" name="check_ab" value="outside" data-act="outside" />
                         <label for="check4" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/ousideicon_n.png" />
                           <div class="want_text">야외활동</div></label
@@ -575,7 +605,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check5" class="act_btn" name="check_ab" value="korean" data-act5="korean" />
+                        <input type="checkbox" id="check5" class="act_btn" name="check_ab" value="korean" data-act="korean" />
                         <label for="check5" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/koreanicon_n.png" />
                           <div class="want_text">한글놀이</div></label
@@ -584,7 +614,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check6" class="act_btn" name="check_ab" value="english" data-act6="english" />
+                        <input type="checkbox" id="check6" class="act_btn" name="check_ab" value="english" data-act="english" />
                         <label for="check6" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/englishicon_n.png" />
                           <div class="want_text">영어놀이</div></label
@@ -593,7 +623,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check7" class="act_btn" name="check_ab" value="study" data-act7="study" />
+                        <input type="checkbox" id="check7" class="act_btn" name="check_ab" value="study" data-act="study" />
                         <label for="check7" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/studyicon_n.png" />
                           <div class="want_text">학습지도</div></label
@@ -602,7 +632,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check8" class="act_btn" name="check_ab" value="sport" data-act8="sport" />
+                        <input type="checkbox" id="check8" class="act_btn" name="check_ab" value="sport" data-act="sport" />
                         <label for="check8" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/ballicon_n.png" />
                           <div class="want_text">체육놀이</div></label
@@ -611,7 +641,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check9" class="act_btn" name="check_ab" value="simple_cleaning" data-act9="simple_cleaning" />
+                        <input type="checkbox" id="check9" class="act_btn" name="check_ab" value="simple_cleaning" data-act="simple_cleaning" />
                         <label for="check9" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/cleanicon_n.png" />
                           <div class="want_text">간단 청소</div></label
@@ -620,7 +650,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check10" class="act_btn" name="check_ab" value="eat" data-act10="eat" />
+                        <input type="checkbox" id="check10" class="act_btn" name="check_ab" value="eat" data-act="eat" />
                         <label for="check10" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/eaticon_n.png" />
                           <div class="want_text">밥 챙겨주기</div></label
@@ -629,7 +659,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check11" class="act_btn" name="check_ab" value="do_dish" data-act11="do_dish" />
+                        <input type="checkbox" id="check11" class="act_btn" name="check_ab" value="do_dish" data-act="do_dish" />
                         <label for="check11" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/dishicon_n.png" />
                           <div class="want_text">간단 설거지</div></label
@@ -638,7 +668,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check12" class="act_btn" name="check_ab" value="long_move_in" data-act12="long_move_in" />
+                        <input type="checkbox" id="check12" class="act_btn" name="check_ab" value="long_move_in" data-act="long_move_in" />
                         <label for="check12" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/longhouseicon_n.png" />
                           <div class="want_text">장기입주</div></label
@@ -647,7 +677,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                     <div class="want_btn">
                       <div>
-                        <input type="checkbox" id="check13" class="act_btn" name="check_ab" value="short_move_in" data-act13="short_move_in" />
+                        <input type="checkbox" id="check13" class="act_btn" name="check_ab" value="short_move_in" data-act="short_move_in" />
                         <label for="check13" class="want_label"
                           ><img class="want_img" src="${pageContext.request.contextPath}/assets/img/houseicon_n.png" />
                           <div class="want_text">단기입주</div></label

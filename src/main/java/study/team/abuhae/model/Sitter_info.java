@@ -18,7 +18,9 @@ import lombok.EqualsAndHashCode;
 public class Sitter_info extends Member {
 	private int sitterno;				// 시터회원 일련번호 PRI
 	private String sitter_type;			// 시터 타입 (대학생, 부모님 등)
-	private String want_act;			// 가능한 돌봄 유형
+	private String want_act1;			// 원하는 활동
+	private String want_act2;			// 원하는 활동
+	private String want_act3;			// 원하는 활동
 	private String want_age;			// 돌보기 원하는 나이 (신생아, 영아 등)
 	private String si;					// 시
 	private String gu;					// 구
@@ -52,6 +54,24 @@ public class Sitter_info extends Member {
 	private int cntno; // 매칭 갯수  
 	private int view; // 조회수
 	
-
+	/** 3) 검색 조건용 추가 컬럼 */
+	private static String[] actList;		// 원하는 활동유형 검색 조건
+	private static String[] wtage;			// 원하는 시터 나이대 검색 조건
+	
+	
+	public static String[] getActList() {
+		return actList;
+	}
+	public static void setActList(String[] actList) {
+		Sitter_info.actList = actList;
+	}
+	public static String[] getWtage() {
+		return wtage;
+	}
+	public static void setWtage(String[] wtage) {
+		Sitter_info.wtage = wtage;
+	}
+	
+	
 
 }
