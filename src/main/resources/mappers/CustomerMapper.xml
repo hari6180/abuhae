@@ -52,11 +52,11 @@
 		inner join cus_sub_category cs 
 		on cb.subcateno = cs.subcateno
 		inner join cus_category cc
-		on cs.cateno = cc.cateno;
+		on cs.cateno = cc.cateno
 		
 		<where>
 			<if test="title != null and title != ''">
-				cb.title like concat('%', #{title}, '%');
+				cb.title like concat('%', #{title}, '%')
 			</if>
 		</where>
 		
@@ -70,7 +70,7 @@
 	<select id="selectCusItem"
 	parameterType="study.team.abuhae.model.Cus_bbs" resultMap="CustomerBbsMap">
 		select cb.boardnum as boardnum, cb.cateno, cb.subcateno, cb.title, cb.text, cb.writer, cb.reg_date, 
-		TIMESTAMPDIFF(DAY , cb.edit_date, now()) as edit_date, cs.sub_category, cc.category
+		TIMESTAMPDIFF(DAY , cb.edit_date, now()) as edit_date, cs.sub_category as sub_category, cc.category as category
 		from cus_bbs cb 
 		inner join cus_sub_category cs 
 		on cb.subcateno = cs.subcateno
