@@ -22,4 +22,5 @@ sitter_info 테이블에서 view(조회수) 컬럼 추가
 21/2/18 수정 사항
 sitter_experience 테이블에서 삭제
 
+21/2/19 autoincrement 적용 안되어있는 것들 추가, connect 테이블 deny_text 컬럼 삭제, deny_type 데이터형 변경
 
