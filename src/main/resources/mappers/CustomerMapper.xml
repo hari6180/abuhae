@@ -17,7 +17,7 @@
 		<result property="subcateno" column="subcateno" />
 		<result property="cateno" column="cateno"/>
 		<result property="sub_category" column="sub_category" />
-		<result property="sub_category" column="category" />
+		<result property="category" column="category" />
 	</resultMap>
 	
 	<resultMap id="CustomerBbsMap"
@@ -35,16 +35,24 @@
 		<result property="category" column="category" />
 	</resultMap>
 	
+	<!-- 카테고리 조회 -->
+	<select id="selectCateItem"
+	parameterType="study.team.abuhae.model.Cus_sub_category" resultMap="CustomerSubCateMap">
+		select cs.cateno, cs.subcateno, cc.category, cs.sub_category
+		from cus_sub_category cs
+		inner join cus_category cc on cs.cateno = cc.cateno
+	</select>
+	
 	<!-- 게시글 목록 조회 -->
-	<select id="selectSubTitleList"
+	<select id="selectCusList"
 	parameterType="study.team.abuhae.model.Cus_bbs" resultMap="CustomerBbsMap">
-		select cs.cateno, cb.boardnum, cs.subcateno, cb.title, cb.text, cb.writer, cb.reg_date, 
-		TIMESTAMPDIFF(DAY , cb.edit_date, now()) as edit_date, cs.sub_category 
+		select cb.boardnum, cb.cateno, cb.subcateno, cb.title, cb.text, cb.writer, cb.reg_date, 
+		TIMESTAMPDIFF(DAY , cb.edit_date, now()) as edit_date, cs.sub_category, cc.category
 		from cus_bbs cb 
 		inner join cus_sub_category cs 
 		on cb.subcateno = cs.subcateno
 		inner join cus_category cc
-		on cs.cateno = cc.cateno
+		on cs.cateno = cc.cateno;
 		
 		<where>
 			<if test="title != null and title != ''">
@@ -52,34 +60,36 @@
 			</if>
 		</where>
 		
+		<if test="listCount > 0">
+			limit #{offset}, #{listCount}
+		</if>
+		
 	</select>
 	
 	<!-- 게시글 데이터 조회 -->
 	<select id="selectCusItem"
 	parameterType="study.team.abuhae.model.Cus_bbs" resultMap="CustomerBbsMap">
-		select cb.boardnum, cs.cateno, cc.category, cs.subcateno, cb.title, cb.text, cb.writer, cb.reg_date, cb.edit_date, cs.sub_category 
+		select cb.boardnum as boardnum, cb.cateno, cb.subcateno, cb.title, cb.text, cb.writer, cb.reg_date, 
+		TIMESTAMPDIFF(DAY , cb.edit_date, now()) as edit_date, cs.sub_category, cc.category
 		from cus_bbs cb 
-		inner join cus_sub_category cs on cb.subcateno = cs.subcateno
-		inner join cus_category cc on cs.cateno=cc.cateno
+		inner join cus_sub_category cs 
+		on cb.subcateno = cs.subcateno
+		inner join cus_category cc
+		on cs.cateno = cc.cateno
+		
 		<where>
-			cb.boardnum=#{boardnum}
-		</where>                                    
+			boardnum=#{boardnum}
+		</where>   
+		                                 
 	</select>
 	
-	<!-- 게시글 카테고리 조회 -->
-	<select id="selectTitleList"
-	parameterType="study.team.abuhae.model.Cus_sub_category" resultMap="CustomerSubCateMap">
-		select cc.cateno, cs.subcateno, cs.sub_category, cc.category 
-		from cus_sub_category cs 
-		inner join cus_category cc on cs.cateno = cc.cateno;
-	</select>
-	
-	<!-- 게시글 수 조회 -->
-	<select id="selectCountAll"
+	<!-- 데이터 수 조회를 위한 기능 -->
+	<select id="selectCountAll" 
 	parameterType="study.team.abuhae.model.Cus_bbs" resultType="int">
-		select count(*)
+		select count(*) 
 		from cus_bbs cb
-		inner join cus_sub_category cs on cb.subcateno=cs.subcateno
+		inner join cus_sub_category cs on cb.subcateno = cs.subcateno
+		inner join cus_category cc on cb.cateno = cc.cateno
 	</select>
 	
 </mapper>

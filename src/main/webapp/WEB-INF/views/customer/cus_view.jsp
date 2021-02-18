@@ -45,12 +45,7 @@
                     </li>
                     <span>></span>
                     <li>
-                    	<c:if test="output.cateno==1">
-                    		<c:url value="/customer/faq.do" var="viewUrl">
-           						<c:param name="boardnum" value="${output.boardnum}"/>
-           					</c:url>
-                    	</c:if>
-                        <a href="${viewUrl}">${output.category}</a>
+                    	${output.category}
                     </li>
                     <span>></span>
                     <li>
@@ -83,7 +78,6 @@
                         </div>
                         <div class="col-xs-10 article_title">
                             <p>${output.writer}</p>
-                            <p class="date">${output.edit_date}</p>
                     </div>
                     </div>
                     <div class="col-xs-12 section_body">
@@ -106,49 +100,13 @@
                     </div>
                     <div class="col-xs-12 topbar">
                         <a href="#">
-                        <div class="col-xs-5 topbar_1">맨 위로 돌아가기
-                        </div>
-                        <div class="col-xs-7 topbar_2">
-                            <span class="glyphicon glyphicon-chevron-up" id="glyphicon_3">    
-                            </span>
-                        </div>
-                    </a>
-                    </div>
-                    <div class="col-xs-12 footer_title">
-                    <h2>최근 본 문서</h2>
-                    <div class="col-xs-12 footer_content">
-                        <a href="#"><p>[맘시터 찾기] 시터님을 어떻게 구하나요?</p></a>
-                    </div>
-                    <div class="col-xs-12 footer_content">
-                        <a href="#"><p>[공지] 부모회원 약속알림 설정기능 중단 안내 (2020.12.21 시행)</p></a>
-                    </div>
-                    <div class="col-xs-12 footer_content">
-                        <a href="#"><p>[이용요금] 가입비나 소개비, 수수료가 있나요?</p></a>
-                    </div>
-                    <div class="col-xs-12 footer_content">
-                        <a href="#"><p>[부모회원 가이드] 맘시터 시작하기</p></a>
-                    </div>
-                    <div class="col-xs-12 footer_content">
-                        <a href="#"><p>[공지] 맘시터 개인정보 처리방침 개정안내 (20.12.16 개정)</p></a>
-                    </div>
-                    <h2>관련 문서</h2>
-                    <div class="col-xs-12 footer_content">
-                        <a href="#"><p>[부모회원 가이드] 맘시터 시작하기</p></a>
-                    </div>
-                    <div class="col-xs-12 footer_content">
-                        <a href="#"><p>[시터회원 가이드] 맘시터는 어떤 서비스인가요?</p></a>
-                    </div>
-                    <div class="col-xs-12 footer_content">
-                        <a href="#"><p>[공지] 아이돌봄연결 긴급무료지원 "맘이든든 자유이용주간" 안내</p></a>
-                    </div>
-                    <div class="col-xs-12 footer_content">
-                        <a href="#"><p>[부모회원 가이드] 시터님에게 인터뷰 지원받기</p></a>
-                    </div>
-                    <div class="col-xs-12 footer_content">
-                        <a href="#"><p>[시터 정보] 안전보험이 무엇인가요?</p></a>
-                    </div>
-                    </div>
-                        <div class="col-xs-12 footer">
+	                        <div class="col-xs-5 topbar_1">맨 위로 돌아가기
+	                        </div>
+	                        <div class="col-xs-7 topbar_2">
+	                            <span class="glyphicon glyphicon-chevron-up" id="glyphicon_3">    
+	                            </span>
+	                        </div>
+                    	</a>
                     </div>
 			</div> <!-- row 끝 -->
         </div> <!-- container 끝 -->
