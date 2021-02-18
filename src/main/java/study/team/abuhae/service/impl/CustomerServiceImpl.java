@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import study.team.abuhae.controllers.Cus_bbs;
-import study.team.abuhae.model.Cus_category;
+import study.team.abuhae.model.Cus_bbs;
 import study.team.abuhae.model.Cus_sub_category;
 import study.team.abuhae.service.CustomerService;
 
@@ -20,8 +19,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 	/** 서브타이틀 제목 */
 	@Override
-	public List<Cus_category> getCusSubCateList(Cus_category input) throws Exception {
-		List<Cus_category> result = null;
+	public List<Cus_sub_category> getCusSubCateList(Cus_sub_category input) throws Exception {
+		List<Cus_sub_category> result = null;
 		
 		try {
 			result = sqlSession.selectList("CustomerMapper.selectTitleList", input);
@@ -40,10 +39,9 @@ public class CustomerServiceImpl implements CustomerService {
 		return result;
 	}
 
-	/** 게시글 목록 조회 */
 	@Override
-	public List<Cus_sub_category> getCusBbslist(Cus_sub_category input) throws Exception {
-		List<Cus_sub_category> result = null;
+	public List<Cus_bbs> getCusBbslist(Cus_bbs input) throws Exception {
+		List<Cus_bbs> result = null;
 		
 		try {
 			result = sqlSession.selectList("CustomerMapper.selectSubTitleList", input);
@@ -62,10 +60,9 @@ public class CustomerServiceImpl implements CustomerService {
 		return result;
 	}
 
-	/** 게시글 상세페이지 */
 	@Override
-	public Cus_sub_category getCusItem(Cus_sub_category input) throws Exception {
-		Cus_sub_category result = null;
+	public Cus_bbs getCusItem(Cus_bbs input) throws Exception {
+		Cus_bbs result = null;
 		
 		try {
 			result = sqlSession.selectOne("CustomerMapper.selectCusItem", input);
@@ -84,7 +81,6 @@ public class CustomerServiceImpl implements CustomerService {
 		return result;
 	}
 
-	/** 게시글 수 조회 */
 	@Override
 	public int getCusCount(Cus_bbs input) throws Exception {
 		int result = 0;
@@ -97,5 +93,7 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		return result;
 	}
+
+	
 
 }

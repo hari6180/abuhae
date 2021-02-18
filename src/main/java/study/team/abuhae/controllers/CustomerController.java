@@ -12,14 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.support.ServletContextLiveBeansView;
 import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
-import study.team.abuhae.model.Cus_category;
+import study.team.abuhae.model.Cus_bbs;
 import study.team.abuhae.model.Cus_sub_category;
-import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.service.CustomerService;
 
 
@@ -33,10 +31,11 @@ public class CustomerController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
+	
 	@RequestMapping(value = "/customer/customer_center.do", method = RequestMethod.GET)
 	public ModelAndView customer_center(Model model) {
-		List<Cus_sub_category> output = null;
-		
+		List<Cus_bbs> output = null;
+		 
 		try {
 			// 데이터 조회 
 			output = customerService.getCusBbslist(null);
@@ -53,7 +52,7 @@ public class CustomerController {
 	@RequestMapping(value = "/customer/faq.do", method = RequestMethod.GET)
 	public ModelAndView guide(Model model, HttpServletResponse response, HttpServletRequest request) {
 		// 조건값 Beans에 저장하기
-		List<Cus_category> out = null;
+		List<Cus_sub_category> out = null;
 		
 		try {
 			// 데이터 조회 
@@ -62,7 +61,7 @@ public class CustomerController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		List<Cus_sub_category> output = null;
+		List<Cus_bbs> output = null;
 		
 		try {
 			// 데이터 조회 
@@ -82,7 +81,7 @@ public class CustomerController {
 	@RequestMapping(value = "/customer/notice_site.do", method = RequestMethod.GET)
 	public ModelAndView notice_site(Model model) {
 		// 조건값 Beans에 저장하기
-		List<Cus_category> out = null;
+		List<Cus_sub_category> out = null;
 		
 		try {
 			// 데이터 조회 
@@ -91,7 +90,7 @@ public class CustomerController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		List<Cus_sub_category> output = null;
+		List<Cus_bbs> output = null;
 		
 		try {
 			// 데이터 조회 
@@ -110,7 +109,7 @@ public class CustomerController {
 	@RequestMapping(value = "/customer/question_mom.do", method = RequestMethod.GET)
 	public ModelAndView question_mom(Model model) {
 		// 조건값 Beans에 저장하기
-		List<Cus_category> out = null;
+		List<Cus_sub_category> out = null;
 		
 		try {
 			// 데이터 조회 
@@ -119,7 +118,7 @@ public class CustomerController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		List<Cus_sub_category> output = null;
+		List<Cus_bbs> output = null;
 		
 		try {
 			// 데이터 조회 
@@ -138,7 +137,7 @@ public class CustomerController {
 	@RequestMapping(value = "/customer/question_sitter.do", method = RequestMethod.GET)
 	public ModelAndView question_sitter(Model model) {
 		// 조건값 Beans에 저장하기
-		List<Cus_category> out = null;
+		List<Cus_sub_category> out = null;
 		
 		try {
 			// 데이터 조회 
@@ -147,7 +146,7 @@ public class CustomerController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		List<Cus_sub_category> output = null;
+		List<Cus_bbs> output = null;
 		
 		try {
 			// 데이터 조회 
@@ -172,11 +171,11 @@ public class CustomerController {
 		}
 		
 		// 데이터 조회
-		Cus_sub_category input = new Cus_sub_category();
+		Cus_bbs input = new Cus_bbs();
 		input.setBoardnum(boardnum);
 		
 		// 조회 결과를 저장할 객체 
-		Cus_sub_category output = null;
+		Cus_bbs output = null;
 		
 		try {
 			output = customerService.getCusItem(input);
@@ -198,10 +197,10 @@ public class CustomerController {
 		
 		
 		// 검색 기능을 위한 데이터 조회
-		Cus_sub_category input = new Cus_sub_category();
+		Cus_bbs input = new Cus_bbs();
 		input.setTitle(keyword);
 		
-		List<Cus_sub_category> output = null;
+		List<Cus_bbs> output = null;
 		
 		try {
 			// 데이터 조회 

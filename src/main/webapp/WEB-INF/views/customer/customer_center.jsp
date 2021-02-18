@@ -111,7 +111,7 @@
 	                 					<c:if test="${item.edit_date < 200 }">
 											<ul>
 												<li>
-													<h5>${item.sub_category}</h5> <br>	
+													<h4>${item.sub_category}</h4> <br>	
 													<a href="${viewUrl}">[${item.sub_category}] ${item.title}</a>
 												</li>
 												<hr>

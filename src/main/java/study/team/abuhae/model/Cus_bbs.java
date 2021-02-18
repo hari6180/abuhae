@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class Cus_bbs {
+	
 	private int boardnum;   // 게시글 일련번호
 	private int cateno;
 	private int subcateno;   // 수정 일자
@@ -12,4 +13,9 @@ public class Cus_bbs {
 	private String writer;   // 게시글 제목
 	private String reg_date;   // 작성자
 	private String edit_date;   // 작성자
+	
+	/** join 절에 따른 추가 멤버변수 */
+	private String sub_category;
+	private String category;
+	
 }
