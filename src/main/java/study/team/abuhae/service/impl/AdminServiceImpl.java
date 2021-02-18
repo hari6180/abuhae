@@ -215,6 +215,8 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return result;
 	}
+	
+	//================고객센터 글쓰기================
 
 	@Override
 	public List<Cus_category> getCategory() throws Exception {
@@ -237,6 +239,29 @@ public class AdminServiceImpl implements AdminService {
 		
 		return result;
 	}
+	
+	@Override
+	public Cus_category getCategoryItem(Cus_bbs input) throws Exception {
+		Cus_category result = new Cus_category();
+		try {
+			result = sqlsession.selectOne("CustomerAdMapper.selectCategoryItem", input);
+			
+			//조회결과 없음
+			if(result == null) {
+				throw new NullPointerException("result=null");
+			}
+			
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+
 
 	@Override
 	public List<Cus_sub_category> getSubCategory() throws Exception {
@@ -284,7 +309,7 @@ public class AdminServiceImpl implements AdminService {
 	public List<Cus_bbs> getBoardList(Cus_bbs input) throws Exception {
 		List<Cus_bbs> result = null;
 		try {
-			result = sqlsession.selectList("CustomerAdMapper.selectBoardList");
+			result = sqlsession.selectList("CustomerAdMapper.selectBoardList", input);
 			
 			//조회결과 없음
 			if(result == null) {
@@ -314,6 +339,27 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 
+	@Override
+	public int editBoard(Cus_bbs input) throws Exception {
+		int result =0;
+		
+		try {
+			result = sqlsession.update("CustomerAdMapper.updateBoard", input);
+			if (result==0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("작성된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 작성에 실패했습니다.");
+		}
+		
+		return result;
+	}
+
+	
 
 
 	

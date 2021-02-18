@@ -76,10 +76,10 @@
                 </h4>
               </div>
               <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs.do?cateno=1">공지사항</a></div>
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs.do?cateno=2">부모회원 자주묻는질문</a></div>
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs.do?cateno=3">시터회원 자주묻는질문</a></div>
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs.do?cateno=4">이용가이드</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs.do?cateno=1">FAQ</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs.do?cateno=2">공지사항</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs.do?cateno=3">부모회원 자주묻는질문</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_bbs.do?cateno=4">시터회원 자주묻는질문</a></div>
               </div>
             </div>
             <!-- 현황 -->

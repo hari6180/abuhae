@@ -80,7 +80,7 @@ public class JoinSitterController {
 		// 저장할 값 beans에 담기
 		sitterinfo.setType(type);
 		sitterinfo.setSitter_type(sitter_type);
-		sitterinfo.setWant_act(want_act);
+		sitterinfo.setWant_act1(want_act);
 		sitterinfo.setWant_age(want_age);
 
 

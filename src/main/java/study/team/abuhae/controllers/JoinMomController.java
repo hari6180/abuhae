@@ -65,7 +65,7 @@ public class JoinMomController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act(want_act);
+		mominfo.setWant_act1(want_act);
 		mominfo.setWant_age(want_age);
 
 		// 저장된 결과 조회하기 위한 객체
@@ -111,7 +111,7 @@ public class JoinMomController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act(want_act);
+		mominfo.setWant_act1(want_act);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
@@ -156,7 +156,7 @@ public class JoinMomController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act(want_act);
+		mominfo.setWant_act1(want_act);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
@@ -229,7 +229,7 @@ public class JoinMomController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act(want_act);
+		mominfo.setWant_act1(want_act);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
@@ -286,7 +286,7 @@ public class JoinMomController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act(want_act);
+		mominfo.setWant_act1(want_act);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
@@ -346,7 +346,7 @@ public class JoinMomController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act(want_act);
+		mominfo.setWant_act1(want_act);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);

@@ -45,6 +45,9 @@ public interface AdminService {
 	//카테고리 조회
 	public List<Cus_category> getCategory() throws Exception;
 	
+	//카테고리 아이템 조회
+	public Cus_category getCategoryItem(Cus_bbs input) throws Exception;
+	
 	//서브카데고리 조회
 	public List<Cus_sub_category> getSubCategory() throws Exception;
 	
@@ -56,6 +59,9 @@ public interface AdminService {
 	
 	//게시판 수 조회
 	public int getboardCount(Cus_bbs input) throws Exception;
+	
+	//게시판 수정
+	public int editBoard(Cus_bbs input) throws Exception;
 	
 }
 

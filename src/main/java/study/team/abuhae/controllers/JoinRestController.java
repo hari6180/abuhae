@@ -84,7 +84,7 @@ public class JoinRestController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act(want_act);
+		mominfo.setWant_act1(want_act);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);

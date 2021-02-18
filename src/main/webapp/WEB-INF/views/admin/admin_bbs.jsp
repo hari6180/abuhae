@@ -28,6 +28,9 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_custom_bbs.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 		<style type="text/css">
+		.page {
+  text-align: center;
+}
 		</style>
 	</head>
 
@@ -38,14 +41,14 @@
 			</header>
 			<!--content header-->
 			<section class="content_header">
-                <h1>이용가이드</h1>
+                <h1>${category}</h1>
                 <ol class="breadcrumb">
                     <li>
 						<i class="fas fa-home"></i>
                         <a href="${pageContext.request.contextPath}/admin_member.do">Home</a>
                     </li>
                     <li class="active">
-                        이용가이드
+                        ${category}
                     </li>
                 </ol>
 			</section>
@@ -76,8 +79,8 @@
 					<div class="type_header">
 						<div class="bbs_btn">
 							<a href="${pageContext.request.contextPath}/admin/admin_bbs_write.do" class="btn_nomal"><span><i class="far fa-file-alt"></i>&nbsp;새글작성</span></a>
-							<a href="#" class="btn_nomal"><span><i class="fas fa-pen"></i>&nbsp;수정</span></a>
-							<a href="#" class="btn_nomal"><span><i class="far fa-trash-alt"></i>&nbsp;삭제</span></a>
+							<a id="edit" class="btn_nomal"><span><i class="fas fa-pen"></i>&nbsp;수정</span></a>
+							<a id="delete" class="btn_nomal"><span><i class="far fa-trash-alt"></i>&nbsp;삭제</span></a>
 						</div>
 					</div>
 					<div class="type_content">
@@ -94,12 +97,11 @@
 								<thead>
 									<tr>
 										<th class="col-md-1"><input type="checkbox" id="all_check"></th>
-										<th class="col-md-1">회원번호</th>
-										<th class="col-md-1">이름</th>
-										<th class="col-md-1">아이디</th>
-										<th class="col-md-2">이용권시작일</th>
-										<th class="col-md-2">이용권만료일</th>
-										<th class="col-md-2">쿠폰지급일</th>
+										<th class="col-md-1">글번호</th>
+										<th class="col-md-1">카테고리</th>
+										<th class="col-md-1">글 제목</th>
+										<th class="col-md-2">작성자</th>
+										<th class="col-md-2">작성일자</th>
 									</tr>
 								</thead>
 								<tbody class="center">
@@ -107,7 +109,7 @@
 									<%-- 조회결과가 없는 경우 --%>
 										<c:when test="${output == null || fn:length(output) == 0}">
 											<tr>
-												<td colspan="7" align="center">조회결과가 없습니다.</td>
+												<td colspan="6" align="center">조회결과가 없습니다.</td>
 											</tr>
 										</c:when>
 									<%-- 조회결과가 있는 경우 --%>
@@ -115,10 +117,10 @@
 										<%-- 조회 결과에 따른 반복 처리 --%>
 											<c:forEach var="item" items="${output}" varStatus="status">
 												<tr>
-													<td class="text-center"><input type="checkbox" name="bbs_no[]" class="rowcheck"></td>
+													<td class="text-center"><input type="checkbox" name="chk" class="rowcheck"></td>
 													<td align="center">${item.boardnum}</td>
-													<td align="center">${item.subcategory}</td>
-													<td align="center">${item.title}</td>
+													<td align="center">${item.sub_category}</td>
+													<td align="center"><a href="${pageContext.request.contextPath}/customer/cus_view.do?boardnum=${item.boardnum}" target="_blank">${item.title}</a></td>
 													<td align="center">${item.writer}</td>
 													<td align="center">${item.reg_date}</td>
 												</tr>
@@ -127,13 +129,64 @@
 									</c:choose>
 								</tbody>
 							</table>
-							<div class="pagenate">
-								<a class="prev"></a>
-								<ol>
-									<li class="active">1</li>
-									<li>2</li>
-								</ol>
-								<a class="next"></a>
+							<div class="page">
+								<ul class="pagination">
+									<!-- 페이지 번호 구현 -->
+									<%-- 이전 그룹에 대한 링크 --%>
+									<c:choose>
+										<%-- 이전 그룹으로 이동 가능하다면? --%>
+										<c:when test="${pageData.prevPage > 0}">
+											<%-- 이동할 URL 생성 --%>
+											<c:url value="/admin/admin_member.do" var="prevPageUrl">
+												<c:param name="page" value="${pageData.prevPage}" />
+												<c:param name="type" value="${type}" />
+											</c:url>
+											<li class="page-item prev_btn"><a href="${prevPageUrl}">[Prev]</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item disabled"><a>[Prev]</a></li>
+										</c:otherwise>
+									</c:choose>
+			
+									<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+									<c:forEach var="i" begin="${pageData.startPage}"
+										end="${pageData.endPage}" varStatus="status">
+										<%-- 이동할 URL 생성 --%>
+										<c:url value="/admin/admin_member.do" var="pageUrl">
+											<c:param name="page" value="${i}" />
+											<c:param name="type" value="${type}" />
+										</c:url>
+			
+										<%-- 페이지 번호 출력 --%>
+										<c:choose>
+											<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+											<c:when test="${pageData.nowPage == i}">
+												<li class="page-item active"><a>${i}</a></li>
+											</c:when>
+											<%-- 나머지 페이지의 경우 링크 적용함 --%>
+											<c:otherwise>
+												<li class="page-item"><a href="${pageUrl}">${i}</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+			
+									<%-- 다음 그룹에 대한 링크 --%>
+									<c:choose>
+										<%-- 다음 그룹으로 이동 가능하다면? --%>
+										<c:when test="${pageData.nextPage > 0}">
+											<%-- 이동할 URL 생성 --%>
+											<c:url value="/admin/admin_member.do" var="nextPageUrl">
+												<c:param name="page" value="${pageData.nextPage}" />
+												<c:param name="type" value="${type}" />
+											</c:url>
+											<li class="page-item next_btn"><a href="${nextPageUrl}">[Next]</a>
+											</li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item disabled"><a>[Next]</a></li>
+										</c:otherwise>
+									</c:choose>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -146,6 +199,30 @@
 		<!-- Javascript -->
 		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
 		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+		<script>
+			$(function(){
+				//올체크
+				$("#all_check").change(function(){
+					//모든 hobby의 상태를 올체크와 동일하게
+					$(".agree").prop('checked', $(this).prop('checked'));
+					var now = $(".next_btn").prop('disabled');
+					$(".next_btn").prop('disabled', !now);
+				});
+
+				$("#edit").on('click', function(){
+					var checkbox = $("input[name=chk]:checked");
+					var boardnum = null;
+					checkbox.each(function (i) {
+						var tr = checkbox.parent().parent().eq(i); //checkbox의 두단계 상위가 tr
+						var td = tr.children(); //td태그는 tr의 하위
+	
+						boardnum = td.eq(1).text(); //boardno는 td의 두번째 요소
+						window.location = "${pageContext.request.contextPath}/admin/edit.do?boardnum="+boardnum;
+					});
+				});
+			});
+
+		</script>
 	</body>
 </html>
 </body>

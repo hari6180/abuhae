@@ -31,9 +31,7 @@
 		.gleft {
 			height: 70px;
 			line-height: 25px;
-
 		}
-
 		#subject {
 			width: 950px;
 		}
@@ -48,14 +46,14 @@
 			</header>
 			<!--content header-->
 			<section class="content_header">
-                <h1>새 글 작성</h1>
+                <h1>글 수정</h1>
                 <ol class="breadcrumb">
                     <li>
 						<i class="fas fa-home"></i>
                         <a href="${pageContext.request.contextPath}/admin/admin_member.do">Home</a>
                     </li>
                     <li class="active">
-                        글쓰기
+                        글 수정
                     </li>
                 </ol>
 			</section>
@@ -64,7 +62,8 @@
 			<section>
 				<div class="col-md-12">
 					<div class="write_title_group">
-						<form method="POST" action="${pageContext.request.contextPath}/admin/write_ok.do">
+						<form method="POST" action="${pageContext.request.contextPath}/admin/edit_ok.do">
+							<input type="hidden" id="boardno" name="boardno" value="${output.boardnum}">
 						<div class="gleft">
 							<select class="filter" id="filter_bbs" name="filter_bbs">
 								<option value="">카테고리 선택</option>
@@ -73,12 +72,12 @@
                     			<option value="">하위카테고리 선택</option>
 							</select>
 							
-							<input type="text" name="subject" id="subject" placeholder="제목">
+							<input type="text" name="subject" id="subject" value="${output.title}">
 						</div>
 					
 					<div>
 						<div class="bbs_content">
-							<textarea name="content" id="content" class="ckeditor" placeholder="내용 입력"></textarea>
+							<textarea name="content" id="content" class="ckeditor">${output.text}</textarea>
 						</div>
 					</div>
 					<hr>
@@ -117,13 +116,15 @@
 					json.sub_category="${item.sub_category}";
 					subcatelist.push(json);
 				</c:forEach>
-				//console.log(subcatelist);
-				
+				console.log(subcatelist);
+				//output.category
+				var cateno = "${output.cateno}";
+				var subcateno = "${output.subcateno}";
 					//catogory selectbox 가져오기
 					var categotySelectBox = $("select[name='filter_bbs']");
 
 					for (var i = 0; i < catelist.length; i++) {
-						categotySelectBox.append("<option value='" + catelist[i].cateno + "'> " + catelist[i].category + "</option>");
+						categotySelectBox.append("<option value='" + catelist[i].cateno + "' <c:if test='${"+catelist[i].cateno+"=='"+cateno+"'}'>selected</c:if> > " + catelist[i].category + "</option>");
 					}
 
 					//*********** 1depth카테고리 선택 후 2depth 생성 START ***********
@@ -140,7 +141,7 @@
 							for (var i = 0; i < subcatelist.length; i++) {
 								if (selectValue == subcatelist[i].cateno) {
 
-									subCategorySelectBox.append("<option value='" + subcatelist[i].subcateno + "'>" + subcatelist[i].sub_category + "</option>");
+									subCategorySelectBox.append("<option value='" + subcatelist[i].subcateno + "'> <c:if test='"+subcatelist[i].sub_category==sub_category+"'>selected</c:if>" + subcatelist[i].sub_category + "</option>");
 
 								}
 							}

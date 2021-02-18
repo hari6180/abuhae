@@ -23,13 +23,13 @@ li {
 }
 
 .content_header {
-    position: relative;
-    padding: 15px 15px 0 15px;
-    padding-left: 240px;
+  position: relative;
+  padding: 15px 15px 0 15px;
+  padding-left: 240px;
 }
 .gleft {
-	padding-left: 220px;
-	padding-top: 20px;
+  padding-left: 220px;
+  padding-top: 20px;
 }
 .content_header > h1 {
   margin: 0;
@@ -100,23 +100,24 @@ option {
 }
 
 .type_header {
-    min-height: 22px;
-    position: relative;
-    z-index: 1;
-    margin-bottom: -1px;
-    padding: 7px 15px;
-    border: 1px solid #dedede;
-    line-height: 21px;
-    text-align: center;
-    background: #fff;
-    margin-left: 230px;
+  min-height: 22px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -1px;
+  padding: 7px 15px;
+  border: 1px solid #dedede;
+  line-height: 21px;
+  text-align: center;
+  background: #fff;
+  margin-left: 230px;
 }
 
 .bbs_btn {
   text-align: right;
 }
 
-.btn_nomal, .btn_warning {
+.btn_nomal,
+.btn_warning {
   height: 28px;
   padding: 0 10px;
   color: #1c1c1c;
@@ -158,10 +159,10 @@ table {
 }
 
 .type_content {
-    position: relative;
-    border-right: 1px solid #d9dadc;
-    border-left: 1px solid #d9dadc;
-    margin-left: 230px;
+  position: relative;
+  border-right: 1px solid #d9dadc;
+  border-left: 1px solid #d9dadc;
+  margin-left: 230px;
 }
 
 thead {

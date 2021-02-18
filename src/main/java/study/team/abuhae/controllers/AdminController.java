@@ -154,7 +154,7 @@ public class AdminController {
 
 	
 	@RequestMapping(value = "/admin/admin_bbs.do", method = RequestMethod.GET)
-	public ModelAndView guide(Model model,
+	public ModelAndView bbs(Model model,
 			@RequestParam(value = "cateno") int cateno,
 			@RequestParam(value = "page", defaultValue = "1") int nowPage
 			) {
@@ -167,6 +167,7 @@ public class AdminController {
 		
 		List<Cus_bbs> output = null;
 		PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
+		Cus_category cate = new Cus_category();
 		
 		try {
             // 전체 게시글 수 조회
@@ -180,20 +181,22 @@ public class AdminController {
             
             // 데이터 조회하기
             output = adminService.getBoardList(input);
+            cate = adminService.getCategoryItem(input);
         } catch (Exception e) {
             return webHelper.redirect(null, e.getLocalizedMessage());
         }
 		
-		if(cateno==1) {
-			return new ModelAndView("admin/admin_bbs_guide");
-		} else if(cateno==2) {
-			return new ModelAndView("admin/admin_bbs_notice");
-		} else if(cateno==3) {
-			return new ModelAndView("admin/admin_bbs_mom_faq");
-		} else {
-			return new ModelAndView("admin/admin_bbs_sitter_faq");
-		}
+		 /** 3) View 처리 */
+        model.addAttribute("output", output);
+        model.addAttribute("category", cate.getCategory());
+        model.addAttribute("pageData", pageData);
+		
+
+		return new ModelAndView("admin/admin_bbs");
+	
 	}
+	
+	
 	
 	
 	@RequestMapping(value = "/admin/admin_leave.do", method = RequestMethod.GET)
@@ -382,6 +385,83 @@ public class AdminController {
 		}
 		
 
-		return new ModelAndView("admin/admin_bbs_notice");
+		return new ModelAndView("admin/admin_bbs");
 	}
+	
+	@RequestMapping(value = "/admin/edit.do", method = RequestMethod.GET)
+	public ModelAndView editBoard(Model model,
+			@RequestParam(value = "boardnum", defaultValue = "0") int boardnum) {
+		if (boardnum == 0) {
+            return webHelper.redirect(null, "게시글 번호가 없습니다.");
+        }
+		
+		
+		Cus_bbs input = new Cus_bbs();
+		input.setBoardnum(boardnum);
+
+		//조회된 객체
+		Cus_bbs output = null;
+		//드롭박스를 위한 조회 객체
+		List<Cus_category> output1 = null;
+		List<Cus_sub_category> output2 = null;
+		
+		try {    
+            // 데이터 조회하기
+            output = customerService.getCusItem(input);
+            //드롭다운을 위한 카테고리 조회
+            output1 = adminService.getCategory();
+			output2 = adminService.getSubCategory();
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+		
+		 /** 3) View 처리 */
+        model.addAttribute("output", output);
+        model.addAttribute("category", output1);
+		model.addAttribute("subcate", output2);
+
+		return new ModelAndView("admin/admin_bbs_edit");
+	
+	}
+	
+	@RequestMapping(value = "/admin/edit_ok.do", method = RequestMethod.POST)
+	public ModelAndView editOK(Model model,
+			@RequestParam(value = "boardno") int boardno,
+			@RequestParam(value = "filter_bbs", defaultValue = "0") int cateno,
+			@RequestParam(value = "filter_sub_bbs", defaultValue = "0") int subcateno,
+			@RequestParam(value = "subject") String subject,
+			@RequestParam(value = "content") String content) {
+		
+		//입력여부 검사
+		if(!regexHelper.isValue(subject)) {
+			return webHelper.redirect(null, "제목을 입력하세요.");
+		}
+		if(!regexHelper.isValue(content)) {
+			return webHelper.redirect(null, "내용을 작성하세요.");
+		}
+	
+		if (cateno == 0)                       
+		{ return webHelper.redirect(null, "카테고리를 선택하세요."); }
+        if (subcateno < 0)                        
+        { return webHelper.redirect(null, "하위카테고리를 선택하세요."); }
+        
+        //데이터 저장
+        Cus_bbs input = new Cus_bbs();
+        input.setBoardnum(boardno);
+        input.setCateno(cateno);
+        input.setSubcateno(subcateno);
+        input.setTitle(subject);
+        input.setText(content);
+        
+        try {
+			adminService.editBoard(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+
+		return new ModelAndView("admin/admin_bbs");
+	}
+	
+	
 }
