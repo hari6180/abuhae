@@ -27,6 +27,7 @@ import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.AdminService;
+import study.team.abuhae.service.CustomerService;
 import study.team.abuhae.service.MemberService;
 
 @Controller
@@ -36,6 +37,8 @@ public class AdminController {
 	AdminService adminService;
 	@Autowired
 	MemberService memberServcie;
+	@Autowired
+	CustomerService customerService;
 	@Autowired
 	WebHelper webHelper;
 	@Autowired
@@ -150,29 +153,48 @@ public class AdminController {
 	}
 
 	
-	@RequestMapping(value = "/admin/admin_bbs_guide.do", method = RequestMethod.GET)
-	public String guide(Model model) {
+	@RequestMapping(value = "/admin/admin_bbs.do", method = RequestMethod.GET)
+	public ModelAndView guide(Model model,
+			@RequestParam(value = "cateno") int cateno,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage
+			) {
+		Cus_bbs input = new Cus_bbs();
+		input.setCateno(cateno);
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+        int totalCount = 0;              // 전체 게시글 수
+        int listCount  = 10;             // 한 페이지당 표시할 목록 수
+        int pageCount  = 5;              // 한 그룹당 표시할 페이지 번호 수
+		
+		List<Cus_bbs> output = null;
+		PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
+		
+		try {
+            // 전체 게시글 수 조회
+            totalCount = adminService.getboardCount(input);
+            // 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
+            pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 
-		return "admin/admin_bbs_guide";
+            // SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+            Member.setOffset(pageData.getOffset());
+            Member.setListCount(pageData.getListCount());
+            
+            // 데이터 조회하기
+            output = adminService.getBoardList(input);
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+		
+		if(cateno==1) {
+			return new ModelAndView("admin/admin_bbs_guide");
+		} else if(cateno==2) {
+			return new ModelAndView("admin/admin_bbs_notice");
+		} else if(cateno==3) {
+			return new ModelAndView("admin/admin_bbs_mom_faq");
+		} else {
+			return new ModelAndView("admin/admin_bbs_sitter_faq");
+		}
 	}
 	
-	@RequestMapping(value = "/admin/admin_bbs_mom_faq.do", method = RequestMethod.GET)
-	public String mom_faq(Model model) {
-
-		return "admin/admin_bbs_mom_faq";
-	}
-	
-	@RequestMapping(value = "/admin/admin_bbs_notice.do", method = RequestMethod.GET)
-	public String notice(Model model) {
-
-		return "admin/admin_bbs_notice";
-	}
-	
-	@RequestMapping(value = "/admin/admin_bbs_sitter_faq.do", method = RequestMethod.GET)
-	public String sitter_faq(Model model) {
-
-		return "admin/admin_bbs_sitter_faq";
-	}
 	
 	@RequestMapping(value = "/admin/admin_leave.do", method = RequestMethod.GET)
 	public ModelAndView leave(Model model,

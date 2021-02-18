@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -90,107 +93,38 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col">
-											<input type="checkbox" class="allcheck">
-										</th>
-										<th scope="col">번호</th>
-										<th scope="col">카테고리</th>
-										<th scope="col">제목</th>
-										<th scope="col">작성자</th>
-										<th scope="col">작성일자</th>
+										<th class="col-md-1"><input type="checkbox" id="all_check"></th>
+										<th class="col-md-1">회원번호</th>
+										<th class="col-md-1">이름</th>
+										<th class="col-md-1">아이디</th>
+										<th class="col-md-2">이용권시작일</th>
+										<th class="col-md-2">이용권만료일</th>
+										<th class="col-md-2">쿠폰지급일</th>
 									</tr>
 								</thead>
 								<tbody class="center">
-									<tr>
-										<td>
-											<input type="checkbox" name="bbs_no[]" value="1" class="rowcheck">
-										</td>
-										<td>
-											5
-										</td>
-										<td>
-											시터회원 가이드
-										</td>
-										<td class="left">
-											<a href="#"><span>아부해 시작하기</span></a>
-										</td>
-										<td>
-											맘시터
-										</td>
-										<td>2021-01-26&nbsp;15:38</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="checkbox" name="bbs_no[]" value="1" class="rowcheck">
-										</td>
-										<td>
-											4
-										</td>
-										<td>
-											부모회원 가이드
-										</td>
-										<td class="left">
-											<a href="#"><span>아부해 시작하기</span></a>
-										</td>
-										<td>
-											맘시터
-										</td>
-										<td>2021-01-10&nbsp; 15:38</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="checkbox" name="bbs_no[]" value="1" class="rowcheck">
-										</td>
-										<td>
-											3
-										</td>
-										<td>
-											부모회원 가이드
-										</td>
-										<td class="left">
-											<a href="#"><span>인터뷰 보기</span></a>
-										</td>
-										<td>
-											맘시터
-										</td>
-										<td>2020-12-31&nbsp; 15:38</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="checkbox" name="bbs_no[]" value="1" class="rowcheck">
-										</td>
-										<td>
-											2
-										</td>
-										<td>
-											아부해 주의사항
-										</td>
-										<td class="left">
-											<a href="#"><span>아부해 회원 모두가 절대로 하면 안 되는 행동들</span></a>
-										</td>
-										<td>
-											맘시터
-										</td>
-										<td>2020-10-21&nbsp; 15:38</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="checkbox" name="bbs_no[]" value="1" class="rowcheck">
-										</td>
-										<td>
-											1
-										</td>
-										<td>
-											해결방법
-										</td>
-										<td class="left">
-											<a href="#"><span>맘시터에 적합하지 않은 시터/부모님이 계세요.</span></a>
-										</td>
-										<td>
-											맘시터
-										</td>
-										<td>2021-01-26&nbsp; 15:38</td>
-									</tr>
+									<c:choose>
+									<%-- 조회결과가 없는 경우 --%>
+										<c:when test="${output == null || fn:length(output) == 0}">
+											<tr>
+												<td colspan="7" align="center">조회결과가 없습니다.</td>
+											</tr>
+										</c:when>
+									<%-- 조회결과가 있는 경우 --%>
+										<c:otherwise>
+										<%-- 조회 결과에 따른 반복 처리 --%>
+											<c:forEach var="item" items="${output}" varStatus="status">
+												<tr>
+													<td class="text-center"><input type="checkbox" name="bbs_no[]" class="rowcheck"></td>
+													<td align="center">${item.boardnum}</td>
+													<td align="center">${item.subcategory}</td>
+													<td align="center">${item.title}</td>
+													<td align="center">${item.writer}</td>
+													<td align="center">${item.reg_date}</td>
+												</tr>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
 								</tbody>
 							</table>
 							<div class="pagenate">

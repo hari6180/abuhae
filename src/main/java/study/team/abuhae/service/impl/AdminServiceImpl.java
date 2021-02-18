@@ -280,6 +280,40 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 
+	@Override
+	public List<Cus_bbs> getBoardList(Cus_bbs input) throws Exception {
+		List<Cus_bbs> result = null;
+		try {
+			result = sqlsession.selectList("CustomerAdMapper.selectBoardList");
+			
+			//조회결과 없음
+			if(result == null) {
+				throw new NullPointerException("result=null");
+			}
+			
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int getboardCount(Cus_bbs input) throws Exception {
+		int result = 0;
+		try {
+			result = sqlsession.selectOne("CustomerAdMapper.countBorad", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
 
 
 	

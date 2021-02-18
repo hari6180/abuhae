@@ -50,5 +50,12 @@ public interface AdminService {
 	
 	//게시판 글쓰기
 	public int addBoard(Cus_bbs input) throws Exception;
+	
+	//게시판 조회
+	public List<Cus_bbs> getBoardList(Cus_bbs input) throws Exception;
+	
+	//게시판 수 조회
+	public int getboardCount(Cus_bbs input) throws Exception;
+	
 }
 
