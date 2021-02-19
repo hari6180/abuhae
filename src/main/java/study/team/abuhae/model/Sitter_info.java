@@ -21,10 +21,7 @@ public class Sitter_info extends Member {
 	private String want_act1;			// 원하는 활동
 	private String want_act2;			// 원하는 활동
 	private String want_act3;			// 원하는 활동
-	private String want_age1;			// 돌보기 원하는 나이 (신생아, 영아 등)
-	private String want_age2;			// 돌보기 원하는 나이 (신생아, 영아 등)
-	private String want_age3;			// 돌보기 원하는 나이 (신생아, 영아 등)
-	private String want_age4;			// 돌보기 원하는 나이 (신생아, 영아 등)
+	private String want_age;			// 돌보기 원하는 나이 (신생아, 영아 등)
 	private String si;					// 시
 	private String gu;					// 구
 	private String dong;				// 동

@@ -572,8 +572,10 @@
 									<span>유아</span>
 								</div>
 								</c:if>
-								
-								
+								<c:if test="${output.want_age1!='초등학생'}">
+								<c:if test="${output.want_age2!='초등학생'}">
+								<c:if test="${output.want_age3!='초등학생'}">
+								<c:if test="${output.want_age4!='초등학생'}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<span style="color: #ccc"><i class="fas fa-school fa-3x"></i></span>
@@ -581,9 +583,11 @@
 									<br>
 									<span style="color: #ccc">초등학생</span>
 								</div>
-								
-								
-								
+								</c:if>
+								</c:if>
+								</c:if>
+								</c:if>
+								<c:if test="${output.want_age1=='초등학생' || output.want_age2=='초등학생' || output.want_age3=='초등학생' || output.want_age4=='초등학생'}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-school fa-3x"></i>
@@ -591,7 +595,7 @@
 									<br>
 									<span>초등학생</span>
 								</div>
-								
+								</c:if>
 							</div> <!-- fin. age_line -->
 						</div>
 					</div> <!-- fin. possible_age_area -->
