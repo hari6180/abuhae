@@ -46,10 +46,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             // 헤더 메뉴 load처리 1224 하리
             //$("#menu").load("${pageContext.request.contextPath}/index_header.html"); - 210124 include 변경
 
-            // 상세 페이지 연동 1220 하리
-            $(".job_item_group").on("click", function () {
-              location.href = "${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_page_detail_calendar.do";
-            });
+
 
             /** 상세 검색 ------------------------------------------------------------------- */
 
@@ -617,10 +614,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       <!-- col-xs-12 end -->
     </div>
     <!--row end-->
+
     <!-- Handlebar 템플릿 코드 -->
     <script id="job-list-tmpl" type="text/x-handlebars-template">
       {{#each item}}
-        <div class="job_item_group">
+        <div class="job_item_group" onclick="location.href='${pageContext.request.contextPath}/page_detail/mom_page_detail_calendar.do?momno={{momno}}'">
           <div class="item_body">
             <div class="profile_img_group">
               <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />

@@ -51,6 +51,10 @@ public class Mom_info extends Member {
 	// 찾기 기능의 JOIN - 0210 hari
 	private int applySt;			// 맘이 게시한 일자리에 지원한 시터 수
 
+	
+	// 검색 기능 조건값
+	
+	
 
 	// GSON 라이브러리를 활용해 JSON을 쉽게 파싱해봅시다. - 0210 hari
 	/*

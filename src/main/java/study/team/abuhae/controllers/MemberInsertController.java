@@ -105,7 +105,7 @@ public class MemberInsertController {
 			input2.setBirthdate("1993-11-24");
 			input2.setGender('F');
 			input2.setJob_opening('Y');
-			input2.setSitter_type("대학생");
+			input2.setSitter_type("student");
 			
 			// 영어로 불러옴
 			input2.setWant_act1("innerplay");

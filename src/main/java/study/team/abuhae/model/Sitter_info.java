@@ -33,6 +33,7 @@ public class Sitter_info extends Member {
 	private int answer;					// 응답률
 	private String openingdate; 		// 신청서 등록 시간
 	private char payment_ok; 			// 시급협의 여부 ('N', 'Y')
+	private String days;			// 가능한 요일
 
 	/** 2) JOIN절에 따른 추가 컬럼 */
 	// 찾기 기능의 JOIN - 0206 hari
@@ -56,7 +57,13 @@ public class Sitter_info extends Member {
 	
 	/** 3) 검색 조건용 추가 컬럼 */
 	private static String[] actList;		// 원하는 활동유형 검색 조건
-	private static String[] wtage;			// 원하는 시터 나이대 검색 조건
+	private static String[] kidsAge;		// 아이 나이
+	private static String[] caredays;		// 돌봄 요일
+	private static String[] timeRange;		// 돌봄 시간대
+	private static String[] sitterType;		// 맘시터 유형
+	private static String[] sitterAge;		// 시터 나이
+	
+	
 	
 	
 	public static String[] getActList() {
@@ -65,11 +72,35 @@ public class Sitter_info extends Member {
 	public static void setActList(String[] actList) {
 		Sitter_info.actList = actList;
 	}
-	public static String[] getWtage() {
-		return wtage;
+	public static String[] getKidsAge() {
+		return kidsAge;
 	}
-	public static void setWtage(String[] wtage) {
-		Sitter_info.wtage = wtage;
+	public static void setKidsAge(String[] kidsAge) {
+		Sitter_info.kidsAge = kidsAge;
+	}
+	public static String[] getCaredays() {
+		return caredays;
+	}
+	public static void setCaredays(String[] caredays) {
+		Sitter_info.caredays = caredays;
+	}
+	public static String[] getTimeRange() {
+		return timeRange;
+	}
+	public static void setTimeRange(String[] timeRange) {
+		Sitter_info.timeRange = timeRange;
+	}
+	public static String[] getSitterType() {
+		return sitterType;
+	}
+	public static void setSitterType(String[] sitterType) {
+		Sitter_info.sitterType = sitterType;
+	}
+	public static String[] getSitterAge() {
+		return sitterAge;
+	}
+	public static void setSitterAge(String[] sitterAge) {
+		Sitter_info.sitterAge = sitterAge;
 	}
 	
 	

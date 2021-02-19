@@ -44,7 +44,13 @@ public class SearchRestController {
             // 정렬 조건
             @RequestParam(value="order", defaultValue="null") String order,
             /** (1) 원하는 활동 선택 **/
-            @RequestParam(value="act[]", required=false) String[] actList
+            @RequestParam(value="act[]", required=false) String[] actList,
+            /** (2) 상세 검색 **/
+            @RequestParam(value="kidsage[]", required=false) String[] kidsAge,
+            @RequestParam(value="caredays[]", required=false) String[] caredays,
+            @RequestParam(value="time_range[]", required=false)String[] timeRange,
+            @RequestParam(value="sitter_type[]", required=false) String[] sitterType,
+            @RequestParam(value="sitter_age[]", required=false) String[] sitterAge
     		) {
 				
 				  
@@ -76,8 +82,6 @@ public class SearchRestController {
 			// 정렬조건의 값을 Beans에 저장
 			Sitter_info.setOrder(order);
 			
-			
-			
 			// 검색조건의 값을 Beans에 저장
 			if(actList != null) {
 				for (int i=0; i<actList.length; i++) {
@@ -89,6 +93,31 @@ public class SearchRestController {
 				}
 			}
 			
+			if(kidsAge != null) {
+				for (int i=0; i<kidsAge.length; i++) {
+					String temp1 = kidsAge[i];
+					String temp2 = temp1.replace("'", "");
+					kidsAge[i] = temp2;
+					log.info("temp2" + temp2);
+					Sitter_info.setKidsAge(kidsAge);
+				}
+			}
+			
+			if(caredays != null) {
+				Sitter_info.setCaredays(caredays);
+			}
+			
+			if(timeRange != null) {
+				Sitter_info.setTimeRange(timeRange);
+			}
+			
+			if(sitterType != null) {
+				Sitter_info.setSitterType(sitterType);
+			}
+			
+			if(sitterAge != null) {
+				Sitter_info.setSitterAge(sitterAge);
+			}
             
             // 데이터 조회하기
             output = searchService.searchSitter(input);
@@ -100,12 +129,7 @@ public class SearchRestController {
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("item", output);
         data.put("meta", pageData);
-		// 검색조건의 값을 Beans에 저장
-//		if(actList != null) {
-//			for (int i=0; i<actList.length; i++) {
-//				data.put("act"+ i , actList[i]);
-//			}
-//		}
+
         return webHelper.getJsonData(data);
     }
     

@@ -57,12 +57,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $(".cert_text").html(title[random(0, 3)]);
         });
 
-        // 상세 페이지 연동 1220 하리
-        $(".sitter_item_group").on("click", function () {
-          location.href = "${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_detail.do?sitterno=${sitterno}";
-        });
-
         /** 상세 검색 ------------------------------------------------------------------- */
+
         const kidsage = []; // 아이나이
         const caredays = []; // 돌봄 요일
         const time_range = []; // 돌봄 시간대
@@ -143,6 +139,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
         $("#detail_apply").click(function (e) {
           e.preventDefault();
+          $("#sitter_search_detail_modal").modal("hide");
           // 검색 조건은 GET 파라미터로 전송한다.
           $.get(
             "${pageContext.request.contextPath}/search/sitter_search",
@@ -889,7 +886,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <script id="sitter-list-tmpl" type="text/x-handlebars-template">
             {{#each item}}
       					<div id="order">
-                          <div id="sitter_item_group" class="sitter_item_group">
+                          <div id="sitter_item_group" class="sitter_item_group" onclick="location.href='${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno={{sitterno}}'">
                             <div class="item_header">
                               <div class="cert_label">
                                 <span id="sitter_title" class="cert_text">
