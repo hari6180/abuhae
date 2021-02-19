@@ -48,53 +48,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
 
 
-            /** 상세 검색 ------------------------------------------------------------------- */
-
-            // 아이나이 버튼 클릭
-            $(".ages").click(function (e) {
-              //버튼 클릭시 클래스 변경
-              $(this).toggleClass("select_btn_detail");
-              //버튼 클릭시 text 색 변경
-              $(this).find("i").toggleClass("select_text_detail");
-              $(this).find("span").toggleClass("select_text_detail");
-            });
-
-            // 돌봄요일 버튼 클릭
-            $(".care_day").click(function (e) {
-              //버튼 클릭시 클래스 변경
-              $(this).toggleClass("select_btn_detail");
-              //버튼 클릭시 text 색 변경
-              $(this).find("div").toggleClass("select_text_detail");
-            });
-
-            // 돌봄 시간대 버튼 클릭
-            $(".time_range").click(function (e) {
-              //버튼 클릭시 클래스 변경
-              $(this).toggleClass("select_btn_detail");
-              //버튼 클릭시 text 색 변경
-              $(this).find("span").toggleClass("select_text_detail");
-            });
-
-            // 돌봄 종류 버튼 클릭
-            $(".activity_type_btn").click(function (e) {
-              //버튼 클릭시 클래스 변경
-              $(this).toggleClass("select_act_btn");
-              //버튼 클릭시 text 색 변경
-              $(this).find("i").toggleClass("select_act_btn");
-            });
-
-           	// 리셋 버튼 0109 하리
-      			$("#reset_detail").click(function (e) {
-              e.preventDefault();
-              $("#job_search_detail_modal .modal_content *").removeClass("select_btn_detail");
-              $("#job_search_detail_modal .modal_content *").removeClass("select_text_detail");
-              $("#job_search_detail_modal .modal_content *").removeClass("select_act_btn");
-              $(".kids").prop("checked", false);
-              $("#min_pay").val('');
-              $("#max_pay").val('');
-            });
-
-            /** 상세 검색 end ------------------------------------------------------------------- */
 
             /** 주소 선택 모달 ------------------------------------------------------------------- */
 
@@ -424,7 +377,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <i class="fas fa-times"></i>
                   </button>
                   <h2>상세검색</h2>
-                  <button class="apply_btn" type="button">적용</button>
+                  <button id="detail_apply" class="apply_btn" type="button">적용</button>
                 </div>
                 <!--modal header end-->
                 <!--modal content-->
@@ -444,7 +397,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   </div>
                   <hr />
                   <!--시간대-->
-                  <div class="caretime_wrap">
+                  <!-- <div class="caretime_wrap">
                     <h4>시간대</h4>
                     <div class="time_range_group">
                       <button class="time_range"><span class="time_range_content">07 - 12시</span></button>
@@ -452,33 +405,33 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                       <button class="time_range"><span class="time_range_content">18 - 22시</span></button>
                     </div>
                   </div>
-                  <hr />
+                  <hr /> -->
                   <!-- 아이 나이 -->
                   <div class="children_age_wrap">
                     <h4>아이 나이</h4>
                     <div class="age_line">
-                      <button class="ages">
+                      <button class="ages" data-age="got_baby">
                         <div style="margin-bottom: -10px">
                           <i class="fas fa-baby fa-3x"></i>
                         </div>
                         <br />
                         <span>신생아</span>
                       </button>
-                      <button class="ages">
+                      <button class="ages" data-age="baby">
                         <div style="margin-bottom: -10px">
                           <i class="fas fa-baby-carriage fa-3x"></i>
                         </div>
                         <br />
                         <span>영아</span>
                       </button>
-                      <button class="ages">
+                      <button class="ages" data-age="children">
                         <div style="margin-bottom: -10px">
                           <i class="fas fa-child fa-3x"></i>
                         </div>
                         <br />
                         <span>유아</span>
                       </button>
-                      <button class="ages">
+                      <button class="ages" data-age="element">
                         <div style="margin-bottom: -10px">
                           <i class="fas fa-school fa-3x"></i>
                         </div>
@@ -492,8 +445,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <div class="want_pay_wrap">
                     <h4 class="want_pay_title">희망시급</h4>
                     <div>
-                      <div><label for="min_pay" class="pay_range">최소</label><input type="number" id="min_pay" /></div>
-                      <div><label for="max_pay" class="pay_range">최대</label><input type="number" id="max_pay" /></div>
+                      <div><label for="min_pay" class="pay_range">최소</label><input type="number" id="min_pay" name="min_pay" /></div>
+                      <div><label for="max_pay" class="pay_range">최대</label><input type="number" id="max_pay" name="max_pay" /></div>
                     </div>
                   </div>
                   <hr />
@@ -502,19 +455,21 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <h4>돌봄 종류</h4>
                     <div class="care_type_group">
                       <div>
-                        <button type="button" id="act_type1" class="activity_type_btn" value="innerplay"><i class="fas fa-check unselect_act_type"></i>실내놀이</button>
-                        <button type="button" id="act_type2" class="activity_type_btn" value="guide"><i class="fas fa-check unselect_act_type"></i>등하원돕기</button>
-                        <button type="button" id="act_type3" class="activity_type_btn" value="read"><i class="fas fa-check unselect_act_type"></i>책읽기</button>
-                        <button type="button" id="act_type4" class="activity_type_btn" value="outside"><i class="fas fa-check unselect_act_type"></i>야외활동</button>
-                        <button type="button" id="act_type5" class="activity_type_btn" value="korean"><i class="fas fa-check unselect_act_type"></i>한글놀이</button>
-                        <button type="button" id="act_type6" class="activity_type_btn" value="english"><i class="fas fa-check unselect_act_type"></i>영어놀이</button>
-                        <button type="button" id="act_type7" class="activity_type_btn" value="study"><i class="fas fa-check unselect_act_type"></i>학습지도</button>
-                        <button type="button" id="act_type8" class="activity_type_btn" value="sport"><i class="fas fa-check unselect_act_type"></i>체육놀이</button>
-                        <button type="button" id="act_type9" class="activity_type_btn" value="simple_cleaning"><i class="fas fa-check unselect_act_type"></i>간단청소</button>
-                        <button type="button" id="act_type10" class="activity_type_btn" value="eat"><i class="fas fa-check unselect_act_type"></i>밥챙겨주기</button>
-                        <button type="button" id="act_type11" class="activity_type_btn" value="do_dish"><i class="fas fa-check unselect_act_type"></i>간단설거지</button>
-                        <button type="button" id="act_type12" class="activity_type_btn" value="long_move_in"><i class="fas fa-check unselect_act_type"></i>장기입주</button>
-                        <button type="button" id="act_type13" class="activity_type_btn" value="short_move_in"><i class="fas fa-check unselect_act_type"></i>단기입주</button>
+                        <button type="button" id="act_type1" class="activity_type_btn" data-act="innerplay" value="innerplay"><i class="fas fa-check unselect_act_type"></i>실내놀이</button>
+                        <button type="button" id="act_type2" class="activity_type_btn" data-act="guide" value="guide"><i class="fas fa-check unselect_act_type"></i>등하원돕기</button>
+                        <button type="button" id="act_type3" class="activity_type_btn" data-act="read" value="read"><i class="fas fa-check unselect_act_type"></i>책읽기</button>
+                        <button type="button" id="act_type4" class="activity_type_btn" data-act="outside" value="outside"><i class="fas fa-check unselect_act_type"></i>야외활동</button>
+                        <button type="button" id="act_type5" class="activity_type_btn" data-act="korean" value="korean"><i class="fas fa-check unselect_act_type"></i>한글놀이</button>
+                        <button type="button" id="act_type6" class="activity_type_btn" data-act="english" value="english"><i class="fas fa-check unselect_act_type"></i>영어놀이</button>
+                        <button type="button" id="act_type7" class="activity_type_btn" data-act="study" value="study"><i class="fas fa-check unselect_act_type"></i>학습지도</button>
+                        <button type="button" id="act_type8" class="activity_type_btn" data-act="sport" value="sport"><i class="fas fa-check unselect_act_type"></i>체육놀이</button>
+                        <button type="button" id="act_type9" class="activity_type_btn" data-act="simple_cleaning" value="simple_cleaning">
+                          <i class="fas fa-check unselect_act_type"></i>간단청소
+                        </button>
+                        <button type="button" id="act_type10" class="activity_type_btn" data-act="eat" value="eat"><i class="fas fa-check unselect_act_type"></i>밥챙겨주기</button>
+                        <button type="button" id="act_type11" class="activity_type_btn" data-act="do_dish" value="do_dish"><i class="fas fa-check unselect_act_type"></i>간단설거지</button>
+                        <button type="button" id="act_type12" class="activity_type_btn" data-act="long_move_in" value="long_move_in"><i class="fas fa-check unselect_act_type"></i>장기입주</button>
+                        <button type="button" id="act_type13" class="activity_type_btn" data-act="short_move_in" value="short_move_in"><i class="fas fa-check unselect_act_type"></i>단기입주</button>
                       </div>
                     </div>
                   </div>
@@ -815,6 +770,121 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             }
           );
         });
+
+        /** 상세 검색 ------------------------------------------------------------------- */
+
+        const kidsage = []; // 아이나이
+        const caredays = []; // 돌봄 요일
+        const time_range = []; // 돌봄 시간대
+        const act = []; // 돌봄 종류
+
+        // 아이나이 버튼 클릭
+        $(".ages").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("i").toggleClass("select_text_detail");
+          $(this).find("span").toggleClass("select_text_detail");
+
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("span").hasClass("select_text_detail") && kidsage.indexOf($(this).data("age")) == -1) {
+            kidsage.push($(this).data("age"));
+          }
+          if ($(this).find("span").hasClass("select_text_detail") == false) {
+            kidsage.splice(kidsage.indexOf($(this).data("age")), 1);
+          }
+
+          console.log(kidsage);
+        });
+
+        // 돌봄요일 버튼 클릭
+        $(".care_day").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("div").toggleClass("select_text_detail");
+
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("div").hasClass("select_text_detail") && caredays.indexOf($(this).data("day")) == -1) {
+            caredays.push($(this).data("day"));
+          }
+          if ($(this).find("div").hasClass("select_text_detail") == false) {
+            caredays.splice(caredays.indexOf($(this).data("day")), 1);
+          }
+
+          console.log(caredays);
+        });
+
+        // 돌봄 시간대 버튼 클릭
+        $(".time_range").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("span").toggleClass("select_text_detail");
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("span").hasClass("select_text_detail") && time_range.indexOf($(this).data("time")) == -1) {
+            time_range.push($(this).data("time"));
+          }
+          if ($(this).find("span").hasClass("select_text_detail") == false) {
+            time_range.splice(time_range.indexOf($(this).data("time")), 1);
+          }
+
+          console.log(time_range);
+        });
+
+        // 돌봄 종류 버튼 클릭
+        $(".activity_type_btn").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_act_btn");
+          //버튼 클릭시 text 색 변경
+          $(this).find("i").toggleClass("select_act_btn");
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("i").hasClass("select_act_btn") && act.indexOf($(this).data("act")) == -1) {
+            act.push($(this).data("act"));
+          }
+          if ($(this).find("i").hasClass("select_act_btn") == false) {
+            act.splice(act.indexOf($(this).data("act")), 1);
+          }
+
+          console.log(act);
+        });
+
+        $("#detail_apply").click(function (e) {
+          e.preventDefault();
+          $("#job_search_detail_modal").modal("hide");
+          // 검색 조건은 GET 파라미터로 전송한다.
+          $.get(
+            "${pageContext.request.contextPath}/search/job_search",
+            {
+              kidsage: kidsage,
+              caredays: caredays,
+              time_range: time_range,
+              act: act,
+            },
+            function (json) {
+              var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
+              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#result").empty(); // 결과물 초기화
+              $("#result2").empty(); // 결과물 초기화
+              $("#result").append(result); // 최종 결과물을 추가한다
+            }
+          );
+        });
+
+        // 리셋 버튼 0109 하리
+        $("#reset_detail").click(function (e) {
+          e.preventDefault();
+          $("#job_search_detail_modal .modal_content *").removeClass("select_btn_detail");
+          $("#job_search_detail_modal .modal_content *").removeClass("select_text_detail");
+          $("#job_search_detail_modal .modal_content *").removeClass("select_act_btn");
+          $(".kids").prop("checked", false);
+          $("#min_pay").val("");
+          $("#max_pay").val("");
+        });
+
+        /** 상세 검색 end ------------------------------------------------------------------- */
+
         // 무한 스크롤 1218 하리
         $(window).scroll(function () {
           //console.log(Math.round($(window).scrollTop()) + $(window).height());

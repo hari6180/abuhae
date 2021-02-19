@@ -50,33 +50,23 @@ public class Mom_info extends Member {
 	/** 2) JOIN절에 따른 추가 컬럼 */
 	// 찾기 기능의 JOIN - 0210 hari
 	private int applySt;			// 맘이 게시한 일자리에 지원한 시터 수
-
-	
-	// 검색 기능 조건값
-	
-	
-
-	// GSON 라이브러리를 활용해 JSON을 쉽게 파싱해봅시다. - 0210 hari
-	/*
-	 * @Data public class Schedule {
-	 * 
-	 * @SerializedName("startdate") private String startdate; // 구인 시작일자
-	 * 
-	 * @SerializedName("frequency") private String frequency; // 주기 (정기적으로 등등)
-	 * 
-	 * @SerializedName("day") private List<Day> day; // 원하는 요일
-	 * 
-	 * @SerializedName("time") private List<Time> time; // 원하는 시간
-	 * 
-	 * @Data public class Day { private String[] day; }
-	 * 
-	 * @Data public class Time { private String[] time; } }
-	 */
-	
 	private int heartno;
 	private int cntno;
 	
 	private String who;
 	private int sitterno;
+
+	
+	/** 3) 검색 조건용 추가 컬럼 */
+	private static String[] actList;		// 원하는 활동유형 검색 조건
+	private static String[] kidsAge;		// 아이 나이
+	private static String[] caredays;		// 돌봄 요일
+	private static String[] timeRange;		// 돌봄 시간대
+	private static String[] sitterType;		// 맘시터 유형
+	private static String[] sitterAge;		// 시터 나이
+	
+	
+	
+
 	
 }

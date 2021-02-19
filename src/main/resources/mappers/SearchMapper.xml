@@ -228,6 +228,59 @@
 		AND who='s') AS applySt FROM mom_info m
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
+		
+				<!-- 활동 유형 && 상세 검색 -->
+		<where>
+			<if test="actList != null">
+				want_act1 || want_act2 || want_act3 in
+				<foreach item="item1" collection="actList" open="("
+					close=")" separator=",">
+					#{item1}
+				</foreach>
+			</if>
+			<if test="kidsAge != null">
+				AND want_age IN
+				<foreach item="item2" collection="kidsAge" open="("
+					close=")" separator=",">
+					#{item2}
+				</foreach>
+			</if>
+			<if test="caredays != null">
+			AND JSON_CONTAINS(schedule_set->'$.day',CAST('
+				<foreach item="item3" collection="caredays" open="["
+					close="]" separator=",">
+					"${item3}"
+				</foreach>
+				' AS JSON))
+			</if>
+<!-- 시간검색 후순위 			
+<if test="timeRange != null">
+				AND schedule IN
+				<foreach item="item4" collection="timeRange" open="("
+					close=")" separator=",">
+					#{item4}
+				</foreach>
+			</if> -->
+			<if test="sitterType != null">
+				AND sitter_type IN
+				<foreach item="item5" collection="sitterType" open="("
+					close=")" separator=",">
+					#{item5}
+				</foreach>
+			</if>
+			<if test="sitterAge != null">
+				AND LEFT(CONCAT(FLOOR(
+		(CAST(REPLACE(current_date,'-','') AS
+		unsigned) -
+		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 + 2),1)) 
+		 IN
+				<foreach item="item6" collection="sitterAge" open="("
+					close=")" separator=",">
+					LEFT(CONCAT(${item6},1))
+				</foreach>
+			</if>
+		</where>
+		
 		ORDER BY
 
 		<choose>

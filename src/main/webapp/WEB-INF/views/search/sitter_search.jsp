@@ -57,121 +57,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $(".cert_text").html(title[random(0, 3)]);
         });
 
-        /** 상세 검색 ------------------------------------------------------------------- */
-
-        const kidsage = []; // 아이나이
-        const caredays = []; // 돌봄 요일
-        const time_range = []; // 돌봄 시간대
-        const sitter_type = []; // 맘시터 유형
-        const sitter_age = []; // 시터나이
-
-        // 아이나이 버튼 클릭
-        $(".ages").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
-          //버튼 클릭시 text 색 변경
-          $(this).find("i").toggleClass("select_text_detail");
-          $(this).find("span").toggleClass("select_text_detail");
-          // GET으로 전송할 배열에 data 담기
-          if ($(this).find("span").hasClass("select_text_detail") && kidsage.indexOf($(this).data("age")) == -1) {
-            kidsage.push($(this).data("age"));
-          }
-          if ($(this).find("span").hasClass("select_text_detail") == false) {
-            kidsage.splice(kidsage.indexOf($(this).data("age")), 1);
-          }
-
-          console.log(kidsage);
-        });
-
-        // 돌봄요일 버튼 클릭
-        $(".care_day").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
-          //버튼 클릭시 text 색 변경
-          $(this).find("div").toggleClass("select_text_detail");
-          // GET으로 전송할 배열에 data 담기
-          if ($(this).find("div").hasClass("select_text_detail") && caredays.indexOf($(this).data("day")) == -1) {
-            caredays.push($(this).data("day"));
-          }
-          if ($(this).find("div").hasClass("select_text_detail") == false) {
-            caredays.splice(caredays.indexOf($(this).data("day")), 1);
-          }
-
-          console.log(caredays);
-        });
-
-        // 돌봄 시간대 버튼 클릭
-        $(".time_range").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
-          //버튼 클릭시 text 색 변경
-          $(this).find("span").toggleClass("select_text_detail");
-          // GET으로 전송할 배열에 data 담기
-          if ($(this).find("span").hasClass("select_text_detail") && time_range.indexOf($(this).data("time")) == -1) {
-            time_range.push($(this).data("time"));
-          }
-          if ($(this).find("span").hasClass("select_text_detail") == false) {
-            time_range.splice(time_range.indexOf($(this).data("time")), 1);
-          }
-
-          console.log(time_range);
-        });
-
-        // 맘시터 유형 버튼 클릭
-        $(".sitter_type").click(function (e) {
-          //버튼 클릭시 클래스 변경
-          $(this).toggleClass("select_btn_detail");
-          //버튼 클릭시 text 색 변경
-          $(this).find("span").toggleClass("select_text_detail");
-          // GET으로 전송할 배열에 data 담기
-          if ($(this).find("span").hasClass("select_text_detail") && sitter_type.indexOf($(this).data("sttype")) == -1) {
-            sitter_type.push($(this).data("sttype"));
-          }
-          if ($(this).find("span").hasClass("select_text_detail") == false) {
-            sitter_type.splice(sitter_type.indexOf($(this).data("sttype")), 1);
-          }
-          console.log(sitter_type);
-        });
-
-        $("input[name=want_age].checked").each(function (i) {
-          sitter_age.push($(this).val());
-        });
-
-        $("#detail_apply").click(function (e) {
-          e.preventDefault();
-          $("#sitter_search_detail_modal").modal("hide");
-          // 검색 조건은 GET 파라미터로 전송한다.
-          $.get(
-            "${pageContext.request.contextPath}/search/sitter_search",
-            {
-              kidsage: kidsage,
-              caredays: caredays,
-              time_range: time_range,
-              sitter_type: sitter_type,
-              sitter_age: sitter_age,
-            },
-            function (json) {
-              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
-              $("#result").empty(); // 결과물 초기화
-              $("#result2").empty(); // 결과물 초기화
-              $("#result").append(result); // 최종 결과물을 추가한다
-            }
-          );
-        });
-
-        // 리셋 버튼 0109 하리
-        $("#reset_detail").click(function (e) {
-          e.preventDefault();
-          $("#sitter_search_detail_modal .modal_content *").removeClass("select_btn_detail");
-          $("#sitter_search_detail_modal .modal_content *").removeClass("select_text_detail");
-          $(".ins_check").prop("checked", false);
-          $(".want_age").prop("checked", false);
-        });
-
-        /** 상세 검색 end ------------------------------------------------------------------- */
-
         //시 클릭했을 때
         $(".loc_btn").on("click", function (e) {
           e.preventDefault();
@@ -689,7 +574,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   </div>
                   <hr />
                   <!--돌봄 시간대-->
-                  <div class="caretime_wrap">
+                  <!-- <div class="caretime_wrap">
                     <h4>돌봄 시간대</h4>
                     <div class="time_range_group">
                       <button class="time_range" data-time="morning"><span class="time_range_content">07 - 12시</span></button>
@@ -697,7 +582,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                       <button class="time_range" data-time="night"><span class="time_range_content">18 - 22시</span></button>
                     </div>
                   </div>
-                  <hr />
+                  <hr /> -->
                   <!-- 맘시터 유형 -->
                   <div class="sitter_type_wrap">
                     <h4>맘시터 유형</h4>
@@ -1183,6 +1068,121 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $(".act_label").removeClass("select_act_type");
           $(".act_label").removeClass("unselect_act_type");
         });
+
+        /** 상세 검색 ------------------------------------------------------------------- */
+
+        const kidsage = []; // 아이나이
+        const caredays = []; // 돌봄 요일
+        const time_range = []; // 돌봄 시간대
+        const sitter_type = []; // 맘시터 유형
+        const sitter_age = []; // 시터나이
+
+        // 아이나이 버튼 클릭
+        $(".ages").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("i").toggleClass("select_text_detail");
+          $(this).find("span").toggleClass("select_text_detail");
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("span").hasClass("select_text_detail") && kidsage.indexOf($(this).data("age")) == -1) {
+            kidsage.push($(this).data("age"));
+          }
+          if ($(this).find("span").hasClass("select_text_detail") == false) {
+            kidsage.splice(kidsage.indexOf($(this).data("age")), 1);
+          }
+
+          console.log(kidsage);
+        });
+
+        // 돌봄요일 버튼 클릭
+        $(".care_day").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("div").toggleClass("select_text_detail");
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("div").hasClass("select_text_detail") && caredays.indexOf($(this).data("day")) == -1) {
+            caredays.push($(this).data("day"));
+          }
+          if ($(this).find("div").hasClass("select_text_detail") == false) {
+            caredays.splice(caredays.indexOf($(this).data("day")), 1);
+          }
+
+          console.log(caredays);
+        });
+
+        // 돌봄 시간대 버튼 클릭
+        $(".time_range").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("span").toggleClass("select_text_detail");
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("span").hasClass("select_text_detail") && time_range.indexOf($(this).data("time")) == -1) {
+            time_range.push($(this).data("time"));
+          }
+          if ($(this).find("span").hasClass("select_text_detail") == false) {
+            time_range.splice(time_range.indexOf($(this).data("time")), 1);
+          }
+
+          console.log(time_range);
+        });
+
+        // 맘시터 유형 버튼 클릭
+        $(".sitter_type").click(function (e) {
+          //버튼 클릭시 클래스 변경
+          $(this).toggleClass("select_btn_detail");
+          //버튼 클릭시 text 색 변경
+          $(this).find("span").toggleClass("select_text_detail");
+          // GET으로 전송할 배열에 data 담기
+          if ($(this).find("span").hasClass("select_text_detail") && sitter_type.indexOf($(this).data("sttype")) == -1) {
+            sitter_type.push($(this).data("sttype"));
+          }
+          if ($(this).find("span").hasClass("select_text_detail") == false) {
+            sitter_type.splice(sitter_type.indexOf($(this).data("sttype")), 1);
+          }
+          console.log(sitter_type);
+        });
+
+        $("input[name=want_age].checked").each(function (i) {
+          sitter_age.push($(this).val());
+        });
+
+        $("#detail_apply").click(function (e) {
+          e.preventDefault();
+          $("#sitter_search_detail_modal").modal("hide");
+          // 검색 조건은 GET 파라미터로 전송한다.
+          $.get(
+            "${pageContext.request.contextPath}/search/sitter_search",
+            {
+              kidsage: kidsage,
+              caredays: caredays,
+              time_range: time_range,
+              sitter_type: sitter_type,
+              sitter_age: sitter_age,
+            },
+            function (json) {
+              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#result").empty(); // 결과물 초기화
+              $("#result2").empty(); // 결과물 초기화
+              $("#result").append(result); // 최종 결과물을 추가한다
+            }
+          );
+        });
+
+        // 리셋 버튼 0109 하리
+        $("#reset_detail").click(function (e) {
+          e.preventDefault();
+          $("#sitter_search_detail_modal .modal_content *").removeClass("select_btn_detail");
+          $("#sitter_search_detail_modal .modal_content *").removeClass("select_text_detail");
+          $(".ins_check").prop("checked", false);
+          $(".want_age").prop("checked", false);
+        });
+
+        /** 상세 검색 end ------------------------------------------------------------------- */
 
         // 무한 스크롤 1218 하리
         $(window).scroll(function () {
