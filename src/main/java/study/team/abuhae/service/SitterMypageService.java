@@ -14,4 +14,5 @@ public interface SitterMypageService {
 	
 	/** accept가 'Y'일 경우 review 저장 */
 	public int addReview(Review input) throws Exception;
+
 }

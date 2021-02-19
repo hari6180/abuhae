@@ -64,4 +64,28 @@ public class SitterMypageRestController {
 		
 		return webHelper.getJsonData();
 	}
+	
+	@RequestMapping(value = "/mypage/edit_ok_deny", method = RequestMethod.POST)
+	public Map<String, Object> edit_no(
+			@RequestParam(value = "momno", defaultValue = "0") int momno,
+			@RequestParam(value = "accept", defaultValue = "") String accept,
+			@RequestParam(value = "deny_type", defaultValue = "") String deny_type) {
+		/** 사용자가 입력한 파라미터 유효성 검사 */
+		if (momno == 0) { return webHelper.getJsonWarning("나에게 인터뷰를 요청한 부모 회원 번호가 없습니다."); }
+		
+		/** accept 수정(connect table) - insert */
+		Connect input1 = new Connect();
+		input1.setAccept("N");
+		input1.setDeny_type(deny_type);
+		input1.setMomno(momno);
+		
+		try {
+			// 데이터 수정
+			sitterMypageService.editAccept(input1);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		return webHelper.getJsonData();
+	}
 }

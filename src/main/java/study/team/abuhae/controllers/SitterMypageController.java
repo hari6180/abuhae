@@ -46,12 +46,12 @@ public class SitterMypageController {
 	}
 	
 	/** 내 구직 현황 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/get_mom_mps.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_sitter/get_mom_mps.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView get_mom(Model model,
-			@RequestParam(value = "memberno", defaultValue = "0") int memberno) {
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		/** 데이터 조회 */
 		Connect input = new Connect();
-		input.setMemberno(102);
+		input.setSitterno(1);;
 		
 		List<Connect> output = null;
 		

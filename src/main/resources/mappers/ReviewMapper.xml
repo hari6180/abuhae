@@ -7,10 +7,7 @@
 		type="study.team.abuhae.model.Review">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="revno" column="revno" />
-		<result property="category" column="category" />
 		<result property="who" column="who"/>
-		<result property="writer" column="writer" />
-		<result property="kids_num" column="kids_num" />
 		<result property="rev_rate" column="rev_rate" />
 		<result property="reg_date" column="reg_date" />
 		<result property="contents" column="contents" />
@@ -18,34 +15,24 @@
 		<result property="sitterno" column="sitterno" />
 	</resultMap>
 	
-	<!-- 후기 남길 수 있는 회원 조회(맘회원에게 지원하거나 맘회원이 지원) -->
-	<select id="selectReviewMemberList" 
-	parameterType="study.team.abuhae.model.Review" resultMap="ReviewMap">
-		SELECT m.name, m.birthdate, s.si, s.gu, s.dong, s.want_age from connect c 
-		INNER JOIN sitter_info s ON s.sitterno=c.sitterno
-		INNER JOIN mom_info i ON i.momno = c.momno 
-		INNER JOIN member m ON s.memberno = m.memberno
+	<!--mom 회원 리뷰남기기 -->
+	<update id="editReview" parameterType="study.team.abuhae.model.Review">
+	
+		update review set who='m',  rev_rate=#{rev_rate}, reg_date=#{reg_date}, contents = #{contents} 
+		where who is null and revno=#{revno};
 		
-	</select>
+	</update>
 	
-	<!-- 리뷰 남기기 -->
-	<insert id="insertReview"
-		parameterType="study.team.abuhae.model.Member" useGeneratedKeys="true"
-		keyProperty="memberno">
-		INSERT INTO Member (category, who, writer, kids_num, rev_rate, reg_date, contents, momno, sitterno)
-		VALUES (#{category}, #{who}, #{writer}, #{kids_num}, #{rev_rate}, #{reg_date}, #{contents}, #{momno}, #{sitterno});
-	</insert>
-	
-	<!-- 작성 리뷰 조회하기 -->
-	<select id="selectMReviewList" 
+	<!-- 후기 남길 수 있는 회원 조회(맘회원에게 지원하거나 맘회원이 지원) -->
+	<select id="selectMReviewMemberList" 
 	parameterType="study.team.abuhae.model.Review" resultMap="ReviewMap">
-		select m.name, s.sitterno, s.si, s.gu, s.dong, r.rev_rate, r.reg_date, r.contents FROM review r 
-		INNER JOIN mom_info mi ON r.momno = mi.momno 
-		INNER JOIN sitter_info s ON s.sitterno = r.sitterno
-		INNER JOIN member m ON m.memberno = s.memberno
-		<where>
-			r_who='M' AND r.momno = #{momno}
-		</where>
+		select revno, c.accept as accept, m.name, mi.momno as momno, s.sitterno as sitterno, r.who 
+		from review r
+		inner join connect c on r.cntno = c.cntno
+		inner join sitter_info s on s.sitterno = c.sitterno
+		inner join mom_info mi on mi.momno = c.momno
+		inner join member m on m.memberno = s.memberno
+		where mi.momno=#{momno} and r.who is null;
 	</select>
 	
 	<!-- 나에게 남겨진 리뷰 조회 -->

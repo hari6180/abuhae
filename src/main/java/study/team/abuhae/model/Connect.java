@@ -13,7 +13,6 @@ public class Connect {
 	private int sitterno; // 시터 일련번호 
 	private String accept; // 지원 승인여부
 	private String deny_type; // 거절 타입
-	private String deny_text; // 거절 사유
 	
 	//join절에 대한 추가 컬럼
 	private int memberno;	//회원번호
