@@ -15,4 +15,12 @@ public class Connect {
 	private String deny_type; // 거절 타입
 	private String deny_text; // 거절 사유
 	
+	//join절에 대한 추가 컬럼
+	private int memberno;	//회원번호
+	private String name;	//이름
+	private String birthdate; 	//생년월일
+	private int payment;	//시급
+	private String phone;	//전화번호
+	
+	
 }

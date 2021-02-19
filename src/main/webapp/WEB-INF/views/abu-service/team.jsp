@@ -93,75 +93,8 @@
                                 <div class="cert_count">2개</div>
                             </div>
                             <div class="cert_info_btn_group">
-                                <div class="cert_btn">백엔드 인증</div>
-                                <div class="cert_btn">DB 마스터 인증</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--end card-->
-                <div class="sitter_item_group">
-                    <div class="item_header">
-                        <div class="cert_label"><img
-                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">네
-                                아이의
-                                엄마</span></div>
-                    </div>
-                    <hr class="divider" />
-                    <div class="item_body">
-                        <div class="profile_img_group">
-                            <img src="${pageContext.request.contextPath}/assets/img/team_yoonjae.jpg" />
-                            <div class="responsive_rate_group">
-                                <div class="res_text">응답률</div>
-                                <div class="res_rate">100</div>
-                                <div class="res_text">%</div>
-                            </div>
-                        </div>
-                        <div class="profile_info_group">
-                            <div class="content_row">
-                                <div>
-                                    <div class="user_name">남윤재</div>
-                                    <div class="last_update">6일 전 작성</div>
-                                </div>
-                                <div class="jim_btn">
-                                    <button class="btn btn-default swapHeart">
-                                        <div class="jim">
-                                            <span class="glyphicon glyphicon-heart-empty"
-                                                style="color: #ff7000; font-size: 20px"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="content_row location_group">
-                                <span class="location">경기도 부천시 </span>
-                            </div>
-                            <div class="content_row">
-                                <div class="user_age">29세</div>
-                                <div class="text_sep"></div>
-                                <div class="wanted_pay">희망 시급 15000원</div>
-                            </div>
-                            <div class="content_row">
-                                <div class="review_rate">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="review_count">후기 155개</span>
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="divider" />
-                    <div class="item_footer">
-                        <div class="cert_info_group">
-                            <div class="cert_text_group">
-                                <div class="cert_label">확인된 인증</div>
-                                <div class="cert_count">2개</div>
-                            </div>
-                            <div class="cert_info_btn_group">
-                                <div class="cert_btn">백엔드 인증</div>
-                                <div class="cert_btn">DB 마스터 인증</div>
+                                <div class="cert_btn">세션 마스터 인증</div>
+                                <div class="cert_btn">관리자 마스터 인증</div>
                             </div>
                         </div>
                     </div>
@@ -227,8 +160,8 @@
                                 <div class="cert_count">2개</div>
                             </div>
                             <div class="cert_info_btn_group">
-                                <div class="cert_btn">백엔드 인증</div>
-                                <div class="cert_btn">DB 마스터 인증</div>
+                                <div class="cert_btn">페이징 마스터 인증</div>
+                                <div class="cert_btn">마이페이지 마스터 인증</div>
                             </div>
                         </div>
                     </div>
@@ -294,8 +227,8 @@
                                 <div class="cert_count">2개</div>
                             </div>
                             <div class="cert_info_btn_group">
-                                <div class="cert_btn">백엔드 인증</div>
-                                <div class="cert_btn">DB 마스터 인증</div>
+                                <div class="cert_btn">파싱 마스터 인증</div>
+                                <div class="cert_btn">ajax 마스터 인증</div>
                             </div>
                         </div>
                     </div>
@@ -361,8 +294,8 @@
                                 <div class="cert_count">2개</div>
                             </div>
                             <div class="cert_info_btn_group">
-                                <div class="cert_btn">백엔드 인증</div>
-                                <div class="cert_btn">DB 마스터 인증</div>
+                                <div class="cert_btn">JSTL 마스터 인증</div>
+                                <div class="cert_btn">SQL 마스터 인증</div>
                             </div>
                         </div>
                     </div>
