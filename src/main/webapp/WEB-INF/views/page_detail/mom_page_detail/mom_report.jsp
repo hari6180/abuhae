@@ -33,6 +33,7 @@
 <body>		
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
+			<form action="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report_ok.do?" method="post">
 				<div class="siren_header">
 					<div class="x_btn_area">
 						<button type="button" class="x_btn" onclick = "history.back() ">
@@ -42,8 +43,9 @@
 					<div class="header_text_area col-xs-12">
 						<span class="header_text">신고하기</span>
 					</div> <!-- fin. header_text_area -->
+					
 					<div class="btn_area">
-						<button name ="test" type="submit" class="btn" onclick="success();">
+						<button name ="test" type="submit" class="btn" id="btn_submit">
 							<span class="btn_text">제출</span>
 						</button>
 					</div> <!-- fin. btn_area -->
@@ -59,29 +61,29 @@
 							${output.name}
 						</span>
 					</div> <!-- fin. siren_body_profil -->
-					<form action="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report_ok.do?">
+
 					<div class="siren_type">
 						<h4 class="siren_title">신고 유형을 선택해주세요.</h4>
 						<div class="siren_type_box">
-							<input id="rd1" type="radio" name="siren_radio" value="허위정보를 기재하였습니다." style="width:18px; height:18px;">
+							<input id="rd1" type="radio" name="type" value="허위정보를 기재하였습니다." style="width:18px; height:18px;">
 							<label for="rd1">허위정보를 기재하였습니다.</label><br/>
-							<input id="rd2" type="radio" name="siren_radio" value="부적절한 사진입니다." style="width:18px; height:18px;">
+							<input id="rd2" type="radio" name="type" value="부적절한 사진입니다." style="width:18px; height:18px;">
 							<label for="rd2">부적절한 사진입니다.</label><br/>
-							<input id="rd3" type="radio" name="siren_radio" value="부적절한 내용입니다." style="width:18px; height:18px;">
+							<input id="rd3" type="radio" name="type" value="부적절한 내용입니다." style="width:18px; height:18px;">
 							<label for="rd3">부적절한 내용입니다.</label><br/>
-							<input id="rd4" type="radio" name="siren_radio" value="규정을 위반하였습니다." style="width:18px; height:18px;">
+							<input id="rd4" type="radio" name="type" value="규정을 위반하였습니다." style="width:18px; height:18px;">
 							<label for="rd4">규정을 위반하였습니다.</label><br/>
-							<input id="rd5" type="radio" name="siren_radio" value="맘시터 회원 자격이 없습니다." style="width:18px; height:18px;">
+							<input id="rd5" type="radio" name="type" value="맘시터 회원 자격이 없습니다." style="width:18px; height:18px;">
 							<label for="rd5">맘회원 자격이 없습니다.</label><br/>
-							<input id="rd6" type="radio" name="siren_radio" value="기타" style="width:18px; height:18px;">
+							<input id="rd6" type="radio" name="type" value="기타" style="width:18px; height:18px;">
 							<label for="rd6">기타</label><br/>
 						</div> <!-- fin. siren_type_box -->
 					</div> <!-- fin. siren_type -->
 					<div class="siren_text_box">
 						<h4>신고 내용을 입력해주세요.</h4>
-						<textarea placeholder="예). 부적절한 사진이 올라가 있습니다."></textarea>
+						<textarea name="contents" placeholder="예). 부적절한 사진이 올라가 있습니다."></textarea>
 					</div> <!-- fin. siren_text_box -->
-					</form>
+					
 					<div class="desc_area">
 						<p class="desc">
 							* 이 회원이 신고대상에 해당하는지 다시 한 번 확인하여 주시기 바랍니다. 
@@ -94,20 +96,31 @@
 							<br/>
 						</p>
 					</div> <!-- fin. desc_area -->
+					
+					<input type="hidden" name="who" value="who">
+					<input type="hidden" name="momno" value="momno">
+					<input type="hidden" name="sitterno" value="sitterno">
 				</div> <!-- fin. siren_body -->
+				</form>
 			</div> <!-- fin. col-xs-12 -->
 		</div> <!-- fin. container -->
 	
 		<!-- Javascript -->
 		<script type="text/javascript">
+		/* $(function() {
+			$("#btn_submit").on('click', function () {
+				
+			});
+			
+		})
 		    function success() {
-		    	if ($("input:radio[name='siren_radio']").is(":checked")==false) {
+		    	if ($("input:radio[name='type']").is(":checked")==false) {
 		    		swal("신고유형을 선택하여 주십시오.");
 		    		return;
 		    	}else {
 		        swal("신고완료", "신고가 완료되었습니다. 감사합니다.");
 		    	}
-		    }		    
+		    }	*/	    
 		</script>
 		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
 		<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 

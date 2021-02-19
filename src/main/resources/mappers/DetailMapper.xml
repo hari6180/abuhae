@@ -55,9 +55,7 @@
 		<result property="want_act1" column="want_act1" />
 		<result property="want_act2" column="want_act2" />
 		<result property="want_act3" column="want_act3" />
-		<result property="want_age1" column="want_age1" />
-		<result property="want_age2" column="want_age2" />
-		<result property="want_age3" column="want_age3" />
+		<result property="want_age" column="want_age" />
 		<result property="payment" column="payment" />
 		<result property="si" column="si" />
 		<result property="gu" column="gu" />
@@ -107,7 +105,7 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, want_age1, want_age2, want_age3, want_age4,
+		AS birthdate, want_age,
 		job_opening, s.sitterno, sitter_type, want_act1, want_act2, want_act3, gender, introduce,
 		si, gu, dong, favorite_act, signup_date, view, 
 		<!-- CONCAT(LEFT(payment,2), ',', RIGHT(payment,3)) AS -->
@@ -196,7 +194,7 @@
 	<!-- 신고하기 -->
 	<insert id="insertReport" parameterType="study.team.abuhae.model.Report"
 		useGeneratedKeys="true" keyProperty="reportno">
-		INSERT INTO report (reportno, who, type, contents, momno, sitterno, reg_date) 
+		INSERT INTO report (reportno, who, type, contents, momno, sitterno, now()) 
 		VALUES (#{reportno}, #{who}, #{type}, #{contents}, #{momno}, #{sitterno}, #{reg_date});
 	</insert>
 	
