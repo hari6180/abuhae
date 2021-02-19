@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -95,80 +98,93 @@
 
                                     <!-- 내게 신청한-->
                                     <div class="gm_tab_page hide" id="gm_tab_page_2" class="hide">
-                                        <div class="gm_appl">
-                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-                                            <div class="gm_info">
-                                                <p>김○아 부모</p>
-                                                <p>희망시급:9,000원</p>
-                                                <p>지원시간:2020.01.06 17:54</p>
-                                                <p class="wait_response">
-                                                    부모님이 내 답변을 기다리고 있습니다. <br>
-                                                    답변 마감 시간 : 2020.01.09 17:54 <!--답변 마감 시간은 신청일로 부터 3일-->
-                                                </p>
-                                               <button type="button" id="interview_no">거절</button>
-                                               <button type="button" id="interview_ok">수락</button>
-                                               
-                                               <div class="reason_deny">
-					                                <h5>거절 유형을 선택해주세요.</h5>
-					                                <div class="deny_radio">
-					                                    <div>
-					                                        <input type="radio" name="reason_deny" id="deny1" class="deny">
-					                                        <label for="deny1">최근에 다른 부모님과 활동을 시작하였습니다.</label>
-					                                    </div>
-					                                    <div>
-					                                        <input type="radio" name="reason_deny" id="deny2" class="deny">
-					                                        <label for="deny2">다른 부모님과 인터뷰 후, 결과를 기다리고 있습니다.</label>
-					                                    </div>
-					                                    <div>
-					                                        <input type="radio" name="reason_deny" id="deny3" class="deny">
-					                                        <label for="deny3">이동하기에 먼 거리입니다.</label>
-					                                    </div>
-					                                    <div>
-					                                        <input type="radio" name="reason_deny" id="deny4" class="deny">
-					                                        <label for="deny4">요청하신 시간에는 어렵습니다.</label>
-					                                    </div>
-					                                    <div>
-					                                        <input type="radio" name="reason_deny" id="deny5" class="deny">
-					                                        <label for="deny5">요청하신 활동은 자신있는 분야가 아닙니다.</label>
-					                                    </div>
-					                                    <div>
-					                                        <input type="radio" name="reason_deny" id="deny6" class="deny">
-					                                        <label for="deny6">아이 나이가 너무 어립니다.</label>
-					                                    </div>
-					                                    <div>
-					                                        <input type="radio" name="reason_deny" id="deny7" class="deny">
-					                                        <label for="deny7">피치 못할 사정으로 앞으로 맘시터 활동이 어렵습니다.</label>
-					                                    </div>
-					                                    <div>
-					                                        <input type="radio" name="reason_deny" id="deny8" class="deny">
-					                                        <label for="deny8">그 밖에 다른 이유로 거절합니다.</label>
-					                                    </div>
-					                                </div>
-					                                <div class="deny_text">
-					                                    <h5>거절 사유를 알려주세요.</h5>
-					                                    <p>* 개인정보(상세 주소, 연락처)를 기입할 경우, 맘시터 자격을 영구적으로 잃게 되니 유의해주세요.</p>
-					                                    <textarea name="reason_deny" id="" cols="30" rows="10" 
-					                                    placeholder="예) 저에게 신청해주셔서 감사합니다. 그런데 제가 할 수 있는 활동이 아닌 것 같습니다.ㅠㅠ"></textarea>
-					                                </div>
-					                                <div>
-					                                    <button type="submit">전송하기</button>
-					                                </div> 
-					                            </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="gm_appl">
-                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-                                            <div class="gm_info">
-                                                <p>남○재 부모</p>
-                                                <p>희망시급:10,000원</p>
-                                                <p>지원시간:2020.10.19 10:27</p>
-                                                <p class="gm_endtime">
-                                                    - 답변시간 초과 - <br>
-                                                    아쉽게 답변시간을 놓치셨습니다.
-                                                </p>
-                                            </div>
-                                        </div>
+                                        <%--<c:choose>
+                                        	 조회결과가 없는경우 
+                                        	<c:when test="${output == null || fn:length(otuput) == 0}">
+                                        		<p>조회결과가 없습니다.</p>
+                                        	</c:when> --%>
+                                        	
+                                        	<%-- 조회결과가 있는 경우 --%>
+                                        	<%-- <c:otherwise> --%>
+                                        		<c:forEach var="item" items="${output}" varStatus="status">
+                                        			<div class="gm_appl">
+			                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
+			                                            <div class="gm_info">
+			                                                <p>${item.name} 부모</p>
+			                                                <p>희망시급: ${item.payment} 원</p>
+			                                                <p>지원시간: ${item.applydate} </p>
+			                                                <p class="gm_endtime">
+			                                                	<%-- 인터뷰 요청에 응답하지 않았을 경우 --%>
+			                                                    <c:if test="${item.accept == null}">
+			                                                    	<p class="wait_response">
+					                                                    부모님이 내 답변을 기다리고 있습니다. <br>
+					                                                    답변 마감 시간 : 2020.01.09 17:54 <!--답변 마감 시간은 신청일로 부터 3일-->
+					                                                </p>
+					                                              
+					                                               <form id="agreeForm">
+						                                               <input type="hidden" id="accept_edit1" name="momno" value="${item.momno}">
+	                        										   <input type="hidden" id="accept_edit2" name="sitterno" value="${item.sitterno}">
+	                        										   <input type="hidden" id="accept_edit3" name="cntno" value="${item.cntno}">
+					                                               		<button type="submit" class="interview_ok">수락</button>
+					                                               </form>
+					                                               <button type="button" class="interview_no">거절</button>
+					                                               
+					                                               <div class="reason_deny hide">
+										                                <h5>거절 유형을 선택해주세요.</h5>
+										                                <div class="deny_radio">
+										                                    <div>
+										                                        <input type="radio" name="reason_deny" id="deny1" class="deny">
+										                                        <label for="deny1">최근에 다른 부모님과 활동을 시작하였습니다.</label>
+										                                    </div>
+										                                    <div>
+										                                        <input type="radio" name="reason_deny" id="deny2" class="deny">
+										                                        <label for="deny2">다른 부모님과 인터뷰 후, 결과를 기다리고 있습니다.</label>
+										                                    </div>
+										                                    <div>
+										                                        <input type="radio" name="reason_deny" id="deny3" class="deny">
+										                                        <label for="deny3">이동하기에 먼 거리입니다.</label>
+										                                    </div>
+										                                    <div>
+										                                        <input type="radio" name="reason_deny" id="deny4" class="deny">
+										                                        <label for="deny4">요청하신 시간에는 어렵습니다.</label>
+										                                    </div>
+										                                    <div>
+										                                        <input type="radio" name="reason_deny" id="deny5" class="deny">
+										                                        <label for="deny5">요청하신 활동은 자신있는 분야가 아닙니다.</label>
+										                                    </div>
+										                                    <div>
+										                                        <input type="radio" name="reason_deny" id="deny6" class="deny">
+										                                        <label for="deny6">아이 나이가 너무 어립니다.</label>
+										                                    </div>
+										                                    <div>
+										                                        <input type="radio" name="reason_deny" id="deny7" class="deny">
+										                                        <label for="deny7">피치 못할 사정으로 앞으로 맘시터 활동이 어렵습니다.</label>
+										                                    </div>
+										                                    <div>
+										                                        <input type="radio" name="reason_deny" id="deny8" class="deny">
+										                                        <label for="deny8">그 밖에 다른 이유로 거절합니다.</label>
+										                                    </div>
+										                                </div>
+										                                <div>
+										                                    <button type="submit">전송하기</button>
+										                                </div> 
+										                            </div>
+			                                                    </c:if>
+			                                                    <%-- 인터뷰 요청을 수락했을 경우 --%>
+			                                                    <c:if test="${item.accept == 'Y'}">
+			                                                    	<p>${item.phone} 여기로 연락해라</p>
+			                                                    </c:if>
+			                                                    <%-- 인터뷰 요청을 거절했을 경우 --%>
+			                                                    <c:if test="${item.accept == 'N'}">
+			                                                    	<p>${item.deny_type}</p>
+			                                                    </c:if> 
+			                                                </p>
+			                                            </div>
+			                                        </div>
+			                                        <hr>
+                                        		</c:forEach>
+                                        	<%-- </c:otherwise>
+                                        </c:choose>--%>
                                     </div>
                                     <!-- end 내게 신청한-->
                                 </div>
@@ -207,10 +223,26 @@
             </div>
         </div>
 		<!-- Javascript -->
-		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+     	<!--Google CDN 서버로부터 jQuery 참조 -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<!-- jQuery Ajax Form plugin CDN -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+		<!-- jQuery Ajax Setup -->
+		<script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
         <script type="text/javascript">
         	 $(function() {
+        		 console.log("${output}");
+        		 
+        		 $("#agreeForm").ajaxForm({
+        			 method: "POST",
+        		 	success: function(json) {
+        		 		if (json.rt == "OK") {
+        		 			window.location = "${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do";
+        		 		}
+        		 	}
+        		 });
+        		 
                 $(".gm_tab_item").click(function(e) {
                     e.preventDefault();
 
@@ -225,20 +257,16 @@
                     $(".gm_tab_panel > div").not($(target)).addClass("hide");
                 }); 
                 
-                $("#interview_ok").click(function(e) {
-                    var result = confirm("수락하시겠습니까?");
-
-                    if (result) {
-                        alert("수락하였습니다.");
-                        location.href="${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do";
-                    } else {
-                        location.href="${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do";
-                    }
+                $(".interview_ok").click(function(e) {
+                	$(this).find(".reason_deny").addClass("hide");
+                }); 
+                
+                $(".interview_no").click(function(e) {
+                	e.preventDefault();
+                	
+                	$(this).next().removeClass("hide");
                 });
                 
-                $("#interview_no").click(function(e) {
-                	e.preventDefault();
-                });
             });
         </script>
 	</body>

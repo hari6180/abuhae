@@ -1,14 +1,36 @@
 package study.team.abuhae.controllers;
 
+import java.util.List;
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import study.team.abuhae.helper.RegexHelper;
+import study.team.abuhae.helper.WebHelper;
+import study.team.abuhae.model.Connect;
+import study.team.abuhae.service.impl.SitterMypageServiceImpl;
 
 @Controller
 public class SitterMypageController {
+	@Autowired
+	WebHelper webHelper;
+	
+	@Autowired
+	RegexHelper regexHelper;
+	
+	@Autowired
+	SitterMypageServiceImpl sitterMypageService;
+	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
+	@Value("#{servletContext.contextPath}")
+	String contextPath;
+	
 	/** mypage controller */
 	@RequestMapping(value = "/mypage/mypage_sitter/sitter_mypage.do", method = RequestMethod.GET)
 	public String sitter_mypage(Locale locale, Model model) {
@@ -25,9 +47,23 @@ public class SitterMypageController {
 	
 	/** 내 구직 현황 페이지 */
 	@RequestMapping(value = "/mypage/mypage_sitter/get_mom_mps.do", method = RequestMethod.GET)
-	public String get_mom(Locale locale, Model model) {
-
-		return "mypage/mypage_sitter/get_mom_mps";
+	public ModelAndView get_mom(Model model,
+			@RequestParam(value = "memberno", defaultValue = "0") int memberno) {
+		/** 데이터 조회 */
+		Connect input = new Connect();
+		input.setMemberno(102);
+		
+		List<Connect> output = null;
+		
+		try {
+			output = sitterMypageService.getConnectList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("mypage/mypage_sitter/get_mom_mps");
 	}
 	
 	/** 내 구직현황 - 거절 페이지 */

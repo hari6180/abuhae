@@ -5,10 +5,7 @@ import lombok.Data;
 @Data
 public class Review {
 	private int revno;   // 리뷰 일련번호
-	private String category;   // 채용/인터뷰/실패/맘시터 후기 분류
 	private String who;   // 리뷰 작성자 타입(맘/시터)
-	private String writer;   // 작성자 이름
-	private String kids_num;   // 아이 수
 	private String rev_rate;   // 별점(1,2,3,4,5)
 	private String reg_date;   // 후기 작성일자
 	private String contents;   // 후기 내용

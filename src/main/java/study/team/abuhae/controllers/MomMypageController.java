@@ -38,10 +38,10 @@ public class MomMypageController {
 	/** mypage controller */
 	@RequestMapping(value = "/mypage/mypage_mom/mom_mypage.do", method = RequestMethod.GET)
 	public String mom_mypage(Model model,HttpServletResponse response, HttpServletRequest request,
-			@RequestParam(value = "memberno") int memberno) {
+			@RequestParam(value = "momno") int momno) {
 		// 데이터 조회에 필요한 조건값 Beans에 저장
 		Mom_info input = new Mom_info();
-		input.setMemberno(memberno);
+		input.setMomno(momno);
 		
 		// 조회 결과를 저장할 객체 선언
 		Mom_info output = null;
