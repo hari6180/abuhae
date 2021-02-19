@@ -574,7 +574,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- Handlebar 템플릿 코드 -->
     <script id="job-list-tmpl" type="text/x-handlebars-template">
       {{#each item}}
-        <div class="job_item_group" onclick="location.href='${pageContext.request.contextPath}/page_detail/mom_page_detail_calendar.do?momno={{momno}}'">
+        <div class="job_item_group" onclick="location.href='${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_detail?momno={{momno}}'">
           <div class="item_body">
             <div class="profile_img_group">
               <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
