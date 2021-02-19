@@ -24,11 +24,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- job_search.css-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/job_search.css" />
 
-    <!-- sweetalert 사용 -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!--Google CDN 서버로부터 jQuery 참조 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
@@ -36,10 +36,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/ajax/ajax_helper.css" />
 
-    <!--Google CDN 서버로부터 jQuery 참조 -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Handlebar CDN 참조 -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
+
+    <!-- sweetalert 사용 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script type="text/Javascript">
           $(function () {
@@ -386,13 +387,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <div class="care_day_wrap">
                     <h4>요일</h4>
                     <div class="care_day_group">
-                      <button class="care_day"><div>월</div></button>
-                      <button class="care_day"><div>화</div></button>
-                      <button class="care_day"><div>수</div></button>
-                      <button class="care_day"><div>목</div></button>
-                      <button class="care_day"><div>금</div></button>
-                      <button class="care_day"><div>토</div></button>
-                      <button class="care_day"><div>일</div></button>
+                      <button class="care_day" data-day="mon"><div>월</div></button>
+                      <button class="care_day" data-day="tue"><div>화</div></button>
+                      <button class="care_day" data-day="wed"><div>수</div></button>
+                      <button class="care_day" data-day="thu"><div>목</div></button>
+                      <button class="care_day" data-day="fri"><div>금</div></button>
+                      <button class="care_day" data-day="sat"><div>토</div></button>
+                      <button class="care_day" data-day="sun"><div>일</div></button>
                     </div>
                   </div>
                   <hr />
@@ -777,6 +778,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         const caredays = []; // 돌봄 요일
         const time_range = []; // 돌봄 시간대
         const act = []; // 돌봄 종류
+        let min_pay = $("#min_pay").val(); // 최저 시급
+        let max_pay = $("#max_pay").val(); // 최고 시급
+        let kids_cnt = $("input[name=kids]:checked").val(); // 아이 수
 
         // 아이나이 버튼 클릭
         $(".ages").click(function (e) {
@@ -860,6 +864,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               caredays: caredays,
               time_range: time_range,
               act: act,
+              min_pay: min_pay,
+              max_pay: max_pay,
+              kids_cnt: kids_cnt,
             },
             function (json) {
               var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기

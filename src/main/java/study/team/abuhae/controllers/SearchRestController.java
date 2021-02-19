@@ -136,12 +136,18 @@ public class SearchRestController {
     /** 일자리 찾기 페이지 */
     @RequestMapping(value = "/search/job_search", method = RequestMethod.GET)
     public Map<String, Object> get_mom_list(
-            // 검색어
-            @RequestParam(value="keyword", required=false) String keyword,
             // 페이지 구현에서 사용할 현재 페이지 번호
             @RequestParam(value="page", defaultValue="1") int nowPage,
             // 정렬 조건
-            @RequestParam(value = "order", defaultValue = "null") String order){
+            @RequestParam(value = "order", defaultValue = "null") String order,
+            /** 상세 검색 **/
+            @RequestParam(value="act[]", required=false) String[] act,
+            @RequestParam(value="kidsage[]", required=false) String[] kidsAge,
+            @RequestParam(value="caredays[]", required=false) String[] caredays,
+            @RequestParam(value="time_range[]", required=false)String[] timeRange,
+            @RequestParam(value="min_pay", required = false) String min_pay,
+            @RequestParam(value="max_pay", required = false) String max_pay,
+            @RequestParam(value="kids_cnt", required = false) String kids_cnt) {
         
         /** 1) 페이지 구현에 필요한 변수값 생성 */
         int totalCount = 0;              // 전체 게시글 수
@@ -167,6 +173,47 @@ public class SearchRestController {
 			
             // 정렬조건의 값을 Beans에 저장
 			Mom_info.setOrder(order);
+			
+			// 검색조건의 값을 Beans에 저장
+			if(act != null) {
+				for (int i=0; i<act.length; i++) {
+					String temp1 = act[i];
+					String temp2 = temp1.replace("'", "");
+					act[i] = temp2;
+					log.info("temp2" + temp2);
+					input.setAct(act);
+				}
+			}
+			
+			if(kidsAge != null) {
+				for (int i=0; i<kidsAge.length; i++) {
+					String temp1 = kidsAge[i];
+					String temp2 = temp1.replace("'", "");
+					kidsAge[i] = temp2;
+					log.info("temp2" + temp2);
+					input.setKidsAge(kidsAge);
+				}
+			}
+			
+			if(caredays != null) {
+				input.setCaredays(caredays);
+			}
+			
+			if(timeRange != null) {
+				input.setTimeRange(timeRange);
+			}
+			
+			if(min_pay != null) {
+				input.setMin_pay(min_pay);
+			}
+			
+			if(max_pay != null) {
+				input.setMax_pay(max_pay);
+			}
+			
+			if(kids_cnt != null) {
+				input.setKids_cnt(kids_cnt);
+			}
             
             // 데이터 조회하기
             output = searchService.searchMom(input);
@@ -189,7 +236,6 @@ public class SearchRestController {
 
         /** 3) JSON 출력하기 */
         Map<String, Object> data = new HashMap<String, Object>();
-        data.put("keyword", keyword);
         data.put("item", output);
         data.put("meta", pageData);
 

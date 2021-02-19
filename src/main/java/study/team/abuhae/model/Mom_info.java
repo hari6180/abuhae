@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
+import clojure.pprint.print_table__init;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -58,12 +59,15 @@ public class Mom_info extends Member {
 
 	
 	/** 3) 검색 조건용 추가 컬럼 */
-	private static String[] actList;		// 원하는 활동유형 검색 조건
-	private static String[] kidsAge;		// 아이 나이
-	private static String[] caredays;		// 돌봄 요일
-	private static String[] timeRange;		// 돌봄 시간대
-	private static String[] sitterType;		// 맘시터 유형
-	private static String[] sitterAge;		// 시터 나이
+	private String[] act;		// 원하는 활동유형 검색 조건
+	private String[] kidsAge;		// 아이 나이
+	private String[] caredays;		// 돌봄 요일
+	private String[] timeRange;		// 돌봄 시간대
+	private String min_pay;			// 최저 시급
+	private String max_pay;			// 최고 시급
+	private String kids_cnt;			// 아이 수
+
+
 	
 	
 	
