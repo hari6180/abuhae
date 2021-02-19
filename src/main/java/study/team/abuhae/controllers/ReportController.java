@@ -55,7 +55,7 @@ public class ReportController {
 		
 		@RequestMapping(value = "/page_detail/mom_page_detail/mom_report_ok.do", method = RequestMethod.POST)
 		public ModelAndView add_ok(Model model,
-				
+				HttpServletResponse response,
 				@RequestParam(value = "who", defaultValue = "") char who,
 				@RequestParam(value = "type", defaultValue = "") char type,
 				@RequestParam(value = "contents", required = false, defaultValue = "") String contents,
@@ -76,7 +76,7 @@ public class ReportController {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
 			
-			String redirectUrl = contextPath + "/page_detail/mom_page_detail/mom_detail.do?momno=" + input.getMomno();
+			String redirectUrl = contextPath + "/page_detail/mom_page_detail/mom_report_ok.do?momno=" + input.getMomno();
 			return webHelper.redirect(redirectUrl, "신고가 완료되었습니다.");
 		}
 				

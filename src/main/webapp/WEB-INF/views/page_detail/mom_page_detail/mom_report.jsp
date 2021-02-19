@@ -33,7 +33,7 @@
 <body>		
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
-			<form action="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report_ok.do?" method="post">
+			<form action="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report_ok.do?" method="post" name="abc">
 				<div class="siren_header">
 					<div class="x_btn_area">
 						<button type="button" class="x_btn" onclick = "history.back() ">
@@ -97,9 +97,9 @@
 						</p>
 					</div> <!-- fin. desc_area -->
 					
-					<input type="hidden" name="who" value="who">
-					<input type="hidden" name="momno" value="momno">
-					<input type="hidden" name="sitterno" value="sitterno">
+					<input type="hidden" name="who" value="${output.who}">
+					<input type="hidden" name="momno" value="${output.momno}">
+					<input type="hidden" name="sitterno" value="${output.sitterno}">
 				</div> <!-- fin. siren_body -->
 				</form>
 			</div> <!-- fin. col-xs-12 -->
@@ -113,7 +113,7 @@
 			});
 			
 		})
-		    function success() {
+		   function success() {
 		    	if ($("input:radio[name='type']").is(":checked")==false) {
 		    		swal("신고유형을 선택하여 주십시오.");
 		    		return;

@@ -12,9 +12,10 @@ public class Report {
 	private String contents; // 신고내용
 	private int momno; // 맘 일련번호
 	private int sitterno; // 시터 일련번호
+	private String reg_date; // 신고한 날짜
 	
 	/** join 절에 따른 멤버변수 추가 - 다예 */
 	private String name;
 	
-	private String reg_date;
+	
 }

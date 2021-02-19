@@ -140,19 +140,15 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, momno,
+		AS birthdate, momno, want_age,
+		json_extract(schedule, '$.startdate') AS schedule,
+		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
+		REPLACE(json_extract(schedule, '$.day'),'"','') AS days, schedule_ok,
 		job_opening, want_act1, want_act2, want_act3, apply_content, apply_title,
 		si, gu, dong, signup_date, description, sitter_gender, care_type, 
-		payment, payment_ok, CASE
-	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
-	WHEN TIMESTAMPDIFF(minute, openingdate, now()) < 60 THEN
-	CONCAT(TIMESTAMPDIFF(minute, openingdate, now()), '분 전')
-	WHEN TIMESTAMPDIFF(hour, openingdate, now()) < 24 THEN
-	CONCAT(TIMESTAMPDIFF(hour, openingdate, now()), '시간 전')
-	WHEN TIMESTAMPDIFF(day, openingdate, now()) < 30 THEN]]>
-		CONCAT(TIMESTAMPDIFF(day, openingdate, now()), '일 전')
-		END AS
-		openingdate, startdate,
+		payment, payment_ok,
+		(SELECT DATE_FORMAT(openingdate, "%Y년 %m월 %d일") FROM member b WHERE b.memberno=m.memberno) AS openingdate
+		, startdate,
 		(SELECT COUNT(heartno) FROM heart h WHERE m.momno=h.momno AND who='S') AS heartno,
 		(SELECT COUNT(cntno) FROM connect c WHERE c.momno=m.momno AND who='S') AS cntno
 		FROM mom_info m
@@ -194,7 +190,7 @@
 	<!-- 신고하기 -->
 	<insert id="insertReport" parameterType="study.team.abuhae.model.Report"
 		useGeneratedKeys="true" keyProperty="reportno">
-		INSERT INTO report (reportno, who, type, contents, momno, sitterno, now()) 
+		INSERT INTO report (reportno, who, type, contents, momno, sitterno, reg_date) 
 		VALUES (#{reportno}, #{who}, #{type}, #{contents}, #{momno}, #{sitterno}, #{reg_date});
 	</insert>
 	
@@ -208,5 +204,54 @@
 			who=#{who}
 		</where>
 	</select>
+	
+	<!-- 활동 유형 && 상세 검색
+      <where>
+         <if test="actList != null">
+            want_act1 || want_act2 || want_act3 in
+            <foreach item="item1" collection="actList" open="("
+               close=")" separator=",">
+               #{item1}
+            </foreach>
+         </if>
+         <if test="kidsAge != null">
+            AND want_age IN
+            <foreach item="item2" collection="kidsAge" open="("
+               close=")" separator=",">
+               #{item2}
+            </foreach>
+         </if>
+         <if test="caredays != null">
+         AND JSON_CONTAINS(schedule_set->'$.day',CAST('
+            <foreach item="item3" collection="caredays" open="["
+               close="]" separator=",">
+               "${item3}"
+            </foreach>
+            ' AS JSON))
+         </if>
+
+         <if test="sitterType != null">
+            AND sitter_type IN
+            <foreach item="item5" collection="sitterType" open="("
+               close=")" separator=",">
+               #{item5}
+            </foreach>
+         </if>
+         <if test="sitterAge != null">
+            AND FLOOR(
+      (CAST(REPLACE(current_date,'-','') AS
+      unsigned) -
+      CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
+       IN
+            <foreach item="item6" collection="sitterAge" open="("
+               close=")" separator=",">
+               ${item6}
+            </foreach>
+         </if>
+      </where>
+       -->
+
+		
+		
 
 </mapper>
