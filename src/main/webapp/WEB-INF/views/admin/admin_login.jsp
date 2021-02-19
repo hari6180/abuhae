@@ -98,7 +98,7 @@
 <body>
 	<div class="app">
 		<div class="container">
-			<form role="form" class="form_box" method="post" action="${pageContext.request.contextPath}/admin/admin_login_ok.do">
+			<form role="form" class="form_box" method="post" action="${pageContext.request.contextPath}/admin/admin_login_ok">
 				<div class="main_logo">
 					<a href="${pageContext.request.contextPath}/abuhae">
 						<img src="${pageContext.request.contextPath}/assets/img/logo(1).png" class="logo" />

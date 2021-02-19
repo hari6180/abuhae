@@ -126,16 +126,16 @@
           location.replace("${pageContext.request.contextPath}/search/job_search.do");
         });
         $("#menu_mypage").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do");
+          location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${login.sitterno}");
         });
         $("#menu_application").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile.do");
+          location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile.do?sitterno=${login.sitterno}");
         });
         $("#menu_buy").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/buy/sitter_ticket.do");
+          location.replace("${pageContext.request.contextPath}/buy/sitter_ticket.do?sitterno=${login.sitterno}");
         });
         $("#menu_cert").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/certify.do");
+          location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/certify.do?sitterno=${login.sitterno}");
         });
         $("#other_sitter").click(function (e) {
           location.replace("${pageContext.request.contextPath}/search/sitter_search.do");

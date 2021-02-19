@@ -45,14 +45,6 @@ public class MemberServiceImpl implements MemberService {
 				throw new NullPointerException("result=null");
 			}
 
-			// 반환받은 객체가 null이 아니고, 패스워드가 같다면 로그인 성공으로 침
-			if (result != null && result.getPassword().equals(input.getPassword())) {
-				return result;
-			} else {
-				// 일치하는 정보가 없다면 null 리턴
-				return null;
-			}
-
 		} catch (NullPointerException e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("조회된 데이터가 없습니다.");
@@ -60,6 +52,9 @@ public class MemberServiceImpl implements MemberService {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");
 		}
+		
+		//반환된 데이터가 있으면 데이터 조회가 있다는 뜻
+		return result;
 	}
 
 	/*

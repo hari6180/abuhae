@@ -299,7 +299,7 @@ public class AdminController {
 		return "admin/admin_login";
 	}
 	
-	@RequestMapping(value = "/admin/admin_login_ok.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/admin_login_ok", method = RequestMethod.POST)
 	public ModelAndView login_ok(Model model, HttpServletRequest request,
 			@RequestParam(value = "adminid") String adminid,
 			@RequestParam(value = "adminpw") String adminpw) {

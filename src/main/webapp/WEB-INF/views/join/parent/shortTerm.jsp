@@ -22,7 +22,6 @@
                         <option value="11:00" selected>오전 11:00</option>
                         <option value="11:30">오전 11:30</option>
                         <option value="12:00">오전 12:00</option>
-                        <option value="12:30">오전 12:30</option>
                     </select>
                 </div>
             </div>
@@ -42,7 +41,6 @@
                         <option value="21:00" selected>오후 21:00</option>
                         <option value="21:30">오후 21:30</option>
                         <option value="22:00">오후 22:00</option>
-                        <option value="22:30">오후 22:30</option>
                     </select>
                 </div>
             </div>

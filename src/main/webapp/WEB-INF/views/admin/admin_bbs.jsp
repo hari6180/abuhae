@@ -207,6 +207,8 @@
 		<script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
 		<script>
 			$(function(){
+
+				//console.log("${output}");
 				//올체크
 				$("#all_check").change(function(){
 					//모든 hobby의 상태를 올체크와 동일하게

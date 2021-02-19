@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.helper.AgeHelper;
 import study.team.abuhae.model.Sitter_info;
@@ -22,8 +23,8 @@ public class Page_detail_sitterController {
 	DetailService detailService;
 	
 	// 시터 상세페이지
-	@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_detail.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String sitter_detail(Model model, HttpServletResponse response,
+	@RequestMapping(value = "/page_detail/sitter_detail.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView sitter_detail(Model model, HttpServletResponse response,
 		@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
@@ -61,13 +62,14 @@ public class Page_detail_sitterController {
 		}
 		model.addAttribute("output", output);
 		model.addAttribute("insertput", insertput);
-		return "/page_detail/sitter_page_detail/sitter_detail";
+		return new ModelAndView("/page_detail/sitter_page_detail/sitter_detail");
+		//return "/page_detail/sitter_page_detail/sitter_detail";
 	}
 	
 	
 	// 시터 상세페이지 > 인터뷰 페이지
-	@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_interview.do", method = RequestMethod.GET)
-	public String sitter_interview(Model model, HttpServletResponse response,	
+	@RequestMapping(value = "/page_detail/sitter_interview.do", method = RequestMethod.GET)
+	public ModelAndView sitter_interview(Model model, HttpServletResponse response,	
 		@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 	
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
@@ -86,6 +88,7 @@ public class Page_detail_sitterController {
 		}
 			
 		model.addAttribute("output", output);
-		return "/page_detail/sitter_page_detail/sitter_interview";
+		return new ModelAndView("/page_detail/sitter_page_detail/sitter_interview");
+		//return "/page_detail/sitter_page_detail/sitter_interview";
 	}
 }

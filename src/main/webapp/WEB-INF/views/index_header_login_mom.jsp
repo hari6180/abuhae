@@ -127,17 +127,17 @@
           location.replace("${pageContext.request.contextPath}/search/sitter_search.do");
         });
         $("#menu_mypage").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do");
+          location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${login.momno}");
         });
         $("#menu_application").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/update_appl.do");
+          location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/update_appl.do?momno=${login.momno}");
         });
         $("#menu_buy").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/buy/mom_ticket.do");
+          location.replace("${pageContext.request.contextPath}/buy/mom_ticket.do?momno=${login.momno}");
         });
 
         $("#intro_btn").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/abu-service/introduce.do");
+          location.replace("${pageContext.request.contextPath}/abu-service/introduce.do?momno=${login.momno}");
         });
         $("#other_parent").click(function (e) {
           location.replace("${pageContext.request.contextPath}/search/job_search.do");

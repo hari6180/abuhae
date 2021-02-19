@@ -57,20 +57,21 @@ html, body {
 	<div id="app">
 		<div class="container">
 			<div id="menu">
-				<c:if test="${isLogin ==true }">
+				<c:if test="${login != null }">
 					<c:choose>
-						<c:when test="${fn:contains(loginType, 'M')}">
+						<c:when test="${fn:contains(login.type, 'M')}">
 							<%@ include file="index_header_login_mom.jsp"%>
 						</c:when>
-						<c:when test="${fn:contains(loginType, 'S')}">
+						<c:when test="${fn:contains(login.type, 'S')}">
 							<%@ include file="index_header_login_sitter.jsp"%>
 						</c:when>
 					</c:choose>
 				</c:if>
-				<c:if test="${isLogin == null }">
+				<c:if test="${login == null }">
 					<%@ include file="index_header.jsp"%>
 				</c:if>
-
+				<%-- <h3>${login.type}, ${login.momno }</h3>
+				<p>${login.sitterno }</p> --%>
 			</div>
 
 			<!--section-->

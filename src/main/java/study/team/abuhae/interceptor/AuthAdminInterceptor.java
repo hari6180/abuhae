@@ -8,50 +8,44 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import lombok.extern.slf4j.Slf4j;
-import study.team.abuhae.model.Member;
-import study.team.abuhae.model.Mom_info;
-import study.team.abuhae.model.Sitter_info;
-
-@Slf4j
-public class AppInterceptor implements HandlerInterceptor {
+public class AuthAdminInterceptor implements HandlerInterceptor {
 	
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
-	
+
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		
 		//session 객체 가져오기
 	 	HttpSession session = request.getSession();
-	 	//login 처리 담당하는 사용자 정보
-	 	//Object obj = session.getAttribute("login");
-	 	Member member = (Member) session.getAttribute("login");
-
+	 	//admin의 login 여부 확인하는 여부
+	 	Object obj = session.getAttribute("Adminlogin");
 	 	
-	 	if(member != null) {
-	 		log.debug("현재 로그인한 session: "+member.getMemberno());
-	 	} else {
-	 		log.debug("현재 로그인한 session: 없음");
-	 	}
+	 	if ( obj == null ){
+            // 로그인이 안되어 있는 상태임으로 관리자 메인으로 돌려보냄
+            response.sendRedirect(contextPath+"/admin");
+            return false; // 더이상 컨트롤러 요청으로 가지 않도록 false로 반환함
+        }
 	 	
-
-		return true;
+	 	
+	 	
+		// TODO Auto-generated method stub
+		return HandlerInterceptor.super.preHandle(request, response, handler);
 	}
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		//log.debug("AppInterceptor.postHandle");
+		// TODO Auto-generated method stub
 		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		//log.debug("AppInterceptor.afterCompletion");
+		// TODO Auto-generated method stub
 		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
 	}
-
 	
 }

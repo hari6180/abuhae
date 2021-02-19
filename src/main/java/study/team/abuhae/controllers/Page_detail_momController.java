@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Sitter_info;
@@ -20,8 +21,8 @@ public class Page_detail_momController {
 	DetailService detailService;
 	
 	// 맘 상세페이지
-	@RequestMapping(value = "/page_detail/mom_page_detail/mom_detail.do", method = RequestMethod.GET)
-	public String mom_detail(Model model,
+	@RequestMapping(value = "/page_detail/mom_detail.do", method = RequestMethod.GET)
+	public ModelAndView mom_detail(Model model,
 			@RequestParam(value = "momno", defaultValue = "0") int momno) {
 		
 			// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
@@ -39,12 +40,13 @@ public class Page_detail_momController {
 				e.printStackTrace();
 			}
 			model.addAttribute("output", output);
-			return "/page_detail/mom_page_detail/mom_detail";
+			return new ModelAndView("/page_detail/mom_page_detail/mom_detail");
+			//return "/page_detail/mom_page_detail/mom_detail";
 	}
 	
 	// 맘 상세페이지 > 인터뷰 페이지
-		@RequestMapping(value = "/page_detail/mom_page_detail/mom_interview.do", method = RequestMethod.GET)
-		public String mom_interview(Model model,
+		@RequestMapping(value = "/page_detail/mom_interview.do", method = RequestMethod.GET)
+		public ModelAndView mom_interview(Model model,
 				@RequestParam(value = "momno", defaultValue = "0") int momno) {
 			
 			// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
@@ -63,7 +65,8 @@ public class Page_detail_momController {
 			}
 			
 			model.addAttribute("output", output);
-			return "/page_detail/mom_page_detail/mom_interview";
+			return new ModelAndView("/page_detail/mom_page_detail/mom_interview");
+			//return "/page_detail/mom_page_detail/mom_interview";
 	}
 
 }

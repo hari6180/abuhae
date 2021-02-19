@@ -37,10 +37,11 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login/login_ok.do", method = RequestMethod.POST)
-	private ModelAndView login_ok(Model model, HttpServletResponse response, HttpServletRequest request,
-			@RequestParam(value = "user_id") String user_id, @RequestParam(value = "user_pw") String user_pw) {
-		// session 객체 만들기
-		HttpSession session = request.getSession();
+	private ModelAndView login_ok(Model model, HttpServletResponse response, 
+			HttpServletRequest request, HttpSession session,
+			@RequestParam(value = "user_id") String user_id, 
+			@RequestParam(value = "user_pw") String user_pw) {
+
 		// 데이터 조회할 객체
 		Mom_info input = new Mom_info();
 		input.setId(user_id);
@@ -52,14 +53,20 @@ public class LoginController {
 		try {
 			// 특정 아이디에 대한 결과 조회
 			login = (Mom_info) memberService.getMemberLogin(input);
+			
+		
+			if ( session.getAttribute("isLogin") != null ){
+	            // 기존에 login이란 세션 값이 존재한다면
+	            session.removeAttribute("isLogin"); // 기존값을 제거해 준다.
+	        }
 
 			if (login != null) {
 				// 조회된 데이터가 널이 아니라면 로그인 성공
 				// session.setAttribute("islogin", output);
 				session.setAttribute("isLogin", true); // 로그인 여부 세션
-				session.setAttribute("loginID", login.getId()); // 로그인한 회원 id 세션
+				//session.setAttribute("loginID", login.getId()); // 로그인한 회원 id 세션
 				session.setAttribute("loginType", login.getType()); // 로그인한 회원 type 세션
-				session.setAttribute("loginNo", login.getMemberno()); // 로그인한 회원 number 세션
+				//session.setAttribute("loginNo", login.getMemberno()); // 로그인한 회원 number 세션
 				session.setAttribute("login", login);
 
 			}
