@@ -348,6 +348,7 @@
 									</div>
 									<!-- ---- -->
 								</div>
+								</div>
 						</div>
 						</div> <!-- fin. possible_active_area -->
 					</div> <!-- fin. possible_active_box -->
@@ -520,6 +521,7 @@
 				<!-- /.modal -->		
 			</div> <!-- fin. col-xs-12 -->
 		</div>
+		
 	
 		<!-- Javascript -->
 		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>

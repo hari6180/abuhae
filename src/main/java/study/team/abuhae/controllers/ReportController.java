@@ -76,7 +76,7 @@ public class ReportController {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
 			
-			String redirectUrl = contextPath + "/page_detail/mom_page_detail/mom_report_ok.do?momno=" + input.getMomno();
+			String redirectUrl = contextPath + "/page_detail/mom_page_detail/mom_detail.do?momno=" + input.getMomno();
 			return webHelper.redirect(redirectUrl, "신고가 완료되었습니다.");
 		}
 				

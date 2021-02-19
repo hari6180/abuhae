@@ -108,6 +108,9 @@
 		AS birthdate, want_age,
 		job_opening, s.sitterno, sitter_type, want_act1, want_act2, want_act3, gender, introduce,
 		si, gu, dong, favorite_act, signup_date, view, 
+		json_extract(schedule_set, '$.startdate') AS schedule_set,
+		REPLACE(json_extract(schedule_set, '$.frequency'),'"','') AS frequency,
+		REPLACE(json_extract(schedule_set, '$.day'),'"','') AS days,
 		<!-- CONCAT(LEFT(payment,2), ',', RIGHT(payment,3)) AS -->
 		payment, payment_ok, cctv, answer, CASE
 	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
@@ -190,8 +193,8 @@
 	<!-- 신고하기 -->
 	<insert id="insertReport" parameterType="study.team.abuhae.model.Report"
 		useGeneratedKeys="true" keyProperty="reportno">
-		INSERT INTO report (reportno, who, type, contents, momno, sitterno, reg_date) 
-		VALUES (#{reportno}, #{who}, #{type}, #{contents}, #{momno}, #{sitterno}, #{reg_date});
+		INSERT INTO report (who, type, contents, momno, sitterno, reg_date) 
+		VALUES (#{who}, #{type}, #{contents}, #{momno}, #{sitterno}, now());
 	</insert>
 	
 	<!-- 리뷰 -->

@@ -33,7 +33,7 @@
 <body>		
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
-			<form action="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report_ok.do?" method="post" name="abc">
+			<form action="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report_ok.do" method="post" name="abc">
 				<div class="siren_header">
 					<div class="x_btn_area">
 						<button type="button" class="x_btn" onclick = "history.back() ">
@@ -81,7 +81,7 @@
 					</div> <!-- fin. siren_type -->
 					<div class="siren_text_box">
 						<h4>신고 내용을 입력해주세요.</h4>
-						<textarea name="contents" placeholder="예). 부적절한 사진이 올라가 있습니다."></textarea>
+						<input type="text" name="contents" placeholder="예). 부적절한 사진이 올라가 있습니다."></input>
 					</div> <!-- fin. siren_text_box -->
 					
 					<div class="desc_area">
@@ -97,9 +97,9 @@
 						</p>
 					</div> <!-- fin. desc_area -->
 					
-					<input type="hidden" name="who" value="${output.who}">
+					<input type="hidden" name="who" value="S">
 					<input type="hidden" name="momno" value="${output.momno}">
-					<input type="hidden" name="sitterno" value="${output.sitterno}">
+					<input type="hidden" name="sitterno" >
 				</div> <!-- fin. siren_body -->
 				</form>
 			</div> <!-- fin. col-xs-12 -->

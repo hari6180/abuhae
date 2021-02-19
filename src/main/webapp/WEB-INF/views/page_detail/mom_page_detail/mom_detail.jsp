@@ -185,49 +185,67 @@
 								</div>
 							</div>
 							<div>
-								<div class="calendar_area">
-									<div class="calendar_main">
-									   <div class="dayDate_box">
-									     <div class="cal-day"></div>
-									     <div class="cal-date"></div>
-									   </div> 
-									   <div class="calendar-box">
-									     <div class="ctr-box clearfix">
-									       <button type="button" title="prev" class="btn-cal prev">
-									       </button>
-									       <span class="cal-month"></span>
-									       <span class="cal-year"></span>
-									       <button type="button" title="next" class="btn-cal next">
-									       </button>
-									     </div>
-									     <table class="cal-table">
-									       <thead>
-									         <tr>
-									           <th>S</th>
-									           <th>M</th>
-									           <th>T</th>
-									           <th>W</th>
-									           <th>T</th>
-									           <th>F</th>
-									           <th>S</th>
-									         </tr>
-									       </thead>
-									       <tbody class="cal-body"></tbody>
-									     </table>
-									     <div class="calendar_time_box">
-									 	<div class="time_start">
-									 		<div style="font-size: 1em; color: #7c7c7c; font-weight: bold;">시작시간</div>
-									 		<div style="font-size: 1em; color: #000; font-weight: bold;">12:00</div>
-									 	</div>
-									 	<div class="time_style"><span style="color: #ff7000"><i class="fas fa-chevron-right"></i></span></div>
-									 	<div class="time_end">
-									 		<div style="font-size: 1em; color: #7c7c7c; font-weight: bold;">종료시간</div>
-									 		<div style="font-size: 1em; color: #000; font-weight: bold;">19:00</div>
-									 	</div>
-									 </div>	<!-- fin. calendar_time_box -->
-									 </div> <!-- fin. calendar_box -->
-								   </div> <!-- fin. calendar_main -->
-								</div> <!-- fin. calendar_area -->
+								<div class="active_time_box">
+								
+									<div class="partTime_line">
+										<div class="partTime">
+											<div class="part">오전</div>
+											<div class="time">07시 ~ 12시</div>
+										</div>
+										<div class="partTime">
+											<div class="part">오후</div>
+											<div class="time">12시 ~ 18시</div>
+										</div>
+										<div class="partTime">
+											<div class="part">저녁</div>
+											<div class="time">18시 ~ 22시</div>
+										</div>
+									</div> <!-- fin. partTime_line -->
+									
+									<div class="partDay_line">
+										월
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										<div class="partDay_no"></div>
+									</div> <!-- fin. partDay_line -->
+									<div class="partDay_line">
+										화
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										<div class="partDay_no"></div>
+									</div> <!-- fin. partDay_line -->
+									<div class="partDay_line">
+										수
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										<div class="partDay_no"></div>
+									</div> <!-- fin. partDay_line -->
+									<div class="partDay_line">
+										목
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										<div class="partDay_no"></div>
+									</div> <!-- fin. partDay_line -->
+									<div class="partDay_line">
+										금
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										<div class="partDay_no"></div>
+									</div> <!-- fin. partDay_line -->
+									<div class="partDay_line">
+										토
+										<div class="partDay_no"></div>
+										<div class="partDay_no"></div>
+										<div class="partDay_no"></div>
+									</div> <!-- fin. partDay_line -->
+									<div class="partDay_line">
+										일
+										<div class="partDay_no"></div>
+										<div class="partDay_no"></div>
+										<div class="partDay_no"></div>
+									</div> <!-- fin. partDay_line -->
+									
+								</div> <!-- fin. active_time_box -->
 							</div>
 						</div> <!-- fin. active_area -->
 					</div> <!-- fin. active_box -->
@@ -255,8 +273,8 @@
 						<div class="possible_age_area">
 							<div>
 							<div class="possible_active_main">
-								<div class="active_line col-xs-3">
-									<c:if test="${output.want_act1!='실내놀이'}">
+									<div class="active_line col-xs-3">
+										<c:if test="${output.want_act1!='실내놀이'}">
 										<c:if test="${output.want_act2!='실내놀이'}">
 										<c:if test="${output.want_act3!='실내놀이'}">
 										<div class="active_no">
@@ -577,14 +595,12 @@
 											</div>
 										</div>
 										</c:if>
-									</div>
+										</div>								
 								</div>
-								<!-- ---- -->
 							</div>
 						</div>
 						</div> <!-- fin. possible_active_area -->
-					</div> <!-- fin. possible_active_box -->
-					<div class="talk_box">
+						<div class="talk_box">
 						<div class="box_name">맘시터 후기</div>
 						<div class="talk_area">
 							<div class="talk_main">
@@ -697,19 +713,22 @@
 							<div class="other_line">
 								<label class="want_care_line">희망 돌봄 방식 : </label>
 								<span class="want_care">${output.care_type}</span>
-							</div>		
+							</div>	
+						</c:if>	
 						</div>
-						</c:if>
 					</div> <!-- fin. possible_age_area -->
 					</div> <!-- fin. possible_age_box -->
 					</c:if>
+					</div> <!-- fin. possible_active_box -->
+					
+					
 				</div> <!-- fin. Main -->
 				<!-- ----------하단고정 부분 시작------------ -->
 			<div class="fixed_box col-xs-12">
 				<div class="fixed_area">
 					<div class="fixed_area_age">
 						<div class="fixed_name">
-							맘시터 구인 3 일째
+							
 						</div>
 						<div class="fixed_age">
 							희망시급 <c:if test="${fn:contains(output.payment_ok,Y)}">(협의가능)</c:if>
@@ -724,9 +743,6 @@
 						<button id="swapHeart" class="btn btn-default swap">
 						    <span class="glyphicon glyphicon-heart-empty" style="color: rgb(0, 143, 105); font-size: 25px;"></span>
 						</button>
-						<div class="jim_number">
-							${output.heartno}
-						</div>
 					</div>
 					<div class="interview_btn">
 						<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_interview.do?momno=${output.momno}';">
@@ -762,12 +778,13 @@
 					<!-- /.modal-dialog -->
 				</div>
 				<!-- /.modal -->		
-			</div> <!-- fin. col-xs-12 -->
-		</div>
+				
+			
 	
 		<!-- Javascript -->
 		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
 		<script type="text/javascript">
+		/*
 		jQuery(function($) {
 			
 			const init = {
@@ -915,7 +932,7 @@
 		        }
 		    
 			  }); // fin. 찜버튼 기능
-			});
+			}); */
 		 </script>
 		 <!-- jquery 파일명 수정 -->
 		<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
