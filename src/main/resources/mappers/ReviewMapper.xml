@@ -21,20 +21,19 @@
 	<!-- 후기 남길 수 있는 회원 조회(맘회원에게 지원하거나 맘회원이 지원) -->
 	<select id="selectReviewMemberList" 
 	parameterType="study.team.abuhae.model.Review" resultMap="ReviewMap">
-		SELECT m.name, m.birthdate, s.si, s.gu, s.dong, s.want_age from connect c INNER JOIN sitter_info s ON s.sitterno=c.sitterno
-		INNER JOIN mom_info i ON i.momno = c.momno INNER JOIN member m ON s.memberno = m.memberno
+		SELECT m.name, m.birthdate, s.si, s.gu, s.dong, s.want_age from connect c 
+		INNER JOIN sitter_info s ON s.sitterno=c.sitterno
+		INNER JOIN mom_info i ON i.momno = c.momno 
+		INNER JOIN member m ON s.memberno = m.memberno
 		
-		<where>
-			c.momno = #{momno}
-		</where>
 	</select>
 	
 	<!-- 리뷰 남기기 -->
 	<insert id="insertReview"
 		parameterType="study.team.abuhae.model.Member" useGeneratedKeys="true"
 		keyProperty="memberno">
-		INSERT INTO Member (category, r_who, writer, kids_num, rev_rate, reg_date, contents, momno, sitterno)
-		VALUES (#{category}, #{r_who}, #{writer}, #{kids_num}, #{rev_rate}, #{reg_date}, #{contents}, #{momno}, #{sitterno});
+		INSERT INTO Member (category, who, writer, kids_num, rev_rate, reg_date, contents, momno, sitterno)
+		VALUES (#{category}, #{who}, #{writer}, #{kids_num}, #{rev_rate}, #{reg_date}, #{contents}, #{momno}, #{sitterno});
 	</insert>
 	
 	<!-- 작성 리뷰 조회하기 -->

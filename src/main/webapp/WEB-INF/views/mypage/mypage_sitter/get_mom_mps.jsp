@@ -105,7 +105,55 @@
                                                     부모님이 내 답변을 기다리고 있습니다. <br>
                                                     답변 마감 시간 : 2020.01.09 17:54 <!--답변 마감 시간은 신청일로 부터 3일-->
                                                 </p>
-                                                <a href="#res_modal" data-toggle="modal"><button type="button" class="response">답변하기</button></a>
+                                               <button type="button" id="interview_no">거절</button>
+                                               <button type="button" id="interview_ok">수락</button>
+                                               
+                                               <div class="reason_deny">
+					                                <h5>거절 유형을 선택해주세요.</h5>
+					                                <div class="deny_radio">
+					                                    <div>
+					                                        <input type="radio" name="reason_deny" id="deny1" class="deny">
+					                                        <label for="deny1">최근에 다른 부모님과 활동을 시작하였습니다.</label>
+					                                    </div>
+					                                    <div>
+					                                        <input type="radio" name="reason_deny" id="deny2" class="deny">
+					                                        <label for="deny2">다른 부모님과 인터뷰 후, 결과를 기다리고 있습니다.</label>
+					                                    </div>
+					                                    <div>
+					                                        <input type="radio" name="reason_deny" id="deny3" class="deny">
+					                                        <label for="deny3">이동하기에 먼 거리입니다.</label>
+					                                    </div>
+					                                    <div>
+					                                        <input type="radio" name="reason_deny" id="deny4" class="deny">
+					                                        <label for="deny4">요청하신 시간에는 어렵습니다.</label>
+					                                    </div>
+					                                    <div>
+					                                        <input type="radio" name="reason_deny" id="deny5" class="deny">
+					                                        <label for="deny5">요청하신 활동은 자신있는 분야가 아닙니다.</label>
+					                                    </div>
+					                                    <div>
+					                                        <input type="radio" name="reason_deny" id="deny6" class="deny">
+					                                        <label for="deny6">아이 나이가 너무 어립니다.</label>
+					                                    </div>
+					                                    <div>
+					                                        <input type="radio" name="reason_deny" id="deny7" class="deny">
+					                                        <label for="deny7">피치 못할 사정으로 앞으로 맘시터 활동이 어렵습니다.</label>
+					                                    </div>
+					                                    <div>
+					                                        <input type="radio" name="reason_deny" id="deny8" class="deny">
+					                                        <label for="deny8">그 밖에 다른 이유로 거절합니다.</label>
+					                                    </div>
+					                                </div>
+					                                <div class="deny_text">
+					                                    <h5>거절 사유를 알려주세요.</h5>
+					                                    <p>* 개인정보(상세 주소, 연락처)를 기입할 경우, 맘시터 자격을 영구적으로 잃게 되니 유의해주세요.</p>
+					                                    <textarea name="reason_deny" id="" cols="30" rows="10" 
+					                                    placeholder="예) 저에게 신청해주셔서 감사합니다. 그런데 제가 할 수 있는 활동이 아닌 것 같습니다.ㅠㅠ"></textarea>
+					                                </div>
+					                                <div>
+					                                    <button type="submit">전송하기</button>
+					                                </div> 
+					                            </div>
                                             </div>
                                         </div>
                                         <hr>
@@ -186,6 +234,10 @@
                     } else {
                         location.href="${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do";
                     }
+                });
+                
+                $("#interview_no").click(function(e) {
+                	e.preventDefault();
                 });
             });
         </script>

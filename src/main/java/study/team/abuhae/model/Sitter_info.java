@@ -43,9 +43,6 @@ public class Sitter_info extends Member {
 	private String profile_img_file;	// 프로필 이미지 파일(수정 예상)
 	
 	// 시터 상세페이지에 필요한 JOIN - 0209 지우 
-	private String expe_contents; // 경험 내용 
-	private String expe_start_date; // 경험 시작 날짜 
-	private String expe_end_date; // 경험 완료 날짜 
 	private int heartno; // 시터를 찜한 횟수 
 	private String who; // 시터를 찜한 유형 구별 
 	private String applydate; // 지원날짜 
@@ -102,6 +99,7 @@ public class Sitter_info extends Member {
 	public static void setSitterAge(String[] sitterAge) {
 		Sitter_info.sitterAge = sitterAge;
 	}
+	
 	
 	
 

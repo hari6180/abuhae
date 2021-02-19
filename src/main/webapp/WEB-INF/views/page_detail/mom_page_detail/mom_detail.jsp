@@ -170,6 +170,7 @@
 											<span id="active_text_style">
 											* 아래 표시된 날에만 돌봐주세요.
 											<br/>
+											<c:if test="${fn:contains(output.schedule_ok,Y)}">
 											<span style="margin-left: 5px;">
 											* 이 일정은 맘시터에 맞춰서 얼마든지 
 											<br/>
@@ -177,6 +178,7 @@
 											조정할 수 있어요.
 											</span>
 											</span>
+											</c:if>
 											</span>
 										</div>
 									</div>
@@ -254,118 +256,327 @@
 							<div>
 							<div class="possible_active_main">
 								<div class="active_line col-xs-3">
-									<div class="active_ok">
-										<div class="active_ok_img">
-											<div class="active_ok_box">
-											<img src="<%=request.getContextPath()%>/assets/img/innerplayicon_s.png"/>
+									<c:if test="${output.want_act1!='실내놀이'}">
+										<c:if test="${output.want_act2!='실내놀이'}">
+										<c:if test="${output.want_act3!='실내놀이'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/innerplayicon_s.png"/>
+												</div>
+												<span>실내놀이</span>
 											</div>
-											<span>실내놀이</span>
 										</div>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='실내놀이' || output.want_act2=='실내놀이' || output.want_act3=='실내놀이'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/innerplayicon_s.png"/>
+												</div>
+												<span>실내놀이</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${output.want_act1!='한글놀이'}">
+										<c:if test="${output.want_act2!='한글놀이'}">
+										<c:if test="${output.want_act3!='한글놀이'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/koreanicon_s.png"/>
+												</div>
+												<span>한글놀이</span>
+											</div>
+										</div>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='한글놀이' || output.want_act2=='한글놀이' || output.want_act3=='한글놀이'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/koreanicon_s.png"/>
+												</div>
+												<span>한글놀이</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${output.want_act1!='간단청소'}">
+										<c:if test="${output.want_act2!='간단청소'}">
+										<c:if test="${output.want_act3!='간단청소'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/cleanicon_s.png"/>
+												</div>
+												<span>간단 청소</span>
+											</div>
+										</div>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='간단청소' || output.want_act2=='간단청소' || output.want_act3=='간단청소'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/cleanicon_s.png"/>
+												</div>
+												<span>간단 청소</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${output.want_act1!='장기입주'}">
+										<c:if test="${output.want_act2!='장기입주'}">
+										<c:if test="${output.want_act3!='장기입주'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/longhouseicon_s.png"/>
+												</div>
+												<span>장기입주</span>
+											</div>
+										</div>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='장기입주' || output.want_act2=='장기입주' || output.want_act3=='장기입주'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/longhouseicon_s.png"/>
+												</div>
+												<span>장기입주</span>
+											</div>
+										</div>
+										</c:if>
 									</div>
-									<div class="active_no">
-										<div class="active_no_img">
-											<div class="active_no_box">
-											<img src="<%=request.getContextPath()%>/assets/img/koreanicon_s.png"/>
+									<!-- --- -->
+									<div class="active_line col-xs-3">
+										<c:if test="${output.want_act1!='등하원돕기'}">
+										<c:if test="${output.want_act2!='등하원돕기'}">
+										<c:if test="${output.want_act3!='등하원돕기'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/guideicon_s.png"/>
+												</div>
+												<span>등하원 돕기</span>
 											</div>
-											<span>한글놀이</span>
 										</div>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='등하원돕기' || output.want_act2=='등하원돕기' || output.want_act3=='등하원돕기'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/guideicon_s.png"/>
+												</div>
+												<span>등하원 돕기</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${output.want_act1!='영어놀이'}">
+										<c:if test="${output.want_act2!='영어놀이'}">
+										<c:if test="${output.want_act3!='영어놀이'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/englishicon_s.png"/>
+												</div>
+												<span>영어놀이</span>
+											</div>
+										</div>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='영어놀이' || output.want_act2=='영어놀이' || output.want_act3=='영어놀이'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/englishicon_s.png"/>
+												</div>
+												<span>영어놀이</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${output.want_act1!='밥챙겨주기'}">
+										<c:if test="${output.want_act2!='밥챙겨주기'}">
+										<c:if test="${output.want_act3!='밥챙겨주기'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/eaticon_s.png"/>
+												</div>
+												<span>밥 챙겨주기</span>
+											</div>
+										</div>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='밥챙겨주기' || output.want_act2=='밥챙겨주기' || output.want_act3=='밥챙겨주기'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/eaticon_s.png"/>
+												</div>
+												<span>밥 챙겨주기</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${output.want_act1!='단기입주'}">
+										<c:if test="${output.want_act2!='단기입주'}">
+										<c:if test="${output.want_act3!='단기입주'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/houseicon_s.png"/>
+												</div>
+												<span>단기입주</span>
+											</div>
+										</div>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='단기입주' || output.want_act2=='단기입주' || output.want_act3=='단기입주'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/houseicon_s.png"/>
+												</div>
+												<span>단기입주</span>
+											</div>
+										</div>
+										</c:if>
 									</div>
-									<div class="active_ok">
-										<div class="active_ok_img">
-											<div class="active_ok_box">
-											<img src="<%=request.getContextPath()%>/assets/img/cleanicon_s.png"/>
+									<!-- ----- -->
+									<div class="active_line col-xs-3">
+										<c:if test="${output.want_act1!='책읽기'}">
+										<c:if test="${output.want_act2!='책읽기'}">
+										<c:if test="${output.want_act3!='책읽기'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/readicon_s.png"/>
+												</div>
+												<span>책읽기</span>
 											</div>
-											<span>간단 청소</span>
 										</div>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='책읽기' || output.want_act2=='책읽기' || output.want_act3=='책읽기'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/readicon_s.png"/>
+												</div>
+												<span>책읽기</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${output.want_act1!='학습지도'}">
+										<c:if test="${output.want_act2!='학습지도'}">
+										<c:if test="${output.want_act3!='학습지도'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/studyicon_s.png"/>
+												</div>
+												<span>학습지도</span>
+											</div>
+										</div>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='학습지도' || output.want_act2=='학습지도' || output.want_act3=='학습지도'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/studyicon_s.png"/>
+												</div>
+												<span>학습지도</span>
+											</div>
+										</div>
+										</c:if>
+										<c:if test="${output.want_act1!='설거지'}">
+										<c:if test="${output.want_act2!='설거지'}">
+										<c:if test="${output.want_act3!='설거지'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/dishicon_s.png"/>
+												</div>
+												<span>간단 설거지</span>
+											</div>
+										</div>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='설거지' || output.want_act2=='설거지' || output.want_act3=='설거지'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/dishicon_s.png"/>
+												</div>
+												<span>간단 설거지</span>
+											</div>
+										</div>
+										</c:if>
 									</div>
-									<div class="active_no">
-										<div class="active_no_img">
-											<div class="active_no_box">
-											<img src="<%=request.getContextPath()%>/assets/img/longhouseicon_s.png"/>
+									<!-- ------- -->
+									<div class="active_line col-xs-3">
+										<c:if test="${output.want_act1!='야외활동'}">
+										<c:if test="${output.want_act2!='야외활동'}">
+										<c:if test="${output.want_act3!='야외활동'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/ousideicon_s.png"/>
+												</div>
+												<span>야외활동</span>
 											</div>
-											<span>장기입주</span>
 										</div>
-									</div>
-								</div>
-								<!-- --- -->
-								<div class="active_line col-xs-3">
-									<div class="active_no">
-										<div class="active_no_img">
-											<div class="active_no_box">
-											<img src="<%=request.getContextPath()%>/assets/img/guideicon_s.png"/>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='야외활동' || output.want_act2=='야외활동' || output.want_act3=='야외활동'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/ousideicon_s.png"/>
+												</div>
+												<span>야외활동</span>
 											</div>
-											<span>등하원 돕기</span>
 										</div>
-									</div>
-									<div class="active_no">
-										<div class="active_no_img">
-											<div class="active_ok_box">
-											<img src="<%=request.getContextPath()%>/assets/img/englishicon_s.png"/>
+										</c:if>
+										<c:if test="${output.want_act1!='체육놀이'}">
+										<c:if test="${output.want_act2!='체육놀이'}">
+										<c:if test="${output.want_act3!='체육놀이'}">
+										<div class="active_no">
+											<div class="active_no_img">
+												<div class="active_no_box">
+												<img src="<%=request.getContextPath()%>/assets/img/ballicon_s.png" />
+												</div>
+												<span>체육놀이</span>
 											</div>
-											<span>영어놀이</span>
 										</div>
-									</div>
-									<div class="active_ok">
-										<div class="active_ok_img">
-											<div class="active_ok_box">
-											<img src="<%=request.getContextPath()%>/assets/img/eaticon_s.png"/>
+										</c:if>
+										</c:if>
+										</c:if>
+										<c:if test="${output.want_act1=='체육놀이' || output.want_act2=='체육놀이' || output.want_act3=='체육놀이'}">
+										<div class="active_ok">
+											<div class="active_ok_img">
+												<div class="active_ok_box">
+												<img src="<%=request.getContextPath()%>/assets/img/ballicon_s.png" />
+												</div>
+												<span>체육놀이</span>
 											</div>
-											<span>밥 챙겨주기</span>
 										</div>
-									</div>
-									<div class="active_no">
-										<div class="active_no_img">
-											<div class="active_no_box">
-											<img src="<%=request.getContextPath()%>/assets/img/houseicon_s.png"/>
-											</div>
-											<span>단기입주</span>
-										</div>
-									</div>
-								</div>
-								<!-- ----- -->
-								<div class="active_line col-xs-3">
-									<div class="active_ok">
-										<div class="active_ok_img">
-											<div class="active_ok_box">
-											<img src="<%=request.getContextPath()%>/assets/img/readicon_s.png"/>
-											</div>
-											<span>책읽기</span>
-										</div>
-									</div>
-									<div class="active_no">
-										<div class="active_no_img">
-											<div class="active_no_box">
-											<img src="<%=request.getContextPath()%>/assets/img/studyicon_s.png"/>
-											</div>
-											<span>학습지도</span>
-										</div>
-									</div>
-									<div class="active_ok">
-										<div class="active_ok_img">
-											<div class="active_ok_box">
-											<img src="<%=request.getContextPath()%>/assets/img/dishicon_s.png"/>
-											</div>
-											<span>간단 설거지</span>
-										</div>
-									</div>
-								</div>
-								<!-- ------- -->
-								<div class="active_line col-xs-3">
-									<div class="active_ok">
-										<div class="active_ok_img">
-											<div class="active_ok_box">
-											<img src="<%=request.getContextPath()%>/assets/img/ousideicon_s.png"/>
-											</div>
-											<span>야외활동</span>
-										</div>
-									</div>
-									<div class="active_no">
-										<div class="active_no_img">
-											<div class="active_no_box">
-											<img src="<%=request.getContextPath()%>/assets/img/ballicon_s.png" />
-											</div>
-											<span>체육놀이</span>
-										</div>
+										</c:if>
 									</div>
 								</div>
 								<!-- ---- -->
@@ -470,16 +681,25 @@
 					<div class="possible_age_box">
 					<div class="box_name">그 외 요청사항</div>
 					<div class="possible_age_area">
-						<div>							
+						<div>
+						<c:if test="${output.sitter_gender!=null}">							
 							<div class="other_line">
 								<label class="want_gender_line">희망 맘시터 성별 : </label>
+								<c:if test="${fn:contains(output.sitter_gender,'F')}">
 								<span class="want_gender">여자</span>
+								</c:if>
+								<c:if test="${fn:contains(output.sitter_gender,'M')}">
+								<span class="want_gender">남자</span>
+								</c:if>
 							</div>
+						</c:if>
+						<c:if test="${output.care_type!=null}">	
 							<div class="other_line">
 								<label class="want_care_line">희망 돌봄 방식 : </label>
-								<span class="want_care">할머니(할아버지)와 함께 돌봐주세요.</span>
+								<span class="want_care">${output.care_type}</span>
 							</div>		
 						</div>
+						</c:if>
 					</div> <!-- fin. possible_age_area -->
 					</div> <!-- fin. possible_age_box -->
 					</c:if>

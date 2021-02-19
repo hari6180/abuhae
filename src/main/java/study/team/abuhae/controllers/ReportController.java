@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
@@ -44,7 +43,9 @@ public class ReportController {
 				// 데이터 조회 
 				output = detailService.getMomItem(input);
 			
+			
 			} catch (Exception e) {
+				
 				e.printStackTrace();
 			}
 			model.addAttribute("output", output);
@@ -52,18 +53,16 @@ public class ReportController {
 			return "/page_detail/mom_page_detail/mom_report";
 		}
 		
-		@RequestMapping(value = "/page_detail/mom_page_detail/mom_report.do", method = RequestMethod.POST)
+		@RequestMapping(value = "/page_detail/mom_page_detail/mom_report_ok.do", method = RequestMethod.POST)
 		public ModelAndView add_ok(Model model,
-				
-				@RequestParam(value = "reportno", defaultValue = "0") int reportno,
+				HttpServletResponse response,
 				@RequestParam(value = "who", defaultValue = "") char who,
-				@RequestParam(value = "type", defaultValue = "") String type,
-				@RequestParam(value = "contents", defaultValue = "") String contents,
+				@RequestParam(value = "type", defaultValue = "") char type,
+				@RequestParam(value = "contents", required = false, defaultValue = "") String contents,
 				@RequestParam(value = "momno", defaultValue = "0") int momno,
-				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+				@RequestParam(value = "sitterno", defaultValue = "55") int sitterno) {
 			
 			Report input = new Report();
-			input.setReportno(reportno);
 			input.setWho(who);
 			input.setType(type);
 			input.setContents(contents);
@@ -77,7 +76,7 @@ public class ReportController {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
 			
-			String redirectUrl = contextPath + "/page_detail/mom_page_detail/mom_detail.do?momno=" + input.getMomno();
+			String redirectUrl = contextPath + "/page_detail/mom_page_detail/mom_report_ok.do?momno=" + input.getMomno();
 			return webHelper.redirect(redirectUrl, "신고가 완료되었습니다.");
 		}
 				

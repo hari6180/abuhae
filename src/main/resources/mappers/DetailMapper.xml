@@ -26,7 +26,9 @@
 		type="study.team.abuhae.model.Mom_info">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="momno" column="momno" />
-		<result property="want_act" column="want_act" />
+		<result property="want_act1" column="want_act1" />
+		<result property="want_act2" column="want_act2" />
+		<result property="want_act3" column="want_act3" />
 		<result property="want_age" column="want_age" />
 		<result property="kids_num" column="kids_num" />
 		<result property="kids_age" column="kids_age" />
@@ -50,7 +52,9 @@
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="sitterno" column="sitterno" />
 		<result property="sitter_type" column="sitter_type" />
-		<result property="want_act" column="want_act" />
+		<result property="want_act1" column="want_act1" />
+		<result property="want_act2" column="want_act2" />
+		<result property="want_act3" column="want_act3" />
 		<result property="want_age" column="want_age" />
 		<result property="payment" column="payment" />
 		<result property="si" column="si" />
@@ -65,9 +69,6 @@
 		<result property="rev_rate" column="rev_rate" />
 		<result property="rev_count" column="rev_count" />
 		<result property="profile_img_file" column="profile_img_count" />
-		<result property="expe_contents" column="expe_contents" />
-		<result property="expe_start_date" column="expe_start_date" />
-		<result property="expe_end_date" column="expe_end_date" />
 		<result property="heartno" column="heartno" />
 		<result property="who" column="who" />
 		<result property="applydate" column="applydate" />
@@ -78,21 +79,14 @@
 		<result property="view" column="view" />
 	</resultMap>
 	
-	<resultMap type="study.team.abuhae.model.Sitter_experience" id="ExperienceMap">
-		<result property="experno" column="experno"/>	
-		<result property="expe_contents" column="expe_contents"/>	
-		<result property="expe_start_date" column="expe_start_date"/>	
-		<result property="expe_end_date" column="expe_end_date"/>	
-		<result property="sitterno" column="sitterno"/>			
-	</resultMap>
-	
 	<resultMap type="study.team.abuhae.model.Report" id="ReportMap">
 		<result property="reportno" column="reportno"/>	
 		<result property="who" column="who"/>	
 		<result property="type" column="type"/>	
 		<result property="contents" column="contents"/>	
 		<result property="momno" column="momno"/>	
-		<result property="sitterno" column="sitterno"/>				
+		<result property="sitterno" column="sitterno"/>	
+		<result property="reg_date" column="reg_date"/>				
 	</resultMap>
 	
 	<resultMap type="study.team.abuhae.model.Heart" id="HeartMap">
@@ -111,8 +105,8 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, 
-		job_opening, s.sitterno, sitter_type, want_act, want_age, gender, introduce,
+		AS birthdate, want_age,
+		job_opening, s.sitterno, sitter_type, want_act1, want_act2, want_act3, gender, introduce,
 		si, gu, dong, favorite_act, signup_date, view, 
 		<!-- CONCAT(LEFT(payment,2), ',', RIGHT(payment,3)) AS -->
 		payment, payment_ok, cctv, answer, CASE
@@ -146,36 +140,21 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, momno,
-		job_opening, want_act, want_age, apply_content, apply_title, want_age,
-		si, gu, dong, signup_date, description,
-		payment, payment_ok, CASE
-	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
-	WHEN TIMESTAMPDIFF(minute, openingdate, now()) < 60 THEN
-	CONCAT(TIMESTAMPDIFF(minute, openingdate, now()), '분 전')
-	WHEN TIMESTAMPDIFF(hour, openingdate, now()) < 24 THEN
-	CONCAT(TIMESTAMPDIFF(hour, openingdate, now()), '시간 전')
-	WHEN TIMESTAMPDIFF(day, openingdate, now()) < 30 THEN]]>
-		CONCAT(TIMESTAMPDIFF(day, openingdate, now()), '일 전')
-		END AS
-		openingdate, startdate,
+		AS birthdate, momno, want_age,
+		json_extract(schedule, '$.startdate') AS schedule,
+		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
+		REPLACE(json_extract(schedule, '$.day'),'"','') AS days, schedule_ok,
+		job_opening, want_act1, want_act2, want_act3, apply_content, apply_title,
+		si, gu, dong, signup_date, description, sitter_gender, care_type, 
+		payment, payment_ok,
+		(SELECT DATE_FORMAT(openingdate, "%Y년 %m월 %d일") FROM member b WHERE b.memberno=m.memberno) AS openingdate
+		, startdate,
 		(SELECT COUNT(heartno) FROM heart h WHERE m.momno=h.momno AND who='S') AS heartno,
 		(SELECT COUNT(cntno) FROM connect c WHERE c.momno=m.momno AND who='S') AS cntno
 		FROM mom_info m
 		INNER JOIN member b ON m.memberno=b.memberno
 		<where>
 			m.momno=#{momno}
-		</where>
-	</select>
-	
-	<select id="selectTest" parameterType="study.team.abuhae.model.Sitter_info"
-		resultMap="SitterMap">
-		SELECT 		
-		expe_contents, expe_start_date, expe_end_date
-		FROM sitter_info s
-		INNER JOIN sitter_experience e ON s.sitterno=e.sitterno
-		<where>
-			s.sitterno=#{sitterno}
 		</where>
 	</select>
 	
@@ -190,9 +169,10 @@
 	    union  all  select  7  union  all  select  8 
 	    union  all  select  9 union  all  select  10) numbers INNER JOIN sitter_info
 	    on CHAR_LENGTH (sitter_info.want_age) 
-	      - CHAR_LENGTH ( REPLACE ( sitter_info.want_age , ',' , '' ))>= numbers . n-1)
+	      - CHAR_LENGTH (REPLACE(sitter_info.want_age, ',' ,''))>= numbers.n-1)
 	</select>
 	
+	<!-- 조회수 -->
 	<update id="updateItem" parameterType="study.team.abuhae.model.Sitter_info">
 		UPDATE sitter_info SET view = view+1 
 		<where>
@@ -200,18 +180,78 @@
 		</where>
 	</update>
 	
-	<insert id="insertItem" parameterType="study.team.abuhae.model.Sitter_info"
+	<!-- 찜하기 -->
+	<insert id="insertHeart" parameterType="study.team.abuhae.model.Heart"
 		useGeneratedKeys="true" keyProperty="heartno">
-		INSERT INTO sitter_info (now(), who, momno, sitterno) 
+		INSERT INTO heart (now(), who, momno, sitterno) 
 		VALUES (#{reg_date}, #{who}, #{momno}, #{sitterno});
 	</insert>
 	
+	<!-- 신고하기 -->
 	<insert id="insertReport" parameterType="study.team.abuhae.model.Report"
 		useGeneratedKeys="true" keyProperty="reportno">
-		INSERT INTO report (reportno, who, type, contents, momno, sitterno) 
-		VALUES (#{reportno}, #{who}, #{type}, #{contents}, #{momno}, #{sitterno});
+		INSERT INTO report (reportno, who, type, contents, momno, sitterno, reg_date) 
+		VALUES (#{reportno}, #{who}, #{type}, #{contents}, #{momno}, #{sitterno}, #{reg_date});
 	</insert>
 	
+	<!-- 리뷰 -->
+	<select id="selectReview" parameterType="study.team.abuhae.model.Sitter_info"
+		resultMap="SitterMap">
+		SELECT revno, who, rev_rate, reg_date, contents, momno, r.sitterno 
+			FROM review r
+		INNER JOIN sitter_info s ON s.sitterno=r.sitterno
+		<where>
+			who=#{who}
+		</where>
+	</select>
 	
-	
+	<!-- 활동 유형 && 상세 검색
+      <where>
+         <if test="actList != null">
+            want_act1 || want_act2 || want_act3 in
+            <foreach item="item1" collection="actList" open="("
+               close=")" separator=",">
+               #{item1}
+            </foreach>
+         </if>
+         <if test="kidsAge != null">
+            AND want_age IN
+            <foreach item="item2" collection="kidsAge" open="("
+               close=")" separator=",">
+               #{item2}
+            </foreach>
+         </if>
+         <if test="caredays != null">
+         AND JSON_CONTAINS(schedule_set->'$.day',CAST('
+            <foreach item="item3" collection="caredays" open="["
+               close="]" separator=",">
+               "${item3}"
+            </foreach>
+            ' AS JSON))
+         </if>
+
+         <if test="sitterType != null">
+            AND sitter_type IN
+            <foreach item="item5" collection="sitterType" open="("
+               close=")" separator=",">
+               #{item5}
+            </foreach>
+         </if>
+         <if test="sitterAge != null">
+            AND FLOOR(
+      (CAST(REPLACE(current_date,'-','') AS
+      unsigned) -
+      CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
+       IN
+            <foreach item="item6" collection="sitterAge" open="("
+               close=")" separator=",">
+               ${item6}
+            </foreach>
+         </if>
+      </where>
+       -->
+
+		
+		
+
 </mapper>

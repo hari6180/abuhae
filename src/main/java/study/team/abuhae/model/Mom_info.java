@@ -76,4 +76,7 @@ public class Mom_info extends Member {
 	private int heartno;
 	private int cntno;
 	
+	private String who;
+	private int sitterno;
+	
 }
