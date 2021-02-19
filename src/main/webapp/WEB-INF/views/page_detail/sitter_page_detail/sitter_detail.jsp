@@ -4,10 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%
-	
-	 
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -504,16 +500,10 @@
 					<div class="possible_age_area">
 						<div>
 							<div class="age_line">
-								<c:if test="${ageput.want_age == '신생아'}">
-								<div class="ages col-xs-3">
-									<div style="margin-bottom: -10px">
-									<i class="fas fa-baby fa-3x"></i>
-									</div>
-									<br>
-									<span>신생아</span>
-								</div>
-								</c:if>
-								<c:if test="${ageput.want_age != '신생아'}">
+								<c:if test="${output.want_age1!='신생아'}">
+								<c:if test="${output.want_age2!='신생아'}">
+								<c:if test="${output.want_age3!='신생아'}">
+								<c:if test="${output.want_age4!='신생아'}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<span style="color: #ccc"><i class="fas fa-baby fa-3x"></i></span>
@@ -522,7 +512,34 @@
 									<span style="color: #ccc">신생아</span>
 								</div>
 								</c:if>
-							
+								</c:if>
+								</c:if>
+								</c:if>
+								<c:if test="${output.want_age1=='신생아' || output.want_age2=='신생아' || output.want_age3=='신생아' || output.want_age4=='신생아'}">
+								<div class="ages col-xs-3">
+									<div style="margin-bottom: -10px">
+									<i class="fas fa-baby fa-3x"></i>
+									</div>
+									<br>
+									<span>신생아</span>
+								</div>
+								</c:if>
+								<c:if test="${output.want_age1!='영아'}">
+								<c:if test="${output.want_age2!='영아'}">
+								<c:if test="${output.want_age3!='영아'}">
+								<c:if test="${output.want_age4!='영아'}">
+								<div class="ages col-xs-3">
+									<div style="margin-bottom: -10px">
+									<span style="color: #ccc"><i class="fas fa-baby-carriage fa-3x"></i></span>
+									</div>
+									<br>
+									<span style="color: #ccc">영아</span>
+								</div>
+								</c:if>
+								</c:if>
+								</c:if>
+								</c:if>
+								<c:if test="${output.want_age1=='영아' || output.want_age2=='영아' || output.want_age3=='영아' || output.want_age4=='영아'}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-baby-carriage fa-3x"></i>
@@ -530,6 +547,23 @@
 									<br>
 									<span>영아</span>
 								</div>
+								</c:if>
+								<c:if test="${output.want_age1!='유아'}">
+								<c:if test="${output.want_age2!='유아'}">
+								<c:if test="${output.want_age3!='유아'}">
+								<c:if test="${output.want_age4!='유아'}">
+								<div class="ages col-xs-3">
+									<div style="margin-bottom: -10px">
+									<span style="color: #ccc"><i class="fas fa-child fa-3x"></i></span>
+									</div>
+									<br>
+									<span style="color: #ccc">유아</span>
+								</div>
+								</c:if>
+								</c:if>
+								</c:if>
+								</c:if>
+								<c:if test="${output.want_age1=='유아' || output.want_age2=='유아' || output.want_age3=='유아' || output.want_age4=='유아'}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-child fa-3x"></i>
@@ -537,6 +571,19 @@
 									<br>
 									<span>유아</span>
 								</div>
+								</c:if>
+								
+								
+								<div class="ages col-xs-3">
+									<div style="margin-bottom: -10px">
+									<span style="color: #ccc"><i class="fas fa-school fa-3x"></i></span>
+									</div>
+									<br>
+									<span style="color: #ccc">초등학생</span>
+								</div>
+								
+								
+								
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-school fa-3x"></i>
@@ -544,6 +591,7 @@
 									<br>
 									<span>초등학생</span>
 								</div>
+								
 							</div> <!-- fin. age_line -->
 						</div>
 					</div> <!-- fin. possible_age_area -->

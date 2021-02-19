@@ -55,20 +55,20 @@ public class ReportController {
 		@RequestMapping(value = "/page_detail/mom_page_detail/mom_report.do", method = RequestMethod.POST)
 		public ModelAndView add_ok(Model model,
 				
-				@RequestParam(value = "reportno", defaultValue = "0") int reportno,
 				@RequestParam(value = "who", defaultValue = "") char who,
 				@RequestParam(value = "type", defaultValue = "") String type,
-				@RequestParam(value = "contents", defaultValue = "") String contents,
+				@RequestParam(value = "contents", required = false, defaultValue = "") String contents,
 				@RequestParam(value = "momno", defaultValue = "0") int momno,
-				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno,
+				@RequestParam(value = "reg_date", defaultValue = "0") String reg_date) {
 			
 			Report input = new Report();
-			input.setReportno(reportno);
 			input.setWho(who);
 			input.setType(type);
 			input.setContents(contents);
 			input.setMomno(momno);
 			input.setSitterno(sitterno);
+			input.setReg_date(reg_date);
 			
 			try {
 				detailService.addReport(input);

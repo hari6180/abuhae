@@ -2,6 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -56,7 +57,7 @@
 									<br/>
 									${output.si}&nbsp;${output.gu}
 									<br/>
-									희망시급 ${output.payment}원
+									희망시급 <fmt:formatNumber value="${output.payment}" pattern="#,###" />원
 								</span>
 								<div class="btn_area">
 								<button type="button" class="btn" onclick = "location.href='${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${output.sitterno}';">

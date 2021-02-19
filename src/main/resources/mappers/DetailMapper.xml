@@ -55,7 +55,9 @@
 		<result property="want_act1" column="want_act1" />
 		<result property="want_act2" column="want_act2" />
 		<result property="want_act3" column="want_act3" />
-		<result property="want_age" column="want_age" />
+		<result property="want_age1" column="want_age1" />
+		<result property="want_age2" column="want_age2" />
+		<result property="want_age3" column="want_age3" />
 		<result property="payment" column="payment" />
 		<result property="si" column="si" />
 		<result property="gu" column="gu" />
@@ -85,7 +87,8 @@
 		<result property="type" column="type"/>	
 		<result property="contents" column="contents"/>	
 		<result property="momno" column="momno"/>	
-		<result property="sitterno" column="sitterno"/>				
+		<result property="sitterno" column="sitterno"/>	
+		<result property="reg_date" column="reg_date"/>				
 	</resultMap>
 	
 	<resultMap type="study.team.abuhae.model.Heart" id="HeartMap">
@@ -104,8 +107,8 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, 
-		job_opening, s.sitterno, sitter_type, want_act1, want_act2, want_act3, want_age, gender, introduce,
+		AS birthdate, want_age1, want_age2, want_age3, want_age4,
+		job_opening, s.sitterno, sitter_type, want_act1, want_act2, want_act3, gender, introduce,
 		si, gu, dong, favorite_act, signup_date, view, 
 		<!-- CONCAT(LEFT(payment,2), ',', RIGHT(payment,3)) AS -->
 		payment, payment_ok, cctv, answer, CASE
@@ -140,7 +143,7 @@
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
 		AS birthdate, momno,
-		job_opening, want_act1, want_act2, want_act3, want_age, apply_content, apply_title,
+		job_opening, want_act1, want_act2, want_act3, apply_content, apply_title,
 		si, gu, dong, signup_date, description, sitter_gender, care_type, 
 		payment, payment_ok, CASE
 	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
@@ -193,8 +196,19 @@
 	<!-- 신고하기 -->
 	<insert id="insertReport" parameterType="study.team.abuhae.model.Report"
 		useGeneratedKeys="true" keyProperty="reportno">
-		INSERT INTO report (reportno, who, type, contents, momno, sitterno) 
-		VALUES (#{reportno}, #{who}, #{type}, #{contents}, #{momno}, #{sitterno});
+		INSERT INTO report (reportno, who, type, contents, momno, sitterno, reg_date) 
+		VALUES (#{reportno}, #{who}, #{type}, #{contents}, #{momno}, #{sitterno}, #{reg_date});
 	</insert>
+	
+	<!-- 리뷰 -->
+	<select id="selectReview" parameterType="study.team.abuhae.model.Sitter_info"
+		resultMap="SitterMap">
+		SELECT revno, who, rev_rate, reg_date, contents, momno, r.sitterno 
+			FROM review r
+		INNER JOIN sitter_info s ON s.sitterno=r.sitterno
+		<where>
+			who=#{who}
+		</where>
+	</select>
 
 </mapper>
