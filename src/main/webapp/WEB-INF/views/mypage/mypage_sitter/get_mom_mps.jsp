@@ -121,7 +121,7 @@
 					                                                    답변 마감 시간 : 2020.01.09 17:54 <!--답변 마감 시간은 신청일로 부터 3일-->
 					                                                </p>
 					                                              
-					                                               <form id="agreeForm">
+					                                               <form id="agreeForm" action="${pageContext.request.contextPath}/mypage/edit_ok_accept">
 						                                               <input type="hidden" id="accept_edit1" name="momno" value="${item.momno}">
 	                        										   <input type="hidden" id="accept_edit2" name="sitterno" value="${item.sitterno}">
 	                        										   <input type="hidden" id="accept_edit3" name="cntno" value="${item.cntno}">
@@ -222,10 +222,11 @@
                 </div>
             </div>
         </div>
-		<!-- Javascript -->
-        <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+		
      	<!--Google CDN 서버로부터 jQuery 참조 -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<!-- Javascript -->
+        <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
 		<!-- jQuery Ajax Form plugin CDN -->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 		<!-- jQuery Ajax Setup -->

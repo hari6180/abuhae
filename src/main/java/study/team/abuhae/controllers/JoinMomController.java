@@ -60,12 +60,16 @@ public class JoinMomController {
 	@RequestMapping(value = "/join/parent/children.do", method = RequestMethod.POST)
 	public ModelAndView m_join_child(Model model, 
 			@RequestParam(value = "type") char type,
-			@RequestParam(value = "want_act") String want_act, 
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
 			@RequestParam(value = "want_age") String want_age) {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act1(want_act);
+		mominfo.setWant_act1(want_act1);
+		mominfo.setWant_act2(want_act2);
+		mominfo.setWant_act3(want_act3);
 		mominfo.setWant_age(want_age);
 
 		// 저장된 결과 조회하기 위한 객체
@@ -74,7 +78,9 @@ public class JoinMomController {
 		log.debug(mominfo.toString());
 
 		model.addAttribute("type", type);
-		model.addAttribute("want_act", want_act);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
 		model.addAttribute("want_age", want_age);
 
 		return new ModelAndView("/join/parent/children");
@@ -97,7 +103,9 @@ public class JoinMomController {
 	@RequestMapping(value = "/join/parent/location.do", method = RequestMethod.POST)
 	public ModelAndView m_join_loc(Model model, 
 			@RequestParam(value = "type") char type,
-			@RequestParam(value = "want_act") String want_act, 
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
@@ -111,7 +119,9 @@ public class JoinMomController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act1(want_act);
+		mominfo.setWant_act1(want_act1);
+		mominfo.setWant_act2(want_act2);
+		mominfo.setWant_act3(want_act3);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
@@ -124,7 +134,9 @@ public class JoinMomController {
 		log.debug(mominfo.toString());
 
 		model.addAttribute("type", type);
-		model.addAttribute("want_act", want_act);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
 		model.addAttribute("want_age", want_age);
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
@@ -140,7 +152,9 @@ public class JoinMomController {
 	@RequestMapping(value = "/join/parent/schedule.do", method = RequestMethod.POST)
 	public ModelAndView m_join_shce(Model model, 
 			@RequestParam(value = "type") char type,
-			@RequestParam(value = "want_act") String want_act, 
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
@@ -156,7 +170,9 @@ public class JoinMomController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act1(want_act);
+		mominfo.setWant_act1(want_act1);
+		mominfo.setWant_act2(want_act2);
+		mominfo.setWant_act3(want_act3);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
@@ -173,7 +189,9 @@ public class JoinMomController {
 		log.debug(mominfo.toString());
 
 		model.addAttribute("type", type);
-		model.addAttribute("want_act", want_act);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
 		model.addAttribute("want_age", want_age);
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
@@ -211,7 +229,9 @@ public class JoinMomController {
 	@RequestMapping(value = "/join/parent/description.do", method = RequestMethod.POST)
 	public String m_join_desc(Model model, HttpServletResponse response, 
 			@RequestParam(value = "type") char type,
-			@RequestParam(value = "want_act") String want_act, 
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
@@ -229,7 +249,9 @@ public class JoinMomController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act1(want_act);
+		mominfo.setWant_act1(want_act1);
+		mominfo.setWant_act2(want_act2);
+		mominfo.setWant_act3(want_act3);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
@@ -249,7 +271,9 @@ public class JoinMomController {
 
 
 		model.addAttribute("type", type);
-		model.addAttribute("want_act", want_act);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3); 
 		model.addAttribute("want_age", want_age);
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
@@ -268,7 +292,9 @@ public class JoinMomController {
 	@RequestMapping(value = "/join/parent/agreement.do", method = RequestMethod.POST)
 	public String m_join_agree(Model model, 
 			@RequestParam(value = "type") char type,
-			@RequestParam(value = "want_act") String want_act, 
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
@@ -286,7 +312,9 @@ public class JoinMomController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act1(want_act);
+		mominfo.setWant_act1(want_act1);
+		mominfo.setWant_act2(want_act2);
+		mominfo.setWant_act3(want_act3);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
@@ -307,7 +335,9 @@ public class JoinMomController {
 
 
 		model.addAttribute("type", type);
-		model.addAttribute("want_act", want_act);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
 		model.addAttribute("want_age", want_age);
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);
@@ -327,7 +357,9 @@ public class JoinMomController {
 	@RequestMapping(value = "/join/parent/account.do", method = RequestMethod.POST)
 	public String m_join_acco(Model model, 
 			@RequestParam(value = "type") char type,
-			@RequestParam(value = "want_act") String want_act, 
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
@@ -346,7 +378,9 @@ public class JoinMomController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act1(want_act);
+		mominfo.setWant_act1(want_act1);
+		mominfo.setWant_act2(want_act2);
+		mominfo.setWant_act3(want_act3);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
@@ -366,7 +400,9 @@ public class JoinMomController {
 		log.debug(mominfo.toString());
 
 		model.addAttribute("type", type);
-		model.addAttribute("want_act", want_act);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
 		model.addAttribute("want_age", want_age);
 		model.addAttribute("kids_num", kids_num);
 		model.addAttribute("kids_age", kids_age);

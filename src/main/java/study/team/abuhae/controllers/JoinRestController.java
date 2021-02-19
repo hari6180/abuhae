@@ -26,18 +26,29 @@ public class JoinRestController {
 
 	// 회원가입 최종 OK
 	@RequestMapping(value = "join/parent/add_ok", method = RequestMethod.POST)
-	public Map<String, Object> m_join_success(Model model, @RequestParam(value = "type") char type,
-			@RequestParam(value = "want_act") String want_act, @RequestParam(value = "want_age") String want_age,
-			@RequestParam(value = "kids_num") int kids_num, @RequestParam(value = "kids_age") String kids_age,
-			@RequestParam(value = "payment") String paymentstr, @RequestParam(value = "payment_ok") char payment_ok,
-			@RequestParam(value = "si") String si, @RequestParam(value = "gu") String gu,
-			@RequestParam(value = "dong") String dong, @RequestParam(value = "schedule") String schedulestr,
+	public Map<String, Object> m_join_success(Model model, 
+			@RequestParam(value = "type") char type,
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
+			@RequestParam(value = "want_age") String want_age,
+			@RequestParam(value = "kids_num") int kids_num, 
+			@RequestParam(value = "kids_age") String kids_age,
+			@RequestParam(value = "payment") String paymentstr, 
+			@RequestParam(value = "payment_ok") char payment_ok,
+			@RequestParam(value = "si") String si, 
+			@RequestParam(value = "gu") String gu,
+			@RequestParam(value = "dong") String dong, 
+			@RequestParam(value = "schedule") String schedulestr,
 			@RequestParam(value = "schedule_ok") char schedule_ok,
 			@RequestParam(value = "description", required = false) String description,
-			@RequestParam(value = "user_id") String user_id, @RequestParam(value = "user_pw") String user_pw,
-			@RequestParam(value = "name") String name, @RequestParam(value = "email") String email,
-			@RequestParam(value = "tel") String tel, @RequestParam(value = "birthdate") String birthdate,
-			@RequestParam(value = "signup_date", required = false) String signup_date) {
+			@RequestParam(value = "user_id") String user_id, 
+			@RequestParam(value = "user_pw") String user_pw,
+			@RequestParam(value = "name") String name,
+			@RequestParam(value = "email") String email,
+			@RequestParam(value = "tel") String tel, 
+			@RequestParam(value = "birthdate") String birthdate,
+			@RequestParam(value = "gender") char gender) {
 
 		// 데이터 가공
 		paymentstr = paymentstr.replace(",", "");
@@ -84,7 +95,9 @@ public class JoinRestController {
 
 		// 저장할 값 beans에 담기
 		mominfo.setType(type);
-		mominfo.setWant_act1(want_act);
+		mominfo.setWant_act1(want_act1);
+		mominfo.setWant_act2(want_act2);
+		mominfo.setWant_act3(want_act3);
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
@@ -100,7 +113,9 @@ public class JoinRestController {
 		mominfo.setPassword(user_pw);
 		mominfo.setName(name);
 		mominfo.setBirthdate(birthdate);
+		mominfo.setGender(gender);
 		mominfo.setJob_opening('N');
+		mominfo.setSubscribe('N');
 		// mominfo.setSitter_gender('F');
 		// mominfo.setInterview_type('1');
 		// mominfo.setCare_type("주1회");

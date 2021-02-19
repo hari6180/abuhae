@@ -33,7 +33,7 @@
 <body>		
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
-			<form action="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report_ok.do" method="post" name="abc">
+			<form action="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report_ok.do" method="post">
 				<div class="siren_header">
 					<div class="x_btn_area">
 						<button type="button" class="x_btn" onclick = "history.back() ">
@@ -81,7 +81,7 @@
 					</div> <!-- fin. siren_type -->
 					<div class="siren_text_box">
 						<h4>신고 내용을 입력해주세요.</h4>
-						<input type="text" name="contents" placeholder="예). 부적절한 사진이 올라가 있습니다."></input>
+						<textarea id="contents" name="contents" placeholder="예). 부적절한 사진이 올라가 있습니다."></textarea>
 					</div> <!-- fin. siren_text_box -->
 					
 					<div class="desc_area">
@@ -97,14 +97,15 @@
 						</p>
 					</div> <!-- fin. desc_area -->
 					
-					<input type="hidden" name="who" value="S">
-					<input type="hidden" name="momno" value="${output.momno}">
-					<input type="hidden" name="sitterno" >
+					<input type="hidden" id="who" name="who" value="S">
+					<input type="hidden" id="momno" name="momno" value="${output.momno}">
+					<input type="hidden" id="sitterno" name="sitterno" >
 				</div> <!-- fin. siren_body -->
 				</form>
 			</div> <!-- fin. col-xs-12 -->
 		</div> <!-- fin. container -->
-	
+		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+		<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
 		<!-- Javascript -->
 		<script type="text/javascript">
 		/* $(function() {
@@ -120,9 +121,24 @@
 		    	}else {
 		        swal("신고완료", "신고가 완료되었습니다. 감사합니다.");
 		    	}
-		    }	*/	    
+		    }		    
+		    
+			$(function(){
+				$("#btn_submit").on('click', function(e){
+					e.preventDefault();
+					var who = $("#who").val();
+					var type = $('input[name="type"]:checked').val();
+					var contents = $("#contents").val();
+					var momno = $("#momno").val();
+
+					console.log(who);
+					console.log(type);
+					console.log(contents);
+					console.log(momno);
+
+				});
+			});*/
 		</script>
-		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
-		<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
+		
 	</body>
 </html>

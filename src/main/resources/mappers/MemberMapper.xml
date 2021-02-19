@@ -17,6 +17,7 @@
 		<result property="phone" column="phone" />
 		<result property="birthdate" column="birthdate" />
 		<result property="job_opening" column="job_opening" />
+		<result property="subscribe" column="subscribe" />
 		<result property="signup_date" column="signup_date" />
 	</resultMap>
 
@@ -68,13 +69,9 @@
 		parameterType="study.team.abuhae.model.Member" useGeneratedKeys="true"
 		keyProperty="memberno">
 		INSERT INTO Member (type, id, password, name, email,
-		phone, birthdate, job_opening, signup_date)
-		VALUES (#{type}, #{id},
-		md5(#{password}),
-		#{name}, #{email}, #{phone},
-		#{birthdate},
-		#{job_opening},
-		now());
+		phone, birthdate, gender, job_opening, subscribe, signup_date)
+		VALUES (#{type}, #{id}, md5(#{password}), #{name}, #{email}, #{phone},
+		#{birthdate},#{gender}, #{job_opening}, #{subscribe}, now());
 	</insert>
 
 
@@ -82,14 +79,14 @@
 	<insert id="insertMom"
 		parameterType="study.team.abuhae.model.Mom_info"
 		useGeneratedKeys="true" keyProperty="momno">
-		INSERT INTO Mom_info (want_act,
+		INSERT INTO Mom_info (want_act1, want_act2, want_act3,
 		want_age, kids_num, kids_age,
 		payment, payment_ok, si, gu, dong,
 		schedule,
 		schedule_ok, description, sitter_gender,
 		interview_type,
 		care_type,
-		openingdate, memberno) VALUES (#{want_act}, #{want_age},
+		openingdate, memberno) VALUES (#{want_act1},#{want_act2},#{want_act3}, #{want_age},
 		#{kids_num},
 		#{kids_age}, #{payment}, #{payment_ok}, #{si}, #{gu},
 		#{dong}, #{schedule},

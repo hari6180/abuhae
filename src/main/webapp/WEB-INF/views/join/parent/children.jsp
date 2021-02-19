@@ -127,7 +127,9 @@
                     <form id="addform" method="post"
                         action="${pageContext.request.contextPath}/join/parent/location.do">
                         <input type="hidden" id="type" name="type" value="${type}">
-                        <input type="hidden" id="want_act" name="want_act" value="${want_act}">
+                        <input type="hidden" id="want_act1" name="want_act1" value="${want_act1}">
+                        <input type="hidden" id="want_act2" name="want_act2" value="${want_act2}">
+                        <input type="hidden" id="want_act3" name="want_act3" value="${want_act3}">
                         <input type="hidden" id="want_age" name="want_age" value="${want_age}">
                         <input type="hidden" id="kids_num" name="kids_num">
                         <input type="hidden" id="kids_age" name="kids_age">

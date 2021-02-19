@@ -207,7 +207,9 @@
 
                             <form id="addform" method="post" action="${pageContext.request.contextPath}/join/parent/children.do">
                             	<input type="hidden" id="type" name="type" value="M">
-                                <input type="hidden" id="want_act" name="want_act">
+                                <input type="hidden" id="want_act1" name="want_act1">
+                                <input type="hidden" id="want_act2" name="want_act2">
+                                <input type="hidden" id="want_act3" name="want_act3">
                                 <input type="hidden" id="want_age" name="want_age">
                                 <button class="next_btn" type="submit">다음</button>
                             </form>
@@ -227,10 +229,6 @@
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <!--Google CDN 서버로부터 jQuery 참조 -->
             <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <!-- jQuery Ajax Form plugin CDN -->
-            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-    		<!-- jQuery Ajax Setup -->
-    		<script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
             <script type="text/javascript"></script>
             <script type="text/javascript">
                 $(function () {
@@ -285,7 +283,7 @@
                     const result2 = [];
                     //활동, 나이대를 ajax post로 넘기기
                     $(".next_btn").click(function (e) {
-
+                        //e.preventDefault();
                         //연령대 체크 여부 검사 - 선아
                         var check_list = $(".want_age:checked");
                         //배열 길이가 0이라면 선택된 항목 없다 - 선아
@@ -299,9 +297,15 @@
                         $("input[name=want_age]:checked").each(function (i) {
                             result2.push($(this).val());
                         });
-                        
 
-                        $('#want_act').val(result1);
+                        var want1 = result1[0];
+                        var want2 = result1[1];
+                        var want3 = result1[2];
+                        console.log(want1);
+                        //$('#want_act').val(result1);
+                        $('#want_act1').val(want1);
+                        $('#want_act2').val(want2);
+                        $('#want_act3').val(want3);
                         $('#want_age').val(result2);
                         //console.log($("#want_act").val());
                         //console.log($("#want_age").val());

@@ -58,7 +58,9 @@
                 </header>
                 <form id="join_form" action="${pageContext.request.contextPath}/join/parent/add_ok">
                     <input type="hidden" id="type" name="type" value="${type}">
-                    <input type="hidden" id="want_act" name="want_act" value="${want_act}">
+                    <input type="hidden" id="want_act1" name="want_act1" value="${want_act1}">
+                    <input type="hidden" id="want_act2" name="want_act2" value="${want_act2}">
+                    <input type="hidden" id="want_act3" name="want_act3" value="${want_act3}">
                     <input type="hidden" id="want_age" name="want_age" value="${want_age}">
                     <input type="hidden" id="kids_num" name="kids_num" value="${kids_num}">
                     <input type="hidden" id="kids_age" name="kids_age" value="${kids_age}">
@@ -127,6 +129,15 @@
                                 <input type="date" id="birthdate" name="birthdate" class="acco_input">
                             </div>
                         </div>
+                        <div class="input_group">
+                            <label for="gender">성별</label>&nbsp;&nbsp;<label class="error" for="gender"
+                                generated="true" style="display:none;"></label>
+                            <div class="input_elem">
+                                <label class="radgender"><input type="radio" name="gender" value="F"> 여자</label>
+                                <label class="radgender"><input type="radio" name="gender" value="M"> 남자</label>
+                            </div>
+                        </div>
+                        
                     </div>
                     <button type="submit" class="next_btn" disabled>다음</button>
                 </form>

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
@@ -24,6 +26,8 @@ public class ReportController {
 		
 		@Autowired
 		WebHelper webHelper;
+		@Autowired
+		RegexHelper regexHelper;
 		@Value("#{servletContext.contextPath}")
 	    String contextPath;
 	
@@ -53,14 +57,18 @@ public class ReportController {
 			return "/page_detail/mom_page_detail/mom_report";
 		}
 		
-		@RequestMapping(value = "/page_detail/mom_page_detail/mom_report_ok.do", method = RequestMethod.POST)
+		@RequestMapping(value = "/page_detail/report_ok.do", method = RequestMethod.POST)
 		public ModelAndView add_ok(Model model,
 				HttpServletResponse response,
 				@RequestParam(value = "who", defaultValue = "") char who,
-				@RequestParam(value = "type", defaultValue = "") char type,
+				@RequestParam(value = "type", defaultValue = "") String type,
 				@RequestParam(value = "contents", required = false, defaultValue = "") String contents,
 				@RequestParam(value = "momno", defaultValue = "0") int momno,
 				@RequestParam(value = "sitterno", defaultValue = "55") int sitterno) {
+			
+			if(!regexHelper.isValue(type)) {
+				return webHelper.redirect(null, "신고 타입은 무조건 선택해야 합니다.");
+			}
 			
 			Report input = new Report();
 			input.setWho(who);
