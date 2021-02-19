@@ -185,8 +185,10 @@
 								</div>
 							</div>
 							<div>
+							<c:if test="${output.frequency=='noplan'}">
+							<c:set var="theString" value="${output.days}" />
+							
 								<div class="active_time_box">
-								
 									<div class="partTime_line">
 										<div class="partTime">
 											<div class="part">오전</div>
@@ -204,67 +206,166 @@
 									
 									<div class="partDay_line">
 										월
+										<c:if test="${fn:contains(theString, 'wek_morning')}">
 										<div class="partDay_ok"><i class="fas fa-check"></i></div>
-										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_morning')==false}">
 										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_launch')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_launch')==false}">
+										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_evning')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_evning')==false}">
+										<div class="partDay_no"></div>
+										</c:if>
 									</div> <!-- fin. partDay_line -->
 									<div class="partDay_line">
 										화
+										<c:if test="${fn:contains(theString, 'wek_morning')}">
 										<div class="partDay_ok"><i class="fas fa-check"></i></div>
-										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_morning')==false}">
 										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_launch')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_launch')==false}">
+										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_evning')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_evning')==false}">
+										<div class="partDay_no"></div>
+										</c:if>
 									</div> <!-- fin. partDay_line -->
 									<div class="partDay_line">
 										수
+										<c:if test="${fn:contains(theString, 'wek_morning')}">
 										<div class="partDay_ok"><i class="fas fa-check"></i></div>
-										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_morning')==false}">
 										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_launch')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_launch')==false}">
+										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_evning')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_evning')==false}">
+										<div class="partDay_no"></div>
+										</c:if>
 									</div> <!-- fin. partDay_line -->
 									<div class="partDay_line">
 										목
+										<c:if test="${fn:contains(theString, 'wek_morning')}">
 										<div class="partDay_ok"><i class="fas fa-check"></i></div>
-										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_morning')==false}">
 										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_launch')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_launch')==false}">
+										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_evning')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_evning')==false}">
+										<div class="partDay_no"></div>
+										</c:if>
 									</div> <!-- fin. partDay_line -->
 									<div class="partDay_line">
 										금
+										<c:if test="${fn:contains(theString, 'wek_morning')}">
 										<div class="partDay_ok"><i class="fas fa-check"></i></div>
-										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_morning')==false}">
 										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_launch')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_launch')==false}">
+										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_evning')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'wek_evning')==false}">
+										<div class="partDay_no"></div>
+										</c:if>
 									</div> <!-- fin. partDay_line -->
 									<div class="partDay_line">
 										토
+										<c:if test="${fn:contains(theString, 'end_morning')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'end_morning')==false}">
 										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'end_launch')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'end_launch')==false}">
 										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'end_evning')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'end_evning')==false}">
 										<div class="partDay_no"></div>
+										</c:if>
 									</div> <!-- fin. partDay_line -->
 									<div class="partDay_line">
 										일
+										<c:if test="${fn:contains(theString, 'end_morning')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'end_morning')==false}">
 										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'end_launch')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'end_launch')==false}">
 										<div class="partDay_no"></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'end_evning')}">
+										<div class="partDay_ok"><i class="fas fa-check"></i></div>
+										</c:if>
+										<c:if test="${fn:contains(theString, 'end_evning')==false}">
 										<div class="partDay_no"></div>
+										</c:if>
 									</div> <!-- fin. partDay_line -->
 									
 								</div> <!-- fin. active_time_box -->
+								</c:if>
 							</div>
 						</div> <!-- fin. active_area -->
 					</div> <!-- fin. active_box -->
 					<div class="possible_age_box">
 					<div class="box_name">아이 정보</div>
 					<div class="possible_age_area">
-						<div>							
-							<div class="child_age_line">
-								<div style="margin-bottom: -10px">
-								<span style="color: #ff7000;"><i class="fas fa-baby-carriage fa-3x"></i></span>
-								</div>
-								<span class="child_age_text">영아 2세</span>
-							</div>
+						<div>												
 							<div class="child_age_line">
 								<div style="margin-bottom: -10px">
 								<span style="color: #ff7000;"><i class="fas fa-child fa-3x"></i></span>
 								</div>
-								<span class="child_age_text">유아 7세</span>
-							</div>		
+								<span class="child_age_text">${output.kids_num} 명</span>							</div>						
 						</div>
 					</div> <!-- fin. possible_age_area -->
 				</div> <!-- fin. possible_age_box -->

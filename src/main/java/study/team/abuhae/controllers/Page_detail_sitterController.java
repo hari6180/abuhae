@@ -49,7 +49,7 @@ public class Page_detail_sitterController {
 		for (int i = 0; i < data.length; i++) {
 			System.out.println(data[i]);
 		} */
-	
+		
 		try {
 			// 데이터 조회 
 			output = detailService.getSitterItem(input);

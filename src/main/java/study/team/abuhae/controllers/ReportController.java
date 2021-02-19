@@ -57,8 +57,8 @@ public class ReportController {
 			return "/page_detail/mom_page_detail/mom_report";
 		}
 		
-		@RequestMapping(value = "/page_detail/report_ok.do", method = RequestMethod.POST)
-		public ModelAndView add_ok(Model model,
+		@RequestMapping(value = "/page_detail/mom_page_detail/mom_report_ok.do", method = RequestMethod.POST)
+		public ModelAndView report_mom_ok(Model model,
 				HttpServletResponse response,
 				@RequestParam(value = "who", defaultValue = "") char who,
 				@RequestParam(value = "type", defaultValue = "") String type,
@@ -84,7 +84,7 @@ public class ReportController {
 				return webHelper.redirect(null, e.getLocalizedMessage());
 			}
 			
-			String redirectUrl = contextPath + "/page_detail/mom_page_detail/mom_detail.do?momno=" + input.getMomno();
+			String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
 			return webHelper.redirect(redirectUrl, "신고가 완료되었습니다.");
 		}
 				
@@ -110,5 +110,36 @@ public class ReportController {
 			}
 			model.addAttribute("output", output);
 			return "/page_detail/sitter_page_detail/sitter_report";
+		}
+		
+		@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_report_ok.do", method = RequestMethod.POST)
+		public ModelAndView report_sitter_ok (Model model,
+				HttpServletResponse response,
+				@RequestParam(value = "who", defaultValue = "") char who,
+				@RequestParam(value = "type", defaultValue = "") String type,
+				@RequestParam(value = "contents", required = false, defaultValue = "") String contents,
+				@RequestParam(value = "momno", defaultValue = "0") int momno,
+				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+			
+			if(!regexHelper.isValue(type)) {
+				return webHelper.redirect(null, "신고 타입은 무조건 선택해야 합니다.");
+			}
+			
+			Report input = new Report();
+			input.setWho(who);
+			input.setType(type);
+			input.setContents(contents);
+			input.setMomno(momno);
+			input.setSitterno(sitterno);
+			
+			try {
+				detailService.addReport(input);
+				
+			} catch (Exception e) {
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+			
+			String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
+			return webHelper.redirect(redirectUrl, "신고가 완료되었습니다.");
 		}
 }
