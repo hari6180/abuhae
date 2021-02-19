@@ -51,7 +51,7 @@ public class SitterMypageController {
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		/** 데이터 조회 */
 		Connect input = new Connect();
-		input.setSitterno(1);;
+		input.setSitterno(3);
 		
 		List<Connect> output = null;
 		

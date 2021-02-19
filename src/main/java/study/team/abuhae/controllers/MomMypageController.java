@@ -1,6 +1,5 @@
 package study.team.abuhae.controllers;
 
-import java.net.http.WebSocketHandshakeException;
 import java.util.List;
 import java.util.Locale;
 
@@ -20,9 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Coupon;
-import study.team.abuhae.model.Member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
+import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.MomMypageService;
 
@@ -112,9 +111,36 @@ public class MomMypageController {
 	
 	/** 내 구인 현황 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/get_sitter_mpm.do", method = RequestMethod.GET)
-	public String get_sitter(Locale locale, Model model) {
+	public ModelAndView get_sitter(Model model,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 
-		return "mypage/mypage_mom/get_sitter_mpm";
+		/** 데이터 조회 */
+		Review input = new Review();
+		input.setMomno(1);
+		
+		/** 후기 작성할 수 있는 회원 목록*/
+		List<Review> output1 = null;
+		
+		try {
+			output1 = momMypageService.getReviewMemberList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 작성한 후기 목록 */
+		List<Review> output2 = null;
+		
+		try {
+			output2 = momMypageService.getReviewList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** View 출력 */
+		model.addAttribute("output1", output1);
+		model.addAttribute("output2", output2);
+		
+		return new ModelAndView("mypage/mypage_mom/get_sitter_mpm");
 	}
 	
 	/** 찜한 맘시터 페이지 */
