@@ -39,7 +39,7 @@ button {
 /* 전체 설정 end----------------------------------------------------------*/
 
 /* search_filter_group ----------------------------------------------------------*/
-
+/* 
 #search .search_filter_wrap {
   width: 100%;
   padding: 20px 15px 5px;
@@ -87,7 +87,58 @@ button {
 
 .caretype_filter p {
   color: rgb(0, 0, 0);
+} */
+
+#search .search_filter_wrap {
+  display: flex;
+  padding: 10px 0px;
 }
+
+#search .search_filter_group {
+  flex: 1 1 0%;
+  width: 50%;
+  text-align: center;
+}
+
+.location_filter div {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border: 1px solid rgb(220, 220, 220);
+  margin: auto;
+  padding: 12px 0px;
+  outline: none;
+  font-size: inherit;
+  font-weight: inherit;
+  position: relative;
+  z-index: 1;
+  width: 95%;
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+}
+
+.location_filter a {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.location_filter i {
+  font-size: 1.4em;
+  margin-right: 13px;
+  color: #999;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.location_filter p {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: rgb(68, 70, 74);
+  margin-bottom: 0;
+}
+
 /* search_filter_group end ----------------------------------------------------------*/
 
 /* activity_type_wrap ----------------------------------------------------------*/

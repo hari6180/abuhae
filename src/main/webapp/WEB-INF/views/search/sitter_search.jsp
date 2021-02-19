@@ -667,16 +667,18 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <div class="search_filter_group">
                   <div class="location_filter">
                     <a data-toggle="modal" href="#location_modal">
-                      <img src="${pageContext.request.contextPath}/assets/img/p-search-location-before (1).png" />
-                      <p>돌봄 지역을 선택해주세요</p></a
-                    >
+                      <div>
+                        <i class="fas fa-search"></i>
+                        <p>돌봄 지역을 선택해주세요</p>
+                      </div>
+                    </a>
                   </div>
-                  <div class="caretype_filter">
+                  <!-- <div class="caretype_filter">
                     <a href="${pageContext.request.contextPath}/search/caretype_sitter.do">
                       <img src="${pageContext.request.contextPath}/assets/img/p-search-caretype (1).png" />
                       <p>모든 돌봄유형</p>
                     </a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div class="activity_type_wrap">
