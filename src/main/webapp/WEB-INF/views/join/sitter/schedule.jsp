@@ -44,10 +44,19 @@
                     <span class="dot"></span>
                 </div>
                 <h3 class="what_want">언제 활동할 수 있나요?</h3>
-                <div id="select_group">
+                    <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="want_act1" name="want_act1" value="${want_act1}">
+                    <input type="hidden" id="want_act2" name="want_act2" value="${want_act2}">
+                    <input type="hidden" id="want_act3" name="want_act3" value="${want_act3}">
+                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                    <input type="hidden" id="loc_si" name="si" value="${si}">
+                    <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                    <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                    <input type="hidden" id="schedules" name="schedule">
+                    <input type="hidden" id="schedule_set" name="schedule_set">
+                <div id="select_group change_box">
                     <div class="schedule_box">
-                        <input type="radio" name="schedule" id="schedule_set_1" class="type_select"
-                            value="schedule_set_1" checked>
+                        <input type="radio" name="schedule" id="schedule_set_1" class="type_select" value="1" checked>
                         <label for="schedule_set_1" class="radio_text">
                             <div>
                                 <h3>월~금 종일<span>&nbsp;&nbsp;오전 8시 - 저녁 8시</span></h3>
@@ -55,8 +64,7 @@
                         </label>
                     </div>
                     <div class="schedule_box">
-                        <input type="radio" name="schedule" id="schedule_set_2" class="type_select"
-                            value="schedule_set_2">
+                        <input type="radio" name="schedule" id="schedule_set_2" class="type_select" value="2">
                         <label for="schedule_set_2" class="radio_text">
                             <div>
                                 <h3>월~금 오전<span>&nbsp;&nbsp;오전 7시 - 오후 2시</span></h3>
@@ -64,8 +72,7 @@
                         </label>
                     </div>
                     <div class="schedule_box">
-                        <input type="radio" name="schedule" id="schedule_set_3" class="type_select"
-                            value="schedule_set_3">
+                        <input type="radio" name="schedule" id="schedule_set_3" class="type_select" value="3">
                         <label for="schedule_set_3" class="radio_text">
                             <div>
                                 <h3>월~금 오후<span>&nbsp;&nbsp;오후 2시 - 저녁 10시</span></h3>
@@ -73,8 +80,7 @@
                         </label>
                     </div>
                     <div class="schedule_box">
-                        <input type="radio" name="schedule" id="schedule_set_4" class="type_select"
-                            value="schedule_set_4">
+                        <input type="radio" name="schedule" id="schedule_set_4" class="type_select" value="4">
                         <label for="schedule_set_4" class="radio_text">
                             <div>
                                 <h3>주말 종일<span>&nbsp;&nbsp;오전 8시 - 저녁 8시</span></h3>
@@ -82,8 +88,7 @@
                         </label>
                     </div>
                     <div class="schedule_box">
-                        <input type="radio" name="schedule" id="schedule_set_5" class="type_select"
-                            value="schedule_set_5">
+                        <input type="radio" name="schedule" id="schedule_set_5" class="type_select" value="5">
                         <label for="schedule_set_5" class="radio_text">
                             <div>
                                 <h3>내가 원하는 시간 직접 입력하기</h3>
@@ -91,7 +96,7 @@
                         </label>
                     </div>
                 </div>
-                <button class="next_btn">다음</button>
+                <button class="next_btn">다음</button> 
             </div>
 
         </div> <!-- fin. col-xs-12 -->
@@ -107,8 +112,23 @@
                 var select = $("input[name='schedule']:checked").val();
                 //console.log(select);
                 //선택이 안되어있을때
-                if (select == 'schedule_set_5') {
-                    location.href='detail.jsp';
+                if (select == '5') {
+                    //ajax로 화면 전환
+                    //버튼 클릭시에 내용 변경
+                    //var type = $(this).val();
+                    $(".change_box").empty();
+                    $.ajax({
+                        type: 'GET',                 //get방식으로 통신
+                        url: "detail.do",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+                        dataType: "text",            //html형식으로 값 읽기
+                        error: function () {          //통신 실패시 ㅠㅠ
+                            alert('통신실패!');
+                        },
+                        success: function (data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
+                            $('.change_box').html(data);
+                        }
+                    });
+                    
                 } else {
                     location.href='payment_cctv.jsp';
                 }

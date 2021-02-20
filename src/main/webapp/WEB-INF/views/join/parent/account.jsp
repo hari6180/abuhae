@@ -133,8 +133,8 @@
                             <label for="gender">성별</label>&nbsp;&nbsp;<label class="error" for="gender"
                                 generated="true" style="display:none;"></label>
                             <div class="input_elem">
-                                <label class="radgender"><input type="radio" name="gender" value="F"> 여자</label>
-                                <label class="radgender"><input type="radio" name="gender" value="M"> 남자</label>
+                                <input type="radio" id="gender1" name="gender" value="F" checked> <label for="gender1">여자</label>
+                                <input type="radio" id="gender2" name="gender" value="M"><label for="gender2"> 남자</label>
                             </div>
                         </div>
                         
@@ -223,6 +223,8 @@
 
             }); //end validate
 
+            
+
             //입력요소 전부 입력 완료시 버튼 활성화 - 선아
             $("input").on("blur", function () {
                 if ($("#user_id").val() != '' && $("#user_pw").val() != '' && $("#user_pw_re").val() != '' && $("#name").val() != '' && $("#email").val() != '' &&$("#tel").val() != '' &&$("#birthdate").val() != '' ) {
@@ -231,20 +233,6 @@
             });
 
             $(".next_btn").click(function (e) {
-                var userid = $("#user_id").val();
-                var userpw = $("#user_pw").val();
-                var name = $("#name").val();
-                var email = $("#email").val();
-                var tel = $("#tel").val();
-                var birthdate = $("#birthdate").val();
-
-                $("#user_id").val(userid);
-                $("#user_pw").val(userpw);
-                $("#name").val(name);
-                $("#email").val(email);
-                $("#tel").val(tel);
-                $("#birthdate").val(birthdate);
-
                 $("#join_form").ajaxForm({
                 //전송 메서드 지정
                 method: "POST",

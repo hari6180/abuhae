@@ -42,6 +42,11 @@
         .what_want {
             margin: 18px 0;
         }
+        button:disabled,
+        button[disabled] {
+            background-color: #cccccc;
+            color: #666666;
+        }
     </style>
 </head>
 
@@ -93,7 +98,23 @@
                     </div>
                 </div>
                 <br>
-                <a href="success.jsp"><button class="next_btn">다음</button></a>
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/sitter/account.do">
+                    <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="sitter_type" name="sitter_type" value="${sitter_type}">
+                    <input type="hidden" id="want_act1" name="want_act1" value="${want_act1}">
+                    <input type="hidden" id="want_act2" name="want_act2" value="${want_act2}">
+                    <input type="hidden" id="want_act3" name="want_act3" value="${want_act3}">
+                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                    <input type="hidden" id="loc_si" name="si" value="${si}">
+                    <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                    <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                    <input type="hidden" id="schedule" name="schedule" value="${schedule}">
+                    <input type="hidden" id="payment" name="payment" value="${payment}">
+                    <input type="hidden" id="cctv" name="cctv" value="${cctv}">
+                    <input type="hidden" id="profile_img" name="profile_img" value="${profile_img}">
+                    <input type="hidden" id="intro" name="introduce" value="${introduce}">
+                    <button type="submit" class="next_btn" disabled>다음</button>
+                </form>
             </div> <!-- fin. col-xs-12 -->
     </div>
 
@@ -106,6 +127,8 @@
             $("#all_check").change(function(){
                 //모든 hobby의 상태를 올체크와 동일하게
                 $(".agree").prop('checked', $(this).prop('checked'));
+                var now = $(".next_btn").prop('disabled');
+                $(".next_btn").prop('disabled', !now);
             });
         });
     </script>

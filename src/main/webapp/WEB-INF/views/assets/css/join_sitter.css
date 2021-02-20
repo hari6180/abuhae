@@ -671,7 +671,7 @@ input[type="radio"] + label:after {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.select_loaction {
+.select_location {
   color: #ff7000 !important;
   background-color: #fff8f2 !important;
 }
@@ -1072,6 +1072,7 @@ input[type="checkbox"]:checked + label:after {
 #account .input_elem {
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 #account .acco_input {
@@ -1085,6 +1086,10 @@ input[type="checkbox"]:checked + label:after {
   color: #000;
   transition: border 0.3s ease;
   width: 100%;
+}
+
+#acount .radgender {
+  display: inline-block;
 }
 
 /*join/sitter/agreement.html----------------------------------------------------------------*/

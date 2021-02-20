@@ -202,6 +202,28 @@ public class MemberServiceImpl implements MemberService {
 
 		return result1;
 	}
+	
+	@Override
+	public int addSitter(Sitter_info input) throws Exception {
+		int result1 = 0;
+		int result2 = 0;
+
+		try {
+			result1 = sqlsession.insert("MemberMapper.insertMember", input);
+			result2 = sqlsession.insert("MemberMapper.insertSitter", input);
+			if (result1 == 0 && result2 == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+
+		return result1;
+	}
 
 	@Override
 	public int idCheck(Member input) throws Exception {
@@ -310,5 +332,7 @@ public class MemberServiceImpl implements MemberService {
 		//out.close();
 
 	}
+
+	
 
 }

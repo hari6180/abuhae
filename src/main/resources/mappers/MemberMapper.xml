@@ -48,7 +48,9 @@
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="sitterno" column="sitterno" />
 		<result property="sitter_type" column="sitter_type" />
-		<result property="want_act" column="want_act" />
+		<result property="want_act1" column="want_act1" />
+		<result property="want_act2" column="want_act2" />
+		<result property="want_act3" column="want_act3" />
 		<result property="want_age" column="want_age" />
 		<result property="payment" column="payment" />
 		<result property="si" column="si" />
@@ -101,15 +103,11 @@
 		useGeneratedKeys="true" keyProperty="sitterno">
 		INSERT INTO Sitter_info
 		(sitter_type,
-		want_act, want_age, payment, si, gu, dong, schedule,
-		schedule_set,
-		introduce, cctv, openingdate, memberno)
+		want_act1, want_act2,want_act3, want_age, si, gu, dong, 
+		schedule, payment, cctv, isprofile, introduce, openingdate, memberno)
 		VALUES
-		(#{sitter_type}, #{want_act},
-		#{want_age}, #{payment}, #{si}, #{gu},
-		#{dong},
-		#{schedule},
-		#{schedule_set}, #{introduce}, #{cctv},
+		(#{sitter_type}, #{want_act1}, #{want_act2}, #{want_act3}, #{want_age}, #{si}, #{gu}, #{dong},
+		#{schedule},#{payment}, #{cctv}, 'N', #{introduce},
 		#{openingdate}, #{memberno});
 	</insert>
 

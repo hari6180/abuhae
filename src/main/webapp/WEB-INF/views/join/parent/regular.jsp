@@ -23,49 +23,6 @@
 			</div>
 		</div>
 		<hr>
-		<!--요일 선택시 나타내주기-->
-		<div id="content" class="hide_content">
-			<!--시간 선택-->
-			<div class="time_select_box">
-				<div>
-					<!--시작 시간-->
-					<div class="regu_title">시작시간</div>
-					<!--시간-->
-					<div class="select_time">
-						<select id="starttime">
-							<option value="10:00">오전 10:00</option>
-							<option value="10:30">오전 10:30</option>
-							<option value="11:00" selected>오전 11:00</option>
-							<option value="11:30">오전 11:30</option>
-							<option value="12:00">오전 12:00</option>
-							<option value="12:30">오전 12:30</option>
-						</select>
-					</div>
-				</div>
-				<!--end select-->
-
-				<!--중간 바-->
-				<div class="middle_bar"></div>
-				<!--종료시간-->
-				<div>
-					<div>
-						<div class="regu_title">종료시간</div>
-					</div>
-					<div class="select_time">
-						<select id="endtime">
-							<option value="20:00">오후 20:00</option>
-							<option value="20:30">오후 20:30</option>
-							<option value="21:00" selected>오후 21:00</option>
-							<option value="21:30">오후 21:30</option>
-							<option value="22:00">오후 22:00</option>
-							<option value="22:30">오후 22:30</option>
-						</select>
-					</div>
-				</div>
-				<!--end select-->
-			</div>
-			<!--end select box-->
-
 			<!--일정은 시터에게 맞출 수 잇어요-->
 			<div class="jojung_box">
 				<span class="jojung_check"></span>

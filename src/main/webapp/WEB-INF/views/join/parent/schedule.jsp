@@ -149,14 +149,6 @@
 			$(document).on('click', '.day_btn', function () {
 				$(this).toggleClass("select_btn");
 
-				var count = $(".select_btn").length;
-				if (count == 0) {
-					$("#content").removeClass("show_content");
-					$("#content").addClass("hide_content");
-				} else {
-					$("#content").removeClass("hide_content");
-					$("#content").addClass("show_content");
-				}
 
                 if($(this).hasClass("select_btn")==true){
                     var day = $(this);
@@ -182,13 +174,6 @@
                     var day = result1;
                     //빈도
                     var frequency = "regular";
-                    //시간
-                    var time = [];
-                    var starttime = $("#starttime option:selected").val();
-                    var endtime = $("#endtime option:selected").val();
-                    time.push(starttime);
-                    time.push(endtime);
-
                     startdate = startdate.replace(/\//gi, '-');
 
 
@@ -203,8 +188,7 @@
                         startdate: startdate,
                         frequency: frequency,
                         // 배열은 아래와 같이 구조화 할 수 있습니다.
-                        day: day,
-                        time: time
+                        day: day
                     };
 
                     var scheduleStr = JSON.stringify(schedule);

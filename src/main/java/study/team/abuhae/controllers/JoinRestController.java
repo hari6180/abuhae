@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.MemberService;
 
 @RestController
@@ -23,8 +24,9 @@ public class JoinRestController {
 	@Autowired
 	MemberService memberService;
 	Mom_info mominfo = new Mom_info();
+	Sitter_info sitterinfo = new Sitter_info();
 
-	// 회원가입 최종 OK
+	// 맘 회원가입 최종 OK
 	@RequestMapping(value = "join/parent/add_ok", method = RequestMethod.POST)
 	public Map<String, Object> m_join_success(Model model, 
 			@RequestParam(value = "type") char type,
@@ -129,6 +131,116 @@ public class JoinRestController {
 		try {
 			// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
 			memberService.addMom(mominfo);
+
+		} catch (Exception e) {
+			return webhelper.getJsonError(e.getLocalizedMessage());
+		}
+		return webhelper.getJsonData();
+	}
+	
+	// 시터 회원가입 최종 OK
+	@RequestMapping(value = "join/sitter/add_ok", method = RequestMethod.POST)
+	public Map<String, Object> s_join_success(Model model, 
+			@RequestParam(value = "type") char type,
+			@RequestParam(value = "type") String sitter_type,
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
+			@RequestParam(value = "want_age") String want_age,
+			@RequestParam(value = "si") String si,
+			@RequestParam(value = "gu") String gu, 
+			@RequestParam(value = "dong") String dong,
+			@RequestParam(value = "schedule") String schedulestr, 
+			@RequestParam(value = "payment") String paymentstr, 
+			@RequestParam(value = "cctv") char cctv,
+			@RequestParam(value = "profile_img", required = false) char isprofile,
+			@RequestParam(value = "introduce", required = false) String introduce,
+			@RequestParam(value = "user_id") String user_id, 
+			@RequestParam(value = "user_pw") String user_pw,
+			@RequestParam(value = "name") String name, 
+			@RequestParam(value = "email") String email,
+			@RequestParam(value = "tel") String tel, 
+			@RequestParam(value = "birthdate") String birthdate,
+			@RequestParam(value = "gender") char gender) {
+
+		// 데이터 가공
+		paymentstr = paymentstr.replace(",", "");
+		int payment = Integer.parseInt(paymentstr);
+		String schedule = schedulestr.replace("'", "\"");
+
+		// 유효성 검사에 사용될 객체
+		Sitter_info check = new Sitter_info();
+		check.setId(user_id);
+		check.setEmail(email);
+		check.setPhone(tel);
+
+		// 아이디 검사
+		try {
+
+			int result = memberService.idCheck(check);
+			if (result == 1) {
+				return webhelper.getJsonWarning("아이디중복");
+			}
+			sitterinfo.setId(user_id);
+		} catch (Exception e) {
+			return webhelper.getJsonError(e.getLocalizedMessage());
+		}
+		// 이메일 검사
+		try {
+			int result = memberService.emailCheck(check);
+			if (result == 1) {
+				return webhelper.getJsonWarning("이메일중복");
+			}
+			sitterinfo.setEmail(email);
+		} catch (Exception e) {
+			return webhelper.getJsonError(e.getLocalizedMessage());
+		}
+		// 핸드폰번호 검사
+		try {
+			int result = memberService.phoneCheck(check);
+			if (result == 1) {
+				return webhelper.getJsonWarning("핸드폰중복");
+			}
+			sitterinfo.setPhone(tel);
+		} catch (Exception e) {
+			return webhelper.getJsonError(e.getLocalizedMessage());
+		}
+
+		// 저장할 값 beans에 담기
+		sitterinfo.setType(type);
+		sitterinfo.setSitter_type(sitter_type);
+		sitterinfo.setWant_act1(want_act1);
+		sitterinfo.setWant_act2(want_act2);
+		sitterinfo.setWant_act3(want_act3);
+		sitterinfo.setWant_age(want_age);
+		sitterinfo.setSi(si);
+		sitterinfo.setGu(gu);
+		sitterinfo.setDong(dong);
+		sitterinfo.setSchedule(schedule);
+		sitterinfo.setPayment(payment);
+		sitterinfo.setCctv(cctv);
+		sitterinfo.setIsprofile(isprofile);
+		sitterinfo.setIntroduce(introduce);
+
+		sitterinfo.setPassword(user_pw);
+		sitterinfo.setName(name);
+		sitterinfo.setBirthdate(birthdate);
+		sitterinfo.setGender(gender);
+		sitterinfo.setJob_opening('N');
+		sitterinfo.setSubscribe('N');
+		// mominfo.setSitter_gender('F');
+		// mominfo.setInterview_type('1');
+		// mominfo.setCare_type("주1회");
+		// mominfo.setOpeningdate("2021-02-04");
+
+		int memberno = sitterinfo.getMemberno();
+		sitterinfo.setMemberno(memberno);
+
+		// log.debug(mominfo.toString());
+
+		try {
+			// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+			memberService.addSitter(sitterinfo);
 
 		} catch (Exception e) {
 			return webhelper.getJsonError(e.getLocalizedMessage());

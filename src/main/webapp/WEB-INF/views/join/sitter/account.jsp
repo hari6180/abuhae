@@ -56,7 +56,21 @@
                         이제, 마지막 내용만 작성하시면 가입이 완료됩니다.
                     </h4>
                 </header>
-                <form id="join_form">
+                <form id="join_form" action="${pageContext.request.contextPath}/join/sitter/add_ok">
+                    <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="sitter_type" name="sitter_type" value="${sitter_type}">
+                    <input type="hidden" id="want_act1" name="want_act1" value="${want_act1}">
+                    <input type="hidden" id="want_act2" name="want_act2" value="${want_act2}">
+                    <input type="hidden" id="want_act3" name="want_act3" value="${want_act3}">
+                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                    <input type="hidden" id="loc_si" name="si" value="${si}">
+                    <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                    <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                    <input type="hidden" id="schedule" name="schedule" value="${schedule}">
+                    <input type="hidden" id="payment" name="payment" value="${payment}">
+                    <input type="hidden" id="cctv" name="cctv" value="${cctv}">
+                    <input type="hidden" id="profile_img" name="profile_img" value="${profile_img}">
+                    <input type="hidden" id="intro" name="introduce" value="${introduce}">
                     <div class="input_box">
                         <div class="input_group">
                             <label for="user_id">아이디</label>&nbsp;&nbsp;<label class="error" for="user_id"
@@ -112,10 +126,19 @@
                                 <input type="date" id="birthdate" name="birthdate" class="acco_input">
                             </div>
                         </div>
+                        <div class="input_group">
+                            <label for="gender">성별</label>&nbsp;&nbsp;<label class="error" for="gender"
+                                generated="true" style="display:none;"></label>
+                            <div class="input_elem">
+                                <input type="radio" id="gender1" name="gender" value="F" checked><label for="gender1">여자</label>
+                                <input type="radio" id="gender2" name="gender" value="M"><label for="gender2">남자</label>
+                            </div>
+                        </div>
                     </div>
+                    <button type="submit" class="next_btn" disabled>다음</button>
                 </form>
                 <!--end inputbox-->
-                <a href="agreement.jsp"><button class="next_btn" disabled>다음</button></a>
+                
             </div>
         </div> <!-- fin. col-xs-12 -->
     </div>
@@ -124,8 +147,12 @@
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <!--validate플러그인 참조-->
-    <script src="${pageContext.request.contextPath}/assets/plugins/validate/jquery.validate.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/validate/additional-methods.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugin/validate/jquery.validate.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugin/validate/additional-methods.min.js"></script>
+    <!-- jQuery Ajax Form plugin CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+    <!-- jQuery Ajax Setup -->
+    <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <script type="text/javascript">
         $(function () {
 
@@ -195,10 +222,24 @@
 
             //입력요소 전부 입력 완료시 버튼 활성화
             $("input").on("blur", function () {
-                if ($("#user_id").val() != '' && $("#user_pw").val() != '' && $("#user_pw_re").val() != '' && $("#name").val() != '' && $("#email").val() != '' &&$("#tel").val() != '' &&$("#birthdate").val() != '' ) {
+                var gender = $('input[name="gender"]:checked').val();
+                if ($("#user_id").val() != '' && $("#user_pw").val() != '' && $("#user_pw_re").val() != '' && $("#name").val() != '' && $("#email").val() != '' && $("#tel").val() != '' && $("#birthdate").val() != '') {
                     $(".next_btn").prop("disabled", false);
                 };
-        });
+            });
+
+            $(".next_btn").click(function (e) {
+                $("#join_form").ajaxForm({
+                //전송 메서드 지정
+                method: "POST",
+                success: function(json) {
+                    console.log(json);
+                    if(json.rt=="OK") {
+                        window.location="${pageContext.request.contextPath}/join/sitter/success.do";
+                    }
+                }
+            });
+            });
     });
 
     </script>

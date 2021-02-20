@@ -139,8 +139,24 @@
                 <p>내 사진을 올리면 부모회원의<br>
                     선택을 <span class="select_text">5배 더 많이</span> 받을 수 있습니다.</p>
                 <a data-toggle="modal" href="#help_modal"><button class="guide_prof">좋은 프로필 사진 올리는 방법!</button></a>
-                <button class="next_btn now_upload">지금 올리기</button>
-                <a href="introduce.jsp"><button class="next_btn_later">나중에 하기</button></a>
+
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/sitter/introduce.do">
+                    <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="sitter_type" name="sitter_type" value="${sitter_type}">
+                    <input type="hidden" id="want_act1" name="want_act1" value="${want_act1}">
+                    <input type="hidden" id="want_act2" name="want_act2" value="${want_act2}">
+                    <input type="hidden" id="want_act3" name="want_act3" value="${want_act3}">
+                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                    <input type="hidden" id="loc_si" name="si" value="${si}">
+                    <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                    <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                    <input type="hidden" id="schedule" name="schedule" value="${schedule}">
+                    <input type="hidden" id="payment" name="payment" value="${payment}">
+                    <input type="hidden" id="cctv" name="cctv" value="${cctv}">
+                    <input type="hidden" id="profile_img" name="profile_img" value="N">
+                    <button type="button" class="next_btn now_upload">지금 올리기</button>
+                    <button type="submit" class="next_btn_later">나중에 하기</button>
+                </form>
             </div>
 
         </div> <!-- fin. col-xs-12 -->

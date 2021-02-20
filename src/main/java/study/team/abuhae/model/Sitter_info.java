@@ -26,13 +26,13 @@ public class Sitter_info extends Member {
 	private String gu;					// 구
 	private String dong;				// 동
 	private int payment;				// 원하는 시급
-	private String cctv;				// CCTV 동의 여부
-	private char schedule;				// 활동 가능 시간 (1, 2, 3, 4)
+	private char cctv;				// CCTV 동의 여부
+	private char isprofile;			// 프로필 등록 여부
+	private String schedule;				// 활동 가능 시간 (1, 2, 3, 4)
 	private String schedule_set;		// 원하는 시간 직접 입력 (JSON)
 	private String introduce;			// 자기소개
 	private int answer;					// 응답률
 	private String openingdate; 		// 신청서 등록 시간
-	private char payment_ok; 			// 시급협의 여부 ('N', 'Y')
 	private String days;			// 가능한 요일
 
 	/** 2) JOIN절에 따른 추가 컬럼 */

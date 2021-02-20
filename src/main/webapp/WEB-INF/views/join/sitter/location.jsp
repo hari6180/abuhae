@@ -60,22 +60,9 @@
                     <span class="dot"></span>
                     <span class="dot"></span>
                 </div>
-                <h3 class="what_want">활동하고 싶은 지역을 순서대로
-                    <br>
-                    선택해 주세요. <span class="text_orange">(최대 3개)</span>
+                <h3 class="what_want">활동하고 싶은 지역을 선택해 주세요.
                 </h3>
                 <div class="location_wrap">
-                    <div class="title_box">
-                        <!--back에서 결과 받아와서 출력-->
-                        <div class="select_box">
-                        </div>
-
-                        <div class="location_title">
-                            <div class="sub_title">시/도</div>
-                            <div class="sub_title">시/군/구</div>
-                            <div class="sub_title">동/읍/면</div>
-                        </div>
-                    </div>
                     <!--지역 선택-->
                     <div class="location_box">
                         <!--시,도-->
@@ -259,7 +246,18 @@
                         <!--end 동-->
                     </div>
                 </div>
-                <a href="schedule.jsp"><button class="next_btn" disabled>다음</button></a>
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/sitter/detail.do">
+                    <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="sitter_type" name="sitter_type" value="${sitter_type}">
+                    <input type="hidden" id="want_act1" name="want_act1" value="${want_act1}">
+                    <input type="hidden" id="want_act2" name="want_act2" value="${want_act2}">
+                    <input type="hidden" id="want_act3" name="want_act3" value="${want_act3}">
+                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                    <input type="hidden" id="loc_si" name="si">
+                    <input type="hidden" id="loc_gu" name="gu">
+                    <input type="hidden" id="loc_dong" name="dong">
+                    <button type="submit" class="next_btn" disabled>다음</button>
+                </form>
             </div>
         </div> <!-- fin. col-xs-12 -->
 
@@ -272,6 +270,8 @@
         //지역 선택시 css 설정 - 선아
         $(function () {
             //시 클릭했을 때
+            var si, gu, dong;
+
             $(".loc_btn").on("click", function () {
                 var select = $(this).hasClass("select_location");
                 //선택이 안되어있을때
@@ -280,6 +280,8 @@
                     var loc = $("#si").find("button").removeClass("select_location");
                     //console.log(loc);
                     $(this).addClass("select_location");
+                    si = $(this).text();
+                    //console.log(si);
                     //시 선택하면 gu 보이게
                     $("#gu>div").removeClass("hide_content");
                     $("#gu>div").addClass("show_content");
@@ -295,6 +297,7 @@
                     var loc = $("#gu").find("button").removeClass("select_location");
                     //console.log(loc);
                     $(this).addClass("select_location");
+                    gu = $(this).text();
                     //구 선택하면 동 보이게
                     $("#dong>div").removeClass("hide_content");
                     $("#dong>div").addClass("show_content");
@@ -311,24 +314,26 @@
                     var loc = $("#dong").find("button").removeClass("select_location");
                     //console.log(loc);
                     $(this).addClass("select_location");
+                    dong = $(this).text();
 
-                    $.ajax({
-                        type: 'GET',                 //get방식으로 통신
-                        url: "location_result.html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
-                        dataType: "html",            //html형식으로 값 읽기
-                        error: function () {          //통신 실패시 ㅠㅠ
-                            alert('통신실패!');
-                        },
-                        success: function (data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
-                            $('.select_box').html(data);
-                            var now = $(".next_btn").prop('disabled');
-                            //가져온 값 역으로 변경하여 다시 적용
-                            $(".next_btn").prop('disabled', !now);
-                        }
-                    });
+                    //동까지 선택하면 다음 버튼 활성화
+                    //다음 버튼의 현재 disabled 값 가져오기
+                    var now = $(".next_btn").prop('disabled');
+                    //가져온 값 역으로 변경하여 다시 적용
+                    $(".next_btn").prop('disabled', !now);
 
                 }
             });
+
+            $(".next_btn").click(function (e) {
+                //시
+                $('#loc_si').val(si);
+                //구
+                $('#loc_gu').val(gu);
+                //동
+                $('#loc_dong').val(dong);
+                });
+
         });
     </script>
 </body>

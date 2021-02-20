@@ -38,6 +38,14 @@ public interface MemberService {
 	 */
 	public int addMom(Mom_info input) throws Exception;
 	
+	/**
+	 * 시터 데이터 등록하기 
+	 * @param Sitter_info 저장할 정보를 담고 있는 Beans
+	 * @return int
+	 * @throws Exception
+	 */
+	public int addSitter(Sitter_info input) throws Exception;
+	
 	/*
 	 * id 중복 체크
 	 * @param member 저장정보 담는 beans

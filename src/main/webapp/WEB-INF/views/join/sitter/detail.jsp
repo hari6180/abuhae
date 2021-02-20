@@ -59,115 +59,86 @@
     <div id="detail">
         <div class="container">
             <div class="col-xs-12">
-                    <div class="what_want">내가 원하는 시간 직접 입력하기</div>
-                    <hr>
-
-                    <!-- content1 -->
-                    <section class="start_job">
+                <div class="page_dots">
+                    <span class="dot now_dots"></span>
+                    <span class="dot now_dots"></span>
+                    <span class="dot now_dots"></span>
+                    <span class="dot now_dots"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <h3 class="what_want">언제 활동할 수 있나요?</h3>
+                <!-- content1 -->
+                <section class="start_job">
+                    <div>
+                        <h4 class="regular_tl">활동 시작일</h4>
+                        <input type="text" name="start_date" id="datepicker" class="startdate center-block date_box">
+                    </div>
+                </section>
+    
+                <hr>
+    
+                <!-- content2 -->
+                <section class="available_days">
+                    <div>
+                        <div class="choose_day_title">
+                            <h4 class="regular_tl">활동 요일</h4>
+                        </div>
+                        <div class="day_btn_group">
+                            <button class="day_btn" value="mon">월</button>
+                            <button class="day_btn" value="tue">화</button>
+                            <button class="day_btn" value="wen">수</button>
+                            <button class="day_btn" value="thu">목</button>
+                            <button class="day_btn" value="fri">금</button>
+                            <button class="day_btn" value="sat">토</button>
+                            <button class="day_btn" value="sun">일</button>
+                        </div>
+                    </div>
+                </section>
+                <!--요일 선택시 나타내주기-->
+                <hr>
+                <div id="content" class="hide_content">
+                    <section class="work_term">
                         <div>
-                            <h4 class="regular_tl">활동 시작일</h4>
-                            <input type="text" name="start_date" id="datepicker"
-                                class="startdate center-block date_box">
+                            <h4 class="regular_tl">이 일정으로 얼마동안 일할 수 있나요?</h4>
                         </div>
+    
+                        <div class="term_list">
+                            <input type="radio" name="workterm" class="workterm" id="workterm1" value="1week">
+                            <label for="workterm1">1주일 이상</label>
+    
+                            <input type="radio" name="workterm" class="workterm" id="workterm2" value="1month">
+                            <label for="workterm2">1개월 이상</label>
+    
+                            <input type="radio" name="workterm" class="workterm" id="workterm3" value="3month">
+                            <label for="workterm3">3개월 이상</label>
+    
+                            <input type="radio" name="workterm" class="workterm" id="workterm4" value="6month">
+                            <label for="workterm4">6개월 이상</label>
+                        </div>
+                        <span class="sub_detail">활동 시작일로부터 6개월 후, 내 프로필이 비공개로 변경됩니다.</span>
+    
+                        <div id="result"></div>
                     </section>
-
-                    <hr>
-
-                    <!-- content2 -->
-                    <section class="available_days">
-                        <div>
-                            <div class="choose_day_title">
-                                <h4 class="regular_tl">활동 요일</h4>
-                            </div>
-                            <div class="day_btn_group">
-                                <button class="day_btn" value="mon">월</button>
-                                <button class="day_btn" value="tue">화</button>
-                                <button class="day_btn" value="wen">수</button>
-                                <button class="day_btn" value="thu">목</button>
-                                <button class="day_btn" value="fri">금</button>
-                                <button class="day_btn" value="sat">토</button>
-                                <button class="day_btn" value="sun">일</button>
-                            </div>
-                        </div>
-                    </section>
-
-
-                    <!--요일 선택시 나타내주기-->
-                    <hr>
-                    <div id="content" class="hide_content">
-                        <!--시간 선택-->
-                        <div class="time_select_box">
-                            <div>
-                                <!--시작 시간-->
-                                <div class="regular_tl">시작시간</div>
-                                <!--시간-->
-                                <div class="select_time">
-                                    <select>
-                                        <option value="10:00">오전 10:00</option>
-                                        <option value="10:30">오전 10:30</option>
-                                        <option value="11:00" selected>오전 11:00</option>
-                                        <option value="11:30">오전 11:30</option>
-                                        <option value="12:00">오전 12:00</option>
-                                        <option value="12:30">오전 12:30</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!--end select-->
-
-                            <!--중간 바-->
-                            <div class="middle_bar"></div>
-                            <!--종료시간-->
-                            <div>
-                                <div>
-                                    <div class="regular_tl">종료시간</div>
-                                </div>
-                                <div class="select_time">
-                                    <select>
-                                        <option value="20:00">오후 20:00</option>
-                                        <option value="20:30">오후 20:30</option>
-                                        <option value="21:00" selected>오후 21:00</option>
-                                        <option value="21:30">오후 21:30</option>
-                                        <option value="22:00">오후 22:00</option>
-                                        <option value="22:30">오후 22:30</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!--end select-->
-                        </div>
-                        <!--end select box-->
-                        <hr>
-                        <section class="work_term">
-                            <div>
-                                <h4 class="regular_tl">이 일정으로 얼마동안 일할 수 있나요?</h4>
-                            </div>
-
-                            <div class="term_list">
-                                <input type="radio" name="workterm" class="workterm" id="workterm1" value="1week">
-                                <label for="workterm1">1주일 이상</label>
-
-                                <input type="radio" name="workterm" class="workterm" id="workterm2" value="1month">
-                                <label for="workterm2">1개월 이상</label>
-
-                                <input type="radio" name="workterm" class="workterm" id="workterm3" value="3month">
-                                <label for="workterm3">3개월 이상</label>
-
-                                <input type="radio" name="workterm" class="workterm" id="workterm4" value="6month">
-                                <label for="workterm4">6개월 이상</label>
-                            </div>
-                            <span class="sub_detail">활동 시작일로부터 6개월 후, 내 프로필이 비공개로 변경됩니다.</span>
-
-                            <div id="result"></div>
-                        </section>
-
-                <a href="payment_cctv.jsp"><button class="next_btn">다음</button></a>
+                    <form id="addform" method="post" action="${pageContext.request.contextPath}/join/sitter/payment.do">
+                        <input type="hidden" id="type" name="type" value="${type}">
+                        <input type="hidden" id="sitter_type" name="sitter_type" value="${sitter_type}">
+                        <input type="hidden" id="want_act1" name="want_act1" value="${want_act1}">
+                        <input type="hidden" id="want_act2" name="want_act2" value="${want_act2}">
+                        <input type="hidden" id="want_act3" name="want_act3" value="${want_act3}">
+                        <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                        <input type="hidden" id="loc_si" name="si" value="${si}">
+                        <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                        <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                        <input type="hidden" id="schedule" name="schedule">
+    
+                        <button type="submit" class="next_btn">다음</button>
+                    </form>
+                </div>
+                <!--end hide content-->
             </div>
-            <!--end hide content-->
-
-
-            <!-- content4 -->
-
         </div>
-    </div>
     </div>
 
     <!-- Javascript -->
@@ -178,16 +149,19 @@
         //날짜 선택 플러그인 - flatpickr 사용 - 선아
         $(function () {
             $('.startdate').flatpickr({
-                dateFormat: "Y.m.d",
+                dateFormat: "Y-m-d",
                 minDate: "today",
                 maxDate: new Date().fp_incr(30),
                 defaultDate: new Date()
             });
-            //요일 선택시 
-			$(".day_btn").on("click", function () {
+
+
+            const result1 = [];
+			//요일 선택시 
+			$(document).on('click', '.day_btn', function () {
 				$(this).toggleClass("select_btn");
 
-				var count = $(".select_btn").length;
+                var count = $(".select_btn").length;
 				if (count == 0) {
 					$("#content").removeClass("show_content");
 					$("#content").addClass("hide_content");
@@ -195,7 +169,43 @@
 					$("#content").removeClass("hide_content");
 					$("#content").addClass("show_content");
 				}
+
+                if($(this).hasClass("select_btn")==true){
+                    var day = $(this);
+				    for (var i = 0; i < day.length; i++) {
+					result1.push($(day[i]).val());
+					//console.log(result1);
+				};
+                }
+				
 			});
+
+			$(document).on('click', '.next_btn', function (e) {
+                    //e.preventDefault();
+                    //스케쥴 json 조립
+                    //시작 날짜
+                    var startdate = $(".startdate").val();
+                    //요일
+                    var day = result1;
+                    //활동 기간
+                    var workterm= $('input[name="workterm"]:checked').val();
+
+                    //데이터 가공
+                    startdate = startdate.replace(/\//gi, '-');
+
+
+                    var schedule = {
+                        startdate: startdate,
+                        day: day,
+                        while: workterm
+                    };
+
+                    var scheduleStr = JSON.stringify(schedule);
+                    //console.log(scheduleStr);
+                    var schedulerep = scheduleStr.replace(/\"/gi, '\'');
+                    console.log(schedulerep);
+                    $("#schedule").val(schedulerep);
+                });
 
         });
     </script>

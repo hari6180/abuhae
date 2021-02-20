@@ -73,15 +73,20 @@ public class JoinSitterController {
 	public ModelAndView s_join_loc(Model model, 
 			@RequestParam(value = "type") char type,
 			@RequestParam(value = "sitter_type") String sitter_type,
-			@RequestParam(value = "want_act") String want_act, 
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3,  
 			@RequestParam(value = "want_age") String want_age
 			) {
 
 		// 저장할 값 beans에 담기
 		sitterinfo.setType(type);
 		sitterinfo.setSitter_type(sitter_type);
-		sitterinfo.setWant_act1(want_act);
+		sitterinfo.setWant_act1(want_act1);
+		sitterinfo.setWant_act2(want_act2);
+		sitterinfo.setWant_act3(want_act3);
 		sitterinfo.setWant_age(want_age);
+
 
 
 		// 저장된 결과 조회하기 위한 객체
@@ -91,12 +96,354 @@ public class JoinSitterController {
 
 		model.addAttribute("type", type);
 		model.addAttribute("sitter_type", sitter_type);
-		model.addAttribute("want_act", want_act);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
 		model.addAttribute("want_age", want_age);
+
 
 
 		return new ModelAndView("/join/sitter/location");
 		// return webHelper.getJsonData(map);
 		// return "/join/parent/children";
+	}
+	
+
+	
+	@RequestMapping(value = "/join/sitter/detail.do", method = RequestMethod.POST)
+	public String s_join_detail(Model model, HttpServletResponse response,
+			@RequestParam(value = "type") char type,
+			@RequestParam(value = "sitter_type") String sitter_type,
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
+			@RequestParam(value = "want_age") String want_age,
+			@RequestParam(value = "si") String si,
+			@RequestParam(value = "gu") String gu, 
+			@RequestParam(value = "dong") String dong) {
+
+		// 저장할 값 beans에 담기
+		sitterinfo.setType(type);
+		sitterinfo.setSitter_type(sitter_type);
+		sitterinfo.setWant_act1(want_act1);
+		sitterinfo.setWant_act2(want_act2);
+		sitterinfo.setWant_act3(want_act3);
+		sitterinfo.setWant_age(want_age);
+		sitterinfo.setSi(si);
+		sitterinfo.setGu(gu);
+		sitterinfo.setDong(dong);
+
+
+		// 저장된 결과 조회하기 위한 객체
+		// Mom_info output = null;
+
+		log.debug(sitterinfo.toString());
+
+		model.addAttribute("type", type);
+		model.addAttribute("sitter_type", sitter_type);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
+		model.addAttribute("want_age", want_age);
+		model.addAttribute("si", si);
+		model.addAttribute("gu", gu);
+		model.addAttribute("dong", dong);
+
+		return "/join/sitter/detail";
+	}
+	
+	@RequestMapping(value = "/join/sitter/payment.do", method = RequestMethod.POST)
+	public ModelAndView s_join_paycctv(Model model, 
+			@RequestParam(value = "type") char type,
+			@RequestParam(value = "sitter_type") String sitter_type,
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
+			@RequestParam(value = "want_age") String want_age,
+			@RequestParam(value = "si") String si,
+			@RequestParam(value = "gu") String gu, 
+			@RequestParam(value = "dong") String dong,
+			@RequestParam(value = "schedule") String schedule) {
+
+
+		// 저장할 값 beans에 담기
+		sitterinfo.setType(type);
+		sitterinfo.setSitter_type(sitter_type);
+		sitterinfo.setWant_act1(want_act1);
+		sitterinfo.setWant_act2(want_act2);
+		sitterinfo.setWant_act3(want_act3);
+		sitterinfo.setWant_age(want_age);
+		sitterinfo.setSi(si);
+		sitterinfo.setGu(gu);
+		sitterinfo.setDong(dong);
+		sitterinfo.setSchedule(schedule);
+
+		// 저장된 결과 조회하기 위한 객체
+		// Mom_info output = null;
+
+		log.debug(sitterinfo.toString());
+
+		model.addAttribute("type", type);
+		model.addAttribute("sitter_type", sitter_type);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
+		model.addAttribute("want_age", want_age);
+		model.addAttribute("si", si);
+		model.addAttribute("gu", gu);
+		model.addAttribute("dong", dong);
+		model.addAttribute("schedule", schedule);
+
+		return new ModelAndView("/join/sitter/payment_cctv");
+		// return webHelper.getJsonData(map);
+		// return "/join/parent/children";
+	}
+	
+	@RequestMapping(value = "/join/sitter/profile_img.do", method = RequestMethod.POST)
+	public ModelAndView s_join_profImg(Model model, 
+			@RequestParam(value = "type") char type,
+			@RequestParam(value = "sitter_type") String sitter_type,
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
+			@RequestParam(value = "want_age") String want_age,
+			@RequestParam(value = "si") String si,
+			@RequestParam(value = "gu") String gu, 
+			@RequestParam(value = "dong") String dong,
+			@RequestParam(value = "schedule") String schedule, 
+			@RequestParam(value = "payment") String paymentstr, 
+			@RequestParam(value = "cctv") char cctv) {
+
+		paymentstr = paymentstr.replace(",", "");
+		int payment = Integer.parseInt(paymentstr);
+		
+
+		// 저장할 값 beans에 담기
+		sitterinfo.setType(type);
+		sitterinfo.setSitter_type(sitter_type);
+		sitterinfo.setWant_act1(want_act1);
+		sitterinfo.setWant_act2(want_act2);
+		sitterinfo.setWant_act3(want_act3);
+		sitterinfo.setWant_age(want_age);
+		sitterinfo.setSi(si);
+		sitterinfo.setGu(gu);
+		sitterinfo.setDong(dong);
+		sitterinfo.setSchedule(schedule);
+		sitterinfo.setPayment(payment);
+		sitterinfo.setCctv(cctv);
+
+		// 저장된 결과 조회하기 위한 객체
+		// Mom_info output = null;
+
+		log.debug(sitterinfo.toString());
+
+		model.addAttribute("type", type);
+		model.addAttribute("sitter_type", sitter_type);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
+		model.addAttribute("want_age", want_age);
+		model.addAttribute("si", si);
+		model.addAttribute("gu", gu);
+		model.addAttribute("dong", dong);
+		model.addAttribute("schedule", schedule);
+		model.addAttribute("payment", payment);
+		model.addAttribute("cctv", cctv);
+		
+
+		return new ModelAndView("/join/sitter/profile_img");
+		// return webHelper.getJsonData(map);
+		// return "/join/parent/children";
+	}
+	
+	@RequestMapping(value = "/join/sitter/introduce.do", method = RequestMethod.POST)
+	public ModelAndView s_join_intro(Model model, 
+			@RequestParam(value = "type") char type,
+			@RequestParam(value = "type") String sitter_type,
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
+			@RequestParam(value = "want_age") String want_age,
+			@RequestParam(value = "si") String si,
+			@RequestParam(value = "gu") String gu, 
+			@RequestParam(value = "dong") String dong,
+			@RequestParam(value = "schedule") String schedule, 
+			@RequestParam(value = "payment") String paymentstr, 
+			@RequestParam(value = "cctv") char cctv,
+			@RequestParam(value = "profile_img", required = false) char isprofile) {
+
+		paymentstr = paymentstr.replace(",", "");
+		int payment = Integer.parseInt(paymentstr);
+		
+		// 저장할 값 beans에 담기
+		sitterinfo.setType(type);
+		sitterinfo.setSitter_type(sitter_type);
+		sitterinfo.setWant_act1(want_act1);
+		sitterinfo.setWant_act2(want_act2);
+		sitterinfo.setWant_act3(want_act3);
+		sitterinfo.setWant_age(want_age);
+		sitterinfo.setSi(si);
+		sitterinfo.setGu(gu);
+		sitterinfo.setDong(dong);
+		sitterinfo.setSchedule(schedule);
+		sitterinfo.setPayment(payment);
+		sitterinfo.setCctv(cctv);
+		sitterinfo.setIsprofile(isprofile);
+
+		// 저장된 결과 조회하기 위한 객체
+		// Mom_info output = null;
+
+		log.debug(sitterinfo.toString());
+
+		model.addAttribute("type", type);
+		model.addAttribute("sitter_type", sitter_type);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
+		model.addAttribute("want_age", want_age);
+		model.addAttribute("si", si);
+		model.addAttribute("gu", gu);
+		model.addAttribute("dong", dong);
+		model.addAttribute("schedule", schedule);
+		model.addAttribute("payment", payment);
+		model.addAttribute("cctv", cctv);
+		model.addAttribute("profile_img", isprofile);
+		
+
+		return new ModelAndView("/join/sitter/introduce");
+		// return webHelper.getJsonData(map);
+		// return "/join/parent/children";
+	}
+	
+	@RequestMapping(value = "/join/sitter/agreement.do", method = RequestMethod.POST)
+	public ModelAndView s_join_agree(Model model, 
+			@RequestParam(value = "type") char type,
+			@RequestParam(value = "sitter_type") String sitter_type,
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
+			@RequestParam(value = "want_age") String want_age,
+			@RequestParam(value = "si") String si,
+			@RequestParam(value = "gu") String gu, 
+			@RequestParam(value = "dong") String dong,
+			@RequestParam(value = "schedule") String schedule, 
+			@RequestParam(value = "payment") String paymentstr, 
+			@RequestParam(value = "cctv") char cctv,
+			@RequestParam(value = "profile_img", required = false) char isprofile,
+			@RequestParam(value = "introduce", required = false) String introduce
+			) {
+
+		paymentstr = paymentstr.replace(",", "");
+		int payment = Integer.parseInt(paymentstr);
+		
+		// 저장할 값 beans에 담기
+		sitterinfo.setType(type);
+		sitterinfo.setSitter_type(sitter_type);
+		sitterinfo.setWant_act1(want_act1);
+		sitterinfo.setWant_act2(want_act2);
+		sitterinfo.setWant_act3(want_act3);
+		sitterinfo.setWant_age(want_age);
+		sitterinfo.setSi(si);
+		sitterinfo.setGu(gu);
+		sitterinfo.setDong(dong);
+		sitterinfo.setSchedule(schedule);
+		sitterinfo.setPayment(payment);
+		sitterinfo.setCctv(cctv);
+		sitterinfo.setIsprofile(isprofile);
+		sitterinfo.setIntroduce(introduce);
+
+		// 저장된 결과 조회하기 위한 객체
+		// Mom_info output = null;
+
+		log.debug(sitterinfo.toString());
+
+		model.addAttribute("type", type);
+		model.addAttribute("sitter_type", sitter_type);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
+		model.addAttribute("want_age", want_age);
+		model.addAttribute("si", si);
+		model.addAttribute("gu", gu);
+		model.addAttribute("dong", dong);
+		model.addAttribute("schedule", schedule);
+		model.addAttribute("payment", payment);
+		model.addAttribute("cctv", cctv);
+		model.addAttribute("profile_img", isprofile);
+		model.addAttribute("introduce", introduce);
+		
+
+		return new ModelAndView("/join/sitter/agreement");
+		// return webHelper.getJsonData(map);
+		// return "/join/parent/children";
+	}
+	
+	@RequestMapping(value = "/join/sitter/account.do", method = RequestMethod.POST)
+	public ModelAndView s_join_account(Model model, 
+			@RequestParam(value = "type") char type,
+			@RequestParam(value = "sitter_type") String sitter_type,
+			@RequestParam(value = "want_act1") String want_act1,
+			@RequestParam(value = "want_act2", required = false) String want_act2,
+			@RequestParam(value = "want_act3", required = false) String want_act3, 
+			@RequestParam(value = "want_age") String want_age,
+			@RequestParam(value = "si") String si,
+			@RequestParam(value = "gu") String gu, 
+			@RequestParam(value = "dong") String dong,
+			@RequestParam(value = "schedule") String schedule, 
+			@RequestParam(value = "payment") String paymentstr, 
+			@RequestParam(value = "cctv") char cctv,
+			@RequestParam(value = "profile_img", required = false) char isprofile,
+			@RequestParam(value = "introduce", required = false) String introduce
+			) {
+
+		paymentstr = paymentstr.replace(",", "");
+		int payment = Integer.parseInt(paymentstr);
+		
+		// 저장할 값 beans에 담기
+		sitterinfo.setType(type);
+		sitterinfo.setSitter_type(sitter_type);
+		sitterinfo.setWant_act1(want_act1);
+		sitterinfo.setWant_act2(want_act2);
+		sitterinfo.setWant_act3(want_act3);
+		sitterinfo.setWant_age(want_age);
+		sitterinfo.setSi(si);
+		sitterinfo.setGu(gu);
+		sitterinfo.setDong(dong);
+		sitterinfo.setSchedule(schedule);
+		sitterinfo.setPayment(payment);
+		sitterinfo.setCctv(cctv);
+		sitterinfo.setIsprofile(isprofile);
+		sitterinfo.setIntroduce(introduce);
+
+		// 저장된 결과 조회하기 위한 객체
+		// Mom_info output = null;
+
+		log.debug(sitterinfo.toString());
+
+		model.addAttribute("type", type);
+		model.addAttribute("sitter_type", sitter_type);
+		model.addAttribute("want_act1", want_act1);
+		model.addAttribute("want_act2", want_act2);
+		model.addAttribute("want_act3", want_act3);
+		model.addAttribute("want_age", want_age);
+		model.addAttribute("si", si);
+		model.addAttribute("gu", gu);
+		model.addAttribute("dong", dong);
+		model.addAttribute("schedule", schedule);
+		model.addAttribute("payment", payment);
+		model.addAttribute("cctv", cctv);
+		model.addAttribute("profile_img", isprofile);
+		model.addAttribute("introduce", introduce);
+		
+
+		return new ModelAndView("/join/sitter/account");
+		// return webHelper.getJsonData(map);
+		// return "/join/parent/children";
+	}
+	
+	@RequestMapping(value = "/join/sitter/success.do", method = RequestMethod.GET)
+	public String join_success(Model model, HttpServletResponse response) {
+
+		return "/join/sitter/success";
 	}
 }

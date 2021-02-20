@@ -67,7 +67,7 @@
                         </div>
                         <div>
                             <strong>선생님 맘시터</strong><br>
-                            <span>김O현<span class="side_bar"></span>32세<span class="side_bar"></span><img src="/ezen-android2020-2/join/img/star.png" alt="평점"></span>
+                            <span>김O현<span class="side_bar"></span>32세<span class="side_bar"></span><img src="${pageContext.request.contextPath}/assets/img/star.png" alt="평점"></span>
                         </div>
                     </div>
                     <p class="intro_ex_desc">
@@ -81,7 +81,7 @@
                         </div>
                         <div>
                             <strong>엄마 맘시터</strong><br>
-                            <span>김O희<span class="side_bar"></span>52세<span class="side_bar"></span><img src="/ezen-android2020-2/join/img/star.png" alt="평점"></span>
+                            <span>김O희<span class="side_bar"></span>52세<span class="side_bar"></span><img src="${pageContext.request.contextPath}/assets/img/star.png" alt="평점"></span>
                         </div>
                     </div>
                     <p class="intro_ex_desc">
@@ -95,7 +95,7 @@
                         </div>
                         <div>
                             <strong>대학생 맘시터</strong><br>
-                            <span>이O영<span class="side_bar"></span>24세<span class="side_bar"></span><img src="/ezen-android2020-2/join/img/star.png" alt="평점"></span>
+                            <span>이O영<span class="side_bar"></span>24세<span class="side_bar"></span><img src="${pageContext.request.contextPath}/assets/img/star.png" alt="평점"></span>
                         </div>
                     </div>
                     <p class="intro_ex_desc">
@@ -109,7 +109,7 @@
                         </div>
                         <div>
                             <strong>일반 맘시터</strong><br>
-                            <span>황O지<span class="side_bar"></span>32세<span class="side_bar"></span><img src="/ezen-android2020-2/join/img/star.png" alt="평점"></span>
+                            <span>황O지<span class="side_bar"></span>32세<span class="side_bar"></span><img src="${pageContext.request.contextPath}/assets/img/star.png" alt="평점"></span>
                         </div>
                     </div>
                     <p class="intro_ex_desc">
@@ -137,7 +137,7 @@
                     <span class="dot now_dots"></span>
                 </div>
                 <h3 class="what_want">간단 자기소개<span>(선택 사항)</span></h3>
-                <textarea placeholder="간단한 자기소개 작성 시 부모님에게 2배 더 많은 신청을 받게 됩니다." class="desc_textarea"
+                <textarea id="intotext" placeholder="간단한 자기소개 작성 시 부모님에게 2배 더 많은 신청을 받게 됩니다." class="desc_textarea"
                     maxlength="1000"></textarea>
                 <p class="warning">
                     <i class="fas fa-times"></i><span>&nbsp;&nbsp;자기소개 내용에 연락처, 이메일, 카카오ID 등을 작성할 경우 회원 자격을 영구적으로
@@ -146,7 +146,23 @@
 
                 <a data-toggle="modal" href="#other_introduce_modal"><p class="other_intro">다른 시터 자기소개 내용 확인하기</p></a>
 
-                <a href="account.jsp"><button class="next_btn">나중에 입력할게요.</button></a>
+                <form id="addform" method="post" action="${pageContext.request.contextPath}/join/sitter/agreement.do">
+                    <input type="hidden" id="type" name="type" value="${type}">
+                    <input type="hidden" id="sitter_type" name="sitter_type" value="${sitter_type}">
+                    <input type="hidden" id="want_act1" name="want_act1" value="${want_act1}">
+                    <input type="hidden" id="want_act2" name="want_act2" value="${want_act2}">
+                    <input type="hidden" id="want_act3" name="want_act3" value="${want_act3}">
+                    <input type="hidden" id="want_age" name="want_age" value="${want_age}">
+                    <input type="hidden" id="loc_si" name="si" value="${si}">
+                    <input type="hidden" id="loc_gu" name="gu" value="${gu}">
+                    <input type="hidden" id="loc_dong" name="dong" value="${dong}">
+                    <input type="hidden" id="schedule" name="schedule" value="${schedule}">
+                    <input type="hidden" id="payment" name="payment" value="${payment}">
+                    <input type="hidden" id="cctv" name="cctv" value="${cctv}">
+                    <input type="hidden" id="profile_img" name="profile_img" value="${profile_img}">
+                    <input type="hidden" id="intro" name="introduce">
+                    <button type="submit" class="next_btn">나중에 입력할게요.</button>
+                </form>
             </div>
 
 
@@ -156,6 +172,22 @@
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var intotext = null;
+            $("#intotext").on("keyup", function(){
+                $(".next_btn").empty();
+                $(".next_btn").html("다음");
+                intotext = $(this).val();
+            });
+
+            $(".next_btn").click(function (e) {
+                //e.preventDefault();
+                $("#intro").val(intotext);
+                });
+        });
+
+    </script>
 </body>
 
 </html>

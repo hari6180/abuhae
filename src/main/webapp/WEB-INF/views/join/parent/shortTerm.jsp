@@ -8,45 +8,7 @@
 
     </div>
     <hr>
-    <div>
-        <!--시간 선택-->
-        <div class="time_select_box">
-            <div>
-                <!--시작 시간-->
-                <div class="regu_title">시작시간</div>
-                <!--시간-->
-                <div class="select_time" id="starttime">
-                    <select>
-                        <option value="10:00">오전 10:00</option>
-                        <option value="10:30">오전 10:30</option>
-                        <option value="11:00" selected>오전 11:00</option>
-                        <option value="11:30">오전 11:30</option>
-                        <option value="12:00">오전 12:00</option>
-                    </select>
-                </div>
-            </div>
-            <!--end select-->
-
-            <!--중간 바-->
-            <div class="middle_bar"></div>
-            <!--종료시간-->
-            <div>
-                <div>
-                    <div class="regu_title">종료시간</div>
-                </div>
-                <div class="select_time" id="endtime">
-                    <select>
-                        <option value="20:00">오후 20:00</option>
-                        <option value="20:30">오후 20:30</option>
-                        <option value="21:00" selected>오후 21:00</option>
-                        <option value="21:30">오후 21:30</option>
-                        <option value="22:00">오후 22:00</option>
-                    </select>
-                </div>
-            </div>
-            <!--end select-->
-        </div>
-        <!--end select box-->
+    
     </div>
     <!--일정은 시터에게 맞출 수 잇어요-->
     <div class="jojung_box">
@@ -82,12 +44,7 @@
 
 				//빈도
 				var frequency = "shortTerm";
-				//시간
-				var time = [];
-				var starttime = $("#starttime option:selected").val();
-                var endtime = $("#endtime option:selected").val();
-				time.push(starttime);
-				time.push(endtime);
+				
 
 
 				if($(".jojung_box").hasClass("box_check")==true) {
@@ -99,9 +56,7 @@
 
 				var schedule = { 
 					selectdate : selectdate, 
-					frequency : frequency, 
-					 // 배열은 아래와 같이 구조화 할 수 있습니다.
-					time : time
+					frequency : frequency
 				};
 				
 				var scheduleStr = JSON.stringify(schedule);
