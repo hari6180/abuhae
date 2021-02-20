@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Connect;
+import study.team.abuhae.model.Review;
 import study.team.abuhae.service.impl.SitterMypageServiceImpl;
 
 @Controller
@@ -46,7 +47,7 @@ public class SitterMypageController {
 	}
 	
 	/** 내 구직 현황 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/get_mom_mps.do", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/mypage/mypage_sitter/get_mom_mps.do", method = RequestMethod.GET)
 	public ModelAndView get_mom(Model model,
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		/** 데이터 조회 */
@@ -107,11 +108,27 @@ public class SitterMypageController {
 
 		return "mypage/mypage_sitter/coupon";
 	}
-	/** 내 쿠폰함 페이지 */
+	
+	/** 리뷰관리 페이지 */
 	@RequestMapping(value = "/mypage/mypage_sitter/review.do", method = RequestMethod.GET)
-	public String review_sitter(Locale locale, Model model) {
+	public ModelAndView review_sitter(Model model,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		
+		/** 데이터 조회 */
+		Review input = new Review();
+		input.setSitterno(1);
+		
+		List<Review> output = null;
+		
+		try {
+			output = sitterMypageService.getSitterReviewList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("output", output);
 
-		return "mypage/mypage_sitter/review";
+		return new ModelAndView("mypage/mypage_sitter/review");
 	}
 	
 	/** 내 인증 페이지 */
