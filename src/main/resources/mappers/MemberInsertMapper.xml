@@ -112,13 +112,13 @@
 		useGeneratedKeys="true" keyProperty="sitterno">
 		INSERT INTO Sitter_info
 		(sitter_type,
-		want_act1, want_act2, want_act3, want_age, payment, payment_ok, si, gu, dong,
+		want_act1, want_act2, want_act3, want_age, payment, si, gu, dong,
 		schedule,
 		schedule_set,
 		introduce, cctv, openingdate, memberno)
 		VALUES
 		(#{sitter_type}, #{want_act1}, #{want_act2}, #{want_act3},
-		#{want_age}, #{payment}, #{payment_ok},
+		#{want_age}, #{payment},
 		#{si}, #{gu},
 		#{dong},
 		#{schedule},

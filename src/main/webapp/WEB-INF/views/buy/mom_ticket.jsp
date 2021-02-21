@@ -14,24 +14,24 @@
 	<title>아이를 부탁해</title>
 
 	<!-- 모바일 웹 페이지 설정 -->
-	<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-	<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 	<!-- bootstrap -->
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 	<!-- noto Sans 웹 폰트 적용 -->
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 	<!--slick slider-->
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/plugin/slick/slick.css" />
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/plugin/slick/slick-theme.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick-theme.css" />
 	<!-- fontawesome(글리피콘) 적용 -->
 	<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 
 	<!-- animaition 적용-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
 	<!--section-->
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/section.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/section.css">
 	<!-- css 적용 -->
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/mom_ticket.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mom_ticket.css">
 	
 </head>
 
@@ -57,7 +57,7 @@
 						</div>
 					</div> <!-- fin. mom_buy_title -->
 					<div class="mom_buy_box">
-						<div class="mom_buy_box_left col-xs-4" id="button1">
+						<div class="mom_buy_box_left col-xs-4" id="button1" data-tktype='6'>
 							<div class="mom_buy_main">
 								<div style="padding-top: 25px;">
 									<p class="mom_buy_month">6개월</p>
@@ -74,7 +74,7 @@
 							</div> <!-- fin. mom_buy_main -->	
 							<div class="mom_buy_select_btn"></div>	
 						</div>
-						<div class="mom_buy_box_center col-xs-4" id="button2">
+						<div class="mom_buy_box_center col-xs-4" id="button2" data-tktype='3'>
 							<div class="mom_buy_main">
 								<div style="padding-bottom: 10px;">
 									<p class="mom_buy_month" style="color: #058ee2;">Best</p>
@@ -92,7 +92,7 @@
 							</div> <!-- fin. mom_buy_main -->	
 							<div class="mom_buy_select_btn"></div>
 						</div>
-						<div class="mom_buy_box_right col-xs-4" id="button3">
+						<div class="mom_buy_box_right col-xs-4" id="button3"  data-tktype='1'>
 							<div class="mom_buy_main">
 								<div style="padding-top: 25px;">
 									<p class="mom_buy_month">1개월</p>
@@ -107,7 +107,7 @@
 							<div class="mom_buy_select_btn"></div>
 						</div>
 					</div> <!-- fin. mom_buy_box -->
-					<button type="button" class="buy_btn" onclick = "location.href = 'receipt.do'">
+					<button type="button" class="buy_btn" id="buy_apply">
 					 <p class="buy_btn_style">  
 					   결제하기
 					 </p>
@@ -208,10 +208,11 @@
 		</div>
 	</div>
 	<!-- Javascript -->
-	<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			
+			let tktype = '3';
+
 			$( "#button1" ).click( function() {
 				$('#button1').css({
 					"border": "2px solid #79ccff",
@@ -226,6 +227,8 @@
 					"border": "none",
 					"background-color": "#fff"		
 				});
+				tktype = $(this).data("tktype");
+				console.log(tktype);
 			});
 			
 			$( "#button2" ).click( function() {
@@ -242,6 +245,8 @@
 					"border": "none",
 					"background-color": "#fff"		
 				});
+				tktype = $(this).data("tktype");
+				console.log(tktype);
 			});
 			
 			$( "#button3" ).click( function() {
@@ -258,12 +263,19 @@
 					"border": "none",
 					"background-color": "#fff"		
 				});
+				tktype = $(this).data("tktype");
+				console.log(tktype);
 			});
+
 			
-		})
+			$('#buy_apply').click(function(e) {
+				e.preventDefault();
+				window.location = "${pageContext.request.contextPath}/buy/receipt.do?tktype=" + tktype + "&memberno=" + ${login.momno};
+			});
+		});
 	</script>
-	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<!--slick slider-->
-	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/plugin/slick/slick.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js"></script>
 </body>
 </html>

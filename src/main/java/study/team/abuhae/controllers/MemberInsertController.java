@@ -118,14 +118,13 @@ public class MemberInsertController {
 			int payment = random(9000,20000);
 			
 			input2.setPayment(payment);
-			input2.setPayment_ok('Y');
 			input2.setSi("서울시");
 			input2.setGu("강동구");
 			input2.setDong("성내2동");
-			input2.setSchedule('5');
+			input2.setSchedule("5");
 			input2.setSchedule_set("{\"day\": [\"tue\", \"fri\", \"sun\"], \"time\": [\"11:00\", \"21:00\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input2.setIntroduce("안녕하세요 짱짱 시터입니다.");
-			input2.setCctv("Y");
+			input2.setCctv('Y');
 			
 			// 프로필 업데이트 날짜 랜덤입력
 			int temp1 = random(3,12);
