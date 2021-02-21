@@ -60,12 +60,7 @@
 								<h3>탈퇴회원 관리</h3>
 							</div>
 							<div class="gright">
-								<!-- 회원 유형 선택 드롭다운 -->
-								<select class="filter" id="filter_member" name="filter_member">
-									<option value="new">최신순</option>
-									<option value="old">오래된순</option>
-								</select>
-
+					
 							</div>
 						</div>
 
@@ -88,6 +83,7 @@
 									<th class="text-center">email</th>
 									<th class="text-center">phone</th>
 									<th class="text-center">탈퇴사유</th>
+									<th class="text-center">탈퇴신청 일자</th>
 									<th class="text-center">탈퇴처리 일자</th>
 								</tr>
 							</thead>
@@ -96,7 +92,7 @@
 									<%-- 조회결과가 없는 경우 --%>
 									<c:when test="${output == null || fn:length(output) == 0}">
 										<tr>
-											<td colspan="7" align="center">조회결과가 없습니다.</td>
+											<td colspan="8" align="center">조회결과가 없습니다.</td>
 										</tr>
 									</c:when>
 									<%-- 조회결과가 있는 경우 --%>
@@ -104,14 +100,14 @@
 										<%-- 조회 결과에 따른 반복 처리 --%>
 										<c:forEach var="item" items="${output}" varStatus="status">
 											<tr>
-												<td class="text-center"><input type="checkbox"
-													name="chk"></td>
+												<td class="text-center"><input type="checkbox" name="chk"></td>
 												<td align="center">${item.id}</td>
 												<td align="center">${item.name}</td>
 												<td align="center">${item.email}</td>
 												<td align="center">${item.phone}</td>
 												<td align="center">${item.reason}</td>
 												<td align="center">${item.leave_date}</td>
+												<td align="center">${item.leaveok_date}</td>
 											</tr>
 										</c:forEach>
 									</c:otherwise>
@@ -194,12 +190,19 @@
 				//올체크 상태 변경되었을 떄 이벤트 - 선아
 				$("#all_check").change(function(){
 					//모든 hobby의 상태를 올체크와 동일하게
-					$(".agree").prop('checked', $(this).prop('checked'));
-					var now = $(".next_btn").prop('disabled');
-					$(".next_btn").prop('disabled', !now);
+					$(".chk").prop('checked', $(this).prop('checked'));
 				});
-	
-				
+
+				$("#filter_ok").on('change', function () {
+				//alert($(this).val());
+				//select 값 가져오기 -> 파라미터
+				var isok = $(this).val();
+				//selected 주기 -> 상태유지
+				$(this).attr("selected", "true");
+
+				location.href = '${pageContext.request.contextPath}/admin/admin_leave.do';
+
+			});
 	
 				$(".rep_btn").on("click", function () {
 					//체크된 row의 회원번호 가져오기
@@ -218,7 +221,7 @@
 						success: function(json){
 							// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
 							if (json.rt == "OK") {
-								alert(id+"회원 탈퇴 성공");
+								alert(id+"회원 탈퇴 처리 성공");
 								window.location = "${pageContext.request.contextPath}/admin/admin_leave.do";
 							}
 							

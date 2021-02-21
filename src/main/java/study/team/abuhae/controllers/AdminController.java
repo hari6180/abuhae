@@ -213,6 +213,7 @@ public class AdminController {
         // 조회에 필요한 조건값(검색어)를 Beans에 담는다.
         Leave_member input = new Leave_member();
 
+
         List<Leave_member> output = null;   // 조회결과가 저장될 객체
         PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
 
@@ -236,14 +237,16 @@ public class AdminController {
         model.addAttribute("output", output);
         model.addAttribute("pageData", pageData);
 
+
         return new ModelAndView("admin/admin_leave");
 		//return "admin/admin_leave";
 	}
 	@RequestMapping(value = "/admin/admin_singo.do", method = RequestMethod.GET)
 	public ModelAndView singo(Model model,
-			//회원 검색 조건 -> 회원타입
-			@RequestParam(value = "who") char who,
-			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		//회원 검색 조건 -> 회원타입
+		@RequestParam(value = "who") char who,
+		@RequestParam(value = "page", defaultValue = "1") int nowPage,
+		@RequestParam(value = "recent", defaultValue = "new") String recent) {
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
         int totalCount = 0;              // 전체 게시글 수
         int listCount  = 10;             // 한 페이지당 표시할 목록 수
@@ -253,6 +256,7 @@ public class AdminController {
         // 조회에 필요한 조건값(검색어)를 Beans에 담는다.
         Report input = new Report();
         input.setWho(who);
+        input.setRecent(recent); //정렬조건 담기
 
         List<Mom_info> output = null;   // 조회결과가 저장될 객체
         PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
@@ -280,6 +284,7 @@ public class AdminController {
         	model.addAttribute("who", "S");
         }
         model.addAttribute("output", output);
+        model.addAttribute("recent", recent);
         model.addAttribute("pageData", pageData);
 
         return new ModelAndView("admin/admin_singo");

@@ -54,7 +54,21 @@
 				<div class="member_list table-responsive col-xs-12">
 					<div class="table_title">
 						<h3>신고 목록</h3>
-	
+						<div>
+						<!--신고 날짜순 조회-->
+						<div class="select_list">
+							<select class="filter" id="filter_recent" name="recent">
+								<%-- type에 따라서 option에 selected --%>
+								<c:if test="${recent == 'new'}">
+									<option value="new" selected>신고날짜 최신순</option>
+									<option value="old">신고날짜 오래된순</option>
+								</c:if>
+								<c:if test="${recent == 'old'}">
+									<option value="new">신고날짜 최신순</option>
+									<option value="old" selected>신고날짜 오래된순</option>
+								</c:if>
+							</select>
+						</div>
 						<!-- 회원 유형 선택 드롭다운 -->
 						<div class="select_list">
 							<select class="filter" id="filter_member" name="type">
@@ -70,6 +84,7 @@
 							</select>
 						</div>
 						<!-- end 드롭다운 -->
+					</div>
 					</div>
 					<div class="line"></div>
 
@@ -91,6 +106,7 @@
 							<col style="width: 150px;">
 							<col style="width: 150px;">
 							<col style="width: 150px;">
+							<col style="width: 150px;">
 						</colgroup>
 						<thead>
 							<tr role="row">
@@ -103,6 +119,7 @@
 								<th scope="col" class="text-center">프로필/신청서</th>
 								<th scope="col" class="text-center">신고유형</th>
 								<th scope="col" class="text-center">신고내용</th>
+								<th scope="col" class="text-center">신고날짜</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -110,7 +127,7 @@
 								<%-- 조회결과가 없는 경우 --%>
 									<c:when test="${output == null || fn:length(output) == 0}">
 										<tr>
-											<td colspan="9" align="center">조회결과가 없습니다.</td>
+											<td colspan="10" align="center">조회결과가 없습니다.</td>
 										</tr>
 									</c:when>
 									<%-- 조회결과가 있는 경우 --%>
@@ -118,7 +135,7 @@
 											<%-- 조회 결과에 따른 반복 처리 --%>
 												<c:forEach var="item" items="${output}" varStatus="status">
 													<tr>
-														<td class="text-center"><input type="checkbox" name="chk"></td>
+														<td class="text-center"><input type="checkbox" class="chk" name="chk"></td>
 														<td align="center">${item.memberno}</td>
 														<td align="center">${item.id}</td>
 														<td align="center">${item.name}</td>
@@ -127,6 +144,7 @@
 														<td align="center">${item.job_opening}</td>
 														<td align="center">${item.r_type}</td>
 														<td align="center">${item.contents}</td>
+														<td align="center">${item.reg_date}</td>
 													</tr>
 												</c:forEach>
 										</c:otherwise>
@@ -207,19 +225,38 @@
 				//alert($(this).val());
 				//select 값 가져오기 -> 파라미터
 				var who = $(this).val();
+				var recent = $("#filter_recent").val();
 				//selected 주기 -> 상태유지
 				$(this).attr("selected", "true");
 
-				location.href = '${pageContext.request.contextPath}/admin/admin_singo.do?who=' + who;
+				if(recent=='new') {
+					location.href = '${pageContext.request.contextPath}/admin/admin_singo.do?who='+who+'&recent=' + recent;
+				}
+				if(recent=='old') {
+					location.href = '${pageContext.request.contextPath}/admin/admin_singo.do?who='+who+'&recent=' + recent;
+				}
+			});
 
+			$("#filter_recent").on('change', function () {
+				//alert($(this).val());
+				//select 값 가져오기 -> 파라미터
+				var recent = $(this).val();
+				var who = $("#filter_member").val();
+				//selected 주기 -> 상태유지
+				$(this).attr("selected", "true");
+
+				if(who=='M') {
+					location.href = '${pageContext.request.contextPath}/admin/admin_singo.do?who='+who+'&recent=' + recent;
+				}
+				if(who=='S') {
+					location.href = '${pageContext.request.contextPath}/admin/admin_singo.do?who='+who+'&recent=' + recent;
+				}
 			});
 
 			//올체크 상태 변경되었을 떄 이벤트 - 선아
             $("#all_check").change(function(){
                 //모든 hobby의 상태를 올체크와 동일하게
-                $(".agree").prop('checked', $(this).prop('checked'));
-                var now = $(".next_btn").prop('disabled');
-                $(".next_btn").prop('disabled', !now);
+                $(".chk").prop('checked', $(this).prop('checked'));
             });
 
 			

@@ -117,7 +117,7 @@
             });
             
             $(document).on('click','.go_momsitter', function(){
-                location.href="${pageContext.request.contextPath}/join/join.html";
+                location.href="${pageContext.request.contextPath}/join/join.do";
             });
 
             

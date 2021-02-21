@@ -11,4 +11,8 @@ public class Leave_member {
 	private String phone;
 	private String reason;
 	private String leave_date;
+	private String leaveok_date;
+	
+	//join 절에 따른 변수 추가
+	private String isok;
 }

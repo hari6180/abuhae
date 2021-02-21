@@ -39,6 +39,10 @@ a:hover {
 
 /** ------------------------------------전체 회원 관리 ---------------------------*/
 
+.select_list {
+  display: inline;
+}
+
 .filter {
   padding: 0 30px 0 10px;
   background: #fff url(../img/select.png) no-repeat right 10px center;

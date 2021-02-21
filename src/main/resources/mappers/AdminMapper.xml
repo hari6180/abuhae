@@ -24,6 +24,7 @@
 		<result property="phone" column="phone" />
 		<result property="reason" column="reason" />
 		<result property="leave_date" column="leave_date" />
+		<result property="leaveok_date" column="leaveok_date" />
 	</resultMap>
 	
 	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
@@ -54,6 +55,7 @@
 		<result property="job_opening" column="job_opening" />
 		<result property="r_type" column="r_type" />
 		<result property="contents" column="contents" />
+		<result property="reg_date" column="reg_date" />
 	</resultMap>
 
 	<resultMap id="MomMap"
@@ -115,7 +117,7 @@
 	<!-- 신고자 구분에 따라 신고리스트 출력  -->
 	<select id="selectSingoList"
 		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
-		select m.memberno, m.id, m.name, m.email, m.phone, m.job_opening, rp.type as r_type, rp.contents 
+		select m.memberno, m.id, m.name, m.email, m.phone, m.job_opening, rp.type as r_type, rp.contents, rp.reg_date as reg_date 
 		from member m
 		
 		<if test="who == 'M'">
@@ -126,8 +128,16 @@
 			inner join sitter_info si on si.memberno = m.memberno
 			inner join report rp on si.sitterno = rp.sitterno
 		</if>
+		where who  =#{who}
+		
+		order by
+			<if test="recent != null and recent == 'new'">
+				rp.reg_date desc
+			</if>
+			<if  test="recent != null and recent == 'old'">
+				rp.reg_date asc
+			</if>
 
-		where who  =#{who};
 	</select>
 	
 	<!-- 신고된 회원 job_opening 비공개 처리 -->
@@ -142,6 +152,8 @@
 	<select id="selectCountLeaveMember"
 		parameterType="study.team.abuhae.model.Leave_member" resultType="int">
 		select count(*) from leave_member
+		
+		
 	</select>
 	
 	<!-- 탈퇴회원 리스트 조회 -->

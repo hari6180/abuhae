@@ -136,8 +136,8 @@
           location.replace("${pageContext.request.contextPath}/buy/mom_ticket.do?momno=${login.momno}");
         });
 
-        $("#intro_btn").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/abu-service/introduce.do?momno=${login.momno}");
+        $("#desc_service").click(function (e) {
+          location.replace("${pageContext.request.contextPath}/abu-service/introduce.do");
         });
         $("#other_parent").click(function (e) {
           location.replace("${pageContext.request.contextPath}/search/job_search.do");

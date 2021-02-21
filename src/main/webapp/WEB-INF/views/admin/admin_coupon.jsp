@@ -87,7 +87,7 @@
 							<%-- 조회 결과에 따른 반복 처리 --%>
 								<c:forEach var="item" items="${output}" varStatus="status">
 									<tr>
-										<td class="text-center"><input type="checkbox" name="chk"></td>
+										<td class="text-center"><input type="checkbox" class="chk" name="chk"></td>
 										<td align="center">${item.memberno}</td>
 										<td align="center">${item.name}</td>
 										<td align="center">${item.id}</td>
@@ -171,9 +171,7 @@
 				//올체크 상태 변경되었을 떄 이벤트 - 선아
 				$("#all_check").change(function(){
 					//모든 hobby의 상태를 올체크와 동일하게
-					$(".agree").prop('checked', $(this).prop('checked'));
-					var now = $(".next_btn").prop('disabled');
-					$(".next_btn").prop('disabled', !now);
+					$(".chk").prop('checked', $(this).prop('checked'));
 				});
 
 				$("#putcoup").on("click", function () {

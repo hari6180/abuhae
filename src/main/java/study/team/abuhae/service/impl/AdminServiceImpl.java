@@ -119,7 +119,7 @@ public class AdminServiceImpl implements AdminService {
 	public List<Leave_member> getLeaveList(Leave_member input) throws Exception {
 		List<Leave_member> result = null;
 		try {
-			result = sqlsession.selectList("AdminMapper.selectLeaveMember");
+			result = sqlsession.selectList("AdminMapper.selectLeaveMember", input);
 			
 			//조회결과 없음
 			if(result == null) {
