@@ -176,7 +176,7 @@
 		parameterType="study.team.abuhae.model.Coupon"
 		useGeneratedKeys="true" keyProperty="coupno">
 		insert into coupon (coup_name, coup_condition, coup_price, reg_date, exp_date, memberno) 
-		values ('재구매 쿠폰', '이용권만료 일주일전', 30, now(), date_add(now(), INTERVAL 7 DAY), #{memberno}); 
+		values ('재구매 쿠폰(30%)', '이용권만료 일주일전', 30, now(), date_add(now(), INTERVAL 7 DAY), #{memberno}); 
 	</insert>
 	<!-- ========== 이용권 사용중인 회원 관리 / 쿠폰 발급 ============== -->
 
