@@ -20,6 +20,7 @@
 		<result property="gender" column="gender" />
 		<result property="job_opening" column="job_opening" />
 		<result property="signup_date" column="signup_date" />
+		<result property="subscribe" column="subscribe" />
 	</resultMap>
 
 	<resultMap id="MomMap"
@@ -74,15 +75,15 @@
 		parameterType="study.team.abuhae.model.Member" useGeneratedKeys="true"
 		keyProperty="memberno">
 		INSERT INTO Member (id, type, password, name, email,
-		phone,
-		birthdate, gender, job_opening, signup_date)
+		phone, 
+		birthdate, gender, job_opening, signup_date, subscribe)
 		VALUES (#{id},
 		#{type}, #{password},
 		#{name},
 		#{email}, #{phone},
 		#{birthdate},
 		#{gender},
-		#{job_opening}, #{signup_date});
+		#{job_opening}, #{signup_date}, #{subscribe});
 	</insert>
 
 

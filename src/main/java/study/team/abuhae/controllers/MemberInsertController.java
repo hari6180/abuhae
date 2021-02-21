@@ -57,7 +57,7 @@ public class MemberInsertController {
 			input.setSi("서울시");
 			input.setGu("강동구");
 			input.setDong("성내2동");
-			input.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"time\": [\"11:00\", \"21:00\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
+			input.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input.setSchedule_ok('Y');
 			input.setSitter_gender('F');
 			input.setInterview_type('1');
@@ -70,6 +70,7 @@ public class MemberInsertController {
 			String openingdate = "2020-" + date;
 			input.setOpeningdate(openingdate);
 			input.setSignup_date(openingdate);
+			input.setSubscribe('N');
 			
 			/*
 			 * Schedule sd = new Schedule(); Day day = new Day(); Time time = new Time();
@@ -121,7 +122,7 @@ public class MemberInsertController {
 			input2.setSi("서울시");
 			input2.setGu("강동구");
 			input2.setDong("성내2동");
-			input2.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"time\": [\"11:00\", \"21:00\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
+			input2.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input2.setIntroduce("안녕하세요 짱짱 시터입니다.");
 			input2.setCctv('Y');
 			
@@ -135,6 +136,7 @@ public class MemberInsertController {
 			int memberno2 = input2.getMemberno();
 			input2.setMemberno(memberno2);
 			input2.setSignup_date(openingdate);
+			input2.setSubscribe('N');
 
 			try {
 				// 데이터 저장 --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
