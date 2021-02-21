@@ -56,6 +56,9 @@ public class Mom_info extends Member {
 	
 	private String who;
 	private int sitterno;
+	
+	// 인터뷰 구독권 여부에 필요한 JOIN - 2021 지우 
+	private char subscribe;
 
 	
 	/** 3) 검색 조건용 추가 컬럼 */

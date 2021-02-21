@@ -118,7 +118,7 @@ public class ReportController {
 				@RequestParam(value = "who", defaultValue = "") char who,
 				@RequestParam(value = "type", defaultValue = "") String type,
 				@RequestParam(value = "contents", required = false, defaultValue = "") String contents,
-				@RequestParam(value = "momno", defaultValue = "0") int momno,
+				@RequestParam(value = "momno", defaultValue = "55") int momno,
 				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 			
 			if(!regexHelper.isValue(type)) {

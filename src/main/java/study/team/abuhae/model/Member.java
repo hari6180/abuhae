@@ -10,6 +10,10 @@ import lombok.Data;
  */
 @Data
 public abstract class Member {
+	
+	public Member(){};
+	
+	
 	private int memberno;		// 회원 일련번호 PRI
 	private char type;			// 맘 or 시터 구분 ('M', 'S')
 	private String id;			// 아이디
@@ -38,6 +42,7 @@ public abstract class Member {
 	private String contents; 	// 신고 내용
 
 	private String signup;
+	
 	
 	/** LIMIT 절에서 사용할 조회 시작 위치 */
 	private static int offset;

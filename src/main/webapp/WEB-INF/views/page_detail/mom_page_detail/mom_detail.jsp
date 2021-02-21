@@ -840,13 +840,23 @@
 					</div>
 				</div> <!-- fin. fixed_area -->
 				<div class="fixed_btn">
-					<div class="fixed_btn_jim">						
-						<button id="swapHeart" class="btn btn-default swap">
+				<a href="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_heart_delete_ok.do?momno=${output.momno}">
+					취소 
+				</a>
+					<div class="fixed_btn_jim">
+					<form action="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_heart_ok.do" method="post">		
+					
+						<button id="swapHeart" class="btn btn-default swap" type="submit">
 						    <span class="glyphicon glyphicon-heart-empty" style="color: rgb(0, 143, 105); font-size: 25px;"></span>
 						</button>
+					<input type="hidden" id="who" name="who" value="S">
+					<input type="hidden" id="momno" name="momno" value="${output.momno}">
+					<input type="hidden" id="sitterno" name="sitterno" >
+						
+					</form>		
 					</div>
 					<div class="interview_btn">
-						<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_interview.do?momno=${output.momno}';">
+						<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/mom_interview.do?momno=${output.momno}';">
 							<div>
 								<div class="btn_text_box">
 									<span><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">인터뷰 신청하기</a></span>

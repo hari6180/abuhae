@@ -4,6 +4,8 @@ package study.team.abuhae.service;
 
 import java.util.List;
 
+import study.team.abuhae.model.Connect;
+import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Sitter_info;
@@ -24,6 +26,19 @@ public interface DetailService {
 	
 	// 신고페이지
 	public int addReport(Report input) throws Exception;
+	
+	// 찜찜찜!!!
+	public int addHeart(Heart input) throws Exception;
+	
+	public int deleteHeart(Heart input) throws Exception;
+	
+	public int addConnect(Connect input) throws Exception;
+	
+	//맘시터 회원 조회
+		public Mom_info getMomMember(Mom_info input) throws Exception;
+			
+		//시터회원 회원 조회
+		public Sitter_info getSitterMember(Sitter_info input) throws Exception;
 	
 	
 

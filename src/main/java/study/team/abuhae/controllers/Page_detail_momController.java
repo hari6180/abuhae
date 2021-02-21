@@ -2,7 +2,10 @@ package study.team.abuhae.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,15 +14,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.helper.AgeHelper;
+import study.team.abuhae.helper.RegexHelper;
+import study.team.abuhae.helper.WebHelper;
+import study.team.abuhae.model.Connect;
+import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.DetailService;
+import study.team.abuhae.service.MemberService;
 
 @Controller
 public class Page_detail_momController {
 	
 	@Autowired
 	DetailService detailService;
+	@Autowired
+	MemberService memberService;
+	
+	@Autowired
+	WebHelper webHelper;
+	@Autowired
+	RegexHelper regexHelper;
+	@Value("#{servletContext.contextPath}")
+    String contextPath;
 	
 	// 맘 상세페이지
 	@RequestMapping(value = "/page_detail/mom_detail.do", method = RequestMethod.GET)
@@ -69,5 +87,107 @@ public class Page_detail_momController {
 			return new ModelAndView("/page_detail/mom_page_detail/mom_interview");
 			//return "/page_detail/mom_page_detail/mom_interview";
 	}
+		// 맘 상세페이지 > 찜하기 
+		@RequestMapping(value = "/page_detail/mom_page_detail/mom_heart_ok.do", method = RequestMethod.POST)
+		public ModelAndView report_mom_ok(Model model,
+				HttpServletResponse response,
+				@RequestParam(value = "who", defaultValue = "") char who,
+				@RequestParam(value = "momno", defaultValue = "0") int momno,
+				@RequestParam(value = "sitterno", defaultValue = "55") int sitterno) {
 
-}
+			
+			Heart input = new Heart();
+			Mom_info momput = new Mom_info();
+			input.setWho(who);
+			input.setMomno(momno);
+			input.setSitterno(sitterno);
+			momput.setMomno(momno);
+			
+			Mom_info mominfo = null;
+			
+			
+			try {
+				detailService.addHeart(input);
+				mominfo = (Mom_info) detailService.getMomMember(momput);
+				Integer test = mominfo.getHeartno();
+				
+						
+			if (test != null) {
+				String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
+				return webHelper.redirect(redirectUrl, "no!!!!!!!!");
+			}
+				
+				String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
+				return webHelper.redirect(redirectUrl, "oooooooo!");
+				
+				
+			} catch (Exception e) {
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+			
+			
+		}
+		
+		// 맘 상세페이지 > 찜하기 취소 
+		@RequestMapping(value = "/page_detail/mom_page_detail/mom_heart_delete_ok.do", method = RequestMethod.GET)
+		public ModelAndView deleteHeart_mom_ok(Model model,
+				@RequestParam(value = "momno", defaultValue = "0") int momno,
+				@RequestParam(value = "sitterno", defaultValue = "55") int sitterno) {
+
+			
+			Heart input = new Heart();
+			input.setMomno(momno);
+			input.setSitterno(sitterno);
+			
+			try {
+				detailService.deleteHeart(input);
+				
+			} catch (Exception e) {
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+			
+			String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
+			return webHelper.redirect(redirectUrl, "xxxxxxx!");
+		}
+
+		// 맘 상세페이지 > 인터뷰하기 
+		@RequestMapping(value = "/page_detail/mom_page_detail/mom_interview_ok.do", method = RequestMethod.POST)
+		public ModelAndView interview_mom_ok(Model model,
+				HttpServletResponse response,
+				@RequestParam(value = "who", defaultValue = "S") String who,
+				@RequestParam(value = "momno", defaultValue = "0") int momno,
+				@RequestParam(value = "sitterno", defaultValue = "50") int sitterno) {
+			
+			Connect input = new Connect();
+			Mom_info momput = new Mom_info();
+			input.setWho(who);
+			input.setMomno(momno);
+			input.setSitterno(sitterno);
+			momput.setMomno(momno);
+			
+			Mom_info mominfo = null;
+			
+			try {
+				mominfo = (Mom_info) memberService.getMomMember(momput);
+						
+			if (mominfo.getSubscribe() == 'N') {
+				String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
+				return webHelper.redirect(redirectUrl, "Interview no!!!!!!!!");
+			}
+			detailService.addConnect(input);
+			String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
+			return webHelper.redirect(redirectUrl, "Interview OK!!!!!!!!");
+	
+			} catch (Exception e) {
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+			
+			
+			}
+		}
+		
+		
+		
+		
+
+

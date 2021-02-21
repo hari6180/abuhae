@@ -34,6 +34,7 @@
 <body>		
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
+			<form action="${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_interview_ok.do" method="post">
 				<div class="siren_header">
 					<div class="x_btn_area">
 						<button type="button" class="x_btn" onclick = "history.back() ">
@@ -73,7 +74,7 @@
 					<div class="desc">
 						<span style="color: red;"><i class="fas fa-exclamation-circle"></i></span> 지원하기를 누르면 내 프로필이 맘시터에게 바로 전송되니 신중하게 지원해주시길 바랍니다.
 					</div>
-					<button type="button" class="btn btn-block" id="btn_interview">
+					<button type="submit" class="btn btn-block" id="btn_interview">
 						<span class="btn_interview">인터뷰 신청하기</span>
 					</button>
 					<!-- ------모달 영역------- -->
@@ -104,8 +105,12 @@
 						</div>
 						</div>
 					</div>
+					<input type="hidden" id="who" name="who" value="M">
+					<input type="hidden" id="momno" name="momno" >
+					<input type="hidden" id="sitterno" name="sitterno" value="${output.sitterno}" >
 				</div> <!-- fin. desc_box -->
 				</div> <!-- fin. main -->
+				</form>
 			</div> <!-- fin. col-xs-12 -->
 		</div> <!-- fin. container -->
 	
