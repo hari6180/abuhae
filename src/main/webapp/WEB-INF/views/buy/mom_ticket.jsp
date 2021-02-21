@@ -1,8 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
-<%
-	
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ page trimDirectiveWhitespaces="true" %> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@
+taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -38,7 +35,15 @@
 <body>
 	<div id="app">
 		<div class="container">
-		
+		        <div id="menu">
+          <c:if test="${isLogin ==true }">
+            <c:choose>
+              <c:when test="${fn:contains(loginType, 'M')}"> <%@ include file="../index_header_login_mom.jsp"%> </c:when>
+              <c:when test="${fn:contains(loginType, 'S')}"> <%@ include file="../index_header_login_sitter.jsp"%> </c:when>
+            </c:choose>
+          </c:if>
+          <c:if test="${isLogin == null }"> <%@ include file="../index_header.jsp"%> </c:if>
+        </div>
 			<div class="mom_buy_area col-xs-12">
 				<div class="mom_buy_area">
 					<div class="mom_buy_title">

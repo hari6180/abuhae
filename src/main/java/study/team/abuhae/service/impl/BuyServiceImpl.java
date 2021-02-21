@@ -67,6 +67,7 @@ public class BuyServiceImpl implements BuyService {
 
 		try {
 			result = sqlSession.insert("BuyMapper.ReBuyMember", input);
+			result += sqlSession.delete("BuyMapper.UseCoupon", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}

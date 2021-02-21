@@ -21,13 +21,13 @@
 	<update id="NewBuyMember" parameterType="study.team.abuhae.model.Member" useGeneratedKeys="false">
 		UPDATE member SET startdate=now(),
 		enddate=date_add(now(),
-		<if test="ticket_type=='1'">
+		<if test="ticket_type==1">
 			INTERVAL 1 MONTH
 		</if>
-		<if test="ticket_type=='3'">
+		<if test="ticket_type==3">
 			INTERVAL 3 MONTH
 		</if>
-		<if test="ticket_type=='6'">
+		<if test="ticket_type==6">
 			INTERVAL 6 MONTH
 		</if>
 		), subscribe='Y',
@@ -39,14 +39,14 @@
 	<!-- 재결제하는 회원 -->
 	<update id="ReBuyMember" parameterType="study.team.abuhae.model.Member" useGeneratedKeys="false">
 		UPDATE member SET
-		enddate=date_add(startdate,
-		<if test="ticket_type=='1'">
+		enddate=date_add(enddate,
+		<if test="ticket_type==1">
 			INTERVAL 1 MONTH
 		</if>
-		<if test="ticket_type=='3'">
+		<if test="ticket_type==3">
 			INTERVAL 3 MONTH
 		</if>
-		<if test="ticket_type=='6'">
+		<if test="ticket_type==6">
 			INTERVAL 6 MONTH
 		</if>
 		),
@@ -62,5 +62,9 @@
 			INNER JOIN member m ON m.memberno=c.memberno WHERE c.memberno=#{memberno}
 		</select>
 
+<!-- 쿠폰 삭제 -->
+<delete id="UseCoupon" parameterType="study.team.abuhae.model.Coupon">
+	DELETE FROM coupon WHERE memberno=#{memberno}
+</delete>
 
 </mapper>

@@ -24,8 +24,8 @@ public abstract class Member {
 	private char profile_img;	// 프로필 이미지 ('Y' or 'N')
 	private char job_opening;	// 구인구직 여부 ('Y' or 'N')
 	private char subscribe;		// 구독중인지 아닌지
-	private char ticket_type; 	// 이용권 종류 ('1', '3', '6')
-	private String ticket_price;// 이용권 금액
+	private int ticket_type; 	// 이용권 종류 ('1', '3', '6')
+	private int ticket_price;// 이용권 금액
 	private String signup_date; // 가입일자
 	private String reg_date;  // 쿠폰 발급 날짜   <- new!!
 	

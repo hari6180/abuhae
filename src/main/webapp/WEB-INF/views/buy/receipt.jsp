@@ -59,11 +59,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <hr style="margin-bottom: 15px" />
               <div style="margin-bottom: 20px">
                 <span class="style_price_title">내역</span>
-                <span id="price_dc" class="pull-right">49,900 원</span>
+                <span id="price_dc" class="pull-right">${output.ticket_price}원</span>
               </div>
               <div class="buy_price">
                 <span class="style_price_title">총 결제 금액</span>
-                <span id="total_price" class="pull-right">49,900 원</span>
+                <span id="total_price" class="pull-right">${output.ticket_price}원</span>
               </div>
               <label id="agree_ckeck">
                 <input type="checkbox" value="agree" name="agree_chck" />
@@ -73,41 +73,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             </div>
           </div>
           <!-- fin. receipt_box -->
-          <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <!-- .modal-dialog -->
-            <div class="modal-dialog">
-              <!-- .modal-content -->
-              <div class="modal-content">
-                <div class="modal-body">
-                  <p style="text-align: center; padding-top: 10px; font-weight: bold">정말 결제하시겠습니까?</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default col-xs-6" data-dismiss="modal" id="btn_no">취소</button>
-                  <button type="button" class="btn btn-default col-xs-6" data-dismiss="modal" id="btn_ok">확인</button>
-                </div>
-              </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
-          <div id="myModal_interview" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <!-- .modal-dialog -->
-            <div class="modal-dialog">
-              <!-- .modal-content -->
-              <div class="modal-content">
-                <div class="modal-body">
-                  <p style="text-align: center; padding-top: 10px; font-weight: bold">결제되셨습니다.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default col-xs-6" data-dismiss="modal" id="btn_interview" onclick="location.href='/ezen-android2020-2/search/sitter_search.jsp'">
-                    인터뷰 지원하러 가기 <span style="color: #ff7000"><i class="fas fa-angle-double-right"></i></span>
-                  </button>
-                </div>
-              </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
+
           <div id="myModal_agree" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <!-- .modal-dialog -->
             <div class="modal-dialog">
@@ -136,47 +102,44 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             $("#myModal_agree").modal();
             return;
           } else {
-            $("#myModal").modal();
+        	  window.location = "${pageContext.request.contextPath}/buy/receipt_ok.do?tktype=" + ${output.ticket_type} + "&memberno=" + ${login.memberno} + "&tkprice=" + ${output.ticket_price};
           }
         }); // fin. 구매관련 동의 체크 여부
 
-        $("#btn_ok").click(function () {
-          $("#myModal_interview").modal();
-        }); // fin. 구매확인 후 인터뷰하러가기 >> 모달창 띄우기
 
-        $("#mySelect").change(function () {
-          var index = $("#mySelect option").index($("#mySelect option:selected"));
-          if (index == 1) {
-            $("#price_dc").html("-14,970원");
-            $("#total_price").html("34,930원");
-            $("#price_dc").css("color", "#ff7000");
-          } else if (index == 2) {
-            $("#price_dc").html("-24,950원");
-            $("#total_price").html("24,950원");
-            $("#price_dc").css("color", "#ff7000");
-          } else {
-            $("#price_dc").html("49,900원");
-            $("#total_price").html("49,900원");
-            $("#price_dc").css("color", "#222222");
-          }
-        }); // fin. index안에 option 위치 값 index로 받아서 if문 따라서 할인금액, 총 금액 변경
+        // $("#mySelect").change(function () {
+        //   var index = $("#mySelect option").index($("#mySelect option:selected"));
+        //   if (index == 1) {
+        //     $("#price_dc").html("-14,970원");
+        //     $("#total_price").html("34,930원");
+        //     $("#price_dc").css("color", "#ff7000");
+        //   } else if (index == 2) {
+        //     $("#price_dc").html("-24,950원");
+        //     $("#total_price").html("24,950원");
+        //     $("#price_dc").css("color", "#ff7000");
+        //   } else {
+        //     $("#price_dc").html("49,900원");
+        //     $("#total_price").html("49,900원");
+        //     $("#price_dc").css("color", "#222222");
+        //   }
+        // }); // fin. index안에 option 위치 값 index로 받아서 if문 따라서 할인금액, 총 금액 변경
 
-        $("#mySelect02").change(function () {
-          var index = $("#mySelect02 option").index($("#mySelect02 option:selected"));
-          if (index == 1) {
-            $("#price_dc").html("-2000원");
-            $("#total_price").html("47,900원");
-            $("#price_dc").css("color", "#ff7000");
-          } else if (index == 0) {
-            $("#price_dc").html("49,900원");
-            $("#total_price").html("49,900원");
-            $("#price_dc").css("color", "#222222");
-          } else {
-            $("#price_dc").html("-1000원");
-            $("#total_price").html("48,900원");
-            $("#price_dc").css("color", "#ff7000");
-          }
-        }); // fin. index안에 option 위치 값 index로 받아서 if문 따라서 할인금액, 총 금액 변경
+        // $("#mySelect02").change(function () {
+        //   var index = $("#mySelect02 option").index($("#mySelect02 option:selected"));
+        //   if (index == 1) {
+        //     $("#price_dc").html("-2000원");
+        //     $("#total_price").html("47,900원");
+        //     $("#price_dc").css("color", "#ff7000");
+        //   } else if (index == 0) {
+        //     $("#price_dc").html("49,900원");
+        //     $("#total_price").html("49,900원");
+        //     $("#price_dc").css("color", "#222222");
+        //   } else {
+        //     $("#price_dc").html("-1000원");
+        //     $("#total_price").html("48,900원");
+        //     $("#price_dc").css("color", "#ff7000");
+        //   }
+        // }); // fin. index안에 option 위치 값 index로 받아서 if문 따라서 할인금액, 총 금액 변경
       });
     </script>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
