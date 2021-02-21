@@ -203,6 +203,20 @@
 		from member where name=#{name} and birthdate=#{birthdate} and
 		phone=#{phone};
 	</select>
+	
+	<!-- 맘회원번호로 회원 정보 조회  -->
+	<select id="selectMomItem">
+		select id, name, subscribe, momno from member m
+		inner join mom_info mi on m.memberno=mi.memberno
+		where momno = #{momno}
+	</select>
+	
+	<!-- 시터회원번호로 회원 정보 조회  -->
+	<select id="selectSitterItem">
+		select id, name, subscribe, sitterno from member m
+		inner join sitter_info si on m.memberno=si.memberno
+		where momno = #{momno}
+	</select>
 
 
 	<!-- 임시비밀번호로 업데이트 -->

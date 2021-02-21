@@ -9,8 +9,14 @@ import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Sitter_info;
 
 public interface MemberService {
-	//회원 단일 조회
+	//로그인 하는 회원 조회
 	public Member getMemberLogin(Mom_info input) throws Exception;
+	
+	//맘시터 회원 조회
+	public Mom_info getMomMember(Mom_info input) throws Exception;
+		
+	//시터회원 회원 조회
+	public Sitter_info getSitterMember(Sitter_info input) throws Exception;
 	
 	//부모회원 리스트 조회
 	public List<Mom_info> getMomList(Mom_info input) throws Exception;
