@@ -35,7 +35,6 @@
 		<result property="payment" column="payment" />
 		<result property="cctv" column="cctv" />
 		<result property="schedule" column="schedule" />
-		<result property="schedule_set" column="schedule_set" />
 		<result property="introduce" column="introduce" />
 		<result property="answer" column="answer" />
 		<result property="openingdate" column="opening" />
@@ -104,7 +103,7 @@
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS
 		opening,
-		REPLACE(json_extract(schedule_set, '$.day'),'"','') AS
+		REPLACE(json_extract(schedule, '$.day'),'"','') AS
 		days,
 		openingdate, (SELECT COUNT(revno) FROM review r WHERE
 		s.sitterno=r.sitterno AND who='M') AS rev_count,
@@ -133,7 +132,7 @@
 				</foreach>
 			</if>
 			<if test="caredays != null">
-				AND JSON_CONTAINS(schedule_set->'$.day',CAST('
+				AND JSON_CONTAINS(schedule->'$.day',CAST('
 				<foreach item="item3" collection="caredays" open="["
 					close="]" separator=",">
 					"${item3}"
