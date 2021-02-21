@@ -29,7 +29,78 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/page_detail_for_mom.css" />	
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/page_detail_for_mom.css" />
+
+<style type="text/css">
+	.days_box_no {
+		width: 43px;
+		border-radius: 5px;
+		font-size: 0.9em;
+		font-weight: bold;
+		padding: 4px 0;
+		text-align: center;
+		color: #fff;
+		background-color: #ddd;
+		display: inline-block;
+		margin: 3px 2px;
+		height: 40px;
+		line-height: 30px;
+	}
+	.days_box_ok {
+		width: 43px;
+		border-radius: 5px;
+		font-size: 0.9em;
+		font-weight: bold;
+		padding: 4px 0;
+		text-align: center;
+		color: #fff;
+		background-color: #ff7000;
+		display: inline-block;
+		margin: 3px 2px;
+		height: 40px;
+		line-height: 30px;
+	}
+	.schedule_info_box {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	.schedule_img {
+		margin-right: 15px;
+	}
+	.schedule_area {
+		width: 100%;
+		position: relative;
+		color: #000;
+		font-size: 0.9em;
+		font-weight: bold;
+		padding: 5px;
+		border-radius: 8px;
+	}
+	.schedule_style {
+		position: absolute;
+		top: 25px;
+		left: -5px;
+		width: 0px;
+		height: 0px;
+		border-top: 10px solid rgba(0,0,0,0);
+		border-bottom: 10px solid rgba(0,0,0,0);
+		border-right: 10px solid #e9f2f1;
+	}
+	.schedule_box {
+		padding: 8px 0px;
+	}
+	.schedule_main {
+		background-color: #e9f2f1;
+		border-radius: 8px;
+		padding: 15px;
+	}
+	#schedule_text {
+		padding-top: 6px;
+		padding-left: 5px;
+		font-weight: bold;
+	}
+</style>	
 </head>
 	
 <body>		
@@ -258,7 +329,45 @@
 								<div class="active">
 									<div class="active_main">
 										<div class="active_main_box" style="display: block;">
-											<div>
+											<div class="schedule_info_box">
+												<div class="schedule_img">
+													<img src="<%=request.getContextPath()%>/assets/img/people_review.png" width="60" height="60" style="border-radius: 50%;">
+												</div>
+												<div class="schedule_area">
+													<div class="schedule_style"></div>
+													<div class="schedule_box">
+														<div class="schedule_main">
+															<span id="schedule_text">${output.schedule}</span>
+															<br/>
+															<span style="margin-left: 5px;"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12">
+											<div class="days_box">
+												월 
+											</div>
+											<div class="days_box">
+												화
+											</div>
+											<div class="days_box">
+												수
+											</div>
+											<div class="days_box">
+												목
+											</div>
+											<div class="days_box">
+												금 
+											</div>
+											<div class="days_box">
+												토 
+											</div>
+											<div class="days_box">
+												일
+											</div>
+											</div>
+										<!--  	<div>
 											
 												<div class="day_area">
 													<div class="day_box">
@@ -358,7 +467,7 @@
 														</div>
 													</div>
 												</div> <!-- fin. day_area -->
-											</div>	
+										<!-- 	</div>	 
 											<div class="heure_area">
 												<div class="heure">00:00</div>
 												<div class="heure">02:00</div>
@@ -374,6 +483,7 @@
 												<div class="heure">22:00</div>
 												<div class="heure">00:00</div>
 											</div> <!-- fin. herue_area -->		
+											<!--  
 											<div class="date_area">
 												<div class="date"></div>
 												<div class="date"></div>
@@ -489,6 +599,7 @@
 													</div>
 												</div>
 											</div>						
+											-->
 										</div> <!-- fin. active_main_box -->
 									</div> <!-- fin. active_main -->
 								</div> <!-- fin. active -->

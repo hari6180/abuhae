@@ -159,18 +159,18 @@ public class Page_detail_momController {
 				@RequestParam(value = "sitterno", defaultValue = "50") int sitterno) {
 			
 			Connect input = new Connect();
-			Mom_info momput = new Mom_info();
+			Sitter_info sitterput = new Sitter_info();
 			input.setWho(who);
 			input.setMomno(momno);
 			input.setSitterno(sitterno);
-			momput.setMomno(momno);
+			sitterput.setSitterno(sitterno);
 			
-			Mom_info mominfo = null;
+			Sitter_info sitterinfo = null;
 			
 			try {
-				mominfo = (Mom_info) memberService.getMomMember(momput);
+				sitterinfo = (Sitter_info) memberService.getSitterMember(sitterput);
 						
-			if (mominfo.getSubscribe() == 'N') {
+			if (sitterinfo.getSubscribe() == 'N') {
 				String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
 				return webHelper.redirect(redirectUrl, "Interview no!!!!!!!!");
 			}
