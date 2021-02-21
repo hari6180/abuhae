@@ -47,6 +47,7 @@ public class Mom_info extends Member {
 	private String schedule;		// 가능한 시간대 입력(JSON) 
 	private String frequency;		// 스케줄 주기
 	private String days;			// 가능한 요일
+	private int memberno;           // 맘회원의 회원 일련번호
 	
 	/** 2) JOIN절에 따른 추가 컬럼 */
 	// 찾기 기능의 JOIN - 0210 hari

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -33,7 +34,7 @@
                     <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${out.momno}">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">신고내역</h3>
@@ -43,23 +44,25 @@
 
                     <!-- content -->
                     <section class="sue_content">
-                        <div class="row">
-                            <div class="col-xs-12 sue_con_in">
-                                <div class="sue_con_prof">
-                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="프로필사진">
-                                    <div class="sue_con_prof_in">
-                                        <h4>박○영</h4>
-                                        <p>신고 일시 : 2020.12.27 13:00</p>
-                                        <!-- 신고 이유 -->
-                                        <p>프로필 사진 도용</p>
-                                    </div>
-                                </div>
-                                <!-- 라디오버튼으로 선택한 신고 이유 
-                                    (허위정보 기재, 부적절한 사진, 부적절한 내용, 규정 위반, 맘시터 회원 자격 없음, 기타 중 선택) -->
-                                <p class="sue_reason">부적절한 사진</p>
-                            </div>
-                        </div>
-                        <hr>
+                        <c:forEach var="item" items="${output}" varStatus="status">
+                        	<div class="row">
+	                            <div class="col-xs-12 sue_con_in">
+	                                <div class="sue_con_prof">
+	                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="프로필사진">
+	                                    <div class="sue_con_prof_in">
+	                                        <h4>${item.name }</h4>
+	                                        <p>신고 일시 : ${item.reg_date }</p>
+	                                        <!-- 신고 이유 -->
+	                                        <p>${item.contents }</p>
+	                                    </div>
+	                                </div>
+	                                <!-- 라디오버튼으로 선택한 신고 이유 
+	                                    (허위정보 기재, 부적절한 사진, 부적절한 내용, 규정 위반, 맘시터 회원 자격 없음, 기타 중 선택) -->
+	                                <p class="sue_reason">${item.type }</p>
+	                            </div>
+	                        </div>
+	                        <hr>
+                        </c:forEach>
                     </section>
              
                 </div>

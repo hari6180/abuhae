@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import study.team.abuhae.helper.MailHelper;
+import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Coupon;
+import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Review;
@@ -31,7 +33,7 @@ public class MomMypageServiceImpl implements MomMypageService{
 		 Mom_info result = null;
 	      
 	      try {
-	         result = sqlSession.selectOne("MypageMapper.selectItem", input);
+	         result = sqlSession.selectOne("MomMypageMapper.selectMomItem", input);
 	         
 	         if (result==null) {
 	            throw new NullPointerException("result=null");
@@ -110,13 +112,13 @@ public class MomMypageServiceImpl implements MomMypageService{
 	      return result;
 	}
 
-	/** 신고내역 조회 기능 */
+	/** 찜한 회원 목록 조회 */
 	@Override
-	public List<Report> getReportList(Report input) throws Exception {
-	    List<Report> result = null;
+	public List<Heart> getHeartList(Heart input) throws Exception {
+		List<Heart> result = null;
 	      
 	      try {
-	         result = sqlSession.selectList("MypageMapper.selectReportList", input);
+	         result = sqlSession.selectList("MomMypageMapper.selectHeartList", input);
 	         
 	         if (result==null) {
 	            throw new NullPointerException("result=null");
@@ -129,16 +131,77 @@ public class MomMypageServiceImpl implements MomMypageService{
 	         throw new Exception("데이터 조회에 실패했습니다.");
 	      }
 	      return result;
-
 	}
 
-	/** 쿠폰 조회 기능 */
+	/** 채용 내역 조회 */
+	@Override
+	public List<Connect> getWorkList(Connect input) throws Exception {
+		List<Connect> result = null;
+	      
+	      try {
+	         result = sqlSession.selectList("MomMypageMapper.selectWorkList", input);
+	         
+	         if (result==null) {
+	            throw new NullPointerException("result=null");
+	         }  
+	      } catch (NullPointerException e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("조회된 회원이 없습니다.");
+	      } catch (Exception e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("데이터 조회에 실패했습니다.");
+	      }
+	      return result;
+	}
+
+	/** 신고 내역 조회 */
+	@Override
+	public List<Report> getReprotList(Report input) throws Exception {
+		List<Report> result = null;
+	      
+	      try {
+	         result = sqlSession.selectList("MomMypageMapper.selectReportList", input);
+	         
+	         if (result==null) {
+	            throw new NullPointerException("result=null");
+	         }  
+	      } catch (NullPointerException e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("조회된 회원이 없습니다.");
+	      } catch (Exception e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("데이터 조회에 실패했습니다.");
+	      }
+	      return result;
+	}
+
+	/** 구매 내역 조회 */
+	@Override
+	public Mom_info getBuyList(Mom_info input) throws Exception {
+		Mom_info result = null;
+	      
+	      try {
+	         result = sqlSession.selectOne("MomMypageMapper.selectBuyList", input);
+	         
+	         if (result==null) {
+	            throw new NullPointerException("result=null");
+	         }  
+	      } catch (NullPointerException e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("조회된 회원이 없습니다.");
+	      } catch (Exception e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("데이터 조회에 실패했습니다.");
+	      }
+	      return result;
+	}
+
 	@Override
 	public List<Coupon> getCouponList(Coupon input) throws Exception {
-		 List<Coupon> result = null;
+		List<Coupon> result = null;
 	      
 	      try {
-	         result = sqlSession.selectList("MypageMapper.selectCouponList", input);
+	         result = sqlSession.selectList("MomMypageMapper.selectCouponList", input);
 	         
 	         if (result==null) {
 	            throw new NullPointerException("result=null");
@@ -151,51 +214,6 @@ public class MomMypageServiceImpl implements MomMypageService{
 	         throw new Exception("데이터 조회에 실패했습니다.");
 	      }
 	      return result;
-
-	}
-
-	/** 비밀번호 수정 기능 */
-	@Override
-	public int updateMomPassword(Mom_info input) throws Exception {
-		int result = 0;
-	      
-	      try {
-	         result = sqlSession.update("MypageMapper.updatePassword", input);
-	         
-	         if (result == 0) {
-	            throw new NullPointerException("result = 0");
-	         } 
-	      }  catch (NullPointerException e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("수정된 데이터가 없습니다.");
-	      } catch (Exception e) {
-	         throw new Exception("데이터 수정에 실패했습니다.");
-	      }
-	      return result;
-
-	}
-
-	/** 결제내역 조회 기능 */
-	@Override
-	public List<Mom_info> getBuyList(Mom_info input) throws Exception {
-		
-		List<Mom_info> result = null;
-		  
-		try {
-		     result = sqlSession.selectList("MypageMapper.selectCouponList", input);
-		 
-		     if (result==null) {
-		    	 throw new NullPointerException("result=null");
-		     }  
-		} catch (NullPointerException e) {
-		     log.error(e.getLocalizedMessage());
-		     throw new Exception("조회된 회원이 없습니다.");
-		} catch (Exception e) {
-		     log.error(e.getLocalizedMessage());
-		     throw new Exception("데이터 조회에 실패했습니다.");
-		}
-		return result;
-
 	}
 
 }

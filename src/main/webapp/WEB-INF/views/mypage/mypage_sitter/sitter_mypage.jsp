@@ -64,8 +64,8 @@
                                 <!--백엔드 연동 필요-->
                                 <div class="mps_prof_info">
                                     <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
-                                    <p class="info_sitter">정지우</p>
-                                    <p class="info_sitter">no.99999</p>
+                                    <p class="info_sitter">${output.name }</p>
+                                    <p class="info_sitter">no.${output.sitterno }</p>
                                 </div>
                                 
                                 <hr style="border: 1px solid rgb(226, 225, 225); background-color: rgb(226, 225, 225);">
@@ -165,7 +165,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/like_mom_mps.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/like_mom_mps.do?sitterno=${output.sitterno}">
                                     <i class="fab fa-gratipay mps_menu_list1"></i>
                                     <p class="mps_menu_list2">찜한 일자리</p>
                                     <p class="mps_menu_list3">2명</p>

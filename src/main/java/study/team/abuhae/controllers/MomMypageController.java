@@ -18,7 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
+import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Coupon;
+import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Review;
@@ -86,27 +88,11 @@ public class MomMypageController {
 	}
 	
 	@RequestMapping(value = "/mypage/mypage_mom/update_password_ok.do", method = RequestMethod.POST)
-	public ModelAndView update_password_mom_ok(Model model, HttpSession session,
-			//@RequestParam(value = "now_pw") String now_pw,
-			@RequestParam(value = "new_pw") String new_pw) {
-		Mom_info input = new Mom_info();
-		// 현재 비밀번호 확인하기
-		//String np = input.getPassword();
-		//if (np != now_pw) { return webHelper.redirect(null, "현재 비밀번호를 확인하세요."); }
-		
-		// 수정할 값들을 Beans에 담기
-		input.setPassword(new_pw);
-		
-		try {
-			// 데이터 수정
-			momMypageService.updateMomPassword(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		return new ModelAndView("mypage/mypage_mom/update_password_ok");
+	public ModelAndView update_password_mom_ok(Model model, HttpSession session
+		) {
 		//String redirectUrl = contextPath + "/mypage/mypage_mom/mom_mypage.do?memberno=" + input.getMemberno();
 		//return webHelper.redirect(redirectUrl, "비밀번호가 수정되었습니다.");
+	return new ModelAndView("mypage/mypage_mom/update_password_ok");
 	}
 	
 	/** 내 구인 현황 페이지 */
@@ -119,9 +105,40 @@ public class MomMypageController {
 	
 	/** 찜한 맘시터 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/like_sitter_mpm.do", method = RequestMethod.GET)
-	public String like_sitter(Locale locale, Model model) {
+	public ModelAndView like_sitter(Model model,  HttpSession session,
+			@RequestParam(value = "momno", defaultValue = "0") int momno) {
+		// 데이터 조회에 필요한 조건값 Beans에 저장
+		Mom_info in = new Mom_info();
+		in.setMomno(momno);
+		
+		// 조회 결과를 저장할 객체 선언
+		Mom_info out = null;
+		
+		try {
+			out = momMypageService.getMemberItem(in);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// View 처리 
+		model.addAttribute("out" ,out);
+		
+		/** 데이터 조회 */
+		Heart input = new Heart();
+		input.setMomno(momno);
+		
+		/** 후기 작성할 수 있는 회원 목록*/
+		List<Heart> output = null;
+		
+		try {
+			output = momMypageService.getHeartList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("output", output);
 
-		return "mypage/mypage_mom/like_sitter_mpm";
+		return new ModelAndView("mypage/mypage_mom/like_sitter_mpm");
 	}
 	
 	/** 내 신청서 수정 페이지 */
@@ -148,27 +165,57 @@ public class MomMypageController {
 		return "mypage/mypage_mom/update_appl";
 	}
 	
-	/** 내 적립금 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/fund.do", method = RequestMethod.GET)
-	public String fund_mom(Model model, HttpServletResponse response,
-			@RequestParam(value = "memberno") int memberno) {
-
-		return "mypage/mypage_mom/fund";
-	}
-	
 	/** 내 쿠폰함 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/coupon.do", method = RequestMethod.GET)
-	public String coupon_mom(Model model, HttpServletResponse response,
-			@RequestParam(value = "memberno") int memberno) {
-		// 데이터 조회에 필요한 조건값 Beans에 저장
-		Coupon input = new Coupon();
-		input.setMemberno(memberno);;
+	public ModelAndView coupon_mom(Model model, HttpServletResponse response,
+			@RequestParam(value = "momno") int momno) {
+		Mom_info in = new Mom_info();
+		in.setMomno(momno);
 		
 		// 조회 결과를 저장할 객체 선언
+		Mom_info out = null;
+		
+		try {
+			out = momMypageService.getMemberItem(in);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// View 처리 
+		model.addAttribute("out" ,out);
+		
+		/** 데이터 조회 */
+		Coupon input = new Coupon();
+		input.setMomno(momno);
+		
+		/** 후기 작성할 수 있는 회원 목록*/
 		List<Coupon> output = null;
 		
 		try {
 			output = momMypageService.getCouponList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("output", output);
+
+		return new ModelAndView("mypage/mypage_mom/coupon");
+	}
+	
+	/** 후기 관리 페이지 */
+	@RequestMapping(value = "/mypage/mypage_mom/review.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView review_mom(Model model,
+			@RequestParam(value = "momno", defaultValue = "0") int momno,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		// 데이터 조회에 필요한 조건값 Beans에 저장
+		Mom_info in = new Mom_info();
+		in.setMomno(momno);
+		
+		// 조회 결과를 저장할 객체 선언
+		Mom_info output = null;
+		
+		try {
+			output = momMypageService.getMemberItem(in);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -176,17 +223,9 @@ public class MomMypageController {
 		// View 처리 
 		model.addAttribute("output" ,output);
 
-		return "mypage/mypage_mom/coupon";
-	}
-	
-	/** 후기 관리 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/review.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView review_mom(Model model,
-			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
-
 		/** 데이터 조회 */
 		Review input = new Review();
-		input.setMomno(1);
+		input.setMomno(momno);
 		
 		/** 후기 작성할 수 있는 회원 목록*/
 		List<Review> output1 = null;
@@ -213,74 +252,104 @@ public class MomMypageController {
 		return new ModelAndView("mypage/mypage_mom/review");
 	}
 	
-	@RequestMapping(value = "/mypage/mypage_mom/review_ok.do", method = RequestMethod.POST)
-	public ModelAndView review_ok(Locale locale, Model model) {
-		/** 후기 남길 수 있는 회원 조회 기능 */
-		Sitter_info input = new Sitter_info();
-		
-		/** 후기 남기기 기능 (insert) */
-		
-		/** 작성한 후기 조회 */
-		
-		/** 나에게 작성된 후기 조회 */
-		
-		/** 댓글 남기기 기능 */
-		
-		return new ModelAndView("mypage/mypage_mom/review");
-	}
-	
 	/** 내 채용내역 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/count_mom_mps.do", method = RequestMethod.GET)
-	public String count_mom(Locale locale, Model model) {
+	public ModelAndView count_mom(Model model, HttpServletResponse response,
+			@RequestParam(value = "momno") int momno) {
 
-		return "mypage/mypage_mom/count_mom_mps";
+		// 데이터 조회에 필요한 조건값 Beans에 저장
+		Mom_info in = new Mom_info();
+		in.setMomno(momno);
+		
+		// 조회 결과를 저장할 객체 선언
+		Mom_info out = null;
+		
+		try {
+			out = momMypageService.getMemberItem(in);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// View 처리 
+		model.addAttribute("out" ,out);
+		
+		/** 데이터 조회 */
+		Connect input = new Connect();
+		input.setMomno(momno);
+		
+		/** 후기 작성할 수 있는 회원 목록*/
+		List<Connect> output = null;
+		
+		try {
+			output = momMypageService.getWorkList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("output", output);
+
+		return new ModelAndView("mypage/mypage_mom/count_mom_mps");
 	}
 	
 	/** 신고 내역 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/sue.do", method = RequestMethod.GET)
-	public String sue_mom(Model model, HttpServletResponse response,
+	public ModelAndView sue_mom(Model model, HttpServletResponse response,
 			@RequestParam(value = "momno") int momno) {
 		// 데이터 조회에 필요한 조건값 Beans에 저장
-		Report input = new Report();
-		input.setMomno(momno);
+		Mom_info in = new Mom_info();
+		in.setMomno(momno);
 		
 		// 조회 결과를 저장할 객체 선언
-		List<Report> output = null;
+		Mom_info out = null;
 		
 		try {
-			output = momMypageService.getReportList(input);
+			out = momMypageService.getMemberItem(in);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		// View 처리 
-		model.addAttribute("output" ,output);
+		model.addAttribute("out" ,out);
 		
-		return "mypage/mypage_mom/sue";
+		/** 데이터 조회 */
+		Report input = new Report();
+		input.setMomno(momno);
+		
+		/** 후기 작성할 수 있는 회원 목록*/
+		List<Report> output = null;
+		
+		try {
+			output = momMypageService.getReprotList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("output", output);
+
+		
+		return new ModelAndView("mypage/mypage_mom/sue");
 	}
 	
 	/** 결제 내역 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/payment_list.do", method = RequestMethod.GET)
-	public String payment_list_mom(Model model, HttpServletResponse response,
+	public ModelAndView payment_list_mom(Model model, HttpServletResponse response,
 			@RequestParam(value = "momno") int momno) {
-
-		// 데이터 조회에 필요한 조건값 Beans에 저장
+		/** 데이터 조회 */
 		Mom_info input = new Mom_info();
 		input.setMomno(momno);
 		
-		// 조회 결과를 저장할 객체 선언
-		List<Mom_info> output = null;
+		/** 후기 작성할 수 있는 회원 목록*/
+		Mom_info output = null;
 		
 		try {
 			output = momMypageService.getBuyList(input);
 		} catch (Exception e) {
-			e.printStackTrace();
+			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		// View 처리 
-		model.addAttribute("output" ,output);
+		model.addAttribute("output", output);
 		
-		return "mypage/mypage_mom/payment_list";
+		return new ModelAndView("mypage/mypage_mom/payment_list");
 	}
 	
 	/** 계정관리 페이지 */

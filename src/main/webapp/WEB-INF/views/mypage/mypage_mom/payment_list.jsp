@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -33,7 +34,7 @@
                     <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${output.momno}">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">결제내역</h3>
@@ -46,11 +47,19 @@
                         <div class="row">
                             <div class="col-xs-12 payment_cont1">
                                 <div class="kind_payment">
-                                    <p>무제한 이용권 (6개월)</p>
-                                    <p>결제 일시 2020.11.23</p>
+                                    <c:if test="${output.ticket_type eq '1'}">
+                                    	<p>무제한 이용권 (1개월)</p>
+                                    </c:if>
+                                    <c:if test="${output.ticket_type == '3'}">
+                                    	<p>무제한 이용권 (3개월)</p>
+                                    </c:if>
+                                    <c:if test="${output.ticket_type == '6'}">
+                                    	<p>무제한 이용권 (6개월)</p>
+                                    </c:if>
+                                    <p>결제 일시 ${output.startdate }</p>
                                 </div>
                                 <div class="money_payment">
-                                    <p>월 13,316원</p>
+                                    <p>${output.ticket_price }원</p>
                                 </div>
                             </div>
                         </div>

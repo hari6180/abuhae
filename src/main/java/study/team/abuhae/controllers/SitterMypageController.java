@@ -15,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Connect;
+import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Review;
+import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.impl.SitterMypageServiceImpl;
 
 @Controller
@@ -34,9 +36,23 @@ public class SitterMypageController {
 	
 	/** mypage controller */
 	@RequestMapping(value = "/mypage/mypage_sitter/sitter_mypage.do", method = RequestMethod.GET)
-	public String sitter_mypage(Locale locale, Model model) {
-
-		return "mypage/mypage_sitter/sitter_mypage";
+	public ModelAndView sitter_mypage(Model model,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		/** 데이터 조회 */
+		Sitter_info input = new Sitter_info();
+		input.setSitterno(sitterno);
+		
+		Sitter_info output = null;
+		
+		try {
+			output = sitterMypageService.getSitterItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("mypage/mypage_sitter/sitter_mypage");
 	}
 	
 	/** 비밀번호 변경 페이지 */
@@ -76,9 +92,34 @@ public class SitterMypageController {
 	
 	/** 찜한 일자리 페이지 */
 	@RequestMapping(value = "/mypage/mypage_sitter/like_mom_mps.do", method = RequestMethod.GET)
-	public String like_mom(Locale locale, Model model) {
+	public ModelAndView like_mom(Model model,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		Sitter_info in = new Sitter_info();
+		in.setSitterno(sitterno);
+		
+		Sitter_info out = null;
+		
+		try {
+			in = sitterMypageService.getSitterItem(in);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		Heart input = new Heart();
+		input.setSitterno(sitterno);
+		
+		List<Heart> output = null;
+		
+		try {
+			output = sitterMypageService.getSitterHeartList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("out", out);
+		model.addAttribute("output", output);
 
-		return "mypage/mypage_sitter/like_mom_mps";
+		return new ModelAndView("mypage/mypage_sitter/like_mom_mps");
 	}
 	
 	/** 내 프로필 보기 페이지 */
