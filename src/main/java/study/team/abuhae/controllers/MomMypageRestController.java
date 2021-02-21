@@ -25,18 +25,16 @@ public class MomMypageRestController {
 	@RequestMapping(value = "/mypage/edit_review_ok", method = RequestMethod.POST)
 	public Map<String, Object> edit_ok(
 			@RequestParam(value = "revno", defaultValue = "0") int revno,
-			@RequestParam(value = "who", defaultValue = "") String who, 
-			@RequestParam(value = "rev_rate", defaultValue = "") String rev_rate,
+			@RequestParam(value = "rev_rate", defaultValue = "") char rev_rate,
 			@RequestParam(value = "contents", defaultValue = "") String contents) {
 		
 		/** 사용자가 입력한 파라미터 유효성 검사 */
-		if (revno == 0) { return webHelper.getJsonWarning("리뷰를 작성할 수 없습니다."); }
+		/**if (revno == 0) { return webHelper.getJsonWarning("리뷰를 작성할 수 없습니다."); }
 		if (rev_rate == "") { return webHelper.getJsonWarning("별점을 체크해주세요."); }
-		if (contents == "") { return webHelper.getJsonWarning("내용을 입력해 주세요."); }
+		if (contents == "") { return webHelper.getJsonWarning("내용을 입력해 주세요."); } */
 		
 		/** accept 수정(connect table) - insert */
 		Review input = new Review();
-		input.setWho(who);
 		input.setRevno(revno);
 		input.setRev_rate(rev_rate);
 		input.setContents(contents);

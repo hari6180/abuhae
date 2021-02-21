@@ -116,7 +116,7 @@ public class SitterMypageController {
 		
 		/** 데이터 조회 */
 		Review input = new Review();
-		input.setSitterno(1);
+		input.setSitterno(3);
 		
 		List<Review> output = null;
 		
