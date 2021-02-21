@@ -1,8 +1,5 @@
 # ezen-android2020-2
 이젠IT아카데미 자바 웹&amp;앱 2조
-<<<<<<< HEAD
-=======
-
 21/2/6 수정 사항
 mom_info 테이블
 kids_num => enum('1','2')로 변경
@@ -24,5 +21,5 @@ sitter_info 테이블에서 view(조회수) 컬럼 추가
 21/2/18 수정 사항
 sitter_experience 테이블에서 삭제
 
-
->>>>>>> e67a49c3a7239223d422b164291ae8914fa6a0c6
+21/2/21 수정 사항
+이용권 금액, 타입 int로 변경 
