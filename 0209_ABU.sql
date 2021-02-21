@@ -1,1 +1,0 @@
-SELECT * FROM ABU.sitter_info;
