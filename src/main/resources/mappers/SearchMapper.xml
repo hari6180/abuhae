@@ -33,7 +33,6 @@
 		<result property="gu" column="gu" />
 		<result property="dong" column="dong" />
 		<result property="payment" column="payment" />
-		<result property="payment_ok" column="payment_ok" />
 		<result property="cctv" column="cctv" />
 		<result property="schedule" column="schedule" />
 		<result property="schedule_set" column="schedule_set" />
@@ -92,7 +91,7 @@
 		want_act3,
 		want_age,
 		si, gu, dong,
-		payment, payment_ok, cctv, answer,
+		payment, cctv, answer,
 		CASE
 	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
 	WHEN TIMESTAMPDIFF(minute, openingdate, now()) < 60 THEN

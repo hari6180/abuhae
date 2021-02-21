@@ -45,9 +45,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <div class="second_name">맘회원 전용</div>
               <div class="name">프리미엄 이용권</div>
             </div>
-            <div style="font-weight: bold; font-size: 0.8em; color: #ff9000; text-align: center">
-              <span style="color: #ff7000"><i class="fas fa-exclamation"></i></span> 쿠폰과 적립금은 중복할인이 불가능합니다
-            </div>
             <hr style="margin-bottom: 15px" />
             <div class="coupon_area">
               <div class="coupon_line">
