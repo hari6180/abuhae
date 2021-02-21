@@ -61,7 +61,6 @@
 		<result property="gu" column="gu" />
 		<result property="dong" column="dong" />
 		<result property="schedule" column="schedule" />
-		<result property="schedule_set" column="schedule_set" />
 		<result property="introduce" column="introduce" />
 		<result property="cctv" column="cctv" />
 		<result property="openingdate" column="openingdate" />
@@ -113,16 +112,12 @@
 		INSERT INTO Sitter_info
 		(sitter_type,
 		want_act1, want_act2, want_act3, want_age, payment, si, gu, dong,
-		schedule,
-		schedule_set,
-		introduce, cctv, openingdate, memberno)
+		schedule, introduce, cctv, openingdate, memberno)
 		VALUES
 		(#{sitter_type}, #{want_act1}, #{want_act2}, #{want_act3},
 		#{want_age}, #{payment},
 		#{si}, #{gu},
-		#{dong},
-		#{schedule},
-		#{schedule_set}, #{introduce},
+		#{dong}, #{schedule}, #{introduce},
 		#{cctv}, #{openingdate}, #{memberno});
 	</insert>
 

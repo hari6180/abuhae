@@ -33,6 +33,7 @@
 			<mapping path="/mypage/mypage_mom/*.do"/>
 			<mapping path="/mypage/mypage_sitter/*.do"/>
 			<mapping path="/page_detail/*.do"/>
+			<mapping path="/buy/receipt.do"/>
 			<beans:bean id="loginInterceptor"
 			class="study.team.abuhae.interceptor.AuthLoginInterceptor" />
 		</interceptor>
