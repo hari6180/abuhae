@@ -1,5 +1,6 @@
 # ezen-android2020-2
 이젠IT아카데미 자바 웹&amp;앱 2조
+<<<<<<< HEAD
 
 21/2/6 수정 사항
 mom_info 테이블
@@ -23,3 +24,5 @@ sitter_info 테이블에서 view(조회수) 컬럼 추가
 sitter_experience 테이블에서 삭제
 
 
+=======
+>>>>>>> 53bab4ef309c4bc2dcf3644e5d401bc3df6defaa
