@@ -82,6 +82,7 @@
 
                         <!-- content1 -->
                         <section class="group_upd_ct">
+                        	<h2>돌봄 기간 / 시간 변경</h2>
                             <div class="row">
                                 <div class="col-xs-12">
                                     <!-- 탭 버튼 영역 (정기적으로 / 특정한 날에만)-->
