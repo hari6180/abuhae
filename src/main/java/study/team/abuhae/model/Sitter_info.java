@@ -29,7 +29,7 @@ public class Sitter_info extends Member {
 	private char cctv;				// CCTV 동의 여부
 	private char isprofile;			// 프로필 등록 여부
 	private String schedule;				// 활동 가능 시간 (1, 2, 3, 4)
-	private String schedule_set;		// 원하는 시간 직접 입력 (JSON)
+	//private String schedule_set;		// 원하는 시간 직접 입력 (JSON)
 	private String introduce;			// 자기소개
 	private int answer;					// 응답률
 	private String openingdate; 		// 신청서 등록 시간
@@ -51,6 +51,9 @@ public class Sitter_info extends Member {
 	private String favorite_act; // 선호하는 돌봄 유형
 	private int cntno; // 매칭 갯수  
 	private int view; // 조회수
+	
+	// 인터뷰 구독권 여부에 필요한 JOIN - 2021 지우 
+	private char subscribe;
 	
 	/** 3) 검색 조건용 추가 컬럼 */
 	private static String[] actList;		// 원하는 활동유형 검색 조건

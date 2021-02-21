@@ -133,11 +133,11 @@
 						</div>
 						<div class="line_three"></div>
 						<div class="cctv_area">
-						<c:if test="${output.cctv=='Y'}">
+						 <c:if test="${fn:contains(output.cctv,'Y')}">
 							<div id="cctv" style="color: #ff7000"><span style="color: #ff7000;"><i class="fas fa-video"></i></span> CCTV</div>
 							<div id="agree" style="color: #ff7000">동의함</div>
 						</c:if>
-						<c:if test="${output.cctv=='N'}">
+						<c:if test="${fn:contains(output.cctv,'N')}">
 							<div id="cctv" style="color: #3b3b3b"><span style="color: #555;"><i class="fas fa-video"></i></span> CCTV</div>
 							<div id="agree" style="color: #3b3b3b">동의 안함</div>
 						</c:if>
@@ -497,17 +497,13 @@
 					</div> <!-- fin. active_box -->
 					<div class="possible_age_box">
 					<div class="box_name">돌봄 가능 연령</div>
+					<c:set var="theString" value="${output.want_age}" />
+					
 					<div class="possible_age_area">
 						<div>
 							<div class="age_line">
-								<div class="ages col-xs-3">
-									<div style="margin-bottom: -10px">
-									<span style="color: #ccc"><i class="fas fa-baby fa-3x"></i></span>
-									</div>
-									<br>
-									<span style="color: #ccc">신생아</span>
-								</div>
-								
+							
+								<c:if test="${fn:contains(theString, '신생아')}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-baby fa-3x"></i>
@@ -515,15 +511,17 @@
 									<br>
 									<span>신생아</span>
 								</div>
-								
+								</c:if>
+								<c:if test="${fn:contains(theString, '신생아')==false}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
-									<span style="color: #ccc"><i class="fas fa-baby-carriage fa-3x"></i></span>
+									<span style="color: #ccc"><i class="fas fa-baby fa-3x"></i></span>
 									</div>
 									<br>
-									<span style="color: #ccc">영아</span>
+									<span style="color: #ccc">신생아</span>
 								</div>
-
+								</c:if>
+								<c:if test="${fn:contains(theString, '영아')}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-baby-carriage fa-3x"></i>
@@ -531,15 +529,17 @@
 									<br>
 									<span>영아</span>
 								</div>
-							
+								</c:if>
+								<c:if test="${fn:contains(theString, '영아')==false}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
-									<span style="color: #ccc"><i class="fas fa-child fa-3x"></i></span>
+									<span style="color: #ccc"><i class="fas fa-baby-carriage fa-3x"></i></span>
 									</div>
 									<br>
-									<span style="color: #ccc">유아</span>
+									<span style="color: #ccc">영아</span>
 								</div>
-								
+								</c:if>
+								<c:if test="${fn:contains(theString, '유아')}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-child fa-3x"></i>
@@ -547,16 +547,17 @@
 									<br>
 									<span>유아</span>
 								</div>
-								
+								</c:if>
+								<c:if test="${fn:contains(theString, '유아')==false}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
-									<span style="color: #ccc"><i class="fas fa-school fa-3x"></i></span>
+									<span style="color: #ccc"><i class="fas fa-child fa-3x"></i></span>
 									</div>
 									<br>
-									<span style="color: #ccc">초등학생</span>
+									<span style="color: #ccc">유아</span>
 								</div>
-								
-								
+								</c:if>
+								<c:if test="${fn:contains(theString, '초등학생')}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
 									<i class="fas fa-school fa-3x"></i>
@@ -564,7 +565,16 @@
 									<br>
 									<span>초등학생</span>
 								</div>
-								
+								</c:if>
+								<c:if test="${fn:contains(theString, '초등학생')==false}">
+								<div class="ages col-xs-3">
+									<div style="margin-bottom: -10px">
+									<span style="color: #ccc"><i class="fas fa-school fa-3x"></i></span>
+									</div>
+									<br>
+									<span style="color: #ccc">초등학생</span>
+								</div>
+								</c:if>										
 							</div> <!-- fin. age_line -->
 						</div>
 					</div> <!-- fin. possible_age_area -->
@@ -917,6 +927,7 @@
 						<div class="box_name">부모 후기 <span style="color: #ff7000;">999개</span></div>
 						<div class="talk_area">
 							<div class="talk_main">
+							
 								<div class="talk_menu">
 									<div data-tab="tab_ok" class='tabmenu col-xs-4' id="default">
 									<span id="tab01">
@@ -927,8 +938,9 @@
 									
 									<div data-tab="tab_faile" class='tabmenu col-xs-4' id="tab03">
 									<p id="tab03_p">실패 후기(0)</p></div>									
-								</div>
-								<div id="tabcontent"> <!-- tab 내용부분 -->				
+								</div> 
+								<div id="tabcontent"> <!-- tab 내용부분 -->	
+									 		
 								</div>
 							</div>
 						</div> <!-- fin. talk_area -->
@@ -963,18 +975,23 @@
 						</div>
 					</div> <!-- fin. fixed_area -->
 					<div class="fixed_btn">
+					<a href="${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_heart_delete_ok.do?sitterno=${output.sitterno}">
+					취소 
+					</a>
 						<div class="fixed_btn_jim">
-							<button id="swapHeart" class="btn btn-default">									
+						<form action="${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_heart_ok.do" method="post">		
+							<button id="swapHeart" class="btn btn-default" type="submit">									
 								<div class="jim">
 								    <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 25px;"></span>
 								</div>									
 							</button>
-							<div class="jim_number">
-								${output.heartno}
-							</div>
+							<input type="hidden" id="who" name="who" value="M">
+							<input type="hidden" id="momno" name="momno" >
+							<input type="hidden" id="sitterno" name="sitterno" value="${output.sitterno}">	
+						</form>
 						</div> <!-- fin. fixed_btn_jim -->					
 						<div class="interview_btn">
-							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_interview.do?sitterno=${output.sitterno}';">
+							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/sitter_interview.do?sitterno=${output.sitterno}';">
 								<div>
 									<div class="btn_text_box">
 										<span><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">인터뷰 신청하기</a></span>
@@ -993,7 +1010,7 @@
 		jQuery(function($) {
 				
 				
-			  $('#swapHeart').on('click', function() {
+			 /* $('#swapHeart').on('click', function() {
 				
 			    var $jim = $(this)
 			    
@@ -1011,9 +1028,9 @@
 		            $(this).find('span').addClass("glyphicon-heart-empty");
 		        }
 		    
-			  }); // fin. 찜버튼 기능
+			  }); // fin. 찜버튼 기능 */
 			  			  
-			  $('.tabmenu').click(function() {
+			   $('.tabmenu').click(function() {
 					var activeTab = $(this).attr('data-tab');
 					$('#default').css('background-color', 'white');
 					$('#tab02').css('background-color', 'white');
@@ -1032,7 +1049,7 @@
 					});
 				});
 				$('#default').click(); 
-			}); // fin. 탭 기능
+			}); // fin. 탭 기능 */
 		</script>
 		 <!-- jquery 파일명 수정 -->
 		<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 

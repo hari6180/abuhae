@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,14 +14,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import study.team.abuhae.helper.AgeHelper;
+import study.team.abuhae.helper.RegexHelper;
+import study.team.abuhae.helper.WebHelper;
+import study.team.abuhae.model.Connect;
+import study.team.abuhae.model.Heart;
+import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.DetailService;
+import study.team.abuhae.service.MemberService;
 
 @Controller
 public class Page_detail_sitterController {
 	
+	
 	@Autowired
 	DetailService detailService;
+	@Autowired
+	MemberService memberService;
+	
+	@Autowired
+	WebHelper webHelper;
+	@Autowired
+	RegexHelper regexHelper;
+	@Value("#{servletContext.contextPath}")
+    String contextPath;
 	
 	// 시터 상세페이지
 	@RequestMapping(value = "/page_detail/sitter_detail.do", method = {RequestMethod.GET, RequestMethod.POST})
@@ -91,4 +108,84 @@ public class Page_detail_sitterController {
 		return new ModelAndView("/page_detail/sitter_page_detail/sitter_interview");
 		//return "/page_detail/sitter_page_detail/sitter_interview";
 	}
+	
+			// 시터 상세페이지 > 찜하기 
+			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_heart_ok.do", method = RequestMethod.POST)
+			public ModelAndView report_mom_ok(Model model,
+					HttpServletResponse response,
+					@RequestParam(value = "who", defaultValue = "") char who,
+					@RequestParam(value = "momno", defaultValue = "50") int momno,
+					@RequestParam(value = "sitterno", defaultValue = "") int sitterno) {
+			
+				Heart input = new Heart();
+				input.setWho(who);
+				input.setMomno(momno);
+				input.setSitterno(sitterno);
+				
+				try {
+					detailService.addHeart(input);
+					
+				} catch (Exception e) {
+					return webHelper.redirect(null, e.getLocalizedMessage());
+				}
+				
+				String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
+				return webHelper.redirect(redirectUrl, "oooooooo!");
+			}
+			
+			// 시터 상세페이지 > 찜하기 
+			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_heart_delete_ok.do", method = RequestMethod.GET)
+			public ModelAndView deleteHeart_mom_ok(Model model,
+					@RequestParam(value = "momno", defaultValue = "50") int momno,
+					@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+
+				Heart input = new Heart();
+				input.setMomno(momno);
+				input.setSitterno(sitterno);
+				
+				try {
+					detailService.deleteHeart(input);
+					
+				} catch (Exception e) {
+					return webHelper.redirect(null, e.getLocalizedMessage());
+				}
+				
+				String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
+				return webHelper.redirect(redirectUrl, "xxxxxxx!");
+			}
+
+			// 시터 상세페이지 > 인터뷰하기
+			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_interview_ok.do", method = RequestMethod.POST)
+			public ModelAndView interview_mom_ok(Model model,
+					HttpServletResponse response,
+					@RequestParam(value = "who", defaultValue = "S") String who,
+					@RequestParam(value = "momno", defaultValue = "50") int momno,
+					@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+				
+				Connect input = new Connect();
+				Sitter_info sitterput = new Sitter_info();
+				input.setWho(who);
+				input.setMomno(momno);
+				input.setSitterno(sitterno);
+				sitterput.setSitterno(sitterno);;
+				
+				Sitter_info sitterinfo = null;
+				
+				try {
+					sitterinfo = (Sitter_info) memberService.getSitterMember(sitterput);
+							
+				if (sitterinfo.getSubscribe() == 'N') {
+					String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
+					return webHelper.redirect(redirectUrl, "Interview no!!!!!!!!");
+				}
+				detailService.addConnect(input);
+				String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
+				return webHelper.redirect(redirectUrl, "Interview OK!!!!!!!!");
+		
+				} catch (Exception e) {
+					return webHelper.redirect(null, e.getLocalizedMessage());
+				}
+				
+				
+				}
 }

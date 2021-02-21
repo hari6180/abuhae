@@ -57,9 +57,9 @@
                                     <li id="button2" class="tab_button_item">
                                         <a class="tab_button_item_link" href="#tab_page_2">작성한 후기</a>
                                     </li>
-                                    <li id="button3" class="tab_button_item">
+                                   <!--  <li id="button3" class="tab_button_item">
                                         <a class="tab_button_item_link" href="#tab_page_3">받은 후기</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -86,21 +86,22 @@
 	                                            </div>
 	                                            <button type="button" class="rev_no_btn">후기작성</button> 
 	                                            <div class="write_rev hide">
-	                                            	<form id="reviewForm">
+	                                            	<form id="reviewForm" action="${pageContext.request.contextPath}/mypage/edit_review_ok">
 														<div class="rev_rate">
-															<input type="hidden" id="accept_edit1" name="revno" value="${item.revno}">
-															<input type="radio" name="rev_rate" id="rev_rate1" value="1" class="rate_radio" title="1점">
+															<input type="hidden" id="rev_edit" name="revno" value="${item.revno}">
+															
+															<input type="radio" name="rev_rate" id="rev_rate1" value="a" class="rate_radio" title="1점">
 															<label for="rev_rate1"><i class="fas fa-star"></i></label>
-															<input type="radio" name="rev_rate" id="rev_rate2" value="2" class="rate_radio" title="2점">
+															<input type="radio" name="rev_rate" id="rev_rate2" value="b" class="rate_radio" title="2점">
 															<label for="rev_rate2"><i class="fas fa-star"></i></label>
-															<input type="radio" name="rev_rate" id="rev_rate3" value="3" class="rate_radio" title="3점">
+															<input type="radio" name="rev_rate" id="rev_rate3" value="c" class="rate_radio" title="3점">
 															<label for="rev_rate3"><i class="fas fa-star"></i></label>
-															<input type="radio" name="rev_rate" id="rev_rate4" value="4" class="rate_radio" title="4점">
+															<input type="radio" name="rev_rate" id="rev_rate4" value="d" class="rate_radio" title="4점">
 															<label for="rev_rate4"><i class="fas fa-star"></i></label>
-															<input type="radio" name="rev_rate" id="rev_rate5" value="5" class="rate_radio" title="5점" checked>
+															<input type="radio" name="rev_rate" id="rev_rate5" value="e" class="rate_radio" title="5점" checked>
 															<label for="rev_rate5"><i class="fas fa-star"></i></label>
 														</div>
-											        	<textarea name="rev_no_text" id="" cols="60%" rows="10" placeholder="내용을 입력하세요." style="width: 100%;"></textarea>
+											        	<textarea name="contents" id="" cols="60%" rows="10" placeholder="내용을 입력하세요." style="width: 100%;"></textarea>
 														<button class="rev_no_btn" type="submit" style="width: 100%; margin-top: 20px; 
 														background-color: rgb(34, 172, 135); border: 0; height: 30px; border-radius: 5px; color: #ffffff;">저장하기</button>
 													</form>   
@@ -140,6 +141,7 @@
 	                                                </div>
 	                                                <!-- 후기작성 부모 정보 -->
 	                                                <div class="si_rev_no_info">
+	                                                	<h4>${it.name }</h4>
 	                                                    <h5>${it.si } ${it.gu }</h5>
 	                                                    <p class="star">${it.rev_rate }</p>
 	                                                    <p>작성일시 ㅣ ${it.reg_date }</p>
@@ -240,7 +242,7 @@
                   method: "POST",
                   success: function(json) {
                      if (json.rt == "OK") {
-                        window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do";
+                        window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/review.do";
                      }
                   }
                });
@@ -261,7 +263,8 @@
                 
              	/** 리뷰쓰기버튼 토글 기능 */
              	 $(".rev_no_btn").click(function(e) {
-                   $(this).next().removeClass("hide");
+             		 $(this).toggleClass("hide");
+                   $(this).next().toggleClass("hide");
                 }); 
               
                 /** 삭제 버튼 */

@@ -41,6 +41,7 @@
 		<result property="care_type" column="care_type" />
 		<result property="openingdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
+		<result property="subscribe" column="subscribe" />
 	</resultMap>
 
 	<resultMap id="SitterMap"
@@ -62,6 +63,7 @@
 		<result property="cctv" column="cctv" />
 		<result property="openingdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
+		<result property="subscribe" column="subscribe" />
 	</resultMap>
 
 	<!-- 데이터 저장을 위한 기능 정의 -->
@@ -202,23 +204,28 @@
 		select id
 		from member where name=#{name} and birthdate=#{birthdate} and
 		phone=#{phone};
-	</select>
+	</select>	
 	
 	<!-- 맘회원번호로 회원 정보 조회  -->
-	<select id="selectMomItem">
-		select id, name, subscribe, momno from member m
-		inner join mom_info mi on m.memberno=mi.memberno
-		where momno = #{momno}
+	<select id="selectMomItem" resultMap="MomMap">
+		SELECT subscribe, m.momno 
+		FROM mom_info m
+		INNER JOIN member b ON m.memberno=b.memberno
+		<where>
+			m.momno=#{momno}
+		</where>
 	</select>
 	
 	<!-- 시터회원번호로 회원 정보 조회  -->
-	<select id="selectSitterItem">
-		select id, name, subscribe, sitterno from member m
-		inner join sitter_info si on m.memberno=si.memberno
-		where momno = #{momno}
+	<select id="selectSitterItem" resultMap="SitterMap">
+		SELECT subscribe, s.sitterno
+		FROM sitter_info s
+		INNER JOIN member b ON s.memberno=b.memberno
+		<where>
+			s.sitterno=#{sitterno}
+		</where>
 	</select>
-
-
+	
 	<!-- 임시비밀번호로 업데이트 -->
 	<update id="updatePw" parameterType="study.team.abuhae.model.Member">
 		update member set password = #{password} where id = #{id}

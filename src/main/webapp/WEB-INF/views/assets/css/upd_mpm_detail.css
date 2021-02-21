@@ -418,7 +418,7 @@ a:hover {
 }
 
 .wrap_review .group1_review .rev_tab_button .tab_button_item {
-  width: 33.333%;
+  width: 50%;
   height: 48px;
   border-bottom: 3px solid rgb(237, 237, 237);
   display: flex;

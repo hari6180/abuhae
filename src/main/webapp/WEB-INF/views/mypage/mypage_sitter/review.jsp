@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -48,13 +51,7 @@
                             <div class="col-xs-12 rev_tab">
                                 <!-- 탭 버튼 영역 -->
                                 <ul class="rev_tab_button">
-                                    <li id="button1" class="tab_button_item fi_selected">
-                                        <a class="tab_button_item_link selected" href="#tab_page_1">미작성 후기</a>
-                                    </li>
-                                    <li id="button2" class="tab_button_item">
-                                        <a class="tab_button_item_link" href="#tab_page_2">작성한 후기</a>
-                                    </li>
-                                    <li id="button3" class="tab_button_item">
+                                   <li id="button3" class="tab_button_item">
                                         <a class="tab_button_item_link" href="#tab_page_3">받은 후기</a>
                                     </li>
                                 </ul>
@@ -66,15 +63,15 @@
                             <div class="col-xs-12 rev_tab_panel">
                                 <div class="rev_tab_panel_con">
                                     <!-- 미작성 후기 -->
-                                    <div id="tab_page_1">
+                                   <!--  <div id="tab_page_1">
                                         <div class="si_rev_no">
                                             <div class="si_rev_no_tl">
                                                 <!-- 후기작성 부모 프로필사진 -->
-                                                <div class="si_rev_no_prof">
+                                              <!--  <div class="si_rev_no_prof">
                                                     <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="임시프로필" style="width: 42px; border-radius: 50%;">
                                                 </div>
                                                 <!-- 후기작성 부모 정보 -->
-                                                <div class="si_rev_no_info">
+                                              <!--   <div class="si_rev_no_info">
                                                     <h4>김○영 부모</h4>
                                                     <h5>서울특별시 강남구</h5>
                                                 </div>
@@ -84,18 +81,18 @@
                                             </a>
                                         </div>
                                         
-                                    </div>
+                                    </div> -->
 
                                     <!-- 작성한 후기 -->
-                                    <div id="tab_page_2" class="hide">
+                                <!--    <div id="tab_page_2" class="hide">
                                         <div class="si_rev_no">
                                             <div class="si_rev_no_tl">
                                                 <!-- 후기작성 부모 프로필사진 -->
-                                                <div class="si_rev_no_prof">
+                                            <!--     <div class="si_rev_no_prof">
                                                     <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="임시프로필" style="width: 42px; border-radius: 50%;">
                                                 </div>
                                                 <!-- 후기작성 부모 정보 -->
-                                                <div class="si_rev_no_info">
+                                        <!--          <div class="si_rev_no_info">
                                                     <h5>서울특별시 강남구</h5>
                                                     <p class="star">★★★★</p>
                                                     <p>작성일시 ㅣ 2020.11.23 22:00</p>
@@ -109,29 +106,31 @@
                                                     </button>
                                                 </a>
                                             </div>-->
-                                        </div>
-                                    </div>
+                                    <!--  </div>
+                                    </div> -->
 
                                     <!-- 받은 후기 -->
-                                    <div id="tab_page_3" class="hide">
-                                        <div class="si_rev_no">
-                                            <div class="si_rev_no_tl">
-                                                <!-- 후기작성 부모 프로필사진 -->
-                                                <div class="si_rev_no_prof">
-                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="임시프로필" style="width: 42px; border-radius: 50%;">
-                                                </div>
-                                                <!-- 후기작성 부모 정보 -->
-                                                <div class="si_rev_no_info">
-                                                    <h4>김○영 부모 <span class="rev_info" style="font-size: 0.85em; color: #999999;">영아 1명 ㅣ 채용후기</span></h4>
-                                                    <p class="star">★★★★★ <span class="rev_info" style="font-size: 0.85em; color: #999999;">2020.11.11</span></p>
-                                                    <p class="rev_text">아기가 어려서 보기 힘드셨을텐데 애써주셔서 감사했습니다.
-                                                    많이 활동적인 아기인데 조곤조곤 말씀해주셔서 아기 정서에도 좋을 것 같아요.</p>
-                                                </div>
-                                            </div>
-                                             <a data-toggle="modal" href="#rev_modal2">
-												<button type="button" class="rev_no_btn">답글 작성하기</button>
-											 </a>
-                                        </div>
+                                    <div id="tab_page_3">
+                                    	<c:forEach var="item" items="${output}" varStatus="status">
+                                    		 <div class="si_rev_no">
+	                                            <div class="si_rev_no_tl">
+	                                                <!-- 후기작성 부모 프로필사진 -->
+	                                                <div class="si_rev_no_prof">
+	                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="임시프로필" style="width: 42px; border-radius: 50%;">
+	                                                </div>
+	                                                <!-- 후기작성 부모 정보 -->
+	                                                <div class="si_rev_no_info">
+	                                                    <h4>${item.name } 부모 <span class="rev_info" style="font-size: 0.85em; color: #999999;">영아 1명 ㅣ 채용후기</span></h4>
+	                                                    <p class="star">${item.rev_rate } <span class="rev_info" style="font-size: 0.85em; color: #999999;">${item.reg_date }</span></p>
+	                                                    <p class="rev_text">${item.contents}</p>
+	                                                </div>
+	                                            </div>
+	                                           <!--   <a data-toggle="modal" href="#rev_modal2">
+													<button type="button" class="rev_no_btn">답글 작성하기</button>
+												 </a> -->
+	                                        </div>
+                                    	</c:forEach>
+                                        
                                     </div>
                                 </div>
                             </div>
