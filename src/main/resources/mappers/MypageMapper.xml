@@ -59,7 +59,7 @@
 		INNER JOIN member m ON m.memberno=mi.memberno
 		
 		<where>
-			m.memberno = #{memberno}
+			m.momno = #{momno}
 		</where>
 	</select>
 

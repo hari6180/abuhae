@@ -68,7 +68,7 @@
 	<!--mom 회원 리뷰남기기 -->
 	<update id="editReview" parameterType="study.team.abuhae.model.Review">
 	
-		update review set who='M',  rev_rate=#{rev_rate}, reg_date=now(), contents = #{contents} 
+		update review set who=#{who}, rev_rate=#{rev_rate}, reg_date='2011-11-11', contents = #{contents} 
 		where who is null and revno=#{revno};
 		
 	</update>

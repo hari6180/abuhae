@@ -25,6 +25,7 @@ public class MomMypageRestController {
 	@RequestMapping(value = "/mypage/edit_review_ok", method = RequestMethod.POST)
 	public Map<String, Object> edit_ok(
 			@RequestParam(value = "revno", defaultValue = "0") int revno,
+			@RequestParam(value = "who", defaultValue = "") String who, 
 			@RequestParam(value = "rev_rate", defaultValue = "") String rev_rate,
 			@RequestParam(value = "contents", defaultValue = "") String contents) {
 		
@@ -35,6 +36,7 @@ public class MomMypageRestController {
 		
 		/** accept 수정(connect table) - insert */
 		Review input = new Review();
+		input.setWho(who);
 		input.setRevno(revno);
 		input.setRev_rate(rev_rate);
 		input.setContents(contents);

@@ -111,34 +111,8 @@ public class MomMypageController {
 	
 	/** 내 구인 현황 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/get_sitter_mpm.do", method = RequestMethod.GET)
-	public ModelAndView get_sitter(Model model,
-			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+	public ModelAndView get_sitter(Model model) {
 
-		/** 데이터 조회 */
-		Review input = new Review();
-		input.setMomno(1);
-		
-		/** 후기 작성할 수 있는 회원 목록*/
-		List<Review> output1 = null;
-		
-		try {
-			output1 = momMypageService.getReviewMemberList(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		/** 작성한 후기 목록 */
-		List<Review> output2 = null;
-		
-		try {
-			output2 = momMypageService.getReviewList(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		/** View 출력 */
-		model.addAttribute("output1", output1);
-		model.addAttribute("output2", output2);
 		
 		return new ModelAndView("mypage/mypage_mom/get_sitter_mpm");
 	}
@@ -206,18 +180,35 @@ public class MomMypageController {
 	}
 	
 	/** 후기 관리 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/review.do", method = RequestMethod.GET)
-	public ModelAndView review_mom(Locale locale, Model model) {
-		/** 후기 남길 수 있는 회원 조회 기능 */
-		Sitter_info input = new Sitter_info();
+	@RequestMapping(value = "/mypage/mypage_mom/review.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView review_mom(Model model,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+
+		/** 데이터 조회 */
+		Review input = new Review();
+		input.setMomno(1);
 		
-		/** 후기 남기기 기능 (insert) */
+		/** 후기 작성할 수 있는 회원 목록*/
+		List<Review> output1 = null;
 		
-		/** 작성한 후기 조회 */
+		try {
+			output1 = momMypageService.getReviewMemberList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
 		
-		/** 나에게 작성된 후기 조회 */
+		/** 작성한 후기 목록 */
+		List<Review> output2 = null;
 		
-		/** 댓글 남기기 기능 */
+		try {
+			output2 = momMypageService.getReviewList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** View 출력 */
+		model.addAttribute("output1", output1);
+		model.addAttribute("output2", output2);
 		
 		return new ModelAndView("mypage/mypage_mom/review");
 	}
@@ -271,11 +262,11 @@ public class MomMypageController {
 	/** 결제 내역 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/payment_list.do", method = RequestMethod.GET)
 	public String payment_list_mom(Model model, HttpServletResponse response,
-			@RequestParam(value = "memberno") int memberno) {
+			@RequestParam(value = "momno") int momno) {
 
 		// 데이터 조회에 필요한 조건값 Beans에 저장
 		Mom_info input = new Mom_info();
-		input.setMemberno(memberno);;
+		input.setMomno(momno);
 		
 		// 조회 결과를 저장할 객체 선언
 		List<Mom_info> output = null;

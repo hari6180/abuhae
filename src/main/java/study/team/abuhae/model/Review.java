@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class Review {
 	private int revno;   // 리뷰 일련번호
-	private char who;   // 리뷰 작성자 타입(맘/시터)
-	private char rev_rate;   // 별점(1,2,3,4,5)
+	private String who;   // 리뷰 작성자 타입(맘/시터)
+	private String rev_rate;   // 별점(1,2,3,4,5)
 	private String reg_date;   // 후기 작성일자
 	private String contents;   // 후기 내용
 	private int momno;   // 맘회원 일련번호

@@ -100,7 +100,7 @@
                                            <%-- 조회결과가 있는 경우 --%>
                                            <%-- <c:otherwise> --%>
                                               <c:forEach var="item" items="${output}" varStatus="status">
-                                 				<c:if test="${item.who == 's' }">
+                                 				<c:if test="${item.who == 's'}">
                                                  	<div class="gm_appl">
                                                      <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
                                                      <div class="gm_info">
