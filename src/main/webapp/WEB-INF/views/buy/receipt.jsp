@@ -59,11 +59,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <hr style="margin-bottom: 15px" />
               <div style="margin-bottom: 20px">
                 <span class="style_price_title">내역</span>
-                <span id="price_dc" class="pull-right">${output.ticket_price}원</span>
+                <span id="price_dc" class="pull-right"><fmt:formatNumber value="${output.ticket_price}" pattern="#,###" />원</span>
               </div>
               <div class="buy_price">
                 <span class="style_price_title">총 결제 금액</span>
-                <span id="total_price" class="pull-right">${output.ticket_price}원</span>
+                <span id="total_price" class="pull-right"><fmt:formatNumber value="${output.ticket_price}" pattern="#,###" />원</span>
               </div>
               <label id="agree_ckeck">
                 <input type="checkbox" value="agree" name="agree_chck" />

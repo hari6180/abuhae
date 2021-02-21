@@ -275,7 +275,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 			
 			$('#buy_apply').click(function(e) {
 				e.preventDefault();
-				window.location = "${pageContext.request.contextPath}/buy/receipt.do?tktype=" + tktype + "&memberno=" + ${login.momno};
+				window.location = "${pageContext.request.contextPath}/buy/receipt.do?tktype=" + tktype + "&memberno=" + ${login.memberno};
 			});
 		});
 	</script>
