@@ -146,7 +146,7 @@ public class SitterMypageServiceImpl implements SitterMypageService {
       List<Heart> result = null;
          
          try {
-            result = sqlSession.selectList("SitterMypageMapper.SitterHeartMap", input);
+            result = sqlSession.selectList("SitterMypageMapper.selectSitterHeartList", input);
             
             if (result==null) {
                throw new NullPointerException("result=null");
@@ -164,20 +164,65 @@ public class SitterMypageServiceImpl implements SitterMypageService {
 
    @Override
    public List<Connect> getSitterWorkList(Connect input) throws Exception {
-      // TODO Auto-generated method stub
-      return null;
+	   List<Connect> result = null;
+       
+       try {
+          result = sqlSession.selectList("SitterMypageMapper.selectSitterWorkList", input);
+          
+          if (result==null) {
+             throw new NullPointerException("result=null");
+          }
+       } catch (NullPointerException e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("조회된 데이터가 없습니다.");
+       } catch (Exception e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("데이터 조회에 실패했습니다.");
+       }
+       
+       return result;
    }
 
    @Override
    public List<Report> getSitterReprotList(Report input) throws Exception {
-      // TODO Auto-generated method stub
-      return null;
+	   List<Report> result = null;
+       
+       try {
+          result = sqlSession.selectList("SitterMypageMapper.selectSitterReportList", input);
+          
+          if (result==null) {
+             throw new NullPointerException("result=null");
+          }
+       } catch (NullPointerException e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("조회된 데이터가 없습니다.");
+       } catch (Exception e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("데이터 조회에 실패했습니다.");
+       }
+       
+       return result;
    }
 
    @Override
    public List<Coupon> getSitterCouponList(Coupon input) throws Exception {
-      // TODO Auto-generated method stub
-      return null;
+	   List<Coupon> result = null;
+       
+       try {
+          result = sqlSession.selectList("SitterMypageMapper.selectSitterCouponList", input);
+          
+          if (result==null) {
+             throw new NullPointerException("result=null");
+          }
+       } catch (NullPointerException e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("조회된 데이터가 없습니다.");
+       } catch (Exception e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("데이터 조회에 실패했습니다.");
+       }
+       
+       return result;
    }
    
 }

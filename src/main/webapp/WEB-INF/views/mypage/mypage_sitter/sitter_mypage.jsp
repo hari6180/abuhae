@@ -193,7 +193,7 @@
                         </div>
                     </section>
 
-                    <div class="row">
+                  <!--  <div class="row">
                         <div class="col-xs-12 line_bold"></div>
                     </div>
                     
@@ -209,7 +209,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/coupon.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/coupon.do?sitterno=${output.sitterno}">
                                     <i class="fas fa-file-invoice-dollar mps_menu_list1" style="color: #fa9547;"></i>
                                     <p class="mps_menu_list2">내 쿠폰함</p>
                                     <p class="mps_menu_list3" style="color: rgb(255, 129, 0);">1 장</p>
@@ -217,11 +217,11 @@
                                 </a>
                             </div>
                         </div>
-                    </section>
+                    </section> -->
 
                     <div class="row">
                         <div class="col-xs-12 line_bold"></div>
-                    </div>
+                    </div> 
                             
                     <section class="group3_mps">
                         <div class="row">
@@ -244,7 +244,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
                                 
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/count_mom_mps.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/count_mom_mps.do?sitterno=${output.sitterno}">
                                     <i class="fas fa-user-plus mps_menu_list1"></i>
                                     <p class="mps_menu_list2">내 맘시터 채용 횟수</p>
                                     <!--백엔드 연동 필요-->
@@ -254,7 +254,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sue.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sue.do?sitterno=${output.sitterno}">
                                     <i class="fas fa-bomb mps_menu_list1"></i>
                                     <p class="mps_menu_list2">신고내역</p>
                                     <!--백엔드 연동 필요-->
@@ -270,11 +270,11 @@
                     <section class="group4_mps">
                         <div class="row">
                             <div class="col-xs-12 mps_bottom">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/payment_list.do" class="bottom_con_in bt_cash">
+                                <!--  <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/payment_list.do" class="bottom_con_in bt_cash">
                                     <p>결제 내역</p>
                                     <!--백엔드 연동 필요-->
-                                    <p class="bt_cash_p">1 건</p>
-                                </a>
+                                    <!--  <p class="bt_cash_p">1 건</p>
+                                </a> -->
                                 <a href="${pageContext.request.contextPath}/customer/notice_site.do" class="bottom_con_in">
                                     <p>공지사항</p>
                                 </a>

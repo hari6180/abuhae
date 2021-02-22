@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page trimDirectiveWhitespaces="true" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -33,7 +34,7 @@
                     <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${out.sitterno}">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">내 맘시터 채용 횟수</h3>
@@ -50,40 +51,30 @@
                                         총 <span style="color: #ff7000;">1</span>회
                                     </p>
                                 </div>
-                                <div class="cm_page_cont">
-                                    <div class="lm_page_box">
-                                        <div class="cm_page_box_left">
-                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-                                            <br>
-                                            <span style="margin-top: 10px; width: 70px; padding: 5px 10px; background-color: #888888; border-radius: 15px;
-                                            color: #ffffff; font-size: 0.7em; font-weight: bold;">
-                                                0명 지원
-                                            </span>
-                                        </div>
-                                        <div class="page-con-top-right">
-                                            <p style="color: #888888; font-weight: bold; font-size: 1em;">신생아 1명 ㅣ <span style="color: #888888; font-size: 0.9em;">한 달 전</span></p>
-                                            <p style="font-size: 1em; font-weight: bold;">실내놀이 맘시터 찾습니다.</p>
-                                            <p style="color: #888888; font-size: 0.95em; font-weight: bold;">전북 군산시 ㅣ 이○림 ㅣ Invaild date</p>
-                                            <p style="color: #888888; font-size: 0.95en;">
-                                                <i class="fas fa-dollar-sign" style="color: #007e62;"></i> 희망시급 9,000원 <span style="color: black;"><strong>협의가능</strong></span>
-                                            </p>
-                                        </div>
-                                        
-                                    </div>
-                                    <hr/>
-                                    <div class="lm_page_days">
-                                        <div class="lm_days" style="font-size: 0.95em; font-weight: bold;">
-                                            <span style="margin-right: 10px; color: #888888;"><span style="color: #488f8f;">단기</span> -일 동안</span>
-                                            <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">월</span>
-                                            <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">화</span>
-                                            <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">수</span>
-                                            <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">목</span>
-                                            <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">금</span>
-                                            <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">토</span>
-                                            <span style="padding: 2px; border: 1px solid rgb(226, 226, 226); background-color: rgb(226, 226, 226); color: #888888;">일</span>
-                                        </div>
-                                    </div>   
-                                </div>                      
+                                 <c:choose>
+                                 	<c:when test="${output == null }">
+                                 		<p>조회 결과가 없습니다.</p>
+                                 	</c:when>
+                                 	<c:otherwise>
+                                 		<c:forEach var="item" items="${output }" varStatus="status">
+                                 			<div class="cm_page_cont">
+			                                    <div class="lm_page_box">
+			                                        <div class="cm_page_box_left">
+			                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
+			                                        </div>
+			                                        <div class="page-con-top-right">
+			                                            <p style="color: #888888; font-weight: bold; font-size: 1em;">신생아 ${item.kids_num}명 ㅣ <span style="color: #888888; font-size: 0.9em;">${item.applydate} 일 전</span></p>
+			                                            <p style="font-size: 1em; font-weight: bold;">${item.apply_title }</p>
+			                                            <p style="color: #888888; font-size: 0.95em; font-weight: bold;">${item.si } ${item.gu } ㅣ ${item.name } </p>
+			                                            <p style="color: #888888; font-size: 0.95en;">
+			                                                <i class="fas fa-dollar-sign" style="color: #007e62;"></i> 희망시급 ${item.payment}원
+			                                            </p>
+			                                        </div>
+			                                    </div> 
+			                                </div>     
+                                 		</c:forEach> 
+                                 	</c:otherwise>
+                                 </c:choose>               
                             </div>
                         </div>
                     </section>

@@ -15,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Connect;
+import study.team.abuhae.model.Coupon;
 import study.team.abuhae.model.Heart;
+import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.impl.SitterMypageServiceImpl;
@@ -161,19 +163,58 @@ public class SitterMypageController {
 	
 	/** 내 쿠폰함 페이지 */
 	@RequestMapping(value = "/mypage/mypage_sitter/coupon.do", method = RequestMethod.GET)
-	public String coupon_sitter(Locale locale, Model model) {
+	public ModelAndView coupon_sitter(Model model,
+			@RequestParam(value = "sitterno", defaultValue = "1") int sitterno) {
 
-		return "mypage/mypage_sitter/coupon";
+		/** 데이터 조회 */
+		Sitter_info in = new Sitter_info();
+		in.setSitterno(sitterno);
+		
+		Sitter_info out = null;
+		
+		try {
+			out = sitterMypageService.getSitterItem(in);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 데이터 조회 */
+		Coupon input = new Coupon();
+		input.setSitterno(sitterno);
+		
+		List<Coupon> output = null;
+		
+		try {
+			output = sitterMypageService.getSitterCouponList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("out", out);
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("mypage/mypage_sitter/coupon");
 	}
 	
 	/** 리뷰관리 페이지 */
 	@RequestMapping(value = "/mypage/mypage_sitter/review.do", method = RequestMethod.GET)
 	public ModelAndView review_sitter(Model model,
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		/** 데이터 조회 */
+		Sitter_info in = new Sitter_info();
+		in.setSitterno(sitterno);
+		
+		Sitter_info out = null;
+		
+		try {
+			out = sitterMypageService.getSitterItem(in);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
 		
 		/** 데이터 조회 */
 		Review input = new Review();
-		input.setSitterno(3);
+		input.setSitterno(sitterno);
 		
 		List<Review> output = null;
 		
@@ -183,6 +224,7 @@ public class SitterMypageController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
+		model.addAttribute("out", out);
 		model.addAttribute("output", output);
 
 		return new ModelAndView("mypage/mypage_sitter/review");
@@ -204,16 +246,71 @@ public class SitterMypageController {
 	
 	/** 내 맘시터 채용 내역 페이지 */
 	@RequestMapping(value = "/mypage/mypage_sitter/count_mom_mps.do", method = RequestMethod.GET)
-	public String count_sitter(Locale locale, Model model) {
-
-		return "mypage/mypage_sitter/count_mom_mps";
+	public ModelAndView count_sitter(Model model,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		/** 데이터 조회 */
+		Sitter_info in = new Sitter_info();
+		in.setSitterno(sitterno);
+		
+		Sitter_info out = null;
+		
+		try {
+			out = sitterMypageService.getSitterItem(in);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 데이터 조회 */
+		Connect input = new Connect();
+		input.setSitterno(sitterno);
+		
+		List<Connect> output = null;
+		
+		try {
+			output = sitterMypageService.getSitterWorkList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("out", out);
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("mypage/mypage_sitter/count_mom_mps");
 	}
 	
 	/** 신고내역 페이지 */
 	@RequestMapping(value = "/mypage/mypage_sitter/sue.do", method = RequestMethod.GET)
-	public String sue_sitter(Locale locale, Model model) {
+	public ModelAndView sue_sitter(Model model,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 
-		return "mypage/mypage_sitter/sue";
+		/** 데이터 조회 */
+		Sitter_info in = new Sitter_info();
+		in.setSitterno(sitterno);
+		
+		Sitter_info out = null;
+		
+		try {
+			out = sitterMypageService.getSitterItem(in);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 데이터 조회 */
+		Report input = new Report();
+		input.setSitterno(sitterno);
+		
+		List<Report> output = null;
+		
+		try {
+			output = sitterMypageService.getSitterReprotList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("out", out);
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("mypage/mypage_sitter/sue");
 	}
 	
 	/** 결제내역 페이지 */

@@ -31,7 +31,7 @@
 
    <!-- mom_info -->
    <resultMap id="SitterInfoMap"
-      type="study.team.abuhae.model.Sitter_info">
+   type="study.team.abuhae.model.Sitter_info">
       <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
       <result property="sitterno" column="sitterno" />
       <result property="sitter_type" column="sitter_type" />
@@ -57,7 +57,7 @@
    <resultMap type="study.team.abuhae.model.Heart" id="SitterHeartMap">
       <result property="heartno" column="heartno"/>   
       <result property="reg_date" column="reg_date"/>   
-      <result property="who" column="who"/>   
+	 <result property="who" column="who"/>   
       <result property="momno" column="momno"/>   
       <result property="sitterno" column="sitterno"/>   
       
@@ -271,11 +271,11 @@
    <!-- 찜하기 목록 조회 -->
    <select id="selectSitterHeartList"
    parameterType="study.team.abuhae.model.Heart" resultMap="SitterHeartMap">
-      select m.name, s.si, s.gu, s.dong, s.payment, (date_format(now(), '%Y') - date_format(m.birthdate, '%Y') + 1) as birthdate, 
-      m.job_opening, h.momno, h.sitterno, heartno, reg_date, who, h.sitterno
-      from heart h
-      inner join sitter_info s on h.sitterno = s.sitterno
-      inner join member m on s.memberno = m.memberno
+       select m.name, mi.apply_title, mi.si, mi.gu, mi.dong, mi.payment, mi.kids_num, (date_format(now(), '%Y') - date_format(m.birthdate, '%Y') + 1) as birthdate, 
+	  m.job_opening, h.momno, h.sitterno, heartno, reg_date, who, h.sitterno
+	  from heart h
+	  inner join mom_info mi on h.momno = mi.momno
+	  inner join member m on m.memberno = mi.memberno
       <where>
          h.sitterno=#{sitterno} and who = 'S'
       </where>
@@ -284,49 +284,38 @@
    <!-- 내 채용내역 -->
    <select id="selectSitterWorkList"
       parameterType="study.team.abuhae.model.Connect" resultMap="SitterConnectMap">
-      select cntno, applydate, who, c.momno, c.sitterno, accept, m.name, s.si, s.gu, s.dong, s.payment, 
-      (date_format(now(), '%Y') - date_format(m.birthdate, '%Y') + 1) as birthdate
-      from connect c
-      inner join mom_info mi on c.momno = mi.momno
-      inner join sitter_info s on c.sitterno = s.sitterno
-      inner join member m on m.memberno = s.memberno
+     select cntno, TIMESTAMPDIFF(day, applydate, now()) as applydate, who, c.momno, c.sitterno, accept, m.name,
+		mi.kids_num, mi.apply_title, mi.si, mi.gu, mi.dong, mi.payment,
+		(date_format(now(), '%Y') - date_format(m.birthdate, '%Y') + 1) as birthdate
+		from connect c
+		inner join mom_info mi on c.momno = mi.momno
+		inner join sitter_info s on c.sitterno = s.sitterno
+		inner join member m on m.memberno = mi.memberno
       <where>
-         accept = 'Y' and c.momno=#{momno} 
+         accept = 'Y' and c.sitterno=#{sitterno} 
       </where>
    </select>
    
    <!-- 신고 내역 조회 -->
    <select id="selectSitterReportList"
       parameterType="study.team.abuhae.model.Report" resultMap="SitterReportMap">
-      select reportno, who, r.type, contents, r.momno, r.sitterno, r.reg_date as reg_date 
-      from report r
-      inner join mom_info mi on r.momno = mi.momno
-      inner join sitter_info s on r.sitterno = s.sitterno
-      inner join member m on m.memberno = s.memberno
+       select reportno, who, r.type, contents, r.momno, r.sitterno, r.reg_date as reg_date 
+		from report r
+		inner join mom_info mi on r.momno = mi.momno
+		inner join sitter_info s on r.sitterno = s.sitterno
+		inner join member m on m.memberno = mi.memberno
       <where>
-         r.momno = #{momno} and who = 'M'
-      </where>
-   </select>
-   
-   <!-- 결제 내역 조회 -->
-   <select id="selectSitterBuyList"
-   parameterType="study.team.abuhae.model.Mom_info" resultMap="SitterInfoMap">
-      select m.name, subscribe, ticket_type, ticket_price, startdate, enddate, mi.momno, m.memberno
-      from mom_info mi 
-      inner join member m on mi.memberno = m.memberno
-      <where>
-         momno=#{momno} and subscribe = 'Y'
+         r.sitterno = #{sitterno} and who = 'S'
       </where>
    </select>
    
    <!-- 쿠폰 조회 -->
    <select id="selectSitterCouponList"
    parameterType="study.team.abuhae.model.Coupon" resultMap="SitterCouponMap">
-      select coupno, coup_name, coup_condition, coup_price, date_format(reg_date, '%Y.%m.%d') as reg_date, date_format(exp_date, '%Y.%m.%d') as exp_date, c.memberno, mi.momno
-      from coupon c
-      inner join member m on m.memberno = c.memberno
-      inner join mom_info mi on m.memberno = mi.memberno
-      where mi.momno=#{momno} and TIMESTAMPDIFF(day, now(), exp_date) > 0;
+     	select coupno, coup_name, coup_condition, coup_price, date_format(reg_date, '%Y.%m.%d') as reg_date, date_format(exp_date, '%Y.%m.%d') as exp_date, c.memberno, s.sitterno
+		from coupon c
+		inner join sitter_info s on c.memberno = s.memberno
+		where s.sitterno=#{sitterno} and TIMESTAMPDIFF(day, now(), exp_date) > 0;
    </select>
    
    <!-- 비밀번호 업데이트 -->
