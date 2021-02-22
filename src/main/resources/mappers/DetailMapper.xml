@@ -172,20 +172,6 @@
 		</where>
 	</select>
 	
-	<select id="selectWantAge" parameterType="study.team.abuhae.model.Sitter_info"
-		resultMap="SitterMap">
-		SELECT
-   		SUBSTRING_INDEX (SUBSTRING_INDEX(sitter_info.want_age,',',numbers.n),',',-1) want_age
-		FROM 
-	   (select  1 n union  all  select 2  
-	    union  all  select  3  union  all select 4 
-	    union  all  select  5  union  all  select  6
-	    union  all  select  7  union  all  select  8 
-	    union  all  select  9 union  all  select  10) numbers INNER JOIN sitter_info
-	    on CHAR_LENGTH (sitter_info.want_age) 
-	      - CHAR_LENGTH (REPLACE(sitter_info.want_age, ',' ,''))>= numbers.n-1)
-	</select>
-	
 	<!-- 조회수 -->
 	<update id="updateItem" parameterType="study.team.abuhae.model.Sitter_info">
 		UPDATE sitter_info SET view = view+1 
@@ -223,8 +209,8 @@
 	<!-- 신고하기 -->
 	<insert id="insertReport" parameterType="study.team.abuhae.model.Report"
 		useGeneratedKeys="true" keyProperty="reportno">
-		INSERT INTO report (who, type, contents, momno, sitterno, reg_date) 
-		VALUES (#{who}, #{type}, #{contents}, #{momno}, #{sitterno}, now());
+		INSERT INTO report (who, type, momno, sitterno, contents, reg_date) 
+		VALUES (#{who}, #{type}, #{momno}, #{sitterno} ,#{contents}, now());
 	</insert>
 	
 	<!-- 인터뷰 신청하기 -->

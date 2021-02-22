@@ -97,9 +97,9 @@
 						</p>
 					</div> <!-- fin. desc_area -->
 					
-					<input type="hidden" id="who" name="who" value="S">
+					<input type="hidden" id="who" name="who" value='S'>
 					<input type="hidden" id="momno" name="momno" value="${output.momno}">
-					<input type="hidden" id="sitterno" name="sitterno" >
+					<input type="hidden" id="sitterno" name="sitterno" value="${login.sitterno}" >
 				</div> <!-- fin. siren_body -->
 				</form>
 			</div> <!-- fin. col-xs-12 -->

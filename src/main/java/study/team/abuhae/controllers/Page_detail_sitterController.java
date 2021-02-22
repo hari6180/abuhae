@@ -49,16 +49,10 @@ public class Page_detail_sitterController {
 		input.setSitterno(sitterno);
 		Sitter_info count = new Sitter_info();
 		count.setSitterno(sitterno);
-		Sitter_info insert = new Sitter_info();
-		insert.setSitterno(sitterno);
-		Sitter_info wantAge = new Sitter_info();
-		wantAge.setSitterno(sitterno);
 
 		// 조회결과를 저장할 객체 선언 
 		Sitter_info output = null;
 		int countput = 0;
-		int insertput = 0;
-		Sitter_info ageput = null;
 		
 		/** String src = input.getWant_age();
 		String[] data = src.split(",");
@@ -71,14 +65,11 @@ public class Page_detail_sitterController {
 			// 데이터 조회 
 			output = detailService.getSitterItem(input);
 			countput = detailService.editSitter(input);
-			insertput = detailService.addSitter(input);
-			ageput = detailService.getWantAge(input);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		model.addAttribute("output", output);
-		model.addAttribute("insertput", insertput);
 		return new ModelAndView("/page_detail/sitter_page_detail/sitter_detail");
 		//return "/page_detail/sitter_page_detail/sitter_detail";
 	}
@@ -157,10 +148,10 @@ public class Page_detail_sitterController {
 			// 시터 상세페이지 > 인터뷰하기
 			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_interview_ok.do", method = RequestMethod.POST)
 			public ModelAndView interview_sitter_ok(Model model,
-					HttpServletResponse response,
-					@RequestParam(value = "who") String who,
-					@RequestParam(value = "momno") int momno,
-					@RequestParam(value = "sitterno") int sitterno) {
+					HttpServletResponse response, 
+					@RequestParam(value = "who", required = false) String who,
+					@RequestParam(value = "momno", required = false) int momno,
+					@RequestParam(value = "sitterno", required = false) int sitterno) {
 				
 				Connect input = new Connect();
 				Mom_info momput = new Mom_info();

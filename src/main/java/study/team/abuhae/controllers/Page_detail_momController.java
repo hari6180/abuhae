@@ -154,9 +154,9 @@ public class Page_detail_momController {
 		@RequestMapping(value = "/page_detail/mom_page_detail/mom_interview_ok.do", method = RequestMethod.POST)
 		public ModelAndView interview_mom_ok(Model model,
 				HttpServletResponse response,
-				@RequestParam(value = "who") String who,
-				@RequestParam(value = "momno") int momno,
-				@RequestParam(value = "sitterno") int sitterno) {
+				@RequestParam(value = "who", required = false) String who,
+				@RequestParam(value = "momno", required = false) int momno,
+				@RequestParam(value = "sitterno", required = false) int sitterno) {
 			
 			Connect input = new Connect();
 			Sitter_info sitterput = new Sitter_info();
