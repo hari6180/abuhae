@@ -42,6 +42,16 @@ public class AuthLoginInterceptor implements HandlerInterceptor {
 	 	
 		return true;
 	}
+	
+	private boolean isAjaxRequest(HttpServletRequest req) {
+        String header = req.getHeader("AJAX");
+        if ("true".equals(header)){
+         return true;
+        }else{
+         return false;
+        }
+    }
+
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
