@@ -8,6 +8,7 @@ import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
+import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
 
 public interface DetailService {
@@ -47,6 +48,7 @@ public interface DetailService {
 	//시터회원 회원 조회
 	public Sitter_info getSitterMember(Sitter_info input) throws Exception;
 	
-	
+	/** 남겨진 리뷰 조회 */
+	   public List<Review> getSitterReviewList(Review input) throws Exception;
 
 }
