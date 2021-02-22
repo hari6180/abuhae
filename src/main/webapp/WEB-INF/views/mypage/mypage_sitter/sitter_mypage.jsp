@@ -2,20 +2,20 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>아이를부탁해</title>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <title>아이를부탁해</title>
 
-		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+      <!-- 모바일 웹 페이지 설정 -->
+      <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+      <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
-		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
+      <!-- bootstrap -->
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
-		<!-- noto Sans 웹 폰트 적용 -->
+      <!-- noto Sans 웹 폰트 적용 -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         
         <!-- icon 참조 -->
@@ -28,8 +28,8 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/sitter_mypage.css"></link>
 
         <!-- Javascript -->
-		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+      <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+      <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -78,9 +78,9 @@
                                         <div class="buy_tl_switch">
                                             <p class="switch_p" style="color: #9c9c9c; font-size: 0.85em;">구직 종료</p>
                                             <p class="switch_p" style="display:none; color: rgb(34, 172, 135); font-size: 0.85em;">구직 중</p>
-                                            <label class="switch">									
+                                            <label class="switch">                           
                                                 <input type="checkbox">
-                                                <span class="slider round"></span>								
+                                                <span class="slider round"></span>                        
                                             </label>
                                         </div>
                                         <!-- end 구직중/구직종료 Toggle button -->
@@ -157,7 +157,7 @@
                     <section class="group3_mps">
                         <div class="row">
                             <div class="col-xs-12 mps_menu">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do">                              
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do?sitterno=${output.sitterno}">                              
                                     <i class="fas fa-address-book mps_menu3_list1"></i>
                                     <p class="mps_menu3_list2">내 구직 현황</p>
                                     <i class="fas fa-angle-right mps_menu3_list3"></i>
@@ -226,7 +226,7 @@
                     <section class="group3_mps">
                         <div class="row">
                             <div class="col-xs-12 mps_menu">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/review.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/review.do?sitterno=${output.sitterno}">
                                     <i class="fas fa-star mps_menu3_list1"></i>
                                     <p class="mps_menu3_list2">후기 관리</p>
                                     <i class="fas fa-angle-right mps_menu3_list3"></i>
@@ -288,34 +288,34 @@
             </div>
         </div>
 
-		<!-- Javascript -->
-		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+      <!-- Javascript -->
+      <script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 
         
         <script type="text/javascript">
-        	<!-- header 삽입 -->
-        <!--	$(function() {
-        		$("#menu").load("../../index_header.html"); -->
-        	
-	        	<!-- 임시 로그아웃 기능 -->
-	        	 $("#mps_logout").click(function() {
-	                 var result = confirm("로그아웃 하시겠습니까?");
-	
-	                 if(result) {
-	                     location.href = "../../Index.html";
-	                 }
-	             });
+           <!-- header 삽입 -->
+        <!--   $(function() {
+              $("#menu").load("../../index_header.html"); -->
+           
+              <!-- 임시 로그아웃 기능 -->
+               $("#mps_logout").click(function() {
+                    var result = confirm("로그아웃 하시겠습니까?");
+   
+                    if(result) {
+                        location.href = "../../Index.html";
+                    }
+                });
             });
         </script>
 
         <!-- on off 토글 버튼, by daye, 2020.12.07 -->
-		<script type="text/javascript">
-			var check = $("input[type='checkbox']");
-			check.click(function(){
-				$(".switch_p").toggle();
-			}); 
-		</script>
-	</body>
+      <script type="text/javascript">
+         var check = $("input[type='checkbox']");
+         check.click(function(){
+            $(".switch_p").toggle();
+         }); 
+      </script>
+   </body>
 </html>

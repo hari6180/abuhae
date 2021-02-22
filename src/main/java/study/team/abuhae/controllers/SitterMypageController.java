@@ -67,8 +67,22 @@ public class SitterMypageController {
 	public ModelAndView get_mom(Model model,
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		/** 데이터 조회 */
+		Sitter_info in = new Sitter_info();
+		in.setSitterno(sitterno);
+		
+		Sitter_info out = null;
+		
+		try {
+			out = sitterMypageService.getSitterItem(in);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("out", out);
+		
+		/** 데이터 조회 */
 		Connect input = new Connect();
-		input.setSitterno(3);
+		input.setSitterno(sitterno);
 		
 		List<Connect> output = null;
 		
@@ -94,13 +108,14 @@ public class SitterMypageController {
 	@RequestMapping(value = "/mypage/mypage_sitter/like_mom_mps.do", method = RequestMethod.GET)
 	public ModelAndView like_mom(Model model,
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		/** 데이터 조회 */
 		Sitter_info in = new Sitter_info();
 		in.setSitterno(sitterno);
 		
 		Sitter_info out = null;
 		
 		try {
-			in = sitterMypageService.getSitterItem(in);
+			out = sitterMypageService.getSitterItem(in);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}

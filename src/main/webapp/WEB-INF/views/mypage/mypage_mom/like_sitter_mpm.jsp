@@ -65,24 +65,25 @@
                                 <!-- 내용 영역 -->
                                 <div class="ls_tab_panel">
                                     <!-- 전체 일자리 -->
-                                    <c:forEach var="item" items="${output}" varStatus="status">
                                     <div id="ls_tab_page_1">
-                                   		<div class="ls_page_cont" id="page_con_1">
-                                            <a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}">
-                                            	<div class="ls_page_box">
-	                                                <div class="ls_page_box_left">
-	                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-	                                                </div>
-	                                                <div class="ls_page_box_right">
-	                                                    <p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;">${item.reg_date}</p>
-	                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si } ${item.gu } </p>
-	                                                    <p style="color: #888888; font-size: 0.8em;">
-	                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
-	                                                    </p>
-	                                                </div>          
-	                                            </div>
-                                            </a>
-                                        </div>
+                                     	<c:forEach var="item" items="${output}" varStatus="status">
+	                                   		<div class="ls_page_cont" id="page_con_1">
+	                                            <a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}">
+	                                            	<div class="ls_page_box">
+		                                                <div class="ls_page_box_left">
+		                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
+		                                                </div>
+		                                                <div class="ls_page_box_right">
+		                                                    <p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;">${item.reg_date}</p>
+		                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si } ${item.gu } </p>
+		                                                    <p style="color: #888888; font-size: 0.8em;">
+		                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
+		                                                    </p>
+		                                                </div>          
+		                                            </div>
+	                                            </a>
+	                                        </div>
+                                        </c:forEach>
                                         <!--  <a href="#ls_modal" data-toggle="modal">
                                             <div class="ls_page_cont no_work">
                                                 <div class="ls_page_box">
@@ -129,7 +130,8 @@
 
                                     <!-- 구인중인 일자리 -->
                                     <div id="ls_tab_page_2" class="hide">
-                                        <c:if test="${item.job_opening == Y }">
+                                    <c:forEach var="it" items="${output}" varStatus="status">
+                                        <c:if test="${it.job_opening eq 'Y'.charAt(0)}">
                                         	<div class="ls_page_cont">
 	                                            <div class="ls_page_box">
 	                                                <div class="ls_page_box_left">
@@ -138,41 +140,18 @@
 
 	                                                </div>
 	                                                <div class="ls_page_box_right">
-	                                                    <p style="font-size: 1em; font-weight: bold;">송○예 <span style="color: #888888; font-size: 0.8em;">13시간 전 작성</p>
+	                                                    <p style="font-size: 1em; font-weight: bold;">${it.name}<span style="color: #888888; font-size: 0.8em;">13시간 전 작성</p>
 	                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">전북 군산시 경기 평택시 </p>
 	                                                    <p style="color: #888888; font-size: 0.8em;">
-	                                                        <span>53세</span> l <span>희망시급 1,5000원</span> 
-	                                                    </p>
-	                                                    <p style="color: #888888; font-size: 0.7em;">
-	                                                        <span class="point">★★★★</span> 
-	                                                        <span>후기 155개</span> 
-	                                                        <span class="point">
-	                                                            <i class="fas fa-video"></i> CCTV 동의함
-	                                                        </span>
+	                                                        <span>${it.birthdate}세</span> l <span>희망시급 ${it.payment }원</span> 
 	                                                    </p>
 	                                                </div>          
 	                                            </div>
-	                                            <hr/>
-	                                            <div class="ls_page_box">
-	                                                <div class="ls_certify" style="font-size: 0.95em; font-weight: bold;">
-	                                                    <div class="count_certify">
-	                                                        <span>확인된 인증</span> 
-	                                                        <span class="point">2개</span>
-	                                                    </div>
-	                                                    <div class="box_certify">
-	                                                        <div class="text_certify">엄마 인증</div>
-	                                                        <div class="text_certify">등초본 인증</div>
-	                                                    </div>
-	                                                </div>
-	                                                <button type="button" class="garbage" href="#">
-	                                                    <i class="fas fa-trash-alt"></i>
-	                                                </button>
-	                                            </div>
 	                                        </div>
                                         </c:if>
+                                      </c:forEach>
                                     <!--end 구인 중인 일자리 -->
                                 </div>
-                                </c:forEach>
                             </div>
                         </div>
 

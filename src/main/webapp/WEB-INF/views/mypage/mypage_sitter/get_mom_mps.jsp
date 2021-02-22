@@ -29,11 +29,6 @@
 
         <style type="text/css">
 
- 
-        /** 두번째 항목 */
-
-
-
       </style>
     </head>
 
@@ -45,7 +40,7 @@
                      <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${out.sitterno}">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">내 구직 현황</h3>
@@ -237,7 +232,7 @@
                   method: "POST",
                   success: function(json) {
                      if (json.rt == "OK") {
-                        window.location = "${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do";
+                        window.location = "${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do?sitterno=${out.sitterno}";
                      }
                   }
                });
@@ -246,7 +241,7 @@
                    method: "POST",
                    success: function(json) {
                       if (json.rt == "OK") {
-                         window.location = "${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do";
+                         window.location = "${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do?sitterno=${out.sitterno}";
                       }
                    }
                 });
