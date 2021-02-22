@@ -16,6 +16,7 @@ import study.team.abuhae.helper.AgeHelper;
 import study.team.abuhae.helper.PageData;
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
+import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.SearchService;
@@ -37,6 +38,7 @@ public class SearchRestController {
 	String contextPath;
     
     /** 맘시터 찾기 페이지 */
+	// 카드 출력
     @RequestMapping(value = "/search/sitter_search", method = RequestMethod.GET)
     public Map<String, Object> get_st_list(
             // 페이지 구현에서 사용할 현재 페이지 번호
@@ -50,12 +52,13 @@ public class SearchRestController {
             @RequestParam(value="caredays[]", required=false) String[] caredays,
             @RequestParam(value="time_range[]", required=false)String[] timeRange,
             @RequestParam(value="sitter_type[]", required=false) String[] sitterType,
-            @RequestParam(value="sitter_age[]", required=false) String[] sitterAge
+            @RequestParam(value="sitter_age[]", required=false) String[] sitterAge,
+            /** (3) 찜하기 */
+            @RequestParam(value="sitterno", required = false) String sitterno,
+            @RequestParam(value="momno", required = false) String momno,
+            @RequestParam(value="jjim", required = false) String jjim
     		) {
 				
-				  
-				 
-        
         
         /** 1) 페이지 구현에 필요한 변수값 생성 */
         int totalCount = 0;              // 전체 게시글 수
@@ -124,11 +127,101 @@ public class SearchRestController {
         } catch (Exception e) {
             return webHelper.getJsonError(e.getLocalizedMessage());
         }
+        
+        // 찜하기
+        if (sitterno != null && momno != null && jjim != null) {
+        // 데이터를 전송할 객체 생성
+        Heart heart = new Heart();
+        int stno = Integer.parseInt(sitterno);
+        int mono = Integer.parseInt(momno);
+        if (jjim == "Y") {
+        	heart.setMomno(mono);
+        	heart.setSitterno(stno);
+        	heart.setWho('M');
+        	try {
+				searchService.addHeart(heart);
+			} catch (Exception e) {
+				return webHelper.getJsonError(e.getLocalizedMessage());
+			}
+        } else if (jjim == "N") {
+        	heart.setMomno(mono);
+        	heart.setSitterno(stno);
+        	try {
+				searchService.deleteHeart(heart);
+			} catch (Exception e) {
+				return webHelper.getJsonError(e.getLocalizedMessage());
+			}
+        }
+        }
 
         /** 3) JSON 출력하기 */
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("item", output);
         data.put("meta", pageData);
+
+        return webHelper.getJsonData(data);
+    }
+    
+    // 찜하기 
+    @RequestMapping(value = "/search/sitter_search/heart", method = RequestMethod.GET)
+    public Map<String, Object> heart(
+            /** (3) 찜하기 */
+            @RequestParam(value="sitterno", required = false) String sitterno,
+            @RequestParam(value="momno", required = false) String momno,
+            @RequestParam(value="jjim", required = false) String jjim
+    		) {
+				
+        
+        // 찜하기
+        // 데이터를 전송할 객체 생성
+        Heart heart = new Heart();
+        int stno = Integer.parseInt(sitterno);
+        int mono = Integer.parseInt(momno);
+
+        	heart.setMomno(mono);
+        	heart.setSitterno(stno);
+        	heart.setWho('M');
+        	try {
+				searchService.addHeart(heart);
+			} catch (Exception e) {
+				return webHelper.getJsonError(e.getLocalizedMessage());
+			}
+
+
+        /** 3) JSON 출력하기 */
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("heart", heart);
+
+        return webHelper.getJsonData(data);
+    }
+    
+    // 찜하기 
+    @RequestMapping(value = "/search/sitter_search/heartNo", method = RequestMethod.GET)
+    public Map<String, Object> heartNo(
+            /** (3) 찜하기 */
+            @RequestParam(value="sitterno", required = false) String sitterno,
+            @RequestParam(value="momno", required = false) String momno
+    		) {
+				
+        
+        // 찜하기
+        // 데이터를 전송할 객체 생성
+        Heart heart = new Heart();
+        int stno = Integer.parseInt(sitterno);
+        int mono = Integer.parseInt(momno);
+
+        	heart.setMomno(mono);
+        	heart.setSitterno(stno);
+        	try {
+				searchService.deleteHeart(heart);
+			} catch (Exception e) {
+				return webHelper.getJsonError(e.getLocalizedMessage());
+			}
+
+
+        /** 3) JSON 출력하기 */
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("heart", heart);
 
         return webHelper.getJsonData(data);
     }

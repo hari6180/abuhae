@@ -135,7 +135,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
   <!--grid 사용시 col-xs-nn 사용-->
   <body>
-    <div id="app">
+    <div id="app" data-login="${login.momno}">
       <div class="container">
         <div id="menu">
           <c:if test="${isLogin ==true }">
@@ -784,7 +784,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                                     <div class="last_update">{{openingdate}}작성</div>
                                   </div>
                                   <div class="jim_btn">
-                                    <button class="swapHeart">
+                                    <button class="swapHeart" data-stno="{{sitterno}}">
                                       <div class="jim">
                                         <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
                                       </div>
@@ -1208,17 +1208,29 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         $(document).on("click", ".swapHeart", function (e) {
           e.stopPropagation(); // 버블링 방지 1220 하리
           var $jim = $(this);
+          let stno = $(this).data("stno");
+          let momno = $("#app").data("login");
 
           // 찜할 때 alert창과 glyphicon변형
           if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
             $(this).find("span").removeClass("glyphicon-heart-empty");
             $(this).find("span").addClass("glyphicon-heart");
+            $.get("${pageContext.request.contextPath}/search/sitter_search/heart", {
+              sitterno: stno,
+              momno: momno,
+              jjim: "Y",
+            });
             swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
           }
           // 찜 취소할 때 alert창과 glyphicon변형
           else {
-            swal("찜 하기 취소");
             $(this).find("span").addClass("glyphicon-heart-empty");
+            $.get("${pageContext.request.contextPath}/search/sitter_search/heartNo", {
+              sitterno: stno,
+              momno: momno,
+              jjim: "N",
+            });
+            swal("찜 하기 취소");
           }
         }); // fin. 찜버튼 기능
       });
