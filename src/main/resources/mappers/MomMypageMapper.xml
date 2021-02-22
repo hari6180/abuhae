@@ -264,13 +264,7 @@
 		<result property="days" column="days" />
 	</resultMap>
 
-
-	<!-- 로그인한 회원정보 조회 조회 -->
-	<select id="selectMomItem"
-		parameterType="study.team.abuhae.model.Mom_info"
-		resultMap="MomInfoMap">
-		SELECT m.memberno, m.name, m.type, m.id, m.password,
-		m.email, m.phone, m.birthdate, m.job_opening, mi.momno, mi.momno
+<!-- 로그인한 회원정보 조회 조회 -->
 	<select id="selectMomItem" 
 	parameterType="study.team.abuhae.model.Mom_info" resultMap="MomInfoMap">
 		SELECT m.memberno, m.name, m.type, m.id, m.password, m.email, m.phone, m.birthdate, m.job_opening, mi.momno, mi.momno
@@ -385,50 +379,34 @@
 		momno=#{momno};
 	</update>
 
-
 	<!-- /////////////선아 작업///////////////// -->
-	<!-- 회원 정보 조회 -->
-	<select id="selectMemberItem"
-		parameterType="study.team.abuhae.model.Mom_info"
-		resultMap="MomInfoMap">
-		select m.memberno, type, id, password, name, phone, email,
-		ticket_type,ticket_price, mi.momno as momno
-		from member m
-		inner join mom_info mi on mi.memberno=m.memberno
-		where m.memberno=#{memberno};
-	</select>
-
-	<!-- 회원 정보 수정 -->
-	<update id="updateMemberPhoneAccount"
-		parameterType="study.team.abuhae.model.Member">
-		update member set phone=#{phone} where memberno=#{memberno};
-	</update>
-
-	<update id="updateMemberEmailAccount"
-		parameterType="study.team.abuhae.model.Member">
-		update member set email=#{email} where memberno=#{memberno};
-	</update>
-
-	<!-- 비밀번호 비교 -->
-	<select id="bigyoPassword"
-		parameterType="study.team.abuhae.model.Member" resultType="int">
-		select count(*) from member where memberno=#{memberno} and
-		password=#{password};
-	</select>
-	
-	<!-- 비밀번호 변경 -->
-	<update id="updateMemberPw"
-		parameterType="study.team.abuhae.model.Member">
-		update member set password=#{password} where memberno=#{memberno};
-	</update>
-	
-	<!-- 회원 정보 조회 -->
-	<select id="selectMemberItem"
-	parameterType="study.team.abuhae.model.Mom_info" resultMap="MomInfoMap">
-		select type, id, name, phone, email, ticket_type,ticket_price
-		from member
-		where memberno=#{memberno};
-	</select>
+   <!-- 회원 정보 조회 -->
+   <select id="selectMemberItem"
+   parameterType="study.team.abuhae.model.Mom_info" resultMap="MomInfoMap">
+      select m.memberno, type, id, password, name, phone, email, ticket_type,ticket_price, mi.momno as momno
+      from member m
+      inner join mom_info mi on mi.memberno=m.memberno
+      where m.memberno=#{memberno};
+   </select>
+   
+   <!-- 회원 정보 수정 -->
+   <update id="updateMemberPhoneAccount"  parameterType="study.team.abuhae.model.Member">
+      update member set phone=#{phone} where memberno=#{memberno};
+   </update>
+   
+   <update id="updateMemberEmailAccount"  parameterType="study.team.abuhae.model.Member">
+      update member set email=#{email} where memberno=#{memberno};
+   </update>
+   
+   <!-- 비밀번호 비교 -->
+   <select id="bigyoPassword" parameterType="study.team.abuhae.model.Member" resultType="int">
+      select count(*) from member where memberno=#{memberno} and password=#{password};
+   </select>
+   <!-- 비밀번호 변경 -->
+   <update id="updateMemberPw"  parameterType="study.team.abuhae.model.Member">
+      update member set password=#{password} where memberno=#{memberno};
+   </update>
+   
 </mapper>
 
 

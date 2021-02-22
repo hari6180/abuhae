@@ -290,25 +290,6 @@
         <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 
-        
-        <script type="text/javascript">
-           <!-- header 삽입 -->
-           <!--$(function() {
-              $("#menu").load("../../index_header.html");
-            }); -->
-        
-           <!-- 로그아웃 기능 (수정필요 / 백앤드 연동??), by daye, 2020.12.08-->
-            $(function() {
-                $("#mps_logout").click(function() {
-                    var result = confirm("로그아웃 하시겠습니까?");
-
-                    if (result) {
-                        location.href = "../../Index.html";
-                    } 
-                });
-            });
-        </script>
-
         <!-- on off 토글 버튼, by daye, 2020.12.07 -->
       <script type="text/javascript">
          var check = $("input[type='checkbox']");
