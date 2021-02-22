@@ -76,6 +76,7 @@
 		<result property="cntno" column="cntno" />
 		<result property="favorite_act" column="favorite_act" />
 		<result property="view" column="view" />
+		<result property="schedule_start" column="schedule_start" />
 	</resultMap>
 	
 	<resultMap type="study.team.abuhae.model.Report" id="ReportMap">
@@ -119,6 +120,7 @@
 		si, gu, dong, favorite_act, signup_date, view, 
 		json_extract(schedule, '$.startdate') AS schedule,
 		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
+		REPLACE(json_extract(schedule, '$.startdate'),'"','') AS schedule_start,
 		REPLACE(json_extract(schedule, '$.day'),'"','') AS days,
 		<!-- CONCAT(LEFT(payment,2), ',', RIGHT(payment,3)) AS -->
 		payment, cctv, answer, CASE

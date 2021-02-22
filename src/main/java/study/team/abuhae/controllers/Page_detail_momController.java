@@ -63,7 +63,7 @@ public class Page_detail_momController {
 			//return "/page_detail/mom_page_detail/mom_detail";
 	}
 	
-	// 맘 상세페이지 > 인터뷰 페이지
+		// 맘 상세페이지 > 인터뷰 페이지
 		@RequestMapping(value = "/page_detail/mom_interview.do", method = RequestMethod.GET)
 		public ModelAndView mom_interview(Model model,
 				@RequestParam(value = "momno", defaultValue = "0") int momno) {
@@ -91,9 +91,9 @@ public class Page_detail_momController {
 		@RequestMapping(value = "/page_detail/mom_page_detail/mom_heart_ok.do", method = RequestMethod.POST)
 		public ModelAndView report_mom_ok(Model model,
 				HttpServletResponse response,
-				@RequestParam(value = "who", defaultValue = "") char who,
-				@RequestParam(value = "momno", defaultValue = "0") int momno,
-				@RequestParam(value = "sitterno", defaultValue = "55") int sitterno) {
+				@RequestParam(value = "who") char who,
+				@RequestParam(value = "momno") int momno,
+				@RequestParam(value = "sitterno") int sitterno) {
 
 			
 			Heart input = new Heart();
@@ -132,7 +132,7 @@ public class Page_detail_momController {
 		@RequestMapping(value = "/page_detail/mom_page_detail/mom_heart_delete_ok.do", method = RequestMethod.GET)
 		public ModelAndView deleteHeart_mom_ok(Model model,
 				@RequestParam(value = "momno", defaultValue = "0") int momno,
-				@RequestParam(value = "sitterno", defaultValue = "55") int sitterno) {
+				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 
 			
 			Heart input = new Heart();
@@ -154,9 +154,9 @@ public class Page_detail_momController {
 		@RequestMapping(value = "/page_detail/mom_page_detail/mom_interview_ok.do", method = RequestMethod.POST)
 		public ModelAndView interview_mom_ok(Model model,
 				HttpServletResponse response,
-				@RequestParam(value = "who", defaultValue = "S") String who,
-				@RequestParam(value = "momno", defaultValue = "0") int momno,
-				@RequestParam(value = "sitterno", defaultValue = "50") int sitterno) {
+				@RequestParam(value = "who") String who,
+				@RequestParam(value = "momno") int momno,
+				@RequestParam(value = "sitterno") int sitterno) {
 			
 			Connect input = new Connect();
 			Sitter_info sitterput = new Sitter_info();
