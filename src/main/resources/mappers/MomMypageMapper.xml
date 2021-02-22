@@ -113,7 +113,7 @@
 		id="ConnectMap">
 		<result property="cntno" column="cntno" />
 		<result property="applydate" column="applydate" />
-		<result property="who" column="who" />
+		<result property="who" column="who" />	
 		<result property="momno" column="momno" />
 		<result property="sitterno" column="sitterno" />
 		<result property="accept" column="accept" />
@@ -212,8 +212,7 @@
 		<result property="days" column="days" />
 	</resultMap>
 
-	<resultMap type="study.team.abuhae.model.Coupon"
-		id="CouponMap">
+	<resultMap type="study.team.abuhae.model.Coupon" id="CouponMap">
 		<result property="coupno" column="coupno" />
 		<result property="coup_name" column="coup_name" />
 		<result property="coup_condition" column="coup_condition" />
@@ -267,17 +266,14 @@
 
 
 	<!-- 로그인한 회원정보 조회 조회 -->
-<<<<<<< HEAD
 	<select id="selectMomItem"
 		parameterType="study.team.abuhae.model.Mom_info"
 		resultMap="MomInfoMap">
 		SELECT m.memberno, m.name, m.type, m.id, m.password,
 		m.email, m.phone, m.birthdate, m.job_opening, mi.momno, mi.momno
-=======
 	<select id="selectMomItem" 
 	parameterType="study.team.abuhae.model.Mom_info" resultMap="MomInfoMap">
 		SELECT m.memberno, m.name, m.type, m.id, m.password, m.email, m.phone, m.birthdate, m.job_opening, mi.momno, mi.momno
->>>>>>> 55596f47acf9787a85961dd7242018a97cd51512
 		FROM mom_info mi
 		INNER JOIN member m ON m.memberno=mi.memberno
 		where
@@ -419,16 +415,12 @@
 		select count(*) from member where memberno=#{memberno} and
 		password=#{password};
 	</select>
-<<<<<<< HEAD
+	
 	<!-- 비밀번호 변경 -->
 	<update id="updateMemberPw"
 		parameterType="study.team.abuhae.model.Member">
 		update member set password=#{password} where memberno=#{memberno};
 	</update>
-
-
-=======
-	
 	
 	<!-- 회원 정보 조회 -->
 	<select id="selectMemberItem"
@@ -437,7 +429,6 @@
 		from member
 		where memberno=#{memberno};
 	</select>
->>>>>>> 55596f47acf9787a85961dd7242018a97cd51512
 </mapper>
 
 
