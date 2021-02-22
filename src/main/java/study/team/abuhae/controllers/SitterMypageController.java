@@ -105,6 +105,7 @@ public class SitterMypageController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
+		/** 데이터 조회 */
 		Heart input = new Heart();
 		input.setSitterno(sitterno);
 		

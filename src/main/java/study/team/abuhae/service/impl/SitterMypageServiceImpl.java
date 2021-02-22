@@ -119,7 +119,7 @@ public class SitterMypageServiceImpl implements SitterMypageService {
 		Sitter_info result = null;
 	      
 	      try {
-	         result = sqlSession.selectOne("MomMypageMapper.selectSitterItem", input);
+	         result = sqlSession.selectOne("SitterMypageMapper.selectSitterItem", input);
 	         
 	         if (result==null) {
 	            throw new NullPointerException("result=null");
@@ -147,7 +147,7 @@ public class SitterMypageServiceImpl implements SitterMypageService {
 		List<Heart> result = null;
 	      
 	      try {
-	         result = sqlSession.selectList("MomMypageMapper.SitterHeartMap", input);
+	         result = sqlSession.selectList("SitterMypageMapper.SitterHeartMap", input);
 	         
 	         if (result==null) {
 	            throw new NullPointerException("result=null");

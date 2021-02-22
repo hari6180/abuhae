@@ -14,6 +14,8 @@ public class Report {
    private int sitterno; // 시터 일련번호
    private String reg_date; // 신고한 날짜
    
+   private String recent;
+   
    //join절에 대한 추가 컬럼
    
    private String sitter_type;         // 시터 타입 (대학생, 부모님 등)
