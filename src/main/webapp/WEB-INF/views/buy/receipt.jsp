@@ -50,10 +50,17 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <div class="coupon_line">
                 <label for="coupon">쿠폰</label>
                 <select name="coupon" class="pull-right" id="coupon">
+                <c:choose>
+                <c:when test="${empty cpout}">
+                  <option value="">쿠폰이 없습니다.</option>
+				</c:when>
+				<c:otherwise>
                   <%-- 조회 결과에 따른 반복 처리 --%>
                   <c:forEach var="cpout" items="${cpout}" varStatus="status">
                     <option value="${cpout.coupno}">${cpout.coup_name}</option>
                   </c:forEach>
+                  </c:otherwise>
+                  </c:choose>
                 </select>
               </div>
               <hr style="margin-bottom: 15px" />

@@ -73,7 +73,13 @@
 		<result property="days" column="days" />
 	</resultMap>
 
-
+	<resultMap type="study.team.abuhae.model.Heart" id="HeartMap">
+		<result property="heartno" column="heartno"/>	
+		<result property="reg_date" column="reg_date"/>	
+		<result property="who" column="who"/>	
+		<result property="momno" column="momno"/>	
+		<result property="sitterno" column="sitterno"/>				
+	</resultMap>
 
 	<!-- 데이터 검색을 위한 기능 정의 -->
 	<!-- 시터 회원 -->
@@ -325,6 +331,33 @@
 		s.sitterno=r.sitterno
 		WHERE cert='Y'
 	</select>
+	
+	
+		<!-- 찜하기 -->
+	<insert id="insertHeart" parameterType="study.team.abuhae.model.Heart"
+		useGeneratedKeys="true" keyProperty="heartno">
+		INSERT INTO heart (reg_date, who, momno, sitterno) 
+		VALUES (now(), #{who}, #{momno}, #{sitterno});
+	</insert>
+	
+	<!-- 맘회원번호로 회원 정보 조회  -->
+	<select id="selectHeart" resultMap="MomMap">
+		SELECT heartno, m.momno 
+		FROM mom_info m
+		INNER JOIN heart h ON m.momno=h.momno
+		<where>
+			m.momno=#{momno}
+		</where>
+	</select>
+	
+	<!-- 찜하기 취소 -->
+	<delete id="deleteHeart"
+		parameterType="study.team.abuhae.model.Heart">
+		DELETE FROM heart 
+		<where>
+		momno=#{momno} and sitterno=#{sitterno}
+		</where>
+	</delete>
 
 
 </mapper>

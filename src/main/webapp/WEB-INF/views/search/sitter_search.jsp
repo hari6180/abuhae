@@ -129,23 +129,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $("#dong button").removeClass("select_loaction");
           $("#dong button").addClass("hide_content");
         });
-
-        $(".swapHeart").on("click", function (e) {
-          event.stopPropagation(); // 버블링 방지 1220 하리
-          var $jim = $(this);
-
-          // 찜할 때 alert창과 glyphicon변형
-          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
-            $(this).find("span").removeClass("glyphicon-heart-empty");
-            $(this).find("span").addClass("glyphicon-heart");
-            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
-          }
-          // 찜 취소할 때 alert창과 glyphicon변형
-          else {
-            swal("찜 하기 취소");
-            $(this).find("span").addClass("glyphicon-heart-empty");
-          }
-        }); // fin. 찜버튼 기능
       });
     </script>
   </head>
@@ -773,7 +756,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <script id="sitter-list-tmpl" type="text/x-handlebars-template">
             {{#each item}}
       					<div id="order">
-                          <div id="sitter_item_group" class="sitter_item_group" onclick="location.href='${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno={{sitterno}}'">
+                          <div id="sitter_item_group" class="sitter_item_group" data-stno="{{sitterno}}">
                             <div class="item_header">
                               <div class="cert_label">
                                 <span id="sitter_title" class="cert_text">
@@ -891,9 +874,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         }
         return options.inverse(this);
       });
-      Handlebars.registerHelper('decimal', function(number) {
-    	  return formatDecimal(number);
-    	});
+      Handlebars.registerHelper("decimal", function (number) {
+        return formatDecimal(number);
+      });
       let nowPage = 1; // 현재 페이지의 기본값
       let order = "openingdate";
       $(function () {
@@ -1149,8 +1132,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           }
           console.log(sitter_type);
         });
-
-        $("input[name=want_age].checked").each(function (i) {
+        // 맘시터 나이대 체크박스
+        $("input[name=want_age].checked").each(function (e) {
           sitter_age.push($(this).val());
         });
 
@@ -1216,6 +1199,28 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             );
           }
         });
+
+        $(document).on("click", ".sitter_item_group", function () {
+          let stno = $(this).data("stno");
+          console.log(stno);
+          location.href = "${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=" + stno;
+        });
+        $(document).on("click", ".swapHeart", function (e) {
+          e.stopPropagation(); // 버블링 방지 1220 하리
+          var $jim = $(this);
+
+          // 찜할 때 alert창과 glyphicon변형
+          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+            $(this).find("span").removeClass("glyphicon-heart-empty");
+            $(this).find("span").addClass("glyphicon-heart");
+            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+          }
+          // 찜 취소할 때 alert창과 glyphicon변형
+          else {
+            swal("찜 하기 취소");
+            $(this).find("span").addClass("glyphicon-heart-empty");
+          }
+        }); // fin. 찜버튼 기능
       });
     </script>
   </body>
