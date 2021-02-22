@@ -674,7 +674,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             <div class="jim_btn">
               <button class="swapHeart" data-momno="{{momno}}">
                 <div class="jim">
-                  <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
+                  <span class="glyphicon glyphicon-heart{{#ifCond findHt 0}}-empty{{/ifCond}}" style="color: #ff7000; font-size: 20px"></span>
                 </div>
               </button>
             </div>

@@ -63,13 +63,57 @@ public class Mom_info extends Member {
 
 	
 	/** 3) 검색 조건용 추가 컬럼 */
-	private String[] act;		// 원하는 활동유형 검색 조건
-	private String[] kidsAge;		// 아이 나이
-	private String[] caredays;		// 돌봄 요일
-	private String[] timeRange;		// 돌봄 시간대
-	private String min_pay;			// 최저 시급
-	private String max_pay;			// 최고 시급
-	private String kids_cnt;			// 아이 수
+	private static String[] act;		// 원하는 활동유형 검색 조건
+	private static String[] kidsAge;		// 아이 나이
+	private static String[] caredays;		// 돌봄 요일
+	private static String[] timeRange;		// 돌봄 시간대
+	private static String min_pay;			// 최저 시급
+	private static String max_pay;			// 최고 시급
+	private static String kids_cnt;			// 아이 수
+	
+	
+	public static String[] getAct() {
+		return act;
+	}
+	public static void setAct(String[] act) {
+		Mom_info.act = act;
+	}
+	public static String[] getKidsAge() {
+		return kidsAge;
+	}
+	public static void setKidsAge(String[] kidsAge) {
+		Mom_info.kidsAge = kidsAge;
+	}
+	public static String[] getCaredays() {
+		return caredays;
+	}
+	public static void setCaredays(String[] caredays) {
+		Mom_info.caredays = caredays;
+	}
+	public static String[] getTimeRange() {
+		return timeRange;
+	}
+	public static void setTimeRange(String[] timeRange) {
+		Mom_info.timeRange = timeRange;
+	}
+	public static String getMin_pay() {
+		return min_pay;
+	}
+	public static void setMin_pay(String min_pay) {
+		Mom_info.min_pay = min_pay;
+	}
+	public static String getMax_pay() {
+		return max_pay;
+	}
+	public static void setMax_pay(String max_pay) {
+		Mom_info.max_pay = max_pay;
+	}
+	public static String getKids_cnt() {
+		return kids_cnt;
+	}
+	public static void setKids_cnt(String kids_cnt) {
+		Mom_info.kids_cnt = kids_cnt;
+	}
 
 
 	

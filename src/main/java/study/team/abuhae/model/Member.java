@@ -32,6 +32,7 @@ public abstract class Member {
 	private int ticket_price;// 이용권 금액
 	private String signup_date; // 가입일자
 	private String reg_date;  // 쿠폰 발급 날짜   <- new!!
+	private int findHt; // 찜 여부 확인
 	
 	// 정렬조건
 	private static String order;
@@ -73,5 +74,7 @@ public abstract class Member {
 	public static void setOrder(String order) {
 		Member.order = order;
 	}
+	
+	
 }
 

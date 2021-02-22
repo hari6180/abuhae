@@ -116,7 +116,7 @@ public class SearchServiceImpl implements SearchService {
 	public int addHeart(Heart input) throws Exception {
 		int result = 0;
 		
-		try {
+		try {			
 			result = sqlSession.insert("SearchMapper.insertHeart", input);
 			
 			if (result == 0) {
@@ -154,5 +154,53 @@ public class SearchServiceImpl implements SearchService {
 		return result;
 	}
 
+	@Override
+	public int findHeart(Heart input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("SearchMapper.findHeart", input);
+			
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("삭제된 찜 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 삭제에 실패했습니다.");
+		}
+		
+		return result;	
+	}
+
+	/*
+	 * @Override public int findHeartSt(Sitter_info input) throws Exception { int
+	 * result = 0;
+	 * 
+	 * try { result = sqlSession.selectOne("SearchMapper.findHeartSt", input);
+	 * 
+	 * if (result == 0) { throw new NullPointerException("result=0"); } } catch
+	 * (NullPointerException e) { log.error(e.getLocalizedMessage()); throw new
+	 * Exception("삭제된 찜 데이터가 없습니다."); } catch (Exception e) {
+	 * log.error(e.getLocalizedMessage()); throw new Exception("데이터 삭제에 실패했습니다."); }
+	 * 
+	 * return result; }
+	 * 
+	 * @Override public int findHeartMom(Mom_info input) throws Exception { int
+	 * result = 0;
+	 * 
+	 * try { result = sqlSession.selectOne("SearchMapper.findHeartMom", input);
+	 * 
+	 * if (result == 0) { throw new NullPointerException("result=0"); } } catch
+	 * (NullPointerException e) { log.error(e.getLocalizedMessage()); throw new
+	 * Exception("삭제된 찜 데이터가 없습니다."); } catch (Exception e) {
+	 * log.error(e.getLocalizedMessage()); throw new Exception("데이터 삭제에 실패했습니다."); }
+	 * 
+	 * return result; }
+	 */
+
+	
 
 }

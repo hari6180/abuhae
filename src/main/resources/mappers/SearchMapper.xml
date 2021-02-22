@@ -44,6 +44,7 @@
 		<result property="rev_count" column="rev_count" />
 		<result property="resino" column="resino" />
 		<result property="days" column="days" />
+		<result property="findHt" column="findHt" />
 	</resultMap>
 
 	<resultMap id="MomMap"
@@ -71,15 +72,10 @@
 		<result property="memberno" column="memberno" />
 		<result property="applySt" column="cntno" />
 		<result property="days" column="days" />
+		<result property="findHt" column="findHt" />
 	</resultMap>
 
-	<resultMap type="study.team.abuhae.model.Heart" id="HeartMap">
-		<result property="heartno" column="heartno"/>	
-		<result property="reg_date" column="reg_date"/>	
-		<result property="who" column="who"/>	
-		<result property="momno" column="momno"/>	
-		<result property="sitterno" column="sitterno"/>				
-	</resultMap>
+
 
 	<!-- 데이터 검색을 위한 기능 정의 -->
 	<!-- 시터 회원 -->
@@ -111,13 +107,22 @@
 		opening,
 		REPLACE(json_extract(schedule, '$.day'),'"','') AS
 		days,
-		openingdate, (SELECT COUNT(revno) FROM review r WHERE
-		s.sitterno=r.sitterno AND who='M') AS rev_count,
+		openingdate,
+		(SELECT COUNT(revno) FROM review r WHERE
+		s.sitterno=r.sitterno AND
+		who='M') AS rev_count,
 		(SELECT rev_rate FROM
-		review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate,
+		review r WHERE
+		s.sitterno=r.sitterno AND who='M') AS rev_rate,
 		(SELECT
-		COUNT(resino) FROM resi_cert rc WHERE s.sitterno=rc.sitterno AND
-		cert='Y') AS resino FROM sitter_info s
+		COUNT(resino)
+		FROM resi_cert rc WHERE s.sitterno=rc.sitterno AND
+		cert='Y') AS resino,
+		(SELECT
+		COUNT(*)
+		FROM heart h WHERE s.sitterno=h.sitterno AND
+		who='M') AS findHt
+		FROM sitter_info s
 		INNER JOIN member m ON
 		s.memberno=m.memberno
 
@@ -226,7 +231,10 @@
 		END AS
 		opening,
 		openingdate, (SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno
-		AND who='s') AS applySt FROM mom_info m
+		AND who='s') AS applySt, 		(SELECT
+		COUNT(*)
+		FROM heart h WHERE m.momno=h.momno AND
+		who='S') AS findHt FROM mom_info m
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
 
@@ -331,23 +339,23 @@
 		s.sitterno=r.sitterno
 		WHERE cert='Y'
 	</select>
-	
-	
-		<!-- 찜하기 -->
-	<insert id="insertHeart" parameterType="study.team.abuhae.model.Heart"
-		useGeneratedKeys="true" keyProperty="heartno">
-		INSERT INTO heart (reg_date, who, momno, sitterno) 
+
+	<!-- 찜하기 -->
+	<insert id="insertHeart"
+		parameterType="study.team.abuhae.model.Heart" useGeneratedKeys="true"
+		keyProperty="heartno">
+		INSERT INTO heart (reg_date, who, momno, sitterno)
 		VALUES (now(), #{who}, #{momno}, #{sitterno});
 	</insert>
-	
-	
+
+
 	<!-- 찜하기 취소 -->
 	<delete id="deleteHeart"
 		parameterType="study.team.abuhae.model.Heart">
-		DELETE FROM heart 
-		<where>
+		DELETE FROM heart
+		WHERE
 		momno=#{momno} and sitterno=#{sitterno} and who=#{who}
-		</where>
+
 	</delete>
 
 

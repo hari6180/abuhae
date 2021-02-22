@@ -43,6 +43,7 @@ public class SearchController {
 		int listCount = 10; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
+
 		// 조회에 필요한 조건값을 Beans에 담는다.
 		Sitter_info input = new Sitter_info();
 
@@ -54,6 +55,7 @@ public class SearchController {
 			stTotalCount = searchService.getSitterCount(input);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, stTotalCount, listCount, pageCount);
+		
 
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Sitter_info.setOffset(pageData.getOffset());

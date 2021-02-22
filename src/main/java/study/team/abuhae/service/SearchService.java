@@ -25,7 +25,15 @@ public interface SearchService {
 	
 	// 찜하기 취소
 	public int deleteHeart(Heart input) throws Exception;
-
+	
+	// 찜 여부 조회(찜 버튼용)
+	public int findHeart(Heart input) throws Exception;
+	/*
+	 * // 시터 찜 여부 조회(출력용) public int findHeartSt(Sitter_info input) throws
+	 * Exception;
+	 * 
+	 * // 일자리 찜 여부 조회(출력용) public int findHeartMom(Mom_info input) throws Exception;
+	 */
 		
 	
 }
