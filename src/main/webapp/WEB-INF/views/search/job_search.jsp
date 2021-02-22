@@ -127,39 +127,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             });
             /** 주소 선택 모달 end ------------------------------------------------------------------- */
 
-            /** 찜하기 ------------------------------------------------------------------- */
-            $(".swapHeart").on("click", function (e) {
-              event.stopPropagation(); // 버블링 방지 1220 하리
-              var $jim = $(this);
-
-              // 찜할 때 alert창과 glyphicon변형
-              if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
-                $(this).find("span").removeClass("glyphicon-heart-empty");
-                $(this).find("span").addClass("glyphicon-heart");
-                swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
-              }
-              // 찜 취소할 때 alert창과 glyphicon변형
-              else {
-                swal("찜 하기 취소");
-                $(this).find("span").addClass("glyphicon-heart-empty");
-              }
-            });
-            /** 찜하기 end ------------------------------------------------------------------- */
-
-            // 드롭다운 선택 - 0109 하리
-             $(".dr_option").click(function () {
-              $(this).addClass("active");
-            $(".dr_option").not(this).removeClass("active");
-               $("#orderby").html($(this).find("a").html());
-             });
-
           });
     </script>
   </head>
 
   <!--grid 사용시 col-xs-nn 사용-->
   <body>
-    <div id="app">
+    <div id="app" data-login="${login.sitterno}">
       <div class="container">
         <div id="menu">
           <c:if test="${isLogin ==true }">
@@ -574,7 +548,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!-- Handlebar 템플릿 코드 -->
     <script id="job-list-tmpl" type="text/x-handlebars-template">
       {{#each item}}
-        <div class="job_item_group" onclick="location.href='${pageContext.request.contextPath}/page_detail/mom_detail.do?momno={{momno}}'">
+        <div class="job_item_group" data-momno="{{momno}}">
           <div class="item_body">
             <div class="profile_img_group">
               <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
@@ -698,7 +672,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               </div>
             </div>
             <div class="jim_btn">
-              <button class="swapHeart">
+              <button class="swapHeart" data-momno="{{momno}}">
                 <div class="jim">
                   <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 20px"></span>
                 </div>
@@ -921,6 +895,39 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             );
           }
         });
+        $(document).on("click", ".job_item_group", function () {
+          let momno = $(this).data("momno");
+          console.log(momno);
+          location.href = "${pageContext.request.contextPath}/page_detail/mom_detail.do?momno=" + momno;
+        });
+        $(document).on("click", ".swapHeart", function (e) {
+          e.stopPropagation(); // 버블링 방지 1220 하리
+          var $jim = $(this);
+          let momno = $(this).data("momno");
+          let stno = $("#app").data("login");
+
+          // 찜할 때 alert창과 glyphicon변형
+          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+            $(this).find("span").removeClass("glyphicon-heart-empty");
+            $(this).find("span").addClass("glyphicon-heart");
+            $.get("${pageContext.request.contextPath}/heart/insertMom", {
+              sitterno: stno,
+              momno: momno,
+              jjim: "Y",
+            });
+            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+          }
+          // 찜 취소할 때 alert창과 glyphicon변형
+          else {
+            $(this).find("span").addClass("glyphicon-heart-empty");
+            $.get("${pageContext.request.contextPath}/heart/deleteMom", {
+              sitterno: stno,
+              momno: momno,
+              jjim: "N",
+            });
+            swal("찜 하기 취소");
+          }
+        }); // fin. 찜버튼 기능
       });
     </script>
   </body>

@@ -1215,7 +1215,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
             $(this).find("span").removeClass("glyphicon-heart-empty");
             $(this).find("span").addClass("glyphicon-heart");
-            $.get("${pageContext.request.contextPath}/search/sitter_search/heart", {
+            $.get("${pageContext.request.contextPath}/heart/insertSt", {
               sitterno: stno,
               momno: momno,
               jjim: "Y",
@@ -1225,7 +1225,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           // 찜 취소할 때 alert창과 glyphicon변형
           else {
             $(this).find("span").addClass("glyphicon-heart-empty");
-            $.get("${pageContext.request.contextPath}/search/sitter_search/heartNo", {
+            $.get("${pageContext.request.contextPath}/heart/deleteSt", {
               sitterno: stno,
               momno: momno,
               jjim: "N",

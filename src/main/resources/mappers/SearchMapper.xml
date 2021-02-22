@@ -340,22 +340,13 @@
 		VALUES (now(), #{who}, #{momno}, #{sitterno});
 	</insert>
 	
-	<!-- 맘회원번호로 회원 정보 조회  -->
-	<select id="selectHeart" resultMap="MomMap">
-		SELECT heartno, m.momno 
-		FROM mom_info m
-		INNER JOIN heart h ON m.momno=h.momno
-		<where>
-			m.momno=#{momno}
-		</where>
-	</select>
 	
 	<!-- 찜하기 취소 -->
 	<delete id="deleteHeart"
 		parameterType="study.team.abuhae.model.Heart">
 		DELETE FROM heart 
 		<where>
-		momno=#{momno} and sitterno=#{sitterno}
+		momno=#{momno} and sitterno=#{sitterno} and who=#{who}
 		</where>
 	</delete>
 
