@@ -17,6 +17,7 @@ import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.service.AdminService;
 import study.team.abuhae.service.CustomerService;
+import study.team.abuhae.service.MemberService;
 
 @RestController
 public class AdminRestController {
@@ -26,6 +27,8 @@ public class AdminRestController {
 	AdminService adminService;
 	@Autowired
 	CustomerService customerService;
+	@Autowired
+	MemberService memberService;
 	
 	@RequestMapping(value = "admin/jobopening_update", method = RequestMethod.POST)
 	public Map<String, Object> admin_jobopening_put(Model model,
@@ -51,9 +54,12 @@ public class AdminRestController {
 		Leave_member input = new Leave_member();
 		input.setId(id);
 		
+		Mom_info output = null;
+		
 		try {
-			//jobopeing 수정
-			adminService.deleteLeaveMember(input);
+			//회원 아이디에 대한 memberno 조회
+			output = (Mom_info) memberService.getMemberItem(input);
+			adminService.deleteLeaveMember(output);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
@@ -83,7 +89,7 @@ public class AdminRestController {
 			@RequestParam(value = "boardnum", defaultValue = "0") int boardno) {
 		
 		if (boardno == 0)                       
-		{ return webHelper.getJsonWarning("삭제할 데이터를 선택하세요."); }
+		{ return webHelper.getJsonWarning("checking delete item."); }
 
         
         //데이터 저장

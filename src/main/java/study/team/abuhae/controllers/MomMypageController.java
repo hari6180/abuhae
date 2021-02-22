@@ -21,16 +21,20 @@ import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Coupon;
 import study.team.abuhae.model.Heart;
+import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
+import study.team.abuhae.service.AdminService;
 import study.team.abuhae.service.MomMypageService;
 
 @Controller
 public class MomMypageController {
 	@Autowired
 	MomMypageService momMypageService;
+	@Autowired
+	AdminService adminService;
 	@Autowired WebHelper webHelper;
 	@Autowired RegexHelper regexHelper;
 	@Value("#{servletContext.contextPath}")
@@ -331,6 +335,53 @@ public class MomMypageController {
 
 		return "mypage/mypage_mom/leave_abu";
 	}
+	
+	/** 회원탈퇴 신청 ok */
+	@RequestMapping(value = "/mypage/mypage_mom/leaveok.do", method = RequestMethod.POST)
+	public ModelAndView leave_momOK(Model model,
+			@RequestParam(value = "memberno", defaultValue = "0") int memberno,
+			@RequestParam(value = "leave_reason") String reason) {
+		
+		//데이터 불러올 객체
+		Leave_member input = new Leave_member();
+		Mom_info input2 = new Mom_info();
+		input2.setMemberno(memberno);
+		
+		//회원 조회 먼저
+		Mom_info output = null;
+		int output2=0;
+		
+		try {
+			//memberno을 통해 회원 단일 조회
+			output = momMypageService.getAccountItem(input2);
+			
+			//조회된 회원 객체로 leavemember에 있는지 확인
+			output2 = adminService.getLeaveCount(output);
+			
+			//조회된 내용이 null이라면 신청 X
+			if(output2 == 0) {
+				input.setType(output.getType());
+				input.setId(output.getId());
+				input.setName(output.getName());
+				input.setEmail(output.getEmail());
+				input.setPhone(output.getPhone());
+				input.setReason(reason);
+				momMypageService.addAbuOut(input);
+			} else {
+				return webHelper.redirect(null, "Requesting already.");
+			}
+			
+			
+			
+			
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+
+		return webHelper.redirect(null, "Success request Out");
+	}
+	
 	
 	/** 아부해 서비스 이용 동의 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/agree_service.do", method = RequestMethod.GET)

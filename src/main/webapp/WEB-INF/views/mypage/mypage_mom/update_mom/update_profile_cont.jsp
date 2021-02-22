@@ -143,7 +143,7 @@
 <body>
     <div id="app">
         <div class="container">
-            <form method="POST" action="#">
+            <form>
                 <!-- header -->
                 <header class="mp_detail_tl">
                     <div class="row">
@@ -152,7 +152,7 @@
                                 <i class="fas fa-times"></i>
                             </a>
                             <h3 class="center-block">신청서 수정</h3>
-                            <button type="submit">저장</button>
+                            <button class="editok" type="submit">저장</button>
                         </div>
                     </div>
                 </header>
@@ -194,15 +194,15 @@
                                 <div class="choice_title">
                                     <select name="mom_appl_title" id="mom_appl_title">
                                         <option value="" disabled>제목을 입력해주세요.</option>
-                                        <option value="1">하원 후 저녁 시간까지 돌봐줄 맘시터 찾습니다.</option>
-                                        <option value="2">아이가 좋아하는 놀이를 같이해줄 맘시터 찾습니다.</option>
-                                        <option value="3">간단한 학습지도를 해줄 맘시터 찾습니다.</option>
-                                        <option value="4">야외 활동 같이해줄 맘시터 찾습니다.</option>
-                                        <option value="5">+ 직접입력</option>
+                                        <option value="하원 후 저녁 시간까지 돌봐줄 맘시터 찾습니다.">하원 후 저녁 시간까지 돌봐줄 맘시터 찾습니다.</option>
+                                        <option value="아이가 좋아하는 놀이를 같이해줄 맘시터 찾습니다.">아이가 좋아하는 놀이를 같이해줄 맘시터 찾습니다.</option>
+                                        <option value="간단한 학습지도를 해줄 맘시터 찾습니다.">간단한 학습지도를 해줄 맘시터 찾습니다.</option>
+                                        <option value="야외 활동 같이해줄 맘시터 찾습니다.">야외 활동 같이해줄 맘시터 찾습니다.</option>
+                                        <option value="jikjub">+ 직접입력</option>
                                     </select>
                                 </div>
                                 <div class="mom_appl_title_text hide">
-                                    <input type="text" name="mom_appl_title_text" placeholder="영어놀이, 등하원돕기, 학습지도 맘시터 찾습니다.">
+                                    <input type="text" id="appl_title" name="mappl_title" placeholder="영어놀이, 등하원돕기, 학습지도 맘시터 찾습니다.">
                                 </div>
                             </div>
                         </div>
@@ -213,7 +213,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <h5 class="upd_img_tl">3. 신청 내용(선택사항)</h5>
-                                <textarea name="mom_appl_cont" id="mom_appl_cont" cols="30" rows="7"
+                                <textarea name="mappl_cont" id="mom_appl_cont" cols="30" rows="7"
                                     placeholder="아이 성별, 나이(개월 수), 성격, 특이사항 등을 적어주세요."></textarea>
                                 <div class="mom_appl_ban">
                                     <div>
@@ -408,40 +408,40 @@
                                 <div class="location_group" id="dong">
                                     <div class="hide_content">
                                         <div>
-                                            <button>가산동</button>
+                                            <button type="button">가산동</button>
                                         </div>
                                         <div>
-                                            <button>독산1동</button>
+                                            <button type="button">독산1동</button>
                                         </div>
                                         <div>
-                                            <button>독산2동</button>
+                                            <button type="button">독산2동</button>
                                         </div>
                                         <div>
-                                            <button>독산3동</button>
+                                            <button type="button">독산3동</button>
                                         </div>
                                         <div>
-                                            <button>독산4동</button>
+                                            <button type="button">독산4동</button>
                                         </div>
                                         <div>
-                                            <button>독산동</button>
+                                            <button type="button">독산동</button>
                                         </div>
                                         <div>
-                                            <button>시흥1동</button>
+                                            <button type="button">시흥1동</button>
                                         </div>
                                         <div>
-                                            <button>시흥2동</button>
+                                            <button type="button">시흥2동</button>
                                         </div>
                                         <div>
-                                            <button>시흥3동</button>
+                                            <button type="button">시흥3동</button>
                                         </div>
                                         <div>
-                                            <button>시흥4동</button>
+                                            <button type="button">시흥4동</button>
                                         </div>
                                         <div>
-                                            <button>시흥5동</button>
+                                            <button type="button">시흥5동</button>
                                         </div>
                                         <div>
-                                            <button>시흥동</button>
+                                            <button type="button">시흥동</button>
                                         </div>
                                     </div>
                                 </div>
@@ -481,13 +481,13 @@
                                         <div>
                                             <div class="regu_title">돌봄 요일</div>
                                             <div class="day_btn_group">
-                                                <button class="day_btn" value="mon">월</button>
-                                                <button class="day_btn" value="tue">화</button>
-                                                <button class="day_btn" value="wen">수</button>
-                                                <button class="day_btn" value="thu">목</button>
-                                                <button class="day_btn" value="fri">금</button>
-                                                <button class="day_btn" value="sat">토</button>
-                                                <button class="day_btn" value="sun">일</button>
+                                                <button type="button" class="day_btn" value="mon">월</button>
+                                                <button type="button" class="day_btn" value="tue">화</button>
+                                                <button type="button" class="day_btn" value="wen">수</button>
+                                                <button type="button" class="day_btn" value="thu">목</button>
+                                                <button type="button" class="day_btn" value="fri">금</button>
+                                                <button type="button" class="day_btn" value="sat">토</button>
+                                                <button type="button" class="day_btn" value="sun">일</button>
                                             </div>
                                         </div>
                                         <hr>
@@ -1164,249 +1164,11 @@
 
 
 		<!-- Javascript -->
-		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script>
-            $(function() {
-                function upload_img(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        var img_html = "<div class=user_img><img src="+e.target.result+'></div>';
-                        $(".upload_prof").append(img_html);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-            $("#new_profile_img").change(function() {
-                upload_img(this);
-                $(".upload_prof").css('justify-content', 'flex-start');
-            });
-
-                /** 직접 입력 클릭 시 텍스트 박스 나타남 */
-                $("#mom_appl_title").change(function() {
-                    var value = $(this).val();
-                    if (value==5) {
-                        $(".mom_appl_title_text").removeClass("hide");
-                    } else {
-                        $(".mom_appl_title_text").addClass("hide");
-                    }
-                });
-            });
-            
-            $(function () {
-                //시 클릭했을 때
-                $(".loc_btn").on("click", function () {
-                    var select = $(this).hasClass("select_location");
-                    //선택이 안되어있을때
-                    if (select == false) {
-                        //선택이 되어있는 요소 탐색
-                        var loc = $("#si").find("button").removeClass("select_loaction");
-                        //console.log(loc);
-                        $(this).addClass("select_loaction");
-                        //시 선택하면 gu 보이게
-                        $("#gu>div").removeClass("hide_content");
-                        $("#gu>div").addClass("show_content");
-                    }
-
-                });
-                //구 클릭했을 때
-                $("#gu button").on("click", function () {
-                    var select = $(this).hasClass("select_location");
-                    //선택이 안되어있을때
-                    if (select == false) {
-                        //선택이 되어있는 요소 탐색
-                        var loc = $("#gu").find("button").removeClass("select_loaction");
-                        //console.log(loc);
-                        $(this).addClass("select_loaction");
-                        //구 선택하면 동 보이게
-                        $("#dong>div").removeClass("hide_content");
-                        $("#dong>div").addClass("show_content");
-                    }
-                });
-
-                //동 클릭했을때
-                $("#dong button").on("click", function () {
-                    var select = $(this).hasClass("select_location");
-                    //선택이 안되어있을때
-                    if (select == false) {
-                        //선택이 되어있는 요소 탐색
-                        var loc = $("#dong").find("button").removeClass("select_loaction");
-                        //console.log(loc);
-                        $(this).addClass("select_loaction");
-                    }
-                });
-            });
-            
-            $(function() {
-                
-                /** 직접 입력 클릭 시 텍스트 박스 나타남 */
-                $(".upd_ct_tab_item_link").click(function(e) {
-                    e.preventDefault();
-
-                    $(".upd_ct_tab_item_link").not(this).removeClass("selected");
-                    $(this).addClass("selected");
-
-                    var target = $(this).attr("href");
-                    $(target).removeClass("hide");
-                    $(".upd_ct_tab_page").not($(target)).addClass("hide");
-                });
-
-                $('#datepicker').flatpickr({
-                    dateFormat: "Y/m/d",
-                    minDate: "today",
-                    maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
-                    defaultDate: new Date().fp_incr(6) //지금으로부터 6일이 기본
-                });
-
-                //요일 선택시 
-                $(".day_btn").on("click", function () {
-                                $(this).toggleClass("select_btn");
-
-				var count = $(".select_btn").length;
-				if (count == 0) {
-					$("#content").removeClass("show_content");
-					$("#content").addClass("hide_content");
-				} else {
-					$("#content").removeClass("hide_content");
-					$("#content").addClass("show_content");
-				}
-            });
-            
-            $(".calrendar_block").flatpickr({
-                inline: true,
-                dateFormat: "Y/m/d",
-                minDate: "today",
-                maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
-                defaultDate: new Date().fp_incr(6) //지금으로부터 6일이 기본
-            });
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/myPageedit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
-			//일정 조정 선택
-			$(".jojung_box").on("click", function () {
-				$(this).toggleClass("box_check");
-				$(this).find(".jojung_check").toggleClass("check_check");
-			});
-            });
-            
-            function addCommas(x) {
-                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            }
-            $(function () {
-                //시급 입력시 콤마 자동으로 찍히기
-                $("#payment_input").on("blur", function () {
-                    var val = $(this).val();
-                    if (val.length != 0) {
-                        $(this).val(addCommas($(this).val().replace(/[^0-9]/g, "")));
-                    }
-    
-                    if (/\D/.test(val)) {
-                        val = val.replace(/\D/g, '')
-                        alert('숫자만 입력가능합니다.');
-                        $("#payment_input").val("0");
-                    }
-                    if (val < 8590) {
-                        val = 8590;
-                        alert('최저시급 이상 입력해야 합니다.');
-                        $("#payment_input").val("8590");
-    
-                    }
-                });
-    
-    
-                //아이명수 클릭시 버튼 색상 바뀜
-                $(".childeren_num1, .childeren_num2").on("click", function () {
-                    var select = $(this).hasClass("childeren_num1");
-    
-                    //num1 클릭했을 때
-                    if (select) {
-                        //버튼 색상 적용
-                        $(this).removeClass("btn_children_off");
-                        $(this).addClass("btn_children_on");
-                        $(this).next().removeClass("btn_children_on");
-                        $(this).next().addClass("btn_children_off");
-                        ;
-    
-                    } else {
-                        //num2 클릭했을 때
-                        $(this).removeClass("btn_children_off");
-                        $(this).addClass("btn_children_on");
-                        $(this).prev().removeClass("btn_children_on");
-                        $(this).prev().addClass("btn_children_off");
-                    }
-    
-                    $(".noselect_title").empty();
-                    //버튼 클릭시에 내용 변경
-                    /**var test = $(this).attr('data-tab');
-                    $.ajax({
-                        type: 'GET',                 //get방식으로 통신
-                        url: test + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
-                        dataType: "html",            //html형식으로 값 읽기
-                        error: function () {          //통신 실패시 ㅠㅠ
-                            alert('통신실패!');
-                        },
-                        success: function (data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
-                            $('.select_title').html(data);
-                        }
-                    });*/
-    
-                });
-    
-            });
-            
-            $(function () {
-           //활동 버튼 클릭
-           $(".care_age").click(function (e) {
-               //버튼 클릭시 이미지 URL 변경
-               //url 가져오기
-               var img_url = $(this).next().find(".want_img").attr('src');
-               var indeximg = img_url.indexOf("_n") //잘라서 _n이 있는지 확인
-               if (indeximg > -1) {
-                   var img_src = img_url.replace(/_n/, "_s");
-                   $(this).next().find(".want_img").attr('src', img_src);
-               } else {
-                   var img_src = img_url.replace(/_s/, "_n");
-                   $(this).next().find(".want_img").attr('src', img_src);
-               }
-
-
-           });
-       });
-            
-            $(function () {
-                //활동 버튼 클릭
-                $(".care_age").click(function (e) {
-                    //버튼 클릭시 이미지 URL 변경
-                    //url 가져오기
-                    var img_url = $(this).next().find(".want_img").attr('src');
-                    var indeximg = img_url.indexOf("_n") //잘라서 _n이 있는지 확인
-                    if (indeximg > -1) {
-                        var img_src = img_url.replace(/_n/, "_s");
-                        $(this).next().find(".want_img").attr('src', img_src);
-                    } else {
-                        var img_src = img_url.replace(/_s/, "_n");
-                        $(this).next().find(".want_img").attr('src', img_src);
-                    }
-                });
-                
-   
-                  
-                  /** 직접 입력 클릭 시 텍스트 박스 나타남 */
-                  $(".child_num").click(function(e) {
-                      e.preventDefault();
-
-                     /** $(".upd_ct_tab_item_link").not(this).removeClass("selected");
-                      $(this).addClass("selected"); */
-
-                      var target = $(this).attr("href");
-                      $(target).removeClass("hide");
-                      $(".select_title").not($(target)).addClass("hide");
-                  });
-            });
-            
-        </script>
- 
 	</body>
 </html>

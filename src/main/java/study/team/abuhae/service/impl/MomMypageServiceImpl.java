@@ -11,6 +11,7 @@ import study.team.abuhae.helper.MailHelper;
 import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Coupon;
 import study.team.abuhae.model.Heart;
+import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Review;
@@ -331,6 +332,25 @@ public class MomMypageServiceImpl implements MomMypageService {
 			throw new Exception("수정된 데이터가 없습니다.");
 		} catch (Exception e) {
 			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public int addAbuOut(Leave_member input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.insert("MomMypageMapper.addleaveMem", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 저장에 실패했습니다.");
 		}
 		return result;
 	}

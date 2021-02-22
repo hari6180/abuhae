@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -32,7 +35,21 @@
     <body>
         <div id="app">
             <div class="container">
-                <%@ include file="../../index_header.jsp" %>
+                <div id="menu">
+                    <c:if test="${login != null }">
+                        <c:choose>
+                            <c:when test="${fn:contains(login.type, 'M')}">
+                                <%@ include file="../../index_header_login_mom.jsp"%>
+                            </c:when>
+                            <c:when test="${fn:contains(login.type, 'S')}">
+                                <%@ include file="../../index_header_login_sitter.jsp"%>
+                            </c:when>
+                        </c:choose>
+                    </c:if>
+                    <c:if test="${login == null }">
+                        <%@ include file="../../index_header.jsp"%>
+                    </c:if>
+                </div>
 
                <div class="wrap_leave_abu">
                     <!-- content -->
@@ -91,9 +108,10 @@
                                         <li>회원 탈퇴 처리가 완료되면, 약관에 따라 데이터가 삭제되며 복구되지 않습니다.</li>
                                     </ul>
                                 </div>
-                                <form action="#">
+                                <form name="form" method="POST" action="${pageContext.request.contextPath}/mypage/mypage_mom/leaveok.do" onsubmit="return check()">
                                     <div class="recheck_reason">
                                         <label for="leave_reason">탈퇴 사유</label>
+                                        <input type="hidden" name="memberno" value="${login.memberno}">
                                         <input type="text" name="leave_reason" id="leave_reason" placeholder="여기에 적어주세요.">
                                         <p>알려주신 소중한 내용으로 더 좋은 맘시터 서비스를 만들 수 있도록 노력하겠습니다.</p>
                                         <button type="submit">탈퇴 신청</button>
@@ -110,10 +128,18 @@
 		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
         <script type="text/javascript">
-        	<!-- header 삽입 -->
-        <!--	$(function() {
-        		$("#menu").load("../../index_header.html");
-        	}); -->
+            function check(){
+                if(form.leave_reason.value==""){
+                    alert("탈퇴 사유를 적어 주세요.");
+                    $("#leave_reason").focus();
+                    return false;
+                }
+
+                if (!confirm("정말 탈퇴하시겠습니까?")) {
+							return false;
+				}
+                return true;
+            }
         </script>
 	</body>
 </html>

@@ -211,7 +211,8 @@ public class AdminController {
 
         /** 2) 데이터 조회하기 */
         // 조회에 필요한 조건값(검색어)를 Beans에 담는다.
-        Leave_member input = new Leave_member();
+        Mom_info input = new Mom_info();
+        Leave_member input2 = new Leave_member();
 
 
         List<Leave_member> output = null;   // 조회결과가 저장될 객체
@@ -228,7 +229,7 @@ public class AdminController {
             Member.setListCount(pageData.getListCount());
             
             // 데이터 조회하기
-            output = adminService.getLeaveList(input);
+            output = adminService.getLeaveList(input2);
         } catch (Exception e) {
             return webHelper.redirect(null, e.getLocalizedMessage());
         }

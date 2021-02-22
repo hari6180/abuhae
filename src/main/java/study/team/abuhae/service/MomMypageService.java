@@ -5,6 +5,7 @@ import java.util.List;
 import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Coupon;
 import study.team.abuhae.model.Heart;
+import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Review;
@@ -55,6 +56,10 @@ public interface MomMypageService {
 	
 	//비밀번호 수정
 	public int updatePassword(Mom_info input) throws Exception;
+	
+	//탈퇴 요청 처리
+	public int addAbuOut(Leave_member input) throws Exception;
+	
 	//////////선아 작업/////////////////
 }
 

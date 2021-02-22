@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class Leave_member {
 	private int leav_mem;
+	private char type;
 	private String id;
 	private String name;
 	private String email;

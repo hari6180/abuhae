@@ -18,6 +18,7 @@
 		type="study.team.abuhae.model.Leave_member">
 		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
 		<result property="leav_mem" column="leav_mem" />
+		<result property="type" column="type" />
 		<result property="id" column="id" />
 		<result property="name" column="name" />
 		<result property="email" column="email" />
@@ -151,9 +152,7 @@
 	<!-- 탈퇴회원수 조회 -->
 	<select id="selectCountLeaveMember"
 		parameterType="study.team.abuhae.model.Leave_member" resultType="int">
-		select count(*) from leave_member
-		
-		
+		select count(*) from leave_member where id=#{id}
 	</select>
 	
 	<!-- 탈퇴회원 리스트 조회 -->
@@ -162,10 +161,11 @@
 		select * from leave_member
 	</select>
 	
-	<!-- 회원 삭제 -->
-	<delete id="deleteLeaveMember" parameterType="study.team.abuhae.model.Leave_member">
-		delete from leave_member where id=#{id}
-	</delete>
+	<!-- 탈퇴 처리 날짜 업데이트 -->
+	<update id="updateLeaveDate" parameterType="study.team.abuhae.model.Leave_member">
+		update leave_member set leaveok_date=now() where id=#{id};
+	</update>
+
 	
 	<!-- ========== 탈퇴 회원 관리 ============== -->
 	

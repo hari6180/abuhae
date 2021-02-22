@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Sitter_info;
@@ -11,6 +12,9 @@ import study.team.abuhae.model.Sitter_info;
 public interface MemberService {
 	//로그인 하는 회원 조회
 	public Member getMemberLogin(Mom_info input) throws Exception;
+	
+	//회원 탈퇴를 위한 특정 아이디 단일행 조회
+	public Member getMemberItem(Leave_member input) throws Exception;
 	
 	//맘시터 회원 조회
 	public Mom_info getMomMember(Mom_info input) throws Exception;

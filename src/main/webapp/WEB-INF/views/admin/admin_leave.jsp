@@ -68,7 +68,7 @@
 
 						<div class="btn_list">
 							<button class="rep_btn" type="button">
-								<a href="#"> <i class="fas fa-times"></i> 회원삭제
+								<a href="#"> <i class="fas fa-times"></i> 탈퇴승인
 								</a>
 							</button>
 						</div>
@@ -78,13 +78,14 @@
 							<thead>
 								<tr role="row">
 									<th class="text-center"><input type="checkbox" id="all_check"></th>
+									<th class="text-center">회원유형</th>
 									<th class="text-center">id</th>
 									<th class="text-center">이름</th>
 									<th class="text-center">email</th>
 									<th class="text-center">phone</th>
 									<th class="text-center">탈퇴사유</th>
 									<th class="text-center">탈퇴신청 일자</th>
-									<th class="text-center">탈퇴처리 일자</th>
+									<th class="text-center">탈퇴승인 일자</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -101,6 +102,12 @@
 										<c:forEach var="item" items="${output}" varStatus="status">
 											<tr>
 												<td class="text-center"><input type="checkbox" name="chk"></td>
+												<c:if test="${fn:contains(item.type, 'M')}">
+													<td align="center">부모회원</td>
+												</c:if>
+												<c:if test="${fn:contains(item.type, 'S')}">
+													<td align="center">시터회원</td>
+												</c:if>
 												<td align="center">${item.id}</td>
 												<td align="center">${item.name}</td>
 												<td align="center">${item.email}</td>
@@ -212,7 +219,7 @@
 						var tr = checkbox.parent().parent().eq(i); //checkbox의 두단계 상위가 tr
 						var td = tr.children(); //td태그는 tr의 하위
 	
-						id = td.eq(1).text(); //id는 td의 두번째 요소
+						id = td.eq(2).text(); //id는 td의 두번째 요소
 					});
 	
 					$.ajax({

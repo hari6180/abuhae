@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import study.team.abuhae.helper.MailHelper;
+import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Sitter_info;
@@ -361,6 +362,28 @@ public class MemberServiceImpl implements MemberService {
 
 		try {
 			result = sqlsession.selectOne("MemberMapper.selectSitterItem", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		//반환된 데이터가 있으면 데이터 조회가 있다는 뜻
+		return result;
+	}
+
+	@Override
+	public Member getMemberItem(Leave_member input) throws Exception {
+		Member result = null;
+
+		try {
+			result = sqlsession.selectOne("MemberMapper.selectIdItem", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}

@@ -263,6 +263,17 @@
 		<result property="frequency" column="frequency" />
 		<result property="days" column="days" />
 	</resultMap>
+	<resultMap id="LeaveMap" type="study.team.abuhae.model.Leave_member">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="leav_mem" column="leav_mem" />
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="reason" column="reason" />
+		<result property="leave_date" column="leave_date" />
+		<result property="leaveok_date" column="leaveok_date" />
+	</resultMap>
 
 <!-- 로그인한 회원정보 조회 조회 -->
 	<select id="selectMomItem" 
@@ -406,6 +417,13 @@
    <update id="updateMemberPw"  parameterType="study.team.abuhae.model.Member">
       update member set password=#{password} where memberno=#{memberno};
    </update>
+   
+   <insert id="addleaveMem"
+   	parameterType="study.team.abuhae.model.Leave_member"
+		useGeneratedKeys="true" keyProperty="leav_mem">
+	insert into leave_member (type,id, name, email, phone, reason, leave_date) values 
+	(#{type},#{id}, #{name}, #{email}, #{phone}, #{reason}, now()); 	
+	</insert>
    
 </mapper>
 

@@ -19,10 +19,10 @@ h6 {
 }
 
 h3 {
-	padding: 0;
-	margin: 0;
-	font-weight: bold;
-	font-size: 1.4em;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.4em;
 }
 
 a {
@@ -236,6 +236,7 @@ a:hover {
 .wrap_upd_loc .upd_loc_cont1 {
   display: flex;
   flex-direction: row;
+  height: 450px;
 }
 
 .wrap_upd_loc .location_group {
@@ -620,8 +621,8 @@ a:hover {
 }
 
 .upd_care_age_in {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .request_box {

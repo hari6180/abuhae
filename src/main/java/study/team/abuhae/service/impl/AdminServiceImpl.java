@@ -138,7 +138,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int getLeaveCount(Leave_member input) throws Exception {
+	public int getLeaveCount(Mom_info input) throws Exception {
 		int result = 0;
 		try {
 			result = sqlsession.selectOne("AdminMapper.selectCountLeaveMember", input);
@@ -150,11 +150,25 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public int deleteLeaveMember(Leave_member input) throws Exception {
+	public int deleteLeaveMember(Mom_info input) throws Exception {
 		int result = 0;
 		
 		try {
-			result = sqlsession.update("AdminMapper.deleteLeaveMember", input);
+
+			//탈퇴 처리 날짜 업데이트
+			result = sqlsession.update("AdminMapper.updateLeaveDate", input);
+			if(input.getType() == 'M') {
+				//mominfo 삭제
+				result = sqlsession.update("MemberMapper.mominfoDelete", input);
+				//member 삭제
+				result = sqlsession.update("MemberMapper.memberDelete", input);
+			} else {
+				//sitterinfo 삭제
+				result = sqlsession.update("MemberMapper.sitterinfoDelete", input);
+				//member 삭제
+				result = sqlsession.update("MemberMapper.memberDelete", input);
+			}
+			
 			
 			if (result==0) {
 				throw new NullPointerException("result=0");
@@ -168,6 +182,8 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return result;
 	}
+	
+	
 	
 	//=======이용권 회원 조회 ============
 	@Override
@@ -382,6 +398,5 @@ public class AdminServiceImpl implements AdminService {
 	
 
 
-	
 
 }
