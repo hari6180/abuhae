@@ -29,11 +29,54 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/page_detail_for_sitter.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/page_detail_for_sitter.css" />	
 	
+<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+<script type="text/javascript">
+
+jQuery(function($) {
+	$('#swapHeart').on('click', function() {
+		
+		
+		var $jim = $(this);
+        let sitterno = $(this).data("sitterno");
+        let momno = $("#app").data("login");
+
+        // 찜할 때 alert창과 glyphicon변형
+        if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+          $(this).find("span").removeClass("glyphicon-heart-empty");
+          $(this).find("span").addClass("glyphicon-heart");
+          $.get("${pageContext.request.contextPath}/heart/detail/insertSt", {
+            sitterno: sitterno,
+            momno: momno,
+            jjim: "Y",
+          });
+          swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+        }
+        // 찜 취소할 때 alert창과 glyphicon변형
+        else {
+          $(this).find("span").addClass("glyphicon-heart-empty");
+          $.get("${pageContext.request.contextPath}/heart/detail/deleteSt", {
+            sitterno: sitterno,
+            momno: momno,
+            jjim: "N",
+          });
+          swal("찜 하기 취소");
+        }
+        }); // fin. 찜버튼 기능
+	}); 
+ </script>
+ <!-- jquery 파일명 수정 -->
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
+<style type="text/css">
+	.swal-button {
+		background-color: #ff7000;
+	}
+</style>
 </head>
 	
 <body>		
+	<div id="app" data-login="${login.momno}">
 		<div class="container">
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
@@ -983,6 +1026,7 @@
 						</div> <!-- fin. famille_area -->
 					</div> <!-- fin. famille_box -->
 				</div> <!-- fin. Main -->
+				
 				<!-- ----------하단고정 부분 시작------------ -->
 				<div class="fixed_box">
 					<div class="fixed_area">
@@ -999,20 +1043,13 @@
 						</div>
 					</div> <!-- fin. fixed_area -->
 					<div class="fixed_btn">
-					<a href="${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_heart_delete_ok.do?sitterno=${output.sitterno}">
-					취소 
-					</a>
+					
 						<div class="fixed_btn_jim">
-						<form action="${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_heart_ok.do" method="post">		
-							<button id="swapHeart" class="btn btn-default" type="submit">									
-								<div class="jim">
-								    <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 25px;"></span>
-								</div>									
-							</button>
-							<input type="hidden" id="who" name="who" value="M">
-							<input type="hidden" id="momno" name="momno" >
-							<input type="hidden" id="sitterno" name="sitterno" value="${output.sitterno}">	
-						</form>
+						
+							<button id="swapHeart" class="btn btn-default swap" type="button" data-sitterno="${output.sitterno}">
+						    <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 25px;"></span>
+						</button>
+							
 						</div> <!-- fin. fixed_btn_jim -->					
 						<div class="interview_btn">
 							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/sitter_interview.do?sitterno=${output.sitterno}';">
@@ -1025,62 +1062,9 @@
 						</div> <!-- fin. interview_btn -->
 					</div> <!-- fin. fixed_btn -->
 				</div> <!-- fin. fixed_box -->				
-			</div> <!-- fin. col-xs-12 -->
-		</div>
+			
 	
 		<!-- Javascript -->
-		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
-		<script type="text/javascript">
-		jQuery(function($) {
-			
-			$('#swapHeart').click(function(e) {
-				e.preventDefault();
-				window.location = "${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_heart_ok.do?sitterno=" + sitterno + "&memberno=" + ${login.memberno};
-			});
-				
-				
-			 /* $('#swapHeart').on('click', function() {
-				
-			    var $jim = $(this)
-			    
-			    
-			    // 찜할 때 alert창과 glyphicon변형
-			    if($(this).find('span').hasClass("glyphicon-heart-empty")) {
-			    	$(this).find('span').removeClass("glyphicon-heart-empty");
-			    	$(this).find('span').addClass("glyphicon-heart");
-		            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
-		            
-			    }
-			 	// 찜 취소할 때 alert창과 glyphicon변형
-		        else{
-		           	swal("찜 하기 취소");
-		            $(this).find('span').addClass("glyphicon-heart-empty");
-		        }
-		    
-			  }); // fin. 찜버튼 기능 */
-			  			  
-			   $('.tabmenu').click(function() {
-					var activeTab = $(this).attr('data-tab');
-					$('#default').css('background-color', 'white');
-					$('#tab02').css('background-color', 'white');
-					$('#tab03').css('background-color', 'white');
-					$(this).css('background-color', 'rgb(255,238,224)');
-					$.ajax({
-						type : 'GET',                 //get방식으로 통신
-						url : activeTab + ".do",    //탭의 data-tab속성의 값으로 된 jsp파일로 통신
-						dataType : "html",            //html형식으로 값 읽기
-						error : function() {          //통신 실패시 ㅠㅠ
-							alert('통신실패!');
-						},
-						success : function(data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
-							$('#tabcontent').html(data);
-						}
-					});
-				});
-				$('#default').click(); 
-			}); // fin. 탭 기능 */
-		</script>
-		 <!-- jquery 파일명 수정 -->
-		<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
+		
 	</body>
 </html>

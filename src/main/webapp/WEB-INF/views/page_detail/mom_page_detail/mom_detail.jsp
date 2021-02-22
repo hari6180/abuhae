@@ -29,10 +29,48 @@
 
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/mom_page_detail.css" />
+
+<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+	jQuery(function($) {
+		$('#swapHeart').on('click', function() {
+		
+	          var $jim = $(this);
+	          let momno = $(this).data("momno");
+	          let stno = $("#app").data("login");
+
+	          // 찜할 때 alert창과 glyphicon변형
+	          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+	            $(this).find("span").removeClass("glyphicon-heart-empty");
+	            $(this).find("span").addClass("glyphicon-heart");
+	            $.get("${pageContext.request.contextPath}/heart/detail/insertMom", {
+	              sitterno: stno,
+	              momno: momno,
+	              jjim: "Y",
+	            });
+	            swal("찜 하기 완료!", "마이페이지 > 찜한 맘회원에서 확인할 수 있습니다.");
+	          }
+	          // 찜 취소할 때 alert창과 glyphicon변형
+	          else {
+	            $(this).find("span").addClass("glyphicon-heart-empty");
+	            $.get("${pageContext.request.contextPath}/heart/detail/deleteMom", {
+	              sitterno: stno,
+	              momno: momno,
+	              jjim: "N",
+	            });
+	            swal("찜 하기 취소");
+	          }
+	        }); // fin. 찜버튼 기능
+		}); 
+	 </script>
+	 <!-- jquery 파일명 수정 -->
+	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
 </head>
 	
 <body>		
-		<div class="container">
+		<div id="app" data-login="${login.sitterno}">
+		<div class="container" >
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
 					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href='${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report.do?momno=${output.momno}';">
@@ -824,6 +862,9 @@
 					
 					
 				</div> <!-- fin. Main -->
+				</div>
+				</div>
+				
 				<!-- ----------하단고정 부분 시작------------ -->
 			<div class="fixed_box col-xs-12">
 				<div class="fixed_area">
@@ -844,7 +885,7 @@
 					<div class="fixed_btn_jim">
 					
 					
-						<button id="swapHeart" class="btn btn-default swap" type="button">
+						<button id="swapHeart" class="btn btn-default swap" type="button" data-momno="${output.momno}">
 						    <span class="glyphicon glyphicon-heart-empty" style="color: rgb(0, 143, 105); font-size: 25px;"></span>
 						</button>					
 					</div>
@@ -859,6 +900,7 @@
 					</div>
 				</div>
 			</div> <!-- fin. fixed_box -->
+			
 				<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<!-- .modal-dialog -->
 					<div class="modal-dialog">
@@ -886,42 +928,6 @@
 			
 	
 		<!-- Javascript -->
-		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
-		<script type="text/javascript">
 		
-		jQuery(function($) {
-			
-			 $(document).on("click", ".swapHeart", function (e) {
-		          e.stopPropagation(); // 버블링 방지 1220 하리
-		          var $jim = $(this);
-		          let momno = $(this).data("momno");
-		          let stno = $("#app").data("login");
-
-		          // 찜할 때 alert창과 glyphicon변형
-		          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
-		            $(this).find("span").removeClass("glyphicon-heart-empty");
-		            $(this).find("span").addClass("glyphicon-heart");
-		            $.get("${pageContext.request.contextPath}/heart/detail/insertMom", {
-		              sitterno: stno,
-		              momno: momno,
-		              jjim: "Y",
-		            });
-		            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
-		          }
-		          // 찜 취소할 때 alert창과 glyphicon변형
-		          else {
-		            $(this).find("span").addClass("glyphicon-heart-empty");
-		            $.get("${pageContext.request.contextPath}/heart/detail/deleteMom", {
-		              sitterno: stno,
-		              momno: momno,
-		              jjim: "N",
-		            });
-		            swal("찜 하기 취소");
-		          }
-		        }); // fin. 찜버튼 기능
-			}); */
-		 </script>
-		 <!-- jquery 파일명 수정 -->
-		<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
 	</body>
 </html>

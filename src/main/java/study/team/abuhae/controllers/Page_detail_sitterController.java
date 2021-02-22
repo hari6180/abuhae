@@ -100,51 +100,6 @@ public class Page_detail_sitterController {
 		//return "/page_detail/sitter_page_detail/sitter_interview";
 	}
 	
-			// 시터 상세페이지 > 찜하기 
-			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_heart_ok.do", method = RequestMethod.POST)
-			public ModelAndView heart_sitter_ok(Model model,
-					HttpServletResponse response,
-					@RequestParam(value = "who") char who,
-					@RequestParam(value = "momno") int momno,
-					@RequestParam(value = "sitterno") int sitterno) {
-			
-				Heart input = new Heart();
-				input.setWho(who);
-				input.setMomno(momno);
-				input.setSitterno(sitterno);
-				
-				try {
-					detailService.addHeart(input);
-					
-				} catch (Exception e) {
-					return webHelper.redirect(null, e.getLocalizedMessage());
-				}
-				
-				String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
-				return webHelper.redirect(redirectUrl, "oooooooo!");
-			}
-			
-			// 시터 상세페이지 > 찜하기 
-			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_heart_delete_ok.do", method = RequestMethod.POST)
-			public ModelAndView deleteHeart_sitter_ok(Model model,
-					@RequestParam(value = "momno") int momno,
-					@RequestParam(value = "sitterno") int sitterno) {
-
-				Heart input = new Heart();
-				input.setMomno(momno);
-				input.setSitterno(sitterno);
-				
-				try {
-					detailService.deleteHeart(input);
-					
-				} catch (Exception e) {
-					return webHelper.redirect(null, e.getLocalizedMessage());
-				}
-				
-				String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
-				return webHelper.redirect(redirectUrl, "xxxxxxx!");
-			}
-
 			// 시터 상세페이지 > 인터뷰하기
 			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_interview_ok.do", method = RequestMethod.POST)
 			public ModelAndView interview_sitter_ok(Model model,
