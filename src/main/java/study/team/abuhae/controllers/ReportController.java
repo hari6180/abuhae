@@ -1,6 +1,7 @@
 package study.team.abuhae.controllers;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,7 +35,7 @@ public class ReportController {
 		// 맘 신고 페이지
 		@RequestMapping(value = "/page_detail/mom_page_detail/mom_report.do", method = RequestMethod.GET)
 		public String report_mom(Model model, HttpServletResponse response,
-			@RequestParam(value = "momno", defaultValue = "0") int momno) {
+			@RequestParam(value = "momno") int momno) {
 			
 			// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 			Mom_info input = new Mom_info();
@@ -59,12 +60,12 @@ public class ReportController {
 		
 		@RequestMapping(value = "/page_detail/mom_page_detail/mom_report_ok.do", method = RequestMethod.POST)
 		public ModelAndView report_mom_ok(Model model,
-				HttpServletResponse response,
-				@RequestParam(value = "who", defaultValue = "") char who,
-				@RequestParam(value = "type", defaultValue = "") String type,
-				@RequestParam(value = "contents", required = false, defaultValue = "") String contents,
-				@RequestParam(value = "momno", defaultValue = "0") int momno,
-				@RequestParam(value = "sitterno", defaultValue = "55") int sitterno) {
+				HttpServletResponse response, HttpSession session,
+				@RequestParam(value = "who", required = false) char who,
+				@RequestParam(value = "type", required = false) String type,
+				@RequestParam(value = "contents", required = false) String contents,
+				@RequestParam(value = "momno", required = false) int momno,
+				@RequestParam(value = "sitterno", required = false) int sitterno) {
 			
 			if(!regexHelper.isValue(type)) {
 				return webHelper.redirect(null, "신고 타입은 무조건 선택해야 합니다.");
@@ -92,7 +93,7 @@ public class ReportController {
 		// 시터 신고 페이지
 		@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_report.do", method = RequestMethod.GET)
 		public String report_sitter(Model model, HttpServletResponse response,
-				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+				@RequestParam(value = "sitterno" ) int sitterno) {
 			
 			// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 			Sitter_info input = new Sitter_info();
@@ -115,11 +116,11 @@ public class ReportController {
 		@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_report_ok.do", method = RequestMethod.POST)
 		public ModelAndView report_sitter_ok (Model model,
 				HttpServletResponse response,
-				@RequestParam(value = "who", defaultValue = "") char who,
-				@RequestParam(value = "type", defaultValue = "") String type,
-				@RequestParam(value = "contents", required = false, defaultValue = "") String contents,
-				@RequestParam(value = "momno", defaultValue = "55") int momno,
-				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+				@RequestParam(value = "who", required = false) char who,
+				@RequestParam(value = "type", required = false) String type,
+				@RequestParam(value = "contents", required = false) String contents,
+				@RequestParam(value = "momno", required = false) int momno,
+				@RequestParam(value = "sitterno", required = false) int sitterno) {
 			
 			if(!regexHelper.isValue(type)) {
 				return webHelper.redirect(null, "신고 타입은 무조건 선택해야 합니다.");

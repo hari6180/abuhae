@@ -35,10 +35,10 @@ public interface DetailService {
 	public int addConnect(Connect input) throws Exception;
 	
 	//맘시터 회원 조회
-		public Mom_info getMomMember(Mom_info input) throws Exception;
-			
-		//시터회원 회원 조회
-		public Sitter_info getSitterMember(Sitter_info input) throws Exception;
+	public Mom_info getMomMember(Mom_info input) throws Exception;
+		
+	//시터회원 회원 조회
+	public Sitter_info getSitterMember(Sitter_info input) throws Exception;
 	
 	
 
