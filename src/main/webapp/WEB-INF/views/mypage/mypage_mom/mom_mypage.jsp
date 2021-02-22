@@ -86,7 +86,7 @@
                                                <p>무제한 이용권 (6개월)</p>
                                            </div>
                                        </div>
-                                       <a href="${pageContext.request.contextPath}/buy/buy.do">
+                                       <a href="${pageContext.request.contextPath}/buy/buy.do?memberno=${output.memberno}">
                                            <button type="button" id="buy_btn">무제한 이용권 구매하기</button>
                                        </a>
                                    </div>

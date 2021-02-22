@@ -12,11 +12,17 @@ html,
 h1,
 h2,
 h3,
-h4,
 h5,
 h6 {
   padding: 0;
   margin: 0;
+}
+
+h3 {
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
+	font-size: 1.4em;
 }
 
 a {
@@ -613,20 +619,26 @@ a:hover {
   max-width: 600px;
 }
 
-.wrap_upd_request .request_box {
-  padding: 20px 0;
+.upd_care_age_in {
+	display: flex;
+	flex-direction: row;
 }
 
-.wrap_upd_request .request_box h4 {
+.request_box {
+  padding: 20px 0;
+  width: 100%;
+}
+
+.request_box h4 {
   font-weight: bold;
 }
 
-.wrap_upd_request .request_box i {
+.request_box i {
   color: #aaaaaa;
   font-size: 1.1em;
 }
 
-.wrap_upd_request .choice_gender {
+.choice_gender {
   padding-top: 10px;
   display: flex;
   flex-direction: row;
@@ -634,24 +646,24 @@ a:hover {
   text-align: center;
 }
 
-.wrap_upd_request .choice_gender input[type="radio"] {
+.choice_gender input[type="radio"] {
   display: none;
 }
 
-.wrap_upd_request .choice_gender input[type="radio"] + label {
+.choice_gender input[type="radio"] + label {
   width: 33.33%;
   line-height: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.wrap_upd_request .choice_gender input[type="radio"]:checked + label {
+.choice_gender input[type="radio"]:checked + label {
   background-color: #ff7000;
   color: #ffffff;
   border: 0;
 }
 
-.wrap_upd_request .choice_interview {
+.choice_interview {
   padding-top: 10px;
   display: flex;
   flex-direction: row;
@@ -660,41 +672,41 @@ a:hover {
   text-align: center;
 }
 
-.wrap_upd_request .choice_interview input[type="radio"] {
+.choice_interview input[type="radio"] {
   display: none;
 }
 
-.wrap_upd_request .choice_interview input[type="radio"] + label {
+.choice_interview input[type="radio"] + label {
   width: 33.33%;
   line-height: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.wrap_upd_request .choice_interview input[type="radio"]:checked + label {
+.choice_interview input[type="radio"]:checked + label {
   background-color: #ff7000;
   color: #ffffff;
   border: 0;
 }
 
-.wrap_upd_request .choice_care {
+.choice_care {
   padding-top: 10px;
 }
 
-.wrap_upd_request .choice_care input[type="radio"] + label {
+choice_care input[type="radio"] + label {
   font-size: 1.1em;
   margin-bottom: 10px;
   margin-left: 5px;
 }
 
 /** modal */
-.wrap_upd_request #interview_modal .modal-body h4 {
+#interview_modal .modal-body h4 {
   margin-bottom: 15px;
   color: #ff7000;
   font-weight: bold;
 }
 
-.wrap_upd_request #interview_modal .modal-body p {
+#interview_modal .modal-body p {
   margin-bottom: 30px;
   color: #4d4d4d;
   font-weight: bold;

@@ -18,35 +18,35 @@ import study.team.abuhae.service.MomMypageService;
 
 @Slf4j
 @Service
-public class MomMypageServiceImpl implements MomMypageService{
+public class MomMypageServiceImpl implements MomMypageService {
 	// mybatis 세션 객체 주입 설정
 	@Autowired
 	SqlSession sqlSession;
-	//mailhelper 주입
+	// mailhelper 주입
 	@Autowired
 	MailHelper mailhelper;
 	// Service 객체 주입
 	MomMypageService momMypageService;
-	
+
 	@Override
 	public Mom_info getMemberItem(Mom_info input) throws Exception {
-		 Mom_info result = null;
-	      
-	      try {
-	         result = sqlSession.selectOne("MomMypageMapper.selectMomItem", input);
-	         
-	         if (result==null) {
-	            throw new NullPointerException("result=null");
-	         }
-	      } catch (NullPointerException e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("조회된 데이터가 없습니다.");
-	      } catch (Exception e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("데이터 조회에 실패했습니다.");
-	      }
-	      
-	      return result;
+		Mom_info result = null;
+
+		try {
+			result = sqlSession.selectOne("MomMypageMapper.selectMomItem", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
 
 	}
 
@@ -54,166 +54,287 @@ public class MomMypageServiceImpl implements MomMypageService{
 	@Override
 	public int editReview(Review input) throws Exception {
 		int result = 0;
-	      
-	      try {
-	         result = sqlSession.update("ReviewMapper.editReview", input);
-	         
-	         if (result == 0) {
-	            throw new NullPointerException("result = 0");
-	         } 
-	      }  catch (NullPointerException e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("수정된 데이터가 없습니다.");
-	      } catch (Exception e) {
-	         throw new Exception("데이터 수정에 실패했습니다.");
-	      }
-	      return result;
+
+		try {
+			result = sqlSession.update("ReviewMapper.editReview", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
 	}
 
 	/** 후기 작성할 수 있는 회원 목록 조회 (조건: 매칭성공) */
 	@Override
 	public List<Review> getReviewMemberList(Review input) throws Exception {
 		List<Review> result = null;
-	      
-	      try {
-	         result = sqlSession.selectList("ReviewMapper.selectMReviewMemberList", input);
-	         
-	         if (result==null) {
-	            throw new NullPointerException("result=null");
-	         }  
-	      } catch (NullPointerException e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("조회된 회원이 없습니다.");
-	      } catch (Exception e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("데이터 조회에 실패했습니다.");
-	      }
-	      return result;
+
+		try {
+			result = sqlSession.selectList("ReviewMapper.selectMReviewMemberList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
 	}
 
 	/** 작성한 후기 목록 조회 기능 */
 	@Override
 	public List<Review> getReviewList(Review input) throws Exception {
 		List<Review> result = null;
-	      
-	      try {
-	         result = sqlSession.selectList("ReviewMapper.selectReviewList", input);
-	         
-	         if (result==null) {
-	            throw new NullPointerException("result=null");
-	         }  
-	      } catch (NullPointerException e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("조회된 회원이 없습니다.");
-	      } catch (Exception e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("데이터 조회에 실패했습니다.");
-	      }
-	      return result;
+
+		try {
+			result = sqlSession.selectList("ReviewMapper.selectReviewList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
 	}
 
 	/** 찜한 회원 목록 조회 */
 	@Override
 	public List<Heart> getHeartList(Heart input) throws Exception {
 		List<Heart> result = null;
-	      
-	      try {
-	         result = sqlSession.selectList("MomMypageMapper.selectHeartList", input);
-	         
-	         if (result==null) {
-	            throw new NullPointerException("result=null");
-	         }  
-	      } catch (NullPointerException e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("조회된 회원이 없습니다.");
-	      } catch (Exception e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("데이터 조회에 실패했습니다.");
-	      }
-	      return result;
+
+		try {
+			result = sqlSession.selectList("MomMypageMapper.selectHeartList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
 	}
 
 	/** 채용 내역 조회 */
 	@Override
 	public List<Connect> getWorkList(Connect input) throws Exception {
 		List<Connect> result = null;
-	      
-	      try {
-	         result = sqlSession.selectList("MomMypageMapper.selectWorkList", input);
-	         
-	         if (result==null) {
-	            throw new NullPointerException("result=null");
-	         }  
-	      } catch (NullPointerException e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("조회된 회원이 없습니다.");
-	      } catch (Exception e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("데이터 조회에 실패했습니다.");
-	      }
-	      return result;
+
+		try {
+			result = sqlSession.selectList("MomMypageMapper.selectWorkList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
 	}
 
 	/** 신고 내역 조회 */
 	@Override
 	public List<Report> getReprotList(Report input) throws Exception {
 		List<Report> result = null;
-	      
-	      try {
-	         result = sqlSession.selectList("MomMypageMapper.selectReportList", input);
-	         
-	         if (result==null) {
-	            throw new NullPointerException("result=null");
-	         }  
-	      } catch (NullPointerException e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("조회된 회원이 없습니다.");
-	      } catch (Exception e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("데이터 조회에 실패했습니다.");
-	      }
-	      return result;
+
+		try {
+			result = sqlSession.selectList("MomMypageMapper.selectReportList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
 	}
 
 	/** 구매 내역 조회 */
 	@Override
 	public Mom_info getBuyList(Mom_info input) throws Exception {
 		Mom_info result = null;
-	      
-	      try {
-	         result = sqlSession.selectOne("MomMypageMapper.selectBuyList", input);
-	         
-	         if (result==null) {
-	            throw new NullPointerException("result=null");
-	         }  
-	      } catch (NullPointerException e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("조회된 회원이 없습니다.");
-	      } catch (Exception e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("데이터 조회에 실패했습니다.");
-	      }
-	      return result;
+
+		try {
+			result = sqlSession.selectOne("MomMypageMapper.selectBuyList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
 	}
 
 	@Override
 	public List<Coupon> getCouponList(Coupon input) throws Exception {
 		List<Coupon> result = null;
-	      
-	      try {
-	         result = sqlSession.selectList("MomMypageMapper.selectCouponList", input);
-	         
-	         if (result==null) {
-	            throw new NullPointerException("result=null");
-	         }  
-	      } catch (NullPointerException e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("조회된 회원이 없습니다.");
-	      } catch (Exception e) {
-	         log.error(e.getLocalizedMessage());
-	         throw new Exception("데이터 조회에 실패했습니다.");
-	      }
-	      return result;
+
+		try {
+			result = sqlSession.selectList("MomMypageMapper.selectCouponList", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
 	}
+
+	/** 맘 신청서 수정 */
+	@Override
+	public int editMomInfo(Mom_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("MomMypageMapper.editMomInfo", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("no data for edit");
+		} catch (Exception e) {
+			throw new Exception("Cannot edit");
+		}
+
+		return result;
+	}
+
+	//////////////////// 선아 작업//////////////////
+	@Override
+	public Mom_info getAccountItem(Mom_info input) throws Exception {
+		Mom_info result = null;
+
+		try {
+			result = sqlSession.selectOne("MomMypageMapper.selectMemberItem", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public int editPhone(Mom_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("MomMypageMapper.updateMemberPhoneAccount", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public int editEmail(Mom_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("MomMypageMapper.updateMemberEmailAccount", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public int bigyoPassword(Mom_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("MomMypageMapper.bigyoPassword", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+
+		return result;
+	}
+
+	@Override
+	public int updatePassword(Mom_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("MomMypageMapper.updateMemberPw", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
+	////// end 선아작업////////////////////
 
 }

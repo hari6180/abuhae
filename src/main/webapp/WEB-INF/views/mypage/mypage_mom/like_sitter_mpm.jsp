@@ -68,18 +68,20 @@
                                     <c:forEach var="item" items="${output}" varStatus="status">
                                     <div id="ls_tab_page_1">
                                    		<div class="ls_page_cont" id="page_con_1">
-                                            <div class="ls_page_box">
-                                                <div class="ls_page_box_left">
-                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-                                                </div>
-                                                <div class="ls_page_box_right">
-                                                    <p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;">${item.reg_date}</p>
-                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si } ${item.gu } </p>
-                                                    <p style="color: #888888; font-size: 0.8em;">
-                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
-                                                    </p>
-                                                </div>          
-                                            </div>
+                                            <a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}">
+                                            	<div class="ls_page_box">
+	                                                <div class="ls_page_box_left">
+	                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
+	                                                </div>
+	                                                <div class="ls_page_box_right">
+	                                                    <p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;">${item.reg_date}</p>
+	                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si } ${item.gu } </p>
+	                                                    <p style="color: #888888; font-size: 0.8em;">
+	                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
+	                                                    </p>
+	                                                </div>          
+	                                            </div>
+                                            </a>
                                         </div>
                                         <!--  <a href="#ls_modal" data-toggle="modal">
                                             <div class="ls_page_cont no_work">

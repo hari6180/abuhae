@@ -225,6 +225,8 @@
                 <div class="wrap_upd_sage">
                     <section class="want_age_box">
                     	<h3>원하는 시터 나이 수정</h3>
+                    	<br>
+                    	<br>
                         <div class="row">
                             <div class="col-xs-12 age_box_cont">
                                 <input type="checkbox" name="sitter_age" id="sage20" class="sitter_age" value="20">
@@ -241,6 +243,8 @@
                         </div>
                     </section>
                 </div>
+                
+                <hr>
                 
                 <div class="wrap_upd_loc">
                     <!-- content1 (dropdown) -->
@@ -435,6 +439,8 @@
                     
                 </div>
                 
+                <hr>
+                
                 <div class="wrap_upd_ct">
                      <!-- content1 -->
                      <section class="group_upd_ct">
@@ -475,11 +481,11 @@
                                          <div id="content" class="hide_content">
                                              <!--시간 선택-->
                                              <div class="time_select_box">
-                                                 <div>
+                                                <!--   <div>
                                                      <!--시작 시간-->
-                                                     <div class="regu_title">시작시간</div>
+                                                   <!--    <div class="regu_title">시작시간</div>
                                                      <!--시간-->
-                                                     <div class="select_time">
+                                                   <!--  <div class="select_time">
                                                          <select>
                                                              <option value="10:00">오전 10:00</option>
                                                              <option value="10:30">오전 10:30</option>
@@ -495,7 +501,7 @@
                                                  <!--중간 바-->
                                                  <div class="middle_bar"></div>
                                                  <!--종료시간-->
-                                                 <div>
+                                                <!--   <div>
                                                      <div>
                                                          <div class="regu_title">종료시간</div>
                                                      </div>
@@ -515,10 +521,10 @@
                                              <!--end select box-->
 
                                              <!--일정은 시터에게 맞출 수 잇어요-->
-                                             <div class="jojung_box">
+                                             <!--  <div class="jojung_box">
                                                  <span class="jojung_check"></span>
                                                  <span class="jojung_text">본 일정은 맘시터에 맞춰서 얼마든지 조정할 수 있어요.</span>
-                                             </div>
+                                             </div> -->
 	                            		</div>
                                      </div>
                                      <div id="upd_ct_tab_page2" class="upd_ct_tab_page hide">
@@ -527,12 +533,12 @@
                                               <div class="calrendar_block"></div>
                                          </div>
                                           <!--시간 선택-->
-                                         <div class="time_select_box">
+                                         <!--  <div class="time_select_box">
                                              <div>
                                                  <!--시작 시간-->
-                                                 <div class="regu_title">시작시간</div>
+                                           <!--      	<div class="regu_title">시작시간</div>
                                                  <!--시간-->
-                                                 <div class="select_time">
+                                             <!--      <div class="select_time">
                                                      <select>
                                                          <option value="10:00">오전 10:00</option>
                                                          <option value="10:30">오전 10:30</option>
@@ -546,9 +552,9 @@
                                              <!--end select-->
 
                                              <!--중간 바-->
-                                             <div class="middle_bar"></div>
+                                        <!--       <div class="middle_bar"></div>
                                              <!--종료시간-->
-                                             <div>
+                                            <!--  <div>
                                                  <div>
                                                      <div class="regu_title">종료시간</div>
                                                  </div>
@@ -578,17 +584,19 @@
                      </section>                       
                 </div>
                 
+                <hr>
+                
                 <div class="wrap_upd_profile_cont">
 
                      <!-- content1 -->
                      <section class="group_upd_img">
                          <div class="row">
                              <div class="col-xs-12">
-                             	<h3>아이전보/희망시급 수정</h3>
+                             	<h3>아이정보/희망시급 수정</h3>
                              	<br>
                                  <div class="number_children_wrap">
-                                     <button class="childeren_num1 btn_children_off" data-tab="select_one">1명</button>
-                                     <button class="childeren_num2 btn_children_off" data-tab="select_two">2명</button>
+                                     <button class="childeren_num1 btn_children_off" data-tab="select_one"><a class="child_num" href="#select_title1">1명</a></button>
+                                     <button class="childeren_num2 btn_children_off" data-tab="select_two"><a class="child_num" href="#select_title2">2명</a></button>
                                  </div>
                                  <!--동적 요소 위치-->
                                  <div class="title">
@@ -599,7 +607,166 @@
                                          <br>
                                          시터 1명이 최대 2명까지 돌볼 수 있습니다.
                                      </div>
-                                     <div class="select_title">
+                                     <div id="select_title1" class="select_title hide">
+                                     	<p>아이 생년/월을 입력해 주세요</p>
+										<p>출산 예정이라면 예정 년/월을 입력해 주세요.</p>
+										
+										<div class="children_age_block">
+										    <div class="title_block">아이 1</div>
+										    <div class="select_children_age_wrap">
+										        <div class="select_list">
+										            <select id="year">
+										                <option value="">출생년도</option>
+										                <option value="2021">2021년</option>
+										                <option value="2020">2020년</option>
+										                <option value="2019">2019년</option>
+										                <option value="2018">2018년</option>
+										                <option value="2017">2017년</option>
+										                <option value="2016">2016년</option>
+										                <option value="2015">2015년</option>
+										                <option value="2014">2014년</option>
+										                <option value="2013">2013년</option>
+										                <option value="2012">2012년</option>
+										                <option value="2011">2011년</option>
+										                <option value="2010">2010년</option>
+										            </select>
+										        </div>
+										        <div class="select_list">
+										            <select id="month">
+										                <option value="">출생 월</option>
+										                <option value="01">1월</option>
+										                <option value="02">2월</option>
+										                <option value="03">3월</option>
+										                <option value="04">4월</option>
+										                <option value="05">5월</option>
+										                <option value="06">6월</option>
+										                <option value="07">7월</option>
+										                <option value="08">8월</option>
+										                <option value="09">9월</option>
+										                <option value="10">10월</option>
+										                <option value="11">11월</option>
+										                <option value="12">12월</option>
+										            </select>
+										        </div>
+										    </div>
+										</div>
+										
+										<div class="payment_wrap">
+										    <div class="payment_box ">
+										        <h4>맘시터에게 지급할 희망 시급을 적어 주세요.
+										            <a href="#child_modal" data-toggle="modal"><i class="fas fa-question-circle"></i></a>
+										        </h4>
+										        <div class="payment_input_wrap">
+										            <input type="text" class="payment_input" value="10,000" id="payment_input">
+										            <span class="payment_fix">원</span>
+										        </div>
+										        <div class="disc_box">
+										            <input type="checkbox" value="discussion" id="discussion"><label for="discussion">시급 협의
+										                가능</label>
+										        </div>
+										    </div>
+										</div>
+                                     </div>
+                                     
+                                     <!-- 두번째 탭내용 -->
+      				              <div id="select_title2" class="select_title hide">
+                                     	<p>아이 생년/월을 입력해 주세요</p>
+										<p>출산 예정이라면 예정 년/월을 입력해 주세요.</p>
+										
+										<div class="children_age_block">
+										    <div class="title_block">아이 1</div>
+										    <div class="select_children_age_wrap">
+										        <div class="select_list">
+										            <select>
+										                <option value="">출생년도</option>
+										                <option value="2021">2021년</option>
+										                <option value="2020">2020년</option>
+										                <option value="2019">2019년</option>
+										                <option value="2018">2018년</option>
+										                <option value="2017">2017년</option>
+										                <option value="2016">2016년</option>
+										                <option value="2015">2015년</option>
+										                <option value="2014">2014년</option>
+										                <option value="2013">2013년</option>
+										                <option value="2012">2012년</option>
+										                <option value="2011">2011년</option>
+										                <option value="2010">2010년</option>
+										            </select>
+										        </div>
+										        <div class="select_list">
+										            <select>
+										                <option value="">출생 월</option>
+										                <option value="1">1월</option>
+										                <option value="2">2월</option>
+										                <option value="3">3월</option>
+										                <option value="4">4월</option>
+										                <option value="5">5월</option>
+										                <option value="6">6월</option>
+										                <option value="7">7월</option>
+										                <option value="8">8월</option>
+										                <option value="9">9월</option>
+										                <option value="10">10월</option>
+										                <option value="11">11월</option>
+										                <option value="12">12월</option>
+										            </select>
+										        </div>
+										    </div>
+										</div>
+										<div class="children_age_block">
+										    <div class="title_block">아이 2</div>
+										    <div class="select_children_age_wrap">
+										        <div class="select_list">
+										            <select id="year">
+										                <option value="">출생년도</option>
+										                <option value="2021">2021년</option>
+										                <option value="2020">2020년</option>
+										                <option value="2019">2019년</option>
+										                <option value="2018">2018년</option>
+										                <option value="2017">2017년</option>
+										                <option value="2016">2016년</option>
+										                <option value="2015">2015년</option>
+										                <option value="2014">2014년</option>
+										                <option value="2013">2013년</option>
+										                <option value="2012">2012년</option>
+										                <option value="2011">2011년</option>
+										                <option value="2010">2010년</option>
+										            </select>
+										        </div>
+										        <div class="select_list">
+										            <select id="month">
+										                <option value="">출생 월</option>
+										                <option value="1">1월</option>
+										                <option value="2">2월</option>
+										                <option value="3">3월</option>
+										                <option value="4">4월</option>
+										                <option value="5">5월</option>
+										                <option value="6">6월</option>
+										                <option value="7">7월</option>
+										                <option value="8">8월</option>
+										                <option value="9">9월</option>
+										                <option value="10">10월</option>
+										                <option value="11">11월</option>
+										                <option value="12">12월</option>
+										            </select>
+										        </div>
+										    </div>
+										</div>
+										
+										<div class="payment_wrap">
+										    <div class="payment_box ">
+										        <h4>맘시터에게 지급할 희망 시급을 적어 주세요.
+										            <a href="#child_modal" data-toggle="modal"><i class="fas fa-question-circle"></i></a>
+										        </h4>
+										        <div class="payment_input_wrap">
+										            <input type="text" class="payment_input" value="10,000" id="payment_input">
+										            <span class="payment_fix">원</span>
+										        </div>
+										        <div class="disc_box">
+										            <input type="checkbox" value="discussion" id="discussion"><label for="discussion">시급 협의
+										                가능</label>
+										        </div>
+										    </div>
+										</div>
                                      </div>
                                  </div>
                                  <!--버튼 select시 공지내용 변경 - ajax-->
@@ -649,9 +816,11 @@
                     
                 </div>
                 
+                <hr>
+                
                 <div class="wrap_update_activity">
                 	<h3>원하는 활동 수정</h3>
-                         
+                    <br>     
                     <!-- content -->
                     <section class="upd_care_age_cont">
                         <div class="row">
@@ -811,11 +980,14 @@
                     
                 </div>
                 
+                <hr>
+                
                 <div class="wrap_upd_request">
 					<h3>그 외 요청사항</h3>
+					<br>
                     <section class="group1_upd_req">
                         <div class="row">
-                            <div class="col-xs-12 upd_care_age_in">
+                            <div class="col-xs-12 upd_sitter_gender">
                                 <div class="request_box">
                                     <h4>원하는 맘시터 성별</h4>
                                     <div class="choice_gender">
@@ -913,7 +1085,7 @@
                     <!-- // modal end -->
                     
                 </div>
-           	 	</form>
+         	 </form>
             </div>
         </div>
 
@@ -1093,7 +1265,7 @@
     
                     $(".noselect_title").empty();
                     //버튼 클릭시에 내용 변경
-                    var test = $(this).attr('data-tab');
+                    /**var test = $(this).attr('data-tab');
                     $.ajax({
                         type: 'GET',                 //get방식으로 통신
                         url: test + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
@@ -1104,7 +1276,7 @@
                         success: function (data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
                             $('.select_title').html(data);
                         }
-                    });
+                    });*/
     
                 });
     
@@ -1143,10 +1315,23 @@
                         var img_src = img_url.replace(/_s/, "_n");
                         $(this).next().find(".want_img").attr('src', img_src);
                     }
-
-
                 });
+                
+   
+                  
+                  /** 직접 입력 클릭 시 텍스트 박스 나타남 */
+                  $(".child_num").click(function(e) {
+                      e.preventDefault();
+
+                     /** $(".upd_ct_tab_item_link").not(this).removeClass("selected");
+                      $(this).addClass("selected"); */
+
+                      var target = $(this).attr("href");
+                      $(target).removeClass("hide");
+                      $(".select_title").not($(target)).addClass("hide");
+                  });
             });
+            
         </script>
  
 	</body>

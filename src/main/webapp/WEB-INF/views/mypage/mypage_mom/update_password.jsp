@@ -2,20 +2,20 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="ko">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>아이를부탁해</title>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <title>아이를부탁해</title>
 
-		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-		<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+      <!-- 모바일 웹 페이지 설정 -->
+      <link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+      <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
 
-		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+      <!-- bootstrap -->
+      <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
 
-		<!-- noto Sans 웹 폰트 적용 -->
+      <!-- noto Sans 웹 폰트 적용 -->
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
         
         <!-- icon 참조 -->
@@ -53,7 +53,8 @@
                    <section class="group1_upd_pwd">
                         <div class="row">
                             <div class="col-xs-12">
-                                <form action="${pageContext.request.contextPath}/mypage/mypage_mom/update_password_ok.do" id="mom_pwd_form">
+                                <form method="POST" action="${pageContext.request.contextPath}/mypage/mypage_mom/update_passwordOk.do" id="mom_pwd_form">
+                                    <input type="hidden" name="memberno" value="${login.memberno}">
                                     <div class="upd_pwd_cont">
                                         <div class="pwd_con_in">
                                             <label for="now_pw">현재 비밀번호</label> <br/>
@@ -80,8 +81,8 @@
             </div>
         </div>
 
-		<!-- Javascript -->
-		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+      <!-- Javascript -->
+      <script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
 
         <!-- 비밀번호 보이기/가리기 기능-->
@@ -119,5 +120,5 @@
                 }); */
             });
         </script>
-	</body>
+   </body>
 </html>

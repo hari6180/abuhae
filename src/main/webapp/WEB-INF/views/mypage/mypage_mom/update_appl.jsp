@@ -66,7 +66,7 @@
 				<header class="mp_detail_tl" style="border-bottom: 1px solid #ccc;">
                     <div class="row">
                         <div class="col-xs-12 mp_detail_tl_in">
-                            <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage?momno=.do">
+                            <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${output.momno}">
                                 <i class="fas fa-angle-left"></i>
                             </a>
                             <h3 class="center-block">프로필 수정</h3>

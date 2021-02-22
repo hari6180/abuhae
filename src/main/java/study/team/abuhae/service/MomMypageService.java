@@ -36,5 +36,25 @@ public interface MomMypageService {
 	
 	/** 쿠폰 내역 조회 */
 	public List<Coupon> getCouponList(Coupon input) throws Exception;
+	
+	/** 회원 정보 수정 ~~~~ 맘 신청서 수정 */
+	public int editMomInfo(Mom_info input) throws Exception;
+		
+	//////////선아 작업/////////////////
+	/** 마이페이지 회원 데이터 상세 조회 */
+	public Mom_info getAccountItem(Mom_info input) throws Exception;
+	
+	/** 회원 휴대폰번호 수정 */
+	public int editPhone(Mom_info input) throws Exception;
+	
+	/** 회원 이메일 수정 */
+	public int editEmail(Mom_info input) throws Exception;
+	
+	//비밀번호 조회
+	public int bigyoPassword(Mom_info input) throws Exception;
+	
+	//비밀번호 수정
+	public int updatePassword(Mom_info input) throws Exception;
+	//////////선아 작업/////////////////
 }
 

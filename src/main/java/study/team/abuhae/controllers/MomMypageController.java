@@ -59,33 +59,6 @@ public class MomMypageController {
 		return "mypage/mypage_mom/mom_mypage";
 	}
 	
-	/** 비밀번호 변경 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/update_password.do", method = RequestMethod.GET)
-	public ModelAndView update_password_mom(Model model, HttpSession session,
-			@RequestParam(value = "memberno", defaultValue = "0") int memberno) {
-
-		/** 1) 파라미터 유효성 검사 */
-		if (memberno == 0) {
-			return webHelper.redirect(null, "회원번호가 없습니다.");
-		}
-		
-		/** 2) 데이터 조회하기 */
-		Mom_info input = new Mom_info();
-		input.setMemberno(memberno);
-		
-		// 조회 결과 저장
-		Mom_info output = null;
-		
-		try {
-			output = momMypageService.getMemberItem(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		/** 3) View 처리 */
-		
-		return new ModelAndView("mypage/mypage_mom/update_password");
-	}
 	
 	@RequestMapping(value = "/mypage/mypage_mom/update_password_ok.do", method = RequestMethod.POST)
 	public ModelAndView update_password_mom_ok(Model model, HttpSession session
@@ -372,4 +345,179 @@ public class MomMypageController {
 
 		return "mypage/mypage_mom/agree_service";
 	}
+	
+	//선아 작업/////////////////////////////////////////////////////////////////
+	   /** 계정관리 페이지 */
+	   @RequestMapping(value = "/mypage/mypage_mom/manage_account.do", method = RequestMethod.GET)
+	   public ModelAndView manage_account_mom(Locale locale, Model model,
+	         @RequestParam(value = "memberno", defaultValue = "0") int memberno) {
+	      if(memberno ==0 ) {
+	         webHelper.getJsonWarning("회원 번호 없이는 조회할 수 없습니다");
+	      }
+	      
+	      //데이터 조회
+	      Mom_info input = new Mom_info();
+	      input.setMemberno(memberno);
+	      
+	      //데이터 저장 
+	      Mom_info output = null;
+	      
+	      try {
+	         output = momMypageService.getAccountItem(input);
+	      } catch (Exception e) {
+	         return webHelper.redirect(null, e.getLocalizedMessage());
+	      }
+	      
+	      //데이터 출력
+	      model.addAttribute("output", output);
+	      
+	      
+	      return new ModelAndView ("mypage/mypage_mom/manage_account");
+	   }
+	   
+	   @RequestMapping(value = "/mypage/updatePhone.do", method = RequestMethod.POST)
+	   public ModelAndView updatePhone(Model model,
+	         @RequestParam(value = "memberno", defaultValue = "0") int memberno,
+	         @RequestParam(value = "phone", defaultValue = "") String phone) {
+	      if(memberno ==0 ) {
+	         webHelper.redirect(null, "회원 번호 없이는 접근 불가능합니다");
+	      }
+	      if(phone =="" || phone==null ) {
+	         webHelper.redirect(null, "수정할 핸드폰 번호를 입력해 주세요");
+	      }
+	      
+	      //데이터 조회
+	      Mom_info input = new Mom_info();
+	      input.setMemberno(memberno);
+	      input.setPhone(phone);
+	      
+	      Mom_info output = null;
+	      
+	      try {
+	         momMypageService.editPhone(input);
+	         output = momMypageService.getAccountItem(input);
+	         
+	      } catch (Exception e) {
+	         return webHelper.redirect(null, e.getLocalizedMessage());
+	      }
+	      
+	      String url = contextPath+"/mypage/mypage_mom/manage_account.do?&memberno="+output.getMemberno();
+	      
+	      return webHelper.redirect(url, null);
+	   }
+	   
+	   /** 아부해 서비스 이용 동의 페이지 */
+	   @RequestMapping(value = "/mypage/updateEmail.do", method = RequestMethod.POST)
+	   public ModelAndView updateMemberPhone(Model model,
+	         @RequestParam(value = "memberno", defaultValue = "0") int memberno,
+	         @RequestParam(value = "email", defaultValue = "") String email) {
+	      if(memberno ==0 ) {
+	         webHelper.redirect(null, "회원 번호 없이는 접근 불가능합니다");
+	      }
+	      if(email =="" || email==null ) {
+	         webHelper.redirect(null, "수정할 핸드폰 번호를 입력해 주세요");
+	      }
+	      
+	      //데이터 조회
+	      Mom_info input = new Mom_info();
+	      input.setMemberno(memberno);
+	      input.setEmail(email);
+	      
+	      Mom_info output = null;
+	      
+	      try {
+	         momMypageService.editEmail(input);
+	         output = momMypageService.getAccountItem(input);
+	         
+	      } catch (Exception e) {
+	         return webHelper.redirect(null, e.getLocalizedMessage());
+	      }
+	      
+	      String url = contextPath+"/mypage/mypage_mom/manage_account.do?&memberno="+output.getMemberno();
+	      
+	      return webHelper.redirect(url, null);
+	   }
+	   
+	   /** 비밀번호 변경 페이지 */
+	   @RequestMapping(value = "/mypage/mypage_mom/update_password.do", method = RequestMethod.GET)
+	   public ModelAndView update_password_mom(Model model, HttpSession session,
+	         @RequestParam(value = "memberno", defaultValue = "0") int memberno) {
+
+	      /** 1) 파라미터 유효성 검사 */
+	      if (memberno == 0) {
+	         return webHelper.redirect(null, "회원번호가 없습니다.");
+	      }
+	      
+	      /** 2) 데이터 조회하기 */
+	      Mom_info input = new Mom_info();
+	      input.setMemberno(memberno);
+	      
+	      // 조회 결과 저장
+	      Mom_info output = null;
+	      
+	      try {
+	         output = momMypageService.getAccountItem(input);
+	      } catch (Exception e) {
+	         return webHelper.redirect(null, e.getLocalizedMessage());
+	      }
+	      
+	      /** 3) View 처리 */
+	      
+	      return new ModelAndView("mypage/mypage_mom/update_password");
+	   }
+	   
+	   /** 비밀번호 변경 페이지 */
+	   @RequestMapping(value = "/mypage/mypage_mom/update_passwordOk.do", method = RequestMethod.POST)
+	   public ModelAndView update_passwordOK(Model model, HttpSession session,
+	         @RequestParam(value = "memberno", defaultValue = "0") int memberno,
+	         @RequestParam(value = "now_pw", defaultValue = "") String oldpassword,
+	         @RequestParam(value = "new_pw", defaultValue = "") String newpassword) {
+
+	      /** 1) 파라미터 유효성 검사 */
+	      if (memberno == 0) {
+	         return webHelper.redirect(null, "no exist membernumber.");
+	      }
+	      if(oldpassword=="" || oldpassword==null) {
+	         return webHelper.redirect(null, "input your now password.");
+	      }
+	      if(newpassword=="" || newpassword==null) {
+	         return webHelper.redirect(null, "input your new password.");
+	      }
+	      
+	      /** 2) 데이터 조회하기 */
+	      Mom_info input = new Mom_info();
+	      input.setMemberno(memberno);
+	      input.setPassword(oldpassword);
+	      
+	      // 조회 결과 저장
+	      int bigyo =0;
+	      //새로운 비밀번호 저장할 객체 
+	      Mom_info newpw = new Mom_info();
+	      newpw.setPassword(newpassword);
+	      newpw.setMemberno(memberno);
+	      
+	      try {
+	         //현재 비밀번호 조회
+	         bigyo = momMypageService.bigyoPassword(input);
+	         
+	         if(bigyo==0) {
+	            return webHelper.redirect(null, "checking your current password!");
+	         }
+	         //현재 비밀번호와 일치하면 새로운 비밀번호로 업데이트
+	         momMypageService.updatePassword(newpw);
+	         
+	         
+	         
+	      } catch (Exception e) {
+	         return webHelper.redirect(null, e.getLocalizedMessage());
+	      }
+	      
+	      /** 3) View 처리 */
+	      String url = contextPath+"/mypage/mypage_mom/manage_account.do?&memberno="+memberno;
+	      return webHelper.redirect(url, "Success change Password");
+	   }
+	   
+	   
+	   
+	   //////////////end 선아작업////////////////////////////////////////
 }
