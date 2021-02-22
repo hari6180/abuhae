@@ -32,8 +32,11 @@ public interface DetailService {
 	// 찜하기
 		public int addHeart(Heart input) throws Exception;
 		
-		// 찜하기 취소
-		public int deleteHeart(Heart input) throws Exception;
+	// 찜하기 취소
+	public int deleteHeart(Heart input) throws Exception;
+	
+	// 찜 여부 조회(찜 버튼용)
+	public int findHeart(Heart input) throws Exception;
 
 	
 	public int addConnect(Connect input) throws Exception;

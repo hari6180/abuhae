@@ -31,136 +31,124 @@ public class Page_DetailRestController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
-			// 맘 상세페이지 > 찜하기 
-			@RequestMapping(value = "/heart/detail/insertMom", method = RequestMethod.GET)
-		    public Map<String, Object> heartMom(
-		            /** (3) 찜하기 */
-		            @RequestParam(value="sitterno", required = false) String sitterno,
-		            @RequestParam(value="momno", required = false) String momno,
-		            @RequestParam(value="jjim", required = false) String jjim
-		    		) {
-						
-		        
-		        // 찜하기
-		        // 데이터를 전송할 객체 생성
-		        Heart heart = new Heart();
-		        int stno = Integer.parseInt(sitterno);
-		        int mono = Integer.parseInt(momno);
+	// 일자리 찜하기
+		@RequestMapping(value = "/heart/detail/insertMom", method = RequestMethod.GET)
+		public Map<String, Object> heartMom(/** (3) 찜하기 */
+		@RequestParam(value = "sitterno", required = false) String sitterno,
+				@RequestParam(value = "momno", required = false) String momno,
+				@RequestParam(value = "jjim", required = false) String jjim) {
 
-		        	heart.setMomno(mono);
-		        	heart.setSitterno(stno);
-		        	heart.setWho('S');
-		        	try {
-						detailService.addHeart(heart);
-					} catch (Exception e) {
-						return webHelper.getJsonError(e.getLocalizedMessage());
-					}
+			// 찜하기
+			// 데이터를 전송할 객체 생성
+			Heart heart = new Heart();
+			int stno = Integer.parseInt(sitterno);
+			int mono = Integer.parseInt(momno);
 
+			heart.setMomno(mono);
+			heart.setSitterno(stno);
+			heart.setWho('S');
+			try {
 
-		        /** 3) JSON 출력하기 */
-		        Map<String, Object> data = new HashMap<String, Object>();
-		        data.put("heart", heart);
+				detailService.addHeart(heart);
 
-		        return webHelper.getJsonData(data);
-				
+			} catch (Exception e) {
+				return webHelper.getJsonError(e.getLocalizedMessage());
 			}
-			
-			// 맘 상세페이지 > 찜하기 취소 
-			@RequestMapping(value = "/heart/detail/deleteMom", method = RequestMethod.GET)
-		    public Map<String, Object> heartNoMom(
-		            /** (3) 찜하기 */
-		            @RequestParam(value="sitterno", required = false) String sitterno,
-		            @RequestParam(value="momno", required = false) String momno
-		    		) {
-						
-		        
-		        // 찜하기 취소
-		        // 데이터를 전송할 객체 생성
-		        Heart heart = new Heart();
-		        int stno = Integer.parseInt(sitterno);
-		        int mono = Integer.parseInt(momno);
 
-		        	heart.setMomno(mono);
-		        	heart.setSitterno(stno);
-		        	heart.setWho('S');
-		        	try {
-						detailService.deleteHeart(heart);
-					} catch (Exception e) {
-						return webHelper.getJsonError(e.getLocalizedMessage());
-					}
+			/** 3) JSON 출력하기 */
+			Map<String, Object> data = new HashMap<String, Object>();
+			data.put("heart", heart);
 
+			return webHelper.getJsonData(data);
+		}
 
-		        /** 3) JSON 출력하기 */
-		        Map<String, Object> data = new HashMap<String, Object>();
-		        data.put("heart", heart);
+		// 찜하기 취소
+		@RequestMapping(value = "/heart/detail/deleteMom", method = RequestMethod.GET)
+		public Map<String, Object> heartNoMom(
+				/** (3) 찜하기 */
+				@RequestParam(value = "sitterno", required = false) String sitterno,
+				@RequestParam(value = "momno", required = false) String momno) {
 
-		        return webHelper.getJsonData(data);
+			// 찜하기 취소
+			// 데이터를 전송할 객체 생성
+			Heart heart = new Heart();
+			int stno = Integer.parseInt(sitterno);
+			int mono = Integer.parseInt(momno);
+
+			heart.setMomno(mono);
+			heart.setSitterno(stno);
+			heart.setWho('S');
+			try {
+				detailService.deleteHeart(heart);
+			} catch (Exception e) {
+				return webHelper.getJsonError(e.getLocalizedMessage());
 			}
+
+			/** 3) JSON 출력하기 */
+			Map<String, Object> data = new HashMap<String, Object>();
+			data.put("heart", heart);
+
+			return webHelper.getJsonData(data);
+		}
 			
 			// 시터 찜하기
-		    @RequestMapping(value = "/heart/detail/insertSt", method = RequestMethod.GET)
-		    public Map<String, Object> heartSt(
-		            /** (3) 찜하기 */
-		            @RequestParam(value="sitterno", required = false) String sitterno,
-		            @RequestParam(value="momno", required = false) String momno,
-		            @RequestParam(value="jjim", required = false) String jjim
-		    		) {
-						
-		        
-		        // 찜하기
-		        // 데이터를 전송할 객체 생성
-		        Heart heart = new Heart();
-		        int stno = Integer.parseInt(sitterno);
-		        int mono = Integer.parseInt(momno);
+			@RequestMapping(value = "/heart/detail/insertSt", method = RequestMethod.GET)
+			public Map<String, Object> heartSt(/** (3) 찜하기 */
+			@RequestParam(value = "sitterno", required = false) String sitterno,
+					@RequestParam(value = "momno", required = false) String momno,
+					@RequestParam(value = "jjim", required = false) String jjim) {
 
-		        	heart.setMomno(mono);
-		        	heart.setSitterno(stno);
-		        	heart.setWho('M');
-		        	try {
-						detailService.addHeart(heart);
-					} catch (Exception e) {
-						return webHelper.getJsonError(e.getLocalizedMessage());
-					}
+				// 찜하기
+				// 데이터를 전송할 객체 생성
+				Heart heart = new Heart();
+				int stno = Integer.parseInt(sitterno);
+				int mono = Integer.parseInt(momno);
 
+				heart.setMomno(mono);
+				heart.setSitterno(stno);
+				heart.setWho('M');
+				int findHt = 0;
+				try {
+					detailService.addHeart(heart);
+				} catch (Exception e) {
+					return webHelper.getJsonError(e.getLocalizedMessage());
+				}
 
-		        /** 3) JSON 출력하기 */
-		        Map<String, Object> data = new HashMap<String, Object>();
-		        data.put("heart", heart);
+				/** 3) JSON 출력하기 */
+				Map<String, Object> data = new HashMap<String, Object>();
+				data.put("heart", findHt);
 
-		        return webHelper.getJsonData(data);
-		    }
-		    
-		    // 찜하기 취소
-		    @RequestMapping(value = "/heart/detail/deleteSt", method = RequestMethod.GET)
-		    public Map<String, Object> heartNoSt(
-		            /** (3) 찜하기 */
-		            @RequestParam(value="sitterno", required = false) String sitterno,
-		            @RequestParam(value="momno", required = false) String momno
-		    		) {
-						
-		        
-		        // 찜하기 취소
-		        // 데이터를 전송할 객체 생성
-		        Heart heart = new Heart();
-		        int stno = Integer.parseInt(sitterno);
-		        int mono = Integer.parseInt(momno);
+				return webHelper.getJsonData(data);
+			}
 
-		        	heart.setMomno(mono);
-		        	heart.setSitterno(stno);
-		        	heart.setWho('M');
-		        	try {
-		        		detailService.deleteHeart(heart);
-					} catch (Exception e) {
-						return webHelper.getJsonError(e.getLocalizedMessage());
-					}
+			// 찜하기 취소
+			@RequestMapping(value = "/heart/detail/deleteSt", method = RequestMethod.GET)
+			public Map<String, Object> heartNoSt(
+					/** (3) 찜하기 */
+					@RequestParam(value = "sitterno", required = false) String sitterno,
+					@RequestParam(value = "momno", required = false) String momno) {
 
+				// 찜하기 취소
+				// 데이터를 전송할 객체 생성
+				Heart heart = new Heart();
+				int stno = Integer.parseInt(sitterno);
+				int mono = Integer.parseInt(momno);
 
-		        /** 3) JSON 출력하기 */
-		        Map<String, Object> data = new HashMap<String, Object>();
-		        data.put("heart", heart);
+				heart.setMomno(mono);
+				heart.setSitterno(stno);
+				heart.setWho('M');
+				try {
+					detailService.deleteHeart(heart);
+				} catch (Exception e) {
+					return webHelper.getJsonError(e.getLocalizedMessage());
+				}
 
-		        return webHelper.getJsonData(data);
-		    }
+				/** 3) JSON 출력하기 */
+				Map<String, Object> data = new HashMap<String, Object>();
+				data.put("heart", heart);
+
+				return webHelper.getJsonData(data);
+			}
 
 
 }
