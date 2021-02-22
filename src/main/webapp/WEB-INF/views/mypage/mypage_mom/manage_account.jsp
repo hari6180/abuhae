@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -11,21 +14,16 @@
 		<!-- 모바일 웹 페이지 설정 -->
 		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
-
 		<!-- bootstrap -->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
-
 		<!-- noto Sans 웹 폰트 적용 -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
-        
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
-
         <!-- css 참조 -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_mps_detail.css">
         
     </head>
-
     <body>
         <div id="app">
             <div class="container">
@@ -53,7 +51,7 @@
                                             <h4>사용 중인 지원권 없음</h4>
                                         </div>
                                         <div class="acc_con_right col-xs-6">
-                                            <a href="${pageContext.request.contextPath}/buy/buy.jsp">
+                                            <a href="${pageContext.request.contextPath}/buy/buy.do">
                                                 <button type="button">이용권 구매하기</button>
                                             </a>
                                         </div>
@@ -61,15 +59,20 @@
                                     <div class="acc_con_two">
                                         <div class="user_info_p user_type">
                                             <h5 class="col-xs-4 col-md-3">회원 유형</h5> 
-                                            <p class="col-xs-8 col-md-5">부모회원</p>
+                                            <c:if test="${fn:contains(login.type, 'M')}">
+                                            	<p class="col-xs-8 col-md-5">부모회원</p>
+                                            </c:if>
+                                            <c:if test="${fn:contains(login.type, 'S')}">
+                                            	<p class="col-xs-8 col-md-5">시터회원</p>
+                                            </c:if>
                                         </div>
                                         <div class="user_info_p user_now_id">
                                             <h5 class="col-xs-4 col-md-3">사용중인 아이디</h5>
-                                            <p class="col-xs-8 col-md-5">KoreanDaye</p>
+                                            <p class="col-xs-8 col-md-5">${output.id }</p>
                                         </div>
                                         <div class="user_info_p user_phone">
                                             <h5 class="col-xs-4 col-md-3">가입한 휴대폰 번호</h5>
-                                            <p class="col-xs-5 col-md-3">01012345678</p>
+                                            <p class="col-xs-5 col-md-3">${output.phone }</p>
                                             <div><button type="button" class="col-xs-3 col-md-2"><a data-toggle="modal" href="#upd_phonenumber">수정하기</a></button></div>
                                         </div>
                                         <div class="user_info_p user_email">

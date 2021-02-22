@@ -77,7 +77,7 @@
                                    <!--백엔드 연동 필요-->
                                    <div class="mpm_prof_info">
                                        <div class="mpm_info_left">
-                                           <img src="<%=request.getContextPath()%>/assets/img/mypage_img/profile.png" alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
+                                           <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
                                            <div class="prof_info_cont">
                                                <div class="mom_info_dt">
                                                    <p class="info_mom" style="font-size: 1em;">${output.name }</p>
@@ -274,7 +274,7 @@
                                    <a href="${pageContext.request.contextPath}/customer/notice_site.do" class="bottom_con_in">
                                        <p>공지사항</p>
                                    </a>
-                                   <a href="${pageContext.request.contextPath}/mypage/mypage_mom/manage_account.do" class="bottom_con_in">
+                                   <a href="${pageContext.request.contextPath}/mypage/mypage_mom/manage_account.do?memberno=${login.memberno}" class="bottom_con_in">
                                        <p>계정관리</p>
                                    </a>
                                </div>
