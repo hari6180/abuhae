@@ -1,6 +1,8 @@
 package study.team.abuhae.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -88,66 +90,69 @@ public class Page_detail_momController {
 			//return "/page_detail/mom_page_detail/mom_interview";
 	}
 		// 맘 상세페이지 > 찜하기 
-		@RequestMapping(value = "/page_detail/mom_page_detail/mom_heart_ok.do", method = RequestMethod.POST)
-		public ModelAndView report_mom_ok(Model model,
-				HttpServletResponse response,
-				@RequestParam(value = "who") char who,
-				@RequestParam(value = "momno") int momno,
-				@RequestParam(value = "sitterno") int sitterno) {
+		@RequestMapping(value = "/heart/detail/insertMom", method = RequestMethod.GET)
+	    public Map<String, Object> heartMom(
+	            /** (3) 찜하기 */
+	            @RequestParam(value="sitterno", required = false) String sitterno,
+	            @RequestParam(value="momno", required = false) String momno,
+	            @RequestParam(value="jjim", required = false) String jjim
+	    		) {
+					
+	        
+	        // 찜하기
+	        // 데이터를 전송할 객체 생성
+	        Heart heart = new Heart();
+	        int stno = Integer.parseInt(sitterno);
+	        int mono = Integer.parseInt(momno);
 
-			
-			Heart input = new Heart();
-			Mom_info momput = new Mom_info();
-			input.setWho(who);
-			input.setMomno(momno);
-			input.setSitterno(sitterno);
-			momput.setMomno(momno);
-			
-			Mom_info mominfo = null;
-			
-			
-			try {
-				detailService.addHeart(input);
-				mominfo = (Mom_info) detailService.getMomMember(momput);
-				Integer test = mominfo.getHeartno();
-				
-						
-			if (test != null) {
-				String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
-				return webHelper.redirect(redirectUrl, "no!!!!!!!!");
-			}
-				
-				String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
-				return webHelper.redirect(redirectUrl, "oooooooo!");
-				
-				
-			} catch (Exception e) {
-				return webHelper.redirect(null, e.getLocalizedMessage());
-			}
-			
+	        	heart.setMomno(mono);
+	        	heart.setSitterno(stno);
+	        	heart.setWho('S');
+	        	try {
+					detailService.addHeart(heart);
+				} catch (Exception e) {
+					return webHelper.getJsonError(e.getLocalizedMessage());
+				}
+
+
+	        /** 3) JSON 출력하기 */
+	        Map<String, Object> data = new HashMap<String, Object>();
+	        data.put("heart", heart);
+
+	        return webHelper.getJsonData(data);
 			
 		}
 		
 		// 맘 상세페이지 > 찜하기 취소 
-		@RequestMapping(value = "/page_detail/mom_page_detail/mom_heart_delete_ok.do", method = RequestMethod.GET)
-		public ModelAndView deleteHeart_mom_ok(Model model,
-				@RequestParam(value = "momno", defaultValue = "0") int momno,
-				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		@RequestMapping(value = "/heart/detail/deleteMom", method = RequestMethod.GET)
+	    public Map<String, Object> heartNoMom(
+	            /** (3) 찜하기 */
+	            @RequestParam(value="sitterno", required = false) String sitterno,
+	            @RequestParam(value="momno", required = false) String momno
+	    		) {
+					
+	        
+	        // 찜하기 취소
+	        // 데이터를 전송할 객체 생성
+	        Heart heart = new Heart();
+	        int stno = Integer.parseInt(sitterno);
+	        int mono = Integer.parseInt(momno);
 
-			
-			Heart input = new Heart();
-			input.setMomno(momno);
-			input.setSitterno(sitterno);
-			
-			try {
-				detailService.deleteHeart(input);
-				
-			} catch (Exception e) {
-				return webHelper.redirect(null, e.getLocalizedMessage());
-			}
-			
-			String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
-			return webHelper.redirect(redirectUrl, "xxxxxxx!");
+	        	heart.setMomno(mono);
+	        	heart.setSitterno(stno);
+	        	heart.setWho('S');
+	        	try {
+					detailService.deleteHeart(heart);
+				} catch (Exception e) {
+					return webHelper.getJsonError(e.getLocalizedMessage());
+				}
+
+
+	        /** 3) JSON 출력하기 */
+	        Map<String, Object> data = new HashMap<String, Object>();
+	        data.put("heart", heart);
+
+	        return webHelper.getJsonData(data);
 		}
 
 		// 맘 상세페이지 > 인터뷰하기 

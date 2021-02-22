@@ -27,10 +27,14 @@ public interface DetailService {
 	// 신고페이지
 	public int addReport(Report input) throws Exception;
 	
-	// 찜찜찜!!!
-	public int addHeart(Heart input) throws Exception;
+	//public Mom_info SelectReport(Mom_info momput) throws Exception;
 	
-	public int deleteHeart(Heart input) throws Exception;
+	// 찜하기
+		public int addHeart(Heart input) throws Exception;
+		
+		// 찜하기 취소
+		public int deleteHeart(Heart input) throws Exception;
+
 	
 	public int addConnect(Connect input) throws Exception;
 	

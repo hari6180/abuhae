@@ -155,7 +155,7 @@ public class DetailServiceImpl implements DetailService {
 		int result = 0;
 		
 		try {
-			result = sqlSession.insert("DetailMapper.insertHeart", input);
+			result = sqlSession.insert("SearchMapper.insertHeart", input);
 			
 			if (result == 0) {
 				throw new NullPointerException("result=0");
@@ -176,7 +176,7 @@ public class DetailServiceImpl implements DetailService {
 		int result = 0;
 		
 		try {
-			result = sqlSession.delete("DetailMapper.deleteHeart", input);
+			result = sqlSession.delete("SearchMapper.deleteHeart", input);
 			
 			if (result == 0) {
 				throw new NullPointerException("result=0");
@@ -240,6 +240,7 @@ public class DetailServiceImpl implements DetailService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 
 

@@ -840,20 +840,13 @@
 					</div>
 				</div> <!-- fin. fixed_area -->
 				<div class="fixed_btn">
-				<a href="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_heart_delete_ok.do?momno=${output.momno}">
-					취소 
-				</a>
+				
 					<div class="fixed_btn_jim">
-					<form action="${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_heart_ok.do" method="post">		
 					
-						<button id="swapHeart" class="btn btn-default swap" type="submit">
+					
+						<button id="swapHeart" class="btn btn-default swap" type="button">
 						    <span class="glyphicon glyphicon-heart-empty" style="color: rgb(0, 143, 105); font-size: 25px;"></span>
-						</button>
-					<input type="hidden" id="who" name="who" value="S">
-					<input type="hidden" id="momno" name="momno" value="${output.momno}">
-					<input type="hidden" id="sitterno" name="sitterno" >
-						
-					</form>		
+						</button>					
 					</div>
 					<div class="interview_btn">
 						<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/mom_interview.do?momno=${output.momno}';">
@@ -895,154 +888,37 @@
 		<!-- Javascript -->
 		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
 		<script type="text/javascript">
-		/*
+		
 		jQuery(function($) {
 			
-			const init = {
-					  monList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-					  dayList: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-					  today: new Date(), // 오늘 날짜 담기
-					  monForChange: new Date().getMonth(),
-					  activeDate: new Date(),
-					  getFirstDay: (yy, mm) => new Date(yy, mm, 1), // 어떤 달의 첫번째 날에 대한 정보 얻기 
-					  getLastDay: (yy, mm) => new Date(yy, mm + 1, 0), // 마지막 날에 대한 정보 얻기 
-					  nextMonth: function () { // 다음 달 버튼 클릭시 실행 
-					    let d = new Date();
-					    d.setDate(1); // 일자를 1일로 설정 
-					    d.setMonth(++this.monForChange); // d객체 통해서 몇월인지 얻기 
-					    this.activeDate = d;
-					    return d;
-					  },
-					  prevMonth: function () { // 이전 달 버튼 클릭 시 실행 
-					    let d = new Date();
-					    d.setDate(1); // 일자를 1일로 설정 
-					    d.setMonth(--this.monForChange); //d객체 통해서 몇월인지 얻기 
-					    this.activeDate = d;
-					    return d;
-					  },
-					  addZero: (num) => (num < 10) ? '0' + num : num, // 한자리 숫자 앞에 0붙이기 
-					  activeDTag: null
-					};
+			 $(document).on("click", ".swapHeart", function (e) {
+		          e.stopPropagation(); // 버블링 방지 1220 하리
+		          var $jim = $(this);
+		          let momno = $(this).data("momno");
+		          let stno = $("#app").data("login");
 
-					const $calBody = document.querySelector('.cal-body');
-					const $btnNext = document.querySelector('.btn-cal.next');
-					const $btnPrev = document.querySelector('.btn-cal.prev');
-
-					/**
-					 * @param {number} date
-					 * @param {number} dayIn
-					*/
-					function loadDate (date, dayIn) {
-					  document.querySelector('.cal-date').textContent = date;
-					  document.querySelector('.cal-day').textContent = init.dayList[dayIn];
-					}
-
-					/**
-					 * @param {date} fullDate
-					 */
-					 // 동적으로 달력생성 하기 
-					function loadYYMM (fullDate) {
-					  let yy = fullDate.getFullYear();
-					  let mm = fullDate.getMonth();
-					  let firstDay = init.getFirstDay(yy, mm);
-					  let lastDay = init.getLastDay(yy, mm);
-					  let markToday;  // for marking today date
-					  
-					  if (mm === init.today.getMonth() && yy === init.today.getFullYear()) {
-					    markToday = init.today.getDate();
-					  }
-
-					  document.querySelector('.cal-month').textContent = init.monList[mm];
-					  document.querySelector('.cal-year').textContent = yy;
-
-					  let trtd = '';
-					  let startCount;
-					  let countDay = 0;
-					  for (let i = 0; i < 6; i++) {
-					    trtd += '<tr>';
-					    for (let j = 0; j < 7; j++) {
-					      if (i === 0 && !startCount && j === firstDay.getDay()) {
-					        startCount = 1; // 날짜가 처음 시작하면 startCount 변수를 0에서 1로 변경 
-					      }
-					      if (!startCount) {
-					        trtd += '<td>'
-					      } else {
-					        let fullDate = yy + '.' + init.addZero(mm + 1) + '.' + init.addZero(countDay + 1);
-					        trtd += '<td class="day';
-					        trtd += (markToday && markToday === countDay + 1) ? ' today" ' : '"';
-					        // -> countDay 변수가 markToday값과 일치하면 td에 today클래스를 준다 
-					        trtd += ` data-date="${countDay + 1}" data-fdate="${fullDate}">`;
-					      }
-					      trtd += (startCount) ? ++countDay : '';
-					      if (countDay === lastDay.getDate()) { 
-					        startCount = 0; // 날짜 세는 게 끝나면 startCount 변수를 다시 0으로 초기화한다 
-					      }
-					      trtd += '</td>';
-					    }
-					    trtd += '</tr>';
-					  }
-					  $calBody.innerHTML = trtd;
-					}
-
-					/**
-					 * @param {string} val
-					 */
-					 // day 리스트 만들기 
-					function createNewList (val) {
-					  let id = new Date().getTime() + '';
-					  let yy = init.activeDate.getFullYear();
-					  let mm = init.activeDate.getMonth() + 1;
-					  let dd = init.activeDate.getDate();
-					  const $target = $calBody.querySelector(`.day[data-date="${dd}"]`);
-
-					  let date = yy + '.' + init.addZero(mm) + '.' + init.addZero(dd);
-
-					  let eventData = {};
-					  eventData['date'] = date;
-					  eventData['memo'] = val;
-					  eventData['complete'] = false;
-					  eventData['id'] = id;
-					  init.event.push(eventData);
-					  $todoList.appendChild(createLi(id, val, date));
-					}
-
-					loadYYMM(init.today);
-					loadDate(init.today.getDate(), init.today.getDay());
-					
-					// click 이벤트 
-					$btnNext.addEventListener('click', () => loadYYMM(init.nextMonth()));
-					$btnPrev.addEventListener('click', () => loadYYMM(init.prevMonth()));
-
-					$calBody.addEventListener('click', (e) => {
-					  if (e.target.classList.contains('day')) {
-					    if (init.activeDTag) {
-					      init.activeDTag.classList.remove('day-active');
-					    }
-					    let day = Number(e.target.textContent);
-					    loadDate(day, e.target.cellIndex);
-					    e.target.classList.add('day-active');
-					    init.activeDTag = e.target;
-					    init.activeDate.setDate(day);
-					    reloadTodo();
-					  }
-					});
-			
-			  $('#swapHeart').on('click', function() {
-			    var $jim = $(this)
-			    
-			    // 찜할 때 alert창과 glyphicon변형
-			    if($(this).find('span').hasClass("glyphicon-heart-empty")) {
-			    	$(this).find('span').removeClass("glyphicon-heart-empty");
-			    	$(this).find('span').addClass("glyphicon-heart");
-		            swal("찜 하기 완료!", "마이페이지 > 찜한 일자리에서 확인할 수 있습니다.");
-			    }
-			 	// 찜 취소할 때 alert창과 glyphicon변형
-		        else{
-		           	swal("찜 하기 취소");
-		            $(this).find('span').addClass("glyphicon-heart-empty");
-		        }
-		    
-			  }); // fin. 찜버튼 기능
+		          // 찜할 때 alert창과 glyphicon변형
+		          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+		            $(this).find("span").removeClass("glyphicon-heart-empty");
+		            $(this).find("span").addClass("glyphicon-heart");
+		            $.get("${pageContext.request.contextPath}/heart/detail/insertMom", {
+		              sitterno: stno,
+		              momno: momno,
+		              jjim: "Y",
+		            });
+		            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+		          }
+		          // 찜 취소할 때 alert창과 glyphicon변형
+		          else {
+		            $(this).find("span").addClass("glyphicon-heart-empty");
+		            $.get("${pageContext.request.contextPath}/heart/detail/deleteMom", {
+		              sitterno: stno,
+		              momno: momno,
+		              jjim: "N",
+		            });
+		            swal("찜 하기 취소");
+		          }
+		        }); // fin. 찜버튼 기능
 			}); */
 		 </script>
 		 <!-- jquery 파일명 수정 -->
