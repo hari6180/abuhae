@@ -11,12 +11,21 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
       <title>아이를부탁해</title>
 
+<<<<<<< HEAD
       <!-- 모바일 웹 페이지 설정 -->
       <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
       <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
       <!-- bootstrap -->
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
       <!-- noto Sans 웹 폰트 적용 -->
+=======
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
+		<!-- noto Sans 웹 폰트 적용 -->
+>>>>>>> 55596f47acf9787a85961dd7242018a97cd51512
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         <!-- icon 참조 -->
         <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
@@ -73,10 +82,17 @@
                                         <div class="user_info_p user_type">
                                             <h5 class="col-xs-4 col-md-3">회원 유형</h5> 
                                             <c:if test="${fn:contains(login.type, 'M')}">
+<<<<<<< HEAD
                                                <p class="col-xs-8 col-md-5">부모회원</p>
                                             </c:if>
                                             <c:if test="${fn:contains(login.type, 'S')}">
                                                <p class="col-xs-8 col-md-5">시터회원</p>
+=======
+                                            	<p class="col-xs-8 col-md-5">부모회원</p>
+                                            </c:if>
+                                            <c:if test="${fn:contains(login.type, 'S')}">
+                                            	<p class="col-xs-8 col-md-5">시터회원</p>
+>>>>>>> 55596f47acf9787a85961dd7242018a97cd51512
                                             </c:if>
                                         </div>
                                         <div class="user_info_p user_now_id">

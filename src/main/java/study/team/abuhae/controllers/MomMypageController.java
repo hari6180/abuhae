@@ -327,9 +327,32 @@ public class MomMypageController {
 	
 	/** 계정관리 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/manage_account.do", method = RequestMethod.GET)
-	public String manage_account_mom(Locale locale, Model model) {
-
-		return "mypage/mypage_mom/manage_account";
+	public ModelAndView manage_account_mom(Locale locale, Model model,
+			@RequestParam(value = "memberno", defaultValue = "0") int memberno) {
+		if(memberno ==0 ) {
+			webHelper.getJsonWarning("회원 번호 없이는 조회할 수 없습니다");
+		}
+		
+		//데이터 조회
+		Mom_info input = new Mom_info();
+		input.setMemberno(memberno);
+		
+		//데이터 저장 
+		Mom_info output = null;
+		
+		try {
+			output = momMypageService.getMemberItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		
+		
+		//데이터 출력
+		model.addAttribute("output", output);
+		
+		
+		return new ModelAndView ("mypage/mypage_mom/manage_account");
 	}
 	
 	/** 회원탈퇴 신청 페이지 */

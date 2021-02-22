@@ -87,7 +87,7 @@ public class Page_detail_sitterController {
 	// 시터 상세페이지 > 인터뷰 페이지
 	@RequestMapping(value = "/page_detail/sitter_interview.do", method = RequestMethod.GET)
 	public ModelAndView sitter_interview(Model model, HttpServletResponse response,	
-		@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		@RequestParam(value = "sitterno") int sitterno) {
 	
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 		Sitter_info input = new Sitter_info();
@@ -111,11 +111,11 @@ public class Page_detail_sitterController {
 	
 			// 시터 상세페이지 > 찜하기 
 			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_heart_ok.do", method = RequestMethod.POST)
-			public ModelAndView report_mom_ok(Model model,
+			public ModelAndView heart_sitter_ok(Model model,
 					HttpServletResponse response,
-					@RequestParam(value = "who", defaultValue = "") char who,
-					@RequestParam(value = "momno", defaultValue = "50") int momno,
-					@RequestParam(value = "sitterno", defaultValue = "") int sitterno) {
+					@RequestParam(value = "who") char who,
+					@RequestParam(value = "momno") int momno,
+					@RequestParam(value = "sitterno") int sitterno) {
 			
 				Heart input = new Heart();
 				input.setWho(who);
@@ -134,10 +134,10 @@ public class Page_detail_sitterController {
 			}
 			
 			// 시터 상세페이지 > 찜하기 
-			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_heart_delete_ok.do", method = RequestMethod.GET)
-			public ModelAndView deleteHeart_mom_ok(Model model,
-					@RequestParam(value = "momno", defaultValue = "50") int momno,
-					@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_heart_delete_ok.do", method = RequestMethod.POST)
+			public ModelAndView deleteHeart_sitter_ok(Model model,
+					@RequestParam(value = "momno") int momno,
+					@RequestParam(value = "sitterno") int sitterno) {
 
 				Heart input = new Heart();
 				input.setMomno(momno);
@@ -156,11 +156,11 @@ public class Page_detail_sitterController {
 
 			// 시터 상세페이지 > 인터뷰하기
 			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_interview_ok.do", method = RequestMethod.POST)
-			public ModelAndView interview_mom_ok(Model model,
+			public ModelAndView interview_sitter_ok(Model model,
 					HttpServletResponse response,
-					@RequestParam(value = "who", defaultValue = "S") String who,
-					@RequestParam(value = "momno", defaultValue = "50") int momno,
-					@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+					@RequestParam(value = "who") String who,
+					@RequestParam(value = "momno") int momno,
+					@RequestParam(value = "sitterno") int sitterno) {
 				
 				Connect input = new Connect();
 				Mom_info momput = new Mom_info();
