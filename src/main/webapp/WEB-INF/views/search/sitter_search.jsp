@@ -891,6 +891,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         }
         return options.inverse(this);
       });
+      Handlebars.registerHelper('decimal', function(number) {
+    	  return formatDecimal(number);
+    	});
       let nowPage = 1; // 현재 페이지의 기본값
       let order = "openingdate";
       $(function () {
