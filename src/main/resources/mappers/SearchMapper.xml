@@ -117,11 +117,11 @@
 		(SELECT
 		COUNT(resino)
 		FROM resi_cert rc WHERE s.sitterno=rc.sitterno AND
-		cert='Y') AS resino,
+		cert='Y') AS resino<if test = "loginMom != 0">,
 		(SELECT
 		COUNT(*)
 		FROM heart h WHERE s.sitterno=h.sitterno AND
-		who='M') AS findHt
+		who='M' AND h.momno=#{loginMom}) AS findHt</if>
 		FROM sitter_info s
 		INNER JOIN member m ON
 		s.memberno=m.memberno
@@ -150,9 +150,6 @@
 				</foreach>
 				' AS JSON))
 			</if>
-			<!-- 시간검색 후순위 <if test="timeRange != null"> AND schedule IN <foreach item="item4" 
-				collection="timeRange" open="(" close=")" separator=","> #{item4} </foreach> 
-				</if> -->
 			<if test="sitterType != null">
 				AND sitter_type IN
 				<foreach item="item5" collection="sitterType" open="("
@@ -231,10 +228,10 @@
 		END AS
 		opening,
 		openingdate, (SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno
-		AND who='s') AS applySt, 		(SELECT
+		AND who='s') AS applySt <if test = "loginSt != 0">, (SELECT
 		COUNT(*)
 		FROM heart h WHERE m.momno=h.momno AND
-		who='S') AS findHt FROM mom_info m
+		who='S'AND h.sitterno=#{loginSt}) AS findHt</if> FROM mom_info m
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
 
@@ -262,9 +259,6 @@
 				</foreach>
 				' AS JSON))
 			</if>
-			<!-- 시간검색 후순위 <if test="timeRange != null"> AND schedule IN <foreach item="item4" 
-				collection="timeRange" open="(" close=")" separator=","> #{item4} </foreach> 
-				</if> -->
 			<if test="min_pay != null and max_pay = null">
 				AND payment BETWEEN 8720 AND #{min_pay}
 			</if>

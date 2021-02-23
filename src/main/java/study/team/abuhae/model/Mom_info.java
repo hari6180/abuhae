@@ -71,6 +71,10 @@ public class Mom_info extends Member {
 	private static String max_pay;			// 최고 시급
 	private static String kids_cnt;			// 아이 수
 	
+	// 시터 로그인 여부 확인 (for 찜)
+	private static int loginSt;
+	
+	
 	
 	public static String[] getAct() {
 		return act;
@@ -113,6 +117,12 @@ public class Mom_info extends Member {
 	}
 	public static void setKids_cnt(String kids_cnt) {
 		Mom_info.kids_cnt = kids_cnt;
+	}
+	public static int getLoginSt() {
+		return loginSt;
+	}
+	public static void setLoginSt(int loginSt) {
+		Mom_info.loginSt = loginSt;
 	}
 
 

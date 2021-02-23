@@ -704,21 +704,41 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
       let nowPage = 1; // 현재 페이지의 기본값
       let order = "openingdate";
+      let stno = $("#app").data("login");
       $(function () {
-        $.get(
-          "${pageContext.request.contextPath}/search/job_search",
-          {
-            order: order, // 정렬 조건은 GET 파라미터로 전송한다.
-          },
-          function (json) {
-            var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
-            var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-            var result = template(json); // 템플릿 컴파일 결과물에 json 전달
-            $("#result").empty(); // 결과물 초기화
-            $("#result2").empty(); // 결과물 초기화
-            $("#result").append(result); // 최종 결과물을 추가한다
-          }
-        );
+        console.log(stno);
+        if (stno != "") {
+          $.get(
+            "${pageContext.request.contextPath}/search/job_search/login",
+            {
+              order: order, // 정렬 조건
+              sitterno: stno, // 로그인 정보
+            },
+            function (json) {
+              var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
+              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#result").empty(); // 결과물 초기화
+              $("#result2").empty(); // 결과물 초기화
+              $("#result").append(result); // 최종 결과물을 추가한다
+            }
+          );
+        } else {
+          $.get(
+            "${pageContext.request.contextPath}/search/job_search",
+            {
+              order: order, // 정렬 조건
+            },
+            function (json) {
+              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#result").empty(); // 결과물 초기화
+              $("#result2").empty(); // 결과물 초기화
+              $("#result").append(result); // 최종 결과물을 추가한다
+            }
+          );
+        }
         // 드롭다운 선택 - 0109 하리
         $(".dr_option").click(function () {
           $(this).addClass("active");
@@ -875,24 +895,40 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             console.log("끝에 도착함");
             nowPage++;
             // Restful API에 GET방식 요청
-            setTimeout(
-              $.get(
-                "${pageContext.request.contextPath}/search/job_search",
-                {
-                  page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
-                  order: order, // 정렬 조건은 GET 파라미터로 전송한다.
-                },
-                function (json) {
-                  var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
-                  var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-                  var result = template(json); // 템플릿 컴파일 결과물에 json 전달
-                  $("#result2").append(result); // 최종 결과물을 추가한다
+            setTimeout(function () {
+              if (stno != "") {
+                $.get(
+                  "${pageContext.request.contextPath}/search/job_search",
+                  {
+                    page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
+                    order: order, // 정렬 조건은 GET 파라미터로 전송한다.
+                    sitterno: stno,
+                  },
+                  function (json) {
+                    var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
+                    var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                    var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                    $("#result2").append(result); // 최종 결과물을 추가한다
 
-                  // 현재 페이지 번호가 전체 페이지 수에 도달했을시
-                }
-              ),
-              1000
-            );
+                    // 현재 페이지 번호가 전체 페이지 수에 도달했을시
+                  }
+                );
+              } else {
+                $.get(
+                  "${pageContext.request.contextPath}/search/job_search",
+                  {
+                    order: order, // 정렬 조건
+                    page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
+                  },
+                  function (json) {
+                    var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
+                    var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                    var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                    $("#result2").append(result); // 최종 결과물을 추가한다
+                  }
+                );
+              }
+            }, 1000);
           }
         });
         $(document).on("click", ".job_item_group", function () {
