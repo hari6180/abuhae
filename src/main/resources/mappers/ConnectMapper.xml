@@ -67,12 +67,12 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, mi.payment, applydate, phone, accept, deny_type
+		AS birthdate, mi.payment, applydate, phone, accept, deny_type, conn.who
 		from connect conn
 		inner join mom_info mi on mi.momno = conn.momno
 		inner join sitter_info si on si.sitterno = conn.sitterno
 		inner join member m on m.memberno=mi.memberno
-		where conn.sitterno=#{sitterno};
+		where conn.sitterno=#{sitterno} and conn.who='s';
 
 	</select> 
 

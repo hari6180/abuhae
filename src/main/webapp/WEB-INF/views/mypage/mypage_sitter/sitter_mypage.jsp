@@ -48,7 +48,7 @@
                                 <h3>마이페이지</h3>
                                 <div class="mps_title_cont">
                                     <!--백엔드 연동 필요-->
-                                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_password.do"><span class="glyphicon glyphicon-pencil"></span>비밀번호 변경</a>
+                                    <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_password.do?memberno=${output.memberno}"><span class="glyphicon glyphicon-pencil"></span>비밀번호 변경</a>
                                     ㅣ
                                     <a href="#" id="mps_logout">로그아웃</a>
                                 </div>
@@ -278,7 +278,7 @@
                                 <a href="${pageContext.request.contextPath}/customer/notice_site.do" class="bottom_con_in">
                                     <p>공지사항</p>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/manage_account.do" class="bottom_con_in">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/manage_account.do?memberno=${output.memberno}" class="bottom_con_in">
                                     <p>계정관리</p>
                                 </a>
                             </div>

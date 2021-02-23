@@ -318,11 +318,22 @@
 		where s.sitterno=#{sitterno} and TIMESTAMPDIFF(day, now(), exp_date) > 0;
    </select>
    
-   <!-- 비밀번호 업데이트 -->
-   <update id="updateMemberPw"
-   parameterType="study.team.abuhae.model.Member">
+ 	<!-- 비밀번호 비교 -->
+   <select id="bigyoSitterPassword" parameterType="study.team.abuhae.model.Member" resultType="int">
+      select count(*) from member where memberno=#{memberno} and password=#{password};
+   </select>
+   <!-- 비밀번호 변경 -->
+   <update id="updateSitterPw"  parameterType="study.team.abuhae.model.Member">
       update member set password=#{password} where memberno=#{memberno};
    </update>
+   
+    <select id="selectSitter"
+   	parameterType="study.team.abuhae.model.Sitter_info" resultMap="SitterInfoMap">
+      select m.memberno, type, id, password, name, phone, email, ticket_type,ticket_price, s.sitterno as sitterno
+      from member m
+      inner join sitter_info s on s.memberno=m.memberno
+      where m.memberno=#{memberno};
+   </select>
    
 </mapper>
 
