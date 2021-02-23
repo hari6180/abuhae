@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
    <head>
@@ -27,6 +30,9 @@
         <!-- sitter_mypage css 적용 -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/sitter_mypage.css"></link>
 
+		<style type="text/css">
+			#siren {}
+		</style>
         <!-- Javascript -->
       <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
       <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
@@ -35,9 +41,17 @@
     <body>
         <div id="app">
             <div class="container">
-                <!-- header -->
-                <%@ include file="../../index_header.jsp" %>
-                <!-- end header -->
+            	<!-- header -->
+                 <div id="menu">
+	                  <c:if test="${isLogin ==true }">
+	                     <c:choose>
+	                        <c:when test="${fn:contains(loginType, 'S')}">
+	                           <%@ include file="../../index_header_login_sitter.jsp"%>
+	                        </c:when>
+	                     </c:choose>
+	                  </c:if>
+	               </div>
+   
 
                 <!-- sitter_mypage -->
                 <div class="wrap_mps">
@@ -174,7 +188,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/profile_mps.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/profile_mps.do?sitterno=${login.sitterno}">
                                     <i class="fas fa-user-circle mps_menu3_list1"></i>
                                     <p class="mps_menu3_list2">내 프로필 보기</p>
                                     <i class="fas fa-angle-right mps_menu3_list3"></i>
@@ -182,7 +196,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_profile.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_sitter_profile.do?sitterno=${login.sitterno}">
                                     <i class="fas fa-pen mps_menu_list1"></i>
                                     <p class="mps_menu_list2">내 프로필 수정</p>
                                     <!--백엔드 연동 필요-->

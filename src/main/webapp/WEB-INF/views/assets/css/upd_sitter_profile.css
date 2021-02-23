@@ -29,6 +29,12 @@ a:hover {
 }
 
 /** header --------------------------------------------------------------------*/
+.wrap_upd {
+  padding: 20px 10px;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
 
 .mp_detail_tl {
   width: 100%;
@@ -64,13 +70,13 @@ a:hover {
 /** end header -----------------------------------------------------*/
 
 /** 내 사진 수정 ----------------------------------------------------*/
-.wrap_upd_img {
+.wrap_img {
   padding: 20px 10px;
   margin: 0 auto;
   max-width: 600px;
 }
 
-.wrap_upd_img .update_img_cont {
+.wrap_img .update_img_cont {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,7 +84,7 @@ a:hover {
   text-align: center;
 }
 
-.wrap_upd_img .upload_prof {
+.wrap_img .upload_prof {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -87,25 +93,25 @@ a:hover {
   vertical-align: middle;
 }
 
-.wrap_upd_img .user_img {
+.wrap_img .user_img {
   padding: 30px 10px;
 }
 
-.wrap_upd_img .user_img img {
+.wrap_img .user_img img {
   width: 70px;
   height: 70px;
   border-radius: 50%;
 }
 
-.wrap_upd_img .user_img input[type="file"] {
+.wrap_img .user_img input[type="file"] {
   display: none;
 }
 
-.wrap_upd_img .example_img p {
+.wrap_img .example_img p {
   font-size: 0.9em;
 }
 
-.wrap_upd_img .example_img a button {
+.wrap_img .example_img a button {
   width: 100%;
   height: 48px;
   padding: 0 25px;
@@ -153,6 +159,7 @@ a:hover {
   max-width: 600px;
 }
 
+
 .wrap_choice_care .choice_care_cont {
   padding: 10px 20px;
 }
@@ -195,7 +202,7 @@ a:hover {
   color: #666666;
 }
 
-.wrap_choice_care .care_button button {
+.care_button button {
   width: 100%;
   height: 60px;
   border: 0;
@@ -206,11 +213,13 @@ a:hover {
 /** end  돌봄유형 선택 ----------------------------------------------*/
 
 /** 활동 가능 시간 변경 ----------------------------------------------*/
+
 .wrap_upd_regular {
-  padding: 20px 0;
+  padding: 20px 10px;
   margin: 0 auto;
   max-width: 600px;
 }
+
 
 .wrap_upd_regular .regular_tl {
   font-size: 1em;
@@ -307,13 +316,14 @@ a:hover {
 /** end 활동 가능 시간 변경 ------------------------------------------*/
 
 /** 돌봄 가능 연령 수정 -----------------------------------------------*/
-.wrap_care_age {
+.wrap_age {
   padding: 20px 10px;
   margin: 0 auto;
   max-width: 600px;
 }
 
-.wrap_care_age .upd_care_age_in {
+
+.wrap_age .upd_care_age_in {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -322,14 +332,14 @@ a:hover {
   width: 100%;
 }
 
-.wrap_care_age .care_age_btn {
+.wrap_age .care_age_btn {
   text-align: center;
   margin: 10px 0;
   box-sizing: content-box;
   position: relative;
 }
 
-.wrap_care_age .care_age_btn input[type="checkbox"] + label i {
+.wrap_age .care_age_btn input[type="checkbox"] + label i {
   position: relative;
   border: 0;
   outline: 0;
@@ -347,29 +357,29 @@ a:hover {
   border-radius: 56px;
 }
 
-.wrap_care_age .care_age_btn input[type="checkbox"]:checked + label i {
+.wrap_age .care_age_btn input[type="checkbox"]:checked + label i {
   background-color: #ff7000;
   position: relative;
   color: #fff;
 }
 
-.wrap_care_age .care_age_text {
+.wrap_age .care_age_text {
   color: #878787;
   font-weight: 600;
   margin-top: 17px;
   text-align: center;
 }
 
-.wrap_care_age .care_age_btn input[type="checkbox"] {
+.wrap_age .care_age_btn input[type="checkbox"] {
   display: none;
 }
 
-.wrap_care_age .care_age_cont_in {
+.wrap_age .care_age_cont_in {
   padding-top: 30px;
   color: #919191;
 }
 
-.wrap_care_age .care_age_cont_in i {
+.wrap_age.care_age_cont_in i {
   color: #919191;
 }
 /** end 돌봄 가능 연령 수정 -------------------------------------------*/
@@ -449,6 +459,7 @@ a:hover {
   margin: 0 auto;
   max-width: 600px;
 }
+
 
 .wrap_want_wage .want_wage_in {
   display: flex;
@@ -531,10 +542,11 @@ a:hover {
 
 /** 관련 경험 수정 ------------------------------------------------------------------*/
 .wrap_care_age {
-  padding: 20px 20px;
+  padding: 20px 10px;
   margin: 0 auto;
   max-width: 600px;
 }
+
 
 .wrap_care_age #exp_btn {
   width: 100%;
@@ -579,6 +591,7 @@ a:hover {
   margin: 0 auto;
   max-width: 600px;
 }
+
 .wrap_experience .introduce_text textarea {
   width: 100%;
   padding: 20px;

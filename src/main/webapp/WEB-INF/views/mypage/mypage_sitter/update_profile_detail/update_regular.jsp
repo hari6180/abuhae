@@ -76,37 +76,6 @@
                             </div>
                         </section>
 
-                        <hr>
-
-                        <section class="available_time">
-                            <div class="row">
-                                <div class="col-xs-12 available_time_in">
-                                    <div class="timelist">
-                                        <h4 class="regular_tl">시작시간</h4>
-                                        <select name="starttime" id="starttime">
-                                            <option value="am1000">오전 10:00</option>
-                                            <option value="am1030">오전 10:30</option>
-                                            <option value="pm1100">오전 11:00</option>
-                                            <option value="pm1130">오전 11:30</option>
-                                            <option value="pm1200">오전 12:00</option>
-                                            <option value="pm1230">오전 12:30</option>
-                                        </select>
-                                    </div>
-                                    <div class="timelist">
-                                        <h4 class="regular_tl">종료시간</h4>
-                                        <select name="endtime" id="endtime">
-                                            <option value="pm2000">오후 20:00</option>
-                                            <option value="pm2030">오후 20:30</option>
-                                            <option value="pm2100">오후 21:00</option>
-                                            <option value="pm2130">오후 21:30</option>
-                                            <option value="pm2200">오후 22:00</option>
-                                            <option value="pm2230">오후 22:30</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
                         <hr/>
 
                         <!-- content2 -->

@@ -48,6 +48,7 @@
                         <section class="introduce_text">
                             <div class="row">
                                 <div class="col-xs-12 update_img_cont">
+                                	<h5 class="upd_img_tl">1. 내 사진</h5>
                                     <div class="upload_prof">
                                         <div class="user_img">
                                             <input type="file" id="new_profile_img" name="new_profile_img" accept="image/*" >

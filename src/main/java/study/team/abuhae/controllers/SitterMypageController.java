@@ -225,18 +225,12 @@ public class SitterMypageController {
 		return new ModelAndView("mypage/mypage_sitter/like_mom_mps");
 	}
 	
-	/** 내 프로필 보기 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/profile_mps.do", method = RequestMethod.GET)
-	public String profile_sitter(Locale locale, Model model) {
-
-		return "mypage/mypage_sitter/profile_mps";
-	}
-	
 	/** 내 프로필 수정 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/update_profile.do", method = RequestMethod.GET)
-	public String update_profile(Locale locale, Model model) {
+	@RequestMapping(value = "/mypage/mypage_sitter/update_sitter_profile.do", method = RequestMethod.GET)
+	public ModelAndView update_profile(Model model,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 
-		return "mypage/mypage_sitter/update_profile";
+		return new ModelAndView("mypage/mypage_sitter/update_sitter_profile");
 	}
 	
 	/** 내 적립금 페이지 */
