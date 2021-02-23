@@ -424,7 +424,21 @@
 	insert into leave_member (type,id, name, email, phone, reason, leave_date) values 
 	(#{type},#{id}, #{name}, #{email}, #{phone}, #{reason}, now()); 	
 	</insert>
-   
+	
+	<!-- 프로필 업데이트 ///////////////////////////////// -->
+	<update id="updateApplyTitle" parameterType="study.team.abuhae.model.Mom_info">
+		update mom_info set apply_title=#{apply_title}, editdate=now() where momno=#{momno}
+	</update>
+	
+	<update id="updateDesc" parameterType="study.team.abuhae.model.Mom_info">
+		update mom_info set description=#{description}, editdate=now() where momno=#{momno}
+	</update>
+	
+	<update id="updateWantage" parameterType="study.team.abuhae.model.Mom_info">
+		update mom_info set want_age=#{want_age}, editdate=now() where momno=#{momno}
+	</update>
+	
+	
 </mapper>
 
 

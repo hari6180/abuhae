@@ -60,6 +60,15 @@ public interface MomMypageService {
 	//탈퇴 요청 처리
 	public int addAbuOut(Leave_member input) throws Exception;
 	
+	//프로필 제목 업데이트
+	public int updateApplytitle(Mom_info input) throws Exception;
+	
+	//프로필 상세설명 업데이트
+	public int updateDesc(Mom_info input) throws Exception;
+	
+	//원하는 시터 나이대 업데이트
+	public int updateWantage(Mom_info input) throws Exception;
+	
 	//////////선아 작업/////////////////
 }
 

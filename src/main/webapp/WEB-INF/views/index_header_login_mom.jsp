@@ -130,7 +130,7 @@
           location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${login.momno}");
         });
         $("#menu_application").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/update_appl.do?momno=${login.momno}");
+          location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/update_profile.do?momno=${login.momno}");
         });
         $("#menu_buy").click(function (e) {
           location.replace("${pageContext.request.contextPath}/buy/mom_ticket.do?momno=${login.momno}");
