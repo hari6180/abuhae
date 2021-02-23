@@ -20,11 +20,17 @@
 		<prop key="smtpUsername">gina305496@gmail.com</prop>
 		<!-- 메일발송 서버 비밀번호 -->
 		<prop key="smtpPassword">hwmcppdromvfdjbr</prop>
+		<!-- 업로드 디렉토리 (sever.xml의 doBase 값과 일치) -->
+		<prop key="uploadDir">D:/upload</prop>
+		<!-- 업로드 디렉토리에 대한 WebPath (Server.xml의 path값과 일치해야 함) -->
+		<prop key="uploadPath">/upload</prop>
 	</util:properties>
 
 	<!-- webhelper 주입 설정 -->
 	<bean id="webHelper" class="study.team.abuhae.helper.WebHelper">
 		<property name="encType" value="#{config['encType']}" />
+		<property name="uploadDir" value="#{config['uploadDir']}" />
+		<property name="uploadPath" value="#{config['uploadPath']}" />
 	</bean>
 
 	<!-- regexhelper 주입 -->
@@ -103,5 +109,15 @@
 	<bean id="mailHelper" class="study.team.abuhae.helper.MailHelper">
 		<constructor-arg ref="mailSender" />
 	</bean>
+	
+	  <!-- Upload를 위한 Multipart 지원 라이브러리 주입 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 업로드 최대 용량 (-1로 지정할 경우 제한없음) -->
+        <property name="maxUploadSize" value="-1" />
+        <!-- 업로드를 처리할 인코딩 방식 -->
+        <property name="defaultEncoding" value="#{config['encType']}" />
+        <!-- 업로드에서 사용할 최대 메모리 크기 (0으로 지정할 경우 제한없음) -->
+        <property name="maxInMemorySize" value="0" />
+    </bean>
 
 </beans>

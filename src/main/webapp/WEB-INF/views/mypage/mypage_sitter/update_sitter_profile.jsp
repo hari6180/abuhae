@@ -109,7 +109,8 @@
                         
                     <div class="wrap_img">
                     	<!-- content1 -->
-	                    <form action="#">
+	                    <form method="post" action="${pageContext.request.contextPath}/upload/upload_ok.do?memberno=${login.memberno}"
+	                    enctype="multipart/form-data">
 	                    	<div>
 	                    		<h5 class="upd_img_tl">1. 내 사진 (선택사항)</h5>
 	                    	</div>
@@ -118,7 +119,7 @@
 	                                <div class="col-xs-12 update_img_cont">
 	                                    <div class="upload_prof">
 	                                        <div class="user_img">
-	                                            <input type="file" id="new_profile_img" name="new_profile_img" accept="image/*" >
+	                                            <input type="file" id="new_profile_img" name="photo" accept="image/*" >
 	                                            <label for="new_profile_img"><img src="${pageContext.request.contextPath}/assets/img/mypage_img/user.png" alt=""></label>
 	                                        </div>
 	                                    </div>

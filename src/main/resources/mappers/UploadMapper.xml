@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="UploadMapper">
+
+   <!-- Member -->
+   <resultMap id="UploadMap"
+      type="study.team.abuhae.model.ProfileFile">
+      <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+      <result property="profno" column="profno" />
+      <result property="fileName" column="fileName"/>
+      <result property="originName" column="originName" />
+      <result property="contentType" column="contentType" />
+      <result property="fileSize" column="fileSize" />
+      <result property="filePath" column="filePath" />
+      <result property="fileUrl" column="fileUrl" />
+      <result property="thumbnailpath" column="thumbnailpath" />
+      <result property="thumnailurl" column="thumnailurl" />
+      <result property="memberno" column="memberno" />
+   </resultMap>
+   
+   <insert id="addProfile"
+		parameterType="study.team.abuhae.model.ProfileFile"
+		useGeneratedKeys="true" keyProperty="profno">
+		insert into profile_file (fileName, originName, contentType, fileSize, filePath, fileUrl, memberno) 
+		values(#{fileName}, #{originName}, #{contentType}, #{fileSize}, #{filePath}, #{fileUrl}, #{memberno});
+	</insert>
+
+	<select id="selectProfileItem"
+	parameterType="study.team.abuhae.model.ProfileFile" resultMap="UploadMap">
+		select * from profile_file 
+		where memberno=#{memberno};
+	</select>
+ </mapper>

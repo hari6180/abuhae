@@ -60,6 +60,7 @@
                         <div class="row">
                             <div class="col-xs-12 mps_title">
                                 <h3>마이페이지</h3>
+                                <a href="${pageContext.request.contextPath}/mypage/upload_ok.do?memberno=${login.memberno}">프로필사진 보기</a>
                                 <div class="mps_title_cont">
                                     <!--백엔드 연동 필요-->
                                     <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_password.do?memberno=${output.memberno}"><span class="glyphicon glyphicon-pencil"></span>비밀번호 변경</a>

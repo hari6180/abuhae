@@ -226,12 +226,12 @@ public class SitterMypageController {
 	}
 	
 	/** 내 프로필 수정 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/update_sitter_profile.do", method = RequestMethod.GET)
+	/**@RequestMapping(value = "/mypage/mypage_sitter/update_sitter_profile.do", method = RequestMethod.GET)
 	public ModelAndView update_profile(Model model,
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 
 		return new ModelAndView("mypage/mypage_sitter/update_sitter_profile");
-	}
+	} */
 	
 	/** 내 적립금 페이지 */
 	@RequestMapping(value = "/mypage/mypage_sitter/fund.do", method = RequestMethod.GET)
