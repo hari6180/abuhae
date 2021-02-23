@@ -86,7 +86,7 @@
           <p>고객센터</p>
         </a>
         <!-- 프론트 테스트용 임시 링크 -->
-        <br />
+        <!-- <br />
         <br />
         <p style="color: red">프론트 테스트용 임시 링크</p>
         <a href="#" id="mommp">
@@ -97,7 +97,7 @@
         </a>
         <a href="#" id="manpg">
           <p>관리자페이지</p>
-        </a>
+        </a> -->
         <!-- 프론트 테스트용 임시 링크 끝-->
       </div>
 
@@ -135,15 +135,15 @@
       location.replace("${pageContext.request.contextPath}/customer/customer_center.do");
     });
     // 프론트 테스트용 임시 링크
-    $("#mommp").click(function (e) {
-      location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do");
-    });
-    $("#stmp").click(function (e) {
-      location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do");
-    });
-    $("#manpg").click(function (e) {
-      location.replace("${pageContext.request.contextPath}/admin/admin_login.do");
-    });
+    // $("#mommp").click(function (e) {
+    //   location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do");
+    // });
+    // $("#stmp").click(function (e) {
+    //   location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do");
+    // });
+    // $("#manpg").click(function (e) {
+    //   location.replace("${pageContext.request.contextPath}/admin/admin_login.do");
+    // });
     //프론트 테스트용 임시 링크 끝
   });
 </script>
