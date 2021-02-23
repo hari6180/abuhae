@@ -14,4 +14,5 @@ public class ProfileFile {
 	private String thumbnailpath;
 	private String thumnailurl;
 	private int memberno;
+	private String isProfile;
 }

@@ -17,19 +17,35 @@
       <result property="fileUrl" column="fileUrl" />
       <result property="thumbnailpath" column="thumbnailpath" />
       <result property="thumnailurl" column="thumnailurl" />
+      <result property="isProfile" column="isProfile" />
       <result property="memberno" column="memberno" />
    </resultMap>
    
    <insert id="addProfile"
 		parameterType="study.team.abuhae.model.ProfileFile"
 		useGeneratedKeys="true" keyProperty="profno">
-		insert into profile_file (fileName, originName, contentType, fileSize, filePath, fileUrl, memberno) 
-		values(#{fileName}, #{originName}, #{contentType}, #{fileSize}, #{filePath}, #{fileUrl}, #{memberno});
+		insert into profile_file (fileName, originName, contentType, fileSize, filePath, fileUrl, isProfile, memberno) 
+		values(#{fileName}, #{originName}, #{contentType}, #{fileSize}, #{filePath}, #{fileUrl}, #{isProfile}, #{memberno});
 	</insert>
+
+	<update id="editProfile" parameterType="study.team.abuhae.model.ProfileFile">
+	
+		update profile_file set fileName=#{fileName}, originName=originName, contentType = #{contentType}, 
+		fileSize = #{fileSize}, filePath = #{filePath}, fileUrl = #{fileUrl}, isProfile=#{isProfile}  
+		where memberno=#{memberno};
+		
+	</update>
 
 	<select id="selectProfileItem"
 	parameterType="study.team.abuhae.model.ProfileFile" resultMap="UploadMap">
 		select * from profile_file 
+		where memberno=#{memberno};
+	</select>
+	
+	<select id="selectProfileAll"
+	parameterType="study.team.abuhae.model.ProfileFile" resultType="int">
+		select count(*)
+		from profile_file
 		where memberno=#{memberno};
 	</select>
  </mapper>

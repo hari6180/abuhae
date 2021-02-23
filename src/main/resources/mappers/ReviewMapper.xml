@@ -102,7 +102,7 @@
 	<!-- 시터에게 남겨진 리뷰 조회 -->
 	<select id="selectSitterReviewList"
 	parameterType="study.team.abuhae.model.Review" resultMap="ReviewMap">
-		select mi.si, mi.gu, mi.dong, rev_rate, reg_date, contents, m.name, r.momno as momno, r.sitterno as sitterno, r.who 
+		select mi.si, mi.gu, mi.dong, rev_rate, reg_date, contents, m.name, r.momno as momno, r.sitterno as sitterno, r.who, count(*) 
 		from review r
 		inner join sitter_info s on s.sitterno = r.sitterno
 		inner join mom_info mi on mi.momno = r.momno

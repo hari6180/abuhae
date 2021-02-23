@@ -197,7 +197,7 @@
 
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_sitter_profile.do?sitterno=${login.sitterno}">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_sitter_profile.do?memberno=${login.memberno}">
                                     <i class="fas fa-pen mps_menu_list1"></i>
                                     <p class="mps_menu_list2">내 프로필 수정</p>
                                     <!--백엔드 연동 필요-->

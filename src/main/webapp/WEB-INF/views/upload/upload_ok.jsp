@@ -7,6 +7,13 @@
 <head>
     <meta charset="UTF-8" />
     <title>UploadTest</title>
+    <style type="text/css">
+    	img {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+    </style>
 </head>
 
 <body>
