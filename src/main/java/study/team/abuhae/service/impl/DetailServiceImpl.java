@@ -11,6 +11,7 @@ import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
+import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.DetailService;
 
@@ -239,6 +240,47 @@ public class DetailServiceImpl implements DetailService {
 	public Sitter_info getSitterMember(Sitter_info input) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+		public int findHeart(Heart input) throws Exception {
+		int result = 0;
+			
+		try {
+			result = sqlSession.selectOne("SearchMapper.findHeart", input);
+			
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("삭제된 찜 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 삭제에 실패했습니다.");
+		}
+		
+		return result;	
+	}
+
+	@Override
+	public List<Review> getSitterReviewList(Review input) throws Exception {
+		List<Review> result = null;
+	      
+	      try {
+	         result = sqlSession.selectList("ReviewMapper.selectSitterReviewList", input);
+	         
+	         if (result == null) {
+	            throw new NullPointerException("result = null");
+	         } 
+	      } catch (NullPointerException e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("조회된 데이터가 없습니다.");
+	      } catch (Exception e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("데이터 조회에 실패했습니다.");
+	      }
+	      return result;
 	}
 
 

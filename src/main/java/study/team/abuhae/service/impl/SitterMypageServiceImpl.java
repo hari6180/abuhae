@@ -146,7 +146,7 @@ public class SitterMypageServiceImpl implements SitterMypageService {
       List<Heart> result = null;
          
          try {
-            result = sqlSession.selectList("SitterMypageMapper.SitterHeartMap", input);
+            result = sqlSession.selectList("SitterMypageMapper.selectSitterHeartList", input);
             
             if (result==null) {
                throw new NullPointerException("result=null");
@@ -162,22 +162,191 @@ public class SitterMypageServiceImpl implements SitterMypageService {
          return result;
    }
 
+   /** 내게 지원한 */
    @Override
    public List<Connect> getSitterWorkList(Connect input) throws Exception {
-      // TODO Auto-generated method stub
-      return null;
+	   List<Connect> result = null;
+       
+       try {
+          result = sqlSession.selectList("SitterMypageMapper.selectSitterWorkList", input);
+          
+          if (result==null) {
+             throw new NullPointerException("result=null");
+          }
+       } catch (NullPointerException e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("조회된 데이터가 없습니다.");
+       } catch (Exception e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("데이터 조회에 실패했습니다.");
+       }
+       
+       return result;
    }
 
    @Override
    public List<Report> getSitterReprotList(Report input) throws Exception {
-      // TODO Auto-generated method stub
-      return null;
+	   List<Report> result = null;
+       
+       try {
+          result = sqlSession.selectList("SitterMypageMapper.selectSitterReportList", input);
+          
+          if (result==null) {
+             throw new NullPointerException("result=null");
+          }
+       } catch (NullPointerException e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("조회된 데이터가 없습니다.");
+       } catch (Exception e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("데이터 조회에 실패했습니다.");
+       }
+       
+       return result;
    }
 
    @Override
    public List<Coupon> getSitterCouponList(Coupon input) throws Exception {
-      // TODO Auto-generated method stub
-      return null;
+	   List<Coupon> result = null;
+       
+       try {
+          result = sqlSession.selectList("SitterMypageMapper.selectSitterCouponList", input);
+          
+          if (result==null) {
+             throw new NullPointerException("result=null");
+          }
+       } catch (NullPointerException e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("조회된 데이터가 없습니다.");
+       } catch (Exception e) {
+          log.error(e.getLocalizedMessage());
+          throw new Exception("데이터 조회에 실패했습니다.");
+       }
+       
+       return result;
    }
+
+   /** 내가 지원한 부모회원 목록 */
+	@Override
+	public List<Connect> getSitterApplyList(Connect input) throws Exception {
+		List<Connect> result = null;
+	    
+	    try {
+	       result = sqlSession.selectList("ConnectMapper.selectSitterOutputApplyList", input);
+	       
+	       if (result == null) {
+	          throw new NullPointerException("result = null");
+	       } 
+	    } catch (NullPointerException e) {
+	       log.error(e.getLocalizedMessage());
+	       throw new Exception("조회된 데이터가 없습니다.");
+	    } catch (Exception e) {
+	       log.error(e.getLocalizedMessage());
+	       throw new Exception("데이터 조회에 실패했습니다.");
+	    }
+	    return result;
+	}
+
+	/** 비밀번호 비교 */
+	@Override
+	public int bigyoSitterPassword(Sitter_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("SitterMypageMapper.bigyoSitterPassword", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+
+		return result;
+	}
+	
+	/** 비밀번호 업데이트 */
+	@Override
+	public int updatSitterePassword(Sitter_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("SitterMypageMapper.updateSitterPw", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
+	/** 시터회원 정보 추출 */
+	@Override
+	public Sitter_info getSitterMember(Sitter_info input) throws Exception {
+		Sitter_info result = null;
+
+		try {
+			result = sqlSession.selectOne("SitterMypageMapper.selectSitter", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 회원이 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
+	/** 회원 휴대폰 번호 수정 */
+	@Override
+	public int editSitterPhone(Sitter_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("MomMypageMapper.updateMemberPhoneAccount", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("There is no data to edit");
+		} catch (Exception e) {
+			throw new Exception("Fail to edit your phone number");
+		}
+		return result;
+	}
+
+	/** 회원 이메일 수정 */
+	@Override
+	public int editSitterEmail(Sitter_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("MomMypageMapper.updateMemberEmailAccount", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("There is no data to edit");
+		} catch (Exception e) {
+			throw new Exception("Fail to edit your email");
+		}
+		return result;
+	}
    
 }

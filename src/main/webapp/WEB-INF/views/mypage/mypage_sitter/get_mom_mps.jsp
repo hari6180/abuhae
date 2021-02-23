@@ -69,18 +69,27 @@
                                     <!-- 내가 지원한 -->
                                     <div class="gm_tab_page" id="gm_tab_page_1">
                                     
-                                        <hr>
-                                        <div class="gm_appl">
-                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-                                            <div class="gm_info">
-                                                <p>부모</p>
-                                                <p>희망시급:11,000원</p>
-                                                <p>지원시간:2020.12.25 17:07</p>
-                                                <p class="gm_endtime">부모님이 개인사정으로 정해진 시간 내에 답변하지 못했습니다.
-                                                    다른 부모님을 찾아보세요.
-                                                </p>
-                                            </div>
-                                        </div>   
+                                        <c:choose>
+                                        	<c:when test="${output2 == null }">
+                                        		<p>조회내역이 없습니다.</p>
+                                        	</c:when>
+                                        	<c:otherwise>
+                                        		<c:forEach var="item2" items="${output2 }" varStatus="status">
+                                        			<div class="gm_appl">
+			                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
+			                                            <div class="gm_info">
+			                                                <p>${item2.name }부모</p>
+			                                                <p>희망시급:${item2.payment }원</p>
+			                                                <p>지원시간:${item2.applydate }</p>
+			                                                <p class="gm_endtime">부모님이 개인사정으로 정해진 시간 내에 답변하지 못했습니다.
+			                                                    다른 부모님을 찾아보세요.
+			                                                </p>
+			                                            </div>
+			                                        </div>   
+			                                        <hr>
+                                        		</c:forEach>
+                                        	</c:otherwise>
+                                        </c:choose>
                                     </div>
                                     <!-- end 내가 지원한 -->
 

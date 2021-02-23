@@ -19,9 +19,11 @@ import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.DetailService;
 import study.team.abuhae.service.MemberService;
+import study.team.abuhae.service.impl.SitterMypageServiceImpl;
 
 @Controller
 public class Page_detail_sitterController {
@@ -31,6 +33,8 @@ public class Page_detail_sitterController {
 	DetailService detailService;
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	SitterMypageServiceImpl sitterMypageService;
 	
 	@Autowired
 	WebHelper webHelper;
@@ -54,13 +58,6 @@ public class Page_detail_sitterController {
 		Sitter_info output = null;
 		int countput = 0;
 		
-		/** String src = input.getWant_age();
-		String[] data = src.split(",");
-		
-		for (int i = 0; i < data.length; i++) {
-			System.out.println(data[i]);
-		} */
-		
 		try {
 			// 데이터 조회 
 			output = detailService.getSitterItem(input);
@@ -69,6 +66,41 @@ public class Page_detail_sitterController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		/** 데이터 조회 */
+		Sitter_info in = new Sitter_info();
+		in.setSitterno(sitterno);
+		
+		Sitter_info out = null;
+		
+		
+		
+		
+		
+		
+		try {
+			out = sitterMypageService.getSitterItem(in);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 데이터 조회 */
+		Review reviewinput = new Review();
+		input.setSitterno(sitterno);
+		
+		List<Review> reviewoutput = null;
+		
+		try {
+			reviewoutput = sitterMypageService.getSitterReviewList(reviewinput);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("out", out);
+		model.addAttribute("reviewoutput", reviewoutput);
+
+		
+		
 		model.addAttribute("output", output);
 		return new ModelAndView("/page_detail/sitter_page_detail/sitter_detail");
 		//return "/page_detail/sitter_page_detail/sitter_detail";
@@ -135,4 +167,11 @@ public class Page_detail_sitterController {
 				
 				
 				}
+		/** 리뷰관리 페이지 
+		@RequestMapping(value = "/page_detail/sitter_detail.do", method = RequestMethod.GET)
+		public ModelAndView review_sitter(Model model,
+				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+			
+			return new ModelAndView("/page_detail/sitter_page_detail/sitter_detail");
+		} */
 }

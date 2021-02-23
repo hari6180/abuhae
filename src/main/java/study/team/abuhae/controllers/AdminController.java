@@ -292,10 +292,10 @@ public class AdminController {
 		//return "admin/admin_singo";
 	}
 	
-	@RequestMapping(value = "/admin/admin_statistic.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/admin_injeung.do", method = RequestMethod.GET)
 	public String statistic(Model model) {
 
-		return "admin/admin_statistic";
+		return "admin/admin_injeung";
 	}
 	
 	

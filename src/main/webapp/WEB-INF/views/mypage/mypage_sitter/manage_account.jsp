@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -33,7 +36,7 @@
                     <header class="mp_detail_tl" style="border-bottom: 1px solid #ccc;">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${login.sitterno}">
                                     <i class="fas fa-angle-left"></i>
                                 </a>
                                 <h3 class="center-block">계정 관리</h3>
@@ -60,20 +63,25 @@
                                     <div class="acc_con_two">
                                         <div class="user_info_p user_type">
                                             <h5 class="col-xs-4 col-md-3">회원 유형</h5> 
-                                            <p class="col-xs-8 col-md-5">시터회원 / 일반 맘시터</p>
+                                            <c:if test="${fn:contains(login.type, 'M')}">
+                                               <p class="col-xs-8 col-md-5">부모회원</p>
+                                            </c:if>
+                                            <c:if test="${fn:contains(login.type, 'S')}">
+                                               <p class="col-xs-8 col-md-5">시터회원</p>
+                                            </c:if>
                                         </div>
                                         <div class="user_info_p user_now_id">
                                             <h5 class="col-xs-4 col-md-3">사용중인 아이디</h5>
-                                            <p class="col-xs-8 col-md-5">KoreanJiwoo</p>
+                                            <p class="col-xs-8 col-md-5">${output.id }</p>
                                         </div>
                                         <div class="user_info_p user_phone">
                                             <h5 class="col-xs-4 col-md-3">가입한 휴대폰 번호</h5>
-                                            <p class="col-xs-5 col-md-3">01012345678</p>
+                                            <p class="col-xs-5 col-md-3">${output.phone }</p>
                                             <div><button type="button" class="col-xs-3 col-md-2"><a data-toggle="modal" href="#upd_phonenumber">수정하기</a></button></div>
                                         </div>
                                         <div class="user_info_p user_email">
                                             <h5 class="col-xs-4 col-md-3">가입한 이메일</h5>
-                                            <p class="col-xs-5 col-md-3">KoreanJiwoo@google.com</p>
+                                            <p class="col-xs-5 col-md-3">${output.email }</p>
                                             <div><button type="button" class="col-xs-3 col-md-2"><a data-toggle="modal" href="#upd_email">수정하기</a></button></div>
                                         </div>
                                     </div>
@@ -96,9 +104,10 @@
                                             </h4>
                                         </div>
                                         <div class="modal-body"">
-                                            <form action="#">
-                                                <label for="new_phonenumber">새로운 휴대폰 번호</label>
-                                                <input type="text" name="new_phonenumber" id="new_phonenumber" placeholder="새로운 휴대폰 번호를 입력하세요." 
+                                            <form method="POST" action="${pageContext.request.contextPath}/mypage/updateSitterPhone.do">
+                                            	<label for="new_phonenumber">새로운 휴대폰 번호</label>
+                                                <input type="hidden" name="memberno" value="${login.memberno}">
+                                                <input type="text" name="phone" id="new_phonenumber" placeholder="새로운 휴대폰 번호를 입력하세요." 
                                                 style="width: 100%; line-height: 36px; padding: 0 20px; border: 0; border: 2px solid #ccc;">
                                                 <button class="rev_no_btn" type="submit" style="width: 100%; margin-top: 20px; 
                                                 background-color: rgb(34, 172, 135); border: 0; height: 30px; border-radius: 5px; color: #ffffff;">저장하기</button>
@@ -125,8 +134,9 @@
                                             </h4>
                                         </div>
                                         <div class="modal-body"">
-                                            <form action="#">
+                                            <form ${pageContext.request.contextPath}/mypage/updateSitterEmail.do>
                                                 <label for="new_email">새로운 이메일</label>
+                                                <input type="hidden" name="memberno" value="${login.memberno}">
                                                 <input type="text" name="new_email" id="new_email" placeholder="새로운 이메일을 입력하세요." 
                                                 style="width: 100%; line-height: 36px; padding: 0 20px; border: 0; border: 2px solid #ccc;">
                                                 <button class="rev_no_btn" type="submit" style="width: 100%; margin-top: 20px; 
@@ -143,7 +153,7 @@
                         <section class="group_account_foot">
                             <div class="row">
                                 <div class="col-xs-12 account_ft_in">
-                                    <a class="account_ft_btn" href="${pageContext.request.contextPath}/mypage/mypage_sitter/upadate_passoword.do">
+                                    <a class="account_ft_btn" href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_password.do?memberno=${login.memberno}">
                                         <p>비밀번호 변경</p>
                                         <i class="fas fa-angle-right"></i>
                                     </a>

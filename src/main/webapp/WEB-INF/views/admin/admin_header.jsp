@@ -86,11 +86,11 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><i class="fas fa-table"></i> 현황 </a>
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><i class="fas fa-table"></i> 인증관리 </a>
                 </h4>
               </div>
               <div id="collapseFour" class="panel-collapse collapse">
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_statistic.do">현황</a></div>
+                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_injeung.do">인증승인</a></div>
               </div>
             </div>
             <!-- 아코디언 영역 end-->

@@ -257,7 +257,7 @@
 	    			padding: 0;
 	    		}
 	    		.active_main {
-	    			padding-bottom: 30px;
+	    			padding-bottom: 10px;
 	    		}
 	    		.active_main_box {
 	    			display: block;
@@ -1086,4 +1086,64 @@
 				height: 48px;
 				background: none;
 			}
-			
+			.days_box_no {
+		width: 47px;
+		height: 45px;
+		background-color: #ccc;
+		color: #fff;
+		padding: 3px 4px;
+		text-align: center;
+		display: inline-block;
+		font-weight: bold;
+		font-size: 1em;
+		border-radius: 3px;
+		line-height: 35px;
+		padding: 3px 4px;
+	}
+	.days_box_ok {
+		width: 47px;
+		height: 45px;
+		background-color: #ff7000;
+		color: #fff;
+		padding: 3px 4px;
+		text-align: center;
+		display: inline-block;
+		font-weight: bold;
+		font-size: 1em;
+		border-radius: 3px;
+		line-height: 35px;
+		padding: 3px 4px;
+	}
+	.schedule_area {
+		width: 100%;
+		position: relative;
+		color: #000;
+		font-weight: bold;
+		padding: 5px;
+		border-radius: 8px;
+	}
+	.schedule_style {
+		position: absolute;
+		top: 25px;
+		left: -5px;
+		width: 0;
+		height: 0;
+		border-radius: 10px solid #e9f2f1;
+		border-bottom: 10px solid rgba(0,0,0,0);
+		border-top: 10px solid rgba(0,0,0,0);
+	}
+	.schedule_box {
+		padding: 8px 0px;
+	}
+	.schedule_main {
+		background-color: #e9f2f1;
+		padding: 15px;
+		border-radius: 8px;
+	}
+	#schedule_text {
+		padding-top: 6px;
+		padding-left: 5px;
+	}
+	.swal-button {
+		background-color: #ff7000;
+	}

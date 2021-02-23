@@ -28,9 +28,96 @@
 <!-- sweetalert 사용 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+<style type="text/css">
+	.talk_box {
+					margin-bottom: 25px;
+				}
+				.talk_area {
+					position: relative;
+					padding: 15px;
+					border-radius: 3px;
+					background-color: #fff;
+				}
+				.talk_main {
+					width: 100%;
+				}
+				.talk_menu {
+					display: flex;
+					width: 100%;
+					-webkit-box-pack: justify;
+					-webkit-box-align: center;
+					justify-content: space-between;
+				}
+				
+				.talk_menu_ok_title {
+					color: rgb(255, 112, 0);
+					letter-spacing: -0.2px;
+					font-weight: bold;
+					line-height: 19px;
+					margin: 0;
+					padding: 0;
+					width: 100%;
+					font-size: 0.9em;
+				}
+				.talk_menu_review {
+					margin-left: 6px;
+				}
+				.talk_menu_review_title {
+					margin: 0px;
+					padding: 0px;
+					color: rgb(170, 170, 170);
+					letter-spacing: -0.2px;
+					line-height: 19px;
+					font-size: 0.9em;
+					width: 100%;
+					font-wwight: bold;
+				}
+				.talk_box_ea {
+					margin: 10px 0px;
+					padding: 5px 10px;
+				}
+				.talk_box_line {
+					display: flex;
+					margin-bottom: 15px;
+					align-items: flex-start;
+				}
+				.talk_box_line > img {
+					border-radius: 100%;
+				}
+				.talk_box_line_text {
+					padding-left: 15px;
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+				}
+				.talk_box_line_date_name {
+					flex-direction: row;
+					align-items: center;
+					display: flex;
+				}
+				.talk_box_line_name {
+					font-size: 0.9em;
+					margin-right: 5px;
+					font-weight: bold;
+					color: #5c5c5c;
+				}
+				.talk_box_line_date {
+					color: #b6b6b6;
+					margin-left: 5px;
+					font-size: 0.8em;
+				}
+				.star_area {
+					margin-right: 10px;
+				}
+				.talk_box_talk {
+					display: flex;
+					align-items: center;
+					flex-direction: row;
+				}
+</style>
+
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/page_detail_for_sitter.css" />	
-	
 <script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -68,11 +155,6 @@ jQuery(function($) {
  </script>
  <!-- jquery 파일명 수정 -->
 <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
-<style type="text/css">
-	.swal-button {
-		background-color: #ff7000;
-	}
-</style>
 </head>
 	
 <body>		
@@ -308,42 +390,99 @@ jQuery(function($) {
 									<div class="active_main">
 										<div class="active_main_box" style="display: block;">
 											<div class="schedule_info_box">
-												<div class="schedule_img">
-													<img src="<%=request.getContextPath()%>/assets/img/people_review.png" width="60" height="60" style="border-radius: 50%;">
-												</div>
 												<div class="schedule_area">
 													<div class="schedule_style"></div>
 													<div class="schedule_box">
 														<div class="schedule_main">
-															<span id="schedule_text">${output.schedule}</span>
+															<span id="schedule_text" style="color: #ff7000; font-weight: bold;"> 
+															${fn:split(output.schedule_start,'/')[0]}년 ${fn:split(output.schedule_start,'/')[1]}월 ${fn:split(output.schedule_start,'/')[2]}일 
+															 </span> 부터 일을 시작할 수 있어요.
 															<br/>
-															<span style="margin-left: 5px;"></span>
+															<span style="margin-left: 5px; font-weight: bold;">
+																이 일정으로
+															 <c:if test="${output.frequency=='1week'}"><span style="color: #ff7000;">1주일 이상</span></c:if>
+															 <c:if test="${output.frequency=='1month'}"><span style="color: #ff7000;">1개월 이상</span></c:if>
+															 <c:if test="${output.frequency=='3month'}"><span style="color: #ff7000;">3개월 이상</span></c:if>
+															 <c:if test="${output.frequency=='36month'}"><span style="color: #ff7000;">6개월 이상</span></c:if>
+															 일 할 수 있어요.
+															</span>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-xs-12">
-											<div class="days_box">
+											<c:set var="theString" value="${output.days}" />
+											<c:if test="${fn:contains(theString, 'mon')==false}">
+											<div class="days_box_no">
 												월 
 											</div>
-											<div class="days_box">
+											</c:if>
+											<c:if test="${fn:contains(theString, 'mon')}">
+											<div class="days_box_ok">
+												월 
+											</div>
+											</c:if>
+											<c:if test="${fn:contains(theString, 'tue')==false}">
+											<div class="days_box_no">
 												화
 											</div>
-											<div class="days_box">
+											</c:if>
+											<c:if test="${fn:contains(theString, 'tue')}">
+											<div class="days_box_ok">
+												화 
+											</div>
+											</c:if><c:if test="${fn:contains(theString, 'wen')==false}">
+											<div class="days_box_no">
 												수
 											</div>
-											<div class="days_box">
-												목
+											</c:if>
+											<c:if test="${fn:contains(theString, 'wen')}">
+											<div class="days_box_ok">
+												수 
 											</div>
-											<div class="days_box">
-												금 
+											</c:if><c:if test="${fn:contains(theString, 'thu')==false}">
+											<div class="days_box_no">
+												목 
 											</div>
-											<div class="days_box">
+											</c:if>
+											<c:if test="${fn:contains(theString, 'thu')}">
+											<div class="days_box_ok">
+												목 
+											</div>
+											</c:if><c:if test="${fn:contains(theString, 'fri')==false}">
+											<div class="days_box_no">
+												금
+											</div>
+											</c:if>
+											<c:if test="${fn:contains(theString, 'fri')}">
+											<div class="days_box_ok">
+												금  
+											</div>
+											</c:if><c:if test="${fn:contains(theString, 'sat')==false}">
+											<div class="days_box_no">
 												토 
 											</div>
-											<div class="days_box">
-												일
+											</c:if>
+											<c:if test="${fn:contains(theString, 'sat')}">
+											<div class="days_box_ok">
+												토 
 											</div>
+											</c:if><c:if test="${fn:contains(theString, 'sun')==false}">
+											<div class="days_box_no">
+												일 
+											</div>
+											</c:if>
+											<c:if test="${fn:contains(theString, 'sun')}">
+											<div class="days_box_ok">
+												일 
+											</div>
+											</c:if>
+											</div>
+											</div>
+											<div style="text-align: center; font-weight: bold; padding-top: 10px;">
+											<span style="color: #ff7000;  ">
+												* 자세한 시간은 맘회원과 매칭된 이후에 조율해요. 
+											</span>
 											</div>
 										<!--  	<div>
 											
@@ -578,7 +717,7 @@ jQuery(function($) {
 												</div>
 											</div>						
 											-->
-										</div> <!-- fin. active_main_box -->
+										 <!-- fin. active_main_box -->
 									</div> <!-- fin. active_main -->
 								</div> <!-- fin. active -->
 							</div>
@@ -1001,6 +1140,99 @@ jQuery(function($) {
 							</div>
 						</div> <!-- fin. possible_active_area -->
 					</div> <!-- fin. possible_active_box -->
+					<div class="talk_box">
+						<div class="box_name">맘시터 후기</div>
+						<div class="talk_area">
+							<div class="talk_main">
+								<div>
+									<div class="talk_box_ea">
+										<div class="talk_box_line">
+											<img src="<%=request.getContextPath()%>/assets/img/chat_mom02.png" width="50" height="50"/>
+											<div class="talk_box_line_text">
+												<div class="talk_box_line_date_name">
+													<div class="talk_box_line_name">김<i class="far fa-circle"></i>준</div>
+													<div class="talk_box_line_date">7달 전</div>
+												</div>
+												<div class="talk_box_line_date_name">
+													<div style="color: #000; font-size: 0.8em; margin-right: 5px; font-weight: bold;">인터뷰 후기</div>
+													<div class="star_area">
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+													</div>
+												</div>
+												<div class="talk_box_line_date_name">
+													<div class="talk_box_talk">
+														<span>원하는 시간이 저와 맞지 않아 매칭이 성사되지 못하였습니다ㅠㅠ ${output.contents}</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<hr style="margin: -1px 0px 0px; height: 1px; border: none; background-color: rgb(224,224,224);">
+									
+									<div class="talk_box_ea">
+										<div class="talk_box_line">
+											<img src="<%=request.getContextPath()%>/assets/img/chat_mom02.png" width="50" height="50"/>
+											<div class="talk_box_line_text">
+												<div class="talk_box_line_date_name">
+													<div class="talk_box_line_name">김<i class="far fa-circle"></i>준</div>
+													<div class="talk_box_line_date">7달 전</div>
+												</div>
+												<div class="talk_box_line_date_name">
+													<div style="color: #000; font-size: 0.8em; margin-right: 5px; font-weight: bold;">인터뷰 후기</div>
+													<div class="star_area">
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+													</div>
+												</div>
+												<div class="talk_box_line_date_name">
+													<div class="talk_box_talk">
+														<span>원하는 시간이 저와 맞지 않아 매칭이 성사되지 못하였습니다ㅠㅠ</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<hr style="margin: -1px 0px 0px; height: 1px; border: none; background-color: rgb(224,224,224);">
+									
+									<div class="talk_box_ea">
+										<div class="talk_box_line">
+											<img src="<%=request.getContextPath()%>/assets/img/chat_mom02.png" width="50" height="50"/>
+											<div class="talk_box_line_text">
+												<div class="talk_box_line_date_name">
+													<div class="talk_box_line_name">김<i class="far fa-circle"></i>준</div>
+													<div class="talk_box_line_date">7달 전</div>
+												</div>
+												<div class="talk_box_line_date_name">
+													<div style="color: #000; font-size: 0.8em; margin-right: 5px; font-weight: bold;">인터뷰 후기</div>
+													<div class="star_area">
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+													</div>
+												</div>
+												<div class="talk_box_line_date_name">
+													<div class="talk_box_talk">
+														<span>원하는 시간이 저와 맞지 않아 매칭이 성사되지 못하였습니다ㅠㅠ</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div> <!-- fin. talk_area -->
+					</div> <!-- fin. talk_box -->
 					<div class="possible_zone_box">
 						<div class="box_name">활동 가능 지역</div>
 						<div class="possible_zone_area">
