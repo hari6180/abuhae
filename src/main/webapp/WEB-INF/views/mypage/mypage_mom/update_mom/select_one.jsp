@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page trimDirectiveWhitespaces="true" %>
+
 <p>아이 생년/월을 입력해 주세요</p>
 <p>출산 예정이라면 예정 년/월을 입력해 주세요.</p>
 
@@ -37,22 +40,6 @@
                 <option value="11">11월</option>
                 <option value="12">12월</option>
             </select>
-        </div>
-    </div>
-</div>
-
-<div class="payment_wrap">
-    <div class="payment_box ">
-        <h4>맘시터에게 지급할 희망 시급을 적어 주세요.
-            <a href="#child_modal" data-toggle="modal"><i class="fas fa-question-circle"></i></a>
-        </h4>
-        <div class="payment_input_wrap">
-            <input type="text" class="payment_input" value="10,000" id="payment_input">
-            <span class="payment_fix">원</span>
-        </div>
-        <div class="disc_box">
-            <input type="checkbox" value="discussion" id="discussion"><label for="discussion">시급 협의
-                가능</label>
         </div>
     </div>
 </div>

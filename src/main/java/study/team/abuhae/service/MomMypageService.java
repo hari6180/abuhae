@@ -69,6 +69,21 @@ public interface MomMypageService {
 	//원하는 시터 나이대 업데이트
 	public int updateWantage(Mom_info input) throws Exception;
 	
+	//원하는 시터 나이대 업데이트
+	public int updateLocation(Mom_info input) throws Exception;
+	
+	//돌봄 가능 스케쥴 업데이트
+	public int updateSchedule(Mom_info input) throws Exception;
+	
+	//아이 정보, 시급 업데이트
+	public int updateKidspay(Mom_info input) throws Exception;
+	
+	//원하는 활동 업데이트
+	public int updateWantact(Mom_info input) throws Exception;
+	
+	//그외 요청사항 업데이트
+	public int updateEtc(Mom_info input) throws Exception;
+	
 	//////////선아 작업/////////////////
 }
 

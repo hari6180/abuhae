@@ -36,6 +36,7 @@ public class JoinRestController {
 			@RequestParam(value = "want_age") String want_age,
 			@RequestParam(value = "kids_num") int kids_num, 
 			@RequestParam(value = "kids_age") String kids_age,
+			@RequestParam(value = "kids_age2", required = false) String kids_age2,
 			@RequestParam(value = "payment") String paymentstr, 
 			@RequestParam(value = "payment_ok") char payment_ok,
 			@RequestParam(value = "si") String si, 
@@ -103,6 +104,7 @@ public class JoinRestController {
 		mominfo.setWant_age(want_age);
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
+		mominfo.setKids_age2(kids_age2);
 		mominfo.setPayment(payment);
 		mominfo.setPayment_ok(payment_ok);
 		mominfo.setSi(si);

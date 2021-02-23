@@ -412,6 +412,101 @@ public class MomMypageServiceImpl implements MomMypageService {
 		return result;
 	}
 
+	@Override
+	public int updateLocation(Mom_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("MomMypageMapper.updateLocation", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public int updateSchedule(Mom_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("MomMypageMapper.updateSchedule", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public int updateKidspay(Mom_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("MomMypageMapper.updateKidspay", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public int updateWantact(Mom_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("MomMypageMapper.updateWantact", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public int updateEtc(Mom_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("MomMypageMapper.updateEtc", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		return result;
+	}
+
 	////// end 선아작업////////////////////
 
 }

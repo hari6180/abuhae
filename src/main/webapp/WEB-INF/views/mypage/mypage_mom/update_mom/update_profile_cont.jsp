@@ -12,23 +12,18 @@
     <!-- 모바일 웹 페이지 설정 -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
     <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
-
     <!-- bootstrap -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
-
     <!-- noto Sans 웹 폰트 적용 -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
-
     <!-- icon 참조 -->
     <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
-
-    <!--flatpickr-->
+    <!-- Javascript -->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
     <!-- css 참조 -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_mom_appl.css">
-
-
     <style type="text/css">
         /** for 후기 관리 페이지 (review.html) --------------------------------------*/
         /** 공통 for 후기 관리 */
@@ -50,6 +45,10 @@
         .flatpickr-day.today {
             border-color: #ff7000;
         }
+
+        .flatpickr-calendar.inline {
+            margin: auto;
+        }
     
         .select_btn {
             background-color: #ff7000 !important;
@@ -60,7 +59,7 @@
         h4 {
             display: block;
             text-align: left;
-            font-size: 0.9em;
+            font-size: 1em;
             color: #666;
             margin: 34px 0 11px;
         }
@@ -133,7 +132,6 @@
         }
     
         .care_age_cont_in {
-            padding-top: 30px;
             color: #919191;
         }
     
@@ -149,7 +147,7 @@
         }
 
         p {
-            margin: 0 0 20px !important;
+            margin: 20px 0 20px !important;
         }
         .main_title {
             font-weight: bold;
@@ -164,7 +162,13 @@
             margin: 20px;
         }
 
-		
+        .next_btn, .what_want {
+            display: none;
+        }
+
+        *:focus { outline:none; }
+
+
     </style>
 
 </head>
@@ -314,7 +318,7 @@
                 <h3>돌봄장소 수정</h3>
                 <br>
                 <div class="row">
-                    <form>
+                    <form  method="post" action="${pageContext.request.contextPath}/mypage_update/location.do?momno=${login.momno}">
                         <div class="col-xs-12 upd_loc_cont1">
 
                             <!--시,도-->
@@ -496,9 +500,9 @@
                             </div>
                             <!--end 동-->
                         </div>
-                        <input type="hidden" name="si" id="si">
-                        <input type="hidden" name="gu" id="gu">
-                        <input type="hidden" name="dong" id="dong">
+                        <input type="hidden" name="si" id="loc_si">
+                        <input type="hidden" name="gu" id="loc_gu">
+                        <input type="hidden" name="dong" id="loc_dong">
                         <button id="updateLoaction" class="edit_btn" type="submit">수정하기</button>
                     </form>
                 </div>
@@ -513,11 +517,11 @@
                 <h3>돌봄 기간 / 시간 변경</h3>
                 <br>
                 <div class="row">
-                    <form>
+                    <form method="post" action="${pageContext.request.contextPath}/mypage_update/schedule.do?momno=${login.momno}">
                         <div class="col-xs-12">
                             <!-- 탭 버튼 영역 (정기적으로 / 특정한 날에만)-->
                             <div class="upd_ct_tab">
-                                <button type="button" class="upd_ct_tab_item_link select" value="regular">정기적으로</button>
+                                <button type="button" class="upd_ct_tab_item_link" value="regular">정기적으로</button>
                                 <button type="button" class="upd_ct_tab_item_link" value="shortTerm" >특정한 날에만</button>
                             </div>
                             <!-- end 탭 버튼 영역 -->
@@ -540,198 +544,43 @@
             <!-- content1 -->
             <section class="group_upd_img">
                 <div class="row">
-                    <form>
+                    <form method="post" action="${pageContext.request.contextPath}/mypage_update/kidspay.do?momno=${login.momno}">
                         <div class="col-xs-12">
                             <h3>아이정보/희망시급 수정</h3>
                             <br>
                             <div class="number_children_wrap">
-                                <button class="childeren_num1 btn_children_off" data-tab="select_one"><a
-                                        class="child_num" href="#select_title1">1명</a></button>
-                                <button class="childeren_num2 btn_children_off" data-tab="select_two"><a
-                                        class="child_num" href="#select_title2">2명</a></button>
+                                <button type="button" class="childeren_num1 btn_children_off" data-tab="select_one" value="1">1명</button>
+                                <button type="button" class="childeren_num2 btn_children_off" data-tab="select_two" value="2">2명</button>
                             </div>
                             <!--동적 요소 위치-->
-                            <div class="title">
-                                <!--아이 명수 선택 안 할시 띄우기-->
-                                <!--아이 명수 셀렉하면 동적 요소로 타이틀 변경-->
-                                <div class="noselect_title">
-                                    안전한 아이 돌봄 서비스를 위해
-                                    <br>
-                                    시터 1명이 최대 2명까지 돌볼 수 있습니다.
+                            <div id="select_title">
+                            </div>
+                            <!--시급-->
+                            <div class="payment_box">
+                                <h4>맘시터에게 지급할 희망 시급을 적어 주세요.
+                                    <div class="help_box">
+                                        <a data-toggle="modal" href="#help_modal"><button class="help_btn">
+                                                <span class="sr-only">도움말</span>
+                                                <img src="${pageContext.request.contextPath}/assets/img/help.png" alt="도움말">
+                                            </button></a>
+                                    </div>
+                                </h4>
+                                <div class="payment_input_wrap">
+                                    <input type="text" class="payment_input" value="10,000" id="payment_input" name="payment">
+                                    <span class="payment_fix">원</span>
                                 </div>
-                                <div id="select_title1" class="select_title hide">
-                                    <p>아이 생년/월을 입력해 주세요</p>
-                                    <p>출산 예정이라면 예정 년/월을 입력해 주세요.</p>
-
-                                    <div class="children_age_block">
-                                        <div class="title_block">아이 1</div>
-                                        <div class="select_children_age_wrap">
-                                            <div class="select_list">
-                                                <select id="year">
-                                                    <option value="">출생년도</option>
-                                                    <option value="2021">2021년</option>
-                                                    <option value="2020">2020년</option>
-                                                    <option value="2019">2019년</option>
-                                                    <option value="2018">2018년</option>
-                                                    <option value="2017">2017년</option>
-                                                    <option value="2016">2016년</option>
-                                                    <option value="2015">2015년</option>
-                                                    <option value="2014">2014년</option>
-                                                    <option value="2013">2013년</option>
-                                                    <option value="2012">2012년</option>
-                                                    <option value="2011">2011년</option>
-                                                    <option value="2010">2010년</option>
-                                                </select>
-                                            </div>
-                                            <div class="select_list">
-                                                <select id="month">
-                                                    <option value="">출생 월</option>
-                                                    <option value="01">1월</option>
-                                                    <option value="02">2월</option>
-                                                    <option value="03">3월</option>
-                                                    <option value="04">4월</option>
-                                                    <option value="05">5월</option>
-                                                    <option value="06">6월</option>
-                                                    <option value="07">7월</option>
-                                                    <option value="08">8월</option>
-                                                    <option value="09">9월</option>
-                                                    <option value="10">10월</option>
-                                                    <option value="11">11월</option>
-                                                    <option value="12">12월</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="payment_wrap">
-                                        <div class="payment_box ">
-                                            <h4>맘시터에게 지급할 희망 시급을 적어 주세요.
-                                                <a href="#child_modal" data-toggle="modal"><i
-                                                        class="fas fa-question-circle"></i></a>
-                                            </h4>
-                                            <div class="payment_input_wrap">
-                                                <input type="text" class="payment_input" value="10,000"
-                                                    id="payment_input">
-                                                <span class="payment_fix">원</span>
-                                            </div>
-                                            <div class="disc_box">
-                                                <input type="checkbox" value="discussion" id="discussion"><label
-                                                    for="discussion">시급
-                                                    협의
-                                                    가능</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 두번째 탭내용 -->
-                                <div id="select_title2" class="select_title hide">
-                                    <p>아이 생년/월을 입력해 주세요</p>
-                                    <p>출산 예정이라면 예정 년/월을 입력해 주세요.</p>
-
-                                    <div class="children_age_block">
-                                        <div class="title_block">아이 1</div>
-                                        <div class="select_children_age_wrap">
-                                            <div class="select_list">
-                                                <select>
-                                                    <option value="">출생년도</option>
-                                                    <option value="2021">2021년</option>
-                                                    <option value="2020">2020년</option>
-                                                    <option value="2019">2019년</option>
-                                                    <option value="2018">2018년</option>
-                                                    <option value="2017">2017년</option>
-                                                    <option value="2016">2016년</option>
-                                                    <option value="2015">2015년</option>
-                                                    <option value="2014">2014년</option>
-                                                    <option value="2013">2013년</option>
-                                                    <option value="2012">2012년</option>
-                                                    <option value="2011">2011년</option>
-                                                    <option value="2010">2010년</option>
-                                                </select>
-                                            </div>
-                                            <div class="select_list">
-                                                <select>
-                                                    <option value="">출생 월</option>
-                                                    <option value="01">1월</option>
-                                                    <option value="02">2월</option>
-                                                    <option value="03">3월</option>
-                                                    <option value="04">4월</option>
-                                                    <option value="05">5월</option>
-                                                    <option value="06">6월</option>
-                                                    <option value="07">7월</option>
-                                                    <option value="08">8월</option>
-                                                    <option value="09">9월</option>
-                                                    <option value="10">10월</option>
-                                                    <option value="11">11월</option>
-                                                    <option value="12">12월</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="children_age_block">
-                                        <div class="title_block">아이 2</div>
-                                        <div class="select_children_age_wrap">
-                                            <div class="select_list">
-                                                <select id="year">
-                                                    <option value="">출생년도</option>
-                                                    <option value="2021">2021년</option>
-                                                    <option value="2020">2020년</option>
-                                                    <option value="2019">2019년</option>
-                                                    <option value="2018">2018년</option>
-                                                    <option value="2017">2017년</option>
-                                                    <option value="2016">2016년</option>
-                                                    <option value="2015">2015년</option>
-                                                    <option value="2014">2014년</option>
-                                                    <option value="2013">2013년</option>
-                                                    <option value="2012">2012년</option>
-                                                    <option value="2011">2011년</option>
-                                                    <option value="2010">2010년</option>
-                                                </select>
-                                            </div>
-                                            <div class="select_list">
-                                                <select id="month">
-                                                    <option value="">출생 월</option>
-                                                    <option value="01">1월</option>
-                                                    <option value="02">2월</option>
-                                                    <option value="03">3월</option>
-                                                    <option value="04">4월</option>
-                                                    <option value="05">5월</option>
-                                                    <option value="06">6월</option>
-                                                    <option value="07">7월</option>
-                                                    <option value="08">8월</option>
-                                                    <option value="09">9월</option>
-                                                    <option value="10">10월</option>
-                                                    <option value="11">11월</option>
-                                                    <option value="12">12월</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="payment_wrap">
-                                        <div class="payment_box ">
-                                            <h4>맘시터에게 지급할 희망 시급을 적어 주세요.
-                                                <a href="#child_modal" data-toggle="modal"><i
-                                                        class="fas fa-question-circle"></i></a>
-                                            </h4>
-                                            <div class="payment_input_wrap">
-                                                <input type="text" class="payment_input" value="10,000"
-                                                    id="payment_input">
-                                                <span class="payment_fix">원</span>
-                                            </div>
-                                            <div class="disc_box">
-                                                <input type="checkbox" value="discussion" id="discussion"><label
-                                                    for="discussion">시급
-                                                    협의
-                                                    가능</label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="disc_box">
+                                    <input type="checkbox" id="discussion" name="payment_check"><label
+                                        for="discussion">시급 협의
+                                        가능</label>
                                 </div>
                             </div>
-                            <!--end 동적 요소 위치-->
                         </div>
-                        <button class="edit_btn" type="submit">수정하기</button>
+                        <input type="hidden" name="kids_num" id="kids_num"/>
+                        <input type="hidden" name="kids_age" id="kids_age"/>
+                        <input type="hidden" name="kids_age2" id="kids_age2"/>
+                        <input type="hidden" name="payment_ok" id="payment_ok"/>
+                        <button id="updateKidspay" class="edit_btn" type="submit">수정하기</button>
                     </form>
                 </div>
             </section>
@@ -780,28 +629,27 @@
 
         <div class="wrap_update_activity">
             <h3>원하는 활동 수정</h3>
-            <br>
+			<span class="sub_title"><i class="fas fa-check"></i>최대 3개만 선택 가능합니다.</span>
             <!-- content -->
             <section class="upd_care_age_cont">
                 <div class="row">
                     <div class="col-xs-12 care_age_cont_in">
                         <h4>원하는 활동이란<a href="#mom_activity_modal" data-toggle="modal"><i class="fas fa-question-circle"
                                     style="margin-left: 10px; color: #919191;"></i></a></h4>
-                        <br />
                     </div>
                 </div>
             </section>
 
             <section class="upd_care_age">
                 <div class="row">
-                    <form>
+                    <form method="post" action="${pageContext.request.contextPath}/mypage_update/wantact.do?momno=${login.momno}">
                         <div class="col-xs-12 upd_care_age_in">
 
                             <!-- 첫째줄-->
                             <div class="age_line">
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age11" name="want_care_age"
-                                        value="babyage1">
+                                    <input type="checkbox" class="care_age" id="care_age11" name="want_act_check"
+                                        value="innerplay">
                                     <label for="care_age11"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/innerplayicon_n.png"
                                             alt=""></label>
@@ -809,8 +657,8 @@
                                 </div>
 
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age12" name="want_care_age"
-                                        value="babyage2">
+                                    <input type="checkbox" class="care_age" id="care_age12" name="want_act_check"
+                                        value="korean">
                                     <label for="care_age12"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/koreanicon_n.png"
                                             alt=""></label>
@@ -818,8 +666,8 @@
                                 </div>
 
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age13" name="want_care_age"
-                                        value="babyage3">
+                                    <input type="checkbox" class="care_age" id="care_age13" name="want_act_check"
+                                        value="simple_cleaning">
                                     <label for="care_age13"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/cleanicon_n.png"
                                             alt=""></label>
@@ -827,19 +675,19 @@
                                 </div>
 
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age14" name="want_care_age"
-                                        value="babyage2">
+                                    <input type="checkbox" class="care_age" id="care_age14" name="want_act_check"
+                                        value="long_move_in">
                                     <label for="care_age14"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/longhouseicon_n.png"
-                                            alt=""></i></label>
+                                            alt=""></label>
                                     <div class="care_age_text">장기입주</div>
                                 </div>
                             </div>
                             <!-- 둘째줄 -->
                             <div class="age_line">
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age21" name="want_care_age"
-                                        value="babyage1">
+                                    <input type="checkbox" class="care_age" id="care_age21" name="want_act_check"
+                                        value="guide">
                                     <label for="care_age21"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/guideicon_n.png"
                                             alt=""></label>
@@ -847,8 +695,8 @@
                                 </div>
 
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age22" name="want_care_age"
-                                        value="babyage2">
+                                    <input type="checkbox" class="care_age" id="care_age22" name="want_act_check"
+                                        value="english">
                                     <label for="care_age22"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/englishicon_n.png"
                                             alt=""></label>
@@ -856,8 +704,8 @@
                                 </div>
 
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age23" name="want_care_age"
-                                        value="babyage3">
+                                    <input type="checkbox" class="care_age" id="care_age23" name="want_act_check"
+                                        value="eat">
                                     <label for="care_age23"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/eaticon_n.png"
                                             alt=""></label>
@@ -865,19 +713,19 @@
                                 </div>
 
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age24" name="want_care_age"
-                                        value="babyage2">
+                                    <input type="checkbox" class="care_age" id="care_age24" name="want_act_check"
+                                        value="short_move_in">
                                     <label for="care_age24"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/houseicon_n.png"
-                                            alt=""></i></label>
+                                            alt=""></label>
                                     <div class="care_age_text">단기입주</div>
                                 </div>
                             </div>
                             <!-- 셋째줄 -->
                             <div class="age_line">
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age31" name="want_care_age"
-                                        value="babyage1">
+                                    <input type="checkbox" class="care_age" id="care_age31" name="want_act_check"
+                                        value="read">
                                     <label for="care_age31"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/readicon_n.png"
                                             alt=""></label>
@@ -885,8 +733,8 @@
                                 </div>
 
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age32" name="want_care_age"
-                                        value="babyage2">
+                                    <input type="checkbox" class="care_age" id="care_age32" name="want_act_check"
+                                        value="study">
                                     <label for="care_age32"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/studyicon_n.png"
                                             alt=""></label>
@@ -894,8 +742,8 @@
                                 </div>
 
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age33" name="want_care_age"
-                                        value="babyage3">
+                                    <input type="checkbox" class="care_age" id="care_age33" name="want_act_check"
+                                        value="do_dish">
                                     <label for="care_age33"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/dishicon_n.png"
                                             alt=""></label>
@@ -905,8 +753,8 @@
                             <!-- 넷째줄 -->
                             <div class="age_line">
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age41" name="want_care_age"
-                                        value="babyage1">
+                                    <input type="checkbox" class="care_age" id="care_age41" name="want_act_check"
+                                        value="outside">
                                     <label for="care_age41"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/ousideicon_n.png"
                                             alt=""></label>
@@ -914,8 +762,8 @@
                                 </div>
 
                                 <div class="care_age_btn">
-                                    <input type="checkbox" class="care_age" id="care_age42" name="want_care_age"
-                                        value="babyage2">
+                                    <input type="checkbox" class="care_age" id="care_age42" name="want_act_check"
+                                        value="sport">
                                     <label for="care_age42"><img class="want_img"
                                             src="${pageContext.request.contextPath}/assets/img/ballicon_n.png"
                                             alt=""></label>
@@ -924,7 +772,10 @@
                             </div>
 
                         </div>
-                        <button class="edit_btn" type="submit">수정하기</button>
+                        <input type="hidden" name="want_act1" id="want_act1"/>
+                        <input type="hidden" name="want_act2" id="want_act2"/>
+                        <input type="hidden" name="want_act3" id="want_act3"/>
+                        <button id="updateWantAct" class="edit_btn" type="submit">수정하기</button>
                     </form>
                 </div>
             </section>
@@ -1005,7 +856,7 @@
             <br>
             <section class="group1_upd_req">
                 <div class="row">
-                    <form>
+                    <form method="post" action="${pageContext.request.contextPath}/mypage_update/etc.do?momno=${login.momno}">
                         <div class="col-xs-12 upd_sitter_gender">
                             <div class="request_box">
                                 <h4>원하는 맘시터 성별</h4>
@@ -1037,19 +888,19 @@
                                 <h4>돌보는 방식</h4>
                                 <div class="choice_care">
                                     <div>
-                                        <input type="radio" id="type_care1" name="type_care" value="1">
+                                        <input type="radio" id="type_care1" name="care_type" value="부모 대신 혼자 돌봐주세요.">
                                         <label for="type_care1">부모 대신 혼자 돌봐주세요.</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="type_care2" name="type_care" value="2">
+                                        <input type="radio" id="type_care2" name="care_type" value="엄마 아빠와 함께 돌봐주세요.">
                                         <label for="type_care2">엄마 아빠와 함께 돌봐주세요.</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="type_care3" name="type_care" value="3">
+                                        <input type="radio" id="type_care3" name="care_type" value="할머니(할아버지)와 함께 도와주세요">
                                         <label for="type_care3">할머니(할아버지)와 함께 도와주세요.</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="type_care4" name="type_care" value="4">
+                                        <input type="radio" id="type_care4" name="care_type" value="이모님(도우미)과 함께 도와주세요.">
                                         <label for="type_care4">이모님(도우미)과 함께 도와주세요.</label>
                                     </div>
                                 </div>
@@ -1111,18 +962,21 @@
 
 
 
-    <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <!--Google CDN 서버로부터 jQuery 참조 -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- jQuery Ajax Form plugin CDN -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+    <!-- jQuery Ajax Setup -->
+    <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
     <script type="text/javascript">
         function addCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-
         $(function () {
 
-            //프로필 업로드 
+        //프로필 업로드 
             function upload_img(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
@@ -1238,24 +1092,41 @@
             });
             //지역 수정하기 버튼을 눌렀을 경우
             $("#updateLoaction").click(function (e) {
+                //e.preventDefault();
                 //시
-                $('#si').val(si);
+                $('#loc_si').val(si);
                 //구
-                $('#gu').val(gu);
+                $('#loc_gu').val(gu);
                 //동
-                $('#dong').val(dong);
+                $('#loc_dong').val(dong);
+
             });
 
-
-
-
+///////////////////////////스케쥴//////////////////////////////
 
             var type;
             /** 스케쥴 빈도 버튼 클릭 */
             $(".upd_ct_tab_item_link").on("click", function () {
                 //버튼 클릭시에 내용 변경
                 type = $(this).val();
-                $(this).addClass("select");
+                var select = $(this).hasClass("selected");
+
+                //선택이 되어있을 때
+                if (select) {
+                    $(this).removeClass("selected");
+                    $(this).next().addClass("selected");
+                } else {
+                    $(this).addClass("selected");
+                    $(this).prev().removeClass("selected");
+                }
+                //선택이 안되어있는 걸 클릭했을 때
+                if (select == false) {
+                    $(this).addClass("selected");
+                    $(this).next().removeClass("selected");
+                } else {
+                    $(this).removeClass("selected");
+                    $(this).prev().addClass("selected");
+                }
                 $.ajax({
                     type: 'GET',                 //get방식으로 통신
                     url: "${pageContext.request.contextPath}/join/parent/" + type + ".do",
@@ -1306,17 +1177,13 @@
                 $(this).find(".jojung_check").toggleClass("check_check");
 
             });
-            $(document).on('click', '.updateSchedule', function (e) {
-                e.preventDefault();
+
+            //수정하기 버튼 클릭시
+            $(document).on('click', '#updateSchedule', function (e) {
+                //e.preventDefault();
                 //스케쥴 json 조립
-                //시작 날짜
-                var startdate = $(".date_box").val();
-                //요일
-                var day = wantday;
                 //빈도
                 var frequency = type;
-                startdate = startdate.replace(/\//gi, '-');
-
 
                 if ($(".jojung_box").hasClass("box_check") == true) {
                     //일정조정 가능 
@@ -1325,6 +1192,13 @@
                     $("#schedule_ok").val("N");
                 }
                 if (type == 'regular') {
+                    //시작 날짜
+                    var startdate = $(".date_box").val();
+                    //요일
+                    var day = wantday;
+                    
+                    startdate = startdate.replace(/\//gi, '-');
+
                     var schedule = {
                         startdate: startdate,
                         frequency: frequency,
@@ -1335,20 +1209,16 @@
                     var scheduleStr = JSON.stringify(schedule);
                     //console.log(scheduleStr);
                     var schedulerep = scheduleStr.replace(/\"/gi, '\'');
-                    //console.log(schedulerep);
+                    console.log(schedulerep);
                     $("#schedule").val(schedulerep);
-                } else {
+                } 
+                
+                if (type == 'shortTerm') {
+
                     var selectdate = $(".calrendar_block").val();
 
                     //빈도
                     var frequency = type;
-
-                    if ($(".jojung_box").hasClass("box_check") == true) {
-                        //일정조정 가능 
-                        $("#schedule_ok").val("Y");
-                    } else {
-                        $("#schedule_ok").val("N");
-                    }
 
                     var schedule = {
                         selectdate: selectdate,
@@ -1358,48 +1228,13 @@
                     var scheduleStr = JSON.stringify(schedule);
                     //console.log(scheduleStr);
                     var schedulerep = scheduleStr.replace(/\"/gi, '\'');
-                    //console.log(schedulerep);
+                    console.log(schedulerep);
                     $("#schedule").val(schedulerep);
                 }
 
             });
 
-
-
-            //요일 선택시 
-            $(".day_btn").on("click", function () {
-                $(this).toggleClass("select_btn");
-
-                var count = $(".select_btn").length;
-                if (count == 0) {
-                    $("#content").removeClass("show_content");
-                    $("#content").addClass("hide_content");
-                } else {
-                    $("#content").removeClass("hide_content");
-                    $("#content").addClass("show_content");
-                }
-            });
-
-            $(".calrendar_block").flatpickr({
-                inline: true,
-                dateFormat: "Y-m-d",
-                minDate: "today",
-                maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
-                defaultDate: new Date().fp_incr(6) //지금으로부터 6일이 기본
-            });
-
-
-            //일정 조정 선택
-            $(".jojung_box").on("click", function () {
-                $(this).toggleClass("box_check");
-                $(this).find(".jojung_check").toggleClass("check_check");
-            });
-
-            $("#updateSchedule").click(function () {
-
-            });
-
-
+            /////////////아이 정보 및 시급///////////////////////
             //시급 입력시 콤마 자동으로 찍히기
             $("#payment_input").on("blur", function () {
                 var val = $(this).val();
@@ -1420,7 +1255,7 @@
                 }
             });
 
-
+            var kids_num = 0;
             //아이명수 클릭시 버튼 색상 바뀜
             $(".childeren_num1, .childeren_num2").on("click", function () {
                 var select = $(this).hasClass("childeren_num1");
@@ -1432,7 +1267,7 @@
                     $(this).addClass("btn_children_on");
                     $(this).next().removeClass("btn_children_on");
                     $(this).next().addClass("btn_children_off");
-                    ;
+                    kids_num = $(this).attr('value');
 
                 } else {
                     //num2 클릭했을 때
@@ -1440,28 +1275,74 @@
                     $(this).addClass("btn_children_on");
                     $(this).prev().removeClass("btn_children_on");
                     $(this).prev().addClass("btn_children_off");
+                    kids_num = $(this).attr('value');
                 }
 
-                $(".noselect_title").empty();
-                //버튼 클릭시에 내용 변경
-                /**var test = $(this).attr('data-tab');
+                var test = $(this).attr('data-tab');
                 $.ajax({
                     type: 'GET',                 //get방식으로 통신
-                    url: test + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
-                    dataType: "html",            //html형식으로 값 읽기
+                    url: "${pageContext.request.contextPath}/join/parent/" + test + ".do",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+                    dataType: "text",            //html형식으로 값 읽기
                     error: function () {          //통신 실패시 ㅠㅠ
                         alert('통신실패!');
                     },
                     success: function (data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
-                        $('.select_title').html(data);
+                        $('#select_title').html(data);
                     }
-                });*/
+                });
 
             });
 
+            $(document).on('click', '#updateKidspay', function (e) {
+                //e.preventDefault();
+                //아이명수
+                $('#kids_num').val(kids_num);
+                console.log(kids_num);
 
+                if (kids_num == 1) {
+                    //아이나이
+                    var kids_year = $("#year option:selected").val();
+                    var kids_month = $("#month option:selected").val();
+
+                    var kids_age = kids_year + kids_month;
+                    $('#kids_age').val(kids_age);
+                    $('#kids_age2').val(null);
+                    console.log(kids_age);
+                    console.log(kids_age2);
+                }
+
+                if (kids_num == 2) {
+                    //아이나이
+                    var kids_year1 = $("#year1 option:selected").val();
+                    var kids_month1 = $("#month1 option:selected").val();
+
+                    var kids_year2 = $("#year2 option:selected").val();
+                    var kids_month2 = $("#month2 option:selected").val();
+
+                    var kids_age1 = kids_year1 + kids_month1;
+                    var kids_age2 = kids_year2 + kids_month2;
+                    $('#kids_age').val(kids_age1);
+                    $('#kids_age2').val(kids_age2);
+                    console.log(kids_age1);
+                    console.log(kids_age2);
+                    //console.log($('#kids_age').val());
+                }
+
+                //시급협의 여부
+                if ($("input:checkbox[name=payment_check]").is(":checked") == true) {
+                    $("#payment_ok").val('Y');
+                };
+                if ($("input:checkbox[name=payment_check]").is(":checked") == false) {
+                    $("#payment_ok").val('N');
+                };
+            });
+
+
+            ////////////////////원하는 활동 변경/////////////////////
             //활동 버튼 클릭
             $(".care_age").click(function (e) {
+                //e.preventDefault();
+                let count = $("input:checked[name='want_act_check']").length; ;
                 //버튼 클릭시 이미지 URL 변경
                 //url 가져오기
                 var img_url = $(this).next().find(".want_img").attr('src');
@@ -1473,35 +1354,31 @@
                     var img_src = img_url.replace(/_s/, "_n");
                     $(this).next().find(".want_img").attr('src', img_src);
                 }
-            });
 
-            //활동 버튼 클릭
-            $(".care_age").click(function (e) {
-                //버튼 클릭시 이미지 URL 변경
-                //url 가져오기
-                var img_url = $(this).next().find(".want_img").attr('src');
-                var indeximg = img_url.indexOf("_n") //잘라서 _n이 있는지 확인
-                if (indeximg > -1) {
-                    var img_src = img_url.replace(/_n/, "_s");
-                    $(this).next().find(".want_img").attr('src', img_src);
-                } else {
-                    var img_src = img_url.replace(/_s/, "_n");
-                    $(this).next().find(".want_img").attr('src', img_src);
+                if (count > 3) {
+                    $(this).prop("checked", false);
+                    //또는 this.checked=false;
+                    alert("3개까지만 선택할 수 있습니다.");
                 }
+
+                
             });
 
+            $(document).on('click', '#updateWantAct', function (e) {
+                //e.preventDefault();
 
+                var chk_arr = [];
+                $("input[name=want_act_check]:checked").each(function () {
+                    var chk = $(this).val();
+                    chk_arr.push(chk);
+                });
+                var want1 = chk_arr[0];
+                var want2 = chk_arr[1];
+                var want3 = chk_arr[2];
+                $('#want_act1').val(want1);
+                $('#want_act2').val(want2);
+                $('#want_act3').val(want3);
 
-            /** 직접 입력 클릭 시 텍스트 박스 나타남 */
-            $(".child_num").click(function (e) {
-                e.preventDefault();
-
-                /** $(".upd_ct_tab_item_link").not(this).removeClass("selected");
-                 $(this).addClass("selected"); */
-
-                var target = $(this).attr("href");
-                $(target).removeClass("hide");
-                $(".select_title").not($(target)).addClass("hide");
             });
 
 

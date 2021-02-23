@@ -427,17 +427,39 @@
 	
 	<!-- 프로필 업데이트 ///////////////////////////////// -->
 	<update id="updateApplyTitle" parameterType="study.team.abuhae.model.Mom_info">
-		update mom_info set apply_title=#{apply_title}, editdate=now() where momno=#{momno}
+		update mom_info set apply_title=#{apply_title}, openingdate=now() where momno=#{momno}
 	</update>
 	
 	<update id="updateDesc" parameterType="study.team.abuhae.model.Mom_info">
-		update mom_info set description=#{description}, editdate=now() where momno=#{momno}
+		update mom_info set description=#{description}, openingdate=now() where momno=#{momno}
 	</update>
 	
 	<update id="updateWantage" parameterType="study.team.abuhae.model.Mom_info">
-		update mom_info set want_age=#{want_age}, editdate=now() where momno=#{momno}
+		update mom_info set want_age=#{want_age}, openingdate=now() where momno=#{momno}
 	</update>
 	
+	<update id="updateLocation" parameterType="study.team.abuhae.model.Mom_info">
+		update mom_info set si=#{si},gu=#{gu}, dong=#{dong}, openingdate=now() where momno=#{momno}
+	</update>
+	
+	<update id="updateSchedule" parameterType="study.team.abuhae.model.Mom_info">
+		update mom_info set schedule=#{schedule}, schedule_ok=#{schedule_ok}, openingdate=now() where momno=#{momno}
+	</update>
+	
+	<update id="updateKidspay" parameterType="study.team.abuhae.model.Mom_info">
+		update mom_info set kids_num=#{kids_num}, kids_age=#{kids_age}, kids_age2=#{kids_age2}, 
+		payment=#{payment}, payment_ok=#{payment_ok}, openingdate=now() where momno=#{momno}
+	</update>
+	
+	<update id="updateWantact" parameterType="study.team.abuhae.model.Mom_info">
+		update mom_info set want_act1=#{want_act1},want_act2=#{want_act2},
+		want_act3=#{want_act3}, openingdate=now() where momno=#{momno}
+	</update>
+	
+	<update id="updateEtc" parameterType="study.team.abuhae.model.Mom_info">
+		update mom_info set interview_type=#{interview_type},care_type=#{care_type},
+		sitter_gender=#{sitter_gender}, openingdate=now() where momno=#{momno}
+	</update>
 	
 </mapper>
 

@@ -34,6 +34,12 @@ a:hover {
   color: black;
 }
 
+button {
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+}
+
 /** header --------------------------------------------------------------------*/
 
 .mp_detail_tl {
@@ -311,27 +317,32 @@ a:hover {
   line-height: 36px;
   background-color: #eee;
   color: #838383;
+  border: none;
+  outline: none;
+  border-radius: 5px;
 }
 
-.wrap_upd_ct .upd_ct_tab .upd_ct_tab_item_link.selected {
-  background-color: #ff7000;
-  color: #ffffff;
+.change_box {
+  margin: 20px 0;
 }
 
-.wrap_upd_ct .upd_ct_tab_panel .calc_box {
+#regular,
+#short {
+  width: 100%;
+}
+#regular .calc_box {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
 }
 
-.wrap_upd_ct .regu_title {
+#regular .regu_title {
   font-weight: 600;
   font-size: 1em;
   color: #646464;
 }
 
-.wrap_upd_ct .date_box {
+#regular .date_box {
   display: block;
   border: 1px solid #ffcfb8;
   background-color: #fff0e8;
@@ -344,22 +355,31 @@ a:hover {
   font-size: 0.9em;
 }
 
-.wrap_upd_ct .day_btn_group {
+#regular .day_btn_group {
   display: flex;
   justify-content: space-around;
   flex-wrap: nowrap;
   margin: 13px 0;
 }
 
-.wrap_upd_ct .day_btn {
+#regular .day_btn {
   width: 36px;
   height: 36px;
-  border: 0;
   border-radius: 36px;
   background-color: #eee;
   color: #646464;
   font-weight: 600;
   font-size: 0.9em;
+}
+
+.wrap_upd_ct .upd_ct_tab .upd_ct_tab_item_link.selected {
+  background-color: #ff7000;
+  color: #ffffff;
+}
+
+.selected {
+  background-color: #ff7000;
+  color: #ffffff;
 }
 
 .wrap_upd_ct .time_select_box {
@@ -381,21 +401,6 @@ a:hover {
   color: #ff7000;
   font-weight: 600;
   text-align: center;
-}
-
-.wrap_upd_ct .select_time select {
-  width: 100%;
-  padding: 0.5em 0.5em;
-  border: none;
-  font-family: inherit;
-  background: url("/ezen-android2020-2/join/img/arrow.png") no-repeat 95% 50%;
-  border-radius: 0px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-.wrap_upd_ct .select_time option {
-  color: #222;
 }
 
 .wrap_upd_ct .jojung_box {
@@ -500,25 +505,12 @@ a:hover {
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 
-.title {
-  margin: 30px auto 37px;
-  text-align: center;
-}
-
-.title .noselect_title {
+#select_title p {
   font-weight: 600;
   line-height: 18px;
   color: #949494;
   letter-spacing: -0.2px;
-  font-size: 0.9em;
-}
-
-.title .select_title p {
-  font-weight: 600;
-  line-height: 18px;
-  color: #949494;
-  letter-spacing: -0.2px;
-  font-size: 0.8em;
+  font-size: 1em;
   margin: 0;
 }
 
@@ -552,7 +544,7 @@ a:hover {
   padding: 0.8em 0.5em;
   border: 1px solid #999;
   font-family: inherit;
-  background: url("/ezen-android2020-2/join/img/arrow.jpg") no-repeat 95% 50%;
+  background: url("../img/arrow.jpg") no-repeat 95% 50%;
   border-radius: 0px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -617,6 +609,12 @@ a:hover {
 /** end 아이정보 /희망시급 수정 -----------------------------------------------*/
 
 /** 그 외 요청사항 ------------------------------------------------------------*/
+.sub_title {
+  color: #ff5400;
+  font-size: 1em;
+  text-align: center;
+}
+
 .wrap_upd_request {
   padding: 20px 10px;
   margin: 0 auto;
