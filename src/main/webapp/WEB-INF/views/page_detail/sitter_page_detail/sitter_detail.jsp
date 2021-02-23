@@ -1165,7 +1165,7 @@ jQuery(function($) {
 												</div>
 												<div class="talk_box_line_date_name">
 													<div class="talk_box_talk">
-														<span>원하는 시간이 저와 맞지 않아 매칭이 성사되지 못하였습니다ㅠㅠ ${output.contents}</span>
+														<span>원하는 시간이 저와 맞지 않아 매칭이 성사되지 못하였습니다ㅠㅠ ${reput}</span>
 													</div>
 												</div>
 											</div>

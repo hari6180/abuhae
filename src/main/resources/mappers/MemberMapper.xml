@@ -254,4 +254,22 @@
 	<delete id="memberDelete" parameterType="study.team.abuhae.model.Member">
 		delete from member where memberno=#{memberno}
 	</delete>
+	
+	<!-- 3개월 지난 회원 완전탈퇴 -->
+	<delete id="member3MonthDelete" parameterType="study.team.abuhae.model.Member">
+		<![CDATA[
+		DELETE FROM leave_member 
+		WHERE
+		DATE_ADD(NOW(), INTERVAL -3 MONTH) > leaveok_date]]>
+	</delete>
+	
+	<!-- 이용권 null 업데이트 -->
+	<update id="updateEnddate" parameterType="study.team.abuhae.model.Member">
+	<![CDATA[
+		UPDATE member set enddate = NULL 
+		WHERE
+		enddate < NOW()]]>
+	</update>
+	
+	
 </mapper>

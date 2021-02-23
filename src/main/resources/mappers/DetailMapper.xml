@@ -234,14 +234,14 @@
 	<!-- 리뷰 -->
 	<select id="selectReview" parameterType="study.team.abuhae.model.Sitter_info"
 		resultMap="SitterMap">
-		SELECT revno, who, rev_rate, reg_date, contents, momno, r.sitterno 
+		SELECT revno, rev_rate, reg_date, contents, momno, r.sitterno 
 			FROM review r
 		INNER JOIN sitter_info s ON s.sitterno=r.sitterno
 		<where>
-			who=#{who}
+			s.sitterno=#{sitterno}
 		</where>
 	</select>
-	
+		
 	<!-- 활동 유형 && 상세 검색
       <where>
          <if test="actList != null">

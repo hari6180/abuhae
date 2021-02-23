@@ -53,13 +53,19 @@ public class Page_detail_sitterController {
 		input.setSitterno(sitterno);
 		Sitter_info count = new Sitter_info();
 		count.setSitterno(sitterno);
+		Review review = new Review();
+		review.setSitterno(sitterno);
+		
+		List<Review> reput = null;
 
 		// 조회결과를 저장할 객체 선언 
 		Sitter_info output = null;
+		
 		int countput = 0;
 		
 		try {
 			// 데이터 조회 
+			reput = detailService.getReviewList(review);
 			output = detailService.getSitterItem(input);
 			countput = detailService.editSitter(input);
 			
@@ -67,41 +73,8 @@ public class Page_detail_sitterController {
 			e.printStackTrace();
 		}
 		
-		/** 데이터 조회 */
-		Sitter_info in = new Sitter_info();
-		in.setSitterno(sitterno);
-		
-		Sitter_info out = null;
-		
-		
-		
-		
-		
-		
-		try {
-			out = sitterMypageService.getSitterItem(in);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		/** 데이터 조회 */
-		Review reviewinput = new Review();
-		input.setSitterno(sitterno);
-		
-		List<Review> reviewoutput = null;
-		
-		try {
-			reviewoutput = sitterMypageService.getSitterReviewList(reviewinput);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		model.addAttribute("out", out);
-		model.addAttribute("reviewoutput", reviewoutput);
-
-		
-		
 		model.addAttribute("output", output);
+		model.addAttribute("reput", reput);
 		return new ModelAndView("/page_detail/sitter_page_detail/sitter_detail");
 		//return "/page_detail/sitter_page_detail/sitter_detail";
 	}
@@ -167,11 +140,4 @@ public class Page_detail_sitterController {
 				
 				
 				}
-		/** 리뷰관리 페이지 
-		@RequestMapping(value = "/page_detail/sitter_detail.do", method = RequestMethod.GET)
-		public ModelAndView review_sitter(Model model,
-				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
-			
-			return new ModelAndView("/page_detail/sitter_page_detail/sitter_detail");
-		} */
 }

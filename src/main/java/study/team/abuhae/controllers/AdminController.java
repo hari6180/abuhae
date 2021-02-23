@@ -471,6 +471,33 @@ public class AdminController {
 		return webHelper.redirect(url, null);
 	}
 	
+	// 테스트 
+	/*@RequestMapping(value = "/admin/leave_ok.do", method = RequestMethod.GET)
+	public ModelAndView delete_OK(Model model,
+			@RequestParam(value = "leav_mem", defaultValue = "0") int leav_mem,
+			@RequestParam(value = "filter_bbs", defaultValue = "0") int cateno
+		) {
+		
+		Cus_bbs bbsinput = new Cus_bbs();
+		 bbsinput.setCateno(cateno);
+		
+		if (leav_mem == 0) {
+			return webHelper.redirect(null, "삭제될 회원이 없습니다.");
+		}
+		
+		Leave_member input = new Leave_member();
+		input.setLeav_mem(leav_mem);
+		
+		try {
+			memberServcie.delete3MonthMember(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+        String url = contextPath+"/admin/admin_bbs.do?cateno="+cateno;
+		return webHelper.redirect(url, null);
+	}*/
+	
 	
 	
 }

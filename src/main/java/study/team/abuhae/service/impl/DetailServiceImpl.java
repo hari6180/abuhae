@@ -264,11 +264,11 @@ public class DetailServiceImpl implements DetailService {
 	}
 
 	@Override
-	public List<Review> getSitterReviewList(Review input) throws Exception {
+	public List<Review> getReviewList(Review input) throws Exception {
 		List<Review> result = null;
 	      
 	      try {
-	         result = sqlSession.selectList("ReviewMapper.selectSitterReviewList", input);
+	         result = sqlSession.selectList("DetailMapper.selectReview", input);
 	         
 	         if (result == null) {
 	            throw new NullPointerException("result = null");

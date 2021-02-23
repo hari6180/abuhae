@@ -49,6 +49,6 @@ public interface DetailService {
 	public Sitter_info getSitterMember(Sitter_info input) throws Exception;
 	
 	/** 남겨진 리뷰 조회 */
-	   public List<Review> getSitterReviewList(Review input) throws Exception;
+	public List<Review> getReviewList(Review input) throws Exception;
 
 }

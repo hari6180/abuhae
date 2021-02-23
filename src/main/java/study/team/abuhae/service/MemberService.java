@@ -40,6 +40,12 @@ public interface MemberService {
 	//회원 탈퇴
 	public int leaveMember(Member input) throws Exception;
 	
+	// 3개월 지난 회원 완전 탈퇴 
+	public int delete3Month();
+	
+	// 지난 이용권 업데이트 처리 
+	public int updateEnddate();
+	
 	/**
 	 * 맘 데이터 등록하기 
 	 * @param Mom_info 저장할 정보를 담고 있는 Beans

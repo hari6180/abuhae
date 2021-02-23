@@ -400,6 +400,50 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+
+	@Override
+	public int delete3Month() {
+		int result = 0;
+
+		try {
+			result = sqlsession.delete("MemberMapper.member3MonthDelete");
+			if (result == 0) {
+				throw new NullPointerException("result=null");
+			}
+
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+		}
+		
+		//반환된 데이터가 있으면 데이터 조회가 있다는 뜻
+		return result;
+		
+	}
+
+	@Override
+	public int updateEnddate() {
+		int result = 0;
+
+		try {
+			result = sqlsession.update("MemberMapper.updateEnddate");
+			if (result == 0) {
+				throw new NullPointerException("result=null");
+			}
+
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+		}
+		
+		//반환된 데이터가 있으면 데이터 조회가 있다는 뜻
+		return result;
+	}
+
 	
 
 }
