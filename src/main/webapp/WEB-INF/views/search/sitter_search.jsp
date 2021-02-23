@@ -721,24 +721,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <div id="result"></div>
               <div id="result2"></div>
 
-              <%--
-              <div class="app_banner">
-                <div class="banner_group">
-                  <div>
-                    <div class="banner_text_group">
-                      <div class="banner_text">앱으로 더 빠르게</div>
-                      <div class="banner_text_bottom">
-                        <span class="banner_app_name" style="color: #ffe400">맘시터</span>
-                        <span class="banner_text">구하세요!</span>
-                      </div>
-                    </div>
-                    <div class="banner_btn">앱 설치하기</div>
-                  </div>
-                  <img src="${pageContext.request.contextPath}/assets/img/s-list-1-banner-image@3x (1).png" />
-                </div>
-              </div>
-              --%>
-
               <div>
                 <a data-toggle="modal" href="#sitter_search_detail_modal">
                   <button class="detail_btn">상세 검색</button>
@@ -879,14 +861,14 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       });
       let nowPage = 1; // 현재 페이지의 기본값
       let order = "openingdate";
-      let momno = $("#app").data("login");
+      let login_momno = $("#app").data("login");
       $(function () {
-        if (momno != "") {
+        if (login_momno != "" || login_momno != 0) {
           $.get(
             "${pageContext.request.contextPath}/search/sitter_search/login",
             {
               order: order, // 정렬 조건
-              momno: momno,
+              momno: login_momno, // 로그인 정보
             },
             function (json) {
               var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
@@ -1195,18 +1177,17 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         // 무한 스크롤 1218 하리
         $(window).scroll(function () {
           if (Math.round($(window).scrollTop()) + $(window).height() == $(document).height()) {
-            // 이 계산식만 잘 고치면 될거같다.
             console.log("끝에 도착함");
             nowPage++;
             // Restful API에 GET방식 요청
             setTimeout(function () {
-              if (momno != "") {
+              if (login_momno != "" || login_momno != 0) {
                 $.get(
                   "${pageContext.request.contextPath}/search/sitter_search/login",
                   {
                     order: order, // 정렬 조건
                     page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
-                    momno: momno,
+                    momno: login_momno,
                   },
                   function (json) {
                     var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
@@ -1246,25 +1227,29 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           let momno = $("#app").data("login");
 
           // 찜할 때 alert창과 glyphicon변형
-          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
-            $(this).find("span").removeClass("glyphicon-heart-empty");
-            $(this).find("span").addClass("glyphicon-heart");
-            $.get("${pageContext.request.contextPath}/heart/insertSt", {
-              sitterno: stno,
-              momno: momno,
-              jjim: "Y",
-            });
-            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
-          }
-          // 찜 취소할 때 alert창과 glyphicon변형
-          else {
-            $(this).find("span").addClass("glyphicon-heart-empty");
-            $.get("${pageContext.request.contextPath}/heart/deleteSt", {
-              sitterno: stno,
-              momno: momno,
-              jjim: "N",
-            });
-            swal("찜 하기 취소");
+          if (momno != "" || momno != 0) {
+            if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+              $(this).find("span").removeClass("glyphicon-heart-empty");
+              $(this).find("span").addClass("glyphicon-heart");
+              $.get("${pageContext.request.contextPath}/heart/insertSt", {
+                sitterno: stno,
+                momno: momno,
+                jjim: "Y",
+              });
+              swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+            }
+            // 찜 취소할 때 alert창과 glyphicon변형
+            else {
+              $(this).find("span").addClass("glyphicon-heart-empty");
+              $.get("${pageContext.request.contextPath}/heart/deleteSt", {
+                sitterno: stno,
+                momno: momno,
+                jjim: "N",
+              });
+              swal("찜 하기 취소");
+            }
+          } else {
+            swal("맘회원으로 가입 후 이용해주세요.");
           }
         }); // fin. 찜버튼 기능
       });

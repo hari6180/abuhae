@@ -704,15 +704,14 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
       let nowPage = 1; // 현재 페이지의 기본값
       let order = "openingdate";
-      let stno = $("#app").data("login");
+      let login_stno = $("#app").data("login");
       $(function () {
-        console.log(stno);
-        if (stno != "") {
+        if (login_stno != "" || login_stno != 0) {
           $.get(
             "${pageContext.request.contextPath}/search/job_search/login",
             {
               order: order, // 정렬 조건
-              sitterno: stno, // 로그인 정보
+              sitterno: login_stno, // 로그인 정보
             },
             function (json) {
               var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
@@ -888,21 +887,19 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
         // 무한 스크롤 1218 하리
         $(window).scroll(function () {
-          //console.log(Math.round($(window).scrollTop()) + $(window).height());
-          //console.log($(document).height())
           if (Math.round($(window).scrollTop()) + $(window).height() + 1 == $(document).height()) {
             // 이 계산식만 잘 고치면 될거같다. -> 반올림, setTimeout으로 해결! 0217
             console.log("끝에 도착함");
             nowPage++;
             // Restful API에 GET방식 요청
             setTimeout(function () {
-              if (stno != "") {
+              if (login_stno != "" || login_stno != 0) {
                 $.get(
-                  "${pageContext.request.contextPath}/search/job_search",
+                  "${pageContext.request.contextPath}/search/job_search/login",
                   {
                     page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
                     order: order, // 정렬 조건은 GET 파라미터로 전송한다.
-                    sitterno: stno,
+                    sitterno: login_stno,
                   },
                   function (json) {
                     var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
@@ -943,25 +940,29 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           let stno = $("#app").data("login");
 
           // 찜할 때 alert창과 glyphicon변형
-          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
-            $(this).find("span").removeClass("glyphicon-heart-empty");
-            $(this).find("span").addClass("glyphicon-heart");
-            $.get("${pageContext.request.contextPath}/heart/insertMom", {
-              sitterno: stno,
-              momno: momno,
-              jjim: "Y",
-            });
-            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
-          }
-          // 찜 취소할 때 alert창과 glyphicon변형
-          else {
-            $(this).find("span").addClass("glyphicon-heart-empty");
-            $.get("${pageContext.request.contextPath}/heart/deleteMom", {
-              sitterno: stno,
-              momno: momno,
-              jjim: "N",
-            });
-            swal("찜 하기 취소");
+          if (stno != "" || stno != 0) {
+            if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+              $(this).find("span").removeClass("glyphicon-heart-empty");
+              $(this).find("span").addClass("glyphicon-heart");
+              $.get("${pageContext.request.contextPath}/heart/insertMom", {
+                sitterno: stno,
+                momno: momno,
+                jjim: "Y",
+              });
+              swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+            }
+            // 찜 취소할 때 alert창과 glyphicon변형
+            else {
+              $(this).find("span").addClass("glyphicon-heart-empty");
+              $.get("${pageContext.request.contextPath}/heart/deleteMom", {
+                sitterno: stno,
+                momno: momno,
+                jjim: "N",
+              });
+              swal("찜 하기 취소");
+            }
+          } else {
+            swal("시터회원으로 가입 후 이용해주세요.");
           }
         }); // fin. 찜버튼 기능
       });

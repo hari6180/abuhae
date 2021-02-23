@@ -288,7 +288,7 @@ public class SearchRestController {
 	}
 
 	/** 일자리 찾기 페이지 */
-	// 카드 출력 - 비로그인
+	// 일자리 카드 출력 - 비로그인
 	@RequestMapping(value = "/search/job_search", method = RequestMethod.GET)
 	public Map<String, Object> get_mom_list(
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -395,7 +395,7 @@ public class SearchRestController {
 		return webHelper.getJsonData(data);
 	}
 	
-	// 카드 출력 - 로그인
+	// 일자리 카드 출력 - 로그인
 		@RequestMapping(value = "/search/job_search/login", method = RequestMethod.GET)
 		public Map<String, Object> get_mom_list(
 				// 페이지 구현에서 사용할 현재 페이지 번호
