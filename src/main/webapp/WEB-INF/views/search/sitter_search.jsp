@@ -56,79 +56,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         $(document).on("scroll", ".sitter_item_group", function () {
           $(".cert_text").html(title[random(0, 3)]);
         });
-
-        //시 클릭했을 때
-        $(".loc_btn").on("click", function (e) {
-          e.preventDefault();
-          var select = $(this).hasClass("select_location");
-          //선택이 안되어있을때
-          if (select == false) {
-            //선택이 되어있는 요소 탐색
-            var loc = $("#si").find("button").removeClass("select_loaction");
-            //console.log(loc);
-            $(this).addClass("select_loaction");
-            //시 선택하면 gu 보이게
-            $("#gu>div").removeClass("hide_content");
-            $("#gu button").removeClass("hide_content");
-            $("#gu>div").addClass("show_content");
-          }
-        });
-        //구 클릭했을 때
-        $("#gu button").on("click", function (e) {
-          e.preventDefault();
-          var select = $(this).hasClass("select_location");
-          //선택이 안되어있을때
-          if (select == false) {
-            //선택이 되어있는 요소 탐색
-            var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
-            //console.log(loc);
-            $(this).addClass("select_loaction");
-            //구 선택하면 동 보이게
-            $("#dong>div").removeClass("hide_content");
-            $("#dong button").removeClass("hide_content");
-            $("#dong>div").addClass("show_content");
-          }
-        });
-
-        //동 클릭했을때
-        $("#dong button").on("click", function (e) {
-          e.preventDefault();
-          var select = $(this).hasClass("select_location");
-          //선택이 안되어있을때
-          if (select == false) {
-            //선택이 되어있는 요소 탐색
-            var loc = $("#dong").find("button").removeClass("select_loaction hide_content");
-            //console.log(loc);
-            $(this).addClass("select_loaction");
-
-            $.ajax({
-              type: "GET", //get방식으로 통신
-              url: "${pageContext.request.contextPath}/assets/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
-              dataType: "html", //html형식으로 값 읽기
-              error: function () {
-                //통신 실패시 ㅠㅠ
-                alert("통신실패!");
-              },
-              success: function (data) {
-                //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
-                $(".select_box").html(data);
-                var now = $(".next_btn").prop("disabled");
-                //가져온 값 역으로 변경하여 다시 적용
-                $(".next_btn").prop("disabled", !now);
-              },
-            });
-          }
-        });
-
-        // 리셋 0109 하리
-        $("#reset_loc").on("click", function (e) {
-          e.preventDefault();
-          $(".loc_btn").removeClass("select_loaction");
-          $("#gu button").removeClass("select_loaction");
-          $("#gu button").addClass("hide_content");
-          $("#dong button").removeClass("select_loaction");
-          $("#dong button").addClass("hide_content");
-        });
       });
     </script>
   </head>
@@ -300,46 +227,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   </div>
                   <!--end 구-->
                   <!--동-->
-                  <div class="location_group" id="dong">
-                    <div class="hide_content">
-                      <div>
-                        <button>가산동</button>
-                      </div>
-                      <div>
-                        <button>독산1동</button>
-                      </div>
-                      <div>
-                        <button>독산2동</button>
-                      </div>
-                      <div>
-                        <button>독산3동</button>
-                      </div>
-                      <div>
-                        <button>독산4동</button>
-                      </div>
-                      <div>
-                        <button>독산동</button>
-                      </div>
-                      <div>
-                        <button>시흥1동</button>
-                      </div>
-                      <div>
-                        <button>시흥2동</button>
-                      </div>
-                      <div>
-                        <button>시흥3동</button>
-                      </div>
-                      <div>
-                        <button>시흥4동</button>
-                      </div>
-                      <div>
-                        <button>시흥5동</button>
-                      </div>
-                      <div>
-                        <button>시흥동</button>
-                      </div>
-                    </div>
-                  </div>
+                  <div class="location_group" id="dong"></div>
                   <!--end 동-->
                 </div>
                 <!-- col-xs-12 end -->
@@ -652,7 +540,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <a data-toggle="modal" href="#location_modal">
                       <div>
                         <i class="fas fa-search"></i>
-                        <p>돌봄 지역을 선택해주세요</p>
+                        <p id="full_location">돌봄 지역을 선택해주세요</p>
                       </div>
                     </a>
                   </div>
@@ -863,6 +751,115 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       let order = "openingdate";
       let login_momno = $("#app").data("login");
       $(function () {
+        // 주소 검색창에 들어갈 주소 문자열
+        let full_loc = "";
+        let si = "";
+        let gu = "";
+        let dong = "";
+        //시 클릭했을 때
+        $(".loc_btn").on("click", function (e) {
+          e.preventDefault();
+          var select = $(this).hasClass("select_location");
+          //선택이 안되어있을때
+          if (select == false) {
+            //선택이 되어있는 요소 탐색
+            var loc = $("#si").find("button").removeClass("select_loaction");
+            //console.log(loc);
+            $(this).addClass("select_loaction");
+            si = "";
+            si += $(this).html();
+            //시 선택하면 gu 보이게
+            $("#gu>div").removeClass("hide_content");
+            $("#gu button").removeClass("hide_content");
+            $("#gu>div").addClass("show_content");
+          }
+        });
+        //구 클릭했을 때
+        $("#gu button").on("click", function (e) {
+          e.preventDefault();
+          let html = "";
+          gu = $(this).html();
+          //console.log(gu);
+          var select = $(this).hasClass("select_location");
+          if (select == false) {
+            var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+            $(this).addClass("select_loaction");
+            gu = "";
+            gu += $(this).html();
+          }
+          // 로컬의 JSON 파일 읽어오기 0224 hari
+          // 스프링 프로젝트에서 설정한 리소스 폴더에서만 가져올 수 있다. 다른 폴더에서는 안됨
+          $.getJSON("${pageContext.request.contextPath}/assets/location.json", function (loc) {
+            //console.log(loc[gu]);
+            // JSON의 value가 array일 경우 ['key']로 전체를 읽어올 수 있다.
+            let dong = loc[gu];
+            html += '<div class="hide_content">';
+            for (var i = 0; i < dong.length; i++) {
+              html += "<div><button class='dong_btn'>";
+              html += dong[i];
+              html += "</button></div>";
+            }
+            html += "</div>";
+            //console.log(html);
+            $("#dong").empty();
+            $("#dong").append(html);
+            //선택이 안되어있을때
+            if (select == false) {
+              //선택이 되어있는 요소 탐색
+              // var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+              //console.log(loc);
+              $(this).addClass("select_loaction");
+              //구 선택하면 동 보이게
+              $("#dong>div").removeClass("hide_content");
+              $("#dong>div").addClass("show_content");
+            }
+          });
+        });
+
+        //동 클릭했을때
+        $(document).on("click", ".dong_btn", function (e) {
+          e.preventDefault();
+          dong += $(this).html();
+          full_loc = si + " " + gu + " " + dong;
+          $("#full_location").html(full_loc);
+          console.log(full_loc);
+          // var select = $(this).hasClass("select_location");
+          // //선택이 안되어있을때
+          // if (select == false) {
+          //   //선택이 되어있는 요소 탐색
+          //   var loc = $("#dong").find("button").removeClass("select_loaction hide_content");
+          //   //console.log(loc);
+          //   $(this).addClass("select_loaction");
+
+          //   $.ajax({
+          //     type: "GET", //get방식으로 통신
+          //     url: "${pageContext.request.contextPath}/assets/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
+          //     dataType: "html", //html형식으로 값 읽기
+          //     error: function () {
+          //       //통신 실패시 ㅠㅠ
+          //       alert("통신실패!");
+          //     },
+          //     success: function (data) {
+          //       //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
+          //       $(".select_box").html(data);
+          //       var now = $(".next_btn").prop("disabled");
+          //       //가져온 값 역으로 변경하여 다시 적용
+          //       $(".next_btn").prop("disabled", !now);
+          //     },
+          //   });
+          // }
+        });
+
+        // 리셋 0109 하리
+        $("#reset_loc").on("click", function (e) {
+          e.preventDefault();
+          $(".loc_btn").removeClass("select_loaction");
+          $("#gu button").removeClass("select_loaction");
+          $("#gu button").addClass("hide_content");
+          $("#dong button").removeClass("select_loaction");
+          $("#dong button").addClass("hide_content");
+        });
+
         if (login_momno != "" || login_momno != 0) {
           $.get(
             "${pageContext.request.contextPath}/search/sitter_search/login",
