@@ -640,7 +640,7 @@ button {
 .wrap_experience .introduce_text a span {
   display: flex;
   justify-content: center;
-  padding: 40px 0;
+  padding-bottom: 20px;
   color: #ff7000;
   text-decoration: underline;
 }

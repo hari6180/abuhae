@@ -73,6 +73,24 @@ button {
   border-radius: 15px;
   color: #ffffff;
 }
+
+.point {
+  font-style: normal;
+  color: #ff7000;
+  font-weight: bold;
+}
+
+.desc {
+  color: #858585;
+  margin: 0;
+}
+
+.now_selected {
+  background-color: #faebd7;
+  border: 1px solid #ff7000;
+  padding: 8px;
+  margin: 5px 0;
+}
 /** end header -----------------------------------------------------*/
 
 /** 신청서 내용 수정 -----------------------------------------------------*/
@@ -87,9 +105,10 @@ button {
   padding: 20px 0 0;
 }
 
-.wrap_upd_profile_cont .upd_img_tl {
+.upd_img_tl {
   font-weight: bold;
-  font-weight: 1em;
+  font-size: 1em;
+  margin: 10px 0;
 }
 
 .wrap_upd_profile_cont .upd_img_cont {
@@ -122,7 +141,7 @@ button {
 
 /** content2 for 신청서 내용 수정 */
 .wrap_upd_profile_cont .group2_unp_img {
-  padding: 50px 0 0;
+  padding: 20px 0 0;
 }
 
 .wrap_upd_profile_cont .choice_title select {
@@ -145,7 +164,7 @@ button {
 
 /** content3 for 신청서 내용 수정 */
 .wrap_upd_profile_cont .group3_unp_img {
-  padding: 50px 0;
+  padding: 20px 0;
 }
 
 .wrap_upd_profile_cont .group3_unp_img textarea {

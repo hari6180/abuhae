@@ -170,7 +170,6 @@
                     <span class="dot"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
-                    <span class="dot"></span>
                 </div>
                 <h3 class="what_want">어떤 아이를 돌볼 수 있나요?
                     <div class="help_box">

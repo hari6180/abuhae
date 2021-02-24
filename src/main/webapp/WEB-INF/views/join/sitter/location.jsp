@@ -58,7 +58,6 @@
                     <span class="dot"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
-                    <span class="dot"></span>
                 </div>
                 <h3 class="what_want">활동하고 싶은 지역을 선택해 주세요.
                 </h3>

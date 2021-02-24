@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.servlet.ModelAndView;
 
+import study.team.abuhae.helper.AgeHelper;
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Mom_info;
@@ -37,24 +38,36 @@ public class UpdateApplController {
 
 	/** 내 신청서 정보 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/update_profile.do", method = RequestMethod.GET)
-	public ModelAndView update_profile_cont(Locale locale, Model model,
+	public ModelAndView update_profile_cont(Model model,
 			@RequestParam(value = "momno", defaultValue = "0") int momno) {
 		if (momno == 0) {
-			return webHelper.redirect(null, "Please Check login");
+			return webHelper.redirect(null, "존재하지 않는 회원번호입니다.");
 		}
 		
 		ProfileFile input = new ProfileFile();
 		input.setMomno(momno);
+		Mom_info input2 = new Mom_info();
+		input2.setMomno(momno);
 		
 		ProfileFile profile = null;
+		Mom_info output = null;
 		
 		try {
 			profile = uploadService.getMomProfileItem(input);
+			output = momMypageService.getMemberItem(input2);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
+		AgeHelper agehelper = new AgeHelper();
+		int kids_age1 = agehelper.kidsAge(output.getKids_age());
+		int kids_age2 = agehelper.kidsAge(output.getKids_age2());
+		
+		
 		model.addAttribute("profile", profile);
+		model.addAttribute("mominfo", output);
+		model.addAttribute("kids_age", kids_age1);
+		model.addAttribute("kids_age2", kids_age2);
 
 		return new ModelAndView("mypage/mypage_mom/update_mom/update_profile_cont");
 	}
@@ -67,7 +80,7 @@ public class UpdateApplController {
 
 		/** 1) 파라미터 유효성 검사 */
 		if (appl_title == "" || appl_title == null) {
-			return webHelper.redirect(null, "input Apply title.");
+			return webHelper.redirect(null, "제목을 입력해 주세요.");
 		}
 
 		/** 2) 데이터 조회하기 */
@@ -85,7 +98,7 @@ public class UpdateApplController {
 
 		/** 3) View 처리 */
 		String url = contextPath + "/mypage/mypage_mom/update_profile.do?momno=" + momno;
-		return webHelper.redirect(url, "Success change Apply!");
+		return webHelper.redirect(url, "신청서 수정에 성공하였습니다!");
 	}
 	
 	/* 프로필 상세 설명 수정 컨트롤러 */
@@ -96,7 +109,7 @@ public class UpdateApplController {
 
 		/** 1) 파라미터 유효성 검사 */
 		if (!regexHelper.isValue(description)) {
-			return webHelper.redirect(null, "input Apply description.");
+			return webHelper.redirect(null, "변경할 내용을 입력해 주세요.");
 		}
 
 		/** 2) 데이터 조회하기 */
@@ -114,7 +127,7 @@ public class UpdateApplController {
 
 		/** 3) View 처리 */
 		String url = contextPath + "/mypage/mypage_mom/update_profile.do?momno=" + momno;
-		return webHelper.redirect(url, "Success change Apply!");
+		return webHelper.redirect(url, "신청서 수정에 성공하였습니다!");
 	}
 
 	/** 춴하는 시터 나이대 페이지 */
@@ -124,7 +137,7 @@ public class UpdateApplController {
 			@RequestParam(value = "want_age", defaultValue = "") String want_age) {
 		/** 1) 파라미터 유효성 검사 */
 		if (!regexHelper.isValue(want_age)) {
-			return webHelper.redirect(null, "cehcking want age.");
+			return webHelper.redirect(null, "변경할 나이대를 체크해 주세요.");
 		}
 
 		/** 2) 데이터 조회하기 */
@@ -142,7 +155,7 @@ public class UpdateApplController {
 
 		/** 3) View 처리 */
 		String url = contextPath + "/mypage/mypage_mom/update_profile.do?momno=" + momno;
-		return webHelper.redirect(url, "Success change Apply!");
+		return webHelper.redirect(url, "신청서 수정에 성공하였습니다!");
 	}
 
 	/** 돌봄 지역 페이지 */
@@ -154,13 +167,13 @@ public class UpdateApplController {
 			@RequestParam(value = "dong", defaultValue = "") String dong) {
 		/** 1) 파라미터 유효성 검사 */
 		if (!regexHelper.isValue(si)) {
-			return webHelper.redirect(null, "cehcking si.");
+			return webHelper.redirect(null, "변경할 시를 선택해 주세요.");
 		}
 		if (!regexHelper.isValue(gu)) {
-			return webHelper.redirect(null, "cehcking gu.");
+			return webHelper.redirect(null, "변경할 구를 선택해 주세요.");
 		}
 		if (!regexHelper.isValue(dong)) {
-			return webHelper.redirect(null, "cehcking dong.");
+			return webHelper.redirect(null, "변경할 동을 선택해 주세요.");
 		}
 
 		/** 2) 데이터 조회하기 */
@@ -180,7 +193,7 @@ public class UpdateApplController {
 
 		/** 3) View 처리 */
 		String url = contextPath + "/mypage/mypage_mom/update_profile.do?momno=" + momno;
-		return webHelper.redirect(url, "Success change Apply!");
+		return webHelper.redirect(url, "신청서 수정에 성공하였습니다!");
 	}
 
 	/** 돌봄 가능 시간 페이지 */
@@ -192,10 +205,10 @@ public class UpdateApplController {
 
 		/** 1) 파라미터 유효성 검사 */
 		if (momno==0) {
-			return webHelper.redirect(null, "cehcking login.");
+			return webHelper.redirect(null, "존재하지 않는 회원번호입니다.");
 		}
 		if (!regexHelper.isValue(schedulestr)) {
-			return webHelper.redirect(null, "cehcking schedule.");
+			return webHelper.redirect(null, "변경할 스케쥴을 선택해 주세요.");
 		}
 		
 		String schedule = schedulestr.replace("'", "\"");
@@ -216,7 +229,7 @@ public class UpdateApplController {
 
 		/** 3) View 처리 */
 		String url = contextPath + "/mypage/mypage_mom/update_profile.do?momno=" + momno;
-		return webHelper.redirect(url, "Success change Apply!");
+		return webHelper.redirect(url, "신청서 수정에 성공하였습니다!");
 	}
 
 	/** 아이 정보 페이지 */
@@ -230,16 +243,16 @@ public class UpdateApplController {
 			@RequestParam(value = "payment_ok", defaultValue = "") char payment_ok) {
 		/** 1) 파라미터 유효성 검사 */
 		if (momno==0) {
-			return webHelper.redirect(null, "cehcking login.");
+			return webHelper.redirect(null, "존재하지 않는 회원번호입니다.");
 		}
 		if (kids_num==0) {
-			return webHelper.redirect(null, "select kids number.");
+			return webHelper.redirect(null, "아이 수를 선택해 주세요.");
 		}
 		if (!regexHelper.isValue(kids_age)) {
-			return webHelper.redirect(null, "select kids age.");
+			return webHelper.redirect(null, "아이의 나이를 선택해 주세요.");
 		}
 		if (!regexHelper.isValue(paymentstr)) {
-			return webHelper.redirect(null, "insert payment.");
+			return webHelper.redirect(null, "희망 시급을 입력해 주세요.");
 		}
 		
 		paymentstr = paymentstr.replace(",", "");
@@ -264,7 +277,7 @@ public class UpdateApplController {
 
 		/** 3) View 처리 */
 		String url = contextPath + "/mypage/mypage_mom/update_profile.do?momno=" + momno;
-		return webHelper.redirect(url, "Success change Apply!");
+		return webHelper.redirect(url, "신청서 수정에 성공하였습니다!");
 	}
 
 	/** 원하는 활동 페이지 */
@@ -276,10 +289,10 @@ public class UpdateApplController {
 			@RequestParam(value = "want_act3", required = false) String want_act3) {
 		/** 1) 파라미터 유효성 검사 */
 		if (momno==0) {
-			return webHelper.redirect(null, "cehcking login.");
+			return webHelper.redirect(null, "존재하지 않는 회원번호입니다.");
 		}
 		if (!regexHelper.isValue(want_act1)) {
-			return webHelper.redirect(null, "check your want act.");
+			return webHelper.redirect(null, "변경할 활동을 선택해 주세요.");
 		}
 
 		/** 2) 데이터 조회하기 */
@@ -300,21 +313,22 @@ public class UpdateApplController {
 
 		/** 3) View 처리 */
 		String url = contextPath + "/mypage/mypage_mom/update_profile.do?momno=" + momno;
-		return webHelper.redirect(url, "Success change Apply!");
+		return webHelper.redirect(url, "신청서 수정에 성공하였습니다!");
 	}
 
 	/** 그 외 요청사항 페이지 */
 	@RequestMapping(value = "/mypage_update/etc.do", method = RequestMethod.POST)
 	public ModelAndView update_request(Model model,
 			@RequestParam(value = "momno", defaultValue = "0") int momno,
-			@RequestParam(value = "type_interview") char interview_type,
-			@RequestParam(value = "s_gender") char sitter_gender,
-			@RequestParam(value = "care_type") String care_type) {
+			@RequestParam(value = "type_interview", required = false) String interview_type,
+			@RequestParam(value = "s_gender",required = false, defaultValue = "0") char sitter_gender,
+			@RequestParam(value = "care_type", required = false) String care_type) {
 
 		/** 1) 파라미터 유효성 검사 */
 		if (momno==0) {
-			return webHelper.redirect(null, "cehcking login.");
+			return webHelper.redirect(null, "존재하지 않는 회원번호입니다.");
 		}
+
 
 
 		/** 2) 데이터 조회하기 */
@@ -335,6 +349,6 @@ public class UpdateApplController {
 
 		/** 3) View 처리 */
 		String url = contextPath + "/mypage/mypage_mom/update_profile.do?momno=" + momno;
-		return webHelper.redirect(url, "Success change Apply!");
+		return webHelper.redirect(url, "신청서 수정에 성공하였습니다!");
 	}
 }

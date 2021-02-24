@@ -66,7 +66,6 @@
                     <span class="dot now_dots"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
-                    <span class="dot"></span>
                 </div>
                 <h3 class="what_want">언제 활동할 수 있나요?</h3>
                 <!-- content1 -->

@@ -57,7 +57,7 @@ public class MemberInsertController {
 			input.setSi("서울시");
 			input.setGu("강동구");
 			input.setDong("성내2동");
-			input.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"workterm\": \"regular\", \"startdate\": \"2021/02/16\"}");
+			input.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input.setSchedule_ok('Y');
 			input.setSitter_gender('F');
 			input.setCare_type("주1회");
@@ -121,7 +121,7 @@ public class MemberInsertController {
 			input2.setSi("서울시");
 			input2.setGu("강동구");
 			input2.setDong("성내2동");
-			input2.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
+			input2.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"workterm\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input2.setIntroduce("안녕하세요 짱짱 시터입니다.");
 			input2.setCctv('Y');
 			

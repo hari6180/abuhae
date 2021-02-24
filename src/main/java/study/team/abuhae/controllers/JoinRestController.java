@@ -155,7 +155,6 @@ public class JoinRestController {
 			@RequestParam(value = "schedule") String schedulestr, 
 			@RequestParam(value = "payment") String paymentstr, 
 			@RequestParam(value = "cctv") char cctv,
-			@RequestParam(value = "profile_img", required = false) char isprofile,
 			@RequestParam(value = "introduce", required = false) String introduce,
 			@RequestParam(value = "user_id") String user_id, 
 			@RequestParam(value = "user_pw") String user_pw,
@@ -221,7 +220,6 @@ public class JoinRestController {
 		sitterinfo.setSchedule(schedule);
 		sitterinfo.setPayment(payment);
 		sitterinfo.setCctv(cctv);
-		sitterinfo.setIsprofile(isprofile);
 		sitterinfo.setIntroduce(introduce);
 
 		sitterinfo.setPassword(user_pw);

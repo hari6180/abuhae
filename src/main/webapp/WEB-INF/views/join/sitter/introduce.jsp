@@ -134,7 +134,6 @@
                     <span class="dot now_dots"></span>
                     <span class="dot now_dots"></span>
                     <span class="dot now_dots"></span>
-                    <span class="dot now_dots"></span>
                 </div>
                 <h3 class="what_want">간단 자기소개<span>(선택 사항)</span></h3>
                 <textarea id="intotext" placeholder="간단한 자기소개 작성 시 부모님에게 2배 더 많은 신청을 받게 됩니다." class="desc_textarea"
@@ -159,7 +158,6 @@
                     <input type="hidden" id="schedule" name="schedule" value="${schedule}">
                     <input type="hidden" id="payment" name="payment" value="${payment}">
                     <input type="hidden" id="cctv" name="cctv" value="${cctv}">
-                    <input type="hidden" id="profile_img" name="profile_img" value="${profile_img}">
                     <input type="hidden" id="intro" name="introduce">
                     <button type="submit" class="next_btn">나중에 입력할게요.</button>
                 </form>

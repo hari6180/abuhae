@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -146,10 +148,6 @@
             margin: 15px auto;
             display: block;
         }
-
-        p {
-            margin: 20px 0 20px !important;
-        }
         .main_title {
             font-weight: bold;
         }
@@ -261,6 +259,14 @@
                     <form method="post" action="${pageContext.request.contextPath}/mypage_update/applytitle.do">
                         <div class="col-xs-12">
                             <h5 class="upd_img_tl">2. 제목</h5>
+                            <div class="now_selected">
+                                <c:if test="${mominfo.apply_title == null}">
+                                    <p class="desc">현재 작성하신 제목이 없습니다.</p>
+                                </c:if>
+                                <c:if test="${mominfo.apply_title != null}">
+                                    <p class="desc">현재 작성한 제목은 <i class="point">${mominfo.apply_title}</i> 입니다.</p>
+                                </c:if>
+                            </div>
                             <div class="choice_title">
                                 <select name="mom_appl_title" id="mom_appl_title">
                                     <option value="" selected>제목을 입력해주세요.</option>
@@ -289,8 +295,7 @@
                     <div class="col-xs-12">
                         <h5 class="upd_img_tl">3. 신청 내용(선택사항)</h5>
                         <input type="hidden" name="momno" value="${login.momno}">
-                        <textarea name="mappl_cont" id="mom_appl_cont" cols="30" rows="7"
-                            placeholder="아이 성별, 나이(개월 수), 성격, 특이사항 등을 적어주세요."></textarea>
+                        <textarea name="mappl_cont" id="mom_appl_cont" cols="30" rows="7">${mominfo.description}</textarea>
                         <div class="mom_appl_ban">
                             <div>
                                 <i class="fas fa-ban" style="color: #fcbe8f;"></i>
@@ -306,9 +311,12 @@
         <hr>
         <div class="wrap_upd_sage">
             <section class="want_age_box">
-                <h3>원하는 시터 나이 수정</h3>
-                <br>
-                <br>
+                <h5 class="upd_img_tl">4. 원하는 시터 나이 수정</h5>
+                <div class="now_selected">
+					<p class="desc">
+						현재 선택하신 나이대는 <i class="point">${mominfo.want_age}</i> 입니다.
+					</p>
+				</div>
                 <div class="row">
                     <form method="post" action="${pageContext.request.contextPath}/mypage_update/wantage.do?momno=${login.momno}">
                         <div class="col-xs-12 age_box_cont">
@@ -345,9 +353,14 @@
         <div class="wrap_upd_loc">
             <!-- content1 (dropdown) -->
             <section class="group1_upd_loc">
-                <h3>돌봄장소 수정</h3>
-                <br>
-                <div class="row">
+                <h5 class="upd_img_tl">5. 돌봄 장소 수정</h5>
+				<div class="now_selected">
+					<p class="desc">
+						현재 선택하신 돌봄 지역은 <i class="point">${mominfo.si}&nbsp;${mominfo.gu}&nbsp;${mominfo.dong}</i> 입니다.
+					</p>
+				</div>
+				<br>
+				<div class="row">
                     <form  method="post" action="${pageContext.request.contextPath}/mypage_update/location.do?momno=${login.momno}">
                         <div class="col-xs-12 upd_loc_cont1">
 
@@ -544,9 +557,48 @@
         <div class="wrap_upd_ct">
             <!-- content1 -->
             <section class="group_upd_ct">
-                <h3>돌봄 기간 / 시간 변경</h3>
-                <br>
-                <div class="row">
+                <h5 class="upd_img_tl">6. 돌봄 기간 / 시간 변경</h5>
+				<c:set var="theString" value="${mominfo.days}" />
+				<div class="now_selected">
+					<p class="desc">
+						현재 돌봄 시작 가능일은 <i class="point">${fn:split(mominfo.schedule_start,'/')[0]}년
+							${fn:split(mominfo.schedule_start,'/')[1]}월
+							${fn:split(mominfo.schedule_start,'/')[2]}일</i>이고, 돌봄 원하는 요일은
+						<c:if test="${fn:contains(theString, 'mon')}">
+							<i class="point">월요일 </i>
+						</c:if>
+						<c:if test="${fn:contains(theString, 'tue')}">
+							<i class="point">화요일 </i>
+						</c:if>
+						<c:if test="${fn:contains(theString, 'wen')}">
+							<i class="point">수요일 </i>
+						</c:if>
+						<c:if test="${fn:contains(theString, 'thu')}">
+							<i class="point">목요일 </i>
+						</c:if>
+						<c:if test="${fn:contains(theString, 'fri')}">
+							<i class="point">금요일 </i>
+						</c:if>
+						<c:if test="${fn:contains(theString, 'sat')}">
+							<i class="point">토요일 </i>
+						</c:if>
+						<c:if test="${fn:contains(theString, 'sun')}">
+							<i class="point">일요일 </i>
+						</c:if>
+						이며,
+						<c:if test="${mominfo.frequency=='regular'}">
+							<i class="point">정기적으로</i>
+						</c:if>
+						<c:if test="${mominfo.frequency=='shortTerm'}">
+							<i class="point">특정 날만</i>
+						</c:if>
+						<c:if test="${mominfo.frequency=='noplan'}">
+							<i class="point">아직 계획이 없지만</i>
+						</c:if>
+						돌봄을 원합니다.
+					</p>
+				</div>
+				<div class="row">
                     <form method="post" action="${pageContext.request.contextPath}/mypage_update/schedule.do?momno=${login.momno}">
                         <div class="col-xs-12">
                             <!-- 탭 버튼 영역 (정기적으로 / 특정한 날에만)-->
@@ -576,8 +628,23 @@
                 <div class="row">
                     <form method="post" action="${pageContext.request.contextPath}/mypage_update/kidspay.do?momno=${login.momno}">
                         <div class="col-xs-12">
-                            <h3>아이정보/희망시급 수정</h3>
-                            <br>
+                            <h5 class="upd_img_tl">7. 아이 정보 / 희망 시급 수정</h5>
+							<div class="now_selected">
+								<c:if test="${kids_age2=='0' }">
+									<p class="desc">
+									현재 회원님의 아이는 <i class="point">${mominfo.kids_num}</i>명이며,
+									나이는 <i class="point">${kids_age}</i>세입니다.
+									</p>
+								</c:if>
+								<c:if test="${kids_age2!='0' }">
+									<p class="desc">
+									현재 회원님의 아이는 <i class="point">${mominfo.kids_num}</i>명이며,
+									나이는 <i class="point">${kids_age}</i>세, <i class="point">${kids_age2}</i>세입니다.
+									</p>
+								</c:if>
+								
+							</div>
+							<br>
                             <div class="number_children_wrap">
                                 <button type="button" class="childeren_num1 btn_children_off" data-tab="select_one" value="1">1명</button>
                                 <button type="button" class="childeren_num2 btn_children_off" data-tab="select_two" value="2">2명</button>
@@ -595,7 +662,7 @@
                                     </div>
                                 </h4>
                                 <div class="payment_input_wrap">
-                                    <input type="text" class="payment_input" value="10,000" id="payment_input" name="payment">
+                                    <input type="text" class="payment_input" value="${mominfo.payment}" id="payment_input" name="payment">
                                     <span class="payment_fix">원</span>
                                 </div>
                                 <div class="disc_box">
@@ -657,9 +724,272 @@
         <hr>
 
         <div class="wrap_update_activity">
-            <h3>원하는 활동 수정</h3>
-			<span class="sub_title"><i class="fas fa-check"></i>최대 3개만 선택 가능합니다.</span>
-            <!-- content -->
+        <h5 class="upd_img_tl">9. 원하는 활동 수정</h5>
+		<span class="sub_title"><i class="fas fa-check"></i>최대 3개만 선택 가능합니다.</span>
+		<c:set var="want_act1" value="${mominfo.want_act1}" />
+		<c:set var="want_act2" value="${mominfo.want_act2}" />
+		<c:set var="want_act3" value="${mominfo.want_act3}" />
+		<div class="now_selected">
+			<c:if
+				test="${mominfo.want_act1 ne '' and mominfo.want_act2 eq '' and mominfo.want_act3 eq '' }">
+				<p class="desc">
+					현재 선택하신 활동은 
+					<c:if test="${fn:contains(want_act1, 'innerplay')}">
+						<i class="point">실내놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'korean')}">
+						<i class="point">한글놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'simple_cleaning')}">
+						<i class="point">간단청소 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'long_move_in')}">
+						<i class="point">장기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'guide')}">
+						<i class="point">등하원 돕기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'english')}">
+						<i class="point">영어놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'eat')}">
+						<i class="point">밥 챙겨주기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'short_move_in')}">
+						<i class="point">단기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'read')}">
+						<i class="point">책읽기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'study')}">
+						<i class="point">학습지도 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'do_dish')}">
+						<i class="point">간단 설거지 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'outside')}">
+						<i class="point">야외활동 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'sport')}">
+						<i class="point">체육활동 </i> 
+					</c:if>
+					
+					 입니다.
+				</p>
+			</c:if>
+			<c:if
+				test="${mominfo.want_act1 ne '' and mominfo.want_act2 ne ''and mominfo.want_act3 eq '' }">
+				<p class="desc">
+					현재 선택하신 활동은 
+					<c:if test="${fn:contains(want_act1, 'innerplay')}">
+						<i class="point">실내놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'korean')}">
+						<i class="point">한글놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'simple_cleaning')}">
+						<i class="point">간단청소 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'long_move_in')}">
+						<i class="point">장기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'guide')}">
+						<i class="point">등하원 돕기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'english')}">
+						<i class="point">영어놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'eat')}">
+						<i class="point">밥 챙겨주기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'short_move_in')}">
+						<i class="point">단기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'read')}">
+						<i class="point">책읽기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'study')}">
+						<i class="point">학습지도 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'do_dish')}">
+						<i class="point">간단 설거지 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'outside')}">
+						<i class="point">야외활동 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'sport')}">
+						<i class="point">체육활동 </i> 
+					</c:if>
+					, 
+					<c:if test="${fn:contains(want_act2, 'innerplay')}">
+						<i class="point">실내놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'korean')}">
+						<i class="point">한글놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'simple_cleaning')}">
+						<i class="point">간단청소 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'long_move_in')}">
+						<i class="point">장기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'guide')}">
+						<i class="point">등하원 돕기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'english')}">
+						<i class="point">영어놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'eat')}">
+						<i class="point">밥 챙겨주기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'short_move_in')}">
+						<i class="point">단기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'read')}">
+						<i class="point">책읽기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'study')}">
+						<i class="point">학습지도 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'do_dish')}">
+						<i class="point">간단 설거지 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'outside')}">
+						<i class="point">야외활동 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'sport')}">
+						<i class="point">체육활동 </i> 
+					</c:if> 입니다.
+				</p>
+			</c:if>
+			<c:if
+				test="${mominfo.want_act1 ne '' and mominfo.want_act2 ne '' and mominfo.want_act3 ne '' }">
+				<p class="desc">
+					현재 선택하신 활동은 
+					<c:if test="${fn:contains(want_act1, 'innerplay')}">
+						<i class="point">실내놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'korean')}">
+						<i class="point">한글놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'simple_cleaning')}">
+						<i class="point">간단청소 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'long_move_in')}">
+						<i class="point">장기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'guide')}">
+						<i class="point">등하원 돕기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'english')}">
+						<i class="point">영어놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'eat')}">
+						<i class="point">밥 챙겨주기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'short_move_in')}">
+						<i class="point">단기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'read')}">
+						<i class="point">책읽기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'study')}">
+						<i class="point">학습지도 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'do_dish')}">
+						<i class="point">간단 설거지 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'outside')}">
+						<i class="point">야외활동 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act1, 'sport')}">
+						<i class="point">체육활동 </i> 
+					</c:if>
+					, 
+					<c:if test="${fn:contains(want_act2, 'innerplay')}">
+						<i class="point">실내놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'korean')}">
+						<i class="point">한글놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'simple_cleaning')}">
+						<i class="point">간단청소 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'long_move_in')}">
+						<i class="point">장기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'guide')}">
+						<i class="point">등하원 돕기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'english')}">
+						<i class="point">영어놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'eat')}">
+						<i class="point">밥 챙겨주기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'short_move_in')}">
+						<i class="point">단기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'read')}">
+						<i class="point">책읽기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'study')}">
+						<i class="point">학습지도 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'do_dish')}">
+						<i class="point">간단 설거지 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'outside')}">
+						<i class="point">야외활동 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act2, 'sport')}">
+						<i class="point">체육활동 </i> 
+					</c:if>
+					,
+					<c:if test="${fn:contains(want_act3, 'innerplay')}">
+						<i class="point">실내놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'korean')}">
+						<i class="point">한글놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'simple_cleaning')}">
+						<i class="point">간단청소 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'long_move_in')}">
+						<i class="point">장기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'guide')}">
+						<i class="point">등하원 돕기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'english')}">
+						<i class="point">영어놀이 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'eat')}">
+						<i class="point">밥 챙겨주기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'short_move_in')}">
+						<i class="point">단기입주 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'read')}">
+						<i class="point">책읽기 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'study')}">
+						<i class="point">학습지도 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'do_dish')}">
+						<i class="point">간단 설거지 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'outside')}">
+						<i class="point">야외활동 </i> 
+					</c:if>
+					<c:if test="${fn:contains(want_act3, 'sport')}">
+						<i class="point">체육활동 </i> 
+					</c:if>
+					 입니다.
+				</p>
+			</c:if>
+		</div>
+		<!-- content -->
             <section class="upd_care_age_cont">
                 <div class="row">
                     <div class="col-xs-12 care_age_cont_in">
@@ -881,9 +1211,121 @@
         <hr>
 
         <div class="wrap_upd_request">
-            <h3>그 외 요청사항</h3>
-            <br>
-            <section class="group1_upd_req">
+            <h5 class="upd_img_tl">10. 그 외 요청사항</h5>
+		<div class="now_selected">
+			<c:set var="gender" value="${mominfo.sitter_gender}" />
+			<c:set var="interview" value="${mominfo.interview_type}" />
+			<c:if test="${mominfo.sitter_gender eq null and mominfo.interview_type eq null and mominfo.care_type eq null }">
+				<p class="desc">현재 작성하신 추가 요구사항이 없습니다.</p>
+			</c:if>
+			<c:if test="${mominfo.sitter_gender ne null and mominfo.interview_type ne null and mominfo.care_type ne null }">
+				<p class="desc">
+					현재 원하시는 시터 성별은 
+					<c:if test="${fn:contains(gender, 'F')}">
+						<i class="point">여자 </i> 
+					</c:if>
+					<c:if test="${fn:contains(gender, 'M')}">
+						<i class="point">남자 </i> 
+					</c:if>
+					<c:if test="${fn:contains(gender, 'N')}">
+						<i class="point">무관 </i> 
+					</c:if>
+					이고, 요청하신 인터뷰 방식은 
+					<c:if test="${fn:contains(interview, 'call')}">
+						<i class="point">전화 인터뷰 </i> 
+					</c:if>
+					<c:if test="${fn:contains(interview, 'face')}">
+						<i class="point">대면 인터뷰 </i> 
+					</c:if>
+					<c:if test="${fn:contains(interview, 'test')}">
+						<i class="point">시범 채용 </i> 
+					</c:if>
+					입니다.
+					원하시는 돌봄 방식은 <i class="point">${mominfo.care_type}</i>입니다.
+				</p>
+			</c:if>
+			<c:if test="${mominfo.sitter_gender eq null and mominfo.interview_type ne null and mominfo.care_type ne null }">
+				<p class="desc">
+					현재 요청하신 인터뷰 방식은 <i class="point">${mominfo.interview_type}</i>이고, 
+					원하시는 돌봄 방식은 <i class="point">${mominfo.care_type}</i>입니다.
+				</p>
+			</c:if>
+			<c:if test="${mominfo.sitter_gender eq null and mominfo.interview_type eq null and mominfo.care_type ne null }">
+				<p class="desc">
+					현재 원하시는 돌봄 방식은 <i class="point">${mominfo.care_type}</i>입니다.
+				</p>
+			</c:if>
+			<c:if test="${mominfo.sitter_gender eq null and mominfo.interview_type ne null and mominfo.care_type eq null }">
+				<p class="desc">
+					현재 요청하신 인터뷰 방식은 
+					<c:if test="${fn:contains(interview, 'call')}">
+						<i class="point">전화 인터뷰 </i> 
+					</c:if>
+					<c:if test="${fn:contains(interview, 'face')}">
+						<i class="point">대면 인터뷰 </i> 
+					</c:if>
+					<c:if test="${fn:contains(interview, 'test')}">
+						<i class="point">시범 채용 </i> 
+					</c:if>입니다.
+				</p>
+			</c:if>
+			<c:if test="${mominfo.sitter_gender ne null and mominfo.interview_type ne null and mominfo.care_type eq null }">
+				<p class="desc">
+					현재 원하시는 시터 성별은 
+					<c:if test="${fn:contains(gender, 'F')}">
+						<i class="point">여자 </i> 
+					</c:if>
+					<c:if test="${fn:contains(gender, 'M')}">
+						<i class="point">남자 </i> 
+					</c:if>
+					<c:if test="${fn:contains(gender, 'N')}">
+						<i class="point">무관 </i> 
+					</c:if>
+					 이고,
+					요청하신 인터뷰는 방식은 
+					<c:if test="${fn:contains(interview, 'call')}">
+						<i class="point">전화 인터뷰 </i> 
+					</c:if>
+					<c:if test="${fn:contains(interview, 'face')}">
+						<i class="point">대면 인터뷰 </i> 
+					</c:if>
+					<c:if test="${fn:contains(interview, 'test')}">
+						<i class="point">시범 채용 </i> 
+					</c:if>입니다.
+				</p>
+			</c:if>
+			<c:if test="${mominfo.sitter_gender ne null and mominfo.interview_type eq null and mominfo.care_type ne null }">
+				<p class="desc">
+					현재 원하시는 시터 성별은 
+					<c:if test="${fn:contains(gender, 'F')}">
+						<i class="point">여자 </i> 
+					</c:if>
+					<c:if test="${fn:contains(gender, 'M')}">
+						<i class="point">남자 </i> 
+					</c:if>
+					<c:if test="${fn:contains(gender, 'N')}">
+						<i class="point">무관 </i> 
+					</c:if>
+					이고,
+					원하시는 돌봄 방식은 <i class="point">${mominfo.care_type}</i>입니다.
+				</p>
+			</c:if>
+			<c:if test="${mominfo.sitter_gender ne null and mominfo.interview_type eq null and mominfo.care_type eq null }">
+				<p class="desc">
+					현재 원하시는 시터 성별은 
+					<c:if test="${fn:contains(gender, 'F')}">
+						<i class="point">여자 </i> 
+					</c:if>
+					<c:if test="${fn:contains(gender, 'M')}">
+						<i class="point">남자 </i> 
+					</c:if>
+					<c:if test="${fn:contains(gender, 'N')}">
+						<i class="point">무관 </i> 
+					</c:if>입니다.
+				</p>
+			</c:if>
+		</div>
+		<section class="group1_upd_req">
                 <div class="row">
                     <form method="post" action="${pageContext.request.contextPath}/mypage_update/etc.do?momno=${login.momno}">
                         <div class="col-xs-12 upd_sitter_gender">

@@ -84,7 +84,6 @@
                     <span class="dot"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
-                    <span class="dot"></span>
                 </div>
                 <h3 class="what_want">당신은 어떤분 인가요?</h3>
                 <div>

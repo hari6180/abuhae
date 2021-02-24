@@ -63,11 +63,17 @@ public class AgeHelper {
 		// 현재 년도와 월 구하기
 		int year = date.get(Calendar.YEAR);
 
-		// 나이 구하기
-		String kids_year_str = kids_age_str.substring(0, 4);
-		int kids_year = Integer.parseInt(kids_year_str);
-		age = year - kids_year;
-
+		if(kids_age_str!=null) {
+			// 나이 구하기
+			String kids_year_str = kids_age_str.substring(0, 4);
+			int kids_year = Integer.parseInt(kids_year_str);
+			age = year - kids_year;
+		} else {
+			age = 0;
+			return age;
+		}
+		
+		
 		return age;
 	}
 

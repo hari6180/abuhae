@@ -278,11 +278,17 @@
 <!-- 로그인한 회원정보 조회 조회 -->
 	<select id="selectMomItem" 
 	parameterType="study.team.abuhae.model.Mom_info" resultMap="MomInfoMap">
-		SELECT m.memberno, m.name, m.type, m.id, m.password, m.email, m.phone, m.birthdate, m.job_opening, mi.momno, mi.momno
+		SELECT m.memberno, m.name, m.type, m.id, m.password, m.email, m.phone, m.birthdate, m.job_opening, mi.momno, mi.momno,
+		apply_title, description, want_age, kids_num, kids_age, kids_age2, payment, sitter_gender, interview_type, care_type,
+		si, gu, dong, want_act1, want_act2, want_act3,
+		json_extract(schedule, '$.startdate') AS schedule,
+		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
+		REPLACE(json_extract(schedule, '$.startdate'),'"','') AS schedule_start,
+		REPLACE(json_extract(schedule, '$.day'),'"','') AS days
 		FROM mom_info mi
 		INNER JOIN member m ON m.memberno=mi.memberno
 		where
-		mi.momno = #{momno};
+		mi.momno = #{momno}
 
 	</select>
 

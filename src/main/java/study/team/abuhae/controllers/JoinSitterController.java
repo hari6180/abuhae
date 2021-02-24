@@ -269,8 +269,7 @@ public class JoinSitterController {
 			@RequestParam(value = "dong") String dong,
 			@RequestParam(value = "schedule") String schedule, 
 			@RequestParam(value = "payment") String paymentstr, 
-			@RequestParam(value = "cctv") char cctv,
-			@RequestParam(value = "profile_img", required = false) char isprofile) {
+			@RequestParam(value = "cctv") char cctv) {
 
 		paymentstr = paymentstr.replace(",", "");
 		int payment = Integer.parseInt(paymentstr);
@@ -288,7 +287,6 @@ public class JoinSitterController {
 		sitterinfo.setSchedule(schedule);
 		sitterinfo.setPayment(payment);
 		sitterinfo.setCctv(cctv);
-		sitterinfo.setIsprofile(isprofile);
 
 		// 저장된 결과 조회하기 위한 객체
 		// Mom_info output = null;
@@ -307,7 +305,6 @@ public class JoinSitterController {
 		model.addAttribute("schedule", schedule);
 		model.addAttribute("payment", payment);
 		model.addAttribute("cctv", cctv);
-		model.addAttribute("profile_img", isprofile);
 		
 
 		return new ModelAndView("/join/sitter/introduce");
@@ -329,7 +326,6 @@ public class JoinSitterController {
 			@RequestParam(value = "schedule") String schedule, 
 			@RequestParam(value = "payment") String paymentstr, 
 			@RequestParam(value = "cctv") char cctv,
-			@RequestParam(value = "profile_img", required = false) char isprofile,
 			@RequestParam(value = "introduce", required = false) String introduce
 			) {
 
@@ -349,7 +345,6 @@ public class JoinSitterController {
 		sitterinfo.setSchedule(schedule);
 		sitterinfo.setPayment(payment);
 		sitterinfo.setCctv(cctv);
-		sitterinfo.setIsprofile(isprofile);
 		sitterinfo.setIntroduce(introduce);
 
 		// 저장된 결과 조회하기 위한 객체
@@ -369,7 +364,6 @@ public class JoinSitterController {
 		model.addAttribute("schedule", schedule);
 		model.addAttribute("payment", payment);
 		model.addAttribute("cctv", cctv);
-		model.addAttribute("profile_img", isprofile);
 		model.addAttribute("introduce", introduce);
 		
 
@@ -392,7 +386,6 @@ public class JoinSitterController {
 			@RequestParam(value = "schedule") String schedule, 
 			@RequestParam(value = "payment") String paymentstr, 
 			@RequestParam(value = "cctv") char cctv,
-			@RequestParam(value = "profile_img", required = false) char isprofile,
 			@RequestParam(value = "introduce", required = false) String introduce
 			) {
 
@@ -412,7 +405,6 @@ public class JoinSitterController {
 		sitterinfo.setSchedule(schedule);
 		sitterinfo.setPayment(payment);
 		sitterinfo.setCctv(cctv);
-		sitterinfo.setIsprofile(isprofile);
 		sitterinfo.setIntroduce(introduce);
 
 		// 저장된 결과 조회하기 위한 객체
@@ -432,7 +424,6 @@ public class JoinSitterController {
 		model.addAttribute("schedule", schedule);
 		model.addAttribute("payment", payment);
 		model.addAttribute("cctv", cctv);
-		model.addAttribute("profile_img", isprofile);
 		model.addAttribute("introduce", introduce);
 		
 

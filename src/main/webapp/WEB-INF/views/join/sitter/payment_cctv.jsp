@@ -39,7 +39,6 @@
 					<span class="dot now_dots"></span>
 					<span class="dot now_dots"></span>
 					<span class="dot"></span>
-					<span class="dot"></span>
 				</div>
 				<h3 class="what_want">희망시급을 입력해 주세요</h3>
 				<img class="pay_img" src="${pageContext.request.contextPath}/assets/img/payment.png" alt="희망시급입력">
@@ -82,7 +81,7 @@
 			</div>
 			<!--end cctv-->
 			
-			<form id="addform" method="post" action="${pageContext.request.contextPath}/join/sitter/profile_img.do">
+			<form id="addform" method="post" action="${pageContext.request.contextPath}/join/sitter/introduce.do">
 				<input type="hidden" id="type" name="type" value="${type}">
 				<input type="hidden" id="sitter_type" name="sitter_type" value="${sitter_type}">
 				<input type="hidden" id="want_act1" name="want_act1" value="${want_act1}">

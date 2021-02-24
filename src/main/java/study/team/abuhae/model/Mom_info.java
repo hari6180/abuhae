@@ -37,7 +37,7 @@ public class Mom_info extends Member {
 	private char   schedule_ok;		// 일정 조정 가능 여부 ('Y' or 'N')
 	private String description;		// 시터가 알아야할 사항
 	private char   sitter_gender;	// 원하는 시터 성별 ('M' or 'F')
-	private char interview_type;	// 원하는 인터뷰 방식
+	private String interview_type;	// 원하는 인터뷰 방식
 	private String care_type;		// 원하는 돌봄 타입
 	private String openingdate;		// 신청서 등록 시간
 	private String apply_title;		// 신청서 제목
@@ -60,6 +60,9 @@ public class Mom_info extends Member {
 	
 	// 인터뷰 구독권 여부에 필요한 JOIN - 2021 지우 
 	private char subscribe;
+	
+	//조인절에 따른 추가 컬럼
+	private String schedule_start;
 
 	
 	/** 3) 검색 조건용 추가 컬럼 */

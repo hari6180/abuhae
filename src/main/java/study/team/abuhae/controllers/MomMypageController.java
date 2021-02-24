@@ -42,7 +42,7 @@ public class MomMypageController {
 	
 	/** mypage controller */
 	@RequestMapping(value = "/mypage/mypage_mom/mom_mypage.do", method = RequestMethod.GET)
-	public String mom_mypage(Model model,HttpServletResponse response, HttpServletRequest request,
+	public ModelAndView mom_mypage(Model model,HttpServletResponse response, HttpServletRequest request,
 			@RequestParam(value = "momno") int momno) {
 		// 데이터 조회에 필요한 조건값 Beans에 저장
 		Mom_info input = new Mom_info();
@@ -60,7 +60,7 @@ public class MomMypageController {
 		// View 처리 
 		model.addAttribute("output" ,output);
 		
-		return "mypage/mypage_mom/mom_mypage";
+		return new ModelAndView("mypage/mypage_mom/mom_mypage");
 	}
 	
 	
@@ -519,13 +519,13 @@ public class MomMypageController {
 
 	      /** 1) 파라미터 유효성 검사 */
 	      if (memberno == 0) {
-	         return webHelper.redirect(null, "no exist membernumber.");
+	         return webHelper.redirect(null, "존재하지 않은 회원번호입니다.");
 	      }
 	      if(oldpassword=="" || oldpassword==null) {
-	         return webHelper.redirect(null, "input your now password.");
+	         return webHelper.redirect(null, "현재 비밀번호를 입력하세요.");
 	      }
 	      if(newpassword=="" || newpassword==null) {
-	         return webHelper.redirect(null, "input your new password.");
+	         return webHelper.redirect(null, "새로운 비밀번호를 입력하세요.");
 	      }
 	      
 	      /** 2) 데이터 조회하기 */
@@ -545,7 +545,7 @@ public class MomMypageController {
 	         bigyo = momMypageService.bigyoPassword(input);
 	         
 	         if(bigyo==0) {
-	            return webHelper.redirect(null, "checking your current password!");
+	            return webHelper.redirect(null, "현재 비밀번호를 확인하세요!");
 	         }
 	         //현재 비밀번호와 일치하면 새로운 비밀번호로 업데이트
 	         momMypageService.updatePassword(newpw);
@@ -558,7 +558,7 @@ public class MomMypageController {
 	      
 	      /** 3) View 처리 */
 	      String url = contextPath+"/mypage/mypage_mom/manage_account.do?&memberno="+memberno;
-	      return webHelper.redirect(url, "Success change Password");
+	      return webHelper.redirect(url, "비밀번호 변경이 완료되었습니다.");
 	   }
 	   
 	   

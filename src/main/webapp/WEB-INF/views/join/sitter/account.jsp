@@ -69,7 +69,6 @@
                     <input type="hidden" id="schedule" name="schedule" value="${schedule}">
                     <input type="hidden" id="payment" name="payment" value="${payment}">
                     <input type="hidden" id="cctv" name="cctv" value="${cctv}">
-                    <input type="hidden" id="profile_img" name="profile_img" value="${profile_img}">
                     <input type="hidden" id="intro" name="introduce" value="${introduce}">
                     <div class="input_box">
                         <div class="input_group">
