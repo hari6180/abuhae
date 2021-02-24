@@ -140,8 +140,8 @@
 
 	                                                </div>
 	                                                <div class="ls_page_box_right">
-	                                                    <p style="font-size: 1em; font-weight: bold;">${it.name}<span style="color: #888888; font-size: 0.8em;">13시간 전 작성</p>
-	                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">전북 군산시 경기 평택시 </p>
+	                                                    <p style="font-size: 1em; font-weight: bold;">${it.name}<span style="color: #888888; font-size: 0.8em;">${it.reg_date }</p>
+	                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${it.si } ${it.gu }</p>
 	                                                    <p style="color: #888888; font-size: 0.8em;">
 	                                                        <span>${it.birthdate}세</span> l <span>희망시급 ${it.payment }원</span> 
 	                                                    </p>

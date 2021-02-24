@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -197,30 +198,59 @@
         <div class="wrap_upd_profile_cont">
             <!-- content1 -->
             <section class="group_upd_img">
-
                 <div class="row">
-                    <form>
-                        <div class="col-xs-12">
-                            <h5 class="upd_img_tl">1. 내 사진 (선택사항)</h5>
-                            <div class="upload_prof">
-                                <div class="user_img">
-                                    <input type="file" id="new_profile_img" name="new_profile_img" accept="image/*">
-                                    <label for="new_profile_img"><img
-                                            src="${pageContext.request.contextPath}/assets/img/mypage_img/user.png"
-                                            alt=""></label>
-                                </div>
-                            </div>
-                            <div class="guide_user_img">
-                                <p>
-                                    부모님 또는 아이 사진을 등록할 경우, <br />
-                                    맘시터와 <span style="color: #ff7000; text-decoration: underline;">5배</span> 더 빨리
-                                    매칭이 될 수
-                                    있습니다.
-                                </p>
-                            </div>
-                        </div>
-                        <button id="updateProfileImg" class="edit_btn" type="submit">수정하기</button>
-                    </form>
+                    <c:choose>
+                    	<c:when test="${profile == null }">
+                    		<form method="post" action="${pageContext.request.contextPath}/upload/upload_ok.do?memberno=${login.memberno}"
+		                    enctype="multipart/form-data">
+		                        <div class="col-xs-12">
+		                            <h5 class="upd_img_tl">1. 내 사진 (선택사항)</h5>
+		                            <div class="upload_prof">
+		                                <div class="user_img">
+		                                    <input type="file" id="new_profile_img" name="photo" accept="image/*">
+		                                    <label for="new_profile_img"><img
+		                                            src="${pageContext.request.contextPath}/assets/img/mypage_img/user.png"
+		                                            alt=""></label>
+		                                </div>
+		                            </div>
+		                            <div class="guide_user_img">
+		                                <p>
+		                                    부모님 또는 아이 사진을 등록할 경우, <br />
+		                                    맘시터와 <span style="color: #ff7000; text-decoration: underline;">5배</span> 더 빨리
+		                                    매칭이 될 수
+		                                    있습니다.
+		                                </p>
+		                            </div>
+		                        </div>
+		                        <button id="updateProfileImg" class="edit_btn" type="submit">수정하기</button>
+		                    </form>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<form method="post" action="${pageContext.request.contextPath}/upload/upload_edit.do?memberno=${login.memberno}"
+		                    enctype="multipart/form-data">
+		                        <div class="col-xs-12">
+		                            <h5 class="upd_img_tl">1. 내 사진 (선택사항)</h5>
+		                            <div class="upload_prof">
+		                                <div class="user_img">
+		                                    <input type="file" id="new_profile_img" name="photo" accept="image/*">
+		                                    <label for="new_profile_img"><img
+		                                            src="${pageContext.request.contextPath}/assets/img/mypage_img/user.png"
+		                                            alt=""></label>
+		                                </div>
+		                            </div>
+		                            <div class="guide_user_img">
+		                                <p>
+		                                    부모님 또는 아이 사진을 등록할 경우, <br />
+		                                    맘시터와 <span style="color: #ff7000; text-decoration: underline;">5배</span> 더 빨리
+		                                    매칭이 될 수
+		                                    있습니다.
+		                                </p>
+		                            </div>
+		                        </div>
+		                        <button id="updateProfileImg" class="edit_btn" type="submit">수정하기</button>
+		                    </form>
+                    	</c:otherwise>
+                    </c:choose>
                 </div>
             </section>
             <!-- end content1 -->
@@ -558,7 +588,6 @@
                             <!--시급-->
                             <div class="payment_box">
                                 <h4>맘시터에게 지급할 희망 시급을 적어 주세요.
-                                    <div class="help_box">
                                         <a data-toggle="modal" href="#help_modal"><button class="help_btn">
                                                 <span class="sr-only">도움말</span>
                                                 <img src="${pageContext.request.contextPath}/assets/img/help.png" alt="도움말">

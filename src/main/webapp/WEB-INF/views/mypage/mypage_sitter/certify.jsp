@@ -33,7 +33,7 @@
                     <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${login.sitterno}">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">내 인증 관리</h3>
@@ -74,7 +74,7 @@
                                             주민등록/초본으로 내 상태를 인증받으세요. <br/>
                                             <span style="color: #09f; font-size: 0.85em;">- 발급일 6개월 이내만 유효</span>
                                         </p>
-                                        <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/certify_resident.do">
+                                        <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/certify_resident.do?sitterno=${login.sitterno}">
                                             <button type="button">
                                                 인증받기 <i class="fas fa-angle-right"></i>
                                             </button>

@@ -15,4 +15,8 @@ public class ProfileFile {
 	private String thumnailurl;
 	private int memberno;
 	private String isProfile;
+
+	/** join에 따른 멤버변수 추가 */
+	private int momno;
+	private int sitterno;
 }

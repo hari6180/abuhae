@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.ProfileFile;
+import study.team.abuhae.model.ResiCert;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.UploadService;
 
@@ -43,7 +44,7 @@ public class UploadServiceImpl implements UploadService {
 		ProfileFile result = null;
         
         try {
-           result = sqlSession.selectOne("UploadMapper.selectProfileItem", input);
+           result = sqlSession.selectOne("UploadMapper.selecSittertProfileItem", input);
        
         } catch (Exception e) {
            log.error(e.getLocalizedMessage());
@@ -73,6 +74,63 @@ public class UploadServiceImpl implements UploadService {
 	      
 	      try {
 	         result = sqlSession.update("UploadMapper.editProfile", input);
+	         
+	         if (result == 0) {
+	            throw new NullPointerException("result=0");
+	         }
+	      } catch (NullPointerException e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("수정된 데이터가 없습니다.");
+	      } catch (Exception e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("데이터 수정에 실패했습니다.");
+	      }
+	      
+	      return result;
+	}
+
+	@Override
+	public ProfileFile getMomProfileItem(ProfileFile input) throws Exception {
+		ProfileFile result = null;
+        
+        try {
+           result = sqlSession.selectOne("UploadMapper.selectMomProfileItem", input);
+       
+        } catch (Exception e) {
+           log.error(e.getLocalizedMessage());
+           throw new Exception("데이터 조회에 실패했습니다.");
+        }
+        
+        return result;
+	}
+
+	@Override
+	public int addCertify(ResiCert input) throws Exception {
+		 int result = 0;
+	      
+	      try {
+	         result = sqlSession.insert("UploadMapper.addCertify", input);
+	         
+	         if (result == 0) {
+	            throw new NullPointerException("result=0");
+	         }
+	      } catch (NullPointerException e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("There is no data to save");
+	      } catch (Exception e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("Fail to save data");
+	      }
+	      
+	      return result;
+	}
+
+	@Override
+	public int editCertify(ResiCert input) throws Exception {
+		int result = 0;
+	      
+	      try {
+	         result = sqlSession.update("UploadMapper.editCertify", input);
 	         
 	         if (result == 0) {
 	            throw new NullPointerException("result=0");

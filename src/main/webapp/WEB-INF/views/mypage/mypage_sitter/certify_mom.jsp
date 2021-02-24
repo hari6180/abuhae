@@ -241,7 +241,7 @@
                     <section class="group_certi_resi_con">
                         <div class="row">
                             <div class="col-xs-12 certi_resi_con_in">
-                                <form action="#" method="GET" enctype="multipart/form-data">
+                                <form action="#" method="post" enctype="multipart/form-data">
                                     <!-- 첫번째 내용 -->
                                     <div class="certi_resi_one">
                                         <p class="resi_one_con order_resi">1번째</p>

@@ -17,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.ProfileFile;
 import study.team.abuhae.service.MomMypageService;
+import study.team.abuhae.service.UploadService;
 
 /** 맘회원 신청서 수정 컨트롤러 */
 @Controller
@@ -28,6 +30,8 @@ public class UpdateApplController {
 	RegexHelper regexHelper;
 	@Autowired
 	MomMypageService momMypageService;
+	@Autowired
+	UploadService uploadService;
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
@@ -38,6 +42,19 @@ public class UpdateApplController {
 		if (momno == 0) {
 			return webHelper.redirect(null, "Please Check login");
 		}
+		
+		ProfileFile input = new ProfileFile();
+		input.setMomno(momno);
+		
+		ProfileFile profile = null;
+		
+		try {
+			profile = uploadService.getMomProfileItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("profile", profile);
 
 		return new ModelAndView("mypage/mypage_mom/update_mom/update_profile_cont");
 	}
@@ -290,7 +307,7 @@ public class UpdateApplController {
 	@RequestMapping(value = "/mypage_update/etc.do", method = RequestMethod.POST)
 	public ModelAndView update_request(Model model,
 			@RequestParam(value = "momno", defaultValue = "0") int momno,
-			@RequestParam(value = "type_interview") String interview_type,
+			@RequestParam(value = "type_interview") char interview_type,
 			@RequestParam(value = "s_gender") char sitter_gender,
 			@RequestParam(value = "care_type") String care_type) {
 

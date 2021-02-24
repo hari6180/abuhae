@@ -191,7 +191,7 @@
                     <section class="group_certi_resi_con">
                         <div class="row">
                             <div class="col-xs-12 certi_resi_con_in">
-                                <form action="#" method="GET" enctype="multipart/form-data">
+                                <form action="${pageContext.request.contextPath}/upload/upload_certi_ok.do?sitterno=${login.sitterno}" method="post" enctype="multipart/form-data">
                                     <!-- 첫번째 내용 -->
                                     <div class="certi_resi_one">
                                         <p class="resi_one_con order_resi">1번째</p>
@@ -204,7 +204,7 @@
                                         </ul>
                                         <p class="resi_one_con" style="color:#aaaaaa;">사진첨부는 최대 5장까지 가능합니다.</p>
                                         <div class="resi_button1">
-                                            <input type="file" id="resi_photo" name="resi_photo">
+                                            <input type="file" id="resi_photo" name="photo">
                                             <label for="resi_photo">
                                                 <i class="fas fa-file-import"></i> 사진 추가하기
                                             </label>
@@ -231,7 +231,7 @@
                                             아래 입력칸에 똑같이 입력해주세요.</h4>
                                         <img class="resi_one_con" src="${pageContext.request.contextPath}/assets/img/mypage_img/certi_resident_3.png" alt="주민등록등본 예시" style="width: 100%;">
                                         <div class="resi_date_slec">
-                                            <select name="resi_year" id="resi_year" class="selc_con">
+                                            <select id="resi_year" class="selc_con">
                                                 <option>년도</option>
                                                 <option value="1960">1960</option>
                                                 <option value="1970">1970</option>
@@ -241,30 +241,49 @@
                                                 <option value="2010">2010</option>
                                                 <option value="2020">2020</option>
                                             </select>
-                                            <select name="resi_month" id="resi_month" class="selc_con">
+                                            <select id="resi_month" class="selc_con">
                                                 <option>월</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
+                                                <option value="01">1</option>
+                                                <option value="02">2</option>
+                                                <option value="03">3</option>
+                                                <option value="04">4</option>
+                                                <option value="05">5</option>
+                                                <option value="06">6</option>
+                                                <option value="08">8</option>
+                                                <option value="09">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
                                             </select>
-                                            <select name="resi_day" id="resi_day" class="selc_con">
+                                            <select id="resi_day" class="selc_con">
                                                 <option>일</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
+                                                <option value="01">1</option>
+                                                <option value="02">2</option>
+                                                <option value="03">3</option>
+                                                <option value="04">4</option>
+                                                <option value="05">5</option>
+                                                <option value="06">6</option>
+                                                <option value="07">7</option>
+                                                <option value="08">8</option>
+                                                <option value="09">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                
                                             </select>
                                         </div>
                                     </div>
+                                    <input type="hidden" id="check_birthdate" name="check_birthdate"/>
                                     <div>
-                                        <button type="submit" class="resi_button3">인증을 신청합니다!</button>
+                                        <button type="submit" id="update_certi" class="resi_button3">인증을 신청합니다!</button>
                                     </div>
                                 </form>
                                
@@ -278,8 +297,24 @@
                         </div>
                     </section>
 
-		<!-- Javascript -->
-		<script src="../../assets/js/jquery.min.js"></script>
-        <script src="../../assets/js/bootstrap.min.js"></script>
+            <!--Google CDN 서버로부터 jQuery 참조 -->
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			<script src="../../assets/js/bootstrap.min.js"></script>
+		    <!-- jQuery Ajax Form plugin CDN -->
+			<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+		    <!-- jQuery Ajax Setup -->
+			<script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
+			
+        	<script type="text/javascript">
+        		$(document).on('click', '#update_certi', function(e) {
+        			var resi_year = $("#resi_year option:selected").val();
+        			var resi_month = $("#resi_month option:selected").val();
+        			var resi_day = $("#resi_day option:selected").val();
+        			
+        			var birthdate = resi_year+'-'+resi_month+'-'+resi_day;
+        			$('#check_birthdate').val(birthdate);
+        			console.log(birthdate);
+        		});
+        	</script>
 	</body>
 </html>

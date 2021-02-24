@@ -19,6 +19,24 @@
       <result property="thumnailurl" column="thumnailurl" />
       <result property="isProfile" column="isProfile" />
       <result property="memberno" column="memberno" />
+      <result property="sitterno" column="sitterno" />
+      <result property="momno" column="momno" />
+   </resultMap>
+   
+    <resultMap id="CertifyMap"
+      type="study.team.abuhae.model.ResiCert">
+      <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+      <result property="resino" column="resino" />
+      <result property="fileName" column="fileName"/>
+      <result property="originName" column="originName" />
+      <result property="contentType" column="contentType" />
+      <result property="fileSize" column="fileSize" />
+      <result property="filePath" column="filePath" />
+      <result property="fileUrl" column="fileUrl" />
+      <result property="check_birthdate" column="check_birthdate" />
+      <result property="cert" column="cert" />
+      <result property="reg_date" column="reg_date" />
+      <result property="sitterno" column="sitterno" />
    </resultMap>
    
    <insert id="addProfile"
@@ -36,10 +54,18 @@
 		
 	</update>
 
-	<select id="selectProfileItem"
+	<select id="selecSittertProfileItem"
 	parameterType="study.team.abuhae.model.ProfileFile" resultMap="UploadMap">
-		select * from profile_file 
-		where memberno=#{memberno};
+		select * from profile_file p
+		inner join sitter_info s on p.memberno=s.memberno
+		where sitterno=#{sitterno};
+	</select>
+	
+	<select id="selectMomProfileItem"
+	parameterType="study.team.abuhae.model.ProfileFile" resultMap="UploadMap">
+		select * from profile_file p
+		inner join mom_info m on p.memberno=m.memberno
+		where momno=#{momno};
 	</select>
 	
 	<select id="selectProfileAll"
@@ -48,4 +74,21 @@
 		from profile_file
 		where memberno=#{memberno};
 	</select>
+	
+	<!-- 인증 파일 업로드 -->
+	<insert id="addCertify"
+		parameterType="study.team.abuhae.model.ResiCert"
+		useGeneratedKeys="true" keyProperty="resino">
+		insert into resi_cert (fileName, originName, contentType, fileSize, filePath, fileUrl, check_birthdate, cert, reg_date, sitterno) 
+		values(#{fileName}, #{originName}, #{contentType}, #{fileSize}, #{filePath}, #{fileUrl}, #{check_birthdate}, 'N', now(), #{sitterno});
+	</insert>
+	
+	<!-- 승인 거절 시 인증 파일 재업로드 -->
+	<update id="editCertify" parameterType="study.team.abuhae.model.ResiCert">
+		update resi_cert set fileName=#{fileName}, originName=originName, contentType = #{contentType}, 
+		fileSize = #{fileSize}, filePath = #{filePath}, fileUrl = #{fileUrl}, check_birthdate=#{check_birthdate},
+		cert=#{cert}, reg_date=now()
+		where sitterno=#{sitterno};
+	</update>
+	
  </mapper>

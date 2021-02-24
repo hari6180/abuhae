@@ -1,15 +1,26 @@
 package study.team.abuhae.service;
 
-import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.ProfileFile;
+import study.team.abuhae.model.ResiCert;
 
 public interface UploadService {
+	  /** 프로필 insert */
 	  public int addProfile(ProfileFile input) throws Exception;
 	  
+	  /** 시터회원 프로필 데이터 조회 */
 	  public ProfileFile getProfileItem(ProfileFile input) throws Exception;
+	  
+	  /** 부모회원 프로필 데이터 조회 */
+	  public ProfileFile getMomProfileItem(ProfileFile input) throws Exception;
 	  
 	  public int getProfileCount(ProfileFile input) throws Exception;
 	  
-	  /** 인터뷰 요청에 대한 수락 / 거절 여부 업데이트 */
-	   public int editProfile(ProfileFile input) throws Exception;
+	  /** 프로필 사진 업데이트 */
+	  public int editProfile(ProfileFile input) throws Exception;
+	  
+	  /** 인증 업로드 */
+	  public int addCertify(ResiCert input) throws Exception;
+
+	  /** 승인 거절 시 인증 재업로드 */
+	  public int editCertify(ResiCert input) throws Exception;
 }
