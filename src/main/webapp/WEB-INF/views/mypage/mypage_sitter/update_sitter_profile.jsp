@@ -1115,17 +1115,19 @@
 			//원하는 활동////////////////////////////////////
 			$(".care_age").click(function (e) {
 				//e.preventDefault();
-				let count = $("input:checked[name='want_care_age']").length;;
+				let count = $("input:checked[name='want_care_age']").length;
 				//버튼 클릭시 이미지 URL 변경
 				//url 가져오기
-				var img_url = $(this).next().find(".want_img").attr('src');
-				var indeximg = img_url.indexOf("_n") //잘라서 _n이 있는지 확인
-				if (indeximg > -1) {
-					var img_src = img_url.replace(/_n/, "_s");
-					$(this).next().find(".want_img").attr('src', img_src);
-				} else {
-					var img_src = img_url.replace(/_s/, "_n");
-					$(this).next().find(".want_img").attr('src', img_src);
+				if (count <= 3) {
+					var img_url = $(this).next().find(".want_img").attr('src');
+					var indeximg = img_url.indexOf("_n") //잘라서 _n이 있는지 확인
+					if (indeximg > -1) {
+						var img_src = img_url.replace(/_n/, "_s");
+						$(this).next().find(".want_img").attr('src', img_src);
+					} else {
+						var img_src = img_url.replace(/_s/, "_n");
+						$(this).next().find(".want_img").attr('src', img_src);
+					}
 				}
 
 				if (count > 3) {

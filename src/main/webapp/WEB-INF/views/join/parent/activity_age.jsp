@@ -124,63 +124,83 @@
                             <br> <span class="sub_title">최대 3개 선택 가능</span>
                         </h3>
 
-                        <!--돌봄 유형 선택-->
-                        <div class="want_act_box">
-                            <div class="want_btn">
-                                <button class="act_btn" value="innerplay">
-                                    <img class="want_img"
-                                        src="${pageContext.request.contextPath}/assets/img/innerplayicon_n.png">
-                                </button>
-                                <div class="want_text">실내놀이</div>
+                        <div class="col-xs-12 upd_care_age_in">
+                            <!-- 첫째줄-->
+                            <div class="age_line">
+                                <div class="care_age_btn">
+                                    <input type="checkbox" class="care_age" id="care_age11" name="want_act_check"
+                                        value="innerplay">
+                                    <label for="care_age11"><img class="want_img"
+                                            src="${pageContext.request.contextPath}/assets/img/innerplayicon_n.png"
+                                            alt="실내놀이"></label>
+                                    <div class="care_age_text">실내놀이</div>
+                                </div>
+    
+                                <div class="care_age_btn">
+                                    <input type="checkbox" class="care_age" id="care_age32" name="want_act_check"
+                                        value="study">
+                                    <label for="care_age32"><img class="want_img"
+                                            src="${pageContext.request.contextPath}/assets/img/studyicon_n.png" alt="학습지도"></label>
+                                    <div class="care_age_text">학습지도</div>
+                                </div>
                             </div>
-                            <div class="want_btn">
-                                <button class="act_btn" value="guide">
-                                    <img class="want_img"
-                                        src="${pageContext.request.contextPath}/assets/img/guideicon_n.png">
-                                </button>
-                                <div class="want_text">등하원 돕기</div>
+                            <!-- 둘째줄 -->
+                            <div class="age_line">
+                                <div class="care_age_btn">
+                                    <input type="checkbox" class="care_age" id="care_age21" name="want_act_check"
+                                        value="guide">
+                                    <label for="care_age21"><img class="want_img"
+                                            src="${pageContext.request.contextPath}/assets/img/guideicon_n.png" alt="등하원돕기"></label>
+                                    <div class="care_age_text">등하원돕기</div>
+                                </div>
+    
+                                <div class="care_age_btn">
+                                    <input type="checkbox" class="care_age" id="care_age41" name="want_act_check"
+                                        value="outside">
+                                    <label for="care_age41"><img class="want_img"
+                                            src="${pageContext.request.contextPath}/assets/img/ousideicon_n.png" alt="야외활동"></label>
+                                    <div class="care_age_text">야외활동</div>
+                                </div>
+        
                             </div>
-                            <div class="want_btn">
-                                <button class="act_btn" value="english">
-                                    <img class="want_img"
-                                        src="${pageContext.request.contextPath}/assets/img/englishicon_n.png">
-                                </button>
-                                <div class="want_text">영어놀이</div>
+                            <!-- 셋째줄 -->
+                            <div class="age_line">
+                                <div class="care_age_btn">
+                                    <input type="checkbox" class="care_age" id="care_age22" name="want_act_check"
+                                        value="english">
+                                    <label for="care_age22"><img class="want_img"
+                                            src="${pageContext.request.contextPath}/assets/img/englishicon_n.png"
+                                            alt="영어놀이"></label>
+                                    <div class="care_age_text">영어놀이</div>
+                                </div>
+                                <div class="care_age_btn">
+                                    <input type="checkbox" class="care_age" id="care_age23" name="want_act_check"
+                                        value="eat">
+                                    <label for="care_age23"><img class="want_img"
+                                            src="${pageContext.request.contextPath}/assets/img/eaticon_n.png" alt="밥챙겨주기"></label>
+                                    <div class="care_age_text">밥 챙겨주기</div>
+                                </div>
+                                
+        
+                                
                             </div>
-                            <div class="want_btn">
-                                <button class="act_btn" value="korean">
-                                    <img class="want_img"
-                                        src="${pageContext.request.contextPath}/assets/img/koreanicon_n.png">
-                                </button>
-                                <div class="want_text">한글놀이</div>
-                            </div>
-                            <div class="want_btn">
-                                <button class="act_btn" value="study">
-                                    <img class="want_img"
-                                        src="${pageContext.request.contextPath}/assets/img/studyicon_n.png">
-                                </button>
-                                <div class="want_text">학습지도</div>
-                            </div>
-                            <div class="want_btn">
-                                <button class="act_btn" value="outside">
-                                    <img class="want_img"
-                                        src="${pageContext.request.contextPath}/assets/img/ousideicon_n.png">
-                                </button>
-                                <div class="want_text">야외활동</div>
-                            </div>
-                            <div class="want_btn">
-                                <button class="act_btn" value="eat">
-                                    <img class="want_img"
-                                        src="${pageContext.request.contextPath}/assets/img/eaticon_n.png">
-                                </button>
-                                <div class="want_text">밥 챙겨주기</div>
-                            </div>
-                            <div class="want_btn">
-                                <button class="act_btn" value="read">
-                                    <img class="want_img"
-                                        src="${pageContext.request.contextPath}/assets/img/readicon_n.png">
-                                </button>
-                                <div class="want_text">책읽기</div>
+                            <!-- 넷째줄 -->
+                            <div class="age_line">
+                                <div class="care_age_btn">
+                                    <input type="checkbox" class="care_age" id="care_age12" name="want_act_check"
+                                        value="korean">
+                                    <label for="care_age12"><img class="want_img"
+                                            src="${pageContext.request.contextPath}/assets/img/koreanicon_n.png" alt=""></label>
+                                    <div class="care_age_text">한글놀이</div>
+                                </div>
+
+                                <div class="care_age_btn">
+                                    <input type="checkbox" class="care_age" id="care_age31" name="want_act_check"
+                                        value="read">
+                                    <label for="care_age31"><img class="want_img"
+                                            src="${pageContext.request.contextPath}/assets/img/readicon_n.png" alt=""></label>
+                                    <div class="care_age_text">책읽기</div>
+                                </div>
                             </div>
                         </div>
 
@@ -232,55 +252,46 @@
             <script type="text/javascript"></script>
             <script type="text/javascript">
                 $(function () {
-
-                    const result1 = [];
-                    //활동 버튼 클릭
-                    $(".act_btn").click(function (e) {
-                        var count = $(".select_btn").length;
-                        if (count < 3) {
-                            //버튼 클릭시 클래스 변경
-                            $(this).toggleClass("select_btn");
-                            //버튼 클릭시 text 색 변경
-                            $(this).next().toggleClass("select_text");
-
-                            //버튼 클릭시 이미지 URL 변경
-                            //url 가져오기
-                            var img_url = $(this).find(".want_img").attr('src');
+                    $(".care_age").click(function (e) {
+                        //e.preventDefault();
+                        let count = $("input:checked[name='want_act_check']").length;
+                        console.log(count);
+                        //버튼 클릭시 이미지 URL 변경
+                        //url 가져오기
+                        if (count <= 3) {
+                            var img_url = $(this).next().find(".want_img").attr('src');
                             var indeximg = img_url.indexOf("_n") //잘라서 _n이 있는지 확인
                             if (indeximg > -1) {
                                 var img_src = img_url.replace(/_n/, "_s");
-                                $(this).find(".want_img").attr('src', img_src);
+                                $(this).next().find(".want_img").attr('src', img_src);
                             } else {
                                 var img_src = img_url.replace(/_s/, "_n");
-                                $(this).find(".want_img").attr('src', img_src);
-                            };
-
-                            //활동 1개라도 클릭시 밑에 숨겨진 항목 보여주기
-                            if (count == 0) {
-                                //console.log(count);
-                                //var hide = $(this).parent().parent().next().hasClass("siter_age_hide");
-                                //console.log(hide);
-                                $(this).parent().parent().next().removeClass("hide_content");
-                                $(this).parent().parent().next().addClass("show_content");
+                                $(this).next().find(".want_img").attr('src', img_src);
                             }
+                        }
 
-                            //버튼 선택값 가져오기
-                            var act1 = $(this);
-                            //console.log(act1);
 
-                            for (var i = 0; i < act1.length; i++) {
-                                result1.push($(act1[i]).val());
-                                //console.log(want_act);
-                            }
-                        } else {
+                        if (count > 3) {
+                            $(this).prop("checked", false);
+                            //또는 this.checked=false;
                             swal({
                                 text: '최대 3개의 활동을 선택해 주세요.',
                             });
-                        };
+                        }
+
+                        //활동 1개라도 클릭시 밑에 숨겨진 항목 보여주기
+                        if (count > 0) {
+                            //console.log(count);
+                            //var hide = $(this).parent().parent().next().hasClass("siter_age_hide");
+                            //console.log(hide);
+                            $(this).parent().parent().parent().next().removeClass("hide_content");
+                            $(this).parent().parent().parent().next().addClass("show_content");
+                        }
+
+
                     });
 					
-                    //체크박스 값 가져오기
-                    const result2 = [];
+
                     //활동, 나이대를 ajax post로 넘기기
                     $(".next_btn").click(function (e) {
                         //e.preventDefault();
@@ -293,20 +304,25 @@
                             });
                             return false;
                         }
-                        
-                        $("input[name=want_age]:checked").each(function (i) {
-                            result2.push($(this).val());
+                        //원하는 나이대 값 넣기
+                        var chk_age = [];
+                        $("input[name=want_age]:checked").each(function () {
+                            var chk = $(this).val();
+                            chk_age.push(chk);
                         });
-
-                        var want1 = result1[0];
-                        var want2 = result1[1];
-                        var want3 = result1[2];
-                        console.log(want1);
-                        //$('#want_act').val(result1);
+                        //원하는 활동 넣기
+                        var chk_arr = [];
+                        $("input[name=want_act_check]:checked").each(function () {
+                            var chk = $(this).val();
+                            chk_arr.push(chk);
+                        });
+                        var want1 = chk_arr[0];
+                        var want2 = chk_arr[1];
+                        var want3 = chk_arr[2];
                         $('#want_act1').val(want1);
                         $('#want_act2').val(want2);
                         $('#want_act3').val(want3);
-                        $('#want_age').val(result2);
+                        $('#want_age').val(chk_age);
                         //console.log($("#want_act").val());
                         //console.log($("#want_age").val());
 
