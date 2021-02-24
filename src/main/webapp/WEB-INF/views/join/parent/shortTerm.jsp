@@ -28,7 +28,7 @@
 
             $(".calrendar_block").flatpickr({
                 inline: true,
-                dateFormat: "Y-m-d",
+                dateFormat: "Y/m/d",
                 minDate: "today",
                 maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
                 mode: "multiple", //여러개 선택 가능

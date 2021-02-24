@@ -149,7 +149,7 @@
         //날짜 선택 플러그인 - flatpickr 사용 - 선아
         $(function () {
             $('.startdate').flatpickr({
-                dateFormat: "Y-m-d",
+                dateFormat: "Y/m/d",
                 minDate: "today",
                 maxDate: new Date().fp_incr(30),
                 defaultDate: new Date()
@@ -189,10 +189,6 @@
                     var day = result1;
                     //활동 기간
                     var workterm= $('input[name="workterm"]:checked').val();
-
-                    //데이터 가공
-                    startdate = startdate.replace(/\//gi, '-');
-
 
                     var schedule = {
                         startdate: startdate,

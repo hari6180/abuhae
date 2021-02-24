@@ -58,4 +58,25 @@ public interface SitterMypageService {
 	
 	/** 회원 이메일 수정 */
 	public int editSitterEmail(Sitter_info input) throws Exception;
+	
+	/** 선호하는 활동 수정 */
+	public int updateFavoriteact(Sitter_info input) throws Exception;
+	
+	/** 돌봄 연령대 수정 */
+	public int updateWantage(Sitter_info input) throws Exception;
+	
+	/** 돌봄 활동 수정 */
+	public int updateWantact(Sitter_info input) throws Exception;
+
+	/** 활동 스케쥴 수정 */
+	public int updateSchedule(Sitter_info input) throws Exception;
+	
+	/** 시급 수정 */
+	public int updatePayment(Sitter_info input) throws Exception;
+
+	/** 자기소개 수정 */
+	public int updateIntoroduce(Sitter_info input) throws Exception;
+	
+	/** 지역 수정 */
+	public int updateLocation(Sitter_info input) throws Exception;
 }

@@ -348,5 +348,138 @@ public class SitterMypageServiceImpl implements SitterMypageService {
 		}
 		return result;
 	}
+
+	@Override
+	public int updateFavoriteact(Sitter_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("SitterMypageMapper.updateFavoriteact", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("There is no data to edit");
+		} catch (Exception e) {
+			throw new Exception("Fail to edit your email");
+		}
+		return result;
+	}
+
+	@Override
+	public int updateWantage(Sitter_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("SitterMypageMapper.updateWantage", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("There is no data to edit");
+		} catch (Exception e) {
+			throw new Exception("Fail to edit your email");
+		}
+		return result;
+	}
+
+	@Override
+	public int updateWantact(Sitter_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("SitterMypageMapper.updateWantact", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("There is no data to edit");
+		} catch (Exception e) {
+			throw new Exception("Fail to edit your email");
+		}
+		return result;
+	}
+
+	@Override
+	public int updateSchedule(Sitter_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("SitterMypageMapper.updateSchedule", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("There is no data to edit");
+		} catch (Exception e) {
+			throw new Exception("Fail to edit your email");
+		}
+		return result;
+	}
+
+	@Override
+	public int updatePayment(Sitter_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("SitterMypageMapper.updatePayment", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("There is no data to edit");
+		} catch (Exception e) {
+			throw new Exception("Fail to edit your email");
+		}
+		return result;
+	}
+
+	@Override
+	public int updateIntoroduce(Sitter_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("SitterMypageMapper.updateIntroduce", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("There is no data to edit");
+		} catch (Exception e) {
+			throw new Exception("Fail to edit your email");
+		}
+		return result;
+	}
+
+	@Override
+	public int updateLocation(Sitter_info input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("SitterMypageMapper.updateLocation", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result = 0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("There is no data to edit");
+		} catch (Exception e) {
+			throw new Exception("Fail to edit your email");
+		}
+		return result;
+	}
    
 }

@@ -66,27 +66,7 @@ public class SitterMypageController {
 		return new ModelAndView("mypage/mypage_sitter/sitter_mypage");
 	}
 	
-	/** 프로필 수정 페이지 */
-	/** 업로드 폼을 구성하는 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/update_sitter_profile.do", method = RequestMethod.GET)
-	public ModelAndView upload(Model model,
-			@RequestParam(value = "memberno", defaultValue = "0") int memberno) {
-		
-		ProfileFile input = new ProfileFile();
-		input.setMemberno(memberno);
-		
-		ProfileFile output = null;
-		
-		try {
-			output = uploadService.getProfileItem(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		model.addAttribute("output", output);
-		
-		return new ModelAndView("/mypage/mypage_sitter/update_sitter_profile");
-	}
+	
 	
 	/** 비밀번호 변경 페이지 */
 	@RequestMapping(value = "/mypage/mypage_sitter/update_password.do", method = RequestMethod.GET)

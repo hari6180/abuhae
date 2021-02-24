@@ -72,7 +72,7 @@ public class MomMypageRestController {
 			@RequestParam(value = "schedule_ok") char schedule_ok,
 			@RequestParam(value = "description", required = false) String description,
 			@RequestParam(value = "sitter_gender", required = false) char sitter_gender,
-			@RequestParam(value = "interview_type", required = false) char interview_type,
+			@RequestParam(value = "interview_type", required = false) String interview_type,
 			@RequestParam(value = "care_type") String care_type,
 			@RequestParam(value = "apply_title") String apply_title,
 			@RequestParam(value = "apply_content") String apply_content

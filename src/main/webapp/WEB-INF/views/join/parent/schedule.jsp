@@ -174,7 +174,6 @@
                     var day = result1;
                     //빈도
                     var frequency = "regular";
-                    startdate = startdate.replace(/\//gi, '-');
 
 
                     if ($(".jojung_box").hasClass("box_check") == true) {

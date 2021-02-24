@@ -28,13 +28,18 @@ a:hover {
   color: black;
 }
 
+button {
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+}
+
 /** header --------------------------------------------------------------------*/
 .wrap_upd {
   padding: 20px 10px;
   margin: 0 auto;
   max-width: 700px;
 }
-
 
 .mp_detail_tl {
   width: 100%;
@@ -159,7 +164,6 @@ a:hover {
   max-width: 600px;
 }
 
-
 .wrap_choice_care .choice_care_cont {
   padding: 10px 20px;
 }
@@ -220,7 +224,6 @@ a:hover {
   max-width: 600px;
 }
 
-
 .wrap_upd_regular .regular_tl {
   font-size: 1em;
   font-weight: bold;
@@ -232,13 +235,14 @@ a:hover {
 
 .wrap_upd_regular .startdate {
   display: block;
-  border: 0;
-  width: 130px;
-  height: 37px;
+  border: 1px solid #ffcfb8;
+  background-color: #fff0e8;
+  border-radius: 2px;
+  height: 43px;
   text-align: center;
   color: #ff7000;
   font-weight: 600;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 
 .wrap_upd_regular .available_time_in {
@@ -321,7 +325,6 @@ a:hover {
   margin: 0 auto;
   max-width: 600px;
 }
-
 
 .wrap_age .upd_care_age_in {
   display: flex;
@@ -460,7 +463,6 @@ a:hover {
   max-width: 600px;
 }
 
-
 .wrap_want_wage .want_wage_in {
   display: flex;
   flex-direction: column;
@@ -546,7 +548,6 @@ a:hover {
   margin: 0 auto;
   max-width: 600px;
 }
-
 
 .wrap_care_age #exp_btn {
   width: 100%;
@@ -649,6 +650,7 @@ a:hover {
   flex-basis: 33%;
   border: 1px solid #d9d9d9;
   overflow-y: scroll;
+  height: 400px;
 }
 
 .wrap_upd_loc .location_group button {

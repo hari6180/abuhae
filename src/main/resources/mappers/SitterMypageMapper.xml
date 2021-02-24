@@ -336,5 +336,38 @@
       where m.memberno=#{memberno};
    </select>
    
+   <!-- 신청서 수정 -->
+   <update id="updateFavoriteact" parameterType="study.team.abuhae.model.Sitter_info">
+   	update sitter_info set favorite_act=#{favorite_act}, openingdate=now() where sitterno=#{sitterno}
+   </update>
+   
+   <update id="updateWantage" parameterType="study.team.abuhae.model.Sitter_info">
+   	update sitter_info set want_age=#{want_age}, openingdate=now() where sitterno=#{sitterno}
+   </update>
+   
+   <update id="updateWantact" parameterType="study.team.abuhae.model.Sitter_info">
+   	update sitter_info set want_act1=#{want_act1},want_act2=#{want_act2},want_act3=#{want_act3}, openingdate=now()
+   	where sitterno=#{sitterno}
+   </update>
+   
+   <update id="updateSchedule" parameterType="study.team.abuhae.model.Sitter_info">
+   	update sitter_info set schedule=#{schedule}, openingdate=now()
+   	where sitterno=#{sitterno}
+   </update>
+   
+   <update id="updatePayment" parameterType="study.team.abuhae.model.Sitter_info">
+   	update sitter_info set payment=#{payment}, openingdate=now()
+   	where sitterno=#{sitterno}
+   </update>
+   
+   <update id="updateIntroduce" parameterType="study.team.abuhae.model.Sitter_info">
+   	update sitter_info set introduce=#{introduce}, openingdate=now()
+   	where sitterno=#{sitterno}
+   </update>
+   
+   <update id="updateLocation" parameterType="study.team.abuhae.model.Sitter_info">
+   	update sitter_info set si=#{si},gu=#{gu},dong=#{dong}, openingdate=now()
+   	where sitterno=#{sitterno}
+   </update>
 </mapper>
 
