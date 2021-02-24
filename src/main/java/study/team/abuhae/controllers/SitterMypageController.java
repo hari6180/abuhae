@@ -22,6 +22,7 @@ import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.ProfileFile;
 import study.team.abuhae.model.Report;
+import study.team.abuhae.model.ResiCert;
 import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.UploadService;
@@ -51,17 +52,28 @@ public class SitterMypageController {
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		/** 데이터 조회 */
 		Sitter_info input = new Sitter_info();
+		ProfileFile input2 = new ProfileFile();
+		ResiCert input3 = new ResiCert();
+		
 		input.setSitterno(sitterno);
+		input2.setSitterno(sitterno);
+		input3.setSitterno(sitterno);
 		
 		Sitter_info output = null;
+		ProfileFile output2 = null;
+		ResiCert output3 = null;
 		
 		try {
 			output = sitterMypageService.getSitterItem(input);
+			output2 = uploadService.getProfileItem(input2);
+			output3 = uploadService.getCertifyItem(input3);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
 		model.addAttribute("output", output);
+		model.addAttribute("profile", output2);
+		model.addAttribute("certify", output3);
 		
 		return new ModelAndView("mypage/mypage_sitter/sitter_mypage");
 	}
@@ -319,9 +331,21 @@ public class SitterMypageController {
 	
 	/** 내 인증 페이지 */
 	@RequestMapping(value = "/mypage/mypage_sitter/certify.do", method = RequestMethod.GET)
-	public String certify(Locale locale, Model model) {
-
-		return "mypage/mypage_sitter/certify";
+	public ModelAndView certify(Model model,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		ResiCert input = new ResiCert();
+		input.setSitterno(sitterno);
+		
+		ResiCert output = null;
+		
+		try {
+			output = uploadService.getCertifyItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("certify", output);
+		return new ModelAndView("mypage/mypage_sitter/certify");
 	}
 	
 	/** 내 맘시터 채용 내역 페이지 */

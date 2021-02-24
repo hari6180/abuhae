@@ -39,6 +39,7 @@ public class UpdateProfileController {
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		
 		ProfileFile input = new ProfileFile();
+		input.setSitterno(sitterno);
 		//input.setMemberno(memberno);
 		Sitter_info input2 = new Sitter_info();
 		input2.setSitterno(sitterno);

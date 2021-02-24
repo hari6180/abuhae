@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -63,7 +64,14 @@
                                 <!-- 첫번째 인증 -->
                                 <div class="my_certi">
                                     <div class="my_certi_left">
-                                        <img src="${pageContext.request.contextPath}/assets/img/mypage_img/certified.png" alt="인증 아이콘"> <br/>
+                                        <c:choose>
+                                        	<c:when test="${certify.cert == 'Y'}">
+                                        		<img src="${pageContext.request.contextPath}/assets/img/mypage_img/certified.png" alt="인증 아이콘"> <br/>
+                                        	</c:when>
+                                        	<c:otherwise>
+                                        		<span style="color: eee; font-size: 6em"><i class="fas fa-certificate"></i></span>
+                                        	</c:otherwise>
+                                        </c:choose>
                                     </div>
                                     <div class="my_certi_right">
                                         <h3>
@@ -111,11 +119,21 @@
                     <section class="group2_certify">
                         <div class="row">
                             <div class="col-xs-12 certify_cont2">
-                                <p>
-                                    <i class="fas fa-stamp"></i> <br/>
-                                    인증을 받으면 부모님에게 <br/>
-                                    더 많은 선택을 받게 됩니다.
-                                </p>
+                                <c:choose>
+                                	<c:when test="${certify.cert == 'Y' }">
+	                                	<p>
+		                                    <i class="fas fa-stamp"></i> <br/>
+		                                    인증이 완료되었습니다.
+		                                </p>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<p>
+		                                    <i class="fas fa-stamp"></i> <br/>
+		                                    인증을 받으면 부모님에게 <br/>
+		                                    더 많은 선택을 받게 됩니다.
+		                                </p>
+                                	</c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </section>                   

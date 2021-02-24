@@ -232,7 +232,7 @@
 							<form method="post" action="${pageContext.request.contextPath}/upload/upload_edit.do?memberno=${login.memberno}"
 								enctype="multipart/form-data">
 								<div>
-									<h5 class="upd_img_tl">1. 내 사진 (선택사항) ${totalCount}</h5>
+									<h5 class="upd_img_tl">1. 내 사진 (선택사항)</h5>
 								</div>
 								<section class="introduce_text">
 									<div class="row">
@@ -240,9 +240,7 @@
 											<div class="upload_prof">
 												<div class="user_img">
 													<input type="file" id="new_profile_img" name="photo" accept="image/*">
-													<label for="new_profile_img"><img
-															src="${pageContext.request.contextPath}/assets/img/mypage_img/user.png"
-															alt=""></label>
+													<label for="new_profile_img"><img src="${output.fileUrl }" alt=""></label>
 												</div>
 											</div>
 											<div class="guide_user_img">

@@ -88,7 +88,7 @@ public class UploadController {
 		// 텍스트 정보를 View로 전달한다.
 		model.addAttribute("item", item);
 		
-		return new ModelAndView("upload/upload_ok");
+		return webHelper.redirect(null, "프로필 이미지가 업로드되었습니다.");
 	}
 	
 	@RequestMapping(value = "upload/upload_edit.do", method = RequestMethod.POST)
@@ -148,7 +148,7 @@ public class UploadController {
 		
 		/** 3) View 처리 */
 		String url = contextPath + "/mypage/mypage_mom/update_profile.do?memberno=" + memberno;
-		return webHelper.redirect(url, "Success change Apply!");
+		return webHelper.redirect(null, "프로필 이미지가 수정되었습니다.");
 	}
 	
 	@RequestMapping(value = "upload/upload_certi_ok.do", method = RequestMethod.POST)

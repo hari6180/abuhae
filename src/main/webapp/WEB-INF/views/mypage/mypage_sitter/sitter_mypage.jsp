@@ -62,8 +62,6 @@
                     <div class="row">
                         <div class="col-xs-12 mps_title">
                             <h3>마이페이지</h3>
-                            <a href="${pageContext.request.contextPath}/mypage/upload_ok.do?memberno=${login.memberno}">프로필사진
-                                보기</a>
                             <div class="mps_title_cont">
                                 <!--백엔드 연동 필요-->
                                 <a
@@ -83,8 +81,16 @@
                         <div class="col-xs-12 mps_profile">
                             <!--백엔드 연동 필요-->
                             <div class="mps_prof_info">
-                                <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg"
-                                    alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
+                                <c:choose>
+                                	<c:when test="${profile == null }">
+                                		<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg"
+                                    	alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
+                                	</c:when>
+                                	<c:otherwise>
+                                		<img src="${profile.fileUrl}"
+                                    	alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
+                                	</c:otherwise>
+                                </c:choose>
                                 <p class="info_sitter">${output.name }</p>
                                 <p class="info_sitter">no.${output.sitterno }</p>
                             </div>
@@ -264,11 +270,18 @@
 
                             <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                            <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/certify.do">
+                            <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/certify.do?sitterno=${login.sitterno}">
                                 <i class="fas fa-check-circle mps_menu_list1"></i>
                                 <p class="mps_menu_list2">인증 관리</p>
                                 <!--백엔드 연동 필요-->
-                                <p class="mps_menu_list3">0개 완료</p>
+                                <c:choose>
+                                	<c:when test="${certify.cert == 'Y' }">
+                                		<p class="mps_menu_list3">인증 완료</p>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<p class="mps_menu_list3">0개 완료</p>
+                                	</c:otherwise>
+                                </c:choose>
                                 <i class="fas fa-angle-right mps_menu_list4"></i>
                             </a>
 
