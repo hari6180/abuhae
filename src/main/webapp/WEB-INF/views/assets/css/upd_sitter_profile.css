@@ -72,6 +72,24 @@ button {
   border-radius: 15px;
   color: #ffffff;
 }
+
+.point {
+  font-style: normal;
+  color: #ff7000;
+  font-weight: bold;
+}
+
+.desc {
+  color: #858585;
+  margin: 0;
+}
+
+.now_selected {
+  background-color: #faebd7;
+  border: 1px solid #ff7000;
+  padding: 8px;
+  margin: 5px 0;
+}
 /** end header -----------------------------------------------------*/
 
 /** 내 사진 수정 ----------------------------------------------------*/
@@ -378,7 +396,6 @@ button {
 }
 
 .wrap_age .care_age_cont_in {
-  padding-top: 30px;
   color: #919191;
 }
 

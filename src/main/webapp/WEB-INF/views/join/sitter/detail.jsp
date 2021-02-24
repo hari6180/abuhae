@@ -193,7 +193,7 @@
                     var schedule = {
                         startdate: startdate,
                         day: day,
-                        while: workterm
+                        workterm: workterm
                     };
 
                     var scheduleStr = JSON.stringify(schedule);

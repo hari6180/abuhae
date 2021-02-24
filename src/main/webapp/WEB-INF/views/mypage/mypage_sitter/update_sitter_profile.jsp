@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -58,10 +58,7 @@
             margin: 15px auto;
             display: block;
         }
-        
-        p {
-            margin: 0 0 20px !important;
-        }
+
         .main_title {
             font-weight: bold;
         }
@@ -78,7 +75,7 @@
         .upd_img_tl {
         	font-size: 1.2em;
         	font-weight: bold;
-        	margin-bottom: 40px;
+        	margin-bottom: 20px;
         }
         
 		</style>
@@ -357,7 +354,15 @@
 					<form id="choice_care_form" method="POST" action="${pageContext.request.contextPath}/mypage_update/favoriteCare.do?sitterno=${login.sitterno}" >
 						<div>
 							<h5 class="upd_img_tl" style="margin-bottom: 30px">2. 돌봄유형 선택</h5>
-							<p style="color: #858585;"><i class="fas fa-check-circle"></i> 선호하는 유형을 선택해주세요.</p>
+							<p class="desc"><i class="fas fa-check-circle"></i> 선호하는 유형을 선택해주세요.</p>
+							<div class="now_selected">
+							<c:if test="${sitterinfo.favorite_act == null}">
+								<p class="desc">현재 선택하신 선호하는 돌봄 유형이 없습니다.</p>
+							</c:if>
+							<c:if test="${sitterinfo.favorite_act != null}">
+								<p class="desc">현재 <i class="point">${sitterinfo.favorite_act}</i> 활동을 가장 선호하십니다.</p>
+							</c:if>
+						</div>
 						</div>
 						<section class="choice_care_cont">
 							<div class="row">
@@ -444,8 +449,25 @@
 										<a href="#age_modal" data-toggle="modal"><span style="color: #858585;"><i
 													class="fas fa-question-circle"></i></span></a>
 									</p>
-									<br />
-									<p>현재 신생아/영아 풀타임 돌봄유형이므로 신생아/영아 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
+									<div class="now_selected">
+									<c:choose>
+										<c:when test="${sitterinfo.favorite_act eq '신생아/영아 풀타임 돌봄'}">
+											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 신생아/영아 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
+										</c:when>
+										<c:when test="${sitterinfo.favorite_act eq '신생아/영아 보조 돌봄'}">
+											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 신생아/영아 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
+										</c:when>
+										<c:when test="${sitterinfo.favorite_act eq '등하원 돌봄'}">
+											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 유아/초등학생 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
+										</c:when>
+										<c:when test="${sitterinfo.favorite_act eq '놀이/학습 돌봄'}">
+											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 유아/초등학생 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
+										</c:when>
+										<c:otherwise>
+											<p><i class="point">${sitterinfo.favorite_act}</i>은 아이 연령 선택에 제한이 없습니다.</p>
+										</c:otherwise>
+									</c:choose>
+									</div>
 								</div>
 							</div>
 						</section>
@@ -499,8 +521,25 @@
 										<a href="#activ_modal" data-toggle="modal"><i class="fas fa-question-circle"
 												style="margin-left: 10px; color: #919191;"></i></a>
 									</p>
-									<br />
-									<p>현재 신생아/영아 풀타임 돌봄유형이므로 실내놀이, 아이와 관련된 가사활동은 필수로 선택되어야 합니다.</p>
+									<div class="now_selected">
+									<c:choose>
+										<c:when test="${sitterinfo.favorite_act eq '신생아/영아 풀타임 돌봄'}">
+											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 밥 챙겨주기가 필수로 선택되어야 합니다.</p>
+										</c:when>
+										<c:when test="${sitterinfo.favorite_act eq '신생아/영아 보조 돌봄'}">
+											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 밥 챙겨주기 필수로 선택되어야 합니다.</p>
+										</c:when>
+										<c:when test="${sitterinfo.favorite_act eq '등하원 돌봄'}">
+											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 등하원돕기가 필수로 선택되어야 합니다.</p>
+										</c:when>
+										<c:when test="${sitterinfo.favorite_act eq '놀이/학습 돌봄'}">
+											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 학습지도가 필수로 선택되어야 합니다.</p>
+										</c:when>
+										<c:otherwise>
+											<p><i class="point">${sitterinfo.favorite_act}</i>은 활동 선택에 제한이 없습니다.</p>
+										</c:otherwise>
+									</c:choose>
+									</div>
 								</div>
 							</div>
 						</section>
@@ -643,6 +682,37 @@
 						<div>
 							<h5 class="upd_img_tl">5. 활동 가능 시간 변경</h5>
 						</div>
+							<c:set var="theString" value="${sitterinfo.days}" />
+							<div class="now_selected">
+							<p class="desc">현재 활동 시작일은 <i class="point">${fn:split(sitterinfo.schedule_start,'/')[0]}년 ${fn:split(sitterinfo.schedule_start,'/')[1]}월 ${fn:split(sitterinfo.schedule_start,'/')[2]}일</i>이고, 
+							활동 가능한 요일은
+							<c:if test="${fn:contains(theString, 'mon')}">
+							<i class="point">월요일 </i> 
+							</c:if>
+							<c:if test="${fn:contains(theString, 'tue')}">
+							<i class="point">화요일 </i> 
+							</c:if>
+							<c:if test="${fn:contains(theString, 'wen')}">
+							<i class="point">수요일 </i> 
+							</c:if>
+							<c:if test="${fn:contains(theString, 'thu')}">
+							<i class="point">목요일 </i> 
+							</c:if>
+							<c:if test="${fn:contains(theString, 'fri')}">
+							<i class="point">금요일 </i> 
+							</c:if>
+							<c:if test="${fn:contains(theString, 'sat')}">
+							<i class="point">토요일 </i> 
+							</c:if>
+							<c:if test="${fn:contains(theString, 'sun')}">
+							<i class="point">일요일 </i> 
+							</c:if>
+							이며, 
+							<c:if test="${sitterinfo.workterm=='1week'}"><i class="point">1주일 이상</i></c:if>
+							<c:if test="${sitterinfo.workterm=='1month'}"><i class="point">1개월 이상</i></c:if>
+							<c:if test="${sitterinfo.workterm=='3month'}"><i class="point">3개월 이상</i></c:if>
+							<c:if test="${sitterinfo.workterm=='36month'}"><i class="point">6개월 이상</i></c:if>동안 일할 수 있습니다.</p>
+							</div>
 						<!-- sub_content1 -->
 						<section class="start_job">
 							<div class="row">
@@ -732,7 +802,7 @@
 										<i class="fas fa-hand-holding-usd"></i>
 									</div>
 									<div class="wage_box">
-										<input type="text" name="want_wage" id="want_wage_text" placeholder="{output.payment}">
+										<input type="text" name="want_wage" id="want_wage_text" placeholder="${sitterinfo.payment}">
 										<span>원/1시간</span>
 									</div>
 									<div class="wage_box">
@@ -766,8 +836,7 @@
 						<section class="introduce_text">
 							<div class="row">
 								<div class="col-xs-12">
-									<textarea name="introduce" id="introduce" cols="30" rows="10"
-										placeholder="자기소개 작성 시 부모님에게 2배 더 많은 신청을 받게 됩니다."></textarea>
+									<textarea name="introduce" id="introduce" cols="30" rows="10">${sitterinfo.introduce }</textarea>
 									<div class="intro_ban">
 										<div><i class="fas fa-ban"></i></div>
 										<p>자기소개 내용에 연락처, 이메일 카카오ID 등을 작성할 경우 회원 자격을 영구적으로 잃게 됩니다.</p>
@@ -1163,11 +1232,12 @@
 					chk_day.push(chk);
 				});
 				//활동 기간
+				var workterm= $('input[name="workterm"]:checked').val();
 
 				var schedule = {
 					startdate: startdate,
 					day: chk_day,
-					while: workterm
+					workterm: workterm
 				};
 
 				var scheduleStr = JSON.stringify(schedule);

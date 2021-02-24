@@ -56,6 +56,8 @@ public class Sitter_info extends Member {
 	private char subscribe;
 	private String schedule_start;
 	private String frequency;
+	//회원 상세 페이지 조회에 따른 항목 추가 - 0224 선아
+	private String workterm;
 	
 	/** 3) 검색 조건용 추가 컬럼 */
 	private static String[] actList;		// 원하는 활동유형 검색 조건

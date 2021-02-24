@@ -57,10 +57,10 @@ public class MemberInsertController {
 			input.setSi("서울시");
 			input.setGu("강동구");
 			input.setDong("성내2동");
-			input.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
+			input.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"workterm\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input.setSchedule_ok('Y');
 			input.setSitter_gender('F');
-			input.setInterview_type('1');
+			input.setInterview_type("call");
 			input.setCare_type("주1회");
 			
 			// 프로필 업데이트 날짜 랜덤입력

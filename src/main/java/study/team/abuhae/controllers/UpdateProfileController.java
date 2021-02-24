@@ -40,16 +40,21 @@ public class UpdateProfileController {
 		
 		ProfileFile input = new ProfileFile();
 		//input.setMemberno(memberno);
+		Sitter_info input2 = new Sitter_info();
+		input2.setSitterno(sitterno);
 		
 		ProfileFile output = null;
+		Sitter_info output2 = null;
 		
 		try {
 			output = uploadService.getProfileItem(input);
+			output2 = sitterMypageService.getSitterItem(input2);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
 		model.addAttribute("output", output);
+		model.addAttribute("sitterinfo", output2);
 		
 		return new ModelAndView("/mypage/mypage_sitter/update_sitter_profile");
 	}
@@ -159,14 +164,16 @@ public class UpdateProfileController {
 	@RequestMapping(value = "/mypage_update/sitter_schedule.do", method = RequestMethod.POST)
 	public ModelAndView update_shcedule(Model model,
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno,
-			@RequestParam(value = "schedule", defaultValue = "") String schedule) {
+			@RequestParam(value = "schedule", defaultValue = "") String schedulestr) {
 		/** 1) 파라미터 유효성 검사 */
 		if (sitterno==0) {
 			return webHelper.redirect(null, "회원번호가 없습니다");
 		}
-		if (!regexHelper.isValue(schedule)) {
+		if (!regexHelper.isValue(schedulestr)) {
 			return webHelper.redirect(null, "변경할 활동 가능한 시간을 입력해 주세요.");
 		}
+		
+		String schedule = schedulestr.replace("'", "\"");
 
 		/** 2) 데이터 조회하기 */
 		Sitter_info input = new Sitter_info();

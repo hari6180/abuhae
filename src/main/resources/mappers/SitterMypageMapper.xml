@@ -261,7 +261,12 @@
    <!-- 로그인한 회원정보 조회 조회 -->
    <select id="selectSitterItem" 
    parameterType="study.team.abuhae.model.Sitter_info" resultMap="SitterInfoMap">
-      SELECT m.memberno, m.name, m.type, m.id, m.password, m.email, m.phone, m.birthdate, m.job_opening, s.sitterno
+      SELECT m.memberno, m.name, m.type, m.id, m.password, m.email, m.phone, m.birthdate, m.job_opening, s.sitterno,
+      favorite_act, want_age, want_act1, want_act2, want_act3, payment, introduce, si, gu, dong, 
+      json_extract(schedule, '$.startdate') AS schedule,
+		REPLACE(json_extract(schedule, '$.workterm'),'"','') AS workterm,
+		REPLACE(json_extract(schedule, '$.startdate'),'"','') AS schedule_start,
+		REPLACE(json_extract(schedule, '$.day'),'"','') AS days
       FROM sitter_info s
       INNER JOIN member m ON m.memberno=s.memberno
       where s.sitterno = #{sitterno};
