@@ -68,7 +68,7 @@
                                     href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_password.do?memberno=${output.memberno}"><span
                                         class="glyphicon glyphicon-pencil"></span>비밀번호 변경</a>
                                 ㅣ
-                                <a href="#" id="mps_logout">로그아웃</a>
+                                <a href="${pageContext.request.contextPath}/logout"" id="mps_logout">로그아웃</a>
                             </div>
                         </div>
                     </div>
@@ -208,7 +208,7 @@
                             <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
                             <a
-                                href="${pageContext.request.contextPath}/mypage/mypage_sitter/profile_mps.do?sitterno=${login.sitterno}">
+                                href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${login.sitterno}">
                                 <i class="fas fa-user-circle mps_menu3_list1"></i>
                                 <p class="mps_menu3_list2">내 프로필 보기</p>
                                 <i class="fas fa-angle-right mps_menu3_list3"></i>

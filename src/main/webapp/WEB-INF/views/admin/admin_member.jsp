@@ -25,6 +25,7 @@
 <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_mng_mem.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_coupon.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 <!-- Javascript -->
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
@@ -40,42 +41,37 @@
 		<header>
 			<%@ include file="../admin/admin_header.jsp"%>
 		</header>
-		<div class="wrap_member">
-			<div class="gruop_title row">
-				<div class="title_cont col-xs-12">
-					<h3>전체 회원 관리</h3>
-					<ol class="breadcrumb">
-						<li><a href="${pageContext.request.contextPath}/admin/admin_member.do?type=M">
-							<i class="fas fa-home"></i> Home</a></li>
-						<li></i>회원관리</li>
-						<li class="active"></i>전체 회원 관리</li>
-					</ol>
-				</div>
-			</div>
-
-			<div class="group_member row">
-				<div class="member_list table-responsive col-xs-12">
-					<div class="table_title">
-						<h3>회원 목록</h3>
-
-						<!-- 회원 유형 선택 드롭다운 -->
-						<div class="select_list">
-							<select class="filter" id="filter_member" name="type">
-								<%-- type에 따라서 option에 selected --%>
-								<c:if test="${type == 'M'}">
-									<option value="M" selected>부모회원</option>
-									<option value="S">시터회원</option>
-								</c:if>
-								<c:if test="${type == 'S'}">
-									<option value="M">부모회원</option>
-									<option value="S" selected>시터회원</option>
-								</c:if>
-							</select>
-						</div>
-						<!-- end 드롭다운 -->
-					</div>
-					<!-- 조회 결과 목록 -->
-					<table class="table table-bordered table-hover">
+		<div class="Title">
+			<h1>전체 회원 관리</h1>
+			<ol class="breadcrumb">
+				<li>
+					<i class="fas fa-home"></i>
+					<a href="${pageContext.request.contextPath}/admin_member.do?type=M">Home</a>
+				</li><li></i>회원관리</li>
+				<li class="active">
+					전체 회원관리
+				</li>
+			</ol>
+		</div>
+		<!-- 회원 유형 선택 드롭다운 -->
+		<div class="select_list">
+			<select class="filter" id="filter_member" name="type">
+				<%-- type에 따라서 option에 selected --%>
+				<c:if test="${type == 'M'}">
+					<option value="M" selected>부모회원</option>
+					<option value="S">시터회원</option>
+				</c:if>
+				<c:if test="${type == 'S'}">
+					<option value="M">부모회원</option>
+					<option value="S" selected>시터회원</option>
+				</c:if>
+			</select>
+		</div>
+		<!-- end 드롭다운 -->
+		<div id="tabCont2_1" class="tabCont">
+			<div id="tabContSub2_1_1" class="tabContSub">
+				<div class="mBoard typeLiset gScroll gCellSingle">
+					<table >
 						<thead>
 							<tr role="row">
 								<th class="text-center">회원번호</th>

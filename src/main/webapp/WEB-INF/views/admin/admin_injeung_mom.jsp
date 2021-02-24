@@ -1,112 +1,85 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
-
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>아이를부탁해-관리자</title>
+		<title>관리자페이지</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
 		<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 		<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 		<!-- bootstrap -->
-		<!--절대 경로 수정 1220 선아-->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
-
 		<!-- noto Sans 웹 폰트 적용 -->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
-		<!-- fontawesome(글리피콘) 적용 -->
-		<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 		<!-- css 참조  -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_coupon.css" />
+		<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
-		<style type="text/css">
-		.page {
-  text-align: center;
-}
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_coupon.css" />
+		<style>
+			.page {
+				text-align: center;
+			}
 		</style>
-	</head>
-
+</head>
 <body>
-	<div class="container">
+<div class="container">
 	<header>
 		<%@ include file="../admin/admin_header.jsp" %>
 	</header>
 	<div class="Title">
-		<h1>${category}</h1>
+		<h1>인증 관리 (부모)</h1>
 		<ol class="breadcrumb">
 			<li>
 				<i class="fas fa-home"></i>
-				<a href="${pageContext.request.contextPath}/admin_member.do?who=M">Home</a>
+				<a href="${pageContext.request.contextPath}/admin_member.do">Home</a>
 			</li>
 			<li class="active">
-				${category}
+				인증 관리 (부모)
 			</li>
 		</ol>
 	</div>
-	<div class="state">
-		<div class="gleft">
-			<p class="total">오늘 등록된 글 <strong>4</strong>건 / 전체 게시글 <strong>10</strong>건</p>
-		</div>
-		<div class="gright">
-			<select class="filter" id="filter_bbs" name="filter_bbs">
-				<option value="">카테고리별</option>
-				<option value="payment">부모회원 가이드</option>
-				<option value="member">시터회원 가이드</option>
-				<option value="resi">아부해 주의사항</option>
-				<option value="find">해결방법</option>
-
-			</select>
-			<select class="filter" id="filter_bbs" name="filter_bbs">
-				<option value="nomal">기본정렬</option>
-				<option value="hit">조회수많은순</option>
-				<option value="recent">최근작성순</option>
-			</select>
-		</div>
+	<div class="dropdown">
+		<select class="filter" id="filter_bbs" name="filter_bbs">
+			<option value="nomal">기본정렬</option>
+			<option value="startdate">인증 미처리순</option>
+			<option value="enddate">인증 처리순</option>
+		</select>
 	</div>
-	<!--main content-->
 	<div id="tabCont2_1" class="tabCont">
 		<div class="mTab typeTab eTab">
-			<div class="bbs_btn">
-				<a href="${pageContext.request.contextPath}/admin/admin_bbs_write.do" class="btn_nomal"><span><i class="far fa-file-alt"></i>&nbsp;새글작성</span></a>
-				<a id="edit" class="btn_nomal"><span><i class="fas fa-pen"></i>&nbsp;수정</span></a>
-				<a id="delete" class="btn_nomal"><span><i class="far fa-trash-alt"></i>&nbsp;삭제</span></a>
-			</div>
+			<ul>
+				<button id="putcoup" type="button" class="button">인증 승인</button>
+			</ul>
 		</div>
 		<div id="tabContSub2_1_1" class="tabContSub">
 			<div class="mBoard typeLiset gScroll gCellSingle">
 				<table>
-					<colgroup>
-						<col style="width: 42px;">
-						<col style="width: 80px;">
-						<col style="width: 70px;">
-						<col style="width: 300px;">
-						<col style="width: 120px">
-						<col style="width: 120px;">
-					</colgroup>
 					<thead>
 						<tr>
 							<th class="col-md-1"><input type="checkbox" id="all_check"></th>
-							<th class="col-md-1">글번호</th>
-							<th class="col-md-1">카테고리</th>
-							<th class="col-md-1">글 제목</th>
-							<th class="col-md-2">작성자</th>
-							<th class="col-md-2">작성일자</th>
+							<th class="col-md-1">회원번호</th>
+							<th class="col-md-1">이름</th>
+							<th class="col-md-1">아이디</th>
+							<th class="col-md-2">이용권시작일</th>
+							<th class="col-md-2">이용권만료일</th>
+							<th class="col-md-2">쿠폰지급일</th>
 						</tr>
 					</thead>
-					<tbody class="center">
+					<tbody class="middle center">
 						<c:choose>
 						<%-- 조회결과가 없는 경우 --%>
 							<c:when test="${output == null || fn:length(output) == 0}">
 								<tr>
-									<td colspan="6" align="center">조회결과가 없습니다.</td>
+									<td colspan="7" align="center">조회결과가 없습니다.</td>
 								</tr>
 							</c:when>
 						<%-- 조회결과가 있는 경우 --%>
@@ -114,11 +87,12 @@
 							<%-- 조회 결과에 따른 반복 처리 --%>
 								<c:forEach var="item" items="${output}" varStatus="status">
 									<tr>
-										<td class="text-center"><input type="checkbox" name="chk" class="rowcheck"></td>
-										<td align="center">${item.boardnum}</td>
-										<td align="center">${item.sub_category}</td>
-										<td align="center"><a href="${pageContext.request.contextPath}/customer/cus_view.do?boardnum=${item.boardnum}" target="_blank">${item.title}</a></td>
-										<td align="center">${item.writer}</td>
+										<td class="text-center"><input type="checkbox" class="chk" name="chk"></td>
+										<td align="center">${item.memberno}</td>
+										<td align="center">${item.name}</td>
+										<td align="center">${item.id}</td>
+										<td align="center">${item.startdate}</td>
+										<td align="center">${item.enddate}</td>
 										<td align="center">${item.reg_date}</td>
 									</tr>
 								</c:forEach>
@@ -187,74 +161,47 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 </div>
-	
-
-		<!-- jquery 파일명 수정 -->		
+		<!-- Javascript -->
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-		<!--Google CDN 서버로부터 jQuery 참조 -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<!-- jQuery Ajax Form plugin CDN -->
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-		<!-- jQuery Ajax Setup -->
-		<script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
-		<script>
+		<script type="text/javascript">
 			$(function(){
-
-				//console.log("${output}");
-				//올체크
+				//올체크 상태 변경되었을 떄 이벤트 - 선아
 				$("#all_check").change(function(){
 					//모든 hobby의 상태를 올체크와 동일하게
-					$(".agree").prop('checked', $(this).prop('checked'));
-					var now = $(".next_btn").prop('disabled');
-					$(".next_btn").prop('disabled', !now);
+					$(".chk").prop('checked', $(this).prop('checked'));
 				});
 
-				$("#edit").on('click', function(){
+				$("#putcoup").on("click", function () {
+					//체크된 row의 회원번호 가져오기
 					var checkbox = $("input[name=chk]:checked");
-					var boardnum = null;
+					var memberno = null;
 					checkbox.each(function (i) {
 						var tr = checkbox.parent().parent().eq(i); //checkbox의 두단계 상위가 tr
 						var td = tr.children(); //td태그는 tr의 하위
 	
-						boardnum = td.eq(1).text(); //boardno는 td의 두번째 요소
-						window.location = "${pageContext.request.contextPath}/admin/edit.do?boardnum="+boardnum;
+						memberno = td.eq(1).text(); //id는 td의 두번째 요소
 					});
-				});
-
-				$("#delete").on('click', function(){
-					var checkbox = $("input[name=chk]:checked");
-					var boardnum = null;
-					checkbox.each(function (i) {
-						var tr = checkbox.parent().parent().eq(i); //checkbox의 두단계 상위가 tr
-						var td = tr.children(); //td태그는 tr의 하위
-
-						boardnum = td.eq(1).text(); //boardno는 td의 두번째 요소
-
-						// 삭제 확인
-						if (!confirm("정말 삭제하시겠습니까?")) {
-							return false;
-						}
-
-						// delete 메서드로 Ajax 요청 --> <form> 전송이 아니므로 직접 구현한다.
-						$.delete("${pageContext.request.contextPath}/admin/delete", {
-							"boardnum": boardnum
-						}, function (json) {
+	
+					$.ajax({
+						type: 'POST',
+						url: '${pageContext.request.contextPath}/admin/insertcoup?memberno='+memberno,
+						success: function(json){
+							// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
 							if (json.rt == "OK") {
-								alert("삭제되었습니다.");
-								// 삭제 완료 후 페이지 새로고침
-								window.location.reload();
+								alert(memberno+"회원 쿠폰 발급 성공");
+								window.location = "${pageContext.request.contextPath}/admin/admin_coupon.do";
 							}
-						});
+							
+						},
+						error : function() { //통신 실패시 ㅠㅠ
+							alert('통신실패!');
+						}
 					});
 				});
 			});
-
 		</script>
-	</body>
-</html>
 </body>
-
 </html>

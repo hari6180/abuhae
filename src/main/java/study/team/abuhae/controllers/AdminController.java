@@ -292,10 +292,16 @@ public class AdminController {
 		//return "admin/admin_singo";
 	}
 	
-	@RequestMapping(value = "/admin/admin_injeung.do", method = RequestMethod.GET)
-	public String statistic(Model model) {
+	@RequestMapping(value = "/admin/admin_injeung_sitter.do", method = RequestMethod.GET)
+	public String inj_sitter(Model model) {
 
-		return "admin/admin_injeung";
+		return "admin/admin_injeung_sitter";
+	}
+	
+	@RequestMapping(value = "/admin/admin_injeung_mom.do", method = RequestMethod.GET)
+	public String inj_mom(Model model) {
+
+		return "admin/admin_injeung_mom";
 	}
 	
 	

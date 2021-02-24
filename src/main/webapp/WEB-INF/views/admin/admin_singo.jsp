@@ -28,188 +28,180 @@
 <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_mng_mem.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_coupon.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 </head>
 
 <body>
 	<div class="container">
-		<header>
-			<%@ include file="../admin/admin_header.jsp" %>
-		</header>
-		<div class="wrap_member">
-			<div class="gruop_title row">
-				<div class="title_cont col-xs-12">
-					<h3>신고 회원 관리</h3>
-					<ol class="breadcrumb">
-						<li><a href="${pageContext.request.contextPath}/admin_member.do?type=M"><i class="fas fa-home"></i>
-								Home</a></li>
-						<li></i>회원관리</li>
-						<li class="active"></i>신고 회원 관리</li>
-					</ol>
-				</div>
-			</div>
-			<!--신고 회원 목록-->
-			<div class="group_member row">
-				<div class="member_list table-responsive col-xs-12">
-					<div class="table_title">
-						<h3>신고 목록</h3>
-						<div>
-						<!--신고 날짜순 조회-->
-						<div class="select_list">
-							<select class="filter" id="filter_recent" name="recent">
-								<%-- type에 따라서 option에 selected --%>
-								<c:if test="${recent == 'new'}">
-									<option value="new" selected>신고날짜 최신순</option>
-									<option value="old">신고날짜 오래된순</option>
-								</c:if>
-								<c:if test="${recent == 'old'}">
-									<option value="new">신고날짜 최신순</option>
-									<option value="old" selected>신고날짜 오래된순</option>
-								</c:if>
-							</select>
-						</div>
-						<!-- 회원 유형 선택 드롭다운 -->
-						<div class="select_list">
-							<select class="filter" id="filter_member" name="type">
-								<%-- type에 따라서 option에 selected --%>
-								<c:if test="${who == 'M'}">
-									<option value="M" selected>부모회원</option>
-									<option value="S">시터회원</option>
-								</c:if>
-								<c:if test="${who == 'S'}">
-									<option value="M">부모회원</option>
-									<option value="S" selected>시터회원</option>
-								</c:if>
-							</select>
-						</div>
-						<!-- end 드롭다운 -->
-					</div>
-					</div>
-					<div class="line"></div>
+	<header>
+		<%@ include file="../admin/admin_header.jsp" %>
+	</header>
+	<div class="Title">
+		<h1>신고 회원 관리</h1>
+		<ol class="breadcrumb">
+			<li>
+				<i class="fas fa-home"></i>
+				<a href="${pageContext.request.contextPath}/admin_member.do?type=M">Home</a>
+			</li>
+			<li></i>회원관리</li>
+			<li class="active"></i>신고 회원 관리</li>
+		</ol>
+	</div>
+	<div class="select_box">
+		<!--신고 날짜순 조회-->
+		<div class="select_list">
+			<select class="filter" id="filter_recent" name="recent">
+				<%-- type에 따라서 option에 selected --%>
+					<c:if test="${recent == 'new'}">
+						<option value="new" selected>신고날짜 최신순</option>
+						<option value="old">신고날짜 오래된순</option>
+					</c:if>
+					<c:if test="${recent == 'old'}">
+						<option value="new">신고날짜 최신순</option>
+						<option value="old" selected>신고날짜 오래된순</option>
+					</c:if>
+			</select>
+		</div>
+		<!-- 회원 유형 선택 드롭다운 -->
+		<div class="select_list">
+			<select class="filter" id="filter_member" name="type">
+				<%-- type에 따라서 option에 selected --%>
+					<c:if test="${who == 'M'}">
+						<option value="M" selected>부모회원</option>
+						<option value="S">시터회원</option>
+					</c:if>
+					<c:if test="${who == 'S'}">
+						<option value="M">부모회원</option>
+						<option value="S" selected>시터회원</option>
+					</c:if>
+			</select>
+		</div>
+	</div>
+	<!-- end 드롭다운 -->
+	<div id="tabCont2_1" class="tabCont">
+		<!--신고 회원 목록-->
+		<div class="mTab typeTab eTab">
+			<ul>
+				<button type="button" class="button">
+					<i class="fas fa-bell-slash"></i> 프로필 비공개
+				</button>
+			</ul>
+		</div>
+		<div id="tabContSub2_1_1" class="tabContSub">
+			<div class="mBoard typeLiset gScroll gCellSingle">
+				<!-- 조회 결과 목록 -->
+				<table class="table table-bordered table-hover">
+					<colgroup>
+						<col style="width: 42px;">
+						<col style="width: 100px;">
+						<col style="width: 60px;">
+						<col style="width: 75px;">
+						<col style="width: 120px">
+						<col style="width: 100px;">
+						<col style="width: 150px;">
+						<col style="width: 150px;">
+						<col style="width: 150px;">
+						<col style="width: 150px;">
+					</colgroup>
+					<thead>
+						<tr role="row">
+							<th scope="col" class="text-center"><input type="checkbox" id="all_check"></th>
+							<th scope="col" class="text-center">회원번호</th>
+							<th scope="col" class="text-center">id</th>
+							<th scope="col" class="text-center">이름</th>
+							<th scope="col" class="text-center">email</th>
+							<th scope="col" class="text-center">phone</th>
+							<th scope="col" class="text-center">프로필/신청서</th>
+							<th scope="col" class="text-center">신고유형</th>
+							<th scope="col" class="text-center">신고내용</th>
+							<th scope="col" class="text-center">신고날짜</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:choose>
+						<%-- 조회결과가 없는 경우 --%>
+							<c:when test="${output == null || fn:length(output) == 0}">
+								<tr>
+									<td colspan="10" align="center">조회결과가 없습니다.</td>
+								</tr>
+							</c:when>
+							<%-- 조회결과가 있는 경우 --%>
+							<c:otherwise>
+							<%-- 조회 결과에 따른 반복 처리 --%>
+								<c:forEach var="item" items="${output}" varStatus="status">
+									<tr>
+										<td class="text-center"><input type="checkbox" class="chk" name="chk"></td>
+										<td align="center">${item.memberno}</td>
+										<td align="center">${item.id}</td>
+										<td align="center">${item.name}</td>
+										<td align="center">${item.email}</td>
+										<td align="center">${item.phone}</td>
+										<td align="center">${item.job_opening}</td>
+										<td align="center">${item.r_type}</td>
+										<td align="center">${item.contents}</td>
+										<td align="center">${item.reg_date}</td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
+				<div class="page">
+					<ul class="pagination">
+					<!-- 페이지 번호 구현 -->
+					<%-- 이전 그룹에 대한 링크 --%>
+						<c:choose>
+						<%-- 이전 그룹으로 이동 가능하다면? --%>
+							<c:when test="${pageData.prevPage > 0}">
+							<%-- 이동할 URL 생성 --%>
+								<c:url value="/admin/admin_member.do" var="prevPageUrl">
+									<c:param name="page" value="${pageData.prevPage}" />
+									<c:param name="type" value="${type}" />
+								</c:url>
+								<li class="page-item prev_btn"><a href="${prevPageUrl}">[Prev]</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item disabled"><a>[Prev]</a></li>
+							</c:otherwise>
+						</c:choose>
 
-					<div class="btn_list">
-						<button class="rep_btn" type="button">
-							<i class="fas fa-bell-slash"></i> 프로필 비공개
-						</button>
-					</div>
-
-					<!-- 조회 결과 목록 -->
-					<table class="table table-bordered table-hover">
-						<colgroup>
-							<col style="width: 42px;">
-							<col style="width: 100px;">
-							<col style="width: 60px;">
-							<col style="width: 75px;">
-							<col style="width: 120px">
-							<col style="width: 100px;">
-							<col style="width: 150px;">
-							<col style="width: 150px;">
-							<col style="width: 150px;">
-							<col style="width: 150px;">
-						</colgroup>
-						<thead>
-							<tr role="row">
-								<th scope="col" class="text-center"><input type="checkbox" id="all_check"></th>
-								<th scope="col" class="text-center">회원번호</th>
-								<th scope="col" class="text-center">id</th>
-								<th scope="col" class="text-center">이름</th>
-								<th scope="col" class="text-center">email</th>
-								<th scope="col" class="text-center">phone</th>
-								<th scope="col" class="text-center">프로필/신청서</th>
-								<th scope="col" class="text-center">신고유형</th>
-								<th scope="col" class="text-center">신고내용</th>
-								<th scope="col" class="text-center">신고날짜</th>
-							</tr>
-						</thead>
-						<tbody>
+						<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+						<c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
+						<%-- 이동할 URL 생성 --%>
+							<c:url value="/admin/admin_member.do" var="pageUrl">
+								<c:param name="page" value="${i}" />
+								<c:param name="type" value="${type}" />
+							</c:url>
+							<%-- 페이지 번호 출력 --%>
 							<c:choose>
-								<%-- 조회결과가 없는 경우 --%>
-									<c:when test="${output == null || fn:length(output) == 0}">
-										<tr>
-											<td colspan="10" align="center">조회결과가 없습니다.</td>
-										</tr>
-									</c:when>
-									<%-- 조회결과가 있는 경우 --%>
-										<c:otherwise>
-											<%-- 조회 결과에 따른 반복 처리 --%>
-												<c:forEach var="item" items="${output}" varStatus="status">
-													<tr>
-														<td class="text-center"><input type="checkbox" class="chk" name="chk"></td>
-														<td align="center">${item.memberno}</td>
-														<td align="center">${item.id}</td>
-														<td align="center">${item.name}</td>
-														<td align="center">${item.email}</td>
-														<td align="center">${item.phone}</td>
-														<td align="center">${item.job_opening}</td>
-														<td align="center">${item.r_type}</td>
-														<td align="center">${item.contents}</td>
-														<td align="center">${item.reg_date}</td>
-													</tr>
-												</c:forEach>
-										</c:otherwise>
+							<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+								<c:when test="${pageData.nowPage == i}">
+									<li class="page-item active"><a>${i}</a></li>
+								</c:when>
+								<%-- 나머지 페이지의 경우 링크 적용함 --%>
+								<c:otherwise>
+									<li class="page-item"><a href="${pageUrl}">${i}</a></li>
+								</c:otherwise>
 							</c:choose>
-						</tbody>
-					</table>
-					<div class="page">
-						<ul class="pagination">
-							<!-- 페이지 번호 구현 -->
-							<%-- 이전 그룹에 대한 링크 --%>
-								<c:choose>
-									<%-- 이전 그룹으로 이동 가능하다면? --%>
-										<c:when test="${pageData.prevPage > 0}">
-											<%-- 이동할 URL 생성 --%>
-												<c:url value="/admin/admin_member.do" var="prevPageUrl">
-													<c:param name="page" value="${pageData.prevPage}" />
-													<c:param name="type" value="${type}" />
-												</c:url>
-												<li class="page-item prev_btn"><a href="${prevPageUrl}">[Prev]</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item disabled"><a>[Prev]</a></li>
-										</c:otherwise>
-								</c:choose>
-	
-								<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
-									<c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}"
-										varStatus="status">
-										<%-- 이동할 URL 생성 --%>
-											<c:url value="/admin/admin_member.do" var="pageUrl">
-												<c:param name="page" value="${i}" />
-												<c:param name="type" value="${type}" />
-											</c:url>
-	
-											<%-- 페이지 번호 출력 --%>
-												<c:choose>
-													<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
-														<c:when test="${pageData.nowPage == i}">
-															<li class="page-item active"><a>${i}</a></li>
-														</c:when>
-														<%-- 나머지 페이지의 경우 링크 적용함 --%>
-															<c:otherwise>
-																<li class="page-item"><a href="${pageUrl}">${i}</a></li>
-															</c:otherwise>
-												</c:choose>
-									</c:forEach>
-	
-									<%-- 다음 그룹에 대한 링크 --%>
-										<c:choose>
-											<%-- 다음 그룹으로 이동 가능하다면? --%>
-												<c:when test="${pageData.nextPage > 0}">
-													<%-- 이동할 URL 생성 --%>
-														<c:url value="/admin/admin_member.do" var="nextPageUrl">
-															<c:param name="page" value="${pageData.nextPage}" />
-															<c:param name="type" value="${type}" />
-														</c:url>
-														<li class="page-item next_btn"><a href="${nextPageUrl}">[Next]</a>
-														</li>
-												</c:when>
-												<c:otherwise>
-													<li class="page-item disabled"><a>[Next]</a></li>
-												</c:otherwise>
-										</c:choose>
-						</ul>
-					</div>
+						</c:forEach>
+
+						<%-- 다음 그룹에 대한 링크 --%>
+						<c:choose>
+							<%-- 다음 그룹으로 이동 가능하다면? --%>
+							<c:when test="${pageData.nextPage > 0}">
+								<%-- 이동할 URL 생성 --%>
+								<c:url value="/admin/admin_member.do" var="nextPageUrl">
+									<c:param name="page" value="${pageData.nextPage}" />
+									<c:param name="type" value="${type}" />
+								</c:url>
+								<li class="page-item next_btn"><a href="${nextPageUrl}">[Next]</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item disabled"><a>[Next]</a></li>
+							</c:otherwise>
+						</c:choose>
+					</ul>
 				</div>
 			</div>
 		</div>

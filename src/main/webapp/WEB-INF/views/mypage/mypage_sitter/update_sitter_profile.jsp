@@ -120,10 +120,19 @@
 										<div class="col-xs-12 update_img_cont">
 											<div class="upload_prof">
 												<div class="user_img">
-													<input type="file" id="new_profile_img" name="photo" accept="image/*">
-													<label for="new_profile_img"><img
-															src="${pageContext.request.contextPath}/assets/img/mypage_img/user.png"
-															alt=""></label>
+													<input type="file" id="new_profile_img" name="photo" accept="image/*"> <label for="new_profile_img">
+														<c:choose>
+															<c:when test="${profile == null }">
+																<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg"
+																	alt="임시 프로필사진" style="border-radius: 50%;">
+															</c:when>
+															<c:otherwise>
+																<img src="${profile.fileUrl}" alt="임시 프로필사진"
+																	style="border-radius: 50%;">
+															</c:otherwise>
+														</c:choose>
+
+													</label>
 												</div>
 											</div>
 											<div class="guide_user_img">
@@ -164,48 +173,42 @@
 												<div class="modal-body" style="color: #838383;">
 													<div class="way_upd_img_cont">
 														<div>
-															<img src="../../assets/img/ex1.jpg" class="col-xs-6" alt="" width="150px"
-																height="150px">
+															<img src="../../assets/img/ex1.jpg" class="col-xs-6" alt="">
 															<p class="col-xs-6">
 																<span style="color:rgb(34, 172, 135); font-size:5em">o</span>
 																<br> 본인 얼굴 정면이 <br> 나온 모습
 															</p>
 														</div>
 														<div>
-															<img src="../../assets/img/ex2.jpg" class="col-xs-6" alt="" width="150px"
-																height="150px">
+															<img src="../../assets/img/ex2.jpg" class="col-xs-6" alt="">
 															<p class="col-xs-6">
 																<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
 																<br> 이모티콘이 <br> 포함된 사진
 															</p>
 														</div>
 														<div>
-															<img src="../../assets/img/ex3.jpg" class="col-xs-6" alt="" width="150px"
-																height="150px">
+															<img src="../../assets/img/ex3.jpg" class="col-xs-6" alt="">
 															<p class="col-xs-6">
 																<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
 																<br> 얼굴이 <br> 가려진 경우
 															</p>
 														</div>
 														<div>
-															<img src="../../assets/img/ex4.jpg" class="col-xs-6" alt="" width="150px"
-																height="150px">
+															<img src="../../assets/img/ex4.jpg" class="col-xs-6" alt="">
 															<p class="col-xs-6">
 																<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
 																<br> 여러명이 <br> 함께 찍은 경우
 															</p>
 														</div>
 														<div>
-															<img src="../../assets/img/ex5.jpg" class="col-xs-6" alt="" width="150px"
-																height="150px">
+															<img src="../../assets/img/ex5.jpg" class="col-xs-6" alt="">
 															<p class="col-xs-6">
 																<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
 																<br> 먼 거리에서 <br> 찍은 경우
 															</p>
 														</div>
 														<div>
-															<img src="../../assets/img/ex6.jpg" class="col-xs-6" alt="" width="150px"
-																height="150px">
+															<img src="../../assets/img/ex6.jpg" class="col-xs-6" alt="">
 															<p class="col-xs-6">
 																<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
 																<br> 인물 식별이 <br> 어려운 경우
@@ -259,86 +262,6 @@
 											</div>
 										</div>
 									</div>
-					
-									<!-- modal (사진 올리는 방법 )-->
-									<div id="way_upd_img" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal_label"
-										aria-hidden="true">
-										<!-- modal dialog -->
-										<div class="modal-dialog">
-											<!-- modal content -->
-											<div class="modal-content">
-												<!-- 제목 -->
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-														style="padding: 10px 0;">
-														<i class="fas fa-times"></i>
-													</button>
-													<h4 class="modal-title" id="modalLabel"
-														style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
-														부모님이 좋아하는 사진 올리는 방법!
-													</h4>
-												</div>
-												<div class="modal-body" style="color: #838383;">
-													<div class="way_upd_img_cont">
-														<div>
-															<img src="../../img/example_proflie_img.png" class="col-xs-6" alt=""
-																width="150px" height="150px">
-															<p class="col-xs-6">
-																<span style="color:rgb(34, 172, 135); font-size:5em">o</span>
-																<br> 본인 얼굴 정면이 <br> 나온 모습
-															</p>
-														</div>
-														<div>
-															<img src="../../img/example_profile2.png" class="col-xs-6" alt="" width="150px"
-																height="150px">
-															<p class="col-xs-6">
-																<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
-																<br> 이모티콘이 <br> 포함된 사진
-															</p>
-														</div>
-														<div>
-															<img src="../../img/example_profile6.jpg" class="col-xs-6" alt="" width="150px"
-																height="150px">
-															<p class="col-xs-6">
-																<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
-																<br> 얼굴이 <br> 가려진 경우
-															</p>
-														</div>
-														<div>
-															<img src="../../img/example_profile_3.png" class="col-xs-6" alt="" width="150px"
-																height="150px">
-															<p class="col-xs-6">
-																<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
-																<br> 여러명이 <br> 함께 찍은 경우
-															</p>
-														</div>
-														<div>
-															<img src="../../img/example_profile4.png" class="col-xs-6" alt="" width="150px"
-																height="150px">
-															<p class="col-xs-6">
-																<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
-																<br> 먼 거리에서 <br> 찍은 경우
-															</p>
-														</div>
-														<div>
-															<img src="../../img/example_profile5.jpg" class="col-xs-6" alt="" width="150px"
-																height="150px">
-															<p class="col-xs-6">
-																<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
-																<br> 인물 식별이 <br> 어려운 경우
-															</p>
-														</div>
-													</div>
-													<div class="way_upd_img_text">
-														<p>이 외 본인이 아닌 경우, 본인 식별이 어려운 사진을 올리면 부모님의 선택을 받지 못할 수도 있습니다.</p>
-													</div>
-												</div>
-											</div>
-											<!-- end modal content -->
-										</div>
-										<!-- end modal dialog -->
-									</div>
-									<!-- end modal -->
 								</section>
 								<button type="submit" class="edit_btn"> 수정하기 </button>
 							</form>
@@ -450,19 +373,22 @@
 									<div class="now_selected">
 									<c:choose>
 										<c:when test="${sitterinfo.favorite_act eq '신생아/영아 풀타임 돌봄'}">
-											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 신생아/영아 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
+											<p class="desc">현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 신생아/영아 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
 										</c:when>
 										<c:when test="${sitterinfo.favorite_act eq '신생아/영아 보조 돌봄'}">
-											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 신생아/영아 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
+											<p class="desc">현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 신생아/영아 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
 										</c:when>
 										<c:when test="${sitterinfo.favorite_act eq '등하원 돌봄'}">
-											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 유아/초등학생 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
+											<p class="desc">현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 유아/초등학생 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
 										</c:when>
 										<c:when test="${sitterinfo.favorite_act eq '놀이/학습 돌봄'}">
-											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 유아/초등학생 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
+											<p class="desc">현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 유아/초등학생 중 1개 아이 연령은 필수로 선택되어야 합니다.</p>
+										</c:when>
+										<c:when test="${sitterinfo.favorite_act eq '긴급/단기 돌봄'}">
+											<p class="desc"><i class="point">${sitterinfo.favorite_act}</i>은 아이 연령 선택에 제한이 없습니다.</p>
 										</c:when>
 										<c:otherwise>
-											<p><i class="point">${sitterinfo.favorite_act}</i>은 아이 연령 선택에 제한이 없습니다.</p>
+											<p class="desc">선호하는 유형을 선택하지 않으면 아이 연령 선택에 제한이 없습니다.</p>
 										</c:otherwise>
 									</c:choose>
 									</div>
@@ -522,19 +448,22 @@
 									<div class="now_selected">
 									<c:choose>
 										<c:when test="${sitterinfo.favorite_act eq '신생아/영아 풀타임 돌봄'}">
-											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 밥 챙겨주기가 필수로 선택되어야 합니다.</p>
+											<p class="desc">현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 밥 챙겨주기가 필수로 선택되어야 합니다.</p>
 										</c:when>
 										<c:when test="${sitterinfo.favorite_act eq '신생아/영아 보조 돌봄'}">
-											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 밥 챙겨주기 필수로 선택되어야 합니다.</p>
+											<p class="desc">현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 밥 챙겨주기 필수로 선택되어야 합니다.</p>
 										</c:when>
 										<c:when test="${sitterinfo.favorite_act eq '등하원 돌봄'}">
-											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 등하원돕기가 필수로 선택되어야 합니다.</p>
+											<p class="desc">현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 등하원돕기가 필수로 선택되어야 합니다.</p>
 										</c:when>
 										<c:when test="${sitterinfo.favorite_act eq '놀이/학습 돌봄'}">
-											<p>현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 학습지도가 필수로 선택되어야 합니다.</p>
+											<p class="desc">현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 학습지도가 필수로 선택되어야 합니다.</p>
+										</c:when>
+										<c:when test="${sitterinfo.favorite_act eq '긴급/단기 돌봄'}">
+											<p class="desc">현재 <i class="point">${sitterinfo.favorite_act}</i>이므로 활동 선택에 제한이 없습니다.</p>
 										</c:when>
 										<c:otherwise>
-											<p><i class="point">${sitterinfo.favorite_act}</i>은 활동 선택에 제한이 없습니다.</p>
+											<p class="desc">선호하는 유형을 선택하지 않으면 활동 선택에 제한이 없습니다.</p>
 										</c:otherwise>
 									</c:choose>
 									</div>
@@ -814,8 +743,8 @@
 						</section>
 						<section class="guide_wage">
 							<ul>
-								<li>아이 1명을 돌보는 경우, <br /> = 최저시급 8,720원 이상 필수</li>
-								<li>아이 2명을 돌보는 경우, <br /> = 최저시급 8,720원x1.5배 = 13,080원 이상 필수</li>
+								<li>아이 1명을 돌보는 경우 = 최저시급 <i class="point">8,720원</i> 이상 필수</li>
+								<li>아이 2명을 돌보는 경우 = 최저시급 8,720원x1.5배 = <i class="point">13,080원</i> 이상 필수</li>
 							</ul>
 						</section>
 						<button id="updatePay" type="submit" class="edit_btn">수정하기</button>
@@ -910,7 +839,13 @@
 						<div>
 							<h5 class="upd_img_tl">8. 장소 수정</h5>
 						</div>
-				
+						<div class="now_selected">
+							<p class="desc">
+								현재 선택하신 돌봄 지역은 <i class="point">${sitterinfo.si}&nbsp;${sitterinfo.gu}&nbsp;${sitterinfo.dong}</i>
+								입니다.
+							</p>
+						</div>
+						<br>
 						<!-- sub_content1 (dropdown) -->
 						<section class="group1_upd_loc">
 							<div class="row">
