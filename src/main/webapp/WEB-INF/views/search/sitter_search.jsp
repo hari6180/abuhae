@@ -819,10 +819,28 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         //동 클릭했을때
         $(document).on("click", ".dong_btn", function (e) {
           e.preventDefault();
+          dong = "";
           dong += $(this).html();
           full_loc = si + " " + gu + " " + dong;
           $("#full_location").html(full_loc);
           console.log(full_loc);
+          $("#location_modal").modal("hide");
+          $.get(
+            "${pageContext.request.contextPath}/search/sitter_search/",
+            {
+              si: si, // 시
+              gu: gu, // 구
+              dong: dong, // 동
+            },
+            function (json) {
+              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#result").empty(); // 결과물 초기화
+              $("#result2").empty(); // 결과물 초기화
+              $("#result").append(result); // 최종 결과물을 추가한다
+            }
+          );
           // var select = $(this).hasClass("select_location");
           // //선택이 안되어있을때
           // if (select == false) {

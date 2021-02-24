@@ -60,7 +60,6 @@ public class MemberInsertController {
 			input.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"workterm\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input.setSchedule_ok('Y');
 			input.setSitter_gender('F');
-			input.setInterview_type("call");
 			input.setCare_type("주1회");
 			
 			// 프로필 업데이트 날짜 랜덤입력
