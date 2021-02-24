@@ -324,13 +324,6 @@ public class SitterMypageController {
 		return "mypage/mypage_sitter/certify";
 	}
 	
-	/** 내 인증 - 등초본 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/certify_resident.do", method = RequestMethod.GET)
-	public String certify_resident(Locale locale, Model model) {
-
-		return "mypage/mypage_sitter/certify_resident";
-	}
-	
 	/** 내 맘시터 채용 내역 페이지 */
 	@RequestMapping(value = "/mypage/mypage_sitter/count_mom_mps.do", method = RequestMethod.GET)
 	public ModelAndView count_sitter(Model model,

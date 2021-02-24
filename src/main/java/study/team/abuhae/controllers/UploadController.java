@@ -16,6 +16,7 @@ import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.UploadService;
 
 import java.io.File;
+import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -153,8 +154,9 @@ public class UploadController {
 	@RequestMapping(value = "upload/upload_certi_ok.do", method = RequestMethod.POST)
 	public ModelAndView uploadCertiOk(Model model,  HttpSession session, 
 			@RequestParam(required = false) MultipartFile photo,
-			@RequestParam(value = "check_brithdate", defaultValue = "") String check_birthdate,
-			@RequestParam(value = "memberno", defaultValue = "0") int sitterno) {
+			@RequestParam(value = "check_resi", defaultValue = "") String check_resi,
+			@RequestParam(value = "check_birthdate", defaultValue = "") String check_birthdate,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		/** 1) 업로드 파일 저장하기 */
 		// 업로드 된 파일이 존재하는지 확인
 		if (photo.getOriginalFilename().isEmpty()) {
@@ -187,6 +189,7 @@ public class UploadController {
 		item.setFileSize(photo.getSize());
 		item.setOriginName(photo.getOriginalFilename());
 		item.setFilePath(filePath);
+		item.setCheck_resi(check_resi);
 		item.setCheck_birthdate(check_birthdate);
 		item.setSitterno(sitterno);
 		
@@ -207,6 +210,94 @@ public class UploadController {
 		// 텍스트 정보를 View로 전달한다.
 		model.addAttribute("item", item);
 		
-		return new ModelAndView("upload/upload_ok");
+		/** 3) View 처리 */
+		String url = contextPath + "/mypage/mypage_sitter/sitter_mypage.do?sitterno=" + sitterno;
+		return webHelper.redirect(url, "인증 신청이 완료되었습니다.");
+	}
+	
+	/** 인증 재업로드 */
+	@RequestMapping(value = "upload/upload_certi_eidt.do", method = RequestMethod.POST)
+	public ModelAndView uploadCertiEdit(Model model,  HttpSession session, 
+			@RequestParam(required = false) MultipartFile photo,
+			@RequestParam(value = "check_resi", defaultValue = "") String check_resi,
+			@RequestParam(value = "check_birthdate", defaultValue = "") String check_birthdate,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		/** 1) 업로드 파일 저장하기 */
+		// 업로드 된 파일이 존재하는지 확인
+		if (photo.getOriginalFilename().isEmpty()) {
+			return webHelper.redirect(null, "There is no upload file");
+		}
+		
+		// 업로드 된 파일이 저장될 경로 정보를 생성한다.
+		File targetFile =  new File(webHelper.getUploadDir(), photo.getOriginalFilename());
+		
+		// 업로드 된 파일을 지정된 경로로 복사한다.
+		try {
+			photo.transferTo(targetFile);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return webHelper.redirect(null, "Fail to save upload file");
+		}
+		
+		/** 2) 업로드 경로 정보 처리하기 */
+		// 복사된 파일의 절대경로를 추출한다.
+		// --> 운영체제 호환을 위해 역슬래시를 슬래시로 변환한다.
+		String absPath = targetFile.getAbsolutePath().replace("\\", "/");
+		
+		// 절대경로에서 이미 root-context에 지정되어 있는 업로드 폴더 경로를 삭제한다.
+		String filePath = absPath.replace(webHelper.getUploadDir(), "");
+		
+		/** 3) 업로드 결과 Beans에 저장 */
+		ResiCert item = new ResiCert();
+		item.setContentType(photo.getContentType());
+		item.setFileName(photo.getName());
+		item.setFileSize(photo.getSize());
+		item.setOriginName(photo.getOriginalFilename());
+		item.setFilePath(filePath);
+		item.setCheck_resi(check_resi);
+		item.setCheck_birthdate(check_birthdate);
+		item.setSitterno(sitterno);
+		
+		
+		// 업로드 경로와 썸네일 경로는 웹 상에서 접근 가능한 경로 문자열로 변환하여 Beans에 추가한다.
+		String fileUrl = webHelper.getUploadUrl(filePath);
+		item.setFileUrl(fileUrl);
+		
+		// DB에 저장 
+		try {
+			uploadService.editCertify(item);
+		} catch (Exception e) {
+			
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 4) View 처리 */
+		// 텍스트 정보를 View로 전달한다.
+		model.addAttribute("item", item);
+		
+		/** 3) View 처리 */
+		String url = contextPath + "/mypage/mypage_sitter/sitter_mypage.do?sitterno=" + sitterno;
+		return webHelper.redirect(url, "인증 신청이 완료되었습니다.");
+	}
+	
+	/** 내 인증 - 등초본 페이지 */
+	@RequestMapping(value = "/mypage/mypage_sitter/certify_resident.do", method = RequestMethod.GET)
+	public ModelAndView certify_resident(Model model, 
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		
+		ResiCert input = new ResiCert();
+		input.setSitterno(sitterno);
+		
+		ResiCert certify = null;
+		
+		try {
+			certify = uploadService.getCertifyItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("certify", certify);
+		
+		return new ModelAndView("mypage/mypage_sitter/certify_resident");
 	}
 }

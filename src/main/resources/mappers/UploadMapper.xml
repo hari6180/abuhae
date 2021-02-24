@@ -33,6 +33,7 @@
       <result property="fileSize" column="fileSize" />
       <result property="filePath" column="filePath" />
       <result property="fileUrl" column="fileUrl" />
+      <result property="check_resi" column="check_resi" />
       <result property="check_birthdate" column="check_birthdate" />
       <result property="cert" column="cert" />
       <result property="reg_date" column="reg_date" />
@@ -79,16 +80,22 @@
 	<insert id="addCertify"
 		parameterType="study.team.abuhae.model.ResiCert"
 		useGeneratedKeys="true" keyProperty="resino">
-		insert into resi_cert (fileName, originName, contentType, fileSize, filePath, fileUrl, check_birthdate, cert, reg_date, sitterno) 
-		values(#{fileName}, #{originName}, #{contentType}, #{fileSize}, #{filePath}, #{fileUrl}, #{check_birthdate}, 'N', now(), #{sitterno});
+		insert into resi_cert (fileName, originName, contentType, fileSize, filePath, fileUrl, check_resi, check_birthdate, cert, reg_date, sitterno) 
+		values(#{fileName}, #{originName}, #{contentType}, #{fileSize}, #{filePath}, #{fileUrl}, #{check_resi}, #{check_birthdate}, 'N', now(), #{sitterno});
 	</insert>
 	
 	<!-- 승인 거절 시 인증 파일 재업로드 -->
 	<update id="editCertify" parameterType="study.team.abuhae.model.ResiCert">
 		update resi_cert set fileName=#{fileName}, originName=originName, contentType = #{contentType}, 
-		fileSize = #{fileSize}, filePath = #{filePath}, fileUrl = #{fileUrl}, check_birthdate=#{check_birthdate},
-		cert=#{cert}, reg_date=now()
+		fileSize = #{fileSize}, filePath = #{filePath}, fileUrl = #{fileUrl}, check_resi=#{check_resi}, check_birthdate=#{check_birthdate},
+		cert='N', reg_date=now()
 		where sitterno=#{sitterno};
 	</update>
+	
+	<select id="selectCertifyItem"
+	parameterType="study.team.abuhae.model.ResiCert" resultMap="CertifyMap">
+		select * from resi_cert
+		where sitterno=#{sitterno};
+	</select>
 	
  </mapper>

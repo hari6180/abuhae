@@ -23,4 +23,7 @@ public interface UploadService {
 
 	  /** 승인 거절 시 인증 재업로드 */
 	  public int editCertify(ResiCert input) throws Exception;
+	  
+	  /** 인증 업로드 데이터 조회 */
+	  public ResiCert getCertifyItem(ResiCert input) throws Exception;
 }

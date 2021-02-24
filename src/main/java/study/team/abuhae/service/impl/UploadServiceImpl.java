@@ -146,4 +146,19 @@ public class UploadServiceImpl implements UploadService {
 	      return result;
 	}
 
+	@Override
+	public ResiCert getCertifyItem(ResiCert input) throws Exception {
+		ResiCert result = null;
+        
+        try {
+           result = sqlSession.selectOne("UploadMapper.selectCertifyItem", input);
+       
+        } catch (Exception e) {
+           log.error(e.getLocalizedMessage());
+           throw new Exception("데이터 조회에 실패했습니다.");
+        }
+        
+        return result;
+	}
+
 }

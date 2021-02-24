@@ -11,8 +11,9 @@ public class ResiCert {
 	private long fileSize;
 	private String filePath;   
 	private String fileUrl;   
+	private String check_resi;
 	private String check_birthdate;   
-	private int cert;
+	private String cert;
 	private String reg_date;   // 인증 요청 날짜
 	private int sitterno;   // 시터회원 일련번호
 }
