@@ -106,9 +106,13 @@
 					        <br>
 					        <p class="sub_text"><i class="fas fa-check"></i> 원하는 항목만 수정할 수 있습니다.</p>
 					    </div>
-                        
+                    
+                    <!-- *************** 이미지 업로드 ******************* --> 
+                	<!-- 업로드 된 이미지 데이터 조회시 조회 결과가 없을 경우 insert 폼이 나타난다. -->
+                  	<!-- 조회 결과가 있을 경우 edit 폼이 나타난다. -->
                     <div class="wrap_img">
                     	<!-- content1 -->
+                  
                     	<c:choose>
                     		<c:when test="${output == null }">
                     			<form method="post" action="${pageContext.request.contextPath}/upload/upload_ok.do?memberno=${login.memberno}"
@@ -217,6 +221,7 @@
 			                        <button type="submit" class="edit_btn"> 수정하기 </button>
 			                    </form>
                     		</c:when>
+                    		
                     		<c:otherwise>
                     			<form method="post" action="${pageContext.request.contextPath}/upload/upload_edit.do?memberno=${login.memberno}"
 			                    enctype="multipart/form-data">
@@ -329,7 +334,8 @@
 	                   
                    	<hr>
                     
-                    <!-- content2 -->
+                    <!-- *************** 돌봄유형선택 ******************* --> 
+                    
                     <div class="wrap_choice_care">
                     	<form id="choice_care_form" action="#">
                     		<div>
@@ -406,7 +412,8 @@
                     
                     <hr>
                     
-                    <!-- content3 -->
+                   <!-- *************** 돌봄 가능 연령 수정 ******************* --> 
+                   
                     <div class="wrap_age">
                     	<form action="#">
 	                        <div>
@@ -462,7 +469,7 @@
                     
                     <hr/>
                     
-                    <!-- content4 -->
+                    <!-- *************** 원하는 활동 수정 ******************* --> 
                     
                     <div class="wrap_update_activity">
                     	<form action="#">
@@ -580,7 +587,8 @@
                     
                     <hr>
                     
-                    <!-- content5 -->
+                  <!-- *************** 활동 가능 시간 변경 ******************* --> 
+                  
                     <div class="wrap_upd_regular">
                     	<form action="#">
 	                         <div>
@@ -663,7 +671,7 @@
                     
                     <hr>
                     
-                    <!-- content6 -->
+                    <!-- *************** 희망 시급 ******************* --> 
                     <div class="wrap_want_wage">
                     	<form action="#">
 	                        <div>
@@ -700,7 +708,7 @@
                     
                     <hr>
                     
-                    <!-- content7 -->
+                    <!-- *************** 자기소개 수정 ******************* --> 
                     <div class="wrap_experience">
                     	<form action="#">
 	                      <div>
@@ -780,7 +788,7 @@
                     
                     <hr>
                     
-                    <!-- content8 -->
+                    <!-- *************** 돌봄 장소 수정 ******************* --> 
                     <div class="wrap_upd_loc">
                     	 <form action="#">
 	                       <div >

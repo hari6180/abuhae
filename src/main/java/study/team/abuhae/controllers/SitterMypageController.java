@@ -20,9 +20,11 @@ import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Coupon;
 import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.ProfileFile;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
+import study.team.abuhae.service.UploadService;
 import study.team.abuhae.service.impl.SitterMypageServiceImpl;
 
 @Controller
@@ -36,6 +38,10 @@ public class SitterMypageController {
 	@Autowired
 	SitterMypageServiceImpl sitterMypageService;
 	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
+	
+	@Autowired
+	UploadService uploadService;
+	
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
@@ -58,6 +64,28 @@ public class SitterMypageController {
 		model.addAttribute("output", output);
 		
 		return new ModelAndView("mypage/mypage_sitter/sitter_mypage");
+	}
+	
+	/** 프로필 수정 페이지 */
+	/** 업로드 폼을 구성하는 페이지 */
+	@RequestMapping(value = "/mypage/mypage_sitter/update_sitter_profile.do", method = RequestMethod.GET)
+	public ModelAndView upload(Model model,
+			@RequestParam(value = "memberno", defaultValue = "0") int memberno) {
+		
+		ProfileFile input = new ProfileFile();
+		input.setMemberno(memberno);
+		
+		ProfileFile output = null;
+		
+		try {
+			output = uploadService.getProfileItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("/mypage/mypage_sitter/update_sitter_profile");
 	}
 	
 	/** 비밀번호 변경 페이지 */

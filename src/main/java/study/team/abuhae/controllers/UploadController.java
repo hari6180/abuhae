@@ -25,27 +25,6 @@ public class UploadController {
 	@Autowired
 	UploadService uploadService;
 	
-	/** 업로드 폼을 구성하는 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/update_sitter_profile.do", method = RequestMethod.GET)
-	public ModelAndView upload(Model model,
-			@RequestParam(value = "memberno", defaultValue = "0") int memberno) {
-		
-		ProfileFile input = new ProfileFile();
-		input.setMemberno(memberno);
-		
-		ProfileFile output = null;
-		
-		try {
-			output = uploadService.getProfileItem(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		model.addAttribute("output", output);
-		
-		return new ModelAndView("/mypage/mypage_sitter/update_sitter_profile");
-	}
-	
 	/** 업로드 폼에 대한 action 페이지 */
 	@RequestMapping(value = "upload/upload_ok.do", method = RequestMethod.POST)
 	public ModelAndView uploadOk(Model model,
