@@ -425,7 +425,12 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         <div class="job_item_group" data-momno="{{momno}}">
           <div class="item_body">
             <div class="profile_img_group">
-              <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
+              {{#ifCond isProfile null}}
+              <img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" alt="임시프로필"/>
+              {{/ifCond}}
+              {{#ifCond isProfile 'y'}}
+              <img src="{{fileUrl}}" alt="프로필"/>
+              {{/ifCond}}
               <div class="applicant_group">
                 <div class="applicant">
                   {{applySt}}명 지원
@@ -664,7 +669,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               dong: dong, // 동
             },
             function (json) {
-              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
               var template = Handlebars.compile(source); // 템플릿 코드 컴파일
               var result = template(json); // 템플릿 컴파일 결과물에 json 전달
               $("#result").empty(); // 결과물 초기화

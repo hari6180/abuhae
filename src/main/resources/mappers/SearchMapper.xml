@@ -45,6 +45,8 @@
 		<result property="resino" column="resino" />
 		<result property="days" column="days" />
 		<result property="findHt" column="findHt" />
+		<result property="fileUrl" column="fileUrl" />
+		<result property="isProfile" column="isProfile" />
 	</resultMap>
 
 	<resultMap id="MomMap"
@@ -74,6 +76,8 @@
 		<result property="applySt" column="cntno" />
 		<result property="days" column="days" />
 		<result property="findHt" column="findHt" />
+		<result property="fileUrl" column="fileUrl" />
+		<result property="isProfile" column="isProfile" />
 	</resultMap>
 
 
@@ -108,7 +112,8 @@
 		opening,
 		REPLACE(json_extract(schedule, '$.day'),'"','') AS
 		days,
-		openingdate,
+		openingdate,(SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl,
 		(SELECT COUNT(revno) FROM review r WHERE
 		s.sitterno=r.sitterno AND
 		who='M') AS rev_count,
@@ -217,7 +222,7 @@
 		name,
 		job_opening, m.momno, want_act1, want_act2, want_act3, want_age,
 		kids_num, kids_age, si,
-		gu,
+		gu, 
 		json_extract(schedule, '$.startdate') AS
 		schedule,
 		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS
@@ -237,7 +242,9 @@
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS
 		opening,
-		openingdate, (SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno
+		openingdate,  (SELECT p.isProfile FROM profile_file p WHERE p.memberno = m.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = m.memberno) AS fileUrl,
+		(SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno
 		AND who='s') AS applySt <if test = "loginSt != 0">, (SELECT
 		COUNT(*)
 		FROM heart h WHERE m.momno=h.momno AND

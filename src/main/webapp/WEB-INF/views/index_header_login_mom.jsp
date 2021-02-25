@@ -112,12 +112,7 @@
       </div>
       <!-- modal end -->
     </div>
-    <!--삭제 예정-->
-    <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-    <!-- jquery 파일명 수정 -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-    <!--삭제 예정-->
+
     <script>
       $(function () {
         $("#logout_btn").click(function (e) {
