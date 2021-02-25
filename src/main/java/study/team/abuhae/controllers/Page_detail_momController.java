@@ -21,10 +21,12 @@ import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.ProfileFile;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.DetailService;
 import study.team.abuhae.service.MemberService;
+import study.team.abuhae.service.UploadService;
 
 @Controller
 public class Page_detail_momController {
@@ -33,6 +35,8 @@ public class Page_detail_momController {
 	DetailService detailService;
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	UploadService uploadService;
 	
 	@Autowired
 	WebHelper webHelper;
@@ -48,19 +52,24 @@ public class Page_detail_momController {
 		
 			// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 			Mom_info input = new Mom_info();
+			ProfileFile input2 = new ProfileFile();
 			input.setMomno(momno);
+			input2.setMomno(momno);
 			
 			// 조회결과를 저장할 객체 선언 
 			Mom_info output = null;
+			ProfileFile output2 = null;
 			
 			try {
 				// 데이터 조회 
 				output = detailService.getMomItem(input);
+				output2 = uploadService.getProfileItem(input2);
 			
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			model.addAttribute("output", output);
+			model.addAttribute("profile", output2);
 			return new ModelAndView("/page_detail/mom_page_detail/mom_detail");
 			//return "/page_detail/mom_page_detail/mom_detail";
 	}
@@ -121,11 +130,11 @@ public class Page_detail_momController {
 						
 			if (sitterinfo.getSubscribe() == 'N') {
 				String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
-				return webHelper.redirect(redirectUrl, "Interview no!!!!!!!!");
+				return webHelper.redirect(redirectUrl, "맘회원에게 지원하기 위해 이용권을 구매해주세요.");
 			}
 			detailService.addConnect(input);
 			String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
-			return webHelper.redirect(redirectUrl, "Interview OK!!!!!!!!");
+			return webHelper.redirect(redirectUrl, "인터뷰 지원이 완료되었습니다.");
 	
 			} catch (Exception e) {
 				return webHelper.redirect(null, e.getLocalizedMessage());

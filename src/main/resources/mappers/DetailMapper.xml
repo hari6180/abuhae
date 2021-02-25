@@ -118,7 +118,9 @@
 		<result property="sitterno" column="sitterno"/>	
 		<result property="rev_rate" column="rev_rate"/>	
 		<result property="contents" column="contents"/>	
-		<result property="name" column="name"/>					
+		<result property="name" column="name"/>		
+		<result property="fileUrl" column="fileUrl" />
+    	<result property="isProfile" column="isProfile" />			
 	</resultMap>
 	
 	<!-- 시터 상세페이지 -->
@@ -129,7 +131,7 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, want_age, 
+		AS birthdate, want_age,
 		job_opening, s.sitterno, sitter_type, want_act1, want_act2, want_act3, gender, introduce,
 		si, gu, dong, favorite_act, signup_date, view, 
 		json_extract(schedule, '$.startdate') AS schedule,
@@ -150,6 +152,7 @@
 		END AS
 		openingdate, (SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_count,
 		(SELECT COUNT(heartno) FROM heart h WHERE s.sitterno=h.sitterno AND who='M') AS heartno,
+		(SELECT COUNT(resino) FROM resi_cert rc WHERE rc.sitterno=s.sitterno AND cert='Y') AS resino,
 		(SELECT COUNT(cntno) FROM connect c WHERE c.sitterno=s.sitterno AND accept='Y') AS cntno,
 		(SELECT DATE_FORMAT(signup_date, "%Y년 %m월 %d일") FROM member m WHERE s.memberno=m.memberno) AS signup
 		<if test = "loginMom != 0">,
@@ -258,12 +261,14 @@
 	<select id="ReviewList" parameterType="study.team.abuhae.model.Review"
 		resultMap="ReviewMap">
 		select mi.si, mi.gu, mi.dong, rev_rate, reg_date, contents, r.momno as momno, r.sitterno as sitterno, r.who,
+		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = m.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = m.memberno) AS fileUrl,
 		CONCAT(LEFT(name,1), 'O', RIGHT(name,1)) AS
 		name 
 		from review r
 		inner join sitter_info s on s.sitterno = r.sitterno
 		inner join mom_info mi on mi.momno = r.momno
-		inner join member m on m.memberno = mi.memberno		
+		inner join member m on m.memberno = mi.memberno	
 		where s.sitterno=#{sitterno}
 		ORDER BY reg_date DESC
 		limit 3
@@ -273,6 +278,8 @@
 	<select id="ReviewListTotal" parameterType="study.team.abuhae.model.Review"
 		resultMap="ReviewMap">
 		select mi.si, mi.gu, mi.dong, rev_rate, reg_date, contents, r.momno as momno, r.sitterno as sitterno, r.who,
+		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = m.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = m.memberno) AS fileUrl,
 		CONCAT(LEFT(name,1), 'O', RIGHT(name,1)) AS
 		name
 		from review r

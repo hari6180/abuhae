@@ -44,7 +44,14 @@
 								<c:forEach var="item" items="${reput}" varStatus="status">
 									<li style="list-style:none;" >
 										<div class="talk_box_line" style="margin: 15px 0px;">
-											<img src="<%=request.getContextPath()%>/assets/img/chat_mom02.png" width="50" height="50"/>
+											<c:choose>			  
+										  	<c:when test="${item.isProfile==''}">
+												<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="50" height="50"/>				
+										  	</c:when>
+										  	<c:otherwise>
+										  		<img src="${item.fileUrl}" width="50" height="50"/>
+										  	</c:otherwise>
+										  </c:choose>
 											<div class="talk_box_line_text">
 												<div class="talk_box_line_date_name">
 													${item.name}

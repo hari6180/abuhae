@@ -52,7 +52,7 @@
 							<div class="info_text">
 								<div class="siren_body_profil">
 								<p style="padding-bottom: 10px;">
-									 인터뷰 지원 후 맘회원의 답변을 기다려 주세요.<br/>
+									 인터뷰 지원 후 시터회원의 답변을 기다려 주세요.<br/>
 									 매일 낮 12시에 다시 인터뷰 지원을 할 수 있습니다.<br/>
 									인터뷰 지원권을 구매하면, 제한 없이 시터회원에게 지원할 수 있습니다.<br/>
 								</p>

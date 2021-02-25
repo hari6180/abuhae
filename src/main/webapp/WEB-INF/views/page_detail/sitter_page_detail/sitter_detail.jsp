@@ -88,7 +88,14 @@ jQuery(function($) {
 					</button>
 				<div class="profil_photo">
 				  <div class="profil_img">			  
-					<img src="<%=request.getContextPath()%>/assets/img/profile_Noimg.jpg" width="100%"/>
+					<c:choose>			  
+				  	<c:when test="${profile == null }">
+						<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="100%"/>				
+				  	</c:when>
+				  	<c:otherwise>
+				  		<img src="${profile.fileUrl}" width="100%"/>
+				  	</c:otherwise>
+				  </c:choose>
 				  </div>
 				</div> <!-- fin. profil_photo -->
 				<div class="profil_info">
@@ -1066,7 +1073,14 @@ jQuery(function($) {
 									<c:forEach var="item" items="${reput}" varStatus="status">
 									<li style="list-style:none;" >
 										<div class="talk_box_line" style="margin: 15px 0px;">
-											<img src="<%=request.getContextPath()%>/assets/img/chat_mom02.png" width="50" height="50"/>
+										  <c:choose>			  
+										  	<c:when test="${item.isProfile==''}">
+												<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="50" height="50"/>				
+										  	</c:when>
+										  	<c:otherwise>
+										  		<img src="${item.fileUrl}" width="50" height="50"/>
+										  	</c:otherwise>
+										  </c:choose>
 											<div class="talk_box_line_text">
 												<div class="talk_box_line_date_name">
 													${item.name}
@@ -1074,7 +1088,14 @@ jQuery(function($) {
 												</div>
 												<div class="talk_box_line_date_name">
 													<div style="color: #000; font-size: 0.8em; margin-right: 5px; font-weight: bold;">인터뷰 후기</div>
-													<div class="star_area">																						
+													<div class="star_area">	
+													<c:if test="${fn:contains(item.rev_rate,0)}">
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+													</c:if>																					
 													<c:if test="${fn:contains(item.rev_rate,1)}">
 														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>

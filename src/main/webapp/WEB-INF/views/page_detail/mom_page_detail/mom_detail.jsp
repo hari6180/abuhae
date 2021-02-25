@@ -86,8 +86,15 @@
 					<img src="<%=request.getContextPath()%>/assets/img/x-btn.jpg" width="28" height="28"/>
 				  </button>
 				<div class="profil_photo">
-				  <div class="profil_img">			  
-					<img src="<%=request.getContextPath()%>/assets/img/profile_Noimg.jpg" width="100%"/>				
+				  <div class="profil_img">
+				  <c:choose>			  
+				  	<c:when test="${profile == null }">
+						<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="100%"/>				
+				  	</c:when>
+				  	<c:otherwise>
+				  		<img src="${profile.fileUrl}" width="100%"/>
+				  	</c:otherwise>
+				  </c:choose>
 				  </div>
 				</div> <!-- fin. profil_photo -->
 				<div class="profil_info">
@@ -98,9 +105,7 @@
 					<div class="line"></div>
 					<div class="number">no.${output.momno}</div>
 				</div>
-				
 				<hr/>
-				
 				<div class="two_info_box">
 					<div class="two_info_area">
 						<div class="views_area">
@@ -203,7 +208,14 @@
 						<div class="active_area">
 							<div class="active_area_text">
 								<div class="active_area_profil">
-									<img src="<%=request.getContextPath()%>/assets/img/profile_Noimg.jpg" width="60" height="60" style="border-radius: 100%;"/>
+								  <c:choose>			  
+								  	<c:when test="${profile == null }">
+										<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="60" height="60" style="border-radius: 100%"/>				
+								  	</c:when>
+								  	<c:otherwise>
+								  		<img src="${profile.fileUrl}" width="60" height="60" style="border-radius: 100%"/>
+								  	</c:otherwise>
+								  </c:choose>
 								</div>
 								<c:if test="${output.frequency=='noplan'}">
 								<div class="active_area_text_box">
@@ -247,11 +259,8 @@
 										</div>
 									</div>
 								</div>
-							
 							</div>
-							
 							<div>
-							
 							<div class="col-xs-12">
 							<c:set var="theString" value="${output.days}" />
 							<c:if test="${fn:contains(theString, 'mon')==false}">
@@ -326,11 +335,8 @@
 								* 자세한 시간은 맘시터 회원과 매칭된 이후에 조율해요. 
 							</span>
 							</c:if>
-							
-							
 							<c:if test="${output.frequency=='noplan'}">
 							<c:set var="theString" value="${output.days}" />
-							
 								<div class="active_time_box">
 									<div class="partTime_line">
 										<div class="partTime">
@@ -346,7 +352,6 @@
 											<div class="time">18시 ~ 22시</div>
 										</div>
 									</div> <!-- fin. partTime_line -->
-									
 									<div class="partDay_line">
 										월
 										<c:if test="${fn:contains(theString, 'wek_morning')}">
@@ -892,7 +897,6 @@
 				<div class="fixed_area">
 					<div class="fixed_area_age">
 						<div class="fixed_name">
-							
 						</div>
 						<div class="fixed_age">
 							희망시급 <c:if test="${fn:contains(output.payment_ok,Y)}">(협의가능)</c:if>
@@ -903,10 +907,7 @@
 					</div>
 				</div> <!-- fin. fixed_area -->
 				<div class="fixed_btn">
-				
 					<div class="fixed_btn_jim">
-					
-					
 						<button id="swapHeart" class="btn btn-default swap" type="button" data-momno="${output.momno}">
 						    <span class="glyphicon glyphicon-heart-empty" style="color: rgb(0, 143, 105); font-size: 25px;"></span>
 						</button>					
@@ -922,7 +923,6 @@
 					</div>
 				</div>
 			</div> <!-- fin. fixed_box -->
-			
 				<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<!-- .modal-dialog -->
 					<div class="modal-dialog">
@@ -945,11 +945,6 @@
 					</div>
 					<!-- /.modal-dialog -->
 				</div>
-				<!-- /.modal -->		
-				
-			
-	
-		<!-- Javascript -->
-		
+				<!-- /.modal -->				
 	</body>
 </html>

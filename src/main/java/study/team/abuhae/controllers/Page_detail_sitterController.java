@@ -19,10 +19,12 @@ import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.ProfileFile;
 import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.DetailService;
 import study.team.abuhae.service.MemberService;
+import study.team.abuhae.service.UploadService;
 import study.team.abuhae.service.impl.SitterMypageServiceImpl;
 
 @Controller
@@ -35,6 +37,8 @@ public class Page_detail_sitterController {
 	MemberService memberService;
 	@Autowired
 	SitterMypageServiceImpl sitterMypageService;
+	@Autowired
+	UploadService uploadService;
 	
 	@Autowired
 	WebHelper webHelper;
@@ -53,6 +57,9 @@ public class Page_detail_sitterController {
 		input.setSitterno(sitterno);
 		Sitter_info count = new Sitter_info();
 		count.setSitterno(sitterno);
+		ProfileFile input2 = new ProfileFile();
+		
+		input2.setSitterno(sitterno);
 		
 		Review rev = new Review();
 		rev.setSitterno(sitterno);
@@ -66,6 +73,7 @@ public class Page_detail_sitterController {
 
 		// 조회결과를 저장할 객체 선언 
 		Sitter_info output = null;
+		ProfileFile output2 = null;
 		
 		int countput = 0;
 		
@@ -74,13 +82,14 @@ public class Page_detail_sitterController {
 			reput = detailService.getReviewList(rev);
 			output = detailService.getSitterItem(input);
 			countput = detailService.editSitter(input);
-			
+			output2 = uploadService.getProfileItem(input2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		model.addAttribute("output", output);
 		model.addAttribute("reput", reput);
+		model.addAttribute("profile", output2);
 		return new ModelAndView("/page_detail/sitter_page_detail/sitter_detail");
 		//return "/page_detail/sitter_page_detail/sitter_detail";
 	}
@@ -134,11 +143,11 @@ public class Page_detail_sitterController {
 				
 	if (mominfo.getSubscribe() == 'N') {
 		String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
-		return webHelper.redirect(redirectUrl, "Interview no!!!!!!!!");
+		return webHelper.redirect(redirectUrl, "시터회원에게 지원하기 위해 이용권을 구매해주세요.");
 	}
 	detailService.addConnect(input);
 	String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
-	return webHelper.redirect(redirectUrl, "Interview OK!!!!!!!!");
+	return webHelper.redirect(redirectUrl, "인터뷰 지원이 완료되었습니다.");
 
 	} catch (Exception e) {
 		return webHelper.redirect(null, e.getLocalizedMessage());
