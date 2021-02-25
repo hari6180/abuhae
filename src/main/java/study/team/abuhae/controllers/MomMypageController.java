@@ -23,11 +23,13 @@ import study.team.abuhae.model.Coupon;
 import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.ProfileFile;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.AdminService;
 import study.team.abuhae.service.MomMypageService;
+import study.team.abuhae.service.UploadService;
 
 @Controller
 public class MomMypageController {
@@ -37,6 +39,8 @@ public class MomMypageController {
 	AdminService adminService;
 	@Autowired WebHelper webHelper;
 	@Autowired RegexHelper regexHelper;
+	@Autowired
+	UploadService uploadService;
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
@@ -46,19 +50,24 @@ public class MomMypageController {
 			@RequestParam(value = "momno") int momno) {
 		// 데이터 조회에 필요한 조건값 Beans에 저장
 		Mom_info input = new Mom_info();
+		ProfileFile input2 = new ProfileFile();
 		input.setMomno(momno);
+		input2.setMomno(momno);
 		
 		// 조회 결과를 저장할 객체 선언
 		Mom_info output = null;
+		ProfileFile output2 = null;
 		
 		try {
 			output = momMypageService.getMemberItem(input);
+			output2 = uploadService.getMomProfileItem(input2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		// View 처리 
 		model.addAttribute("output" ,output);
+		model.addAttribute("profile", output2);
 		
 		return new ModelAndView("mypage/mypage_mom/mom_mypage");
 	}
@@ -74,8 +83,24 @@ public class MomMypageController {
 	
 	/** 내 구인 현황 페이지 */
 	@RequestMapping(value = "/mypage/mypage_mom/get_sitter_mpm.do", method = RequestMethod.GET)
-	public ModelAndView get_sitter(Model model) {
-
+	public ModelAndView get_sitter(Model model, HttpSession session,
+			@RequestParam(value = "momno", defaultValue = "0") int momno) {
+		Connect input = new Connect();
+		input.setMomno(momno);
+		
+		List<Connect> output = null;
+		List<Connect> output2 = null;
+		
+		try {
+			output = momMypageService.getMomInputApplyList(input);
+			output2 = momMypageService.getMomOutputApplyList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		/** Veiw 처리 */
+		model.addAttribute("in", output);
+		model.addAttribute("out", output2);
 		
 		return new ModelAndView("mypage/mypage_mom/get_sitter_mpm");
 	}

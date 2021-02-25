@@ -77,8 +77,14 @@
                                 <!--백엔드 연동 필요-->
                                 <div class="mpm_prof_info">
                                     <div class="mpm_info_left">
-                                        <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시 프로필사진"
-                                            style="width: 52px; border-radius: 50%;">
+                                        <c:choose>
+                                        	<c:when test="${profile == null }">
+                                        		<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" alt="임시 프로필사진">
+                                       		</c:when>
+                                       		<c:otherwise>
+                                       			<img alt="부모회원 프로필 이미지" src="${profile.fileUrl}" >
+                                       		</c:otherwise>
+                                        </c:choose>
                                         <div class="prof_info_cont">
                                             <div class="mom_info_dt">
                                                 <p class="info_mom" style="font-size: 1em;">${output.name }</p>
@@ -173,7 +179,7 @@
                     <section class="group3_mpm">
                         <div class="row">
                             <div class="col-xs-12 mpm_menu">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/get_sitter_mpm.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/get_sitter_mpm.do?momno=${login.momno}">
                                     <i class="fas fa-address-book mps_menu3_list1"></i>
                                     <p class="mps_menu3_list2">내 구인 현황</p>
                                     <i class="fas fa-angle-right mps_menu3_list3"></i>

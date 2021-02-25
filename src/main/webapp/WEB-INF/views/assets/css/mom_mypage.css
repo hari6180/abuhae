@@ -82,8 +82,8 @@ a:hover {
 
 .wrap_mpm .group2_mpm .mpm_info_left img {
   width: 52px;
-  background-color: #eee;
-  padding: 10px;
+  height: 52px;
+  border-radius: 56px;
 }
 
 .wrap_mpm .group2_mpm .prof_info_cont {

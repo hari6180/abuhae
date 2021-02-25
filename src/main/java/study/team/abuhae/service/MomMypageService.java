@@ -20,6 +20,12 @@ public interface MomMypageService {
 	/** 리뷰 수정 기능(사용자 페이지에서는 리뷰 입력 기능으로 보임) */
 	public int editReview(Review input) throws Exception;
 	
+	/** 내가 신청한 시터회원 목록 조회 */
+	public List<Connect> getMomOutputApplyList(Connect input) throws Exception;
+	
+	/** 내게 신청한 시터회원 목록 조회 */
+	public List<Connect> getMomInputApplyList(Connect input) throws Exception;
+	
 	/** 리뷰 작성할 수 있는 회원 목록 조회 */
 	public List<Review> getReviewMemberList(Review input) throws Exception;
 	

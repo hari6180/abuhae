@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -70,92 +71,79 @@
                                 <div class="gs_tab_panel">
                                     <!-- 내가 지원한 -->
                                     <div class="gs_tab_page" id="gs_tab_page_1">
-                                        <div class="gs_appl">
-                                            <div class="appl_img">
-                                                <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-                                            </div>
-                                            <div class="gs_appl_cont">
-                                                <p class="si_name">김○선 <span>(20세)</span></p>
-                                                <p>희망시급:10,000원</p>
-                                                <p>지원시간:2020.12.21 16:27</p>
-                                                <div class="deny">
-                                                    <p>아쉽게도 시터가 3시간 내에 응답을 주지 못했습니다.
-                                                        <br>다른 시터에게 신청을 시작해보세요.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                        
-                                        <div class="gs_appl">
-                                            <div class="appl_img">
-                                                <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-                                            </div>
-                                            <div class="gs_appl_cont">
-                                                <p class="si_name">전○리 <span>(64세)</span></p>
-                                                <p>희망시급:11,000원</p>
-                                                <p>지원시간:2020.12.25 17:07</p>
-                                                <div class="success">
-                                                    <p>
-                                                        시터와 연결이 되었습니다. <br>
-                                                    아래의 번호로 연락하여 인터뷰 시간을 조율할 수 있습니다.
-                                                    </p>
-                                                    <p class="si_phone"><mark>시터 번호 : 01012345678</mark></p>
-                                                    <span>※ 아부해는 인터뷰 이후의 상황에 대하여 책임지지 않습니다.</span> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                       
-                                        <div class="gs_appl">
-                                            <div class="appl_img">
-                                                <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-                                            </div>
-                                            <div class="gs_appl_cont">
-                                                <p class="si_name">전○리 <span>(64세)</span></p>
-                                                <p>희망시급:11,000원</p>
-                                                <p>지원시간:2020.12.25 17:07</p>
-                                                <div class="deny">
-                                                    <p>거절내용 : 차량픽업은 가능하나 저희 집에서 너무 머네요...</p>
-                                                    <p>응답시간 : 2020.10.27 07:40</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                          
+                                        <c:choose>
+                                        	<c:when test="${out == null }">
+                                        		<p>내가 지원한 회원 목록이 없습니다.</p>
+                                        	</c:when>
+                                        	<c:otherwise>
+                                        		<c:forEach var="out" items="${out}" varStatus="status">
+                                        			<div class="gs_appl">
+			                                            <div class="appl_img">
+			                                                <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
+			                                            </div>
+			                                            <div class="gs_appl_cont">
+			                                                <p class="si_name">${out.name } <span>(${out.birthdate }세)</span></p>
+			                                                <p>희망시급:${out.payment }원</p>
+			                                                <p>지원시간:${out.applydate }</p>
+			                                                <c:if test="${out.accept == null }">
+			                                                	<div class="success">
+				                                                   <p>시터의 응답을 기다리고 있습니다.</p>
+				                                                </div>
+			                                                </c:if>
+			                                                <c:if test="${out.accept == 'Y' }">
+			                                                	<div class="deny">
+				                                                    <p>아쉽게도 시터가 3시간 내에 응답을 주지 못했습니다.
+				                                                        <br>다른 시터에게 신청을 시작해보세요.
+				                                                    </p>
+				                                                </div>
+			                                                </c:if>
+			                                                <c:if test="${out.accept == 'N' }">
+			                                                	<div class="success">
+				                                                    <p>
+				                                                        시터와 연결이 되었습니다. <br>
+				                                                    아래의 번호로 연락하여 인터뷰 시간을 조율할 수 있습니다.
+				                                                    </p>
+				                                                    <p class="si_phone"><mark>시터 번호 : ${out.phone }</mark></p>
+				                                                    <span>※ 아부해는 인터뷰 이후의 상황에 대하여 책임지지 않습니다.</span> 
+				                                                </div>
+			                                                </c:if>
+			                                            </div>
+			                                        </div> 
+                                        		</c:forEach>
+                                        	</c:otherwise>
+                                        </c:choose>                                          
                                     </div>
                                     <!-- end 내가 지원한 -->
 
                                     <!-- 내게 신청한-->
                                     <div class="gs_tab_page hide" id="gs_tab_page_2" class="hide">
-                                        <div class="gs_appl">
-                                            <div class="appl_img">
-                                                <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-                                            </div>
-                                            <div class="gs_appl_cont">
-                                                <p class="si_name">김○선 <span>(20세)</span></p>
-                                                <p>희망시급:10,000원</p>
-                                                <p>지원시간:2020.12.21 16:27</p>
-                                                <div class="deny">
-                                                    <p>시터에게 내 거절의사를 전달했습니다.</p>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                        <div class="gs_appl">
-                                            <div class="appl_img">
-                                                <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-                                            </div>
-                                            <div class="gs_appl_cont">
-                                                <p class="si_name">김○선 <span>(20세)</span></p>
-                                                <p>희망시급:10,000원</p>
-                                                <p>지원시간:2020.12.21 16:27</p>
-                                                <div class="success">
-                                                    <p>
-                                                        시터와 연결이 되었습니다. <br>
-                                                    아래의 번호로 연락하여 인터뷰 시간을 조율할 수 있습니다.
-                                                    </p>
-                                                    <p class="si_phone"><mark>시터 번호 : 01012345678</mark></p>
-                                                    <span>※ 아부해는 인터뷰 이후의 상황에 대하여 책임지지 않습니다.</span> 
-                                                </div>
-                                            </div>
-                                        </div> 
+                                        <c:choose>
+                                        	<c:when test="${in == null }">
+                                        		<p>내게 신청한 회원이 없습니다.</p>
+                                        	</c:when>
+                                        	<c:otherwise>
+                                        		<c:forEach var="in" items="${in }" varStatus="status">
+                                        			<div class="gs_appl">
+			                                            <div class="appl_img">
+			                                                <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
+			                                            </div>
+			                                            <div class="gs_appl_cont">
+			                                                <p class="si_name">${in.name } <span>(${in.birthdate }세)</span></p>
+			                                                <p>희망시급:${in.payment}원</p>
+			                                                <p>지원시간:${in.applydate }</p>
+			                                                <c:if test="${in.accept == 'N' }">
+			                                                	<div class="deny">
+			                                                    	<p>시터에게 내 거절의사를 전달했습니다.</p>
+			                                                	</div>
+			                                                </c:if>
+			                                                <c:if test="${in.accept == 'Y' }">
+			                                                	
+			                                                </c:if>
+			                                            </div>
+			                                        </div> 
+                                        		</c:forEach>
+                                        	</c:otherwise>
+                                        </c:choose>
                                     </div>
                                     <!-- end 내게 신청한-->
                                 </div>
