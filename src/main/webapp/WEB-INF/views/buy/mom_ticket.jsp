@@ -26,24 +26,96 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 	<!-- animaition 적용-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
 	<!--section-->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/section.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/section.css"/>
 	<!-- css 적용 -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mom_ticket.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mom_ticket.css"/>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<!--slick slider-->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js"></script>
+    <!-- sweetalert 사용 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<!-- Javascript -->
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				let tktype = '3';
 	
+				$( "#button1" ).click( function() {
+					$('#button1').css({
+						"border": "2px solid #79ccff",
+						"background-color": "#fff",
+						"border-radius": "8px"
+					});
+					$('#button2').css({
+						"border": "none",
+						"background-color": "#fff"		
+					});
+					$('#button3').css({
+						"border": "none",
+						"background-color": "#fff"		
+					});
+					tktype = $(this).data("tktype");
+					console.log(tktype);
+				});
+				
+				$( "#button2" ).click( function() {
+					$('#button2').css({
+						"border": "2px solid #79ccff",
+						"background-color": "#fff",
+						"border-radius": "8px"
+					});
+					$('#button1').css({
+						"border": "none",
+						"background-color": "#fff"		
+					});
+					$('#button3').css({
+						"border": "none",
+						"background-color": "#fff"		
+					});
+					tktype = $(this).data("tktype");
+					console.log(tktype);
+				});
+				
+				$( "#button3" ).click( function() {
+					$('#button3').css({
+						"border": "2px solid #79ccff",
+						"background-color": "#fff",
+						"border-radius": "8px"
+					});
+					$('#button1').css({
+						"border": "none",
+						"background-color": "#fff"		
+					});
+					$('#button2').css({
+						"border": "none",
+						"background-color": "#fff"		
+					});
+					tktype = $(this).data("tktype");
+					console.log(tktype);
+				});
+
+				$('#buy_apply').click(function(e) {
+					e.preventDefault();
+					window.location = "${pageContext.request.contextPath}/buy/receipt.do?tktype=" + tktype + "&memberno=" + ${login.memberno};
+				});
+			});
+		</script>
+
 </head>
 
 <body>
 	<div id="app">
 		<div class="container">
-		        <div id="menu">
+			<div id="menu">
+
           <c:if test="${isLogin ==true }">
             <c:choose>
               <c:when test="${fn:contains(loginType, 'M')}"> <%@ include file="../index_header_login_mom.jsp"%> </c:when>
               <c:when test="${fn:contains(loginType, 'S')}"> <%@ include file="../index_header_login_sitter.jsp"%> </c:when>
             </c:choose>
           </c:if>
-          <c:if test="${isLogin == null }"> <%@ include file="../index_header.jsp"%> </c:if>
-        </div>
+
+				</div>
 			<div class="mom_buy_area col-xs-12">
 				<div class="mom_buy_area">
 					<div class="mom_buy_title">
@@ -209,78 +281,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 					<div style="width: 100%; height: 40px;"></div>
 				</div>
 			</div> 
-			
 		</div>
 	</div>
-	<!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(function() {
-			let tktype = '3';
-
-			$( "#button1" ).click( function() {
-				$('#button1').css({
-					"border": "2px solid #79ccff",
-					"background-color": "#fff",
-					"border-radius": "8px"
-				});
-				$('#button2').css({
-					"border": "none",
-					"background-color": "#fff"		
-				});
-				$('#button3').css({
-					"border": "none",
-					"background-color": "#fff"		
-				});
-				tktype = $(this).data("tktype");
-				console.log(tktype);
-			});
-			
-			$( "#button2" ).click( function() {
-				$('#button2').css({
-					"border": "2px solid #79ccff",
-					"background-color": "#fff",
-					"border-radius": "8px"
-				});
-				$('#button1').css({
-					"border": "none",
-					"background-color": "#fff"		
-				});
-				$('#button3').css({
-					"border": "none",
-					"background-color": "#fff"		
-				});
-				tktype = $(this).data("tktype");
-				console.log(tktype);
-			});
-			
-			$( "#button3" ).click( function() {
-				$('#button3').css({
-					"border": "2px solid #79ccff",
-					"background-color": "#fff",
-					"border-radius": "8px"
-				});
-				$('#button1').css({
-					"border": "none",
-					"background-color": "#fff"		
-				});
-				$('#button2').css({
-					"border": "none",
-					"background-color": "#fff"		
-				});
-				tktype = $(this).data("tktype");
-				console.log(tktype);
-			});
-
-			
-			$('#buy_apply').click(function(e) {
-				e.preventDefault();
-				window.location = "${pageContext.request.contextPath}/buy/receipt.do?tktype=" + tktype + "&memberno=" + ${login.memberno};
-			});
-		});
-	</script>
-	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-	<!--slick slider-->
-	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js"></script>
 </body>
 </html>

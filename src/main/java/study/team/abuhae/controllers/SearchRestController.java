@@ -4,8 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +28,7 @@ import study.team.abuhae.service.UploadService;
 
 @Slf4j
 @RestController
+
 public class SearchRestController {
 	/** WebHelper 주입 */
 	// --> import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +65,8 @@ public class SearchRestController {
 			@RequestParam(value = "gu", required = false) String gu,
 			@RequestParam(value = "dong", required = false) String dong
 			) {
-
+		
+		
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수

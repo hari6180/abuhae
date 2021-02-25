@@ -1063,7 +1063,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         const caredays = []; // 돌봄 요일
         const time_range = []; // 돌봄 시간대
         const sitter_type = []; // 맘시터 유형
-        const sitter_age = []; // 시터나이
+        const want_age = []; // 시터나이
 
         // 아이나이 버튼 클릭
         $(".ages").click(function (e) {
@@ -1132,15 +1132,18 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           }
           console.log(sitter_type);
         });
+
         // 맘시터 나이대 체크박스
-        $("input[name=want_age].checked").each(function (e) {
-          sitter_age.push($(this).val());
+        $("input[name=want_age]:checked").each(function () {
+          var chk = $(this).val();
+          want_age.push(chk);
         });
 
         $("#detail_apply").click(function (e) {
           e.preventDefault();
           $("#sitter_search_detail_modal").modal("hide");
           // 검색 조건은 GET 파라미터로 전송한다.
+          console.log(want_age);
           $.get(
             "${pageContext.request.contextPath}/search/sitter_search",
             {
@@ -1148,7 +1151,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               caredays: caredays,
               time_range: time_range,
               sitter_type: sitter_type,
-              sitter_age: sitter_age,
+              sitter_age: want_age,
             },
             function (json) {
               var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기

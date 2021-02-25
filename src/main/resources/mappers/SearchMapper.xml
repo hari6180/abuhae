@@ -164,15 +164,11 @@
 				</foreach>
 			</if>
 			<if test="sitterAge != null">
-				AND LEFT(CONCAT(FLOOR(
-				(CAST(REPLACE(current_date,'-','') AS
-				unsigned) -
-				CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 +
-				2),1))
+				AND <![CDATA[TRUNCATE(birthdate/10, -1)]]>
 				IN
 				<foreach item="item6" collection="sitterAge" open="("
 					close=")" separator=",">
-					LEFT(CONCAT(${item6},1))
+					LEFT(${item6},1)
 				</foreach>
 			</if>
 			<if test="loc1 != null">

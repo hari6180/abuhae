@@ -169,6 +169,7 @@ button {
   line-height: 12px;
   text-align: center;
   color: #434343;
+  height: 32px;
 }
 
 .activity_type_wrap input[type="checkbox"] + label:before {
