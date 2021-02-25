@@ -31,14 +31,13 @@ public interface DetailService {
 	//public Mom_info SelectReport(Mom_info momput) throws Exception;
 	
 	// 찜하기
-		public int addHeart(Heart input) throws Exception;
+	public int addHeart(Heart input) throws Exception;
 		
 	// 찜하기 취소
 	public int deleteHeart(Heart input) throws Exception;
 	
 	// 찜 여부 조회(찜 버튼용)
 	public int findHeart(Heart input) throws Exception;
-
 	
 	public int addConnect(Connect input) throws Exception;
 	
@@ -48,7 +47,10 @@ public interface DetailService {
 	//시터회원 회원 조회
 	public Sitter_info getSitterMember(Sitter_info input) throws Exception;
 	
-	/** 남겨진 리뷰 조회 */
+	// 리뷰 최근 3개만 조회
 	public List<Review> getReviewList(Review input) throws Exception;
+	
+	// 리뷰 전체 조회
+	public List<Review> getReviewListTotal(Review input) throws Exception;
 
 }

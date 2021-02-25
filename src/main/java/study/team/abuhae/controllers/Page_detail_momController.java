@@ -68,7 +68,8 @@ public class Page_detail_momController {
 		// 맘 상세페이지 > 인터뷰 페이지
 		@RequestMapping(value = "/page_detail/mom_interview.do", method = RequestMethod.GET)
 		public ModelAndView mom_interview(Model model,
-				@RequestParam(value = "momno", defaultValue = "0") int momno) {
+				@RequestParam(value = "momno", defaultValue = "0") int momno,
+				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 			
 			// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 			Mom_info input = new Mom_info();
@@ -77,15 +78,23 @@ public class Page_detail_momController {
 			// 조회결과를 저장할 객체 선언 
 			Mom_info output = null;
 			
+			Sitter_info siput = new Sitter_info();
+			input.setMomno(sitterno);
+			
+			// 조회결과를 저장할 객체 선언 
+			Sitter_info sioutput = null;
+			
 			try {
 				// 데이터 조회 
 				output = detailService.getMomItem(input);
+				sioutput = detailService.getSitterItem(siput);
 			
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
 			model.addAttribute("output", output);
+			model.addAttribute("sioutput", sioutput);
 			return new ModelAndView("/page_detail/mom_page_detail/mom_interview");
 			//return "/page_detail/mom_page_detail/mom_interview";
 	}

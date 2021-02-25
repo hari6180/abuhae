@@ -45,6 +45,8 @@
 		<result property="memberno" column="memberno" />
 		<result property="signup_date" column="signup_date" />
 		<result property="heartno" column="heartno" />
+		<result property="schedule_start_date" column="schedule_start_date" />
+		<result property="findHt" column="findHt" />
 	</resultMap>
 
 	<resultMap id="SitterMap"
@@ -76,7 +78,8 @@
 		<result property="cntno" column="cntno" />
 		<result property="favorite_act" column="favorite_act" />
 		<result property="view" column="view" />
-		<result property="schedule_start" column="schedule_start" />
+		<result property="schedule_start_date" column="schedule_start_date" />
+		<result property="findHt" column="findHt" />
 	</resultMap>
 	
 	<resultMap type="study.team.abuhae.model.Report" id="ReportMap">
@@ -107,6 +110,17 @@
 		<result property="deny_type" column="deny_type"/>					
 	</resultMap>
 	
+	<resultMap type="study.team.abuhae.model.Review" id="ReviewMap">
+		<result property="revno" column="revno"/>	
+		<result property="reg_date" column="reg_date"/>	
+		<result property="who" column="who"/>	
+		<result property="momno" column="momno"/>	
+		<result property="sitterno" column="sitterno"/>	
+		<result property="rev_rate" column="rev_rate"/>	
+		<result property="contents" column="contents"/>	
+		<result property="name" column="name"/>					
+	</resultMap>
+	
 	<!-- 시터 상세페이지 -->
 	<select id="selectItem" parameterType="study.team.abuhae.model.Sitter_info"
 		resultMap="SitterMap">
@@ -115,12 +129,12 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, want_age,
+		AS birthdate, want_age, 
 		job_opening, s.sitterno, sitter_type, want_act1, want_act2, want_act3, gender, introduce,
 		si, gu, dong, favorite_act, signup_date, view, 
 		json_extract(schedule, '$.startdate') AS schedule,
-		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
-		REPLACE(json_extract(schedule, '$.startdate'),'"','') AS schedule_start,
+		REPLACE(json_extract(schedule, '$.workterm'),'"','') AS workterm,
+		REPLACE(json_extract(schedule, '$.startdate'),'"','') AS schedule_start_date,
 		REPLACE(json_extract(schedule, '$.day'),'"','') AS days,
 		<!-- CONCAT(LEFT(payment,2), ',', RIGHT(payment,3)) AS -->
 		payment, cctv, answer, CASE
@@ -137,8 +151,12 @@
 		openingdate, (SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_count,
 		(SELECT COUNT(heartno) FROM heart h WHERE s.sitterno=h.sitterno AND who='M') AS heartno,
 		(SELECT COUNT(cntno) FROM connect c WHERE c.sitterno=s.sitterno AND accept='Y') AS cntno,
-		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate,
 		(SELECT DATE_FORMAT(signup_date, "%Y년 %m월 %d일") FROM member m WHERE s.memberno=m.memberno) AS signup
+		<if test = "loginMom != 0">,
+		(SELECT
+		COUNT(*)
+		FROM heart h WHERE s.sitterno=h.sitterno AND
+		who='M' AND h.momno=#{loginMom}) AS findHt</if>
 		FROM sitter_info s
 		INNER JOIN member m ON s.memberno=m.memberno
 		<where>
@@ -154,10 +172,11 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, momno, want_age, kids_num,
+		AS birthdate, momno, want_age, kids_num, interview_type,
 		json_extract(schedule, '$.startdate') AS schedule,
 		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
-		REPLACE(json_extract(schedule, '$.day'),'"','') AS days, schedule_ok,
+		REPLACE(json_extract(schedule, '$.startdate'),'"','') AS schedule_start_date,
+		REPLACE(json_extract(schedule, '$.day'),'"','') AS days,
 		job_opening, want_act1, want_act2, want_act3, apply_content, apply_title,
 		si, gu, dong, signup_date, description, sitter_gender, care_type, 
 		payment, payment_ok,
@@ -165,6 +184,10 @@
 		 startdate,
 		(SELECT COUNT(heartno) FROM heart h WHERE m.momno=h.momno AND who='S') AS heartno,
 		(SELECT COUNT(cntno) FROM connect c WHERE c.momno=m.momno AND who='S') AS cntno
+		<if test = "loginSt != 0">, (SELECT
+		COUNT(*)
+		FROM heart h WHERE m.momno=h.momno AND
+		who='S'AND h.sitterno=#{loginSt}) AS findHt</if>
 		FROM mom_info m
 		INNER JOIN member b ON m.memberno=b.memberno
 		<where>
@@ -213,7 +236,7 @@
 		VALUES (#{who}, #{type}, #{momno}, #{sitterno} ,#{contents}, now());
 	</insert>
 	
-	<!-- 신고하기 test -->
+	<!-- 신고하기 -->
 	<select id="selectMonReport" parameterType="study.team.abuhae.model.Mom_info"
 		resultMap="MomMap">
 		SELECT reportno, m.momno 
@@ -231,64 +254,33 @@
 		VALUES (now(), #{who}, #{momno}, #{sitterno});
 	</insert>
 	
-	<!-- 리뷰 -->
-	<select id="selectReview" parameterType="study.team.abuhae.model.Sitter_info"
-		resultMap="SitterMap">
-		SELECT revno, rev_rate, reg_date, contents, momno, r.sitterno 
-			FROM review r
-		INNER JOIN sitter_info s ON s.sitterno=r.sitterno
-		<where>
-			s.sitterno=#{sitterno}
-		</where>
-	</select>
+	<!-- 리뷰 최근날짜로 3개만 출력 -->
+	<select id="ReviewList" parameterType="study.team.abuhae.model.Review"
+		resultMap="ReviewMap">
+		select mi.si, mi.gu, mi.dong, rev_rate, reg_date, contents, r.momno as momno, r.sitterno as sitterno, r.who,
+		CONCAT(LEFT(name,1), 'O', RIGHT(name,1)) AS
+		name 
+		from review r
+		inner join sitter_info s on s.sitterno = r.sitterno
+		inner join mom_info mi on mi.momno = r.momno
+		inner join member m on m.memberno = mi.memberno		
+		where s.sitterno=#{sitterno}
+		ORDER BY reg_date DESC
+		limit 3
+	</select> 
+	
+	<!-- 리뷰 전체 출력 -->
+	<select id="ReviewListTotal" parameterType="study.team.abuhae.model.Review"
+		resultMap="ReviewMap">
+		select mi.si, mi.gu, mi.dong, rev_rate, reg_date, contents, r.momno as momno, r.sitterno as sitterno, r.who,
+		CONCAT(LEFT(name,1), 'O', RIGHT(name,1)) AS
+		name
+		from review r
+		inner join sitter_info s on s.sitterno = r.sitterno
+		inner join mom_info mi on mi.momno = r.momno
+		inner join member m on m.memberno = mi.memberno		
+		where s.sitterno=#{sitterno}
+		ORDER BY reg_date DESC
+	</select> 
 		
-	<!-- 활동 유형 && 상세 검색
-      <where>
-         <if test="actList != null">
-            want_act1 || want_act2 || want_act3 in
-            <foreach item="item1" collection="actList" open="("
-               close=")" separator=",">
-               #{item1}
-            </foreach>
-         </if>
-         <if test="kidsAge != null">
-            AND want_age IN
-            <foreach item="item2" collection="kidsAge" open="("
-               close=")" separator=",">
-               #{item2}
-            </foreach>
-         </if>
-         <if test="caredays != null">
-         AND JSON_CONTAINS(schedule_set->'$.day',CAST('
-            <foreach item="item3" collection="caredays" open="["
-               close="]" separator=",">
-               "${item3}"
-            </foreach>
-            ' AS JSON))
-         </if>
-
-         <if test="sitterType != null">
-            AND sitter_type IN
-            <foreach item="item5" collection="sitterType" open="("
-               close=")" separator=",">
-               #{item5}
-            </foreach>
-         </if>
-         <if test="sitterAge != null">
-            AND FLOOR(
-      (CAST(REPLACE(current_date,'-','') AS
-      unsigned) -
-      CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-       IN
-            <foreach item="item6" collection="sitterAge" open="("
-               close=")" separator=",">
-               ${item6}
-            </foreach>
-         </if>
-      </where>
-       -->
-
-		
-		
-
 </mapper>

@@ -42,7 +42,7 @@
 						</button>
 					</div> <!-- fin. x_btn_area -->
 					<div class="header_text_area col-xs-12">
-						<span class="header_text">아래 내용으로 지원하시겠습니까?</span>
+						<span class="header_text">인터뷰 지원 유의사항</span>
 					</div> <!-- fin. header_text_area -->
 				</div> <!-- fin. siren_header -->
 				<div class="main">
@@ -51,19 +51,17 @@
 						<div class="info_text_box">
 							<div class="info_text">
 								<div class="siren_body_profil">
-								<img width="80" height="80" src="<%=request.getContextPath()%>/assets/img/chat_mom.png" />
-								<br/>
+								<p style="padding-bottom: 10px;">
+									 인터뷰 지원 후 맘회원의 답변을 기다려 주세요.<br/>
+									 매일 낮 12시에 다시 인터뷰 지원을 할 수 있습니다.<br/>
+									인터뷰 지원권을 구매하면, 제한 없이 맘회원에게 지원할 수 있습니다.<br/>
+								</p>
+								<div class="desc">
+								<span style="color: red;"><i class="fas fa-exclamation-circle"></i></span> 지원하기를 누르면 내 프로필이 맘회원에게 바로 전송되니 신중하게 지원해주시길 바랍니다.
+								</div>
 								<span class="interview_info">
-									100일전 작성
-									<br/>
-									${output.si}&nbsp;${output.gu}
-									<br/>
-									희망시급 <fmt:formatNumber value="${output.payment}" pattern="#,###" />원
 								</span>
 								<div class="btn_area">
-								<button type="button" class="btn" onclick = "location.href='${pageContext.request.contextPath}/mypage/mypage_sitter/mom_mypage.do?momno=${output.momno}';">
-									<span class="btn_text">수정</span>
-								</button>
 								</div> <!-- fin. btn_area -->
 								</div> <!-- fin. siren_body_profil -->
 							</div>
@@ -71,9 +69,6 @@
 					</div>
 				</div> <!-- fin. info_box -->
 				<div class="desc_box">
-					<div class="desc">
-						<span style="color: red;"><i class="fas fa-exclamation-circle"></i></span> 지원하기를 누르면 내 프로필이 맘회원에게 바로 전송되니 신중하게 지원해주시길 바랍니다.
-					</div>
 					<button type="submit" class="btn btn-block" id="btn_interview">
 						<span class="btn_interview">인터뷰 신청하기</span>
 					</button>

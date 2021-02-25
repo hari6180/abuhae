@@ -53,10 +53,16 @@ public class Page_detail_sitterController {
 		input.setSitterno(sitterno);
 		Sitter_info count = new Sitter_info();
 		count.setSitterno(sitterno);
-		Review review = new Review();
-		review.setSitterno(sitterno);
+		
+		Review rev = new Review();
+		rev.setSitterno(sitterno);
 		
 		List<Review> reput = null;
+		
+		/*Sitter_info review = new Sitter_info();
+		review.setSitterno(sitterno);
+		
+		List<Sitter_info> reput = null; */
 
 		// 조회결과를 저장할 객체 선언 
 		Sitter_info output = null;
@@ -65,7 +71,7 @@ public class Page_detail_sitterController {
 		
 		try {
 			// 데이터 조회 
-			reput = detailService.getReviewList(review);
+			reput = detailService.getReviewList(rev);
 			output = detailService.getSitterItem(input);
 			countput = detailService.editSitter(input);
 			
@@ -105,39 +111,76 @@ public class Page_detail_sitterController {
 		//return "/page_detail/sitter_page_detail/sitter_interview";
 	}
 	
-			// 시터 상세페이지 > 인터뷰하기
-			@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_interview_ok.do", method = RequestMethod.POST)
-			public ModelAndView interview_sitter_ok(Model model,
-					HttpServletResponse response, 
-					@RequestParam(value = "who", required = false) String who,
-					@RequestParam(value = "momno", required = false) int momno,
-					@RequestParam(value = "sitterno", required = false) int sitterno) {
+	// 시터 상세페이지 > 인터뷰하기
+	@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_interview_ok.do", method = RequestMethod.POST)
+	public ModelAndView interview_sitter_ok(Model model,
+	HttpServletResponse response, 
+	@RequestParam(value = "who", required = false) String who,
+	@RequestParam(value = "momno", required = false) int momno,
+	@RequestParam(value = "sitterno", required = false) int sitterno) {
+	
+	Connect input = new Connect();
+	Mom_info momput = new Mom_info();
+	input.setWho(who);
+	input.setMomno(momno);
+	input.setSitterno(sitterno);
+	momput.setMomno(momno);
+	
+	Mom_info mominfo = null;
+	
+	
+	try {
+		mominfo = (Mom_info) memberService.getMomMember(momput);
 				
-				Connect input = new Connect();
-				Mom_info momput = new Mom_info();
-				input.setWho(who);
-				input.setMomno(momno);
-				input.setSitterno(sitterno);
-				momput.setMomno(momno);
-				
-				Mom_info mominfo = null;
-				
-				
-				try {
-					mominfo = (Mom_info) memberService.getMomMember(momput);
-							
-				if (mominfo.getSubscribe() == 'N') {
-					String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
-					return webHelper.redirect(redirectUrl, "Interview no!!!!!!!!");
-				}
-				detailService.addConnect(input);
-				String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
-				return webHelper.redirect(redirectUrl, "Interview OK!!!!!!!!");
+	if (mominfo.getSubscribe() == 'N') {
+		String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
+		return webHelper.redirect(redirectUrl, "Interview no!!!!!!!!");
+	}
+	detailService.addConnect(input);
+	String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
+	return webHelper.redirect(redirectUrl, "Interview OK!!!!!!!!");
+
+	} catch (Exception e) {
+		return webHelper.redirect(null, e.getLocalizedMessage());
+	}
+	
+	
+	}
+			
+	// 시터 상세페이지 > 후기 더보기
+	@RequestMapping(value = "/page_detail/tab_more.do", method = RequestMethod.GET)
+	public String tab_more(Model model, HttpServletResponse response,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		
-				} catch (Exception e) {
-					return webHelper.redirect(null, e.getLocalizedMessage());
-				}
-				
-				
-				}
+		// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
+		Sitter_info input = new Sitter_info();
+		input.setSitterno(sitterno);
+		Sitter_info count = new Sitter_info();
+		count.setSitterno(sitterno);
+		
+		Review rev = new Review();
+		rev.setSitterno(sitterno);
+		
+		List<Review> reput = null;
+
+		// 조회결과를 저장할 객체 선언 
+		Sitter_info output = null;
+		
+		int countput = 0;
+		
+		try {
+			// 데이터 조회 
+			reput = detailService.getReviewListTotal(rev);
+			output = detailService.getSitterItem(input);
+			countput = detailService.editSitter(input);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output", output);
+		model.addAttribute("reput", reput);
+
+		return "/page_detail/sitter_page_detail/tab_more";
+	}
 }

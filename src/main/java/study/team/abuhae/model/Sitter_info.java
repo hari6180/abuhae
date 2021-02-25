@@ -54,8 +54,7 @@ public class Sitter_info extends Member {
 	
 	// 인터뷰 구독권 여부에 필요한 JOIN - 2021 지우 
 	private char subscribe;
-	private String schedule_start;
-	private String frequency;
+	private String schedule_start_date;
 	//회원 상세 페이지 조회에 따른 항목 추가 - 0224 선아
 	private String workterm;
 	

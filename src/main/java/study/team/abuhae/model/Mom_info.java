@@ -77,6 +77,8 @@ public class Mom_info extends Member {
 	// 시터 로그인 여부 확인 (for 찜)
 	private static int loginSt;
 	
+	// 맘 스케쥴 시작시간 - 2023 지우 
+	private String schedule_start_date;
 	
 	
 	public static String[] getAct() {

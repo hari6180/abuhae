@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Heart;
 import study.team.abuhae.service.DetailService;
+import study.team.abuhae.service.SearchService;
 
 @Slf4j
 @RestController
@@ -26,6 +27,9 @@ public class Page_DetailRestController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	DetailService detailService;
+	/** Service 패턴 구현체 주입 */
+	@Autowired
+	SearchService searchService;
 	
 	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -49,7 +53,7 @@ public class Page_DetailRestController {
 			heart.setWho('S');
 			try {
 
-				detailService.addHeart(heart);
+				searchService.addHeart(heart);
 
 			} catch (Exception e) {
 				return webHelper.getJsonError(e.getLocalizedMessage());
@@ -79,7 +83,7 @@ public class Page_DetailRestController {
 			heart.setSitterno(stno);
 			heart.setWho('S');
 			try {
-				detailService.deleteHeart(heart);
+				searchService.deleteHeart(heart);
 			} catch (Exception e) {
 				return webHelper.getJsonError(e.getLocalizedMessage());
 			}
@@ -109,7 +113,7 @@ public class Page_DetailRestController {
 				heart.setWho('M');
 				int findHt = 0;
 				try {
-					detailService.addHeart(heart);
+					searchService.addHeart(heart);
 				} catch (Exception e) {
 					return webHelper.getJsonError(e.getLocalizedMessage());
 				}
@@ -138,7 +142,7 @@ public class Page_DetailRestController {
 				heart.setSitterno(stno);
 				heart.setWho('M');
 				try {
-					detailService.deleteHeart(heart);
+					searchService.deleteHeart(heart);
 				} catch (Exception e) {
 					return webHelper.getJsonError(e.getLocalizedMessage());
 				}

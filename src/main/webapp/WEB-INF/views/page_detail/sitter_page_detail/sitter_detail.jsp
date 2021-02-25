@@ -28,94 +28,6 @@
 <!-- sweetalert 사용 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<style type="text/css">
-	.talk_box {
-					margin-bottom: 25px;
-				}
-				.talk_area {
-					position: relative;
-					padding: 15px;
-					border-radius: 3px;
-					background-color: #fff;
-				}
-				.talk_main {
-					width: 100%;
-				}
-				.talk_menu {
-					display: flex;
-					width: 100%;
-					-webkit-box-pack: justify;
-					-webkit-box-align: center;
-					justify-content: space-between;
-				}
-				
-				.talk_menu_ok_title {
-					color: rgb(255, 112, 0);
-					letter-spacing: -0.2px;
-					font-weight: bold;
-					line-height: 19px;
-					margin: 0;
-					padding: 0;
-					width: 100%;
-					font-size: 0.9em;
-				}
-				.talk_menu_review {
-					margin-left: 6px;
-				}
-				.talk_menu_review_title {
-					margin: 0px;
-					padding: 0px;
-					color: rgb(170, 170, 170);
-					letter-spacing: -0.2px;
-					line-height: 19px;
-					font-size: 0.9em;
-					width: 100%;
-					font-wwight: bold;
-				}
-				.talk_box_ea {
-					margin: 10px 0px;
-					padding: 5px 10px;
-				}
-				.talk_box_line {
-					display: flex;
-					margin-bottom: 15px;
-					align-items: flex-start;
-				}
-				.talk_box_line > img {
-					border-radius: 100%;
-				}
-				.talk_box_line_text {
-					padding-left: 15px;
-					width: 100%;
-					display: flex;
-					flex-direction: column;
-				}
-				.talk_box_line_date_name {
-					flex-direction: row;
-					align-items: center;
-					display: flex;
-				}
-				.talk_box_line_name {
-					font-size: 0.9em;
-					margin-right: 5px;
-					font-weight: bold;
-					color: #5c5c5c;
-				}
-				.talk_box_line_date {
-					color: #b6b6b6;
-					margin-left: 5px;
-					font-size: 0.8em;
-				}
-				.star_area {
-					margin-right: 10px;
-				}
-				.talk_box_talk {
-					display: flex;
-					align-items: center;
-					flex-direction: row;
-				}
-</style>
-
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/page_detail_for_sitter.css" />	
 <script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
@@ -129,28 +41,32 @@ jQuery(function($) {
         let sitterno = $(this).data("sitterno");
         let momno = $("#app").data("login");
 
-        // 찜할 때 alert창과 glyphicon변형
-        if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
-          $(this).find("span").removeClass("glyphicon-heart-empty");
-          $(this).find("span").addClass("glyphicon-heart");
-          $.get("${pageContext.request.contextPath}/heart/detail/insertSt", {
-            sitterno: sitterno,
-            momno: momno,
-            jjim: "Y",
-          });
-          swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+     // 찜할 때 alert창과 glyphicon변형
+        if (momno != "" || momno != 0) {
+          if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+            $(this).find("span").removeClass("glyphicon-heart-empty");
+            $(this).find("span").addClass("glyphicon-heart");
+            $.get("${pageContext.request.contextPath}/heart/detail/insertSt", {
+              sitterno: sitterno,
+              momno: momno,
+              jjim: "Y",
+            });
+            swal("찜 하기 완료!", "마이페이지 > 찜한 맘시터에서 확인할 수 있습니다.");
+          }
+          // 찜 취소할 때 alert창과 glyphicon변형
+          else {
+            $(this).find("span").addClass("glyphicon-heart-empty");
+            $.get("${pageContext.request.contextPath}/heart/detail/deleteSt", {
+              sitterno: sitterno,
+              momno: momno,
+              jjim: "N",
+            });
+            swal("찜 하기 취소");
+          }
+        } else {
+          swal("맘회원으로 가입 후 이용해주세요.");
         }
-        // 찜 취소할 때 alert창과 glyphicon변형
-        else {
-          $(this).find("span").addClass("glyphicon-heart-empty");
-          $.get("${pageContext.request.contextPath}/heart/detail/deleteSt", {
-            sitterno: sitterno,
-            momno: momno,
-            jjim: "N",
-          });
-          swal("찜 하기 취소");
-        }
-        }); // fin. 찜버튼 기능
+      }); // fin. 찜버튼 기능
 	}); 
  </script>
  <!-- jquery 파일명 수정 -->
@@ -167,12 +83,12 @@ jQuery(function($) {
 				            신고
 				  	</button>
 				</div>
-				  <button type="button" class="x_btn" onclick = "history.back() ">
+				  <button type="button" class="x_btn" onclick = "location.href='${pageContext.request.contextPath}';">
 						<img src="<%=request.getContextPath()%>/assets/img/x-btn.jpg" width="28" height="28"/>
 					</button>
 				<div class="profil_photo">
 				  <div class="profil_img">			  
-					<img src="<%=request.getContextPath()%>/assets/img/chat_mom03.jpg" width="100%"/>
+					<img src="<%=request.getContextPath()%>/assets/img/profile_Noimg.jpg" width="100%"/>
 				  </div>
 				</div> <!-- fin. profil_photo -->
 				<div class="profil_info">
@@ -395,15 +311,15 @@ jQuery(function($) {
 													<div class="schedule_box">
 														<div class="schedule_main">
 															<span id="schedule_text" style="color: #ff7000; font-weight: bold;"> 
-															${fn:split(output.schedule_start,'/')[0]}년 ${fn:split(output.schedule_start,'/')[1]}월 ${fn:split(output.schedule_start,'/')[2]}일 
+															${fn:split(output.schedule_start_date,'/')[0]}년 ${fn:split(output.schedule_start_date,'/')[1]}월 ${fn:split(output.schedule_start_date,'/')[2]}일 
 															 </span> 부터 일을 시작할 수 있어요.
 															<br/>
 															<span style="margin-left: 5px; font-weight: bold;">
 																이 일정으로
-															 <c:if test="${output.frequency=='1week'}"><span style="color: #ff7000;">1주일 이상</span></c:if>
-															 <c:if test="${output.frequency=='1month'}"><span style="color: #ff7000;">1개월 이상</span></c:if>
-															 <c:if test="${output.frequency=='3month'}"><span style="color: #ff7000;">3개월 이상</span></c:if>
-															 <c:if test="${output.frequency=='36month'}"><span style="color: #ff7000;">6개월 이상</span></c:if>
+															 <c:if test="${output.workterm=='1week'}"><span style="color: #ff7000;">1주일 이상</span></c:if>
+															 <c:if test="${output.workterm=='1month'}"><span style="color: #ff7000;">1개월 이상</span></c:if>
+															 <c:if test="${output.workterm=='3month'}"><span style="color: #ff7000;">3개월 이상</span></c:if>
+															 <c:if test="${output.workterm=='6month'}"><span style="color: #ff7000;">6개월 이상</span></c:if>
 															 일 할 수 있어요.
 															</span>
 														</div>
@@ -1140,99 +1056,80 @@ jQuery(function($) {
 							</div>
 						</div> <!-- fin. possible_active_area -->
 					</div> <!-- fin. possible_active_box -->
+					<c:if test="${output.rev_count!=0}">
 					<div class="talk_box">
 						<div class="box_name">맘시터 후기</div>
 						<div class="talk_area">
 							<div class="talk_main">
 								<div>
 									<div class="talk_box_ea">
-										<div class="talk_box_line">
+									<c:forEach var="item" items="${reput}" varStatus="status">
+									<li style="list-style:none;" >
+										<div class="talk_box_line" style="margin: 15px 0px;">
 											<img src="<%=request.getContextPath()%>/assets/img/chat_mom02.png" width="50" height="50"/>
 											<div class="talk_box_line_text">
 												<div class="talk_box_line_date_name">
-													<div class="talk_box_line_name">김<i class="far fa-circle"></i>준</div>
-													<div class="talk_box_line_date">7달 전</div>
+													${item.name}
+													<div class="talk_box_line_date">${item.reg_date}</div>
 												</div>
 												<div class="talk_box_line_date_name">
 													<div style="color: #000; font-size: 0.8em; margin-right: 5px; font-weight: bold;">인터뷰 후기</div>
-													<div class="star_area">
+													<div class="star_area">																						
+													<c:if test="${fn:contains(item.rev_rate,1)}">
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+													</c:if>
+													<c:if test="${fn:contains(item.rev_rate,2)}">
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+													</c:if>
+													<c:if test="${fn:contains(item.rev_rate,3)}">
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+													</c:if>
+													<c:if test="${fn:contains(item.rev_rate,4)}">
 														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+													</c:if>
+													<c:if test="${fn:contains(item.rev_rate,5)}">
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+													</c:if>
 													</div>
 												</div>
 												<div class="talk_box_line_date_name">
 													<div class="talk_box_talk">
-														<span>원하는 시간이 저와 맞지 않아 매칭이 성사되지 못하였습니다ㅠㅠ ${reput}</span>
+														<span>								
+															${item.contents}														
+														 </span>
 													</div>
 												</div>
 											</div>
-										</div>
-									</div>
-									
-									<hr style="margin: -1px 0px 0px; height: 1px; border: none; background-color: rgb(224,224,224);">
-									
-									<div class="talk_box_ea">
-										<div class="talk_box_line">
-											<img src="<%=request.getContextPath()%>/assets/img/chat_mom02.png" width="50" height="50"/>
-											<div class="talk_box_line_text">
-												<div class="talk_box_line_date_name">
-													<div class="talk_box_line_name">김<i class="far fa-circle"></i>준</div>
-													<div class="talk_box_line_date">7달 전</div>
-												</div>
-												<div class="talk_box_line_date_name">
-													<div style="color: #000; font-size: 0.8em; margin-right: 5px; font-weight: bold;">인터뷰 후기</div>
-													<div class="star_area">
-														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-													</div>
-												</div>
-												<div class="talk_box_line_date_name">
-													<div class="talk_box_talk">
-														<span>원하는 시간이 저와 맞지 않아 매칭이 성사되지 못하였습니다ㅠㅠ</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<hr style="margin: -1px 0px 0px; height: 1px; border: none; background-color: rgb(224,224,224);">
-									
-									<div class="talk_box_ea">
-										<div class="talk_box_line">
-											<img src="<%=request.getContextPath()%>/assets/img/chat_mom02.png" width="50" height="50"/>
-											<div class="talk_box_line_text">
-												<div class="talk_box_line_date_name">
-													<div class="talk_box_line_name">김<i class="far fa-circle"></i>준</div>
-													<div class="talk_box_line_date">7달 전</div>
-												</div>
-												<div class="talk_box_line_date_name">
-													<div style="color: #000; font-size: 0.8em; margin-right: 5px; font-weight: bold;">인터뷰 후기</div>
-													<div class="star_area">
-														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-														<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-													</div>
-												</div>
-												<div class="talk_box_line_date_name">
-													<div class="talk_box_talk">
-														<span>원하는 시간이 저와 맞지 않아 매칭이 성사되지 못하였습니다ㅠㅠ</span>
-													</div>
-												</div>
-											</div>
-										</div>
+										</li>
+										<hr style="margin: -1px 0px 0px; height: 1px; border: none; background-color: rgb(224,224,224);">
+									</c:forEach>
+									<button class="btn_more" onclick = "location.href='${pageContext.request.contextPath}/page_detail/tab_more.do?sitterno=${output.sitterno}';">후기 더 보기</button>
 									</div>
 								</div>
 							</div>
 						</div> <!-- fin. talk_area -->
 					</div> <!-- fin. talk_box -->
+					</c:if>
 					<div class="possible_zone_box">
 						<div class="box_name">활동 가능 지역</div>
 						<div class="possible_zone_area">
@@ -1258,7 +1155,6 @@ jQuery(function($) {
 						</div> <!-- fin. famille_area -->
 					</div> <!-- fin. famille_box -->
 				</div> <!-- fin. Main -->
-				
 				<!-- ----------하단고정 부분 시작------------ -->
 				<div class="fixed_box">
 					<div class="fixed_area">
@@ -1275,13 +1171,10 @@ jQuery(function($) {
 						</div>
 					</div> <!-- fin. fixed_area -->
 					<div class="fixed_btn">
-					
 						<div class="fixed_btn_jim">
-						
 							<button id="swapHeart" class="btn btn-default swap" type="button" data-sitterno="${output.sitterno}">
-						    <span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 25px;"></span>
-						</button>
-							
+						    	<span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 25px;"></span>
+							</button>
 						</div> <!-- fin. fixed_btn_jim -->					
 						<div class="interview_btn">
 							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/sitter_interview.do?sitterno=${output.sitterno}';">
@@ -1294,9 +1187,5 @@ jQuery(function($) {
 						</div> <!-- fin. interview_btn -->
 					</div> <!-- fin. fixed_btn -->
 				</div> <!-- fin. fixed_box -->				
-			
-	
-		<!-- Javascript -->
-		
 	</body>
 </html>
