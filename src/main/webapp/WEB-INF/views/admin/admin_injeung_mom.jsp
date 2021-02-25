@@ -48,10 +48,9 @@
 		</ol>
 	</div>
 	<div class="dropdown">
-		<select class="filter" id="filter_bbs" name="filter_bbs">
-			<option value="nomal">기본정렬</option>
-			<option value="startdate">인증 미처리순</option>
-			<option value="enddate">인증 처리순</option>
+		<select class="filter" id="filter_cert" name="cert">
+			<option value="N">인증 미처리</option>
+			<option value="Y">인증 처리</option>
 		</select>
 	</div>
 	<div id="tabCont2_1" class="tabCont">

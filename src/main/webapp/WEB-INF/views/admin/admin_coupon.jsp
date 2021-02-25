@@ -48,10 +48,16 @@
 		</ol>
 	</div>
 	<div class="dropdown">
-		<select class="filter" id="filter_bbs" name="filter_bbs">
-			<option value="nomal">기본정렬</option>
-			<option value="startdate">이용권시작일순</option>
-			<option value="enddate">이용권만료일순</option>
+		<select class="filter" id="filter_bbs" name="recent">
+			<%-- type에 따라서 option에 selected --%>
+			<c:if test="${recent eq 'startdate'}">
+				<option value="startdate" selected>이용권시작일순</option>
+				<option value="enddate">이용권만료일순</option>
+			</c:if>
+			<c:if test="${recent eq 'enddate'}">
+				<option value="startdate">이용권시작일순</option>
+				<option value="enddate" selected>이용권만료일순</option>
+			</c:if>
 		</select>
 	</div>
 	<div id="tabCont2_1" class="tabCont">
@@ -168,6 +174,23 @@
 		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
+				$("#filter_bbs").on('change', function () {
+				//alert($(this).val());
+				//select 값 가져오기 -> 파라미터
+				var recent = $("#filter_bbs").val();
+				//selected 주기 -> 상태유지
+				$(this).attr("selected", "true");
+
+				if(recent=='startdate') {
+					location.href = '${pageContext.request.contextPath}/admin/admin_coupon.do?recent=' + recent;
+				}
+				if(recent=='enddate') {
+					location.href = '${pageContext.request.contextPath}/admin/admin_coupon.do?recent=' + recent;
+				}
+			});
+
+
+
 				//올체크 상태 변경되었을 떄 이벤트 - 선아
 				$("#all_check").change(function(){
 					//모든 hobby의 상태를 올체크와 동일하게
@@ -192,6 +215,11 @@
 							// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
 							if (json.rt == "OK") {
 								alert(memberno+"회원 쿠폰 발급 성공");
+								window.location = "${pageContext.request.contextPath}/admin/admin_coupon.do";
+							}
+
+							if (json.rt == "aa") {
+								alert("이미 쿠폰이 발급된 회원입니다.");
 								window.location = "${pageContext.request.contextPath}/admin/admin_coupon.do";
 							}
 							

@@ -105,6 +105,12 @@
 		select count(*) from resi_cert
 	</select>
 	
+	<!-- 인증 여부 확인 -->
+	<select id="selectCertifyItemCount"
+	parameterType="study.team.abuhae.model.ResiCert" resultType="int">
+		select count(*) from resi_cert where sitterno=#{sitterno} and cert='Y'
+	</select>
+	
 	<!-- 인증 목록 리스트 조회 -->
 	<select id="selectCertifySitterList"
 	parameterType="study.team.abuhae.model.ResiCert" resultMap="CertifyMap">
@@ -113,6 +119,7 @@
 		from resi_cert rsc
 		inner join sitter_info si on rsc.sitterno = si.sitterno
 		inner join member m on si.memberno=m.memberno
+		where cert=#{cert}
 	</select>
 	
 	<!-- 인증 승인 -->

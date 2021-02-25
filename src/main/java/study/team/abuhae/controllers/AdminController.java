@@ -120,7 +120,8 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin/admin_coupon.do", method = RequestMethod.GET)
 	public ModelAndView coupon(Model model,
-			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+			@RequestParam(value = "page", defaultValue = "1") int nowPage,
+			@RequestParam(value = "recent", defaultValue = "startdate") String recent) {
 
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
         int totalCount = 0;              // 전체 게시글 수
@@ -130,6 +131,7 @@ public class AdminController {
         /** 2) 데이터 조회하기 */
         // 조회에 필요한 조건값(검색어)를 Beans에 담는다.
         Mom_info input = new Mom_info();
+        input.setRecent(recent);
 
         List<Mom_info> output = null;   // 조회결과가 저장될 객체
         PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
@@ -144,6 +146,8 @@ public class AdminController {
             Member.setOffset(pageData.getOffset());
             Member.setListCount(pageData.getListCount());
             
+            
+            
             // 데이터 조회하기
             output = adminService.getSubList(input);
         } catch (Exception e) {
@@ -153,6 +157,7 @@ public class AdminController {
         /** 3) View 처리 */
         model.addAttribute("output", output);
         model.addAttribute("pageData", pageData);
+        model.addAttribute("recent", recent);
 
         return new ModelAndView("admin/admin_coupon");
 		//return "admin/admin_coupon";
@@ -300,9 +305,11 @@ public class AdminController {
 	//시터 인증 승인 게시판
 	@RequestMapping(value = "/admin/admin_injeung_sitter.do", method = RequestMethod.GET)
 	public ModelAndView inj_sitter(Model model,
-			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+			@RequestParam(value = "page", defaultValue = "1") int nowPage,
+			@RequestParam(value = "cert", defaultValue = "N") String cert) {
 
 		ResiCert input = new ResiCert();
+		input.setCert(cert);
 
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
         int totalCount = 0;              // 전체 게시글 수
@@ -324,6 +331,7 @@ public class AdminController {
 		
 		model.addAttribute("certify", output);
 		model.addAttribute("pageData", pageData);
+		model.addAttribute("cert", cert);
 		return new ModelAndView("/admin/admin_injeung_sitter");
 		
 		//return "admin/admin_injeung_sitter";

@@ -92,10 +92,16 @@
 		</ol>
 	</div>
 	<div class="dropdown">
-		<select class="filter" id="filter_bbs" name="filter_bbs">
-			<option value="nomal">기본정렬</option>
-			<option value="startdate">인증 미처리순</option>
-			<option value="enddate">인증 처리순</option>
+		<select class="filter" id="filter_cert" name="cert">
+			<%-- type에 따라서 option에 selected --%>
+			<c:if test="${cert == 'N'}">
+				<option value="N" selected>인증 미처리</option>
+				<option value="Y">인증 처리</option>
+			</c:if>
+			<c:if test="${cert == 'Y'}">
+				<option value="N">인증 미처리</option>
+				<option value="Y" selected>인증 처리</option>
+			</c:if>
 		</select>
 	</div>
 	<div id="tabCont2_1" class="tabCont">
@@ -244,6 +250,22 @@
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
+
+			$("#filter_cert").on('change', function () {
+			//alert($(this).val());
+			//select 값 가져오기 -> 파라미터
+				var cert = $("#filter_cert").val();
+				//selected 주기 -> 상태유지
+				$(this).attr("selected", "true");
+
+				if (cert == 'N') {
+					location.href = '${pageContext.request.contextPath}/admin/admin_injeung_sitter.do?cert=' + cert;
+				}
+				if (cert == 'Y') {
+					location.href = '${pageContext.request.contextPath}/admin/admin_injeung_sitter.do?cert=' + cert;
+				}
+			});
+
 			//올체크 상태 변경되었을 떄 이벤트 - 선아
 			$("#all_check").change(function(){
 				//모든 hobby의 상태를 올체크와 동일하게
@@ -269,6 +291,11 @@
 						if (json.rt == "OK") {
 							alert(sitterno+"회원 인증 승인 완료");
 							alert(sitterno+"회원 첫 인증 쿠폰 발급 완료!");
+							window.location = "${pageContext.request.contextPath}/admin/admin_injeung_sitter.do";
+						}
+
+						if (json.rt == "aa") {
+							alert("이미 인증이 완료된 회원입니다.");
 							window.location = "${pageContext.request.contextPath}/admin/admin_injeung_sitter.do";
 						}
 						

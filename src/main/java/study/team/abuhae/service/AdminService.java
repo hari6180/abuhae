@@ -39,6 +39,9 @@ public interface AdminService {
 	//이용권 사용중인 회원 수 조회
 	public int getSubCount(Mom_info input) throws Exception;
 	
+	//이용권 소유 중인 회원 수 조회
+	public int getHasCopItem(Coupon input) throws Exception;
+	
 	//이용권 재구매 쿠폰 발급
 	public int addCoupon(Coupon input) throws Exception;
 	

@@ -190,7 +190,7 @@ public class AdminServiceImpl implements AdminService {
 	public List<Mom_info> getSubList(Mom_info input) throws Exception {
 		List<Mom_info> result = null;
 		try {
-			result = sqlsession.selectList("AdminMapper.selectSubMember");
+			result = sqlsession.selectList("AdminMapper.selectSubMember", input);
 			
 			//조회결과 없음
 			if(result == null) {
@@ -213,6 +213,18 @@ public class AdminServiceImpl implements AdminService {
 		int result = 0;
 		try {
 			result = sqlsession.selectOne("AdminMapper.selectCountSubMember", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	@Override
+	public int getHasCopItem(Coupon input) throws Exception {
+		int result = 0;
+		try {
+			result = sqlsession.selectOne("AdminMapper.selectCountHasCopItem", input);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");
@@ -408,9 +420,5 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	
-
-	
-
-
 
 }

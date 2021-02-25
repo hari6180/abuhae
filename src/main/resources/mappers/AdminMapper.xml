@@ -174,7 +174,17 @@
 		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
 		select m.memberno, name, id, startdate, enddate, reg_date from member m
 		left outer join coupon cp on m.memberno=cp.memberno
-		where startdate is not null and enddate is not null;
+		where startdate is not null and enddate is not null
+		
+		order by
+			<if test="recent != null and recent == 'startdate'">
+				startdate asc
+			</if>
+			<if  test="recent != null and recent == 'enddate'">
+				enddate asc
+			</if>
+		
+		
 	</select>
 	
 	<!-- 이용권 사용중인 회원수 조회 -->
@@ -182,6 +192,13 @@
 		parameterType="study.team.abuhae.model.Member" resultType="int">
 		select count(*) from coupon
 	</select>
+	
+	<!-- 특정 회원 쿠폰 발급 여부 -->
+	<select id="selectCountHasCopItem"
+		parameterType="study.team.abuhae.model.Member" resultType="int">
+		select count(*) from coupon where memberno=#{memberno}
+	</select>
+	
 	
 	<!-- 쿠폰 발급 / 재구매 쿠폰-->
 	<insert id="addCoupon"

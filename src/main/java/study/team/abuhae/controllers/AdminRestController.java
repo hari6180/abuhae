@@ -78,8 +78,13 @@ public class AdminRestController {
 
 		Coupon input = new Coupon();
 		input.setMemberno(memberno);
+		int output = 0;
 		
 		try {
+			output = adminService.getHasCopItem(input);
+			if (output > 0) {
+				return webHelper.getJsonWarning("aa");
+			}
 			//쿠폰 발급
 			adminService.addCoupon(input);
 		} catch (Exception e) {
@@ -128,8 +133,16 @@ public class AdminRestController {
 		input2.setSitterno(sitterno);
 		
 		Sitter_info output = null;
+		int output2 = 0;
 		
 		try {
+			
+			output2 = uploadService.getCertifyItemCount(input);
+			
+			if(output2 > 0) {
+				return webHelper.getJsonWarning("aa");
+			}
+			
 			uploadService.updateCertOk(input);
 			//시터 넘버로 회원 조회
 			output = memberService.getSitterMember(input2);

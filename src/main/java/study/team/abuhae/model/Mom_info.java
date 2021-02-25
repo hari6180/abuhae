@@ -63,6 +63,7 @@ public class Mom_info extends Member {
 	
 	//조인절에 따른 추가 컬럼
 	private String schedule_start;
+	private String recent;
 
 	
 	/** 3) 검색 조건용 추가 컬럼 */

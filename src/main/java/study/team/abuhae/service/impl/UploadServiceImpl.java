@@ -176,13 +176,27 @@ public class UploadServiceImpl implements UploadService {
 		
 		return result;
 	}
+	
+	@Override
+	public int getCertifyItemCount(ResiCert input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("UploadMapper.selectCertifyItemCount", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
 
 	@Override
 	public List<ResiCert> getCertifySitterList(ResiCert input) throws Exception {
 		List<ResiCert> result = null;
 		
 		try {
-			result = sqlSession.selectList("UploadMapper.selectCertifySitterList");
+			result = sqlSession.selectList("UploadMapper.selectCertifySitterList",input);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");
@@ -204,5 +218,7 @@ public class UploadServiceImpl implements UploadService {
 		
 		return result;
 	}
+
+	
 
 }

@@ -203,44 +203,6 @@
                         <!--end 구-->
                         <!--동-->
                         <div class="location_group" id="dong">
-                            <div class="hide_content">
-                                <div>
-                                    <button>가산동</button>
-                                </div>
-                                <div>
-                                    <button>독산1동</button>
-                                </div>
-                                <div>
-                                    <button>독산2동</button>
-                                </div>
-                                <div>
-                                    <button>독산3동</button>
-                                </div>
-                                <div>
-                                    <button>독산4동</button>
-                                </div>
-                                <div>
-                                    <button>독산동</button>
-                                </div>
-                                <div>
-                                    <button>시흥1동</button>
-                                </div>
-                                <div>
-                                    <button>시흥2동</button>
-                                </div>
-                                <div>
-                                    <button>시흥3동</button>
-                                </div>
-                                <div>
-                                    <button>시흥4동</button>
-                                </div>
-                                <div>
-                                    <button>시흥5동</button>
-                                </div>
-                                <div>
-                                    <button>시흥동</button>
-                                </div>
-                            </div>
                         </div>
                         <!--end 동-->
                     </div>
@@ -289,6 +251,8 @@
             });
             //구 클릭했을 때
             $("#gu button").on("click", function () {
+                let html = "";
+                gu = $(this).html();
                 var select = $(this).hasClass("select_location");
                 //선택이 안되어있을때
                 if (select == false) {
@@ -296,31 +260,59 @@
                     var loc = $("#gu").find("button").removeClass("select_location");
                     //console.log(loc);
                     $(this).addClass("select_location");
-                    gu = $(this).text();
+                    gu = "";
+                    gu += $(this).html();
                     //구 선택하면 동 보이게
                     $("#dong>div").removeClass("hide_content");
                     $("#dong>div").addClass("show_content");
                 }
 
+                $.getJSON("${pageContext.request.contextPath}/assets/location.json", function (loc) {
+                    //console.log(loc[gu]);
+                    // JSON의 value가 array일 경우 ['key']로 전체를 읽어올 수 있다.
+                    let dong = loc[gu];
+                    html += '<div class="hide_content">';
+                    for (var i = 0; i < dong.length; i++) {
+                        html += "<div><button class='dong_btn'>";
+                        html += dong[i];
+                        html += "</button></div>";
+                    }
+                    html += "</div>";
+                    //console.log(html);
+                    $("#dong").empty();
+                    $("#dong").append(html);
+                    //선택이 안되어있을때
+                    if (select == false) {
+                        //선택이 되어있는 요소 탐색
+                        // var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+                        //console.log(loc);
+                        $(this).addClass("select_location");
+                        //구 선택하면 동 보이게
+                        $("#dong>div").removeClass("hide_content");
+                        $("#dong>div").addClass("show_content");
+                    }
+                });
             });
 
             //동 클릭했을때
-            $("#dong button").on("click", function () {
+            $(document).on("click", ".dong_btn", function (e) {
+                //e.preventDefault();
                 var select = $(this).hasClass("select_location");
-                //선택이 안되어있을때
+
                 if (select == false) {
                     //선택이 되어있는 요소 탐색
                     var loc = $("#dong").find("button").removeClass("select_location");
                     //console.log(loc);
                     $(this).addClass("select_location");
-                    dong = $(this).text();
+                    dong = "";
+                    dong += $(this).html();
 
                     //동까지 선택하면 다음 버튼 활성화
-                    //다음 버튼의 현재 disabled 값 가져오기
-                    var now = $(".next_btn").prop('disabled');
-                    //가져온 값 역으로 변경하여 다시 적용
-                    $(".next_btn").prop('disabled', !now);
+                    $(".next_btn").prop('disabled', false);
 
+                } else {
+                    $(this).removeClass("select_location");
+                    $(".next_btn").prop('disabled', true);
                 }
             });
 
