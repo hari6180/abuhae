@@ -66,6 +66,40 @@
 	            swal("시터회원으로 가입 후 이용해주세요.");
 	          }
 	        }); // fin. 찜버튼 기능
+	        
+	        $('#swapHeart').on('click', function() {
+	    		
+		          var $jim = $(this);
+		          let momno = $(this).data("momno");
+		          let sitterno = $("#app").data("login");
+		          
+		       	// 찜할 때 alert창과 glyphicon변형
+		          if (sitterno != "" || sitterno != 0) {
+		            if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
+		              $(this).find("span").removeClass("glyphicon-heart-empty");
+		              $(this).find("span").addClass("glyphicon-heart");
+		              $.get("${pageContext.request.contextPath}/heart/detail/insertMom", {
+		                sitterno: sitterno,
+		                momno: momno,
+		                jjim: "Y",
+		              });
+		              swal("찜 하기 완료!", "마이페이지 > 찜한 맘회원에서 확인할 수 있습니다.");
+		            }
+		            // 찜 취소할 때 alert창과 glyphicon변형
+		            else {
+		              $(this).find("span").addClass("glyphicon-heart-empty");
+		              $.get("${pageContext.request.contextPath}/heart/detail/deleteMom", {
+		                sitterno: sitterno,
+		                momno: momno,
+		                jjim: "N",
+		              });
+		              swal("찜 하기 취소");
+		            }
+		          } else {
+		            swal("시터회원으로 가입 후 이용해주세요.");
+		          }
+		        }); // fin. 찜버튼 기능
+	        
 		}); 
 	 </script>
 	 <!-- jquery 파일명 수정 -->
@@ -913,7 +947,7 @@
 						</button>					
 					</div>
 					<div class="interview_btn">
-						<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/mom_interview.do?momno=${output.momno}';">
+						<button tabindex="0" type="button" class="btn-interview">
 							<div>
 								<div class="btn_text_box">
 									<span><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">인터뷰 신청하기</a></span>
@@ -936,7 +970,7 @@
 								</p>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick="location.href='<%=request.getContextPath()%>/buy/buy.do">
+								<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick = "location.href='${pageContext.request.contextPath}';">
 									지원권 구매하러 가기
 								</button>
 							</div>
