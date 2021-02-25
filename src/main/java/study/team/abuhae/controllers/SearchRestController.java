@@ -41,18 +41,24 @@ public class SearchRestController {
 	/** 맘시터 찾기 페이지 */
 	// 카드 출력 - 비로그인
 	@RequestMapping(value = "/search/sitter_search", method = RequestMethod.GET)
-	public Map<String, Object> get_st_list(
+	public Map<String, Object> get_st_list_nologin(
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage,
 			// 정렬 조건
 			@RequestParam(value = "order", defaultValue = "null") String order,
 			/** (1) 원하는 활동 선택 **/
-			@RequestParam(value = "act[]", required = false) String[] actList, /** (2) 상세 검색 **/
+			@RequestParam(value = "act[]", required = false) String[] actList, 
+			/** (2) 상세 검색 **/
 			@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 			@RequestParam(value = "caredays[]", required = false) String[] caredays,
 			@RequestParam(value = "time_range[]", required = false) String[] timeRange,
 			@RequestParam(value = "sitter_type[]", required = false) String[] sitterType,
-			@RequestParam(value = "sitter_age[]", required = false) String[] sitterAge) {
+			@RequestParam(value = "sitter_age[]", required = false) String[] sitterAge,
+			/** (3) 주소 검색 **/
+			@RequestParam(value = "si", required = false) String si,
+			@RequestParam(value = "gu", required = false) String gu,
+			@RequestParam(value = "dong", required = false) String dong
+			) {
 
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0; // 전체 게시글 수
@@ -62,9 +68,53 @@ public class SearchRestController {
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Sitter_info input = new Sitter_info();
+		
+		if (si != null && gu != null && dong != null) {
+			Sitter_info.setLoc1(si);
+			Sitter_info.setLoc2(gu);
+			Sitter_info.setLoc3(dong);
+		}
+
+		if (actList != null) {
+			for (int i = 0; i < actList.length; i++) {
+				String temp1 = actList[i];
+				String temp2 = temp1.replace("'", "");
+				actList[i] = temp2;
+				log.info("temp2" + temp2);
+				Sitter_info.setActList(actList);
+			}
+		}
+
+		if (kidsAge != null) {
+			for (int i = 0; i < kidsAge.length; i++) {
+				String temp1 = kidsAge[i];
+				String temp2 = temp1.replace("'", "");
+				kidsAge[i] = temp2;
+				log.info("temp2" + temp2);
+				Sitter_info.setKidsAge(kidsAge);
+			}
+		}
+
+		if (caredays != null) {
+			Sitter_info.setCaredays(caredays);
+		}
+
+		if (timeRange != null) {
+			Sitter_info.setTimeRange(timeRange);
+		}
+
+		if (sitterType != null) {
+			Sitter_info.setSitterType(sitterType);
+		}
+
+		if (sitterAge != null) {
+			Sitter_info.setSitterAge(sitterAge);
+		}
 
 		List<Sitter_info> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산한 결과가 저장될 객체
+		
+
 
 		try {
 			// 전체 게시글 수 조회
@@ -78,43 +128,6 @@ public class SearchRestController {
 
 			// 정렬조건의 값을 Beans에 저장
 			Sitter_info.setOrder(order);
-
-			// 검색조건의 값을 Beans에 저장
-			if (actList != null) {
-				for (int i = 0; i < actList.length; i++) {
-					String temp1 = actList[i];
-					String temp2 = temp1.replace("'", "");
-					actList[i] = temp2;
-					log.info("temp2" + temp2);
-					Sitter_info.setActList(actList);
-				}
-			}
-
-			if (kidsAge != null) {
-				for (int i = 0; i < kidsAge.length; i++) {
-					String temp1 = kidsAge[i];
-					String temp2 = temp1.replace("'", "");
-					kidsAge[i] = temp2;
-					log.info("temp2" + temp2);
-					Sitter_info.setKidsAge(kidsAge);
-				}
-			}
-
-			if (caredays != null) {
-				Sitter_info.setCaredays(caredays);
-			}
-
-			if (timeRange != null) {
-				Sitter_info.setTimeRange(timeRange);
-			}
-
-			if (sitterType != null) {
-				Sitter_info.setSitterType(sitterType);
-			}
-
-			if (sitterAge != null) {
-				Sitter_info.setSitterAge(sitterAge);
-			}
 
 			// 데이터 조회하기
 			output = searchService.searchSitter(input);
@@ -138,14 +151,19 @@ public class SearchRestController {
 			// 정렬 조건
 			@RequestParam(value = "order", defaultValue = "null") String order,
 			/** (1) 원하는 활동 선택 **/
-			@RequestParam(value = "act[]", required = false) String[] actList, /** (2) 상세 검색 **/
+			@RequestParam(value = "act[]", required = false) String[] actList, 
+			/** (2) 상세 검색 **/
 			@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 			@RequestParam(value = "caredays[]", required = false) String[] caredays,
 			@RequestParam(value = "time_range[]", required = false) String[] timeRange,
 			@RequestParam(value = "sitter_type[]", required = false) String[] sitterType,
 			@RequestParam(value = "sitter_age[]", required = false) String[] sitterAge,
 			// 로그인 정보
-			@RequestParam(value = "momno", required = false) String momno) {
+			@RequestParam(value = "momno", required = false) String momno,
+			/** (3) 주소 검색 **/
+			@RequestParam(value = "si", required = false) String si,
+			@RequestParam(value = "gu", required = false) String gu,
+			@RequestParam(value = "dong", required = false) String dong) {
 
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0; // 전체 게시글 수
@@ -155,6 +173,52 @@ public class SearchRestController {
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Sitter_info input = new Sitter_info();
+		if (si != null && gu != null && dong != null) {
+			Sitter_info.setLoc1(si);
+			Sitter_info.setLoc2(gu);
+			Sitter_info.setLoc3(dong);
+		}
+		
+		if (actList != null) {
+			for (int i = 0; i < actList.length; i++) {
+				String temp1 = actList[i];
+				String temp2 = temp1.replace("'", "");
+				actList[i] = temp2;
+				log.info("temp2" + temp2);
+				Sitter_info.setActList(actList);
+			}
+		}
+
+		if (kidsAge != null) {
+			for (int i = 0; i < kidsAge.length; i++) {
+				String temp1 = kidsAge[i];
+				String temp2 = temp1.replace("'", "");
+				kidsAge[i] = temp2;
+				log.info("temp2" + temp2);
+				Sitter_info.setKidsAge(kidsAge);
+			}
+		}
+
+		if (caredays != null) {
+			Sitter_info.setCaredays(caredays);
+		}
+
+		if (timeRange != null) {
+			Sitter_info.setTimeRange(timeRange);
+		}
+
+		if (sitterType != null) {
+			Sitter_info.setSitterType(sitterType);
+		}
+
+		if (sitterAge != null) {
+			Sitter_info.setSitterAge(sitterAge);
+		}
+		
+		if (momno != null || momno != "") {
+			int mom = Integer.parseInt(momno);
+			Sitter_info.setLoginMom(mom);
+		}
 
 		List<Sitter_info> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산한 결과가 저장될 객체
@@ -171,48 +235,6 @@ public class SearchRestController {
 
 			// 정렬조건의 값을 Beans에 저장
 			Sitter_info.setOrder(order);
-
-			// 검색조건의 값을 Beans에 저장
-			if (actList != null) {
-				for (int i = 0; i < actList.length; i++) {
-					String temp1 = actList[i];
-					String temp2 = temp1.replace("'", "");
-					actList[i] = temp2;
-					log.info("temp2" + temp2);
-					Sitter_info.setActList(actList);
-				}
-			}
-
-			if (kidsAge != null) {
-				for (int i = 0; i < kidsAge.length; i++) {
-					String temp1 = kidsAge[i];
-					String temp2 = temp1.replace("'", "");
-					kidsAge[i] = temp2;
-					log.info("temp2" + temp2);
-					Sitter_info.setKidsAge(kidsAge);
-				}
-			}
-
-			if (caredays != null) {
-				Sitter_info.setCaredays(caredays);
-			}
-
-			if (timeRange != null) {
-				Sitter_info.setTimeRange(timeRange);
-			}
-
-			if (sitterType != null) {
-				Sitter_info.setSitterType(sitterType);
-			}
-
-			if (sitterAge != null) {
-				Sitter_info.setSitterAge(sitterAge);
-			}
-			
-			if (momno != null || momno != "") {
-				int mom = Integer.parseInt(momno);
-				Sitter_info.setLoginMom(mom);
-			}
 
 			// 데이터 조회하기
 			output = searchService.searchSitter(input);
@@ -294,14 +316,19 @@ public class SearchRestController {
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage,
 			// 정렬 조건
-			@RequestParam(value = "order", defaultValue = "null") String order, /** 상세 검색 **/
+			@RequestParam(value = "order", defaultValue = "null") String order, 
+			// 상세 검색
 			@RequestParam(value = "act[]", required = false) String[] act,
 			@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 			@RequestParam(value = "caredays[]", required = false) String[] caredays,
 			@RequestParam(value = "time_range[]", required = false) String[] timeRange,
 			@RequestParam(value = "min_pay", required = false) String min_pay,
 			@RequestParam(value = "max_pay", required = false) String max_pay,
-			@RequestParam(value = "kids_cnt", required = false) String kids_cnt) {
+			@RequestParam(value = "kids_cnt", required = false) String kids_cnt,
+			// 주소 검색
+			@RequestParam(value = "si", required = false) String si,
+			@RequestParam(value = "gu", required = false) String gu,
+			@RequestParam(value = "dong", required = false) String dong) {
 
 		/** 1) 페이지 구현에 필요한 변수값 생성 */
 		int totalCount = 0; // 전체 게시글 수
@@ -311,7 +338,53 @@ public class SearchRestController {
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Mom_info input = new Mom_info();
+		
+		if (si != null && gu != null && dong != null) {
+			Mom_info.setLoc1(si);
+			Mom_info.setLoc2(gu);
+			Mom_info.setLoc3(dong);
+		}
+		
+		if (act != null) {
+			for (int i = 0; i < act.length; i++) {
+				String temp1 = act[i];
+				String temp2 = temp1.replace("'", "");
+				act[i] = temp2;
+				log.info("temp2" + temp2);
+				Mom_info.setAct(act);
+			}
+		}
 
+		if (kidsAge != null) {
+			for (int i = 0; i < kidsAge.length; i++) {
+				String temp1 = kidsAge[i];
+				String temp2 = temp1.replace("'", "");
+				kidsAge[i] = temp2;
+				log.info("temp2" + temp2);
+				Mom_info.setKidsAge(kidsAge);
+			}
+		}
+
+		if (caredays != null) {
+			Mom_info.setCaredays(caredays);
+		}
+
+		if (timeRange != null) {
+			Mom_info.setTimeRange(timeRange);
+		}
+
+		if (min_pay != null) {
+			Mom_info.setMin_pay(min_pay);
+		}
+
+		if (max_pay != null) {
+			Mom_info.setMax_pay(max_pay);
+		}
+
+		if (kids_cnt != null) {
+			Mom_info.setKids_cnt(kids_cnt);
+		}
+		
 		List<Mom_info> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산한 결과가 저장될 객체
 
@@ -328,7 +401,68 @@ public class SearchRestController {
 			// 정렬조건의 값을 Beans에 저장
 			Mom_info.setOrder(order);
 
-			// 검색조건의 값을 Beans에 저장
+			// 데이터 조회하기
+			output = searchService.searchMom(input);
+
+			// 아이 나이 계산 with AgeHelper
+			AgeHelper ageHelper = new AgeHelper();
+
+			for (int i = 0; i < output.size(); i++) {
+				Mom_info temp = output.get(i);
+				String age = ageHelper.kidsStr(temp.getKids_age());
+				temp.setKids_age(age);
+				output.set(i, temp);
+			}
+
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+
+		/** 3) JSON 출력하기 */
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("item", output);
+		data.put("meta", pageData);
+
+		return webHelper.getJsonData(data);
+	}
+	
+	// 일자리 카드 출력 - 로그인
+		@RequestMapping(value = "/search/job_search/login", method = RequestMethod.GET)
+		public Map<String, Object> get_mom_list(
+				// 페이지 구현에서 사용할 현재 페이지 번호
+				@RequestParam(value = "page", defaultValue = "1") int nowPage,
+				// 정렬 조건
+				@RequestParam(value = "order", defaultValue = "null") String order, 
+				// 상세 검색
+				@RequestParam(value = "act[]", required = false) String[] act,
+				@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
+				@RequestParam(value = "caredays[]", required = false) String[] caredays,
+				@RequestParam(value = "time_range[]", required = false) String[] timeRange,
+				@RequestParam(value = "min_pay", required = false) String min_pay,
+				@RequestParam(value = "max_pay", required = false) String max_pay,
+				@RequestParam(value = "kids_cnt", required = false) String kids_cnt,
+				// 로그인 정보
+				@RequestParam(value = "sitterno", required = false) String sitterno,
+				// 주소 검색
+				@RequestParam(value = "si", required = false) String si,
+				@RequestParam(value = "gu", required = false) String gu,
+				@RequestParam(value = "dong", required = false) String dong) {
+
+			/** 1) 페이지 구현에 필요한 변수값 생성 */
+			int totalCount = 0; // 전체 게시글 수
+			int listCount = 10; // 한 페이지당 표시할 목록 수
+			int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
+
+			/** 2) 데이터 조회하기 */
+			// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+			Mom_info input = new Mom_info();
+			
+			if (si != null && gu != null && dong != null) {
+				Mom_info.setLoc1(si);
+				Mom_info.setLoc2(gu);
+				Mom_info.setLoc3(dong);
+			}
+			
 			if (act != null) {
 				for (int i = 0; i < act.length; i++) {
 					String temp1 = act[i];
@@ -369,57 +503,10 @@ public class SearchRestController {
 				Mom_info.setKids_cnt(kids_cnt);
 			}
 			
-
-			// 데이터 조회하기
-			output = searchService.searchMom(input);
-
-			// 아이 나이 계산 with AgeHelper
-			AgeHelper ageHelper = new AgeHelper();
-
-			for (int i = 0; i < output.size(); i++) {
-				Mom_info temp = output.get(i);
-				String age = ageHelper.kidsStr(temp.getKids_age());
-				temp.setKids_age(age);
-				output.set(i, temp);
+			if (sitterno != null) {
+				int stno = Integer.parseInt(sitterno);
+				Mom_info.setLoginSt(stno);
 			}
-
-		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
-		}
-
-		/** 3) JSON 출력하기 */
-		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("item", output);
-		data.put("meta", pageData);
-
-		return webHelper.getJsonData(data);
-	}
-	
-	// 일자리 카드 출력 - 로그인
-		@RequestMapping(value = "/search/job_search/login", method = RequestMethod.GET)
-		public Map<String, Object> get_mom_list(
-				// 페이지 구현에서 사용할 현재 페이지 번호
-				@RequestParam(value = "page", defaultValue = "1") int nowPage,
-				// 정렬 조건
-				@RequestParam(value = "order", defaultValue = "null") String order, /** 상세 검색 **/
-				@RequestParam(value = "act[]", required = false) String[] act,
-				@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
-				@RequestParam(value = "caredays[]", required = false) String[] caredays,
-				@RequestParam(value = "time_range[]", required = false) String[] timeRange,
-				@RequestParam(value = "min_pay", required = false) String min_pay,
-				@RequestParam(value = "max_pay", required = false) String max_pay,
-				@RequestParam(value = "kids_cnt", required = false) String kids_cnt,
-				// 로그인 정보
-				@RequestParam(value = "sitterno", required = false) String sitterno) {
-
-			/** 1) 페이지 구현에 필요한 변수값 생성 */
-			int totalCount = 0; // 전체 게시글 수
-			int listCount = 10; // 한 페이지당 표시할 목록 수
-			int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
-
-			/** 2) 데이터 조회하기 */
-			// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
-			Mom_info input = new Mom_info();
 
 			List<Mom_info> output = null; // 조회결과가 저장될 객체
 			PageData pageData = null; // 페이지 번호를 계산한 결과가 저장될 객체
@@ -436,52 +523,6 @@ public class SearchRestController {
 
 				// 정렬조건의 값을 Beans에 저장
 				Mom_info.setOrder(order);
-
-				// 검색조건의 값을 Beans에 저장
-				if (act != null) {
-					for (int i = 0; i < act.length; i++) {
-						String temp1 = act[i];
-						String temp2 = temp1.replace("'", "");
-						act[i] = temp2;
-						log.info("temp2" + temp2);
-						Mom_info.setAct(act);
-					}
-				}
-
-				if (kidsAge != null) {
-					for (int i = 0; i < kidsAge.length; i++) {
-						String temp1 = kidsAge[i];
-						String temp2 = temp1.replace("'", "");
-						kidsAge[i] = temp2;
-						log.info("temp2" + temp2);
-						Mom_info.setKidsAge(kidsAge);
-					}
-				}
-
-				if (caredays != null) {
-					Mom_info.setCaredays(caredays);
-				}
-
-				if (timeRange != null) {
-					Mom_info.setTimeRange(timeRange);
-				}
-
-				if (min_pay != null) {
-					Mom_info.setMin_pay(min_pay);
-				}
-
-				if (max_pay != null) {
-					Mom_info.setMax_pay(max_pay);
-				}
-
-				if (kids_cnt != null) {
-					Mom_info.setKids_cnt(kids_cnt);
-				}
-				
-				if (sitterno != null) {
-					int stno = Integer.parseInt(sitterno);
-					Mom_info.setLoginSt(stno);
-				}
 
 				// 데이터 조회하기
 				output = searchService.searchMom(input);

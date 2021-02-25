@@ -62,6 +62,7 @@
 		<result property="payment_ok" column="payment_ok" />
 		<result property="si" column="si" />
 		<result property="gu" column="gu" />
+		<result property="dong" column="dong" />
 		<result property="schedule" column="schedule" />
 		<result property="schedule_ok" column="schedule_ok" />
 		<result property="sitter_gender" column="sitter_gender" />
@@ -126,7 +127,7 @@
 		INNER JOIN member m ON
 		s.memberno=m.memberno
 
-		<!-- 활동 유형 && 상세 검색 -->
+		<!-- 활동 유형 && 상세 검색 && 주소 -->
 		<where>
 			<if test="actList != null">
 				want_act1 || want_act2 || want_act3 in
@@ -168,6 +169,15 @@
 					close=")" separator=",">
 					LEFT(CONCAT(${item6},1))
 				</foreach>
+			</if>
+			<if test="loc1 != null">
+				AND si = #{loc1}
+			</if>
+			<if test="loc2 != null">
+				AND gu = #{loc2}
+			</if>
+			<if test="loc3 != null">
+				AND dong = #{loc3}
 			</if>
 		</where>
 
@@ -235,7 +245,7 @@
 		INNER JOIN member mb ON
 		m.memberno=mb.memberno
 
-		<!-- 활동 유형 && 상세 검색 -->
+		<!-- 활동 유형 && 상세 검색 && 주소 -->
 		<where>
 			<if test="act != null">
 				want_act1 || want_act2 || want_act3 in
@@ -270,7 +280,16 @@
 				#{min_pay} AND #{max_pay}
 			</if>
 			<if test="kids_cnt != 0 and kids_cnt==1 or kids_cnt==2">
-				AND kids_num = ${kids_cnt}
+				AND kids_num = #{kids_cnt}
+			</if>
+			<if test="loc1 != null">
+				AND si = #{loc1}
+			</if>
+			<if test="loc2 != null">
+				AND gu = #{loc2}
+			</if>
+			<if test="loc3 != null">
+				AND dong = #{loc3}
 			</if>
 		</where>
 

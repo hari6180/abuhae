@@ -65,19 +65,15 @@ public class Sitter_info extends Member {
 	private static String[] timeRange;		// 돌봄 시간대
 	private static String[] sitterType;		// 맘시터 유형
 	private static String[] sitterAge;		// 시터 나이
+	private static String loc1;				// 시
+	private static String loc2;				// 구
+	private static String loc3;				// 동
 	
 	// 맘 로그인 여부 확인 (for 찜)
 	private static int loginMom;
 	
-	
-	
-	
-	public static String[] getActList() {
-		return actList;
-	}
-	public static void setActList(String[] actList) {
-		Sitter_info.actList = actList;
-	}
+
+
 	public static String[] getKidsAge() {
 		return kidsAge;
 	}
@@ -113,6 +109,30 @@ public class Sitter_info extends Member {
 	}
 	public static void setLoginMom(int loginMom) {
 		Sitter_info.loginMom = loginMom;
+	}
+	public static String getLoc1() {
+		return loc1;
+	}
+	public static void setLoc1(String loc1) {
+		Sitter_info.loc1 = loc1;
+	}
+	public static String getLoc2() {
+		return loc2;
+	}
+	public static void setLoc2(String loc2) {
+		Sitter_info.loc2 = loc2;
+	}
+	public static String getLoc3() {
+		return loc3;
+	}
+	public static void setLoc3(String loc3) {
+		Sitter_info.loc3 = loc3;
+	}
+	public static String[] getActList() {
+		return actList;
+	}
+	public static void setActList(String[] actList) {
+		Sitter_info.actList = actList;
 	}
 	
 	

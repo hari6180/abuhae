@@ -54,16 +54,16 @@ public class MemberInsertController {
 			input.setPayment(payment);
 			
 			input.setPayment_ok('Y');
-			input.setSi("서울시");
+			input.setSi("서울특별시");
 			input.setGu("강동구");
-			input.setDong("성내2동");
+			input.setDong("성내동");
 			input.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"frequency\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input.setSchedule_ok('Y');
 			input.setSitter_gender('F');
 			input.setCare_type("주1회");
 			
 			// 프로필 업데이트 날짜 랜덤입력
-			int temp1 = random(3,12);
+			int temp1 = random(2,12);
 			int temp2 = random(1,28);
 			String date = String.format("%02d-%02d", temp1, temp2);
 			String openingdate = "2020-" + date;
@@ -118,15 +118,15 @@ public class MemberInsertController {
 			int payment = random(9000,20000);
 			
 			input2.setPayment(payment);
-			input2.setSi("서울시");
+			input2.setSi("서울특별시");
 			input2.setGu("강동구");
-			input2.setDong("성내2동");
+			input2.setDong("성내동");
 			input2.setSchedule("{\"day\": [\"tue\", \"fri\", \"sun\"], \"workterm\": \"regular\", \"startdate\": \"2021/02/16\"}");
 			input2.setIntroduce("안녕하세요 짱짱 시터입니다.");
 			input2.setCctv('Y');
 			
 			// 프로필 업데이트 날짜 랜덤입력
-			int temp1 = random(3,12);
+			int temp1 = random(2,12);
 			int temp2 = random(1,28);
 			String date = String.format("%02d-%02d", temp1, temp2);
 			String openingdate = "2020-" + date;

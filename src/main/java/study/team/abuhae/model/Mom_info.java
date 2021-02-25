@@ -73,6 +73,9 @@ public class Mom_info extends Member {
 	private static String min_pay;			// 최저 시급
 	private static String max_pay;			// 최고 시급
 	private static String kids_cnt;			// 아이 수
+	private static String loc1;				// 시
+	private static String loc2;				// 구
+	private static String loc3;				// 동
 	
 	// 시터 로그인 여부 확인 (for 찜)
 	private static int loginSt;
@@ -128,6 +131,24 @@ public class Mom_info extends Member {
 	}
 	public static void setLoginSt(int loginSt) {
 		Mom_info.loginSt = loginSt;
+	}
+	public static String getLoc1() {
+		return loc1;
+	}
+	public static void setLoc1(String loc1) {
+		Mom_info.loc1 = loc1;
+	}
+	public static String getLoc2() {
+		return loc2;
+	}
+	public static void setLoc2(String loc2) {
+		Mom_info.loc2 = loc2;
+	}
+	public static String getLoc3() {
+		return loc3;
+	}
+	public static void setLoc3(String loc3) {
+		Mom_info.loc3 = loc3;
 	}
 
 

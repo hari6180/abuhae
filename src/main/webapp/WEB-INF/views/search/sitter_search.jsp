@@ -751,6 +751,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       let order = "openingdate";
       let login_momno = $("#app").data("login");
       $(function () {
+        /** 주소 선택 모달 ------------------------------------------------------------------- */
         // 주소 검색창에 들어갈 주소 문자열
         let full_loc = "";
         let si = "";
@@ -841,31 +842,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               $("#result").append(result); // 최종 결과물을 추가한다
             }
           );
-          // var select = $(this).hasClass("select_location");
-          // //선택이 안되어있을때
-          // if (select == false) {
-          //   //선택이 되어있는 요소 탐색
-          //   var loc = $("#dong").find("button").removeClass("select_loaction hide_content");
-          //   //console.log(loc);
-          //   $(this).addClass("select_loaction");
-
-          //   $.ajax({
-          //     type: "GET", //get방식으로 통신
-          //     url: "${pageContext.request.contextPath}/assets/sitter/location_result.html", //탭의 data-tab속성의 값으로 된 html파일로 통신
-          //     dataType: "html", //html형식으로 값 읽기
-          //     error: function () {
-          //       //통신 실패시 ㅠㅠ
-          //       alert("통신실패!");
-          //     },
-          //     success: function (data) {
-          //       //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
-          //       $(".select_box").html(data);
-          //       var now = $(".next_btn").prop("disabled");
-          //       //가져온 값 역으로 변경하여 다시 적용
-          //       $(".next_btn").prop("disabled", !now);
-          //     },
-          //   });
-          // }
         });
 
         // 리셋 0109 하리
@@ -876,7 +852,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $("#gu button").addClass("hide_content");
           $("#dong button").removeClass("select_loaction");
           $("#dong button").addClass("hide_content");
+          $("#full_location").html("돌봄 지역을 선택해주세요");
         });
+        /** 주소 선택 모달 end ------------------------------------------------------------------- */
 
         if (login_momno != "" || login_momno != 0) {
           $.get(
