@@ -118,7 +118,7 @@
 							<%-- 이전 그룹으로 이동 가능하다면? --%>
 							<c:when test="${pageData.prevPage > 0}">
 								<%-- 이동할 URL 생성 --%>
-								<c:url value="/admin/admin_member.do" var="prevPageUrl">
+								<c:url value="/admin/admin_leave.do" var="prevPageUrl">
 									<c:param name="page" value="${pageData.prevPage}" />
 									<c:param name="type" value="${type}" />
 								</c:url>

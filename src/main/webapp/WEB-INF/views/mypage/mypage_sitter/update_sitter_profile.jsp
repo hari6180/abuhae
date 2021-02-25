@@ -635,10 +635,10 @@
 							<i class="point">일요일 </i> 
 							</c:if>
 							이며, 
-							<c:if test="${sitterinfo.workterm=='1week'}"><i class="point">1주일 이상</i></c:if>
-							<c:if test="${sitterinfo.workterm=='1month'}"><i class="point">1개월 이상</i></c:if>
-							<c:if test="${sitterinfo.workterm=='3month'}"><i class="point">3개월 이상</i></c:if>
-							<c:if test="${sitterinfo.workterm=='36month'}"><i class="point">6개월 이상</i></c:if>동안 일할 수 있습니다.</p>
+							<c:if test="${sitterinfo.workterm eq '1week'}"><i class="point">1주일 이상</i></c:if>
+							<c:if test="${sitterinfo.workterm eq '1month'}"><i class="point">1개월 이상</i></c:if>
+							<c:if test="${sitterinfo.workterm eq '3month'}"><i class="point">3개월 이상</i></c:if>
+							<c:if test="${sitterinfo.workterm eq '6month'}"><i class="point">6개월 이상</i></c:if>동안 일할 수 있습니다.</p>
 							</div>
 						<!-- sub_content1 -->
 						<section class="start_job">
@@ -1260,7 +1260,7 @@
                 }
             });
             //지역 수정하기 버튼을 눌렀을 경우
-            $("#updateLoaction").click(function (e) {
+            $("#updateLocation").click(function (e) {
                 //e.preventDefault();
                 //시
                 $('#loc_si').val(si);

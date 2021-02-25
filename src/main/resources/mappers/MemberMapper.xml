@@ -162,7 +162,7 @@
 		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
 		select m.type, m.memberno, m.id, m.name, m.email, m.phone,
 		m.job_opening,
-		mi.si, mi.gu, mi.dong
+		mi.si, mi.gu, mi.dong, momno
 		from member m
 		inner join mom_info mi on m.memberno = mi.memberno
 
@@ -179,7 +179,7 @@
 		parameterType="study.team.abuhae.model.Member" resultMap="SitterMap">
 		select m.type, m.memberno, m.id, m.name, m.email, m.phone,
 		m.job_opening,
-		si.si, si.gu, si.dong
+		si.si, si.gu, si.dong, sitterno
 		from member m
 		inner join sitter_info
 		si on m.memberno = si.memberno

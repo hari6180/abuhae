@@ -98,7 +98,13 @@
 										<tr>
 											<td align="center">${item.memberno}</td>
 											<td align="center">${item.id}</td>
-											<td align="center">${item.name}</td>
+											<c:if test="${fn:contains(item.type, 'M') }">
+												<td align="center"><a target="_blank" href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?momno=${item.momno}">${item.name}</a></td>
+											</c:if>
+											<c:if test="${fn:contains(item.type, 'S') }">
+												<td align="center"><a target="_blank" href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}">${item.name}</a></td>
+											</c:if>
+											
 											<td align="center">${item.email}</td>
 											<td align="center">${item.phone}</td>
 											<td align="center">${item.job_opening}</td>
