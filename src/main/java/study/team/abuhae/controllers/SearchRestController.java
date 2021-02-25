@@ -18,8 +18,10 @@ import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.ProfileFile;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.SearchService;
+import study.team.abuhae.service.UploadService;
 
 @Slf4j
 @RestController
@@ -34,9 +36,9 @@ public class SearchRestController {
 	@Autowired
 	SearchService searchService;
 
-	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
-	@Value("#{servletContext.contextPath}")
-	String contextPath;
+	/** UploadService 주입 */
+	@Autowired
+	UploadService uploadService;
 
 	/** 맘시터 찾기 페이지 */
 	// 카드 출력 - 비로그인
@@ -66,6 +68,7 @@ public class SearchRestController {
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
 		/** 2) 데이터 조회하기 */
+		
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Sitter_info input = new Sitter_info();
 		
@@ -113,8 +116,6 @@ public class SearchRestController {
 
 		List<Sitter_info> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산한 결과가 저장될 객체
-		
-
 
 		try {
 			// 전체 게시글 수 조회
@@ -131,6 +132,7 @@ public class SearchRestController {
 
 			// 데이터 조회하기
 			output = searchService.searchSitter(input);
+			// output2 = uploadService.getProfileItem(input2); list로 불러오는 메서드 만들기
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}

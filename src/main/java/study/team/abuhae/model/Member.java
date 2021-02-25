@@ -44,6 +44,9 @@ public abstract class Member {
 
 	private String signup;
 	
+	// 프로필 출력
+	private String fileUrl;
+	private String isProfile;
 	
 	/** LIMIT 절에서 사용할 조회 시작 위치 */
 	private static int offset;

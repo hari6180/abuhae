@@ -640,7 +640,12 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                             <hr class="divider" />
                             <div class="item_body">
                               <div class="profile_img_group">
-                                <img src="${pageContext.request.contextPath}/assets/img/profile.jpg" />
+                                {{#ifCond isProfile null}}
+                                <img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" alt="임시프로필"/>
+                                {{/ifCond}}
+                                {{#ifCond isProfile 'y'}}
+                                <img src="{{fileUrl}}" alt="프로필"/>
+                                {{/ifCond}}
                                 <div class="responsive_rate_group">
                                   <div class="res_text">응답률</div>
                                   <div class="res_rate">{{answer}}</div>
