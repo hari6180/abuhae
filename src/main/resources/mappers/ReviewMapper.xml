@@ -89,12 +89,14 @@
 	<!-- 부모 회원만 후기 남기기가 가능하기 때문에 who='M' 조건이 충족되어야 함 -->
 	<select id="selectReviewList"
 	parameterType="study.team.abuhae.model.Review" resultMap="ReviewMap">
-		select revno, c.accept as accept, rev_rate, reg_date, contents, m.name, mi.momno as momno, s.sitterno as sitterno, r.who 
+		select revno, c.accept as accept, rev_rate, reg_date, contents, m.name, mi.momno as momno, s.sitterno as sitterno, r.who,
+		fileUrl, isProfile
 		from review r
 		inner join connect c on r.cntno = c.cntno
 		inner join sitter_info s on s.sitterno = c.sitterno
 		inner join mom_info mi on mi.momno = c.momno
 		inner join member m on m.memberno = s.memberno
+		inner join profile_file p on p.memberno = s.memberno 
 		where mi.momno=#{momno} and r.who = 'M';
 	</select>
 	
