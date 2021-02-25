@@ -545,7 +545,7 @@ input[type=radio]+label {
 
 .wrap_review .group1_review .rev_tab_panel .rev_no_btn {
   height: 36px;
-  width : 100%;
+  width : 70%;
   border: 0;
   border-radius: 8px;
   margin-top: 15px;
@@ -566,23 +566,24 @@ input[type=radio]+label {
 	color: #ff7000;
 } */
 
-.wrap_review .modal-content .modal-body .rev_rate .rate_radio {
+.rate_radio {
 	display: none;
 }
 
-.wrap_review .modal-content .modal-body .rev_rate {
+.rev_rate {
 	color: #eee;
 }
 
-.wrap_review .modal-content .modal-body .rev_rate .rate_radio+label {
+.rev_rate .rate_radio+label {
 	color: #ff7000;
+	margin-left: 1px;
 }
 
-.wrap_review .modal-content .modal-body .rev_rate .rate_radio:checked ~ label {
+.rev_rate .rate_radio:checked ~ label {
 	color: #eee;
 }
 
-.wrap_review .modal-content .modal-body .rev_rate .rate_radio:checked+label {
+.rev_rate .rate_radio:checked+label {
 	color: #ff7000;
 }
 
@@ -608,11 +609,16 @@ input[type=radio]+label {
 }
 
 .wrap_count_mom .group1_count_mom .cm_page_cont {
-  background-color: #fff;
   position: relative;
   top: 10px;
   margin: 10px;
-  padding: 20px 10px;
+  padding: 10px ;
+}
+
+.wrap_count_mom .group1_count_mom .ls_page_cont {
+	background-color: #fff;
+	margin-bottom: 10px;
+	padding: 15px;
 }
 
 .wrap_count_mom .group1_count_mom .ls_page_cont .ls_page_box {

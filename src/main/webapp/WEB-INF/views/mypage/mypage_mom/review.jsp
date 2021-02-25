@@ -84,27 +84,30 @@
                                                        <h5>${item.si } ${item.gu }</h5>
                                                    </div>
                                                </div>
-                                               <button type="button" class="rev_no_btn">후기작성</button> 
+                                               <button type="button" class="rev_no_btn center-block">후기작성</button> 
                                                <div class="write_rev hide">
                                                   <form id="reviewForm" action="${pageContext.request.contextPath}/mypage/edit_review_ok">
-                                          <div class="rev_rate">
-                                             <input type="hidden" id="rev_edit" name="revno" value="${item.revno}">
-                                             
-                                             <input type="radio" name="rev_rate" id="rev_rate1" value="1" class="rate_radio" title="1점">
-                                             <label for="rev_rate1"><i class="fas fa-star"></i></label>
-                                             <input type="radio" name="rev_rate" id="rev_rate2" value="2" class="rate_radio" title="2점">
-                                             <label for="rev_rate2"><i class="fas fa-star"></i></label>
-                                             <input type="radio" name="rev_rate" id="rev_rate3" value="3" class="rate_radio" title="3점">
-                                             <label for="rev_rate3"><i class="fas fa-star"></i></label>
-                                             <input type="radio" name="rev_rate" id="rev_rate4" value="4" class="rate_radio" title="4점">
-                                             <label for="rev_rate4"><i class="fas fa-star"></i></label>
-                                             <input type="radio" name="rev_rate" id="rev_rate5" value="5" class="rate_radio" title="5점" checked>
-                                             <label for="rev_rate5"><i class="fas fa-star"></i></label>
-                                          </div>
-                                            <textarea name="contents" id="" cols="60%" rows="10" placeholder="내용을 입력하세요." style="width: 100%;"></textarea>
-                                          <button class="rev_no_btn" type="submit" style="width: 100%; margin-top: 20px; 
-                                          background-color: rgb(34, 172, 135); border: 0; height: 30px; border-radius: 5px; color: #ffffff;">저장하기</button>
-                                       </form>   
+			                                          <p style="color: #858585; margin-top: 10px;">
+			                                          	<mark><i class="fas fa-check-circle"></i> 별점과 내용을 입력하세요.</mark>
+			                                          <p>
+			                                          <div class="rev_rate">
+			                                             <input type="hidden" id="rev_edit" name="revno" value="${item.revno}">
+			                                             <span style="color: #858585;">별점 |</span> 
+			                                             <input type="radio" name="rev_rate" id="rev_rate1" value="1" class="rate_radio" title="1점">
+			                                             <label for="rev_rate1"><i class="fas fa-star"></i></label>
+			                                             <input type="radio" name="rev_rate" id="rev_rate2" value="2" class="rate_radio" title="2점">
+			                                             <label for="rev_rate2"><i class="fas fa-star"></i></label>
+			                                             <input type="radio" name="rev_rate" id="rev_rate3" value="3" class="rate_radio" title="3점">
+			                                             <label for="rev_rate3"><i class="fas fa-star"></i></label>
+			                                             <input type="radio" name="rev_rate" id="rev_rate4" value="4" class="rate_radio" title="4점">
+			                                             <label for="rev_rate4"><i class="fas fa-star"></i></label>
+			                                             <input type="radio" name="rev_rate" id="rev_rate5" value="5" class="rate_radio" title="5점" checked>
+			                                             <label for="rev_rate5"><i class="fas fa-star"></i></label>
+			                                          </div>
+			                                            <textarea name="contents" id="" cols="60%" rows="10" placeholder="내용을 입력하세요." style="width: 100%;"></textarea>
+			                                          <button class="rev_no_btn center-block" type="submit" style="width: 70%; margin-top: 20px; 
+			                                          background-color: #ff7000; border: 0; height: 30px; border-radius: 5px; color: #ffffff;">저장하기</button>
+			                                       </form>   
                                                </div>
                                            </div>
                                       </c:forEach>

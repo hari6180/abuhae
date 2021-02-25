@@ -36,7 +36,9 @@ public class UploadController {
 	@RequestMapping(value = "upload/upload_ok.do", method = RequestMethod.POST)
 	public ModelAndView uploadOk(Model model,  HttpSession session, 
 			@RequestParam(required = false) MultipartFile photo,
-			@RequestParam(value = "memberno", defaultValue = "0") int memberno) {
+			@RequestParam(value = "memberno", defaultValue = "0") int memberno,
+			@RequestParam(value = "momno", defaultValue = "0") int momno,
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		/** 1) 업로드 파일 저장하기 */
 		// 업로드 된 파일이 존재하는지 확인
 		if (photo.getOriginalFilename().isEmpty()) {
@@ -88,7 +90,14 @@ public class UploadController {
 		// 텍스트 정보를 View로 전달한다.
 		model.addAttribute("item", item);
 		
-		return webHelper.redirect(null, "프로필 이미지가 업로드되었습니다.");
+		if (sitterno != 0) {
+			String url =  contextPath + "/mypage/mypage_sitter/sitter_mypage/update_sitter_profile.do?sitterno=" + sitterno;
+			return webHelper.redirect(null, "프로필 이미지가 수정되었습니다.");
+		} else {
+			String url =  contextPath + "/mypage/mypage_mom/mom_mypage/update_sitter_profile.do?sitterno=" + sitterno;
+			return webHelper.redirect(null, "프로필 이미지가 수정되었습니다.");
+		}
+		
 	}
 	
 	@RequestMapping(value = "upload/upload_edit.do", method = RequestMethod.POST)

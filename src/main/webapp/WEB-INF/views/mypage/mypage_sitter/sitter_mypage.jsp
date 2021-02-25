@@ -84,11 +84,11 @@
                                 <c:choose>
                                 	<c:when test="${profile == null }">
                                 		<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg"
-                                    	alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
+                                    	alt="임시 프로필사진" style="width: 52px; height:52px; border-radius: 50%;">
                                 	</c:when>
                                 	<c:otherwise>
                                 		<img src="${profile.fileUrl}"
-                                    	alt="임시 프로필사진" style="width: 52px; border-radius: 50%;">
+                                    	alt="임시 프로필사진" style="width: 52px; height: 52px; border-radius: 50%;">
                                 	</c:otherwise>
                                 </c:choose>
                                 <p class="info_sitter">${output.name }</p>
@@ -96,88 +96,85 @@
                             </div>
 
                             <hr style="border: 1px solid rgb(226, 225, 225); background-color: rgb(226, 225, 225);">
-
-                            <div class="buy_title">
+							
+							
+							<div class="buy_title">
                                 <div class="buy_title_left">
-                                    <h4>내 프로필 상태</h4>
+                                    <h4 style="font-size: 1em; font-weight: bold;">내 프로필 상태</h4>
                                     <!--백엔드 연동 필요-->
                                     <!-- 구직중/구직종료 Toggle button -->
-                                    <div class="buy_tl_switch">
-                                        <p class="switch_p" style="color: #9c9c9c; font-size: 0.85em;">구직 종료</p>
-                                        <p class="switch_p"
-                                            style="display:none; color: rgb(34, 172, 135); font-size: 0.85em;">구직 중</p>
-                                        <label class="switch">
-                                            <input type="checkbox">
-                                            <span class="slider round"></span>
-                                        </label>
+                                    <div id="switch_buy" class="buy_tl_switch">
+                                       <c:choose>
+                                       		<c:when test="${output.job_opening eq 'Y'.charAt(0)}">
+                                       			<span style="color: rgb(34, 172, 135); font-size: 0.9em; font-weight: bold; margin-right: 5px;">구직 중</span>
+                                       			 <input type="checkbox" id="check" value="true" checked>
+                                        		<label id="switch" class="round" for="check"></label>
+                                   			</c:when>
+                              				<c:otherwise>
+                              					<span style="color: #858585; font-size: 0.9em; font-weight: bold; margin-right: 5px;">구직 종료</span>
+                                   				 <input type="checkbox" id="check" value="false">
+                                        		<label id="switch" class="round" for="check"></label>
+                                   			</c:otherwise>
+                                       </c:choose>
+                                         
                                     </div>
                                     <!-- end 구직중/구직종료 Toggle button -->
+                                    
                                 </div>
-                                <div class="buy_title_ricght">
-                                    <a data-toggle="modal" href="#tl_right_modal">
+                                <div class="buy_title_right">
+                                	<a data-toggle="modal" href="#tl_right_modal">
                                         <i class="fas fa-question-circle" style="color: #b6b5b5; font-size: 1.7em;"></i>
                                     </a>
-                                    <!-- modal(구직 중/ 구직 종료 상태 설명) -->
-                                    <div id="tl_right_modal" class="modal fade" tabindex="-1" role="dialog"
-                                        aria-labelledby="modalLabel" aria-hidden="true">
-                                        <!-- mocal-dialog -->
-                                        <div class="modal-dialog">
-                                            <!-- modal-content -->
-                                            <div class="modal-content">
-                                                <!--제목-->
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-hidden="true" style="padding: 10px 0;">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                    <h4 class="modal-title" id="modalLabel"
-                                                        style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
-                                                        구직 중, 구직 종료 상태란?
-                                                    </h4>
-                                                </div>
-
-                                                <!-- 내용 -->
-                                                <div class="modal-body">
-                                                    <h4 style="font-size: 1.3em; font-weight: bold;">
-                                                        1.'구직 중' 상태
-                                                    </h4>
-                                                    <br />
-                                                    <p style="font-size: 1em;">
-                                                        부모님들이 내 프로필을 보고 인터뷰 신청을 할 수 있는 상태입니다. 구직을 <br />
-                                                        종료하고 싶은 경우, 반드시 ‘구직 종료’로 변경해주세요. 프로필에 작성한 <br />
-                                                        돌봄 기간이 지난 경우, ‘구직 종료’ 상태로 자동 변경됩니다. <br />
-                                                        <span style="font-size: 0.9em; color: #b6b5b5;"><span
-                                                                class="glyphicon glyphicon-hand-right"></span> 실제와 다른
-                                                            내용의 프로필 내용은 신고사유가 될 수 있습니다.</span>
-                                                    </p>
-                                                    <br /> <br />
-                                                    <h4 style="font-size: 1.3em; font-weight: bold;">
-                                                        2.'구직 종료' 상태
-                                                    </h4>
-                                                    <br />
-                                                    <p style="font-size: 1em; margin-bottom: 20px;">
-                                                        부모님들이 내 프로필을 보고 인터뷰 신청할 수 없는 상태입니다. 구직을 <br />
-                                                        다시 시작하고 싶은 경우, 반드시 ‘구직 중’으로 변경해주세요.
-                                                    </p>
-                                                </div>
+                                </div>
+                                 <!-- modal(구직 중/ 구직 종료 상태 설명) -->
+                                <div id="tl_right_modal" class="modal fade" tabindex="-1" role="dialog"
+                                    aria-labelledby="modalLabel" aria-hidden="true">
+                                    <!-- mocal-dialog -->
+                                    <div class="modal-dialog">
+                                        <!-- modal-content -->
+                                        <div class="modal-content">
+                                            <!--제목-->
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true" style="padding: 10px 0;">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <h4 class="modal-title" id="modalLabel"
+                                                    style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+                                                    구직 중, 구직 종료 상태란?
+                                                </h4>
                                             </div>
-                                            <!-- //modal-content end -->
+
+                                            <!-- 내용 -->
+                                            <div class="modal-body">
+                                                <h4 style="font-size: 1.3em; font-weight: bold;">
+                                                    1.'구직 중' 상태
+                                                </h4>
+                                                <br />
+                                                <p style="font-size: 1em;">
+                                                    부모님들이 내 프로필을 보고 인터뷰 신청을 할 수 있는 상태입니다. 구직을 <br />
+                                                    종료하고 싶은 경우, 반드시 ‘구직 종료’로 변경해주세요. 프로필에 작성한 <br />
+                                                    돌봄 기간이 지난 경우, ‘구직 종료’ 상태로 자동 변경됩니다. <br />
+                                                    <span style="font-size: 0.9em; color: #b6b5b5;"><span
+                                                            class="glyphicon glyphicon-hand-right"></span> 실제와 다른
+                                                        내용의 프로필 내용은 신고사유가 될 수 있습니다.</span>
+                                                </p>
+                                                <br /> <br />
+                                                <h4 style="font-size: 1.3em; font-weight: bold;">
+                                                    2.'구직 종료' 상태
+                                                </h4>
+                                                <br />
+                                                <p style="font-size: 1em; margin-bottom: 20px;">
+                                                    부모님들이 내 프로필을 보고 인터뷰 신청할 수 없는 상태입니다. 구직을 <br />
+                                                    다시 시작하고 싶은 경우, 반드시 ‘구직 중’으로 변경해주세요.
+                                                </p>
+                                            </div>
                                         </div>
-                                        <!-- //modal-dailog end-->
+                                        <!-- //modal-content end -->
                                     </div>
-                                    <!-- // modal end -->
+                                    <!-- //modal-dailog end-->
                                 </div>
-                            </div>
-                            <div class="buy_product">
-                                <div class="product_con">
-                                    <div>
-                                        <h4 style="font-size: 0.929em; font-weight: bold;">맘시터 지원권</h4>
-                                        <p>일자리에서 직접 지원하거나<br /> 무제한으로 수락/조율할 수 있어요!</p>
-                                    </div>
-                                    <!-- 구매하기 상세페이지와 연동 필요 -->
-                                    <a href="${pageContext.request.contextPath}/buy/buy.do"><button
-                                            type="button">구매하기</button></a>
-                                </div>
+                                <!-- // modal end -->
                             </div>
                         </div>
                     </div>
@@ -340,7 +337,41 @@
         check.click(function () {
             $(".switch_p").toggle();
         }); 
+        
+        $(function() {
+        	$("#switch").on("click", function() {
+        		let memberno = ${login.memberno};
+        		
+        		if ($(check).is(":checked")) {
+        			
+        			$.post("${pageContext.request.contextPath}/mypage/update_mjob_opening", {
+        				memberno: memberno,
+        				job_opening: "N",
+        			}, function() {
+        				var conf = confirm("신청서를 공개하시겠습니까?");
+        				
+        				if(conf) {
+        					location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno="+${login.sitterno});
+        				} 
+        			});
+        		} else {
+        			
+        			$.post("${pageContext.request.contextPath}/mypage/update_mjob_opening", {
+        				memberno: memberno,
+        				job_opening: "Y",
+        			}, function() {
+						var conf = confirm("신청서를 비공개하시겠습니까?");
+        				
+        				if(conf) {
+        					location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno="+${login.sitterno});
+        				} 
+        			});
+        		}
+            });
+        });
     </script>
+    
+        
 </body>
 
 </html>

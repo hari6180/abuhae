@@ -120,18 +120,10 @@
 										<div class="col-xs-12 update_img_cont">
 											<div class="upload_prof">
 												<div class="user_img">
-													<input type="file" id="new_profile_img" name="photo" accept="image/*"> <label for="new_profile_img">
-														<c:choose>
-															<c:when test="${profile == null }">
-																<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg"
-																	alt="임시 프로필사진" style="border-radius: 50%;">
-															</c:when>
-															<c:otherwise>
-																<img src="${profile.fileUrl}" alt="임시 프로필사진"
-																	style="border-radius: 50%;">
-															</c:otherwise>
-														</c:choose>
-
+													<input type="file" id="new_profile_img" name="photo" accept="image/*">
+													 <label for="new_profile_img">
+														<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg"
+															alt="임시 프로필사진" style="border-radius: 50%;">
 													</label>
 												</div>
 											</div>
@@ -227,7 +219,7 @@
 									<!-- end modal -->
 								</section>
 					
-								<button type="submit" class="edit_btn"> 수정하기 </button>
+								<button type="submit" class="edit_btn" onClick="window.location.reload()"> 수정하기 </button>
 							</form>
 						</c:when>
 					
@@ -1272,6 +1264,10 @@
             });
 
 		});
+		
+		$(".edit_btn").click(function(e) {
+			 location.reload();
+		})
 
 		
 

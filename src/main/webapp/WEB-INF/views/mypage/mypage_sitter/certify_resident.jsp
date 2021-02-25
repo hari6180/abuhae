@@ -237,13 +237,8 @@
 		                                        <div class="resi_date_slec">
 		                                            <select id="resi_year" class="selc_con">
 		                                                <option>년도</option>
-		                                                <option value="1960">1960</option>
-		                                                <option value="1970">1970</option>
-		                                                <option value="1980">1980</option>
-		                                                <option value="1990">1990</option>
-		                                                <option value="2000">2000</option>
-		                                                <option value="2010">2010</option>
-		                                                <option value="2020">2020</option>
+	                                                	<option value="2020">2020</option>
+		                                                <option value="2021">2021</option>
 		                                            </select>
 		                                            <select id="resi_month" class="selc_con">
 		                                                <option>월</option>
@@ -280,8 +275,17 @@
 		                                                <option value="17">17</option>
 		                                                <option value="18">18</option>
 		                                                <option value="19">19</option>
-		                                                <option value="20">20</option>
-		                                                
+		                                                <option value="21">21</option>
+		                                                <option value="22">22</option>
+		                                                <option value="23">23</option>
+		                                                <option value="24">24</option>
+		                                                <option value="25">25</option>
+		                                                <option value="26">26</option>
+		                                                <option value="27">27</option>
+		                                                <option value="28">28</option>
+		                                                <option value="29">29</option>
+		                                                <option value="30">30</option>
+		                                                <option value="31">31</option>
 		                                            </select>
 		                                        </div>
 		                                    </div>
