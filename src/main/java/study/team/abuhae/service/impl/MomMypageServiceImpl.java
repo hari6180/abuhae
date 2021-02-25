@@ -50,6 +50,26 @@ public class MomMypageServiceImpl implements MomMypageService {
       return result;
 
    }
+   
+   /** 구인중/구직중 업데이트 */
+	@Override
+	public int editMomJobOpening(Mom_info input) throws Exception {
+		 int result = 0;
+
+	      try {
+	         result = sqlSession.update("MomMypageMapper.updateJobOpening", input);
+
+	         if (result == 0) {
+	            throw new NullPointerException("result = 0");
+	         }
+	      } catch (NullPointerException e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("수정된 데이터가 없습니다.");
+	      } catch (Exception e) {
+	         throw new Exception("데이터 수정에 실패했습니다.");
+	      }
+	      return result;
+	}
 
    /** 리뷰 수정 기능 (view에서는 리뷰 insert 기능처럼 보여짐) */
    @Override
@@ -543,6 +563,7 @@ public class MomMypageServiceImpl implements MomMypageService {
       }
       return result;
    }
+
 
    ////// end 선아작업////////////////////
 

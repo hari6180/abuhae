@@ -113,64 +113,64 @@
                                                          <p>지원시간: ${item.applydate} </p>
                                                          <p class="gm_endtime">
                                                             <%-- 인터뷰 요청에 응답하지 않았을 경우 --%>
-                                                             <c:if test="${item.accept == null}">
+                                                          <c:if test="${item.accept == null}">
                                                                 <p class="wait_response">
                                                                    부모님이 내 답변을 기다리고 있습니다. <br>
                                                                    답변 마감 시간 : 2020.01.09 17:54 <!--답변 마감 시간은 신청일로 부터 3일-->
                                                                </p>
                                                              
-                                                              <form id="agreeForm" action="${pageContext.request.contextPath}/mypage/edit_ok_accept">
-                                                                 <input type="hidden" id="accept_edit1" name="momno" value="${item.momno}">
-		                                                            <input type="hidden" id="accept_edit2" name="sitterno" value="${item.sitterno}">
-		                                                            <input type="hidden" id="accept_edit3" name="cntno" value="${item.cntno}">
-                                                                    <button type="submit" class="interview_ok">수락</button>
-                                                              </form>
-                                                              <button type="button" class="interview_no">거절</button>
-                                                              
-                                                              <div class="reason_deny hide">
-                                                          		  <form id="denyForm" action="${pageContext.request.contextPath}/mypage/edit_ok_deny">
-                                                          		  		<h5>거절 유형을 선택해주세요.</h5>
-			                                                              <div class="deny_radio">
-			                                                              	  <input type="hidden" id="accept_edit1" name="momno" value="${item.momno}">
-			                                                                  <div>
-			                                                                      <input type="radio" name="deny_type" id="deny1" class="deny" value="최근에 다른 부모님과 활동을 시작하였습니다.">
-			                                                                      <label for="deny1">최근에 다른 부모님과 활동을 시작하였습니다.</label>
-			                                                                  </div>
-			                                                                  <div>
-			                                                                      <input type="radio" name="deny_type" id="deny2" class="deny" value="다른 부모님과 인터뷰 후, 결과를 기다리고 있습니다.">
-			                                                                      <label for="deny2">다른 부모님과 인터뷰 후, 결과를 기다리고 있습니다.</label>
-			                                                                  </div>
-			                                                                  <div>
-			                                                                      <input type="radio" name="deny_type" id="deny3" class="deny" value="이동하기에 먼 거리입니다.">
-			                                                                      <label for="deny3">이동하기에 먼 거리입니다.</label>
-			                                                                  </div>
-			                                                                  <div>
-			                                                                      <input type="radio" name="deny_type" id="deny4" class="deny" value="요청하신 시간에는 어렵습니다.">
-			                                                                      <label for="deny4">요청하신 시간에는 어렵습니다.</label>
-			                                                                  </div>
-			                                                                  <div>
-			                                                                      <input type="radio" name="deny_type" id="deny5" class="deny" value="요청하신 활동은 자신있는 분야가 아닙니다.">
-			                                                                      <label for="deny5">요청하신 활동은 자신있는 분야가 아닙니다.</label>
-			                                                                  </div>
-			                                                                  <div>
-			                                                                      <input type="radio" name="deny_type" id="deny6" class="deny" value="아이 나이가 너무 어립니다.">
-			                                                                      <label for="deny6">아이 나이가 너무 어립니다.</label>
-			                                                                  </div>
-			                                                                  <div>
-			                                                                      <input type="radio" name="deny_type" id="deny7" class="deny" value="피치 못할 사정으로 앞으로 맘시터 활동이 어렵습니다.">
-			                                                                      <label for="deny7">피치 못할 사정으로 앞으로 맘시터 활동이 어렵습니다.</label>
-			                                                                  </div>
-			                                                                  <div>
-			                                                                      <input type="radio" name="deny_type" id="deny8" class="deny" value="그 밖에 다른 이유로 거절합니다.">
-			                                                                      <label for="deny8">그 밖에 다른 이유로 거절합니다.</label>
-			                                                                  </div>
-			                                                              </div>
-			                                                              <div>
-			                                                                  <button type="submit">전송하기</button>
-			                                                              </div>     
-	                                                          		  </form>
-	                                                          	  </div>
-	                                                             </c:if>
+	                                                              <form id="agreeForm" action="${pageContext.request.contextPath}/mypage/edit_ok_accept">
+	                                                                 <input type="hidden" id="accept_edit1" name="momno" value="${item.momno}">
+			                                                            <input type="hidden" id="accept_edit2" name="sitterno" value="${item.sitterno}">
+			                                                            <input type="hidden" id="accept_edit3" name="cntno" value="${item.cntno}">
+	                                                                    <button type="submit" class="interview_ok">수락</button>
+	                                                              </form>
+	                                                              <button type="button" class="interview_no">거절</button>
+	                                                              
+	                                                              <div class="reason_deny hide">
+	                                                          		  <form id="denyForm" action="${pageContext.request.contextPath}/mypage/edit_ok_deny">
+	                                                          		  		<h5>거절 유형을 선택해주세요.</h5>
+				                                                              <div class="deny_radio">
+				                                                              	  <input type="hidden" id="accept_edit1" name="momno" value="${item.momno}">
+				                                                                  <div>
+				                                                                      <input type="radio" name="deny_type" id="deny1" class="deny" value="최근에 다른 부모님과 활동을 시작하였습니다.">
+				                                                                      <label for="deny1">최근에 다른 부모님과 활동을 시작하였습니다.</label>
+				                                                                  </div>
+				                                                                  <div>
+				                                                                      <input type="radio" name="deny_type" id="deny2" class="deny" value="다른 부모님과 인터뷰 후, 결과를 기다리고 있습니다.">
+				                                                                      <label for="deny2">다른 부모님과 인터뷰 후, 결과를 기다리고 있습니다.</label>
+				                                                                  </div>
+				                                                                  <div>
+				                                                                      <input type="radio" name="deny_type" id="deny3" class="deny" value="이동하기에 먼 거리입니다.">
+				                                                                      <label for="deny3">이동하기에 먼 거리입니다.</label>
+				                                                                  </div>
+				                                                                  <div>
+				                                                                      <input type="radio" name="deny_type" id="deny4" class="deny" value="요청하신 시간에는 어렵습니다.">
+				                                                                      <label for="deny4">요청하신 시간에는 어렵습니다.</label>
+				                                                                  </div>
+				                                                                  <div>
+				                                                                      <input type="radio" name="deny_type" id="deny5" class="deny" value="요청하신 활동은 자신있는 분야가 아닙니다.">
+				                                                                      <label for="deny5">요청하신 활동은 자신있는 분야가 아닙니다.</label>
+				                                                                  </div>
+				                                                                  <div>
+				                                                                      <input type="radio" name="deny_type" id="deny6" class="deny" value="아이 나이가 너무 어립니다.">
+				                                                                      <label for="deny6">아이 나이가 너무 어립니다.</label>
+				                                                                  </div>
+				                                                                  <div>
+				                                                                      <input type="radio" name="deny_type" id="deny7" class="deny" value="피치 못할 사정으로 앞으로 맘시터 활동이 어렵습니다.">
+				                                                                      <label for="deny7">피치 못할 사정으로 앞으로 맘시터 활동이 어렵습니다.</label>
+				                                                                  </div>
+				                                                                  <div>
+				                                                                      <input type="radio" name="deny_type" id="deny8" class="deny" value="그 밖에 다른 이유로 거절합니다.">
+				                                                                      <label for="deny8">그 밖에 다른 이유로 거절합니다.</label>
+				                                                                  </div>
+				                                                              </div>
+				                                                              <div>
+				                                                                  <button type="submit">전송하기</button>
+				                                                              </div>     
+		                                                          		  </form>
+		                                                          	  </div>
+                                                            	 </c:if>
 	                                                             <%-- 인터뷰 요청을 수락했을 경우 --%>
 	                                                             <c:if test="${item.accept == 'Y'}">
 	                                                                <p>${item.phone} 여기로 연락해라</p>

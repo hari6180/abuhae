@@ -127,99 +127,74 @@ a:hover {
   color: #fff;
 }
 
-/** 토글버튼 세부 조정 (수정필요) */
-.wrap_mpm .group2_mpm .mpm_profile .buy_title {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 10px;
+.buy_title {
+	display: felx;
+	flex-direction: row;
+	justify-content: space-between;
+	position: relative;
 }
 
-.wrap_mpm .group2_mpm .mpm_profile .buy_title .buy_title_left {
-  display: flex;
-  align-items: center;
+.buy_title_left {
+	display: flex;
+	flex-direction: row;	
 }
 
-.wrap_mpm .group2_mpm .mpm_profile .buy_title .buy_tl_switch {
-  margin-top: 3px;
-  margin-left: 10px;
+.buy_title_right {
+	display: felx;
+	position: absolute;
+    right: 0;
+    bottom: 5px;
 }
 
-.wrap_mpm .group2_mpm .mpm_profile .buy_title .buy_tl_switch label {
-  margin-left: 5px;
-}
-/** 토글버튼 세부 조정 (수정필요) end*/
-
-/** 두번째 항목, 토글버튼 (수정필요)*/
-.wrap_mpm .group2_mpm .switch {
-  position: relative;
-  display: inline-block;
-  width: 45px;
-  height: 16px;
-  vertical-align: middle;
+.buy_tl_switch {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 4px;
+	margin-left: 9px;
 }
 
-/* Hide default HTML checkbox */
-.wrap_mpm .group2_mpm .switch input {
-  display: none;
+.switch_p {
+	color: eee;
 }
 
-/* The slider */
-
-.wrap_mpm .group2_mpm .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+/** 토글 버튼 */
+#check {
+	display: none;
 }
 
-.wrap_mpm .group2_mpm .slider:before {
-  position: absolute;
-  content: "";
-  top: -4px;
-  height: 23px;
-  width: 23px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+label {
+	display: inline-block;
+	width: 45px;
+	height: 20px;
+	cursor: pointer;
+	position: relative;
+	background-color: #ccc;
+	border-radius: 30px;
 }
 
-.wrap_mpm .group2_mpm input:checked + .slider {
-  background-color: rgb(34, 172, 135);
+label::before {
+	content: '';
+	display: block;
+	width: 17px;
+	height: 17px;
+	left: 4px;
+	bottom: 2px;
+	position: absolute;
+	background-color: #fff;
+	transition: 0.4s;
+	border-radius: 50%;
 }
 
-.wrap_mpm .group2_mpm input:focus + .slider {
-  box-shadow: 0 0 1px rgb(34, 172, 135);
+input:checked + label {
+	background-color: rgb(34, 172, 135);
 }
 
-.wrap_mpm .group2_mpm input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+input:checked + label:before {
+ 	-webkit-transform: translateX(20px);
+	-ms-transform: translateX(20px);
+	transform: translateX(20px);
 }
 
-/* Rounded sliders */
-
-.wrap_mpm .group2_mpm .slider.round {
-  border-radius: 34px;
-}
-
-.wrap_mpm .group2_mpm .slider.round:before {
-  border-radius: 50%;
-}
-
-.wrap_mpm .group2_mpm .buy_title p {
-  margin: 0px;
-  display: inline-block;
-  font-size: 0.9em;
-  font-weight: bold;
-}
 
 /* 세번째 항목 --------------------------------------------------*/
 

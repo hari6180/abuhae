@@ -21,8 +21,8 @@
       <!-- noto Sans 웹 폰트 적용 -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         
-        <!-- icon 참조 -->
-        <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
+        <!-- 아이콘 사용 -->
+		<script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script>
 
         <!-- css 참조 -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_mpm_detail.css">
@@ -90,15 +90,15 @@
                                           <div class="rev_rate">
                                              <input type="hidden" id="rev_edit" name="revno" value="${item.revno}">
                                              
-                                             <input type="radio" name="rev_rate" id="rev_rate1" value="a" class="rate_radio" title="1점">
+                                             <input type="radio" name="rev_rate" id="rev_rate1" value="1" class="rate_radio" title="1점">
                                              <label for="rev_rate1"><i class="fas fa-star"></i></label>
-                                             <input type="radio" name="rev_rate" id="rev_rate2" value="b" class="rate_radio" title="2점">
+                                             <input type="radio" name="rev_rate" id="rev_rate2" value="2" class="rate_radio" title="2점">
                                              <label for="rev_rate2"><i class="fas fa-star"></i></label>
-                                             <input type="radio" name="rev_rate" id="rev_rate3" value="c" class="rate_radio" title="3점">
+                                             <input type="radio" name="rev_rate" id="rev_rate3" value="3" class="rate_radio" title="3점">
                                              <label for="rev_rate3"><i class="fas fa-star"></i></label>
-                                             <input type="radio" name="rev_rate" id="rev_rate4" value="d" class="rate_radio" title="4점">
+                                             <input type="radio" name="rev_rate" id="rev_rate4" value="4" class="rate_radio" title="4점">
                                              <label for="rev_rate4"><i class="fas fa-star"></i></label>
-                                             <input type="radio" name="rev_rate" id="rev_rate5" value="e" class="rate_radio" title="5점" checked>
+                                             <input type="radio" name="rev_rate" id="rev_rate5" value="5" class="rate_radio" title="5점" checked>
                                              <label for="rev_rate5"><i class="fas fa-star"></i></label>
                                           </div>
                                             <textarea name="contents" id="" cols="60%" rows="10" placeholder="내용을 입력하세요." style="width: 100%;"></textarea>
@@ -136,38 +136,60 @@
                                           <div class="si_rev_no">
                                                <div class="si_rev_no_tl">
                                                    <!-- 후기작성 부모 프로필사진 -->
-                                                   <c:choose>
-                                                      <c:when test="${it.isProfile == null}">
-                                                         <div class="si_rev_no_prof">
-                                                             <img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" alt="임시프로필" style="width: 42px; border-radius: 50%;">
-                                                         </div>
-                                                         <!-- 후기작성 부모 정보 -->
-                                                         <div class="si_rev_no_info">
-                                                            <h4>${it.name }</h4>
-                                                             <h5>${it.si } ${it.gu }</h5>
-                                                             <p class="star">${it.rev_rate }</p>
-                                                             <p>작성일시 ㅣ ${it.reg_date }</p>
-                                                             <p class="rev_text">
-                                                                 ${it.contents }
-                                                             </p>
-                                                         </div>
-                                                      </c:when>
-                                                      <c:otherwise>
-                                                         <div class="si_rev_no_prof">
-                                                             <img src="${it.fileUrl }" alt="임시프로필" style="width: 42px; border-radius: 50%;">
-                                                         </div>
-                                                         <!-- 후기작성 부모 정보 -->
-                                                         <div class="si_rev_no_info">
-                                                            <h4>${it.name }</h4>
-                                                             <h5>${it.si } ${it.gu }</h5>
-                                                             <p class="star">${it.rev_rate }</p>
-                                                             <p>작성일시 ㅣ ${it.reg_date }</p>
-                                                             <p class="rev_text">
-                                                                 ${it.contents }
-                                                             </p>
-                                                         </div>
-                                                      </c:otherwise>
-                                                   </c:choose>             
+                                                   <div class="si_rev_no_prof">
+                                                   		<c:if test="${it.isProfile eq '0'}">
+                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
+                                                   		</c:if>
+                                                   		<c:if test="${it.isProfile eq 'y'.charAt(0) }">
+                                                   			<img src="${it.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
+                                                   		</c:if>
+                                                   </div>
+                                                   <!-- 후기작성 부모 정보 -->
+                                                   <div class="si_rev_no_info">
+                                                      <h4>${it.name } <span style="font-size: 0.8em; color: #858585;"> | ${it.si } ${it.gu }</span></h4>
+                                                       <h5></h5>
+                                                       <p class="star" style="margin-top: 5px;">
+															<c:if test="${it.rev_rate eq '1'.charAt(0) }">
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+															</c:if>
+															<c:if test="${it.rev_rate eq '2'.charAt(0) }">
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+															</c:if>
+															<c:if test="${it.rev_rate eq '3'.charAt(0) }">
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+															</c:if>
+															<c:if test="${it.rev_rate eq '4'.charAt(0) }">
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+															</c:if>
+															<c:if test="${it.rev_rate eq '5'.charAt(0) }">
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+															</c:if>
+                                                       </p>
+                                                       <p>작성일시 ㅣ ${it.reg_date }</p>
+                                                       <p class="rev_text">
+                                                           ${it.contents }
+                                                       </p>
+                                                   </div>   
                                                </div>
                                            </div>
                                        </c:forEach>

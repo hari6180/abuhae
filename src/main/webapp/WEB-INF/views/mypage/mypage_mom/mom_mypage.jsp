@@ -90,7 +90,24 @@
                                                 <p class="info_mom" style="font-size: 1em;">${output.name }</p>
                                                 <p class="info_mom">no. ${output.momno }</p>
                                             </div>
-                                            <p>무제한 이용권 (6개월)</p>
+                                            <c:choose>
+                                            	<c:when test="${output.ticket_type eq null}">
+                                            		<p>사용 중인 이용권이 없습니다.</p>
+                                            	</c:when>
+                                            	<c:otherwise>
+		                                           	<c:if test="${output.ticket_type == 1}">
+		                                            	<p>1개월 이용권</p>
+		                                           	</c:if>
+		                                           	<c:if test="${output.ticket_type == 3}">
+		                                            	<p>3개월 이용권</p>
+		                                           	</c:if>
+		                                            <c:if test="${output.ticket_type == 6}">
+		                                            	<p>6개월 이용권</p>
+		                                           	</c:if>
+                                           		</c:otherwise>
+                                            </c:choose>
+                                            
+                                            
                                         </div>
                                     </div>
                                     <a href="${pageContext.request.contextPath}/buy/buy.do?memberno=${output.memberno}">
@@ -105,20 +122,29 @@
                                         <h4 style="font-size: 1em; font-weight: bold;">맘시터 구인 상태</h4>
                                         <!--백엔드 연동 필요-->
                                         <!-- 구직중/구직종료 Toggle button -->
-                                        <div class="buy_tl_switch">
-                                            <p class="switch_p" style="color: #9c9c9c; font-size: 0.85em;">구인 종료</p>
-                                            <p class="switch_p" style="display:none; color: rgb(34, 172, 135); font-size: 0.85em;">구인 중</p>
-                                            <label class="switch">
-                                                <input type="checkbox">
-                                                <span class="slider round"></span>
-                                            </label>
+                                        <div id="switch_buy" class="buy_tl_switch">
+                                           <c:choose>
+                                           		<c:when test="${output.job_opening eq 'Y'.charAt(0)}">
+                                           			<span style="color: rgb(34, 172, 135); font-size: 0.9em; font-weight: bold; margin-right: 5px;">구인 중</span>
+                                           			 <input type="checkbox" id="check" value="true" checked>
+                                            		<label id="switch" class="round" for="check"></label>
+                                       			</c:when>
+                                  				<c:otherwise>
+                                  					<span style="color: #858585; font-size: 0.9em; font-weight: bold; margin-right: 5px;">구인 종료</span>
+                                       				 <input type="checkbox" id="check" value="false">
+                                            		<label id="switch" class="round" for="check"></label>
+                                       			</c:otherwise>
+                                           </c:choose>
+                                             
                                         </div>
                                         <!-- end 구직중/구직종료 Toggle button -->
+                                        
                                     </div>
-                                    <div class="buy_title_ricght">
-                                        <a data-toggle="modal" href="#tl_right_modal">
+                                    <div class="buy_title_right">
+                                    	<a data-toggle="modal" href="#tl_right_modal">
                                             <i class="fas fa-question-circle" style="color: #b6b5b5; font-size: 1.7em;"></i>
                                         </a>
+                                    </div>
                                         <!-- modal(구직 중/ 구직 종료 상태 설명) -->
                                         <div id="tl_right_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                                             aria-hidden="true">
@@ -168,7 +194,6 @@
                                             <!-- //modal-dailog end-->
                                         </div>
                                         <!-- // modal end -->
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -304,8 +329,46 @@
     <!-- on off 토글 버튼, by daye, 2020.12.07 -->
     <script type="text/javascript">
         var check = $("input[type='checkbox']");
-        check.click(function () {
-            $(".switch_p").toggle();
+       /** $(function() {
+        	var job = ${output.job_opening};
+        	
+        	if (job=='Y') {
+        		$(check).attr("checked", true);
+        	} else {
+				$(check).attr("checked", false);
+			}
+        }); */
+        
+        $(function() {
+        	$("#switch").on("click", function() {
+        		let memberno = ${login.memberno};
+        		
+        		if ($(check).is(":checked")) {
+        			
+        			$.post("${pageContext.request.contextPath}/mypage/update_mjob_opening", {
+        				memberno: memberno,
+        				job_opening: "N",
+        			}, function() {
+        				var conf = confirm("신청서를 공개하시겠습니까?");
+        				
+        				if(conf) {
+        					location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno="+${login.momno});
+        				} 
+        			});
+        		} else {
+        			
+        			$.post("${pageContext.request.contextPath}/mypage/update_mjob_opening", {
+        				memberno: memberno,
+        				job_opening: "Y",
+        			}, function() {
+						var conf = confirm("신청서를 비공개하시겠습니까?");
+        				
+        				if(conf) {
+        					location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno="+${login.momno});
+        				} 
+        			});
+        		}
+            });
         });
 
     </script>

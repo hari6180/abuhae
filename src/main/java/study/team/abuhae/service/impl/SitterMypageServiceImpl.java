@@ -54,7 +54,7 @@ public class SitterMypageServiceImpl implements SitterMypageService {
       int result = 0;
       
       try {
-         result = sqlSession.update("ConnectMapper.EditAcceptSitter", input);
+         result = sqlSession.update("ConnectMapper.EditAccept", input);
          
          if (result == 0) {
             throw new NullPointerException("result=0");

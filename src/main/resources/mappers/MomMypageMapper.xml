@@ -280,7 +280,7 @@
 	parameterType="study.team.abuhae.model.Mom_info" resultMap="MomInfoMap">
 		SELECT m.memberno, m.name, m.type, m.id, m.password, m.email, m.phone, m.birthdate, m.job_opening, mi.momno, mi.momno,
 		apply_title, description, want_age, kids_num, kids_age, kids_age2, payment, sitter_gender, interview_type, care_type,
-		si, gu, dong, want_act1, want_act2, want_act3,
+		si, gu, dong, want_act1, want_act2, want_act3, ticket_type,
 		json_extract(schedule, '$.startdate') AS schedule,
 		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
 		REPLACE(json_extract(schedule, '$.startdate'),'"','') AS schedule_start,
@@ -300,6 +300,11 @@
 		<where>
 			memberno=#{memberno}
 		</where>
+	</update>
+	
+	<!-- 구인구직중 업데이트 -->
+	<update id="updateJobOpening" parameterType="study.team.abuhae.model.Member">
+		update member set job_opening=#{job_opening} where memberno=#{memberno};
 	</update>
 
 	<!-- 찜하기 목록 조회 -->

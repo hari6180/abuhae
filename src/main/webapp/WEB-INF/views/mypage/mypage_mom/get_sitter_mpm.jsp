@@ -43,7 +43,7 @@
                      <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${login.momno}">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">내 구인 현황</h3>
@@ -90,17 +90,17 @@
 				                                                   <p>시터의 응답을 기다리고 있습니다.</p>
 				                                                </div>
 			                                                </c:if>
-			                                                <c:if test="${out.accept == 'Y' }">
+			                                                <c:if test="${out.accept == 'N' }">
 			                                                	<div class="deny">
 				                                                    <p>아쉽게도 시터가 3시간 내에 응답을 주지 못했습니다.
 				                                                        <br>다른 시터에게 신청을 시작해보세요.
 				                                                    </p>
 				                                                </div>
 			                                                </c:if>
-			                                                <c:if test="${out.accept == 'N' }">
+			                                                <c:if test="${out.accept == 'Y' }">
 			                                                	<div class="success">
 				                                                    <p>
-				                                                        시터와 연결이 되었습니다. <br>
+				                                                        시터가 인터뷰 요청에 수락하였습니다. <br>
 				                                                    아래의 번호로 연락하여 인터뷰 시간을 조율할 수 있습니다.
 				                                                    </p>
 				                                                    <p class="si_phone"><mark>시터 번호 : ${out.phone }</mark></p>
@@ -131,14 +131,82 @@
 			                                                <p class="si_name">${in.name } <span>(${in.birthdate }세)</span></p>
 			                                                <p>희망시급:${in.payment}원</p>
 			                                                <p>지원시간:${in.applydate }</p>
+			                                                <c:if test="${in.accept == null}">
+                                                                <p class="wait_response">
+                                                                   부모님이 내 답변을 기다리고 있습니다. <br>
+                                                               </p>
+
+	                                                             <div class="agree_btn">
+	                                                             	 <form id="agreeForm" method="post" action="${pageContext.request.contextPath}/mypage/edit_ok_accept">
+		                                                                 <input type="hidden" id="accept_edit1" name="momno" value="${in.momno}">
+				                                                         <input type="hidden" id="accept_edit2" name="sitterno" value="${in.sitterno}">
+				                                                         <input type="hidden" id="accept_edit3" name="cntno" value="${in.cntno}">
+		                                                                 <button type="submit" class="interview_ok">수락</button>
+		                                                              </form>
+		                                                              <button type="button" class="interview_no">거절</button>
+	                                                             </div>
+	                                                              
+	                                                              <div class="reason_deny hide">
+	                                                          		  <form id="denyForm" method="post" action="${pageContext.request.contextPath}/mypage/edit_ok_deny">
+                                                         		  	      <div class="deny_cont">
+                                                         		  	      		<h4>거절 유형을 선택해주세요.</h4>
+					                                                              <div class="deny_radio">
+					                                                              	  <input type="hidden" id="accept_edit1" name="momno" value="${in.momno}">
+					                                                              	  <input type="hidden" id="accept_edit2" name="sitterno" value="${in.sitterno }">
+					                                                                  <div>
+					                                                                      <input type="radio" name="deny_type" id="deny1" class="deny_btn" value="최근에 다른 부모님과 활동을 시작하였습니다.">
+					                                                                      <label for="deny1">최근에 다른 부모님과 활동을 시작하였습니다.</label>
+					                                                                  </div>
+					                                                                  <div>
+					                                                                      <input type="radio" name="deny_type" id="deny2" class="deny_btn" value="다른 부모님과 인터뷰 후, 결과를 기다리고 있습니다.">
+					                                                                      <label for="deny2">다른 부모님과 인터뷰 후, 결과를 기다리고 있습니다.</label>
+					                                                                  </div>
+					                                                                  <div>
+					                                                                      <input type="radio" name="deny_type" id="deny3" class="deny_btn" value="이동하기에 먼 거리입니다.">
+					                                                                      <label for="deny3">이동하기에 먼 거리입니다.</label>
+					                                                                  </div>
+					                                                                  <div>
+					                                                                      <input type="radio" name="deny_type" id="deny4" class="deny_btn" value="요청하신 시간에는 어렵습니다.">
+					                                                                      <label for="deny4">요청하신 시간에는 어렵습니다.</label>
+					                                                                  </div>
+					                                                                  <div>
+					                                                                      <input type="radio" name="deny_type" id="deny5" class="deny_btn" value="요청하신 활동은 자신있는 분야가 아닙니다.">
+					                                                                      <label for="deny5">요청하신 활동은 자신있는 분야가 아닙니다.</label>
+					                                                                  </div>
+					                                                                  <div>
+					                                                                      <input type="radio" name="deny_type" id="deny6" class="deny_btn" value="아이 나이가 너무 어립니다.">
+					                                                                      <label for="deny6">아이 나이가 너무 어립니다.</label>
+					                                                                  </div>
+					                                                                  <div>
+					                                                                      <input type="radio" name="deny_type" id="deny7" class="deny_btn" value="피치 못할 사정으로 앞으로 맘시터 활동이 어렵습니다.">
+					                                                                      <label for="deny7">피치 못할 사정으로 앞으로 맘시터 활동이 어렵습니다.</label>
+					                                                                  </div>
+					                                                                  <div>
+					                                                                      <input type="radio" name="deny_type" id="deny8" class="deny_btn" value="그 밖에 다른 이유로 거절합니다.">
+					                                                                      <label for="deny8">그 밖에 다른 이유로 거절합니다.</label>
+					                                                                  </div>
+					                                                              </div>
+                                                         		  	      	</div>
+			                                                              <div>
+			                                                                  <button class="ok_btn center-block" type="submit">전송하기</button>
+			                                                              </div>     
+	                                                          		  </form>
+	                                                          	  </div>
+                                                           	 </c:if>
 			                                                <c:if test="${in.accept == 'N' }">
 			                                                	<div class="deny">
 			                                                    	<p>시터에게 내 거절의사를 전달했습니다.</p>
 			                                                	</div>
 			                                                </c:if>
-			                                                <c:if test="${in.accept == 'Y' }">
-			                                                	
-			                                                </c:if>
+			                                               <c:if test="${in.accept == 'Y'}">
+                                                               <div class="success">
+				                                                    <p>
+				                                                    아래의 번호로 연락하여 인터뷰 시간을 조율할 수 있습니다.
+				                                                    </p>
+				                                                    <p class="si_phone"><mark>시터 번호 : ${in.phone }</mark></p>
+				                                                    <span>※ 아부해는 인터뷰 이후의 상황에 대하여 책임지지 않습니다.</span> 
+				                                                </div>
+                                                            </c:if>
 			                                            </div>
 			                                        </div> 
                                         		</c:forEach>
@@ -159,6 +227,8 @@
         <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
         <script type="text/javascript">
         	 $(function() {
+        		 console.log("${output}");
+        		 
                 $(".gs_tab_item").click(function(e) {
                     e.preventDefault();
 
@@ -171,7 +241,31 @@
                     var target = $(this).find("a").attr("href");
                     $(target).removeClass("hide");
                     $(".gs_tab_panel > div").not($(target)).addClass("hide");
-                });    
+                });
+                
+                $(".interview_no").click(function(e) {
+                    e.preventDefault();
+                    
+                    $(".reason_deny").toggleClass("hide");
+                 });
+                
+                $("#agreeForm").ajaxForm({
+                    method: "POST",
+                    success: function(json) {
+                       if (json.rt == "OK") {
+                          window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/get_sitter_mpm.do?momno=${login.momno}";
+                       }
+                    }
+                 });
+                 
+                 $("#denyForm").ajaxForm({
+                     method: "POST",
+                     success: function(json) {
+                        if (json.rt == "OK") {
+                           window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/get_sitter_mpm.do?momno=${login.momno}";
+                        }
+                     }
+                  });
             });
         </script>
 	</body>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Review;
+import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.AdminService;
 import study.team.abuhae.service.MomMypageService;
 
@@ -111,6 +112,24 @@ public class MomMypageRestController {
 		try {
 			// 데이터 수정
 			momMypageService.editMomInfo(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		return webHelper.getJsonData();
+	}
+	
+	@RequestMapping(value = "mypage/update_mjob_opening", method = RequestMethod.POST)
+	public Map<String, Object> upd_sjob(
+			@RequestParam(value = "memberno", defaultValue = "0") int memberno,
+			@RequestParam(value = "job_opening", defaultValue = "") char job_opening) {
+		Mom_info input = new Mom_info();
+		input.setMemberno(memberno);
+		input.setJob_opening(job_opening);
+		
+		try {
+			//jobopeing 수정
+			momMypageService.editMomJobOpening(input);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
