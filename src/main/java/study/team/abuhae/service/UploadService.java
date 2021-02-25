@@ -28,4 +28,10 @@ public interface UploadService {
 	  
 	  /** 인증 업로드 데이터 조회 */
 	  public ResiCert getCertifyItem(ResiCert input) throws Exception;
+	  
+	  //인증 총 갯수 조회
+	  public int getCertifyListCount(ResiCert input) throws Exception;
+	  
+	  //인증 리스트 조회
+	  public List<ResiCert> getCertifyList(ResiCert input) throws Exception;
 }

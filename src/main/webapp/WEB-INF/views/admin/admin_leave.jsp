@@ -42,7 +42,7 @@
 		<%@ include file="../admin/admin_header.jsp" %>
 	</header>
 	<div class="Title">
-		<h1>신고 회원 관리</h1>
+		<h1>탈퇴 회원 관리</h1>
 		<ol class="breadcrumb">
 			<li>
 				<i class="fas fa-home"></i>

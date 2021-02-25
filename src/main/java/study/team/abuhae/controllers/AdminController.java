@@ -27,10 +27,12 @@ import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
+import study.team.abuhae.model.ResiCert;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.AdminService;
 import study.team.abuhae.service.CustomerService;
 import study.team.abuhae.service.MemberService;
+import study.team.abuhae.service.UploadService;
 
 @Controller
 public class AdminController {
@@ -41,6 +43,8 @@ public class AdminController {
 	MemberService memberServcie;
 	@Autowired
 	CustomerService customerService;
+	@Autowired
+	UploadService uploadService;
 	@Autowired
 	WebHelper webHelper;
 	@Autowired
@@ -292,10 +296,37 @@ public class AdminController {
 		//return "admin/admin_singo";
 	}
 	
+	
+	//시터 인증 승인 게시판
 	@RequestMapping(value = "/admin/admin_injeung_sitter.do", method = RequestMethod.GET)
-	public String inj_sitter(Model model) {
+	public ModelAndView inj_sitter(Model model,
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
-		return "admin/admin_injeung_sitter";
+		ResiCert input = new ResiCert();
+
+		/** 1) 페이지 구현에 필요한 변수값 생성 */
+        int totalCount = 0;              // 전체 게시글 수
+        int listCount  = 10;             // 한 페이지당 표시할 목록 수
+        int pageCount  = 5;              // 한 그룹당 표시할 페이지 번호 수
+        
+		List<ResiCert> output = null;
+		PageData pageData = null;        // 페이지 번호를 계산한 결과가 저장될 객체
+
+		try {
+			totalCount = uploadService.getCertifyListCount(input);
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			
+			output = uploadService.getCertifyList(input);
+			
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		model.addAttribute("certify", output);
+		model.addAttribute("pageData", pageData);
+		return new ModelAndView("/admin/admin_injeung_sitter");
+		
+		//return "admin/admin_injeung_sitter";
 	}
 	
 	@RequestMapping(value = "/admin/admin_injeung_mom.do", method = RequestMethod.GET)

@@ -66,18 +66,18 @@
 					<thead>
 						<tr>
 							<th class="col-md-1"><input type="checkbox" id="all_check"></th>
-							<th class="col-md-1">회원번호</th>
+							<th class="col-md-1">시터 번호</th>
 							<th class="col-md-1">이름</th>
 							<th class="col-md-1">아이디</th>
-							<th class="col-md-2">이용권시작일</th>
-							<th class="col-md-2">이용권만료일</th>
-							<th class="col-md-2">쿠폰지급일</th>
+							<th class="col-md-2">인증 파일</th>
+							<th class="col-md-2">인증 요청일</th>
+							<th class="col-md-2">승인 여부</th>
 						</tr>
 					</thead>
 					<tbody class="middle center">
 						<c:choose>
 						<%-- 조회결과가 없는 경우 --%>
-							<c:when test="${output == null || fn:length(output) == 0}">
+							<c:when test="${certify == null || fn:length(certify) == 0}">
 								<tr>
 									<td colspan="7" align="center">조회결과가 없습니다.</td>
 								</tr>
@@ -85,15 +85,15 @@
 						<%-- 조회결과가 있는 경우 --%>
 							<c:otherwise>
 							<%-- 조회 결과에 따른 반복 처리 --%>
-								<c:forEach var="item" items="${output}" varStatus="status">
+								<c:forEach var="item" items="${certify}" varStatus="status">
 									<tr>
 										<td class="text-center"><input type="checkbox" class="chk" name="chk"></td>
-										<td align="center">${item.memberno}</td>
+										<td align="center">${item.sitterno}</td>
 										<td align="center">${item.name}</td>
 										<td align="center">${item.id}</td>
-										<td align="center">${item.startdate}</td>
-										<td align="center">${item.enddate}</td>
+										<td align="center">${item.fileUrl}</td>
 										<td align="center">${item.reg_date}</td>
+										<td align="center">${item.cert}</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -108,7 +108,7 @@
 							<%-- 이전 그룹으로 이동 가능하다면? --%>
 							<c:when test="${pageData.prevPage > 0}">
 								<%-- 이동할 URL 생성 --%>
-								<c:url value="/admin/admin_member.do" var="prevPageUrl">
+								<c:url value="/admin/admin_injeung_sitter.do" var="prevPageUrl">
 									<c:param name="page" value="${pageData.prevPage}" />
 									<c:param name="type" value="${type}" />
 								</c:url>

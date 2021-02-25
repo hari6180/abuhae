@@ -16,4 +16,8 @@ public class ResiCert {
 	private String cert;
 	private String reg_date;   // 인증 요청 날짜
 	private int sitterno;   // 시터회원 일련번호
+	
+	//join 절에 따른 변수 추가
+	private String name;
+	private String id;
 }

@@ -611,7 +611,7 @@
 						</div>
 							<c:set var="theString" value="${sitterinfo.days}" />
 							<div class="now_selected">
-							<p class="desc">현재 활동 시작일은 <i class="point">${fn:split(sitterinfo.schedule_start,'/')[0]}년 ${fn:split(sitterinfo.schedule_start,'/')[1]}월 ${fn:split(sitterinfo.schedule_start,'/')[2]}일</i>이고, 
+							<p class="desc">현재 활동 시작일은 <i class="point">${fn:split(sitterinfo.schedule_start_date,'/')[0]}년 ${fn:split(sitterinfo.schedule_start_date,'/')[1]}월 ${fn:split(sitterinfo.schedule_start_date,'/')[2]}일</i>이고, 
 							활동 가능한 요일은
 							<c:if test="${fn:contains(theString, 'mon')}">
 							<i class="point">월요일 </i> 

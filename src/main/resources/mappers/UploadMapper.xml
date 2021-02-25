@@ -98,4 +98,21 @@
 		where sitterno=#{sitterno};
 	</select>
 	
+	<!-- 선아 작업 -->
+	<!-- 인증 건수 카운트 -->
+	<select id="selectCertifyistCount"
+	parameterType="study.team.abuhae.model.ProfileFile" resultType="int">
+		select count(*) from resi_cert
+	</select>
+	
+	<!-- 인증 목록 리스트 조회 -->
+	<select id="selectCertifyList"
+	parameterType="study.team.abuhae.model.ProfileFile" resultMap="CertifyMap">
+		select filename, originname, contenttype, filesize, filepath, fileurl as fileUrl, check_resi, check_birthdate, reg_date, cert, si.sitterno as sitterno, 
+		m.name as name, m.id as id
+		from resi_cert rsc
+		inner join sitter_info si on rsc.sitterno = si.sitterno
+		inner join member m on si.memberno=m.memberno
+	</select>
+	
  </mapper>

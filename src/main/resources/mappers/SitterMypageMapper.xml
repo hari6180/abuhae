@@ -265,7 +265,7 @@
       favorite_act, want_age, want_act1, want_act2, want_act3, payment, introduce, si, gu, dong, 
       json_extract(schedule, '$.startdate') AS schedule,
 		REPLACE(json_extract(schedule, '$.workterm'),'"','') AS workterm,
-		REPLACE(json_extract(schedule, '$.startdate'),'"','') AS schedule_start,
+		REPLACE(json_extract(schedule, '$.startdate'),'"','') AS schedule_start_date,
 		REPLACE(json_extract(schedule, '$.day'),'"','') AS days
       FROM sitter_info s
       INNER JOIN member m ON m.memberno=s.memberno
