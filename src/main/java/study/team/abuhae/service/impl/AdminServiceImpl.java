@@ -232,6 +232,18 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 	
+	@Override
+	public int addCoupon2(Coupon input) throws Exception {
+		int result = 0;
+		try {
+			result = sqlsession.insert("AdminMapper.addCoupon2", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 입력에 실패했습니다.");
+		}
+		return result;
+	}
+	
 	//================고객센터 글쓰기================
 
 	@Override
@@ -394,6 +406,8 @@ public class AdminServiceImpl implements AdminService {
 		
 		return result;
 	}
+
+	
 
 	
 

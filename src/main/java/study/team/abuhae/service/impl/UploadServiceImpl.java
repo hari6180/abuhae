@@ -178,11 +178,25 @@ public class UploadServiceImpl implements UploadService {
 	}
 
 	@Override
-	public List<ResiCert> getCertifyList(ResiCert input) throws Exception {
+	public List<ResiCert> getCertifySitterList(ResiCert input) throws Exception {
 		List<ResiCert> result = null;
 		
 		try {
-			result = sqlSession.selectList("UploadMapper.selectCertifyList");
+			result = sqlSession.selectList("UploadMapper.selectCertifySitterList");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int updateCertOk(ResiCert input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.update("UploadMapper.certOk", input);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");

@@ -28,9 +28,53 @@
 			.page {
 				text-align: center;
 			}
+
+			img {
+				width: 400px;
+			}
+
+			.prof_desc {
+				text-align: center;
+			}
+
+			.prof_desc {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 16px;
+			}
+
+			.otehr_desc {
+				font-size: 0.8em;
+				font-weight: 600;
+				color: #007e62;
+				background-color: #e9f2f1;
+				padding: 25px 23px 22px;
+				margin: 0;
+				display: flex;
+    			justify-content: space-between;
+				line-height: 35px;
+			}
+
+			.modesc {
+				margin: 5px;
+				font-weight: bold;
+			}
+
+			.moddbox {
+				margin: 40px 0;
+			}
+			
+			.point {
+				color: #ff7000;
+				font-weight: bold;
+				font-style: normal;
+			}
+
 		</style>
 </head>
 <body>
+	
 <div class="container">
 	<header>
 		<%@ include file="../admin/admin_header.jsp" %>
@@ -86,12 +130,44 @@
 							<c:otherwise>
 							<%-- 조회 결과에 따른 반복 처리 --%>
 								<c:forEach var="item" items="${certify}" varStatus="status">
+									<!--modal-->
+									<div id="help_modal${status.index}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="help_moda_Label"
+										aria-hidden="true">
+										<!--modal dialog-->
+										<div class="modal-dialog">
+											<!--modal content-->
+											<div class="modal-content">
+												<!--제목-->
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h4 class="modal-title" id="myModalLabel"><i class="point">${item.name}</i> 님의 인증 사진입니다.</h4>
+												</div>
+												<!--내용-->
+												<div class="modal-body">
+													<div class="prof_desc">
+														<img src="${item.fileUrl}"></img>
+													</div>
+													<div class="moddbox">
+													<div class="modesc">작성한 주소 : <i class="point">${item.check_resi}</i> </div>
+													<hr>
+													<div class="modesc">작성한 발행일자 : <i class="point">${item.check_birthdate}</i> </div>
+													</div>
+													<div class="otehr_desc">꼼꼼히 확인 후 정보가 일치한다면 승인을 눌러 주세요 :)
+														<button id="certok" class="btn btn-success" value="${item.sitterno}">승인하기</button>
+													</div>
+												</div>
+											</div>
+											<!--end modal content -->
+										</div>
+										<!--end modal dialog-->
+									</div>
+									<!--end modal-->
 									<tr>
 										<td class="text-center"><input type="checkbox" class="chk" name="chk"></td>
 										<td align="center">${item.sitterno}</td>
 										<td align="center">${item.name}</td>
 										<td align="center">${item.id}</td>
-										<td align="center">${item.fileUrl}</td>
+										<td align="center"><a data-toggle="modal" href="#help_modal${status.index}">${item.originName}</a></td>
 										<td align="center">${item.reg_date}</td>
 										<td align="center">${item.cert}</td>
 									</tr>
@@ -163,45 +239,69 @@
 		</div>
 	</div>
 </div>
-		<!-- Javascript -->
-		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-			$(function(){
-				//올체크 상태 변경되었을 떄 이벤트 - 선아
-				$("#all_check").change(function(){
-					//모든 hobby의 상태를 올체크와 동일하게
-					$(".chk").prop('checked', $(this).prop('checked'));
+	<!-- Javascript -->
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//올체크 상태 변경되었을 떄 이벤트 - 선아
+			$("#all_check").change(function(){
+				//모든 hobby의 상태를 올체크와 동일하게
+				$(".chk").prop('checked', $(this).prop('checked'));
+			});
+
+			$("#putcoup").on("click", function () {
+				//체크된 row의 회원번호 가져오기
+				var checkbox = $("input[name=chk]:checked");
+				var sitterno = null;
+				checkbox.each(function (i) {
+					var tr = checkbox.parent().parent().eq(i); //checkbox의 두단계 상위가 tr
+					var td = tr.children(); //td태그는 tr의 하위
+
+					sitterno = td.eq(1).text(); //sitterno는 td의 두번째 요소
 				});
 
-				$("#putcoup").on("click", function () {
-					//체크된 row의 회원번호 가져오기
-					var checkbox = $("input[name=chk]:checked");
-					var memberno = null;
-					checkbox.each(function (i) {
-						var tr = checkbox.parent().parent().eq(i); //checkbox의 두단계 상위가 tr
-						var td = tr.children(); //td태그는 tr의 하위
-	
-						memberno = td.eq(1).text(); //id는 td의 두번째 요소
-					});
-	
-					$.ajax({
-						type: 'POST',
-						url: '${pageContext.request.contextPath}/admin/insertcoup?memberno='+memberno,
-						success: function(json){
-							// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
-							if (json.rt == "OK") {
-								alert(memberno+"회원 쿠폰 발급 성공");
-								window.location = "${pageContext.request.contextPath}/admin/admin_coupon.do";
-							}
-							
-						},
-						error : function() { //통신 실패시 ㅠㅠ
-							alert('통신실패!');
+				$.ajax({
+					type: 'POST',
+					url: '${pageContext.request.contextPath}/admin/certok?sitterno='+sitterno,
+					success: function(json){
+						// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+						if (json.rt == "OK") {
+							alert(sitterno+"회원 인증 승인 완료");
+							alert(sitterno+"회원 첫 인증 쿠폰 발급 완료!");
+							window.location = "${pageContext.request.contextPath}/admin/admin_injeung_sitter.do";
 						}
-					});
+						
+					},
+					error : function() { //통신 실패시 ㅠㅠ
+						alert('통신실패!');
+					}
 				});
 			});
-		</script>
+
+			//모달 안에 승인 버튼 클릭시
+			$(document).on('click', '#certok', function () {
+				//체크된 row의 회원번호 가져오기
+				var sitterno = $(this).val();
+
+				$.ajax({
+					type: 'POST',
+					url: '${pageContext.request.contextPath}/admin/certok?sitterno='+sitterno,
+					success: function(json){
+						// json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
+						if (json.rt == "OK") {
+							alert(sitterno+"회원 인증 승인 완료!");
+							alert(sitterno+"회원 첫 인증 쿠폰 발급 완료!");
+							window.location = "${pageContext.request.contextPath}/admin/admin_injeung_sitter.do";
+						}
+						
+					},
+					error : function() { //통신 실패시 ㅠㅠ
+						alert('통신실패!');
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>

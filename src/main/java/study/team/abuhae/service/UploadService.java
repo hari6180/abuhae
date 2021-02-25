@@ -33,5 +33,8 @@ public interface UploadService {
 	  public int getCertifyListCount(ResiCert input) throws Exception;
 	  
 	  //인증 리스트 조회
-	  public List<ResiCert> getCertifyList(ResiCert input) throws Exception;
+	  public List<ResiCert> getCertifySitterList(ResiCert input) throws Exception;
+	  
+	  //인증 리스트 조회
+	  public int updateCertOk(ResiCert input) throws Exception;
 }

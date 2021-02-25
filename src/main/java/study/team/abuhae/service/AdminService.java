@@ -39,8 +39,11 @@ public interface AdminService {
 	//이용권 사용중인 회원 수 조회
 	public int getSubCount(Mom_info input) throws Exception;
 	
-	//쿠폰 발급
+	//이용권 재구매 쿠폰 발급
 	public int addCoupon(Coupon input) throws Exception;
+	
+	//첫인증 쿠폰 발급
+	public int addCoupon2(Coupon input) throws Exception;
 	
 	//카테고리 조회
 	public List<Cus_category> getCategory() throws Exception;

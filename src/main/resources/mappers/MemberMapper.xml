@@ -229,7 +229,7 @@
 	
 	<!-- 시터회원번호로 회원 정보 조회  -->
 	<select id="selectSitterItem" resultMap="SitterMap">
-		SELECT subscribe, s.sitterno
+		SELECT subscribe, s.sitterno, s.memberno as memberno
 		FROM sitter_info s
 		INNER JOIN member b ON s.memberno=b.memberno
 		<where>

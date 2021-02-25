@@ -316,7 +316,7 @@ public class AdminController {
 			totalCount = uploadService.getCertifyListCount(input);
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			
-			output = uploadService.getCertifyList(input);
+			output = uploadService.getCertifySitterList(input);
 			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -329,13 +329,7 @@ public class AdminController {
 		//return "admin/admin_injeung_sitter";
 	}
 	
-	@RequestMapping(value = "/admin/admin_injeung_mom.do", method = RequestMethod.GET)
-	public String inj_mom(Model model) {
 
-		return "admin/admin_injeung_mom";
-	}
-	
-	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String login(Model model) {
 
