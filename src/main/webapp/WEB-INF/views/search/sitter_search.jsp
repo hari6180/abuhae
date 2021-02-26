@@ -734,7 +734,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
       </div>
       {{/ifCond}}
-                                  <span class="review_count">후기 {{answer}}개</span>
+                                  <span class="review_count">후기 {{rev_count}}개</span>
                                 </div>
                               </div>
                             </div>
