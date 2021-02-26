@@ -160,15 +160,6 @@ label {
   padding: 20px 0;
 }
 
-.wrap_get_mom .group1_get_mom .gm_appl img {
-  width: 50px;
-  height: 50px;
-  padding: 5px;
-  background-color: #eee;
-  border-radius: 50%;
-  margin-right: 30px;
-}
-
 .wrap_get_mom .group1_get_mom .gm_appl p:first-child {
   font-size: 1.1em;
   font-weight: bold;
@@ -206,7 +197,7 @@ label {
 .deny {
   background-color: #eee;
   margin-top: 15px;
-  font-size: 1em;
+  font-size: 0.8em;
   width: 100%;
   padding: 15px 20px;
   border-radius: 10px;
@@ -218,7 +209,7 @@ label {
   margin-top: 15px;
   padding: 15px 20px;
   border-radius: 10px;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 .success p {
@@ -753,6 +744,10 @@ input[type=radio]+label {
 	font-size: 0.5em;
 }
 
+#tab_page_2 a {
+	margin-bottom: 10px;
+}
+
 /** end 리뷰 관리  ------------------------------------------------------------------*/
 
 /** 인증 관리  ----------------------------------------------------------------------*/
@@ -976,7 +971,7 @@ button {
   border-radius: 5px;
   padding: 30px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.21) 0px 3px 5px 0px;
 }
 
@@ -991,7 +986,7 @@ button {
 
 .acc_con_left p {
   color: #f1d8c8;
-  font-size: 0.9em;
+  font-size: 1.2em;
 }
 
 .acc_con_right {

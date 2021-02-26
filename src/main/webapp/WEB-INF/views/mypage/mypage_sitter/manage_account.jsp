@@ -52,12 +52,6 @@
                                     <div class="acc_con_one">
                                         <div class="acc_con_left col-xs-6">
                                             <p>회원 가입 정보</p>
-                                            <h4>사용 중인 지원권 없음</h4>
-                                        </div>
-                                        <div class="acc_con_right col-xs-6">
-                                            <a href="${pageContext.request.contextPath}/buy/buy.do">
-                                                <button type="button">지원권 구매하기</button>
-                                            </a>
                                         </div>
                                     </div>
                                     <div class="acc_con_two">

@@ -69,23 +69,25 @@
                                      	<c:forEach var="item" items="${output}" varStatus="status">
 	                                   		<div class="ls_page_cont" id="page_con_1">
 	                                    
-                                            	<div class="ls_page_box">
-	                                                <div class="ls_page_box_left">
-	                                                    <c:if test="${item.isProfile eq '0'}">
-                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 52px; height: 52px; border-radius: 50%;"/>
-                                                   		</c:if>
-                                                   		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
-                                                   			<img src="${item.fileUrl }" alt="임시프로필" style="width: 52px; height: 52px; border-radius: 50%;">
-                                                   		</c:if>
-	                                                </div>
-	                                                <div class="ls_page_box_right">
-	                                                    <p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;"> ${item.reg_date}</p>
-	                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }  ${item.gu } </p>
-	                                                    <p style="color: #888888; font-size: 0.8em;">
-	                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
-	                                                    </p>
-	                                                </div>          
-	                                            </div>
+                                            	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}">
+                                            		<div class="ls_page_box">
+		                                                <div class="ls_page_box_left">
+		                                                    <c:if test="${item.isProfile eq '0'}">
+	                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 52px; height: 52px; border-radius: 50%;"/>
+	                                                   		</c:if>
+	                                                   		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
+	                                                   			<img src="${item.fileUrl }" alt="임시프로필" style="width: 52px; height: 52px; border-radius: 50%;">
+	                                                   		</c:if>
+		                                                </div>
+		                                                <div class="ls_page_box_right">
+		                                                    <p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;"> ${item.reg_date}</p>
+		                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }  ${item.gu } </p>
+		                                                    <p style="color: #888888; font-size: 0.8em;">
+		                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
+		                                                    </p>
+		                                                </div>          
+		                                            </div>
+                                            	</a>
 	                                          
 	                                        </div>
                                         </c:forEach>

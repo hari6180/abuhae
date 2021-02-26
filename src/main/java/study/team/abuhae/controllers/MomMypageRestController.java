@@ -31,17 +31,16 @@ public class MomMypageRestController {
 			@RequestParam(value = "revno", defaultValue = "0") int revno,
 			@RequestParam(value = "rev_rate", defaultValue = "") char rev_rate,
 			@RequestParam(value = "contents", defaultValue = "") String contents) {
-		
-		/** 사용자가 입력한 파라미터 유효성 검사 */
-		if (revno == 0) { return webHelper.getJsonWarning("리뷰를 작성할 수 없습니다."); }
-		if (rev_rate == 0) { return webHelper.getJsonWarning("별점을 체크해주세요."); }
-		if (contents == "") { return webHelper.getJsonWarning("내용을 입력해 주세요."); } 
-		
 		/** accept 수정(connect table) - insert */
 		Review input = new Review();
 		input.setRevno(revno);
 		input.setRev_rate(rev_rate);
 		input.setContents(contents);
+		
+		/** 사용자가 입력한 파라미터 유효성 검사 */
+		if (revno == 0) { return webHelper.getJsonWarning("리뷰를 작성할 수 없습니다."); }
+		if (rev_rate == 0) { return webHelper.getJsonWarning("별점을 체크해주세요."); }
+		if (contents == "") { return webHelper.getJsonWarning("내용을 입력해 주세요."); } 
 		
 		try {
 			// 데이터 수정

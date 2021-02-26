@@ -474,5 +474,25 @@ public class SitterMypageServiceImpl implements SitterMypageService {
 		}
 		return result;
 	}
+
+	@Override
+	public Sitter_info getSitterAccountItem(Sitter_info input) throws Exception {
+		Sitter_info result = null;
+
+	      try {
+	         result = sqlSession.selectOne("SitterMypageMapper.selectSitterMemberItem", input);
+
+	         if (result == null) {
+	            throw new NullPointerException("result=null");
+	         }
+	      } catch (NullPointerException e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("조회된 회원이 없습니다.");
+	      } catch (Exception e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("데이터 조회에 실패했습니다.");
+	      }
+	      return result;
+	}
    
 }

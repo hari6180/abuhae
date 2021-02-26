@@ -19,13 +19,18 @@ import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Coupon;
 import study.team.abuhae.model.Heart;
+import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.ProfileFile;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.ResiCert;
 import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
+import study.team.abuhae.service.AdminService;
+import study.team.abuhae.service.MomMypageService;
+import study.team.abuhae.service.SitterMypageService;
 import study.team.abuhae.service.UploadService;
+import study.team.abuhae.service.impl.MomMypageServiceImpl;
 import study.team.abuhae.service.impl.SitterMypageServiceImpl;
 
 @Controller
@@ -37,8 +42,13 @@ public class SitterMypageController {
 	RegexHelper regexHelper;
 	
 	@Autowired
-	SitterMypageServiceImpl sitterMypageService;
-	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
+	SitterMypageService sitterMypageService;
+	
+	@Autowired
+	MomMypageService momMypageService;
+	
+	@Autowired
+	AdminService adminService;
 	
 	@Autowired
 	UploadService uploadService;
@@ -521,6 +531,52 @@ public class SitterMypageController {
 	public String leave_abu_sitter(Locale locale, Model model) {
 
 		return "mypage/mypage_sitter/leave_abu";
+	}
+	
+	/** 회원탈퇴 신청 ok */
+	@RequestMapping(value = "/mypage/mypage_sitter/leaveok.do", method = RequestMethod.POST)
+	public ModelAndView leave_sitterOK(Model model,
+			@RequestParam(value = "memberno", defaultValue = "0") int memberno,
+			@RequestParam(value = "leave_reason") String reason) {
+		
+		//데이터 불러올 객체
+		Leave_member input = new Leave_member();
+		Sitter_info input2 = new Sitter_info();
+		input2.setMemberno(memberno);
+		
+		//회원 조회 먼저
+		Sitter_info output = null;
+		int output2=0;
+		
+		try {
+			//memberno을 통해 회원 단일 조회
+			output = sitterMypageService.getSitterAccountItem(input2);
+			
+			//조회된 회원 객체로 leavemember에 있는지 확인
+			output2 = adminService.getLeaveSitterCount(output);
+			
+			//조회된 내용이 null이라면 신청 X
+			if(output2 == 0) {
+				input.setType(output.getType());
+				input.setId(output.getId());
+				input.setName(output.getName());
+				input.setEmail(output.getEmail());
+				input.setPhone(output.getPhone());
+				input.setReason(reason);
+				momMypageService.addAbuOut(input);
+			} else {
+				return webHelper.redirect(null, "이미 탈퇴신청이 되었습니다.");
+			}
+			
+			
+			
+			
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		String url = contextPath+"/logout";
+		return webHelper.redirect(url, "탈퇴 신청이 완료되었습니다.");
 	}
 	
 	/** 이용동의 페이지 */

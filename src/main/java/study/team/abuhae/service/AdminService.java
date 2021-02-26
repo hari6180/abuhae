@@ -10,6 +10,7 @@ import study.team.abuhae.model.Cus_sub_category;
 import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
+import study.team.abuhae.model.Sitter_info;
 
 public interface AdminService {
 	//관리자 로그인 
@@ -29,6 +30,9 @@ public interface AdminService {
 		
 	//탈퇴 회원 수 조회
 	public int getLeaveCount(Mom_info input) throws Exception;
+	
+	//탈퇴 회원 수 조회 ~~~ 다예
+	public int getLeaveSitterCount(Sitter_info input) throws Exception;
 	
 	//탈퇴 회원 삭제
 	public int deleteLeaveMember(Mom_info input) throws Exception;

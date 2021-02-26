@@ -98,9 +98,10 @@
                                         <li>회원 탈퇴 처리가 완료되면, 약관에 따라 데이터가 삭제되며 복구되지 않습니다.</li>
                                     </ul>
                                 </div>
-                                <form action="#">
+                                <form name="form" method="POST" action="${pageContext.request.contextPath}/mypage/mypage_sitter/leaveok.do" onsubmit="return check()">
                                     <div class="recheck_reason">
                                         <label for="leave_reason">탈퇴 사유</label>
+                                        <input type="hidden" name="memberno" value="${login.memberno}">
                                         <input type="text" name="leave_reason" id="leave_reason" placeholder="여기에 적어주세요.">
                                         <p>알려주신 소중한 내용으로 더 좋은 맘시터 서비스를 만들 수 있도록 노력하겠습니다.</p>
                                         <button type="submit">탈퇴 신청</button>
@@ -117,10 +118,18 @@
 		<script src="../../assets/js/jquery.min.js"></script>
         <script src="../../assets/js/bootstrap.min.js"></script>
         <script type="text/javascript">
-        	<!-- header 삽입 -->
-        <!--	$(function() {
-        		$("#menu").load("../../index_header.html");
-        	}); -->
+	        function check(){
+	            if(form.leave_reason.value==""){
+	                alert("탈퇴 사유를 적어 주세요.");
+	                $("#leave_reason").focus();
+	                return false;
+	            }
+	
+	            if (!confirm("정말 탈퇴하시겠습니까?")) {
+							return false;
+				}
+	            return true;
+	        }
         </script>
 	</body>
 </html>

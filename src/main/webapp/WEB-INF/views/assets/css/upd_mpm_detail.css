@@ -123,14 +123,6 @@ a:hover {
   width: 20%;
 }
 
-.wrap_get_sitter .group1_get_sitter .appl_img img {
-  width: 50px;
-  height: 50px;
-  padding: 5px;
-  background-color: #eee;
-  border-radius: 50%;
-}
-
 .wrap_get_sitter .group1_get_sitter .gs_appl_cont {
   width: 80%;
 }
@@ -310,14 +302,6 @@ input[type=radio]+label {
   .ls_page_box {
   display: flex;
   flex-direction: row;
-}
-
-.wrap_like_sitter .grouop1_like_sitter .ls_tab_panel .ls_page_cont img {
-  width: 65px;
-  height: 65px;
-  background-color: #eee;
-  border-radius: 50%;
-  padding: 10px;
 }
 
 .wrap_like_sitter .grouop1_like_sitter .ls_tab_panel .ls_page_cont .point {
@@ -551,6 +535,14 @@ input[type=radio]+label {
   margin-top: 15px;
   background-color: rgb(255, 95, 0);
   color: #fff;
+}
+
+#check_rev p {
+	color: #696969;
+}
+
+#check_rev mark {
+	background-color: #ffffa0;
 }
 
 /** 별점 */

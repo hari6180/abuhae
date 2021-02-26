@@ -168,7 +168,7 @@
                                         <i class="fas fa-angle-right"></i>
                                     </a>
                                     <div class="line"></div>
-                                    <a class="account_ft_btn" href="${pageContext.request.contextPath}/mypage/mypage_mom/leave_abu.do">
+                                    <a class="account_ft_btn" href="${pageContext.request.contextPath}/mypage/mypage_mom/leave_abu.do?memberno=${login.memberno}">
                                         <p>회원탈퇴 신청</p>
                                         <i class="fas fa-angle-right"></i>
                                     </a>

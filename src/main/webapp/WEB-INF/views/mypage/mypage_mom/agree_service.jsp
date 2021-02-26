@@ -33,7 +33,7 @@
                     <header class="mp_detail_tl" style="border-bottom: 1px solid #ccc;">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/manage_account.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/manage_account.do?memberno=${login.memberno}">
                                     <i class="fas fa-angle-left"></i>
                                 </a>
                                 <h3 class="center-block">아부해 이용 동의</h3>

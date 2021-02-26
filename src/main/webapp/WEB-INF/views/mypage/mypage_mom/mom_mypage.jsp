@@ -324,6 +324,13 @@
         }); */
         
         $(function() {
+        	$("#mps_logout").click(function (e) {
+        		var result = confirm("로그아웃 하시겠습니까?"); 
+        		if(result) {  
+        			location.replace("${pageContext.request.contextPath}/logout"); 
+       			}
+              });
+        	
         	$("#switch").on("click", function() {
         		let memberno = ${login.memberno};
         		

@@ -209,6 +209,7 @@ public class MomMypageController {
 	public ModelAndView review_mom(Model model,
 			@RequestParam(value = "momno", defaultValue = "0") int momno,
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		
 		// 데이터 조회에 필요한 조건값 Beans에 저장
 		Mom_info in = new Mom_info();
 		in.setMomno(momno);
@@ -393,7 +394,7 @@ public class MomMypageController {
 				input.setReason(reason);
 				momMypageService.addAbuOut(input);
 			} else {
-				return webHelper.redirect(null, "Requesting already.");
+				return webHelper.redirect(null, "이미 탈퇴신청이 되었습니다.");
 			}
 			
 			
@@ -403,8 +404,8 @@ public class MomMypageController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-
-		return webHelper.redirect(null, "Success request Out");
+		String url = contextPath+"/logout";
+		return webHelper.redirect(url, "탈퇴 신청이 완료되었습니다.");
 	}
 	
 	

@@ -41,7 +41,9 @@
 		parameterType="study.team.abuhae.model.Connect" resultMap="ConnectMap">
 		select m.memberno as memberno, si.sitterno as sitterno, conn.momno, conn.cntno,
 		name, FLOOR((CAST(REPLACE(current_date,'-','') AS unsigned) -
-		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2 AS birthdate, si.payment, applydate, phone, accept, deny_type
+		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2 AS birthdate, si.payment, applydate, phone, accept, deny_type,
+		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = si.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = si.memberno) AS fileUrl
 		from connect conn
 		inner join mom_info mi on mi.momno = conn.momno
 		inner join sitter_info si on si.sitterno = conn.sitterno
@@ -57,7 +59,9 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, mi.payment, applydate, phone, accept, deny_type, conn.who
+		AS birthdate, mi.payment, applydate, phone, accept, deny_type, conn.who,
+		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = mi.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = mi.memberno) AS fileUrl
 		from connect conn
 		inner join mom_info mi on mi.momno = conn.momno
 		inner join sitter_info si on si.sitterno = conn.sitterno
@@ -74,7 +78,9 @@
 		name, FLOOR(
 		(CAST(REPLACE(current_date,'-','') AS unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, si.payment, applydate, phone, accept, deny_type
+		AS birthdate, si.payment, applydate, phone, accept, deny_type,
+		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = si.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = si.memberno) AS fileUrl
 		from connect conn
 		inner join mom_info mi on mi.momno = conn.momno
 		inner join sitter_info si on si.sitterno = conn.sitterno
@@ -89,7 +95,9 @@
 		conn.sitterno as sitterno,name, FLOOR(
 		(CAST(REPLACE(current_date,'-','') AS unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, mi.payment, applydate, phone, accept, deny_type
+		AS birthdate, mi.payment, applydate, phone, accept, deny_type,
+		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = mi.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = mi.memberno) AS fileUrl
 		from connect conn
 		inner join mom_info mi on mi.momno = conn.momno
 		inner join sitter_info si on si.sitterno = conn.sitterno

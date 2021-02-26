@@ -79,4 +79,7 @@ public interface SitterMypageService {
 	
 	/** 지역 수정 */
 	public int updateLocation(Sitter_info input) throws Exception;
+	
+	/** 탈퇴 */
+	 public Sitter_info getSitterAccountItem(Sitter_info input) throws Exception;
 }

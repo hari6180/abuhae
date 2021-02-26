@@ -15,6 +15,7 @@ import study.team.abuhae.model.Cus_sub_category;
 import study.team.abuhae.model.Leave_member;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Report;
+import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.AdminService;
 
 @Slf4j
@@ -139,6 +140,18 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int getLeaveCount(Mom_info input) throws Exception {
+		int result = 0;
+		try {
+			result = sqlsession.selectOne("AdminMapper.selectCountLeaveMember", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	@Override
+	public int getLeaveSitterCount(Sitter_info input) throws Exception {
 		int result = 0;
 		try {
 			result = sqlsession.selectOne("AdminMapper.selectCountLeaveMember", input);
@@ -418,7 +431,5 @@ public class AdminServiceImpl implements AdminService {
 		
 		return result;
 	}
-
-	
 
 }
