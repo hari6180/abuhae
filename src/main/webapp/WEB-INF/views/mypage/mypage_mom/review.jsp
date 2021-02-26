@@ -288,7 +288,7 @@
                   method: "POST",
                   success: function(json) {
                      if (json.rt == "OK") {
-                        window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/review.do";
+                        window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/review.do?momno=${login.momno}";
                      }
                   }
                });

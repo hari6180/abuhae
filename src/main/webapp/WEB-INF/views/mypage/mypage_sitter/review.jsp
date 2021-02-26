@@ -255,15 +255,6 @@
                     $(target2).removeClass("hide");
                     $(".rev_tab_panel_con > div").not($(target2)).addClass("hide");
                 });  
-                
-                /** 삭제 버튼 */
-                $("#remove_btn").click(function(e) {
-                    var result = confirm("정말 삭제하시겠습니까?")
-
-                    if (result) {
-                        $(this).parents().find("#tab_page_2").find(".si_rev_no").remove();
-                    }
-                }); 
             });
         </script>
 	</body>

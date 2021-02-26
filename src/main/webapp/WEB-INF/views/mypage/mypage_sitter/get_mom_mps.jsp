@@ -306,14 +306,9 @@
                 $(".interview_no").click(function(e) {
                     e.preventDefault();
                     
-                    $(".reason_deny").toggleClass("hide");
+                    $(this).parent().next().toggleClass("hide");
                  });
                 
-                $(".interview_no").click(function(e) {
-                   e.preventDefault();
-                   
-                   $(this).next().removeClass("hide");
-                });
                 
             });
         </script>
