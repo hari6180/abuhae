@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Connect;
+import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.AdminService;
@@ -121,4 +122,19 @@ public class SitterMypageRestController {
 		return webHelper.getJsonData();
 	}
 
+	@RequestMapping(value = "mypage/update_sopening_date", method = RequestMethod.POST)
+	public Map<String, Object> upd_sitterjobdate(
+			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno ) {
+		Sitter_info input = new Sitter_info();
+		input.setSitterno(sitterno);
+		
+		try {
+			//openingdate 수정
+			sitterMypageService.editSitterOpeningDate(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		return webHelper.getJsonData();
+	}
 }

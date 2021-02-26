@@ -315,6 +315,10 @@
 	<update id="updateJobOpening" parameterType="study.team.abuhae.model.Member">
 		update member set job_opening=#{job_opening} where memberno=#{memberno};
 	</update>
+	
+	<update id="updateOpeningDate" parameterType="study.team.abuhae.model.Mom_info">
+		update mom_info set openingdate=now() where momno=#{momno};
+	</update>
 
 	<!-- 찜하기 목록 조회 -->
 	<select id="selectHeartList"

@@ -333,14 +333,19 @@
         	
         	$("#switch").on("click", function() {
         		let memberno = ${login.memberno};
+        		let momno = ${login.momno}
         		
         		if ($(check).is(":checked")) {
+        			
+        			$.post("${pageContext.request.contextPath}/mypage/update_mopening_date", {
+        				momno: momno
+        			});
         			
         			$.post("${pageContext.request.contextPath}/mypage/update_mjob_opening", {
         				memberno: memberno,
         				job_opening: "N",
         			}, function() {
-        				var conf = confirm("신청서를 공개하시겠습니까?");
+        				var conf = confirm("신청서를 비공개하시겠습니까?");
         				
         				if(conf) {
         					location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno="+${login.momno});
@@ -352,7 +357,7 @@
         				memberno: memberno,
         				job_opening: "Y",
         			}, function() {
-						var conf = confirm("신청서를 비공개하시겠습니까?");
+						var conf = confirm("신청서를 공개하시겠습니까?");
         				
         				if(conf) {
         					location.replace("${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno="+${login.momno});

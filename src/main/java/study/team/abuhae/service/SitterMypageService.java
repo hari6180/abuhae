@@ -17,6 +17,9 @@ public interface SitterMypageService {
    /** 결제 내역 조회 */
    public Sitter_info getSitterBuyList(Sitter_info input) throws Exception;
    
+   /** 구직 중 클릭시 지원시간 업데이트 */
+   public int editSitterOpeningDate(Sitter_info input) throws Exception;
+   
    /** 찜한 회원 목록 조히 */
    public List<Heart> getSitterHeartList(Heart input) throws Exception;
    

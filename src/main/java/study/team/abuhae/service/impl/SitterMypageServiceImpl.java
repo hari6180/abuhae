@@ -48,6 +48,26 @@ public class SitterMypageServiceImpl implements SitterMypageService {
       return result;
    }
    
+
+	@Override
+	public int editSitterOpeningDate(Sitter_info input) throws Exception {
+		int result = 0;
+
+	      try {
+	         result = sqlSession.update("SitterMypageMapper.updateSitterOpeningDate", input);
+
+	         if (result == 0) {
+	            throw new NullPointerException("result = 0");
+	         }
+	      } catch (NullPointerException e) {
+	         log.error(e.getLocalizedMessage());
+	         throw new Exception("수정된 데이터가 없습니다.");
+	      } catch (Exception e) {
+	         throw new Exception("데이터 수정에 실패했습니다.");
+	      }
+	      return result;
+	}
+   
    /** 인터뷰 요청에 대한 Accept 업데이트 */
    @Override
    public int editAccept(Connect input) throws Exception {

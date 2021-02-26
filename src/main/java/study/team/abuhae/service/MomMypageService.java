@@ -18,7 +18,10 @@ public interface MomMypageService {
 	public Mom_info getBuyList(Mom_info input) throws Exception;
 
 	/** 구인 구직중 수정 */
-	public int editMomJobOpening(Mom_info input) throws Exception; 
+	public int editMomJobOpening(Mom_info input) throws Exception;
+	
+	/** 구인 중 클릭시 지원시간 업데이트 */
+	public int editMomOpeningDate(Mom_info input) throws Exception;
 	
 	/** 리뷰 수정 기능(사용자 페이지에서는 리뷰 입력 기능으로 보임) */
 	public int editReview(Review input) throws Exception;

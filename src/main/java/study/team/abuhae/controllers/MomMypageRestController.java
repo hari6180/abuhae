@@ -135,4 +135,20 @@ public class MomMypageRestController {
 		
 		return webHelper.getJsonData();
 	}
+	
+	@RequestMapping(value = "mypage/update_mopening_date", method = RequestMethod.POST)
+	public Map<String, Object> upd_sjobdate(
+			@RequestParam(value = "momno", defaultValue = "0") int momno ) {
+		Mom_info input = new Mom_info();
+		input.setMomno(momno);
+		
+		try {
+			//jobopeing 수정
+			momMypageService.editMomOpeningDate(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		return webHelper.getJsonData();
+	}
 }

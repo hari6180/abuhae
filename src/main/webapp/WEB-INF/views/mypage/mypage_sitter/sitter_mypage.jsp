@@ -348,8 +348,12 @@
         	
         	$("#switch").on("click", function() {
         		let memberno = ${login.memberno};
+        		let sitterno = ${login.sitterno};
         		
         		if ($(check).is(":checked")) {
+        			$.post("${pageContext.request.contextPath}/mypage/update_sopening_date", {
+        				sitterno: sitterno
+        			});
         			
         			$.post("${pageContext.request.contextPath}/mypage/update_mjob_opening", {
         				memberno: memberno,
