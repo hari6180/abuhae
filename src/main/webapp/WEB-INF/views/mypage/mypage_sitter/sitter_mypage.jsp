@@ -348,7 +348,7 @@
         				memberno: memberno,
         				job_opening: "N",
         			}, function() {
-        				var conf = confirm("신청서를 공개하시겠습니까?");
+        				var conf = confirm("프로필을 비공개하시겠습니까?");
         				
         				if(conf) {
         					location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno="+${login.sitterno});
@@ -360,7 +360,7 @@
         				memberno: memberno,
         				job_opening: "Y",
         			}, function() {
-						var conf = confirm("신청서를 비공개하시겠습니까?");
+						var conf = confirm("프로필을 공개하시겠습니까?");
         				
         				if(conf) {
         					location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno="+${login.sitterno});

@@ -243,35 +243,19 @@
                     <div class="row">
                         <div class="col-xs-12 line_bold"></div>
                     </div>
+                    
                     <section class="group3_mpm">
                         <div class="row">
                             <div class="col-xs-12 mpm_menu">
-                    
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/fund.do">
-                                    <i class="fas fa-comment-dollar mps_menu3_list1" style="color: #fa9547;"></i>
-                                    <p class="mps_menu3_list2">내 적립금</p>
-                                    <i class="fas fa-angle-right mps_menu3_list3"></i>
-                                </a>
-                    
-                                <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
-                    
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/coupon.do?momno=${output.momno}">
+                            	 <a href="${pageContext.request.contextPath}/mypage/mypage_mom/coupon.do?momno=${output.momno}">
                                     <i class="fas fa-file-invoice-dollar mps_menu_list1" style="color: #fa9547;"></i>
                                     <p class="mps_menu_list2">내 쿠폰함</p>
                                     <p class="mps_menu_list3" style="color: rgb(255, 129, 0);">1 장</p>
                                     <i class="fas fa-angle-right mps_menu_list4"></i>
                                 </a>
-                            </div>
-                        </div>
-                    </section>
-   
-                    <div class="row">
-                        <div class="col-xs-12 line_bold"></div>
-                    </div>
-                    
-                    <section class="group3_mpm">
-                        <div class="row">
-                            <div class="col-xs-12 mpm_menu">
+                                
+                                <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
+                                
                                 <a href="${pageContext.request.contextPath}/mypage/mypage_mom/review.do?momno=${output.momno}">
                                     <i class="fas fa-star mps_menu3_list1"></i>
                                     <p class="mps_menu3_list2">후기 관리</p>

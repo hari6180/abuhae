@@ -281,7 +281,6 @@
 	  from heart h
 	  inner join mom_info mi on h.momno = mi.momno
 	  inner join member m on m.memberno = mi.memberno
-	  inner join 
       <where>
          h.sitterno=#{sitterno} and who = 'S'
       </where>

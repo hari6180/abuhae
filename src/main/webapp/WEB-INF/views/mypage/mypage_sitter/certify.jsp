@@ -69,7 +69,7 @@
                                         		<img src="${pageContext.request.contextPath}/assets/img/mypage_img/certified.png" alt="인증 아이콘"> <br/>
                                         	</c:when>
                                         	<c:otherwise>
-                                        		<span style="color: eee; font-size: 6em"><i class="fas fa-certificate"></i></span>
+                                        		<span style="color: #ccc; font-size: 5em"><i class="fas fa-certificate"></i></span>
                                         	</c:otherwise>
                                         </c:choose>
                                     </div>

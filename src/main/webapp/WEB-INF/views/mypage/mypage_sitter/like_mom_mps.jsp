@@ -76,7 +76,7 @@
 			                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
 			                                                </div>
 			                                                <div class="lm_page_box_right">
-			                                                    <p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">신생아 ${item.kids_num }명 ㅣ <span style="color: #888888; font-size: 0.9em;">한 달 전</span></p>
+			                                                    <p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">신생아 ${item.kids_num }명 ㅣ <span style="color: #888888; font-size: 0.9em;">${item.reg_date }</span></p>
 			                                                    <p style="font-size: 1em; font-weight: bold;">${item.apply_title}</p>
 			                                                    <p style="color: #888888; font-size: 0.9em; font-weight: bold;">${item.si} ${item.gu} ㅣ ${item.name }</p>
 			                                                    <p style="color: #888888; font-size: 0.9em;">
