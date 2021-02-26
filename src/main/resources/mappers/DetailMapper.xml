@@ -47,6 +47,7 @@
 		<result property="heartno" column="heartno" />
 		<result property="schedule_start_date" column="schedule_start_date" />
 		<result property="findHt" column="findHt" />
+		<result property="subscribe" column="subscribe" />
 	</resultMap>
 
 	<resultMap id="SitterMap"
@@ -80,6 +81,7 @@
 		<result property="view" column="view" />
 		<result property="schedule_start_date" column="schedule_start_date" />
 		<result property="findHt" column="findHt" />
+		<result property="subscribe" column="subscribe" />
 	</resultMap>
 	
 	<resultMap type="study.team.abuhae.model.Report" id="ReportMap">
@@ -131,7 +133,7 @@
 		(CAST(REPLACE(current_date,'-','') AS
 		unsigned) -
 		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2
-		AS birthdate, want_age,
+		AS birthdate, want_age, subscribe,
 		job_opening, s.sitterno, sitter_type, want_act1, want_act2, want_act3, gender, introduce,
 		si, gu, dong, favorite_act, signup_date, view, 
 		json_extract(schedule, '$.startdate') AS schedule,
@@ -184,7 +186,7 @@
 		si, gu, dong, signup_date, description, sitter_gender, care_type, 
 		payment, payment_ok,
 		(SELECT DATE_FORMAT(openingdate, "%Y년 %m월 %d일") FROM member b WHERE b.memberno=m.memberno) AS openingdate,
-		 startdate,
+		 startdate, subscribe,
 		(SELECT COUNT(heartno) FROM heart h WHERE m.momno=h.momno AND who='S') AS heartno,
 		(SELECT COUNT(cntno) FROM connect c WHERE c.momno=m.momno AND who='S') AS cntno
 		<if test = "loginSt != 0">, (SELECT

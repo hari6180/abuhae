@@ -184,11 +184,25 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 							<div class="mom_buy_select_btn"></div>
 						</div>
 					</div> <!-- fin. mom_buy_box -->
-					<button type="button" class="buy_btn" id="buy_apply">
-					 <p class="buy_btn_style">  
-					   결제하기
-					 </p>
-					</button>
+					<c:if test="${isLogin ==true }">
+			            <c:choose>
+			              <c:when test="${fn:contains(loginType, 'M')}"> 
+			              <button type="button" class="buy_btn" id="buy_apply">
+							 <p class="buy_btn_style">  
+							   결제하기
+							 </p>
+						   </button>
+			               </c:when>
+			              <c:when test="${fn:contains(loginType, 'S')}"> 
+			              <button type="button" class="buy_btn">
+							 <p class="buy_btn_style">  
+							   시터회원 전용 이용권을 이용하여주세요
+							 </p>
+						  </button>
+			              </c:when>
+			            </c:choose>
+			          </c:if>
+					
 					<div class="mom_buy_desc_area">
 						<div class="mom_desc_title">1개월 무제한 이용권이란?</div>
 						<div class="desc_style">

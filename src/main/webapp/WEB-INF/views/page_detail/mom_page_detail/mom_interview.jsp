@@ -100,7 +100,7 @@
 						</div>
 						</div>
 					</div>
-					<input type="hidden" id="who" name="who" value="S">
+					<input type="hidden" id="who" name="who" value='S'>
 					<input type="hidden" id="momno" name="momno" value="${output.momno}">
 					<input type="hidden" id="sitterno" name="sitterno" value="${login.sitterno}">
 				</div> <!-- fin. desc_box -->

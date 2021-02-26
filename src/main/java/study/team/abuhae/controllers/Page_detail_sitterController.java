@@ -139,10 +139,10 @@ public class Page_detail_sitterController {
 	
 	
 	try {
-		mominfo = (Mom_info) memberService.getMomMember(momput);
+		mominfo = (Mom_info) detailService.getMomItem(momput);
 				
 	if (mominfo.getSubscribe() == 'N') {
-		String redirectUrl = contextPath + "/page_detail/sitter_detail.do?sitterno=" + input.getSitterno();
+		String redirectUrl = contextPath + "/buy/mom_ticket.do?momno=" + input.getMomno();
 		return webHelper.redirect(redirectUrl, "시터회원에게 지원하기 위해 이용권을 구매해주세요.");
 	}
 	detailService.addConnect(input);

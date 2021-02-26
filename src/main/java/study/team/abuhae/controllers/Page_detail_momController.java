@@ -76,9 +76,8 @@ public class Page_detail_momController {
 	
 		// 맘 상세페이지 > 인터뷰 페이지
 		@RequestMapping(value = "/page_detail/mom_interview.do", method = RequestMethod.GET)
-		public ModelAndView mom_interview(Model model,
-				@RequestParam(value = "momno", defaultValue = "0") int momno,
-				@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+		public ModelAndView mom_interview(Model model, HttpServletResponse response,	
+				@RequestParam(value = "momno") int momno) {
 			
 			// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 			Mom_info input = new Mom_info();
@@ -87,23 +86,15 @@ public class Page_detail_momController {
 			// 조회결과를 저장할 객체 선언 
 			Mom_info output = null;
 			
-			Sitter_info siput = new Sitter_info();
-			input.setMomno(sitterno);
-			
-			// 조회결과를 저장할 객체 선언 
-			Sitter_info sioutput = null;
-			
 			try {
 				// 데이터 조회 
 				output = detailService.getMomItem(input);
-				sioutput = detailService.getSitterItem(siput);
 			
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
 			model.addAttribute("output", output);
-			model.addAttribute("sioutput", sioutput);
 			return new ModelAndView("/page_detail/mom_page_detail/mom_interview");
 			//return "/page_detail/mom_page_detail/mom_interview";
 	}
@@ -111,7 +102,7 @@ public class Page_detail_momController {
 		// 맘 상세페이지 > 인터뷰하기 
 		@RequestMapping(value = "/page_detail/mom_page_detail/mom_interview_ok.do", method = RequestMethod.POST)
 		public ModelAndView interview_mom_ok(Model model,
-				HttpServletResponse response,
+				HttpServletResponse response, 
 				@RequestParam(value = "who", required = false) String who,
 				@RequestParam(value = "momno", required = false) int momno,
 				@RequestParam(value = "sitterno", required = false) int sitterno) {
@@ -126,10 +117,10 @@ public class Page_detail_momController {
 			Sitter_info sitterinfo = null;
 			
 			try {
-				sitterinfo = (Sitter_info) memberService.getSitterMember(sitterput);
+				sitterinfo = (Sitter_info) detailService.getSitterItem(sitterput);
 						
 			if (sitterinfo.getSubscribe() == 'N') {
-				String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
+				String redirectUrl = contextPath + "/buy/sitter_ticket.do?sitterno=" + input.getSitterno();
 				return webHelper.redirect(redirectUrl, "맘회원에게 지원하기 위해 이용권을 구매해주세요.");
 			}
 			detailService.addConnect(input);
