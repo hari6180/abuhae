@@ -136,65 +136,67 @@
                                     <!-- 작성한 후기 -->
                                     <div id="tab_page_2" class="hide">
                                        <c:forEach var="it" items="${output2}" varStatus="status">
-                                          <div class="si_rev_no">
-                                               <div class="si_rev_no_tl">
-                                                   <!-- 후기작성 부모 프로필사진 -->
-                                                   <div class="si_rev_no_prof">
-                                                   		<c:if test="${it.isProfile eq '0'}">
-                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
-                                                   		</c:if>
-                                                   		<c:if test="${it.isProfile eq 'y'.charAt(0) }">
-                                                   			<img src="${it.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
-                                                   		</c:if>
-                                                   </div>
-                                                   <!-- 후기작성 부모 정보 -->
-                                                   <div class="si_rev_no_info">
-                                                      <h4>${it.name } <span style="font-size: 0.8em; color: #858585;"> | ${it.si } ${it.gu }</span></h4>
-                                                       <h5></h5>
-                                                       <p class="star" style="margin-top: 5px;">
-															<c:if test="${it.rev_rate eq '1'.charAt(0) }">
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-															</c:if>
-															<c:if test="${it.rev_rate eq '2'.charAt(0) }">
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-															</c:if>
-															<c:if test="${it.rev_rate eq '3'.charAt(0) }">
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-															</c:if>
-															<c:if test="${it.rev_rate eq '4'.charAt(0) }">
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-															</c:if>
-															<c:if test="${it.rev_rate eq '5'.charAt(0) }">
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-															</c:if>
-                                                       </p>
-                                                       <p>작성일시 ㅣ ${it.reg_date }</p>
-                                                       <p class="rev_text">
-                                                           ${it.contents }
-                                                       </p>
-                                                   </div>   
-                                               </div>
-                                           </div>
+                                          <c:if test="${it.contents != null }">
+                                          		<div class="si_rev_no">
+	                                               <div class="si_rev_no_tl">
+	                                                   <!-- 후기작성 부모 프로필사진 -->
+	                                                   <div class="si_rev_no_prof">
+	                                                   		<c:if test="${it.isProfile eq '0'}">
+	                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
+	                                                   		</c:if>
+	                                                   		<c:if test="${it.isProfile eq 'y'.charAt(0) }">
+	                                                   			<img src="${it.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
+	                                                   		</c:if>
+	                                                   </div>
+	                                                   <!-- 후기작성 부모 정보 -->
+	                                                   <div class="si_rev_no_info">
+	                                                      <h4>${it.name } <span style="font-size: 0.8em; color: #858585;"> | ${it.si } ${it.gu }</span></h4>
+	                                                       <h5></h5>
+	                                                       <p class="star" style="margin-top: 5px;">
+																<c:if test="${it.rev_rate eq '1'.charAt(0) }">
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																</c:if>
+																<c:if test="${it.rev_rate eq '2'.charAt(0) }">
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																</c:if>
+																<c:if test="${it.rev_rate eq '3'.charAt(0) }">
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																</c:if>
+																<c:if test="${it.rev_rate eq '4'.charAt(0) }">
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																</c:if>
+																<c:if test="${it.rev_rate eq '5'.charAt(0) }">
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																</c:if>
+	                                                       </p>
+	                                                       <p>작성일시 ㅣ ${it.reg_date }</p>
+	                                                       <p class="rev_text">
+	                                                           ${it.contents }
+	                                                       </p>
+	                                                   </div>   
+	                                               </div>
+	                                           </div>
+                                          </c:if>
                                        </c:forEach>
                                     
                                        <!--  <div class="si_rev_no">

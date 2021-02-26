@@ -107,6 +107,9 @@
 		<result property="schedule" column="schedule" />
 		<result property="frequency" column="frequency" />
 		<result property="days" column="days" />
+		
+		<result property="isProfile" column="isProfile" />
+		<result property="fileUrl" column="fileUrl" />
 	</resultMap>
 
 	<resultMap type="study.team.abuhae.model.Connect"
@@ -159,6 +162,9 @@
 		<result property="schedule" column="schedule" />
 		<result property="frequency" column="frequency" />
 		<result property="days" column="days" />
+		
+		<result property="fileUrl" column="fileUrl" />
+		<result property="isProfile" column="isProfile" />
 	</resultMap>
 
 	<resultMap type="study.team.abuhae.model.Report"
@@ -210,6 +216,9 @@
 		<result property="schedule" column="schedule" />
 		<result property="frequency" column="frequency" />
 		<result property="days" column="days" />
+		
+		<result property="fileUrl" column="fileUrl" />
+		<result property="isProfile" column="isProfile" />
 	</resultMap>
 
 	<resultMap type="study.team.abuhae.model.Coupon" id="CouponMap">
@@ -312,7 +321,9 @@
 		parameterType="study.team.abuhae.model.Heart" resultMap="HeartMap">
 		select m.name, s.si, s.gu, s.dong, s.payment, (date_format(now(),
 		'%Y') - date_format(m.birthdate, '%Y') + 1) as birthdate,
-		m.job_opening, h.momno, s.sitterno, heartno, reg_date, who
+		m.job_opening, h.momno, s.sitterno, heartno, reg_date, who,
+		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl
 		from heart h
 		inner join sitter_info s on h.sitterno = s.sitterno
 		inner join member m
@@ -327,9 +338,10 @@
 		parameterType="study.team.abuhae.model.Connect" resultMap="ConnectMap">
 		select cntno, applydate, who, c.momno, c.sitterno, accept, m.name,
 		s.si, s.gu, s.dong, s.payment,
-		(date_format(now(), '%Y') - date_format(m.birthdate, '%Y') + 1) as birthdate
-		from connect
-		c
+		(date_format(now(), '%Y') - date_format(m.birthdate, '%Y') + 1) as birthdate,
+		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl
+		from connect c
 		inner join mom_info mi on c.momno = mi.momno
 		inner join sitter_info s
 		on c.sitterno = s.sitterno
@@ -344,7 +356,9 @@
 	<select id="selectReportList"
 		parameterType="study.team.abuhae.model.Report" resultMap="ReportMap">
 		select reportno, who, r.type, contents, r.momno, r.sitterno,
-		r.reg_date as reg_date
+		r.reg_date as reg_date,
+		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl
 		from report r
 		inner join mom_info mi on r.momno = mi.momno
 		inner join

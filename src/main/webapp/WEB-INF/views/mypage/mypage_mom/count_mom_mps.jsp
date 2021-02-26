@@ -58,7 +58,12 @@
                                     	<div class="ls_page_cont no_work">
 	                                        <div class="ls_page_box">
 	                                            <div class="ls_page_box_left">
-	                                                <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
+	                                                <c:if test="${item.isProfile eq '0'}">
+                                               			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 52px; height: 52px; border-radius: 50%;"/>
+                                               		</c:if>
+                                               		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
+                                               			<img src="${item.fileUrl }" alt="임시프로필" style="width: 52px; height: 52px; border-radius: 50%;">
+                                               		</c:if>
 	                                            </div>
 	                                            <div class="ls_page_box_right">
 	                                                <p style="font-size: 1em; font-weight: bold;">${item.name } <span style="color: #888888; font-size: 0.8em;">13시간 전 작성</p>

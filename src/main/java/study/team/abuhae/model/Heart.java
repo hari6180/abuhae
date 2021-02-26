@@ -23,7 +23,7 @@ public class Heart {
 	private String dong;				// 동
 	private int payment;				// 원하는 시급
 	private char cctv;				// CCTV 동의 여부
-	private char isprofile;			// 프로필 등록 여부
+	private char isProfile;			// 프로필 등록 여부
 	private String schedule;				// 활동 가능 시간 (1, 2, 3, 4)
 	//private String schedule_set;		// 원하는 시간 직접 입력 (JSON)
 	private String introduce;			// 자기소개
@@ -61,4 +61,5 @@ public class Heart {
 	private char ticket_type; 	// 이용권 종류 ('1', '3', '6')
 	private String ticket_price;// 이용권 금액
 	private String signup_date; // 가입일자
+	private String fileUrl;
 }

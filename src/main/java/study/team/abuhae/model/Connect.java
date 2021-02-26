@@ -64,4 +64,6 @@ public class Connect {
 	private String ticket_price;// 이용권 금액
 	private String signup_date; // 가입일자
 	
+	private String fileUrl;
+	private char isProfile;
 }

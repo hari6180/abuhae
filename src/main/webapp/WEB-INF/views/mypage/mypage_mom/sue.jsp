@@ -48,7 +48,12 @@
                         	<div class="row">
 	                            <div class="col-xs-12 sue_con_in">
 	                                <div class="sue_con_prof">
-	                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="프로필사진">
+	                                     <c:if test="${item.isProfile eq '0'}">
+                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 52px; height: 52px; border-radius: 50%;"/>
+                                   		</c:if>
+                                   		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
+                                   			<img src="${item.fileUrl }" alt="임시프로필" style="width: 52px; height: 52px; border-radius: 50%;">
+                                   		</c:if>
 	                                    <div class="sue_con_prof_in">
 	                                        <h4>${item.name }</h4>
 	                                        <p>신고 일시 : ${item.reg_date }</p>

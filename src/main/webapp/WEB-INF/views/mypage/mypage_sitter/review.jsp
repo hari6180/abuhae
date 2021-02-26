@@ -116,12 +116,54 @@
 	                                            <div class="si_rev_no_tl">
 	                                                <!-- 후기작성 부모 프로필사진 -->
 	                                                <div class="si_rev_no_prof">
-	                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="임시프로필" style="width: 42px; border-radius: 50%;">
+	                                                    <c:if test="${item.isProfile eq '0'}">
+                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
+                                                   		</c:if>
+                                                   		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
+                                                   			<img src="${item.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
+                                                   		</c:if>
 	                                                </div>
 	                                                <!-- 후기작성 부모 정보 -->
 	                                                <div class="si_rev_no_info">
 	                                                    <h4>${item.name } 부모 <span class="rev_info" style="font-size: 0.85em; color: #999999;">영아 1명 ㅣ 채용후기</span></h4>
-	                                                    <p class="star">${item.rev_rate } <span class="rev_info" style="font-size: 0.85em; color: #999999;">${item.reg_date }</span></p>
+	                                                    <p class="star">
+	                                                    	<c:if test="${item.rev_rate eq '1'.charAt(0) }">
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+															</c:if>
+															<c:if test="${item.rev_rate eq '2'.charAt(0) }">
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+															</c:if>
+															<c:if test="${item.rev_rate eq '3'.charAt(0) }">
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+															</c:if>
+															<c:if test="${item.rev_rate eq '4'.charAt(0) }">
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+															</c:if>
+															<c:if test="${item.rev_rate eq '5'.charAt(0) }">
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+															</c:if>
+	                                                    	<span class="rev_info" style="font-size: 0.85em; color: #999999;">${item.reg_date }</span>
+	                                                    </p>
 	                                                    <p class="rev_text">${item.contents}</p>
 	                                                </div>
 	                                            </div>

@@ -257,7 +257,7 @@
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
                                 
                                 <a href="${pageContext.request.contextPath}/mypage/mypage_mom/review.do?momno=${output.momno}">
-                                    <i class="fas fa-star mps_menu3_list1"></i>
+                                    <i class="fas fa-star mps_menu3_list1" style="color: #fa9547;"></i>
                                     <p class="mps_menu3_list2">후기 관리</p>
                                     <i class="fas fa-angle-right mps_menu3_list3"></i>
                                 </a>

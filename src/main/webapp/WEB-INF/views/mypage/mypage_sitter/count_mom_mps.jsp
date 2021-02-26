@@ -60,7 +60,12 @@
                                  			<div class="cm_page_cont">
 			                                    <div class="lm_page_box">
 			                                        <div class="cm_page_box_left">
-			                                            <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
+			                                            <c:if test="${item.isProfile eq '0'}">
+                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
+                                                   		</c:if>
+                                                   		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
+                                                   			<img src="${item.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
+                                                   		</c:if>
 			                                        </div>
 			                                        <div class="page-con-top-right">
 			                                            <p style="color: #888888; font-weight: bold; font-size: 1em;">신생아 ${item.kids_num}명 ㅣ <span style="color: #888888; font-size: 0.9em;">${item.applydate} 일 전</span></p>

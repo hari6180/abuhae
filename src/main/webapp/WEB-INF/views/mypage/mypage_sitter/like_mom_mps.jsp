@@ -73,7 +73,12 @@
 		                                        	<div class="lm_page_cont" id="page_con_1">
 			                                            <div class="lm_page_box">
 			                                                <div class="lm_page_box_left">
-			                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
+			                                                    <c:if test="${item.isProfile eq '0'}">
+		                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
+		                                                   		</c:if>
+		                                                   		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
+		                                                   			<img src="${item.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
+		                                                   		</c:if>
 			                                                </div>
 			                                                <div class="lm_page_box_right">
 			                                                    <p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">신생아 ${item.kids_num }명 ㅣ <span style="color: #888888; font-size: 0.9em;">${item.reg_date }</span></p>
@@ -103,7 +108,12 @@
                                         				<div class="lm_page_cont" id="page_con_1">
 				                                            <div class="lm_page_box">
 				                                                <div class="lm_page_box_left">
-				                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
+				                                                    <c:if test="${it.isProfile eq '0'}">
+			                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 52px; height: 52px; border-radius: 50%;"/>
+			                                                   		</c:if>
+			                                                   		<c:if test="${it.isProfile eq 'y'.charAt(0) }">
+			                                                   			<img src="${it.fileUrl }" alt="임시프로필" style="width: 52px; height: 52px; border-radius: 50%;">
+			                                                   		</c:if>
 				                                                </div>
 				                                                <div class="lm_page_box_right">
 				                                                    <p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">신생아 ${it.kids_num }명 ㅣ <span style="color: #888888; font-size: 0.9em;">한 달 전</span></p>

@@ -82,9 +82,9 @@
 			                                                <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
 			                                            </div>
 			                                            <div class="gs_appl_cont">
-			                                                <p class="si_name">${out.name } <span>(${out.birthdate }세)</span></p>
-			                                                <p>희망시급:${out.payment }원</p>
-			                                                <p>지원시간:${out.applydate }</p>
+			                                                <p class="si_name">${out.name } <span> ( ${out.birthdate }세 )</span></p>
+			                                                <p>희망시급 : ${out.payment }원</p>
+			                                                <p>지원시간 : ${out.applydate }</p>
 			                                                <c:if test="${out.accept == null }">
 			                                                	<div class="success">
 				                                                   <p>시터의 응답을 기다리고 있습니다.</p>
@@ -92,8 +92,8 @@
 			                                                </c:if>
 			                                                <c:if test="${out.accept == 'N' }">
 			                                                	<div class="deny">
-				                                                    <p>아쉽게도 시터가 3시간 내에 응답을 주지 못했습니다.
-				                                                        <br>다른 시터에게 신청을 시작해보세요.
+				                                                    <p>아쉽게도 시터가 인터뷰 요청을 거절하였습니다.
+				                                                        <br><span style="color: #e93c3c;">거절 사유 : ${out.deny_type } </span> 
 				                                                    </p>
 				                                                </div>
 			                                                </c:if>
@@ -128,9 +128,9 @@
 			                                                <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
 			                                            </div>
 			                                            <div class="gs_appl_cont">
-			                                                <p class="si_name">${in.name } <span>(${in.birthdate }세)</span></p>
-			                                                <p>희망시급:${in.payment}원</p>
-			                                                <p>지원시간:${in.applydate }</p>
+			                                                <p class="si_name">${in.name } <span>( ${in.birthdate }세 )</span></p>
+			                                                <p>희망시급 : ${in.payment}원</p>
+			                                                <p>지원시간 : ${in.applydate }</p>
 			                                                <c:if test="${in.accept == null}">
                                                                 <p class="wait_response">
                                                                    부모님이 내 답변을 기다리고 있습니다. <br>
@@ -154,32 +154,20 @@
 					                                                              	  <input type="hidden" id="accept_edit1" name="momno" value="${in.momno}">
 					                                                              	  <input type="hidden" id="accept_edit2" name="sitterno" value="${in.sitterno }">
 					                                                                  <div>
-					                                                                      <input type="radio" name="deny_type" id="deny1" class="deny_btn" value="최근에 다른 부모님과 활동을 시작하였습니다.">
-					                                                                      <label for="deny1">최근에 다른 부모님과 활동을 시작하였습니다.</label>
+					                                                                      <input type="radio" name="deny_type" id="deny1" class="deny_btn" value="최근에 다른 맘시터와 활동을 시작하였습니다.">
+					                                                                      <label for="deny1">최근에 다른 맘시터와 활동을 시작하였습니다.</label>
 					                                                                  </div>
 					                                                                  <div>
-					                                                                      <input type="radio" name="deny_type" id="deny2" class="deny_btn" value="다른 부모님과 인터뷰 후, 결과를 기다리고 있습니다.">
-					                                                                      <label for="deny2">다른 부모님과 인터뷰 후, 결과를 기다리고 있습니다.</label>
-					                                                                  </div>
-					                                                                  <div>
-					                                                                      <input type="radio" name="deny_type" id="deny3" class="deny_btn" value="이동하기에 먼 거리입니다.">
-					                                                                      <label for="deny3">이동하기에 먼 거리입니다.</label>
+					                                                                      <input type="radio" name="deny_type" id="deny2" class="deny_btn" value="다른 맘시터와 인터뷰 후, 결과를 기다리고 있습니다.">
+					                                                                      <label for="deny2">다른 맘시터와 인터뷰 후, 결과를 기다리고 있습니다.</label>
 					                                                                  </div>
 					                                                                  <div>
 					                                                                      <input type="radio" name="deny_type" id="deny4" class="deny_btn" value="요청하신 시간에는 어렵습니다.">
 					                                                                      <label for="deny4">요청하신 시간에는 어렵습니다.</label>
 					                                                                  </div>
 					                                                                  <div>
-					                                                                      <input type="radio" name="deny_type" id="deny5" class="deny_btn" value="요청하신 활동은 자신있는 분야가 아닙니다.">
-					                                                                      <label for="deny5">요청하신 활동은 자신있는 분야가 아닙니다.</label>
-					                                                                  </div>
-					                                                                  <div>
-					                                                                      <input type="radio" name="deny_type" id="deny6" class="deny_btn" value="아이 나이가 너무 어립니다.">
-					                                                                      <label for="deny6">아이 나이가 너무 어립니다.</label>
-					                                                                  </div>
-					                                                                  <div>
-					                                                                      <input type="radio" name="deny_type" id="deny7" class="deny_btn" value="피치 못할 사정으로 앞으로 맘시터 활동이 어렵습니다.">
-					                                                                      <label for="deny7">피치 못할 사정으로 앞으로 맘시터 활동이 어렵습니다.</label>
+					                                                                      <input type="radio" name="deny_type" id="deny7" class="deny_btn" value="피치 못할 사정으로 앞으로 구인 활동이 어렵습니다.">
+					                                                                      <label for="deny7">피치 못할 사정으로 앞으로 구인 활동이 어렵습니다.</label>
 					                                                                  </div>
 					                                                                  <div>
 					                                                                      <input type="radio" name="deny_type" id="deny8" class="deny_btn" value="그 밖에 다른 이유로 거절합니다.">
@@ -196,6 +184,7 @@
 			                                                <c:if test="${in.accept == 'N' }">
 			                                                	<div class="deny">
 			                                                    	<p>시터에게 내 거절의사를 전달했습니다.</p>
+			                                                    	<p>거절 사유 : ${in.deny_type }</p>
 			                                                	</div>
 			                                                </c:if>
 			                                               <c:if test="${in.accept == 'Y'}">
