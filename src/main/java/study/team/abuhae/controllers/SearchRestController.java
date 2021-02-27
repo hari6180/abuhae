@@ -57,7 +57,6 @@ public class SearchRestController {
 			/** (2) 상세 검색 **/
 			@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 			@RequestParam(value = "caredays[]", required = false) String[] caredays,
-			@RequestParam(value = "time_range[]", required = false) String[] timeRange,
 			@RequestParam(value = "sitter_type[]", required = false) String[] sitterType,
 			@RequestParam(value = "sitter_age[]", required = false) String[] sitterAge,
 			/** (3) 주소 검색 **/
@@ -76,11 +75,10 @@ public class SearchRestController {
 		
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Sitter_info input = new Sitter_info();
-		
 		if (si != null && gu != null && dong != null) {
-			Sitter_info.setLoc1(si);
-			Sitter_info.setLoc2(gu);
-			Sitter_info.setLoc3(dong);
+			input.setLoc1(si);
+			input.setLoc2(gu);
+			input.setLoc3(dong);
 		}
 
 		if (actList != null) {
@@ -89,8 +87,8 @@ public class SearchRestController {
 				String temp2 = temp1.replace("'", "");
 				actList[i] = temp2;
 				log.info("temp2" + temp2);
-				Sitter_info.setActList(actList);
 			}
+			input.setActList(actList);
 		}
 
 		if (kidsAge != null) {
@@ -99,25 +97,22 @@ public class SearchRestController {
 				String temp2 = temp1.replace("'", "");
 				kidsAge[i] = temp2;
 				log.info("temp2" + temp2);
-				Sitter_info.setKidsAge(kidsAge);
 			}
+			input.setKidsAge(kidsAge);
 		}
 
 		if (caredays != null) {
-			Sitter_info.setCaredays(caredays);
-		}
-
-		if (timeRange != null) {
-			Sitter_info.setTimeRange(timeRange);
+			input.setCaredays(caredays);
 		}
 
 		if (sitterType != null) {
-			Sitter_info.setSitterType(sitterType);
+			input.setSitterType(sitterType);
 		}
 
 		if (sitterAge != null) {
-			Sitter_info.setSitterAge(sitterAge);
+			input.setSitterAge(sitterAge);
 		}
+		
 
 		List<Sitter_info> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산한 결과가 저장될 객체
@@ -146,6 +141,7 @@ public class SearchRestController {
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("item", output);
 		data.put("meta", pageData);
+		data.put("totalCount", totalCount);
 
 		return webHelper.getJsonData(data);
 	}
@@ -162,7 +158,6 @@ public class SearchRestController {
 			/** (2) 상세 검색 **/
 			@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 			@RequestParam(value = "caredays[]", required = false) String[] caredays,
-			@RequestParam(value = "time_range[]", required = false) String[] timeRange,
 			@RequestParam(value = "sitter_type[]", required = false) String[] sitterType,
 			@RequestParam(value = "sitter_age[]", required = false) String[] sitterAge,
 			// 로그인 정보
@@ -181,19 +176,19 @@ public class SearchRestController {
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Sitter_info input = new Sitter_info();
 		if (si != null && gu != null && dong != null) {
-			Sitter_info.setLoc1(si);
-			Sitter_info.setLoc2(gu);
-			Sitter_info.setLoc3(dong);
+			input.setLoc1(si);
+			input.setLoc2(gu);
+			input.setLoc3(dong);
 		}
-		
+
 		if (actList != null) {
 			for (int i = 0; i < actList.length; i++) {
 				String temp1 = actList[i];
 				String temp2 = temp1.replace("'", "");
 				actList[i] = temp2;
 				log.info("temp2" + temp2);
-				Sitter_info.setActList(actList);
 			}
+			input.setActList(actList);
 		}
 
 		if (kidsAge != null) {
@@ -202,29 +197,20 @@ public class SearchRestController {
 				String temp2 = temp1.replace("'", "");
 				kidsAge[i] = temp2;
 				log.info("temp2" + temp2);
-				Sitter_info.setKidsAge(kidsAge);
 			}
+			input.setKidsAge(kidsAge);
 		}
 
 		if (caredays != null) {
-			Sitter_info.setCaredays(caredays);
-		}
-
-		if (timeRange != null) {
-			Sitter_info.setTimeRange(timeRange);
+			input.setCaredays(caredays);
 		}
 
 		if (sitterType != null) {
-			Sitter_info.setSitterType(sitterType);
+			input.setSitterType(sitterType);
 		}
 
 		if (sitterAge != null) {
-			Sitter_info.setSitterAge(sitterAge);
-		}
-		
-		if (momno != null || momno != "") {
-			int mom = Integer.parseInt(momno);
-			Sitter_info.setLoginMom(mom);
+			input.setSitterAge(sitterAge);
 		}
 
 		List<Sitter_info> output = null; // 조회결과가 저장될 객체
@@ -253,6 +239,7 @@ public class SearchRestController {
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("item", output);
 		data.put("meta", pageData);
+		data.put("totalCount", totalCount);
 
 		return webHelper.getJsonData(data);
 	}
@@ -325,7 +312,7 @@ public class SearchRestController {
 			// 정렬 조건
 			@RequestParam(value = "order", defaultValue = "null") String order, 
 			// 상세 검색
-			@RequestParam(value = "act[]", required = false) String[] act,
+			@RequestParam(value = "act[]", required = false) String[] actList,
 			@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 			@RequestParam(value = "caredays[]", required = false) String[] caredays,
 			@RequestParam(value = "time_range[]", required = false) String[] timeRange,
@@ -347,19 +334,19 @@ public class SearchRestController {
 		Mom_info input = new Mom_info();
 		
 		if (si != null && gu != null && dong != null) {
-			Mom_info.setLoc1(si);
-			Mom_info.setLoc2(gu);
-			Mom_info.setLoc3(dong);
+			input.setLoc1(si);
+			input.setLoc2(gu);
+			input.setLoc3(dong);
 		}
 		
-		if (act != null) {
-			for (int i = 0; i < act.length; i++) {
-				String temp1 = act[i];
+		if (actList != null) {
+			for (int i = 0; i < actList.length; i++) {
+				String temp1 = actList[i];
 				String temp2 = temp1.replace("'", "");
-				act[i] = temp2;
+				actList[i] = temp2;
 				log.info("temp2" + temp2);
-				Mom_info.setAct(act);
 			}
+			input.setActList(actList);
 		}
 
 		if (kidsAge != null) {
@@ -368,28 +355,37 @@ public class SearchRestController {
 				String temp2 = temp1.replace("'", "");
 				kidsAge[i] = temp2;
 				log.info("temp2" + temp2);
-				Mom_info.setKidsAge(kidsAge);
 			}
+			input.setKidsAge(kidsAge);
 		}
 
 		if (caredays != null) {
-			Mom_info.setCaredays(caredays);
-		}
-
-		if (timeRange != null) {
-			Mom_info.setTimeRange(timeRange);
+			input.setCaredays(caredays);
 		}
 
 		if (min_pay != null) {
-			Mom_info.setMin_pay(min_pay);
+			int min = Integer.parseInt(min_pay);
+			input.setMin_pay(min);
 		}
 
 		if (max_pay != null) {
-			Mom_info.setMax_pay(max_pay);
+			int max = Integer.parseInt(max_pay);
+			input.setMax_pay(max);
 		}
 
 		if (kids_cnt != null) {
-			Mom_info.setKids_cnt(kids_cnt);
+			int kids = 0;
+			switch(kids_cnt) {
+			case "1" :
+				kids = Integer.parseInt(kids_cnt);
+				break;
+			case "2" :
+				kids = Integer.parseInt(kids_cnt);
+				break;
+			default :
+				System.out.println("all");
+			}
+			input.setKids_cnt(kids);
 		}
 		
 		List<Mom_info> output = null; // 조회결과가 저장될 객체
@@ -429,6 +425,7 @@ public class SearchRestController {
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("item", output);
 		data.put("meta", pageData);
+		data.put("totalCount", totalCount);
 
 		return webHelper.getJsonData(data);
 	}
@@ -441,10 +438,9 @@ public class SearchRestController {
 				// 정렬 조건
 				@RequestParam(value = "order", defaultValue = "null") String order, 
 				// 상세 검색
-				@RequestParam(value = "act[]", required = false) String[] act,
+				@RequestParam(value = "act[]", required = false) String[] actList,
 				@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 				@RequestParam(value = "caredays[]", required = false) String[] caredays,
-				@RequestParam(value = "time_range[]", required = false) String[] timeRange,
 				@RequestParam(value = "min_pay", required = false) String min_pay,
 				@RequestParam(value = "max_pay", required = false) String max_pay,
 				@RequestParam(value = "kids_cnt", required = false) String kids_cnt,
@@ -465,19 +461,19 @@ public class SearchRestController {
 			Mom_info input = new Mom_info();
 			
 			if (si != null && gu != null && dong != null) {
-				Mom_info.setLoc1(si);
-				Mom_info.setLoc2(gu);
-				Mom_info.setLoc3(dong);
+				input.setLoc1(si);
+				input.setLoc2(gu);
+				input.setLoc3(dong);
 			}
 			
-			if (act != null) {
-				for (int i = 0; i < act.length; i++) {
-					String temp1 = act[i];
+			if (actList != null) {
+				for (int i = 0; i < actList.length; i++) {
+					String temp1 = actList[i];
 					String temp2 = temp1.replace("'", "");
-					act[i] = temp2;
+					actList[i] = temp2;
 					log.info("temp2" + temp2);
-					Mom_info.setAct(act);
 				}
+				input.setActList(actList);
 			}
 
 			if (kidsAge != null) {
@@ -486,28 +482,37 @@ public class SearchRestController {
 					String temp2 = temp1.replace("'", "");
 					kidsAge[i] = temp2;
 					log.info("temp2" + temp2);
-					Mom_info.setKidsAge(kidsAge);
 				}
+				input.setKidsAge(kidsAge);
 			}
 
 			if (caredays != null) {
-				Mom_info.setCaredays(caredays);
-			}
-
-			if (timeRange != null) {
-				Mom_info.setTimeRange(timeRange);
+				input.setCaredays(caredays);
 			}
 
 			if (min_pay != null) {
-				Mom_info.setMin_pay(min_pay);
+				int min = Integer.parseInt(min_pay);
+				input.setMin_pay(min);
 			}
 
 			if (max_pay != null) {
-				Mom_info.setMax_pay(max_pay);
+				int max = Integer.parseInt(max_pay);
+				input.setMax_pay(max);
 			}
 
 			if (kids_cnt != null) {
-				Mom_info.setKids_cnt(kids_cnt);
+				int kids = 0;
+				switch(kids_cnt) {
+				case "1" :
+					kids = Integer.parseInt(kids_cnt);
+					break;
+				case "2" :
+					kids = Integer.parseInt(kids_cnt);
+					break;
+				default :
+					System.out.println("all");
+				}
+				input.setKids_cnt(kids);
 			}
 			
 			if (sitterno != null) {
@@ -552,6 +557,7 @@ public class SearchRestController {
 			Map<String, Object> data = new HashMap<String, Object>();
 			data.put("item", output);
 			data.put("meta", pageData);
+			data.put("totalCount", totalCount);
 
 			return webHelper.getJsonData(data);
 		}

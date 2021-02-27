@@ -51,6 +51,7 @@ public class Mom_info extends Member {
 	
 	/** 2) JOIN절에 따른 추가 컬럼 */
 	// 찾기 기능의 JOIN - 0210 hari
+	
 	private int applySt;			// 맘이 게시한 일자리에 지원한 시터 수
 	private int heartno;
 	private int cntno;
@@ -67,16 +68,9 @@ public class Mom_info extends Member {
 
 	
 	/** 3) 검색 조건용 추가 컬럼 */
-	private static String[] act;		// 원하는 활동유형 검색 조건
-	private static String[] kidsAge;		// 아이 나이
-	private static String[] caredays;		// 돌봄 요일
-	private static String[] timeRange;		// 돌봄 시간대
-	private static String min_pay;			// 최저 시급
-	private static String max_pay;			// 최고 시급
-	private static String kids_cnt;			// 아이 수
-	private static String loc1;				// 시
-	private static String loc2;				// 구
-	private static String loc3;				// 동
+	private int min_pay;			// 최저 시급
+	private int max_pay;			// 최고 시급
+	private int kids_cnt;			// 아이 수
 	
 	// 시터 로그인 여부 확인 (for 찜)
 	private static int loginSt;
@@ -84,77 +78,14 @@ public class Mom_info extends Member {
 	// 맘 스케쥴 시작시간 - 2023 지우 
 	private String schedule_start_date;
 	
-	
-	public static String[] getAct() {
-		return act;
-	}
-	public static void setAct(String[] act) {
-		Mom_info.act = act;
-	}
-	public static String[] getKidsAge() {
-		return kidsAge;
-	}
-	public static void setKidsAge(String[] kidsAge) {
-		Mom_info.kidsAge = kidsAge;
-	}
-	public static String[] getCaredays() {
-		return caredays;
-	}
-	public static void setCaredays(String[] caredays) {
-		Mom_info.caredays = caredays;
-	}
-	public static String[] getTimeRange() {
-		return timeRange;
-	}
-	public static void setTimeRange(String[] timeRange) {
-		Mom_info.timeRange = timeRange;
-	}
-	public static String getMin_pay() {
-		return min_pay;
-	}
-	public static void setMin_pay(String min_pay) {
-		Mom_info.min_pay = min_pay;
-	}
-	public static String getMax_pay() {
-		return max_pay;
-	}
-	public static void setMax_pay(String max_pay) {
-		Mom_info.max_pay = max_pay;
-	}
-	public static String getKids_cnt() {
-		return kids_cnt;
-	}
-	public static void setKids_cnt(String kids_cnt) {
-		Mom_info.kids_cnt = kids_cnt;
-	}
+
 	public static int getLoginSt() {
 		return loginSt;
 	}
 	public static void setLoginSt(int loginSt) {
 		Mom_info.loginSt = loginSt;
 	}
-	public static String getLoc1() {
-		return loc1;
-	}
-	public static void setLoc1(String loc1) {
-		Mom_info.loc1 = loc1;
-	}
-	public static String getLoc2() {
-		return loc2;
-	}
-	public static void setLoc2(String loc2) {
-		Mom_info.loc2 = loc2;
-	}
-	public static String getLoc3() {
-		return loc3;
-	}
-	public static void setLoc3(String loc3) {
-		Mom_info.loc3 = loc3;
-	}
 
-
-	
-	
 	
 
 	

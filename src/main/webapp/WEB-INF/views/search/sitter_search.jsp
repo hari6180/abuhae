@@ -51,8 +51,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         // $("#menu").load("/ezen-android2020-2/index_header.html"); - 210124 include 변경
 
         // 시터 타이틀 랜덤 출력 0206 하리 (반복문 돌아서 안되는듯..)
-        var num = random(0, 3);
-        var title = ["믿음직한 시터", "든든한 시터", "약속된 시터", "보장된 시터"];
+        let num = random(0, 3);
+        let title = ["믿음직한 시터", "든든한 시터", "약속된 시터", "보장된 시터"];
         $(document).on("scroll", ".sitter_item_group", function () {
           $(".cert_text").html(title[random(0, 3)]);
         });
@@ -588,7 +588,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 </a>
               </div>
               <div class="order_selector_group">
-                <div class="total">총 ${st_total}명</div>
+                <div id="total" class="total">총 ${st_total}명</div>
                 <!-- 드롭다운 -->
                 <div class="dropdown clearfix order_dropdown">
                   <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">후기 순 </a><b class="caret"></b>
@@ -623,124 +623,128 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     </div>
     <!--row end-->
     <!-- Handlebar 템플릿 코드 -->
+    <script id="total-tmpl" type="text/x-handlebars-template">
+      <div id="total" class="total">
+        총 {{totalCount}}명
+      </div>
+    </script>
     <script id="sitter-list-tmpl" type="text/x-handlebars-template">
-            {{#each item}}
-      					<div id="order">
-                          <div id="sitter_item_group" class="sitter_item_group" data-stno="{{sitterno}}">
-                            <div class="item_header">
-                              <div class="cert_label">
-                                <span id="sitter_title" class="cert_text">
-                                {{#ifCond resino 0}}
-                                  인증이 없습니다.
-                                {{else}}
-                                  믿음직한 시터
-                                {{/ifCond}}</span>
-                              </div>
-                            </div>
-                            <hr class="divider" />
-                            <div class="item_body">
-                              <div class="profile_img_group">
-                                {{#ifCond isProfile null}}
-                                <img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" alt="임시프로필"/>
-                                {{/ifCond}}
-                                {{#ifCond isProfile 'y'}}
-                                <img src="{{fileUrl}}" alt="프로필"/>
-                                {{/ifCond}}
-                                <div class="responsive_rate_group">
-                                  <div class="res_text">응답률</div>
-                                  <div class="res_rate">{{answer}}</div>
-                                  <div class="res_text">%</div>
-                                </div>
-                              </div>
-                              <div class="profile_info_group">
-                                <div class="content_row">
-                                  <div>
-                                    <div class="user_name">{{name}}</div>
-                                    <div class="last_update">{{openingdate}}작성</div>
-                                  </div>
-                                  <div class="jim_btn">
-                                    <button class="swapHeart" data-stno="{{sitterno}}">
-                                      <div class="jim">
-                                        <span class="glyphicon  glyphicon-heart{{#ifCond findHt 0}}-empty{{/ifCond}}" style="color: #ff7000; font-size: 20px"></span>
-                                      </div>
-                                    </button>
-                                  </div>
-                                </div>
-                                <div class="content_row location_group">
-                                  <span class="location">{{si}}&nbsp{{gu}}&nbsp{{dong}}</span>
-                                </div>
-                                <div class="content_row">
-                                  <div class="user_age">{{birthdate}}세</div>
-                                  <div class="text_sep"></div>
-                                  <div class="wanted_pay">희망 시급 {{payment}}원
-      		 {{#ifCond payment_ok 'Y'}}
-      			/ 협의가능
-      		 {{/ifCond}}</div>
+        {{#each item}}
+        <div id="order">
+          <div id="sitter_item_group" class="sitter_item_group" data-stno="{{sitterno}}">
+            <div class="item_header">
+              <div class="cert_label">
+                <span id="sitter_title" class="cert_text">
+                {{#ifCond resino 0}}
+                  인증이 없습니다.
+                {{else}}
+                  믿음직한 시터
+                {{/ifCond}}</span>
+              </div>
+            </div>
+            <hr class="divider" />
+            <div class="item_body">
+              <div class="profile_img_group">
+                {{#ifCond isProfile null}}
+                <img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" alt="임시프로필"/>
+                {{/ifCond}}
+                {{#ifCond isProfile 'y'}}
+                <img src="{{fileUrl}}" alt="프로필"/>
+                {{/ifCond}}
+                <div class="responsive_rate_group">
+                  <div class="res_text">응답률</div>
+                  <div class="res_rate">{{answer}}</div>
+                  <div class="res_text">%</div>
+                </div>
+              </div>
+              <div class="profile_info_group">
+                <div class="content_row">
+                  <div>
+                    <div class="user_name">{{name}}</div>
+                    <div class="last_update">{{openingdate}}작성</div>
+                  </div>
+                  <div class="jim_btn">
+                    <button class="swapHeart" data-stno="{{sitterno}}">
+                      <div class="jim">
+                        <span class="glyphicon  glyphicon-heart{{#ifCond findHt 0}}-empty{{/ifCond}}" style="color: #ff7000; font-size: 20px"></span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+                <div class="content_row location_group">
+                  <span class="location">{{si}}&nbsp{{gu}}&nbsp{{dong}}</span>
+                </div>
+                <div class="content_row">
+                  <div class="user_age">{{birthdate}}세</div>
+                  <div class="text_sep"></div>
+                  <div class="wanted_pay">희망 시급 {{payment}}원
+                  {{#ifCond payment_ok 'Y'}}
+                    / 협의가능
+                  {{/ifCond}}</div>
 
-                                </div>
-                                <div class="content_row">
+                </div>
+                <div class="content_row">
+                  {{#ifCond rev_rate 0}}
+                  <div class="rev_rate">
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                  </div>
+                  {{/ifCond}}
+                  {{#ifCond rev_rate 1}}
+                  <div class="rev_rate">
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                  </div>
+                  {{/ifCond}}
+                  {{#ifCond rev_rate 2}}
+                  <div class="rev_rate">
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                  </div>
+                  {{/ifCond}}
+                  {{#ifCond rev_rate 3}}
+                  <div class="rev_rate">
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                  </div>
+                  {{/ifCond}}
+                  {{#ifCond rev_rate 4}}
+                  <div class="rev_rate">
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+                  </div>
+                  {{/ifCond}}
+                  {{#ifCond rev_rate 5}}
+                  <div class="rev_rate">
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                    <span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+                  </div>
+                  {{/ifCond}}
+                  <span class="review_count">후기 {{rev_count}}개</span>
+                </div>
+              </div>
+            </div>
 
-      {{#ifCond rev_rate 0}}
-      <div class="rev_rate">
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      </div>
-      {{/ifCond}}
-      {{#ifCond rev_rate 1}}
-      <div class="rev_rate">
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      </div>
-      {{/ifCond}}
-      {{#ifCond rev_rate 2}}
-      <div class="rev_rate">
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      </div>
-      {{/ifCond}}
-      {{#ifCond rev_rate 3}}
-      <div class="rev_rate">
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      </div>
-      {{/ifCond}}
-      {{#ifCond rev_rate 4}}
-      <div class="rev_rate">
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-      </div>
-      {{/ifCond}}
-      {{#ifCond rev_rate 5}}
-      <div class="rev_rate">
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-      </div>
-      {{/ifCond}}
-                                  <span class="review_count">후기 {{rev_count}}개</span>
-                                </div>
-                              </div>
-                            </div>
-
-                          </div>
-            {{/each}}
+          </div>
+      {{/each}}
     </script>
     <script>
       Handlebars.registerHelper("ifCond", function (v1, v2, options) {
@@ -755,21 +759,171 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       let nowPage = 1; // 현재 페이지의 기본값
       let order = "openingdate";
       let login_momno = $("#app").data("login");
+      // 원하는 활동
+      let actList = [];
+      // 주소 검색
+      let full_loc = "";
+      let si = "";
+      let gu = "";
+      let dong = "";
+      // 상세검색
+      let kidsage = []; // 아이나이
+      let caredays = []; // 돌봄 요일
+      let time_range = []; // 돌봄 시간대
+      let sitter_type = []; // 맘시터 유형
+      let want_age = []; // 시터나이
+
       $(function () {
+        /** 원하는 활동 선택 ------------------------------------------------------------------- */
+        //활동 버튼 클릭
+        $(".act_btn").click(function (e) {
+          let cnt = $("input:checked[name='check_ab']").length;
+
+          if (cnt < 4) {
+            //버튼 클릭시 text 색 변경
+            $(this).next().find(".want_text").toggleClass("select_text");
+            //버튼 클릭시 이미지 URL 변경
+            //url 가져오기
+            let img_url = $(this).next().find(".want_img").attr("src");
+            let indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
+            if (indeximg > -1) {
+              let img_src = img_url.replace(/_n/, "_s");
+              $(this).next().find(".want_img").attr("src", img_src);
+            } else {
+              let img_src = img_url.replace(/_s/, "_n");
+              $(this).next().find(".want_img").attr("src", img_src);
+            }
+          } else {
+            alert("선택은 3개까지 가능합니다.");
+            // 이미지 찾기
+            let $img = $(".want_img");
+            // 이미지 길이
+            let length = $img.length;
+            // console.log(length);
+
+            for (let i = 0; i < length; i++) {
+              let img_url = $img.eq(i).attr("src");
+              let img_src = img_url.replace(/_s/, "_n");
+              $(".want_img").eq(i).attr("src", img_src);
+            }
+            $(".act_btn").prop("checked", false);
+            $(".want_text").removeClass("select_text");
+            $(".act_label").removeClass("select_act_type");
+            $(".act_label").removeClass("unselect_act_type");
+          }
+        });
+
+        $(".act_btn").change(function change_btn(e) {
+          e.preventDefault();
+          const checked = $(".act_btn:checked");
+          const act_btn = $(".activity_type_btn");
+          const result1 = [];
+          const result2 = [];
+
+          for (let i = 0; i < checked.length; i++) {
+            result1.push($(checked[i]).val());
+          }
+
+          console.log(result1);
+
+          for (let i = 0; i < act_btn.length; i++) {
+            result2.push($(act_btn[i]).val());
+          }
+
+          //console.log(result2);
+
+          for (let i = 0; i < result1.length; i++) {
+            for (let j = 0; j < result2.length; j++) {
+              if (result1[i] == result2[j]) {
+                $(".act_label").eq(j).addClass("select_act_type");
+              }
+            }
+          }
+          //console.log($(".act_label").eq(j).hasClass("select_act_type"));
+          //활동 버튼 반영 1221 하리
+          $("#act_apply").click(function (e) {
+            e.preventDefault();
+            $("#activity_type_modal").modal("hide");
+            const act_btn = $(".activity_type_btn");
+            const result2 = [];
+
+            for (let i = 0; i < act_btn.length; i++) {
+              result2.push($(act_btn[i]).val());
+            }
+
+            for (let i = 0; i < result2.length; i++) {
+              if (!$(".act_label").eq(i).hasClass("select_act_type")) {
+                $(".act_label").eq(i).addClass("unselect_act_type");
+              }
+            }
+
+            let result3 = [];
+
+            $("input[name=check_ab]:checked").each(function (i) {
+              result3.push($(this).val());
+            });
+
+            console.log(result3);
+            actList = result3;
+            console.log(actList);
+            // 검색 조건은 GET 파라미터로 전송한다.
+            $.get(
+              "${pageContext.request.contextPath}/search/sitter_search",
+              {
+                act: actList,
+              },
+              function (json) {
+                let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+                let template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                let result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                $("#result").empty(); // 결과물 초기화
+                $("#result2").empty(); // 결과물 초기화
+                $("#result").append(result); // 최종 결과물을 추가한다
+
+                let total = $("#total-tmpl").html(); // 템플릿 코드 가져오기
+                let tt_template = Handlebars.compile(total); // 템플릿 코드 컴파일
+                let tt_result = tt_template(json); // 템플릿 컴파일 결과물에 json 전달
+                $("#total").html(tt_result); // 최종 결과물을 추가한다
+              }
+            );
+          });
+
+          // 리셋 버튼 0109 하리
+          $("#act_reset").click(function (e) {
+            e.preventDefault();
+
+            // 이미지 찾기
+            let $img = $(".want_img");
+            // 이미지 길이
+            let length = $img.length;
+            // console.log(length);
+
+            for (let i = 0; i < length; i++) {
+              let img_url = $img.eq(i).attr("src");
+              let img_src = img_url.replace(/_s/, "_n");
+              $(".want_img").eq(i).attr("src", img_src);
+            }
+
+            $(".act_btn").prop("checked", false);
+            $(".want_text").removeClass("select_text");
+            $(".act_label").removeClass("select_act_type");
+            $(".act_label").removeClass("unselect_act_type");
+          });
+        });
+
+        $(".activity_type_wrap").click(function (e) {
+          $(".act_label").removeClass("select_act_type");
+          $(".act_label").removeClass("unselect_act_type");
+        });
         /** 주소 선택 모달 ------------------------------------------------------------------- */
-        // 주소 검색창에 들어갈 주소 문자열
-        let full_loc = "";
-        let si = "";
-        let gu = "";
-        let dong = "";
         //시 클릭했을 때
         $(".loc_btn").on("click", function (e) {
           e.preventDefault();
-          var select = $(this).hasClass("select_location");
+          let select = $(this).hasClass("select_location");
           //선택이 안되어있을때
           if (select == false) {
             //선택이 되어있는 요소 탐색
-            var loc = $("#si").find("button").removeClass("select_loaction");
+            let loc = $("#si").find("button").removeClass("select_loaction");
             //console.log(loc);
             $(this).addClass("select_loaction");
             si = "";
@@ -786,9 +940,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           let html = "";
           gu = $(this).html();
           //console.log(gu);
-          var select = $(this).hasClass("select_location");
+          let select = $(this).hasClass("select_location");
           if (select == false) {
-            var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+            let loc = $("#gu").find("button").removeClass("select_loaction hide_content");
             $(this).addClass("select_loaction");
             gu = "";
             gu += $(this).html();
@@ -800,7 +954,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             // JSON의 value가 array일 경우 ['key']로 전체를 읽어올 수 있다.
             let dong = loc[gu];
             html += '<div class="hide_content">';
-            for (var i = 0; i < dong.length; i++) {
+            for (let i = 0; i < dong.length; i++) {
               html += "<div><button class='dong_btn'>";
               html += dong[i];
               html += "</button></div>";
@@ -812,7 +966,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             //선택이 안되어있을때
             if (select == false) {
               //선택이 되어있는 요소 탐색
-              // var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+              // let loc = $("#gu").find("button").removeClass("select_loaction hide_content");
               //console.log(loc);
               $(this).addClass("select_loaction");
               //구 선택하면 동 보이게
@@ -839,12 +993,17 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               dong: dong, // 동
             },
             function (json) {
-              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              let template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              let result = template(json); // 템플릿 컴파일 결과물에 json 전달
               $("#result").empty(); // 결과물 초기화
               $("#result2").empty(); // 결과물 초기화
               $("#result").append(result); // 최종 결과물을 추가한다
+
+              let total = $("#total-tmpl").html(); // 템플릿 코드 가져오기
+              let tt_template = Handlebars.compile(total); // 템플릿 코드 컴파일
+              let tt_result = tt_template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#total").html(tt_result); // 최종 결과물을 추가한다
             }
           );
         });
@@ -869,12 +1028,17 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               momno: login_momno, // 로그인 정보
             },
             function (json) {
-              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              let template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              let result = template(json); // 템플릿 컴파일 결과물에 json 전달
               $("#result").empty(); // 결과물 초기화
               $("#result2").empty(); // 결과물 초기화
               $("#result").append(result); // 최종 결과물을 추가한다
+
+              let total = $("#total-tmpl").html(); // 템플릿 코드 가져오기
+              let tt_template = Handlebars.compile(total); // 템플릿 코드 컴파일
+              let tt_result = tt_template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#total").html(tt_result); // 최종 결과물을 추가한다
             }
           );
         } else {
@@ -884,12 +1048,17 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               order: order, // 정렬 조건
             },
             function (json) {
-              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              let template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              let result = template(json); // 템플릿 컴파일 결과물에 json 전달
               $("#result").empty(); // 결과물 초기화
               $("#result2").empty(); // 결과물 초기화
               $("#result").append(result); // 최종 결과물을 추가한다
+
+              let total = $("#total-tmpl").html(); // 템플릿 코드 가져오기
+              let tt_template = Handlebars.compile(total); // 템플릿 코드 컴파일
+              let tt_result = tt_template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#total").html(tt_result); // 최종 결과물을 추가한다
             }
           );
         }
@@ -901,169 +1070,41 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $("#orderby").html($(this).find("a").html());
 
           // 정렬 조건 지정 0212
-          var current = $(this);
+          let current = $(this);
           order = current.data("order");
           console.log(order);
           nowPage = 1;
           $.get(
             "${pageContext.request.contextPath}/search/sitter_search",
             {
-              order: order, // 정렬 조건은 GET 파라미터로 전송한다.
+              order: order, // 정렬 조건
+              momno: login_momno,
+              kidsage: kidsage,
+              caredays: caredays,
+              sitter_type: sitter_type,
+              sitter_age: want_age,
+              si: si, // 시
+              gu: gu, // 구
+              dong: dong, // 동
+              act: actList,
             },
             function (json) {
-              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              let template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              let result = template(json); // 템플릿 컴파일 결과물에 json 전달
               $("#result").empty(); // 결과물 초기화
               $("#result2").empty(); // 결과물 초기화
               $("#result").append(result); // 최종 결과물을 추가한다
+
+              let total = $("#total-tmpl").html(); // 템플릿 코드 가져오기
+              let tt_template = Handlebars.compile(total); // 템플릿 코드 컴파일
+              let tt_result = tt_template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#total").html(tt_result); // 최종 결과물을 추가한다
             }
           );
         });
 
-        /** 원하는 활동 선택 ------------------------------------------------------------------- */
-        //활동 버튼 클릭
-        $(".act_btn").click(function (e) {
-          var cnt = $("input:checked[name='check_ab']").length;
-
-          if (cnt < 4) {
-            //버튼 클릭시 text 색 변경
-            $(this).next().find(".want_text").toggleClass("select_text");
-            //버튼 클릭시 이미지 URL 변경
-            //url 가져오기
-            var img_url = $(this).next().find(".want_img").attr("src");
-            var indeximg = img_url.indexOf("_n"); //잘라서 _n이 있는지 확인
-            if (indeximg > -1) {
-              var img_src = img_url.replace(/_n/, "_s");
-              $(this).next().find(".want_img").attr("src", img_src);
-            } else {
-              var img_src = img_url.replace(/_s/, "_n");
-              $(this).next().find(".want_img").attr("src", img_src);
-            }
-          } else {
-            alert("선택은 3개까지 가능합니다.");
-            // 이미지 찾기
-            var $img = $(".want_img");
-            // 이미지 길이
-            var length = $img.length;
-            // console.log(length);
-
-            for (var i = 0; i < length; i++) {
-              var img_url = $img.eq(i).attr("src");
-              var img_src = img_url.replace(/_s/, "_n");
-              $(".want_img").eq(i).attr("src", img_src);
-            }
-            $(".act_btn").prop("checked", false);
-            $(".want_text").removeClass("select_text");
-            $(".act_label").removeClass("select_act_type");
-            $(".act_label").removeClass("unselect_act_type");
-          }
-        });
-
-        $(".act_btn").change(function change_btn(e) {
-          e.preventDefault();
-          const checked = $(".act_btn:checked");
-          const act_btn = $(".activity_type_btn");
-          const result1 = [];
-          const result2 = [];
-
-          for (var i = 0; i < checked.length; i++) {
-            result1.push($(checked[i]).val());
-          }
-
-          console.log(result1);
-
-          for (var i = 0; i < act_btn.length; i++) {
-            result2.push($(act_btn[i]).val());
-          }
-
-          //console.log(result2);
-
-          for (var i = 0; i < result1.length; i++) {
-            for (var j = 0; j < result2.length; j++) {
-              if (result1[i] == result2[j]) {
-                $(".act_label").eq(j).addClass("select_act_type");
-              }
-            }
-          }
-          //console.log($(".act_label").eq(j).hasClass("select_act_type"));
-          //활동 버튼 반영 1221 하리
-          $("#act_apply").click(function (e) {
-            e.preventDefault();
-            $("#activity_type_modal").modal("hide");
-            const act_btn = $(".activity_type_btn");
-            const result2 = [];
-
-            for (var i = 0; i < act_btn.length; i++) {
-              result2.push($(act_btn[i]).val());
-            }
-
-            for (var i = 0; i < result2.length; i++) {
-              if (!$(".act_label").eq(i).hasClass("select_act_type")) {
-                $(".act_label").eq(i).addClass("unselect_act_type");
-              }
-            }
-
-            const result3 = [];
-
-            $("input[name=check_ab]:checked").each(function (i) {
-              result3.push($(this).val());
-            });
-
-            console.log(result3);
-
-            // 검색 조건은 GET 파라미터로 전송한다.
-            $.get(
-              "${pageContext.request.contextPath}/search/sitter_search",
-              {
-                act: result3,
-              },
-              function (json) {
-                var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-                var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-                var result = template(json); // 템플릿 컴파일 결과물에 json 전달
-                $("#result").empty(); // 결과물 초기화
-                $("#result2").empty(); // 결과물 초기화
-                $("#result").append(result); // 최종 결과물을 추가한다
-              }
-            );
-          });
-
-          // 리셋 버튼 0109 하리
-          $("#act_reset").click(function (e) {
-            e.preventDefault();
-
-            // 이미지 찾기
-            var $img = $(".want_img");
-            // 이미지 길이
-            var length = $img.length;
-            // console.log(length);
-
-            for (var i = 0; i < length; i++) {
-              var img_url = $img.eq(i).attr("src");
-              var img_src = img_url.replace(/_s/, "_n");
-              $(".want_img").eq(i).attr("src", img_src);
-            }
-
-            $(".act_btn").prop("checked", false);
-            $(".want_text").removeClass("select_text");
-            $(".act_label").removeClass("select_act_type");
-            $(".act_label").removeClass("unselect_act_type");
-          });
-        });
-
-        $(".activity_type_wrap").click(function (e) {
-          $(".act_label").removeClass("select_act_type");
-          $(".act_label").removeClass("unselect_act_type");
-        });
-
         /** 상세 검색 ------------------------------------------------------------------- */
-
-        const kidsage = []; // 아이나이
-        const caredays = []; // 돌봄 요일
-        const time_range = []; // 돌봄 시간대
-        const sitter_type = []; // 맘시터 유형
-        const want_age = []; // 시터나이
 
         // 아이나이 버튼 클릭
         $(".ages").click(function (e) {
@@ -1133,16 +1174,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           console.log(sitter_type);
         });
 
-        // 맘시터 나이대 체크박스
-        $("input[name=want_age]:checked").each(function () {
-          var chk = $(this).val();
-          want_age.push(chk);
-        });
-
         $("#detail_apply").click(function (e) {
           e.preventDefault();
           $("#sitter_search_detail_modal").modal("hide");
           // 검색 조건은 GET 파라미터로 전송한다.
+          // 맘시터 나이대 체크박스
+          $("input[name=want_age]:checked").each(function () {
+            let chk = $(this).val();
+            want_age.push(chk);
+          });
           console.log(want_age);
           $.get(
             "${pageContext.request.contextPath}/search/sitter_search",
@@ -1154,12 +1194,17 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               sitter_age: want_age,
             },
             function (json) {
-              var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+              let template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              let result = template(json); // 템플릿 컴파일 결과물에 json 전달
               $("#result").empty(); // 결과물 초기화
               $("#result2").empty(); // 결과물 초기화
               $("#result").append(result); // 최종 결과물을 추가한다
+
+              let total = $("#total-tmpl").html(); // 템플릿 코드 가져오기
+              let tt_template = Handlebars.compile(total); // 템플릿 코드 컴파일
+              let tt_result = tt_template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#total").html(tt_result); // 최종 결과물을 추가한다
             }
           );
         });
@@ -1189,11 +1234,19 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     order: order, // 정렬 조건
                     page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
                     momno: login_momno,
+                    kidsage: kidsage,
+                    caredays: caredays,
+                    sitter_type: sitter_type,
+                    sitter_age: want_age,
+                    si: si, // 시
+                    gu: gu, // 구
+                    dong: dong, // 동
+                    act: actList,
                   },
                   function (json) {
-                    var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-                    var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-                    var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                    let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+                    let template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                    let result = template(json); // 템플릿 컴파일 결과물에 json 전달
                     $("#result2").append(result); // 최종 결과물을 추가한다
                   }
                 );
@@ -1203,11 +1256,19 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   {
                     order: order, // 정렬 조건
                     page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
+                    kidsage: kidsage,
+                    caredays: caredays,
+                    sitter_type: sitter_type,
+                    sitter_age: want_age,
+                    si: si, // 시
+                    gu: gu, // 구
+                    dong: dong, // 동
+                    act: actList,
                   },
                   function (json) {
-                    var source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-                    var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-                    var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                    let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+                    let template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                    let result = template(json); // 템플릿 컴파일 결과물에 json 전달
                     $("#result2").append(result); // 최종 결과물을 추가한다
                   }
                 );
@@ -1223,7 +1284,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         });
         $(document).on("click", ".swapHeart", function (e) {
           e.stopPropagation(); // 버블링 방지 1220 하리
-          var $jim = $(this);
+          let $jim = $(this);
           let stno = $(this).data("stno");
           let momno = $("#app").data("login");
 

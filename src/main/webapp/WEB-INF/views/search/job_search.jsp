@@ -293,8 +293,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <div class="want_pay_wrap">
                     <h4 class="want_pay_title">희망시급</h4>
                     <div>
-                      <div><label for="min_pay" class="pay_range">최소</label><input type="number" id="min_pay" name="min_pay" /></div>
-                      <div><label for="max_pay" class="pay_range">최대</label><input type="number" id="max_pay" name="max_pay" /></div>
+                      <div><label for="min_pay" class="pay_range">최소</label><input type="number" id="min_pay" name="min_pay" value="0" /></div>
+                      <div><label for="max_pay" class="pay_range">최대</label><input type="number" id="max_pay" name="max_pay" value="0" /></div>
                     </div>
                   </div>
                   <hr />
@@ -385,7 +385,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               </div>
 
               <div class="order_selector_group">
-                <div class="total">총 ${mom_total}명</div>
+                <div id="total" class="total">총 ${mom_total}명</div>
                 <!-- 드롭다운 -->
                 <div class="dropdown clearfix order_dropdown">
                   <a id="orderby" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">프로필 업데이트 순 </a><b class="caret"></b>
@@ -419,7 +419,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
     <!--row end-->
 
     <!-- Handlebar 템플릿 코드 -->
-
+    <script id="total-tmpl" type="text/x-handlebars-template">
+      <div id="total" class="total">
+        총 {{totalCount}}명
+      </div>
+    </script>
     <script id="job-list-tmpl" type="text/x-handlebars-template">
       {{#each item}}
         <div class="job_item_group" data-momno="{{momno}}">
@@ -451,45 +455,45 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               </div>
               <div class="content_row">
                 <div class="find_text">
-      {{#ifCond want_act1 'innerplay' }}실내놀이{{/ifCond}}
-      {{#ifCond want_act1 'guide' }}등하원돕기{{/ifCond}}
-      {{#ifCond want_act1 'read' }}책읽기{{/ifCond}}
-      {{#ifCond want_act1 'outside' }}야외활동{{/ifCond}}
-      {{#ifCond want_act1 'korean' }}한글놀이{{/ifCond}}
-      {{#ifCond want_act1 'english' }}영어놀이{{/ifCond}}
-      {{#ifCond want_act1 'study' }}실내놀이{{/ifCond}}
-      {{#ifCond want_act1 'sport' }}학습지도{{/ifCond}}
-      {{#ifCond want_act1 'simple_cleaning' }}간단 청소{{/ifCond}}
-      {{#ifCond want_act1 'eat' }}밥 챙겨주기{{/ifCond}}
-      {{#ifCond want_act1 'do_dish' }}간단 설거지{{/ifCond}}
-      {{#ifCond want_act1 'long_move_in' }}장기입주{{/ifCond}}
-      {{#ifCond want_act1 'short_move_in' }}단기입주{{/ifCond}}
-          {{#ifCond want_act2 'innerplay' }}실내놀이{{/ifCond}}
-      {{#ifCond want_act2 'guide' }}등하원돕기{{/ifCond}}
-      {{#ifCond want_act2 'read' }}책읽기{{/ifCond}}
-      {{#ifCond want_act2 'outside' }}야외활동{{/ifCond}}
-      {{#ifCond want_act2 'korean' }}한글놀이{{/ifCond}}
-      {{#ifCond want_act2 'english' }}영어놀이{{/ifCond}}
-      {{#ifCond want_act2 'study' }}실내놀이{{/ifCond}}
-      {{#ifCond want_act2 'sport' }}학습지도{{/ifCond}}
-      {{#ifCond want_act2 'simple_cleaning' }}간단 청소{{/ifCond}}
-      {{#ifCond want_act2 'eat' }}밥 챙겨주기{{/ifCond}}
-      {{#ifCond want_act2 'do_dish' }}간단 설거지{{/ifCond}}
-      {{#ifCond want_act2 'long_move_in' }}장기입주{{/ifCond}}
-      {{#ifCond want_act2 'short_move_in' }}단기입주{{/ifCond}}
-          {{#ifCond want_act3 'innerplay' }}실내놀이{{/ifCond}}
-      {{#ifCond want_act3 'guide' }}등하원돕기{{/ifCond}}
-      {{#ifCond want_act3 'read' }}책읽기{{/ifCond}}
-      {{#ifCond want_act3 'outside' }}야외활동{{/ifCond}}
-      {{#ifCond want_act3 'korean' }}한글놀이{{/ifCond}}
-      {{#ifCond want_act3 'english' }}영어놀이{{/ifCond}}
-      {{#ifCond want_act3 'study' }}실내놀이{{/ifCond}}
-      {{#ifCond want_act3 'sport' }}학습지도{{/ifCond}}
-      {{#ifCond want_act3 'simple_cleaning' }}간단 청소{{/ifCond}}
-      {{#ifCond want_act3 'eat' }}밥 챙겨주기{{/ifCond}}
-      {{#ifCond want_act3 'do_dish' }}간단 설거지{{/ifCond}}
-      {{#ifCond want_act3 'long_move_in' }}장기입주{{/ifCond}}
-      {{#ifCond want_act3 'short_move_in' }}단기입주{{/ifCond}}
+                  {{#ifCond want_act1 'innerplay' }}실내놀이{{/ifCond}}
+                  {{#ifCond want_act1 'guide' }}등하원돕기{{/ifCond}}
+                  {{#ifCond want_act1 'read' }}책읽기{{/ifCond}}
+                  {{#ifCond want_act1 'outside' }}야외활동{{/ifCond}}
+                  {{#ifCond want_act1 'korean' }}한글놀이{{/ifCond}}
+                  {{#ifCond want_act1 'english' }}영어놀이{{/ifCond}}
+                  {{#ifCond want_act1 'study' }}실내놀이{{/ifCond}}
+                  {{#ifCond want_act1 'sport' }}학습지도{{/ifCond}}
+                  {{#ifCond want_act1 'simple_cleaning' }}간단 청소{{/ifCond}}
+                  {{#ifCond want_act1 'eat' }}밥 챙겨주기{{/ifCond}}
+                  {{#ifCond want_act1 'do_dish' }}간단 설거지{{/ifCond}}
+                  {{#ifCond want_act1 'long_move_in' }}장기입주{{/ifCond}}
+                  {{#ifCond want_act1 'short_move_in' }}단기입주{{/ifCond}}
+                  {{#ifCond want_act2 'innerplay' }}실내놀이{{/ifCond}}
+                  {{#ifCond want_act2 'guide' }}등하원돕기{{/ifCond}}
+                  {{#ifCond want_act2 'read' }}책읽기{{/ifCond}}
+                  {{#ifCond want_act2 'outside' }}야외활동{{/ifCond}}
+                  {{#ifCond want_act2 'korean' }}한글놀이{{/ifCond}}
+                  {{#ifCond want_act2 'english' }}영어놀이{{/ifCond}}
+                  {{#ifCond want_act2 'study' }}실내놀이{{/ifCond}}
+                  {{#ifCond want_act2 'sport' }}학습지도{{/ifCond}}
+                  {{#ifCond want_act2 'simple_cleaning' }}간단 청소{{/ifCond}}
+                  {{#ifCond want_act2 'eat' }}밥 챙겨주기{{/ifCond}}
+                  {{#ifCond want_act2 'do_dish' }}간단 설거지{{/ifCond}}
+                  {{#ifCond want_act2 'long_move_in' }}장기입주{{/ifCond}}
+                  {{#ifCond want_act2 'short_move_in' }}단기입주{{/ifCond}}
+                  {{#ifCond want_act3 'innerplay' }}실내놀이{{/ifCond}}
+                  {{#ifCond want_act3 'guide' }}등하원돕기{{/ifCond}}
+                  {{#ifCond want_act3 'read' }}책읽기{{/ifCond}}
+                  {{#ifCond want_act3 'outside' }}야외활동{{/ifCond}}
+                  {{#ifCond want_act3 'korean' }}한글놀이{{/ifCond}}
+                  {{#ifCond want_act3 'english' }}영어놀이{{/ifCond}}
+                  {{#ifCond want_act3 'study' }}실내놀이{{/ifCond}}
+                  {{#ifCond want_act3 'sport' }}학습지도{{/ifCond}}
+                  {{#ifCond want_act3 'simple_cleaning' }}간단 청소{{/ifCond}}
+                  {{#ifCond want_act3 'eat' }}밥 챙겨주기{{/ifCond}}
+                  {{#ifCond want_act3 'do_dish' }}간단 설거지{{/ifCond}}
+                  {{#ifCond want_act3 'long_move_in' }}장기입주{{/ifCond}}
+                  {{#ifCond want_act3 'short_move_in' }}단기입주{{/ifCond}}
                   맘시터 찾습니다.
                 </div>
               </div>
@@ -510,7 +514,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <i class="fas fa-won-sign"></i>
                 <div class="wanted_pay">
                   희망 시급 {{payment}}원
-      {{#ifCond payment_ok 'Y'}}/협의가능{{/ifCond}}
+                  {{#ifCond payment_ok 'Y'}}/협의가능{{/ifCond}}
                 </div>
               </div>
             </div>
@@ -521,8 +525,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               <div class="time_text_group">
                 <div class="frequency">
                   {{#ifCond frequency "regular"}}정기적{{/ifCond}}
-      {{#ifCond frequency "shortTerm"}}단기{{/ifCond}}
-      {{#ifCond frequency "noplan"}}협의{{/ifCond}}
+                  {{#ifCond frequency "shortTerm"}}단기{{/ifCond}}
+                  {{#ifCond frequency "noplan"}}협의{{/ifCond}}
                 </div>
               </div>
               <div class="care_days_group">
@@ -585,21 +589,32 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       let order = "openingdate";
       let login_stno = $("#app").data("login");
 
+      // 주소 검색창에 들어갈 주소 문자열
+      let full_loc = "";
+      let si = "";
+      let gu = "";
+      let dong = "";
+
+      // 상세 검색
+      const kidsage = []; // 아이나이
+      const caredays = []; // 돌봄 요일
+      const time_range = []; // 돌봄 시간대
+      const actList = []; // 돌봄 종류
+      let min_pay = ""; // 최저 시급
+      let max_pay = ""; // 최고 시급
+      let kids_cnt = ""; // 아이 수
+
       $(function () {
         /** 주소 선택 모달 ------------------------------------------------------------------- */
-        // 주소 검색창에 들어갈 주소 문자열
-        let full_loc = "";
-        let si = "";
-        let gu = "";
-        let dong = "";
+
         //시 클릭했을 때
         $(".loc_btn").on("click", function (e) {
           e.preventDefault();
-          var select = $(this).hasClass("select_location");
+          let select = $(this).hasClass("select_location");
           //선택이 안되어있을때
           if (select == false) {
             //선택이 되어있는 요소 탐색
-            var loc = $("#si").find("button").removeClass("select_loaction");
+            let loc = $("#si").find("button").removeClass("select_loaction");
             //console.log(loc);
             $(this).addClass("select_loaction");
             si = "";
@@ -616,9 +631,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           let html = "";
           gu = $(this).html();
           //console.log(gu);
-          var select = $(this).hasClass("select_location");
+          let select = $(this).hasClass("select_location");
           if (select == false) {
-            var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+            let loc = $("#gu").find("button").removeClass("select_loaction hide_content");
             $(this).addClass("select_loaction");
             gu = "";
             gu += $(this).html();
@@ -630,7 +645,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             // JSON의 value가 array일 경우 ['key']로 전체를 읽어올 수 있다.
             let dong = loc[gu];
             html += '<div class="hide_content">';
-            for (var i = 0; i < dong.length; i++) {
+            for (let i = 0; i < dong.length; i++) {
               html += "<div><button class='dong_btn'>";
               html += dong[i];
               html += "</button></div>";
@@ -642,7 +657,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             //선택이 안되어있을때
             if (select == false) {
               //선택이 되어있는 요소 탐색
-              // var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+              // let loc = $("#gu").find("button").removeClass("select_loaction hide_content");
               //console.log(loc);
               $(this).addClass("select_loaction");
               //구 선택하면 동 보이게
@@ -669,12 +684,17 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               dong: dong, // 동
             },
             function (json) {
-              var source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
-              var template = Handlebars.compile(source); // 템플릿 코드 컴파일
-              var result = template(json); // 템플릿 컴파일 결과물에 json 전달
+              let source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
+              let template = Handlebars.compile(source); // 템플릿 코드 컴파일
+              let result = template(json); // 템플릿 컴파일 결과물에 json 전달
               $("#result").empty(); // 결과물 초기화
               $("#result2").empty(); // 결과물 초기화
               $("#result").append(result); // 최종 결과물을 추가한다
+
+              let total = $("#total-tmpl").html(); // 템플릿 코드 가져오기
+              let tt_template = Handlebars.compile(total); // 템플릿 코드 컴파일
+              let tt_result = tt_template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#total").html(tt_result); // 최종 결과물을 추가한다
             }
           );
         });
@@ -705,6 +725,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               $("#result").empty(); // 결과물 초기화
               $("#result2").empty(); // 결과물 초기화
               $("#result").append(result); // 최종 결과물을 추가한다
+
+              let total = $("#total-tmpl").html(); // 템플릿 코드 가져오기
+              let tt_template = Handlebars.compile(total); // 템플릿 코드 컴파일
+              let tt_result = tt_template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#total").html(tt_result); // 최종 결과물을 추가한다
             }
           );
         } else {
@@ -720,6 +745,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               $("#result").empty(); // 결과물 초기화
               $("#result2").empty(); // 결과물 초기화
               $("#result").append(result); // 최종 결과물을 추가한다
+
+              let total = $("#total-tmpl").html(); // 템플릿 코드 가져오기
+              let tt_template = Handlebars.compile(total); // 템플릿 코드 컴파일
+              let tt_result = tt_template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#total").html(tt_result); // 최종 결과물을 추가한다
             }
           );
         }
@@ -737,7 +767,15 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $.get(
             "${pageContext.request.contextPath}/search/job_search",
             {
-              order: order, // 정렬 조건은 GET 파라미터로 전송한다.
+              order: order, // 정렬 조건
+              sitterno: login_stno,
+              kidsage: kidsage,
+              caredays: caredays,
+              time_range: time_range,
+              actList: actList,
+              min_pay: min_pay,
+              max_pay: max_pay,
+              kids_cnt: kids_cnt,
             },
             function (json) {
               let source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
@@ -746,19 +784,16 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               $("#result").empty(); // 결과물 초기화
               $("#result2").empty(); // 결과물 초기화
               $("#result").append(result); // 최종 결과물을 추가한다
+
+              let total = $("#total-tmpl").html(); // 템플릿 코드 가져오기
+              let tt_template = Handlebars.compile(total); // 템플릿 코드 컴파일
+              let tt_result = tt_template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#total").html(tt_result); // 최종 결과물을 추가한다
             }
           );
         });
 
         /** 상세 검색 ------------------------------------------------------------------- */
-
-        const kidsage = []; // 아이나이
-        const caredays = []; // 돌봄 요일
-        const time_range = []; // 돌봄 시간대
-        const act = []; // 돌봄 종류
-        let min_pay = $("#min_pay").val(); // 최저 시급
-        let max_pay = $("#max_pay").val(); // 최고 시급
-        let kids_cnt = $("input[name=kids]:checked").val(); // 아이 수
 
         // 아이나이 버튼 클릭
         $(".ages").click(function (e) {
@@ -821,27 +856,31 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           //버튼 클릭시 text 색 변경
           $(this).find("i").toggleClass("select_act_btn");
           // GET으로 전송할 배열에 data 담기
-          if ($(this).find("i").hasClass("select_act_btn") && act.indexOf($(this).data("act")) == -1) {
-            act.push($(this).data("act"));
+          if ($(this).find("i").hasClass("select_act_btn") && actList.indexOf($(this).data("act")) == -1) {
+            actList.push($(this).data("act"));
           }
           if ($(this).find("i").hasClass("select_act_btn") == false) {
-            act.splice(act.indexOf($(this).data("act")), 1);
+            actList.splice(actList.indexOf($(this).data("act")), 1);
           }
 
-          console.log(act);
+          console.log(actList);
         });
 
         $("#detail_apply").click(function (e) {
           e.preventDefault();
           $("#job_search_detail_modal").modal("hide");
+          min_pay = $("#min_pay").val(); // 최저 시급
+          max_pay = $("#max_pay").val(); // 최고 시급
+          console.log(min_pay);
+          console.log(max_pay);
+          kids_cnt = $("input[name=kids]:checked").val(); // 아이 수
           // 검색 조건은 GET 파라미터로 전송한다.
           $.get(
             "${pageContext.request.contextPath}/search/job_search",
             {
               kidsage: kidsage,
               caredays: caredays,
-              time_range: time_range,
-              act: act,
+              actList: actList,
               min_pay: min_pay,
               max_pay: max_pay,
               kids_cnt: kids_cnt,
@@ -853,6 +892,11 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               $("#result").empty(); // 결과물 초기화
               $("#result2").empty(); // 결과물 초기화
               $("#result").append(result); // 최종 결과물을 추가한다
+
+              let total = $("#total-tmpl").html(); // 템플릿 코드 가져오기
+              let tt_template = Handlebars.compile(total); // 템플릿 코드 컴파일
+              let tt_result = tt_template(json); // 템플릿 컴파일 결과물에 json 전달
+              $("#total").html(tt_result); // 최종 결과물을 추가한다
             }
           );
         });
@@ -864,8 +908,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
           $("#job_search_detail_modal .modal_content *").removeClass("select_text_detail");
           $("#job_search_detail_modal .modal_content *").removeClass("select_act_btn");
           $(".kids").prop("checked", false);
-          $("#min_pay").val("");
-          $("#max_pay").val("");
+          $("#min_pay").val(0);
+          $("#max_pay").val(0);
         });
 
         /** 상세 검색 end ------------------------------------------------------------------- */
@@ -885,14 +929,19 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
                     order: order, // 정렬 조건은 GET 파라미터로 전송한다.
                     sitterno: login_stno,
+                    kidsage: kidsage,
+                    caredays: caredays,
+                    time_range: time_range,
+                    actList: actList,
+                    min_pay: min_pay,
+                    max_pay: max_pay,
+                    kids_cnt: kids_cnt,
                   },
                   function (json) {
                     let source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
                     let template = Handlebars.compile(source); // 템플릿 코드 컴파일
                     let result = template(json); // 템플릿 컴파일 결과물에 json 전달
                     $("#result2").append(result); // 최종 결과물을 추가한다
-
-                    // 현재 페이지 번호가 전체 페이지 수에 도달했을시
                   }
                 );
               } else {
@@ -901,6 +950,13 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   {
                     order: order, // 정렬 조건
                     page: nowPage, // 페이지 번호는 GET 파라미터로 전송한다.
+                    kidsage: kidsage,
+                    caredays: caredays,
+                    time_range: time_range,
+                    actList: actList,
+                    min_pay: min_pay,
+                    max_pay: max_pay,
+                    kids_cnt: kids_cnt,
                   },
                   function (json) {
                     let source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기

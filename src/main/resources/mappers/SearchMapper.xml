@@ -74,7 +74,7 @@
 		<result property="openingdate" column="opening" />
 		<result property="orderdate" column="openingdate" />
 		<result property="memberno" column="memberno" />
-		<result property="applySt" column="applyst" />
+		<result property="applySt" column="applySt" />
 		<result property="days" column="days" />
 		<result property="findHt" column="findHt" />
 		<result property="fileUrl" column="fileUrl" />
@@ -101,36 +101,23 @@
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS opening,
 		REPLACE(json_extract(schedule, '$.day'),'"','') AS days,
-		openingdate, p.isProfile AS isProfile, 
-		p.fileUrl AS fileUrl,
-		COUNT(revno) AS rev_count, r.rev_rate AS rev_rate,
-		COUNT(resino) AS resino, 
-		FLOOR(COUNT(c.accept)/COUNT(c.cntno)) * 100 AS answer
-		<if test = "loginMom != 0">,COUNT(heartno) AS findHt</if>
+		openingdate,
+		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl,
+		(SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_count,
+		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate,
+		(SELECT COUNT(resino) FROM resi_cert rc WHERE s.sitterno=rc.sitterno AND cert='Y') AS resino,
+		(SELECT FLOOR(COUNT(accept)/COUNT(cntno)) * 100 FROM connect c WHERE s.sitterno=c.sitterno AND c.who='m') AS answer
+		<if test = "loginMom != 0">,
+		(SELECT COUNT(*) FROM heart h WHERE s.sitterno=h.sitterno AND who='M' AND h.momno=#{loginMom}) AS findHt
+		</if>
 		FROM sitter_info s
 		INNER JOIN member m ON s.memberno=m.memberno
-		LEFT OUTER JOIN review r ON s.sitterno=r.sitterno
-		LEFT OUTER JOIN profile_file p ON s.memberno = p.memberno
-		LEFT OUTER JOIN heart h ON s.sitterno=h.sitterno
-		LEFT OUTER JOIN resi_cert rc ON s.sitterno=rc.sitterno
-		LEFT OUTER JOIN connect c ON s.sitterno=c.sitterno
 
 		<!-- 활동 유형 && 상세 검색 && 주소 -->
 		<where>
-<!-- 			<if test = "rev_count != 0"> -->
-			r.who='M'
-<!-- 			</if>
-			<if test = "resino != 0"> -->
-			AND cert='Y' 
-<!-- 			</if>
-			<if test ="cntno != 0"> -->
-			AND c.who='m'
-<!-- 			</if> -->
-			<if test = "loginMom != 0">
-			AND h.who='M' AND h.momno=#{loginMom}
-			</if>
 			<if test="actList != null">
-				AND want_act1 || want_act2 || want_act3 in
+				(want_act1 || want_act2 || want_act3) in
 				<foreach item="item1" collection="actList" open="("
 					close=")" separator=",">
 					#{item1}
@@ -159,20 +146,20 @@
 				</foreach>
 			</if>
 			<if test="sitterAge != null">
-				AND <![CDATA[TRUNCATE(birthdate/10, -1)]]>
+				AND SUBSTRING(year(now()) - year(birthdate), 1,1)
 				IN
 				<foreach item="item6" collection="sitterAge" open="("
 					close=")" separator=",">
-					LEFT(${item6},1)
+					left(#{item6},1)
 				</foreach>
 			</if>
-			<if test="loc1 != null">
+			<if test="loc1 != null and loc1 !=''">
 				AND si = #{loc1}
 			</if>
-			<if test="loc2 != null">
+			<if test="loc2 != null and loc2 !=''">
 				AND gu = #{loc2}
 			</if>
-			<if test="loc3 != null">
+			<if test="loc3 != null and loc3 !=''">
 				AND dong = #{loc3}
 			</if>
 		</where>
@@ -224,22 +211,19 @@
 		ELSE
 		CONCAT(TIMESTAMPDIFF(month, openingdate, now()), '달 전')
 		END AS opening, openingdate,  
-		p.isProfile AS isProfile, p.fileUrl AS fileUrl,
-		COUNT(cntno) AS applySt
-		<if test = "loginSt != 0">, COUNT(heartno) AS findHt</if> 
+		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = m.memberno) AS isProfile, 
+		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = m.memberno) AS fileUrl,
+		(SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno AND who='s') AS applySt 
+		<if test = "loginSt != 0">, 
+		(SELECT COUNT(*) FROM heart h WHERE m.momno=h.momno AND who='S'AND h.sitterno=#{loginSt}) AS findHt
+		</if>
 		FROM mom_info m
 		INNER JOIN member mb ON m.memberno=mb.memberno
-		LEFT OUTER JOIN profile_file p ON m.memberno = p.memberno
-		LEFT OUTER JOIN heart h ON m.momno=h.momno
-		LEFT OUTER JOIN connect c ON m.momno=c.momno
 
 		<!-- 활동 유형 && 상세 검색 && 주소 -->
 		<where>
-			<if test = "loginSt != 0">,
-			AND h.who='S' AND h.sitterno=#{loginSt} AND c.who='s'
-			</if>
-			<if test="act != null">
-				want_act1 || want_act2 || want_act3 in
+			<if test="actList != null">
+				(want_act1 || want_act2 || want_act3) in
 				<foreach item="item1" collection="act" open="(" close=")"
 					separator=",">
 					#{item1}
@@ -260,26 +244,26 @@
 				</foreach>
 				' AS JSON))
 			</if>
-			<if test="min_pay != null and max_pay = null">
+			<if test="min_pay != 0 and max_pay == 0">
 				AND payment BETWEEN 8720 AND #{min_pay}
 			</if>
-			<if test="min_pay = null and max_pay != null">
+			<if test="min_pay == 0 and max_pay != 0">
 				AND payment BETWEEN #{max_pay} AND 2000000
 			</if>
-			<if test="min_pay != null and max_pay != null">
+			<if test="min_pay != 0 and max_pay != 0">
 				AND payment BETWEEN
 				#{min_pay} AND #{max_pay}
 			</if>
 			<if test="kids_cnt != 0 and kids_cnt==1 or kids_cnt==2">
 				AND kids_num = #{kids_cnt}
 			</if>
-			<if test="loc1 != null">
+			<if test="loc1 != null and loc1 !=''">
 				AND si = #{loc1}
 			</if>
-			<if test="loc2 != null">
+			<if test="loc2 != null and loc2 !=''">
 				AND gu = #{loc2}
 			</if>
-			<if test="loc3 != null">
+			<if test="loc3 != null and loc3 !=''">
 				AND dong = #{loc3}
 			</if>
 		</where>
@@ -311,7 +295,54 @@
 		COUNT(*)
 		FROM Mom_info m
 		INNER JOIN member mb ON
-		m.memberno=mb.memberno
+		m.memberno=mb.memberno 
+		<!-- 활동 유형 && 상세 검색 && 주소 -->
+		<where>
+			<if test="actList != null">
+				(want_act1 || want_act2 || want_act3) in
+				<foreach item="item1" collection="act" open="(" close=")"
+					separator=",">
+					#{item1}
+				</foreach>
+			</if>
+			<if test="kidsAge != null">
+				AND want_age IN
+				<foreach item="item2" collection="kidsAge" open="("
+					close=")" separator=",">
+					#{item2}
+				</foreach>
+			</if>
+			<if test="caredays != null">
+				AND JSON_CONTAINS(schedule->'$.day',CAST('
+				<foreach item="item3" collection="caredays" open="["
+					close="]" separator=",">
+					"${item3}"
+				</foreach>
+				' AS JSON))
+			</if>
+			<if test="min_pay != 0 and max_pay == 0">
+				AND payment BETWEEN 8720 AND #{min_pay}
+			</if>
+			<if test="min_pay == 0 and max_pay != 0">
+				AND payment BETWEEN #{max_pay} AND 2000000
+			</if>
+			<if test="min_pay != 0 and max_pay != 0">
+				AND payment BETWEEN
+				#{min_pay} AND #{max_pay}
+			</if>
+			<if test="kids_cnt != 0 and kids_cnt==1 or kids_cnt==2">
+				AND kids_num = #{kids_cnt}
+			</if>
+			<if test="loc1 != null and loc1 !=''">
+				AND si = #{loc1}
+			</if>
+			<if test="loc2 != null and loc2 !=''">
+				AND gu = #{loc2}
+			</if>
+			<if test="loc3 != null and loc3 !=''">
+				AND dong = #{loc3}
+			</if>
+		</where>
 	</select>
 
 	<!-- 시터 -->
@@ -322,6 +353,58 @@
 		FROM sitter_info s
 		INNER JOIN member m ON
 		s.memberno=m.memberno
+		<!-- 활동 유형 && 상세 검색 && 주소 -->
+		<where>
+			<if test = "loginMom != 0">
+			AND h.who='M' AND h.momno=#{loginMom}
+			</if>
+			<if test="actList != null">
+				AND (want_act1 || want_act2 || want_act3) in
+				<foreach item="item1" collection="actList" open="("
+					close=")" separator=",">
+					#{item1}
+				</foreach>
+			</if>
+			<if test="kidsAge != null">
+				AND want_age IN
+				<foreach item="item2" collection="kidsAge" open="("
+					close=")" separator=",">
+					#{item2}
+				</foreach>
+			</if>
+			<if test="caredays != null">
+				AND JSON_CONTAINS(schedule->'$.day',CAST('
+				<foreach item="item3" collection="caredays" open="["
+					close="]" separator=",">
+					"${item3}"
+				</foreach>
+				' AS JSON))
+			</if>
+			<if test="sitterType != null">
+				AND sitter_type IN
+				<foreach item="item5" collection="sitterType" open="("
+					close=")" separator=",">
+					#{item5}
+				</foreach>
+			</if>
+			<if test="sitterAge != null">
+				AND SUBSTRING(year(now()) - year(birthdate), 1,1)
+				IN
+				<foreach item="item6" collection="sitterAge" open="("
+					close=")" separator=",">
+					left(#{item6},1)
+				</foreach>
+			</if>
+			<if test="loc1 != null and loc1 !=''">
+				AND si = #{loc1}
+			</if>
+			<if test="loc2 != null and loc2 !=''">
+				AND gu = #{loc2}
+			</if>
+			<if test="loc3 != null and loc3 !=''">
+				AND dong = #{loc3}
+			</if>
+		</where>
 	</select>
 
 	<!-- 일자리 찾기 맘에게 지원한 시터 수 -->

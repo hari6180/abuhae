@@ -59,80 +59,17 @@ public class Sitter_info extends Member {
 	private String workterm;
 	
 	/** 3) 검색 조건용 추가 컬럼 */
-	private static String[] actList;		// 원하는 활동유형 검색 조건
-	private static String[] kidsAge;		// 아이 나이
-	private static String[] caredays;		// 돌봄 요일
-	private static String[] timeRange;		// 돌봄 시간대
-	private static String[] sitterType;		// 맘시터 유형
-	private static String[] sitterAge;		// 시터 나이
-	private static String loc1;				// 시
-	private static String loc2;				// 구
-	private static String loc3;				// 동
+	private String[] sitterType;		// 맘시터 유형
+	private String[] sitterAge;		// 시터 나이
 	
 	// 맘 로그인 여부 확인 (for 찜)
 	private static int loginMom;
 	
-
-
-	public static String[] getKidsAge() {
-		return kidsAge;
-	}
-	public static void setKidsAge(String[] kidsAge) {
-		Sitter_info.kidsAge = kidsAge;
-	}
-	public static String[] getCaredays() {
-		return caredays;
-	}
-	public static void setCaredays(String[] caredays) {
-		Sitter_info.caredays = caredays;
-	}
-	public static String[] getTimeRange() {
-		return timeRange;
-	}
-	public static void setTimeRange(String[] timeRange) {
-		Sitter_info.timeRange = timeRange;
-	}
-	public static String[] getSitterType() {
-		return sitterType;
-	}
-	public static void setSitterType(String[] sitterType) {
-		Sitter_info.sitterType = sitterType;
-	}
-	public static String[] getSitterAge() {
-		return sitterAge;
-	}
-	public static void setSitterAge(String[] sitterAge) {
-		Sitter_info.sitterAge = sitterAge;
-	}
 	public static int getLoginMom() {
 		return loginMom;
 	}
 	public static void setLoginMom(int loginMom) {
 		Sitter_info.loginMom = loginMom;
-	}
-	public static String getLoc1() {
-		return loc1;
-	}
-	public static void setLoc1(String loc1) {
-		Sitter_info.loc1 = loc1;
-	}
-	public static String getLoc2() {
-		return loc2;
-	}
-	public static void setLoc2(String loc2) {
-		Sitter_info.loc2 = loc2;
-	}
-	public static String getLoc3() {
-		return loc3;
-	}
-	public static void setLoc3(String loc3) {
-		Sitter_info.loc3 = loc3;
-	}
-	public static String[] getActList() {
-		return actList;
-	}
-	public static void setActList(String[] actList) {
-		Sitter_info.actList = actList;
 	}
 	
 	

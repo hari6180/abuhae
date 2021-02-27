@@ -38,6 +38,14 @@ public abstract class Member {
 	private static String order;
 	private String orderdate;
 	
+	// 검색조건
+	private String[] actList;			// 원하는 활동유형 검색 조건
+	private String[] kidsAge;			// 아이 나이
+	private String[] caredays;			// 돌봄 요일
+	private String loc1;				// 시
+	private String loc2;				// 구
+	private String loc3;				// 동
+	
 	// JOIN절에 의한 추가 멤버변수
 	private String r_type;  	// 신고 유형
 	private String contents; 	// 신고 내용
