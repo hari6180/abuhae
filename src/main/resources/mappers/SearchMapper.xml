@@ -117,8 +117,16 @@
 
 		<!-- 활동 유형 && 상세 검색 && 주소 -->
 		<where>
-			r.who='M' AND cert='Y' AND c.who='m'
-			<if test = "loginMom != 0">,
+<!-- 			<if test = "rev_count != 0"> -->
+			r.who='M'
+<!-- 			</if>
+			<if test = "resino != 0"> -->
+			AND cert='Y' 
+<!-- 			</if>
+			<if test ="cntno != 0"> -->
+			AND c.who='m'
+<!-- 			</if> -->
+			<if test = "loginMom != 0">
 			AND h.who='M' AND h.momno=#{loginMom}
 			</if>
 			<if test="actList != null">
