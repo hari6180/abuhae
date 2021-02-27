@@ -41,14 +41,26 @@ public interface MomMypageService {
 	/** 찜한 회원 목록 조히 */
 	public List<Heart> getHeartList(Heart input) throws Exception;
 	
+	/** 찜한 회원 수 */
+	public int getMomHeartCount(Mom_info input) throws Exception;
+	
 	/** 채용 내역 조회 */
 	public List<Connect> getWorkList(Connect input) throws Exception;
+	
+	/** 채용 횟수 조회 */
+	public int getMomWorkCount(Mom_info input) throws Exception;
 	
 	/** 신고 내역 조회 */
 	public List<Report> getReprotList(Report input) throws Exception;
 	
+	/** 신고 횟수 조회 */
+	public int getMomReprotCount(Mom_info input) throws Exception;
+	
 	/** 쿠폰 내역 조회 */
 	public List<Coupon> getCouponList(Coupon input) throws Exception;
+	
+	/** 쿠폰 수 조회 */
+	public int getCouponCount(Mom_info input) throws Exception;
 	
 	/** 회원 정보 수정 ~~~~ 맘 신청서 수정 */
 	public int editMomInfo(Mom_info input) throws Exception;

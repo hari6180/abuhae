@@ -198,7 +198,7 @@
                                 href="${pageContext.request.contextPath}/mypage/mypage_sitter/likem/${login.sitterno}">
                                 <i class="fab fa-gratipay mps_menu_list1"></i>
                                 <p class="mps_menu_list2">찜한 일자리</p>
-                                <p class="mps_menu_list3">2명</p>
+                                <p class="mps_menu_list3">${heartcount }명</p>
                                 <i class="fas fa-angle-right mps_menu_list4"></i>
                             </a>
 
@@ -215,11 +215,9 @@
 
                             <a
                                 href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_sitter_profile.do?sitterno=${login.sitterno}">
-                                <i class="fas fa-pen mps_menu_list1"></i>
-                                <p class="mps_menu_list2">내 프로필 수정</p>
-                                <!--백엔드 연동 필요-->
-                                <p class="mps_menu_list3">3시간 전</p>
-                                <i class="fas fa-angle-right mps_menu_list4"></i>
+                                <i class="fas fa-pen mps_menu3_list1"></i>
+                                <p class="mps_menu3_list2">내 프로필 수정</p>
+                                <i class="fas fa-angle-right mps_menu3_list3"></i>
                             </a>
                         </div>
                     </div>
@@ -289,7 +287,7 @@
                                 <i class="fas fa-user-plus mps_menu_list1"></i>
                                 <p class="mps_menu_list2">내 맘시터 채용 횟수</p>
                                 <!--백엔드 연동 필요-->
-                                <p class="mps_menu_list3">1 회</p>
+                                <p class="mps_menu_list3">${workcount } 회</p>
                                 <i class="fas fa-angle-right mps_menu_list4"></i>
                             </a>
 
@@ -300,7 +298,7 @@
                                 <i class="fas fa-bomb mps_menu_list1"></i>
                                 <p class="mps_menu_list2">신고내역</p>
                                 <!--백엔드 연동 필요-->
-                                <p class="mps_menu_list3">1 건</p>
+                                <p class="mps_menu_list3">${reportcount } 건</p>
                                 <i class="fas fa-angle-right mps_menu_list4"></i>
                             </a>
                         </div>

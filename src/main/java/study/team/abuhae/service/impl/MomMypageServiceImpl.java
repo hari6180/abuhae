@@ -211,6 +211,21 @@ public class MomMypageServiceImpl implements MomMypageService {
       return result;
    }
 
+   /** 찜한 회원 수 조회 */
+	@Override
+	public int getMomHeartCount(Mom_info input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("MomMypageMapper.selectMomHeartCount", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+   
    /** 채용 내역 조회 */
    @Override
    public List<Connect> getWorkList(Connect input) throws Exception {
@@ -230,6 +245,21 @@ public class MomMypageServiceImpl implements MomMypageService {
          throw new Exception("데이터 조회에 실패했습니다.");
       }
       return result;
+   }
+   
+   /** 채용 횟수 조회 */
+   @Override
+   public int getMomWorkCount(Mom_info input) throws Exception {
+	   int result = 0;
+	   
+	   try {
+		   result = sqlSession.selectOne("MomMypageMapper.selectMomWorkCount", input);
+	   } catch (Exception e) {
+		   log.error(e.getLocalizedMessage());
+		   throw new Exception("데이터 조회에 실패했습니다.");
+	   }
+	   
+   		return result;
    }
 
    /** 신고 내역 조회 */
@@ -252,6 +282,22 @@ public class MomMypageServiceImpl implements MomMypageService {
       }
       return result;
    }
+   
+   /** 신고 횟수 조회 */
+   @Override
+   public int getMomReprotCount(Mom_info input) throws Exception {
+	   int result = 0;
+	   
+	   try {
+		   result = sqlSession.selectOne("MomMypageMapper.selectMomReportCount", input);
+		   
+	   } catch (Exception e) {
+		   log.error(e.getLocalizedMessage());
+	   }
+	   
+	   return result;
+   }
+
 
    /** 구매 내역 조회 */
    @Override
@@ -287,6 +333,21 @@ public class MomMypageServiceImpl implements MomMypageService {
       }
       return result;
    }
+   
+
+	@Override
+	public int getCouponCount(Mom_info input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("MomMypageMapper.selectCouponCount", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
 
    /** 맘 신청서 수정 */
    @Override
@@ -577,7 +638,7 @@ public class MomMypageServiceImpl implements MomMypageService {
       }
       return result;
    }
-
+   
    ////// end 선아작업////////////////////
 
 }

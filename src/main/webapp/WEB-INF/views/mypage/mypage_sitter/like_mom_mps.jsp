@@ -34,10 +34,10 @@
                     <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${out.sitterno}">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${login.sitterno}">
                                     <i class="fas fa-times"></i>
                                 </a>
-                                <h3 class="center-block">내가 찜한 일자리 <span style="color: #ff7000;">2명</span></h3>
+                                <h3 class="center-block">내가 찜한 일자리 <span style="color: #ff7000;">${heartcount }명</span></h3>
                             </div>
                         </div>
                     </header>

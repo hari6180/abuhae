@@ -310,6 +310,13 @@
       </where>
    </select>
    
+   <!-- 찜한 횟수 조회 --> 
+   <select id="selectSitterHeartCount"
+   parameterType="study.team.abuhae.model.Heart" resultType="int">
+   		select count(*) from heart 
+		where sitterno=#{sitterno} and who='S';
+   </select>
+   
    <!-- 내 채용내역 -->
    <select id="selectSitterWorkList"
       parameterType="study.team.abuhae.model.Connect" resultMap="SitterConnectMap">
@@ -327,6 +334,12 @@
       </where>
    </select>
    
+   <select id="selectSitterWorkCount"
+   parameterType="study.team.abuhae.model.Connect" resultType="int">
+   		select count(*) from connect
+		where sitterno=#{sitterno};
+   </select>
+   
    <!-- 신고 내역 조회 -->
    <select id="selectSitterReportList"
       parameterType="study.team.abuhae.model.Report" resultMap="SitterReportMap">
@@ -340,6 +353,13 @@
       <where>
          r.sitterno = #{sitterno} and who = 'S'
       </where>
+   </select>
+   
+   <!-- 신고횟수 조회 -->
+   <select id="selectSitterReportCount"
+   parameterType="study.team.abuhae.model.Report" resultType="int">
+	   	select count(*) from report
+		where sitterno=#{sitterno} and who='S';
    </select>
    
    <!-- 쿠폰 조회 -->

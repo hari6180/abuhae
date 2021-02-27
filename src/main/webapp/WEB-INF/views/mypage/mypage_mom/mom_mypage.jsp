@@ -215,7 +215,7 @@
                                 <a href="${pageContext.request.contextPath}/mypage/mypage_mom/likes/${login.momno}">
                                     <i class="fab fa-gratipay mps_menu_list1"></i>
                                     <p class="mps_menu_list2">찜한 맘시터</p>
-                                    <p class="mps_menu_list3">2명</p>
+                                    <p class="mps_menu_list3">${heartcount }명</p>
                                     <i class="fas fa-angle-right mps_menu_list4"></i>
                                 </a>
 
@@ -248,7 +248,7 @@
                             	 <a href="${pageContext.request.contextPath}/mypage/mypage_mom/coup/${login.momno}">
                                     <i class="fas fa-file-invoice-dollar mps_menu_list1" style="color: #fa9547;"></i>
                                     <p class="mps_menu_list2">내 쿠폰함</p>
-                                    <p class="mps_menu_list3" style="color: rgb(255, 129, 0);">1 장</p>
+                                    <p class="mps_menu_list3" style="color: rgb(255, 129, 0);">${couponcount} 장</p>
                                     <i class="fas fa-angle-right mps_menu_list4"></i>
                                 </a>
                                 
@@ -267,7 +267,7 @@
                                     <i class="fas fa-user-plus mps_menu_list1"></i>
                                     <p class="mps_menu_list2">내 채용 내역</p>
                                     <!--백엔드 연동 필요-->
-                                    <p class="mps_menu_list3">1 명</p>
+                                    <p class="mps_menu_list3">${workcount} 명</p>
                                     <i class="fas fa-angle-right mps_menu_list4"></i>
                                 </a>
                     
@@ -277,7 +277,7 @@
                                     <i class="fas fa-bomb mps_menu_list1"></i>
                                     <p class="mps_menu_list2">신고내역</p>
                                     <!--백엔드 연동 필요-->
-                                    <p class="mps_menu_list3">1 건</p>
+                                    <p class="mps_menu_list3">${reportcount } 건</p>
                                     <i class="fas fa-angle-right mps_menu_list4"></i>
                                 </a>
                             </div>

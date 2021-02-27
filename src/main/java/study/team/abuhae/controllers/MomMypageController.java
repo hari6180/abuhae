@@ -58,10 +58,18 @@ public class MomMypageController {
 		// 조회 결과를 저장할 객체 선언
 		Mom_info output = null;
 		ProfileFile output2 = null;
+		int heartcount = 0;
+		int couponcount = 0;
+		int workcount = 0;
+		int reportcount = 0;
 		
 		try {
 			output = momMypageService.getMemberItem(input);
 			output2 = uploadService.getMomProfileItem(input2);
+			heartcount = momMypageService.getMomHeartCount(input);
+			couponcount = momMypageService.getCouponCount(input);
+			workcount = momMypageService.getMomWorkCount(input);
+			reportcount = momMypageService.getMomReprotCount(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -69,6 +77,10 @@ public class MomMypageController {
 		// View 처리 
 		model.addAttribute("output" ,output);
 		model.addAttribute("profile", output2);
+		model.addAttribute("heartcount", heartcount);
+		model.addAttribute("couponcount", couponcount);
+		model.addAttribute("workcount", workcount);
+		model.addAttribute("reportcount", reportcount);
 		
 		return new ModelAndView("mypage/mypage_mom/mom_mypage");
 	}
@@ -115,16 +127,14 @@ public class MomMypageController {
 		in.setMomno(momno);
 		
 		// 조회 결과를 저장할 객체 선언
-		Mom_info out = null;
+		int heartcount = 0;
 		
 		try {
-			out = momMypageService.getMemberItem(in);
+			heartcount = momMypageService.getMomHeartCount(in);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		// View 처리 
-		model.addAttribute("out" ,out);
+		model.addAttribute("heartcount", heartcount);
 		
 		/** 데이터 조회 */
 		Heart input = new Heart();
@@ -176,17 +186,14 @@ public class MomMypageController {
 		in.setMomno(momno);
 		
 		// 조회 결과를 저장할 객체 선언
-		Mom_info out = null;
+		int couponcount = 0;
 		
 		try {
-			out = momMypageService.getMemberItem(in);
+			couponcount = momMypageService.getCouponCount(in);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		// View 처리 
-		model.addAttribute("out" ,out);
-		
+	
 		/** 데이터 조회 */
 		Coupon input = new Coupon();
 		input.setMomno(momno);
@@ -200,6 +207,8 @@ public class MomMypageController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
+		// View 처리 
+		model.addAttribute("couponcount" ,couponcount);
 		model.addAttribute("output", output);
 
 		return new ModelAndView("mypage/mypage_mom/coupon");
@@ -266,16 +275,16 @@ public class MomMypageController {
 		in.setMomno(momno);
 		
 		// 조회 결과를 저장할 객체 선언
-		Mom_info out = null;
+		int workcount = 0;
 		
 		try {
-			out = momMypageService.getMemberItem(in);
+			workcount = momMypageService.getMomWorkCount(in);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		// View 처리 
-		model.addAttribute("out" ,out);
+		model.addAttribute("workcount" ,workcount);
 		
 		/** 데이터 조회 */
 		Connect input = new Connect();
@@ -304,16 +313,16 @@ public class MomMypageController {
 		in.setMomno(momno);
 		
 		// 조회 결과를 저장할 객체 선언
-		Mom_info out = null;
+		int reportcount = 0;
 		
 		try {
-			out = momMypageService.getMemberItem(in);
+			reportcount = momMypageService.getMomReprotCount(in);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		// View 처리 
-		model.addAttribute("out" ,out);
+		model.addAttribute("reportcount" ,reportcount);
 		
 		/** 데이터 조회 */
 		Report input = new Report();

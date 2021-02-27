@@ -39,7 +39,7 @@
                                 <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${login.momno}">
                                     <i class="fas fa-times"></i>
                                 </a>
-                                <h3 class="center-block">찜한 맘시터 <span style="color: #ff7000;">2명</span></h3>
+                                <h3 class="center-block">찜한 맘시터 <span style="color: #ff7000;">${heartcount}명</span></h3>
                             </div>
                         </div>
                     </header>

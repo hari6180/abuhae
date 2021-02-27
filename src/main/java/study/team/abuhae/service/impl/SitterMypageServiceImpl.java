@@ -154,12 +154,6 @@ public class SitterMypageServiceImpl implements SitterMypageService {
          return result;
    }
 
-   @Override
-   public Sitter_info getSitterBuyList(Sitter_info input) throws Exception {
-      // TODO Auto-generated method stub
-      return null;
-   }
-
    /** 찜 내역 조회 */
    @Override
    public List<Heart> getSitterHeartList(Heart input) throws Exception {
@@ -174,6 +168,22 @@ public class SitterMypageServiceImpl implements SitterMypageService {
          
          return result;
    }
+   
+   /** 찜한 횟수 조회 */
+	@Override
+	public int getSitterHeartCount(Sitter_info input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("SitterMypageMapper.selectSitterHeartCount", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		}
+		
+		return result;
+	}
+
 
    /** 내게 지원한 */
    @Override
@@ -198,6 +208,21 @@ public class SitterMypageServiceImpl implements SitterMypageService {
    }
 
    @Override
+	public int getSitterWorkCount(Sitter_info input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("SitterMypageMapper.selectSitterWorkCount", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+
+   
+   @Override
    public List<Report> getSitterReprotList(Report input) throws Exception {
 	   List<Report> result = null;
        
@@ -217,27 +242,20 @@ public class SitterMypageServiceImpl implements SitterMypageService {
        
        return result;
    }
-
-   @Override
-   public List<Coupon> getSitterCouponList(Coupon input) throws Exception {
-	   List<Coupon> result = null;
-       
-       try {
-          result = sqlSession.selectList("SitterMypageMapper.selectSitterCouponList", input);
-          
-          if (result==null) {
-             throw new NullPointerException("result=null");
-          }
-       } catch (NullPointerException e) {
-          log.error(e.getLocalizedMessage());
-          throw new Exception("조회된 데이터가 없습니다.");
-       } catch (Exception e) {
-          log.error(e.getLocalizedMessage());
-          throw new Exception("데이터 조회에 실패했습니다.");
-       }
-       
-       return result;
-   }
+   
+	@Override
+	public int getSitterReportCount(Sitter_info input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("SitterMypageMapper.selectSitterReportCount", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
 
    /** 내가 지원한 부모회원 목록 */
 	@Override
@@ -514,5 +532,5 @@ public class SitterMypageServiceImpl implements SitterMypageService {
 	      }
 	      return result;
 	}
-   
+	
 }

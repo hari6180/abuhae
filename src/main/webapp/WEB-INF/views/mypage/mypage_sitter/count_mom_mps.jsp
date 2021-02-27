@@ -34,7 +34,7 @@
                     <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${out.sitterno}">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${login.sitterno}">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">내 맘시터 채용 횟수</h3>
@@ -48,7 +48,7 @@
                             <div class="col-xs-12">
                                 <div class="total_count">
                                     <p>
-                                        총 <span style="color: #ff7000;">1</span>회
+                                        총 <span style="color: #ff7000;">${workcount }</span>회
                                     </p>
                                 </div>
                                  <c:choose>

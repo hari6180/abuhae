@@ -14,23 +14,26 @@ public interface SitterMypageService {
    /** 마이페이지 회원 데이터 상세 조회 */
    public Sitter_info getSitterItem(Sitter_info input) throws Exception;
    
-   /** 결제 내역 조회 */
-   public Sitter_info getSitterBuyList(Sitter_info input) throws Exception;
-   
    /** 구직 중 클릭시 지원시간 업데이트 */
    public int editSitterOpeningDate(Sitter_info input) throws Exception;
    
    /** 찜한 회원 목록 조히 */
    public List<Heart> getSitterHeartList(Heart input) throws Exception;
    
+   /** 찜한 횟수 조회 */
+   public int getSitterHeartCount(Sitter_info input) throws Exception;
+   
    /** 채용 내역 조회 */
    public List<Connect> getSitterWorkList(Connect input) throws Exception;
+   
+   /** 채용 횟수 조회 */
+   public int getSitterWorkCount(Sitter_info input) throws Exception;
    
    /** 신고 내역 조회 */
    public List<Report> getSitterReprotList(Report input) throws Exception;
    
-   /** 쿠폰 내역 조회 */
-   public List<Coupon> getSitterCouponList(Coupon input) throws Exception;
+   /** 신고 횟수 조회 */
+   public int getSitterReportCount(Sitter_info input) throws Exception;
    
    /** 내게 지원한 부모회원 목록 조회 */
    public List<Connect> getConnectList(Connect input) throws Exception;

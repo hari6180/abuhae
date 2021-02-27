@@ -37,7 +37,7 @@
                                 <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${login.momno}">
                                     <i class="fas fa-times"></i>
                                 </a>
-                                <h3 class="center-block">내 쿠폰함 <span style="color: #ff7000;">1장</span></h3>
+                                <h3 class="center-block">내 쿠폰함 <span style="color: #ff7000;">${couponcount}장</span></h3>
                             </div>
                         </div>
                     </header>

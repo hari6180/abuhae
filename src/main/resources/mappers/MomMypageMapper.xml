@@ -339,7 +339,7 @@
 	
 	<!-- 찜 횟수 조회 -->
 	<select id="selectMomHeartCount"
-	parameterType="study.team.abuhae.model.Heart" resultMap="HeartMap">
+	parameterType="study.team.abuhae.model.Heart" resultType="int">
 		select count(*) from heart h 
 		inner join mom_info m on m.momno = h.momno
 		where h.momno=#{momno} and who='M';
@@ -365,8 +365,8 @@
 	</select>
 	
 	<!-- 채용횟수 조회 -->
-	<select id="selectMomWorkList"
-	parameterType="study.team.abuhae.model.Connect" resultMap="ConnectMap">
+	<select id="selectMomWorkCount"
+	parameterType="study.team.abuhae.model.Connect" resultType="int">
 		select count(*) from connect c
 		inner join mom_info m on m.momno=c.momno
 		where c.momno=#{momno};
@@ -391,8 +391,8 @@
 	</select>
 	
 	<!-- 신고횟수 조회 -->
-	<select id="selectReportCount"
-	parameterType="study.team.abuhae.model.Report" resultMap="ReportMap">
+	<select id="selectMomReportCount"
+	parameterType="study.team.abuhae.model.Report" resultType="int">
 		select count(*) from report r
 		inner join mom_info m on r.momno=m.momno
 		where r.momno=#{momno} and who='M';
@@ -428,7 +428,7 @@
 	
 	<!-- 쿠폰횟수 조회 -->
 	<select id="selectCouponCount"
-	parameterType="study.team.abuhae.model.Coupon" resultMap="CouponMap">
+	parameterType="study.team.abuhae.model.Coupon" resultType="int">
 		select count(*) from coupon c
 		inner join member m on c.memberno=m.memberno
 		inner join mom_info mi on mi.memberno=m.memberno

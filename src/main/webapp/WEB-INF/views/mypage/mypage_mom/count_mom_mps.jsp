@@ -50,7 +50,7 @@
                             <div class="col-xs-12">
                                 <div class="total_count">
                                     <p>
-                                        총 <span style="color: #ff7000;">1</span>회
+                                        총 <span style="color: #ff7000;">${workcount }</span>회
                                     </p>
                                 </div>
                                 <div class="cm_page_cont">

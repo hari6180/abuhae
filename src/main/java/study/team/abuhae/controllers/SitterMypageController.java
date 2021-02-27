@@ -70,14 +70,21 @@ public class SitterMypageController {
 		input2.setSitterno(sitterno);
 		input3.setSitterno(sitterno);
 		
+		/** 조회 결과 */
 		Sitter_info output = null;
 		ProfileFile output2 = null;
 		ResiCert output3 = null;
+		int heartcount = 0;
+		int workcount = 0;
+		int reportcount = 0;
 		
 		try {
 			output = sitterMypageService.getSitterItem(input);
 			output2 = uploadService.getProfileItem(input2);
 			output3 = uploadService.getCertifyItem(input3);
+			heartcount = sitterMypageService.getSitterHeartCount(input);
+			workcount = sitterMypageService.getSitterWorkCount(input);
+			reportcount = sitterMypageService.getSitterReportCount(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -85,6 +92,9 @@ public class SitterMypageController {
 		model.addAttribute("output", output);
 		model.addAttribute("profile", output2);
 		model.addAttribute("certify", output3);
+		model.addAttribute("heartcount", heartcount);
+		model.addAttribute("workcount", workcount);
+		model.addAttribute("reportcount", reportcount);
 		
 		return new ModelAndView("mypage/mypage_sitter/sitter_mypage");
 	}
@@ -230,10 +240,10 @@ public class SitterMypageController {
 		Sitter_info in = new Sitter_info();
 		in.setSitterno(sitterno);
 		
-		Sitter_info out = null;
+		int heartcount = 0;
 		
 		try {
-			out = sitterMypageService.getSitterItem(in);
+			heartcount = sitterMypageService.getSitterHeartCount(in);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -250,7 +260,7 @@ public class SitterMypageController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		model.addAttribute("out", out);
+		model.addAttribute("heartcount", heartcount);
 		model.addAttribute("output", output);
 
 		return new ModelAndView("mypage/mypage_sitter/like_mom_mps");
@@ -269,41 +279,6 @@ public class SitterMypageController {
 	public String fund_sitter(Locale locale, Model model) {
 
 		return "mypage/mypage_sitter/fund";
-	}
-	
-	/** 내 쿠폰함 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/coupon.do", method = RequestMethod.GET)
-	public ModelAndView coupon_sitter(Model model,
-			@RequestParam(value = "sitterno", defaultValue = "1") int sitterno) {
-
-		/** 데이터 조회 */
-		Sitter_info in = new Sitter_info();
-		in.setSitterno(sitterno);
-		
-		Sitter_info out = null;
-		
-		try {
-			out = sitterMypageService.getSitterItem(in);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		/** 데이터 조회 */
-		Coupon input = new Coupon();
-		input.setSitterno(sitterno);
-		
-		List<Coupon> output = null;
-		
-		try {
-			output = sitterMypageService.getSitterCouponList(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		model.addAttribute("out", out);
-		model.addAttribute("output", output);
-		
-		return new ModelAndView("mypage/mypage_sitter/coupon");
 	}
 	
 	/** 리뷰관리 페이지 */
@@ -367,10 +342,10 @@ public class SitterMypageController {
 		Sitter_info in = new Sitter_info();
 		in.setSitterno(sitterno);
 		
-		Sitter_info out = null;
+		int workcount = 0;
 		
 		try {
-			out = sitterMypageService.getSitterItem(in);
+			workcount = sitterMypageService.getSitterWorkCount(in);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -387,7 +362,7 @@ public class SitterMypageController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		model.addAttribute("out", out);
+		model.addAttribute("workcount", workcount);
 		model.addAttribute("output", output);
 		
 		return new ModelAndView("mypage/mypage_sitter/count_mom_mps");
