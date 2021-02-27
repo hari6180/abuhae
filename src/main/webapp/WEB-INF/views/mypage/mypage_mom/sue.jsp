@@ -34,7 +34,7 @@
                     <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${out.momno}">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${login.momno}">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">신고내역</h3>

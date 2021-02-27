@@ -34,7 +34,7 @@
                     <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${output.momno}">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/mom_mypage.do?momno=${login.momno}">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">결제내역</h3>
@@ -46,21 +46,28 @@
                     <section class="group1_payment">
                         <div class="row">
                             <div class="col-xs-12 payment_cont1">
-                                <div class="kind_payment">
-                                    <c:if test="${output.ticket_type eq '1'}">
-                                    	<p>무제한 이용권 (1개월)</p>
-                                    </c:if>
-                                    <c:if test="${output.ticket_type == '3'}">
-                                    	<p>무제한 이용권 (3개월)</p>
-                                    </c:if>
-                                    <c:if test="${output.ticket_type == '6'}">
-                                    	<p>무제한 이용권 (6개월)</p>
-                                    </c:if>
-                                    <p>결제 일시 ${output.startdate }</p>
-                                </div>
-                                <div class="money_payment">
-                                    <p>${output.ticket_price }원</p>
-                                </div>
+                                <c:choose>
+                                	<c:when test="${output == null}">
+                                		<p>결제 내역이 없습니다.</p>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<div class="kind_payment">
+		                                    <c:if test="${output.ticket_type eq '1'}">
+		                                    	<p>무제한 이용권 (1개월)</p>
+		                                    </c:if>
+		                                    <c:if test="${output.ticket_type == '3'}">
+		                                    	<p>무제한 이용권 (3개월)</p>
+		                                    </c:if>
+		                                    <c:if test="${output.ticket_type == '6'}">
+		                                    	<p>무제한 이용권 (6개월)</p>
+		                                    </c:if>
+		                                    <p>결제 일시 ${output.startdate }</p>
+		                                </div>
+		                                <div class="money_payment">
+		                                    <p>${output.ticket_price }원</p>
+		                                </div>
+                                	</c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                         <hr/>

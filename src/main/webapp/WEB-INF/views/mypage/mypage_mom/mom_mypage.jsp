@@ -60,7 +60,7 @@
                                 <h3>마이페이지</h3>
                                 <div class="mpm_title_cont">
                                     <!--백엔드 연동 필요-->
-                                    <a href="${pageContext.request.contextPath}/mypage/mypage_mom/update_password.do"><span
+                                    <a href="${pageContext.request.contextPath}/mypage/mypage_mom/updp/${login.memberno}"><span
                                             class="glyphicon glyphicon-pencil"></span>비밀번호 변경</a>
                                     ㅣ
                                     <a href="#" id="mps_logout">로그아웃</a>
@@ -204,7 +204,7 @@
                     <section class="group3_mpm">
                         <div class="row">
                             <div class="col-xs-12 mpm_menu">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/get_sitter_mpm.do?momno=${login.momno}">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/gets/${login.momno}">
                                     <i class="fas fa-address-book mps_menu3_list1"></i>
                                     <p class="mps_menu3_list2">내 구인 현황</p>
                                     <i class="fas fa-angle-right mps_menu3_list3"></i>
@@ -212,7 +212,7 @@
                     
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
                     
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/like_sitter_mpm.do?momno=${output.momno}">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/likes/${login.momno}">
                                     <i class="fab fa-gratipay mps_menu_list1"></i>
                                     <p class="mps_menu_list2">찜한 맘시터</p>
                                     <p class="mps_menu_list3">2명</p>
@@ -232,10 +232,8 @@
                     
                                 <a href="${pageContext.request.contextPath}/mypage/mypage_mom/update_profile.do?momno=${output.momno}">
                                     <i class="fas fa-pen mps_menu_list1"></i>
-                                    <p class="mps_menu_list2">내 신청서 수정</p>
-                                    <!--백엔드 연동 필요-->
-                                    <p class="mps_menu_list3">3시간 전</p>
-                                    <i class="fas fa-angle-right mps_menu_list4"></i>
+                                    <p class="mps_menu3_list2">내 신청서 수정</p>
+                                    <i class="fas fa-angle-right mps_menu3_list3"></i>
                                 </a>
                             </div>
                         </div>
@@ -247,7 +245,7 @@
                     <section class="group3_mpm">
                         <div class="row">
                             <div class="col-xs-12 mpm_menu">
-                            	 <a href="${pageContext.request.contextPath}/mypage/mypage_mom/coupon.do?momno=${output.momno}">
+                            	 <a href="${pageContext.request.contextPath}/mypage/mypage_mom/coup/${login.momno}">
                                     <i class="fas fa-file-invoice-dollar mps_menu_list1" style="color: #fa9547;"></i>
                                     <p class="mps_menu_list2">내 쿠폰함</p>
                                     <p class="mps_menu_list3" style="color: rgb(255, 129, 0);">1 장</p>
@@ -265,7 +263,7 @@
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
                     
                     
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/count_mom_mps.do?momno=${output.momno}">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/counts/${login.momno}">
                                     <i class="fas fa-user-plus mps_menu_list1"></i>
                                     <p class="mps_menu_list2">내 채용 내역</p>
                                     <!--백엔드 연동 필요-->
@@ -275,7 +273,7 @@
                     
                                 <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
                     
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/sue.do?momno=${output.momno}">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/rep/${login.momno}">
                                     <i class="fas fa-bomb mps_menu_list1"></i>
                                     <p class="mps_menu_list2">신고내역</p>
                                     <!--백엔드 연동 필요-->
@@ -290,16 +288,14 @@
                     <section class="group4_mps">
                         <div class="row">
                             <div class="col-xs-12 mps_bottom">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/payment_list.do?momno=${output.momno}"
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/pm/${login.momno}"
                                     class="bottom_con_in bt_cash">
                                     <p>결제 내역</p>
-                                    <!--백엔드 연동 필요-->
-                                    <p class="bt_cash_p">1 건</p>
                                 </a>
                                 <a href="${pageContext.request.contextPath}/customer/notice_site.do" class="bottom_con_in">
                                     <p>공지사항</p>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/manage_account.do?memberno=${login.memberno}"
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_mom/ac/${login.memberno}"
                                     class="bottom_con_in">
                                     <p>계정관리</p>
                                 </a>

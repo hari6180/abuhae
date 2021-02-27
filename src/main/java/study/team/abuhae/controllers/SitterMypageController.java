@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -91,9 +92,9 @@ public class SitterMypageController {
 	
 	
 	/** 비밀번호 변경 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/update_password.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_sitter/updp/{memberno}", method = RequestMethod.GET)
 	public ModelAndView update_password_sitter(Model model, HttpSession session,
-			@RequestParam(value = "memberno", defaultValue = "0") int memberno) {
+			@PathVariable int memberno) {
 
 		   /** 1) 파라미터 유효성 검사 */
 	      if (memberno == 0) {
@@ -168,9 +169,9 @@ public class SitterMypageController {
 	   }
 	
 	/** 내 구직 현황 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/get_mom_mps.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_sitter/getm/{sitterno}", method = RequestMethod.GET)
 	public ModelAndView get_mom(Model model,
-			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+			@PathVariable int sitterno) {
 		/** 데이터 조회 */
 		Sitter_info in = new Sitter_info();
 		in.setSitterno(sitterno);
@@ -222,9 +223,9 @@ public class SitterMypageController {
 	}
 	
 	/** 찜한 일자리 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/like_mom_mps.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_sitter/likem/{sitterno}", method = RequestMethod.GET)
 	public ModelAndView like_mom(Model model,
-			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+			@PathVariable int sitterno) {
 		/** 데이터 조회 */
 		Sitter_info in = new Sitter_info();
 		in.setSitterno(sitterno);
@@ -306,9 +307,9 @@ public class SitterMypageController {
 	}
 	
 	/** 리뷰관리 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/review.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_sitter/rv/{sitterno}", method = RequestMethod.GET)
 	public ModelAndView review_sitter(Model model,
-			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+			@PathVariable int sitterno) {
 		/** 데이터 조회 */
 		Sitter_info in = new Sitter_info();
 		in.setSitterno(sitterno);
@@ -340,9 +341,9 @@ public class SitterMypageController {
 	}
 	
 	/** 내 인증 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/certify.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_sitter/ct/{sitterno}", method = RequestMethod.GET)
 	public ModelAndView certify(Model model,
-			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+			@PathVariable int sitterno) {
 		ResiCert input = new ResiCert();
 		input.setSitterno(sitterno);
 		
@@ -359,9 +360,9 @@ public class SitterMypageController {
 	}
 	
 	/** 내 맘시터 채용 내역 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/count_mom_mps.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_sitter/coutm/{sitterno}", method = RequestMethod.GET)
 	public ModelAndView count_sitter(Model model,
-			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+			@PathVariable int sitterno) {
 		/** 데이터 조회 */
 		Sitter_info in = new Sitter_info();
 		in.setSitterno(sitterno);
@@ -393,9 +394,9 @@ public class SitterMypageController {
 	}
 	
 	/** 신고내역 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/sue.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_sitter/rp/{sitterno}", method = RequestMethod.GET)
 	public ModelAndView sue_sitter(Model model,
-			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
+			@PathVariable int sitterno) {
 
 		/** 데이터 조회 */
 		Sitter_info in = new Sitter_info();
@@ -427,17 +428,10 @@ public class SitterMypageController {
 		return new ModelAndView("mypage/mypage_sitter/sue");
 	}
 	
-	/** 결제내역 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/payment_list.do", method = RequestMethod.GET)
-	public String payment_list_sitter(Locale locale, Model model) {
-
-		return "mypage/mypage_sitter/payment_list";
-	}
-	
 	/** 계정관리 페이지 */
-	@RequestMapping(value = "/mypage/mypage_sitter/manage_account.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_sitter/ma/{memberno}", method = RequestMethod.GET)
 	public ModelAndView manage_account_sitter(Model model,
-			@RequestParam(value = "memberno", defaultValue = "0") int memberno) {
+			@PathVariable int memberno) {
 
 		if(memberno ==0 ) {
 	         webHelper.getJsonWarning("You cannot check your phone number without member number");

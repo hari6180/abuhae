@@ -262,7 +262,7 @@
                     method: "POST",
                     success: function(json) {
                        if (json.rt == "OK") {
-                          window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/get_sitter_mpm.do?momno=${login.momno}";
+                          window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/gets/${login.momno}";
                        }
                     }
                  });
@@ -271,7 +271,7 @@
                      method: "POST",
                      success: function(json) {
                         if (json.rt == "OK") {
-                           window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/get_sitter_mpm.do?momno=${login.momno}";
+                           window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/gets/${login.momno}";
                         }
                      }
                   });

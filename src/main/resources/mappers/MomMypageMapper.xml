@@ -336,6 +336,14 @@
 			momno=#{momno} and who = 'M'
 		</where>
 	</select>
+	
+	<!-- 찜 횟수 조회 -->
+	<select id="selectMomHeartCount"
+	parameterType="study.team.abuhae.model.Heart" resultMap="HeartMap">
+		select count(*) from heart h 
+		inner join mom_info m on m.momno = h.momno
+		where h.momno=#{momno} and who='M';
+	</select>
 
 	<!-- 내 채용내역 -->
 	<select id="selectWorkList"
@@ -355,6 +363,14 @@
 			accept = 'Y' and c.momno=#{momno}
 		</where>
 	</select>
+	
+	<!-- 채용횟수 조회 -->
+	<select id="selectMomWorkList"
+	parameterType="study.team.abuhae.model.Connect" resultMap="ConnectMap">
+		select count(*) from connect c
+		inner join mom_info m on m.momno=c.momno
+		where c.momno=#{momno};
+	</select>
 
 	<!-- 신고 내역 조회 -->
 	<select id="selectReportList"
@@ -372,6 +388,14 @@
 		<where>
 			r.momno = #{momno} and who = 'M'
 		</where>
+	</select>
+	
+	<!-- 신고횟수 조회 -->
+	<select id="selectReportCount"
+	parameterType="study.team.abuhae.model.Report" resultMap="ReportMap">
+		select count(*) from report r
+		inner join mom_info m on r.momno=m.momno
+		where r.momno=#{momno} and who='M';
 	</select>
 
 	<!-- 결제 내역 조회 -->
@@ -397,10 +421,18 @@
 		from coupon c
 		inner join member m on
 		m.memberno = c.memberno
-		inner join mom_info mi on m.memberno =
-		mi.memberno
+		inner join mom_info mi on m.memberno = mi.memberno
 		where mi.momno=#{momno} and TIMESTAMPDIFF(day, now(),
 		exp_date) > 0;
+	</select>
+	
+	<!-- 쿠폰횟수 조회 -->
+	<select id="selectCouponCount"
+	parameterType="study.team.abuhae.model.Coupon" resultMap="CouponMap">
+		select count(*) from coupon c
+		inner join member m on c.memberno=m.memberno
+		inner join mom_info mi on mi.memberno=m.memberno
+		where momno=#{momno};
 	</select>
 
 	<!-- 회원 정보 수정 -->

@@ -30,6 +30,7 @@ import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.AdminService;
 import study.team.abuhae.service.MomMypageService;
 import study.team.abuhae.service.UploadService;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class MomMypageController {
@@ -82,9 +83,9 @@ public class MomMypageController {
 	}
 	
 	/** 내 구인 현황 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/get_sitter_mpm.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_mom/gets/{momno}", method = RequestMethod.GET)
 	public ModelAndView get_sitter(Model model, HttpSession session,
-			@RequestParam(value = "momno", defaultValue = "0") int momno) {
+			@PathVariable int momno) {
 		Connect input = new Connect();
 		input.setMomno(momno);
 		
@@ -106,9 +107,9 @@ public class MomMypageController {
 	}
 	
 	/** 찜한 맘시터 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/like_sitter_mpm.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_mom/likes/{momno}", method = RequestMethod.GET)
 	public ModelAndView like_sitter(Model model,  HttpSession session,
-			@RequestParam(value = "momno", defaultValue = "0") int momno) {
+			@PathVariable int momno) {
 		// 데이터 조회에 필요한 조건값 Beans에 저장
 		Mom_info in = new Mom_info();
 		in.setMomno(momno);
@@ -168,9 +169,9 @@ public class MomMypageController {
 	}
 	
 	/** 내 쿠폰함 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/coupon.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_mom/coup/{momno}", method = RequestMethod.GET)
 	public ModelAndView coupon_mom(Model model, HttpServletResponse response,
-			@RequestParam(value = "momno") int momno) {
+			@PathVariable int momno) {
 		Mom_info in = new Mom_info();
 		in.setMomno(momno);
 		
@@ -256,9 +257,9 @@ public class MomMypageController {
 	}
 	
 	/** 내 채용내역 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/count_mom_mps.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_mom/counts/{momno}", method = RequestMethod.GET)
 	public ModelAndView count_mom(Model model, HttpServletResponse response,
-			@RequestParam(value = "momno") int momno) {
+			@PathVariable int momno) {
 
 		// 데이터 조회에 필요한 조건값 Beans에 저장
 		Mom_info in = new Mom_info();
@@ -295,9 +296,9 @@ public class MomMypageController {
 	}
 	
 	/** 신고 내역 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/sue.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_mom/rep/{momno}", method = RequestMethod.GET)
 	public ModelAndView sue_mom(Model model, HttpServletResponse response,
-			@RequestParam(value = "momno") int momno) {
+			@PathVariable int momno) {
 		// 데이터 조회에 필요한 조건값 Beans에 저장
 		Mom_info in = new Mom_info();
 		in.setMomno(momno);
@@ -334,9 +335,9 @@ public class MomMypageController {
 	}
 	
 	/** 결제 내역 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/payment_list.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_mom/pm/{momno}", method = RequestMethod.GET)
 	public ModelAndView payment_list_mom(Model model, HttpServletResponse response,
-			@RequestParam(value = "momno") int momno) {
+			@PathVariable int momno) {
 		/** 데이터 조회 */
 		Mom_info input = new Mom_info();
 		input.setMomno(momno);
@@ -356,7 +357,7 @@ public class MomMypageController {
 	}
 	
 	/** 회원탈퇴 신청 페이지 */
-	@RequestMapping(value = "/mypage/mypage_mom/leave_abu.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage/mypage_mom/la", method = RequestMethod.GET)
 	public String leave_mom(Locale locale, Model model) {
 
 		return "mypage/mypage_mom/leave_abu";
@@ -418,9 +419,9 @@ public class MomMypageController {
 	
 	//선아 작업/////////////////////////////////////////////////////////////////
 	   /** 계정관리 페이지 */
-	   @RequestMapping(value = "/mypage/mypage_mom/manage_account.do", method = RequestMethod.GET)
+	   @RequestMapping(value = "/mypage/mypage_mom/ac/{memberno}", method = RequestMethod.GET)
 	   public ModelAndView manage_account_mom(Locale locale, Model model,
-	         @RequestParam(value = "memberno", defaultValue = "0") int memberno) {
+	         @PathVariable int memberno) {
 	      if(memberno ==0 ) {
 	         webHelper.getJsonWarning("회원 번호 없이는 조회할 수 없습니다");
 	      }
@@ -509,9 +510,9 @@ public class MomMypageController {
 	   }
 	   
 	   /** 비밀번호 변경 페이지 */
-	   @RequestMapping(value = "/mypage/mypage_mom/update_password.do", method = RequestMethod.GET)
+	   @RequestMapping(value = "/mypage/mypage_mom/updp/{memberno}", method = RequestMethod.GET)
 	   public ModelAndView update_password_mom(Model model, HttpSession session,
-	         @RequestParam(value = "memberno", defaultValue = "0") int memberno) {
+	         @PathVariable int memberno) {
 
 	      /** 1) 파라미터 유효성 검사 */
 	      if (memberno == 0) {

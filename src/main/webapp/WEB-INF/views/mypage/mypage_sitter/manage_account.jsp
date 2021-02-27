@@ -147,7 +147,7 @@
                         <section class="group_account_foot">
                             <div class="row">
                                 <div class="col-xs-12 account_ft_in">
-                                    <a class="account_ft_btn" href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_password.do?memberno=${login.memberno}">
+                                    <a class="account_ft_btn" href="${pageContext.request.contextPath}/mypage/mypage_sitter/updp/${login.memberno}">
                                         <p>비밀번호 변경</p>
                                         <i class="fas fa-angle-right"></i>
                                     </a>

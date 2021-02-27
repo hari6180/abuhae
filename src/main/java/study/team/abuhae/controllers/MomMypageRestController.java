@@ -39,7 +39,7 @@ public class MomMypageRestController {
 		
 		/** 사용자가 입력한 파라미터 유효성 검사 */
 		if (revno == 0) { return webHelper.getJsonWarning("리뷰를 작성할 수 없습니다."); }
-		if (rev_rate == 0) { return webHelper.getJsonWarning("별점을 체크해주세요."); }
+		if (rev_rate == 0 ) { return webHelper.getJsonWarning("별점을 체크해주세요."); }
 		if (contents == "") { return webHelper.getJsonWarning("내용을 입력해 주세요."); } 
 		
 		try {

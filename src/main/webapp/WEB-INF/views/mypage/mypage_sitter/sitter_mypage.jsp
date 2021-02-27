@@ -65,7 +65,7 @@
                             <div class="mps_title_cont">
                                 <!--백엔드 연동 필요-->
                                 <a
-                                    href="${pageContext.request.contextPath}/mypage/mypage_sitter/update_password.do?memberno=${output.memberno}"><span
+                                    href="${pageContext.request.contextPath}/mypage/mypage_sitter/updp/${login.memberno}"><span
                                         class="glyphicon glyphicon-pencil"></span>비밀번호 변경</a>
                                 ㅣ
                                 <a href="${pageContext.request.contextPath}/logout"" id="mps_logout">로그아웃</a>
@@ -186,7 +186,7 @@
                     <div class="row">
                         <div class="col-xs-12 mps_menu">
                             <a
-                                href="${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do?sitterno=${output.sitterno}">
+                                href="${pageContext.request.contextPath}/mypage/mypage_sitter/getm/${login.sitterno}">
                                 <i class="fas fa-address-book mps_menu3_list1"></i>
                                 <p class="mps_menu3_list2">내 구직 현황</p>
                                 <i class="fas fa-angle-right mps_menu3_list3"></i>
@@ -195,7 +195,7 @@
                             <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
                             <a
-                                href="${pageContext.request.contextPath}/mypage/mypage_sitter/like_mom_mps.do?sitterno=${output.sitterno}">
+                                href="${pageContext.request.contextPath}/mypage/mypage_sitter/likem/${login.sitterno}">
                                 <i class="fab fa-gratipay mps_menu_list1"></i>
                                 <p class="mps_menu_list2">찜한 일자리</p>
                                 <p class="mps_menu_list3">2명</p>
@@ -259,7 +259,7 @@
                     <div class="row">
                         <div class="col-xs-12 mps_menu">
                             <a
-                                href="${pageContext.request.contextPath}/mypage/mypage_sitter/review.do?sitterno=${output.sitterno}">
+                                href="${pageContext.request.contextPath}/mypage/mypage_sitter/rv/${login.sitterno}">
                                 <i class="fas fa-star mps_menu3_list1"></i>
                                 <p class="mps_menu3_list2">후기 관리</p>
                                 <i class="fas fa-angle-right mps_menu3_list3"></i>
@@ -267,7 +267,7 @@
 
                             <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
-                            <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/certify.do?sitterno=${login.sitterno}">
+                            <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/ct/${login.sitterno}">
                                 <i class="fas fa-check-circle mps_menu_list1"></i>
                                 <p class="mps_menu_list2">인증 관리</p>
                                 <!--백엔드 연동 필요-->
@@ -285,7 +285,7 @@
                             <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
                             <a
-                                href="${pageContext.request.contextPath}/mypage/mypage_sitter/count_mom_mps.do?sitterno=${output.sitterno}">
+                                href="${pageContext.request.contextPath}/mypage/mypage_sitter/coutm/${login.sitterno}">
                                 <i class="fas fa-user-plus mps_menu_list1"></i>
                                 <p class="mps_menu_list2">내 맘시터 채용 횟수</p>
                                 <!--백엔드 연동 필요-->
@@ -296,7 +296,7 @@
                             <div style="background-color: rgb(243, 241, 241); width: 100%; height: 1px;"></div>
 
                             <a
-                                href="${pageContext.request.contextPath}/mypage/mypage_sitter/sue.do?sitterno=${output.sitterno}">
+                                href="${pageContext.request.contextPath}/mypage/mypage_sitter/rp/${login.sitterno}">
                                 <i class="fas fa-bomb mps_menu_list1"></i>
                                 <p class="mps_menu_list2">신고내역</p>
                                 <!--백엔드 연동 필요-->
@@ -320,7 +320,7 @@
                             <a href="${pageContext.request.contextPath}/customer/notice_site.do" class="bottom_con_in">
                                 <p>공지사항</p>
                             </a>
-                            <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/manage_account.do?memberno=${output.memberno}"
+                            <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/ma/${login.memberno}"
                                 class="bottom_con_in">
                                 <p>계정관리</p>
                             </a>
