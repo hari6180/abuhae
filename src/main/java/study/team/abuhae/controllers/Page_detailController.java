@@ -64,7 +64,7 @@ public class Page_detailController {
 			try {
 				// 데이터 조회 
 				output = detailService.getMomItem(input);
-				output2 = uploadService.getProfileItem(input2);
+				output2 = uploadService.getMomProfileItem(input2);
 			
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -153,11 +153,6 @@ public class Page_detailController {
 			rev.setSitterno(sitterno);
 			
 			List<Review> reput = null;
-			
-			/*Sitter_info review = new Sitter_info();
-			review.setSitterno(sitterno);
-			
-			List<Sitter_info> reput = null; */
 
 			// 조회결과를 저장할 객체 선언 
 			Sitter_info output = null;
