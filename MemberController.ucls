@@ -1,478 +1,416 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="study.team.abuhae.controllers.AbuServiceController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/AbuServiceController.java" binary="false" 
+  <class id="1" language="java" name="study.team.abuhae.controllers.AbuServiceController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/AbuServiceController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="260" y="1821"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="190" width="303" x="226" y="131"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="study.team.abuhae.controllers.AdminController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/AdminController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2139" y="302"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="study.team.abuhae.controllers.AdminRestController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/AdminRestController.java" binary="false" 
+  <class id="2" language="java" name="study.team.abuhae.controllers.AdminController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/AdminController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2738" y="283"/>    
+    <position height="-1" width="-1" x="1775" y="519"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="study.team.abuhae.controllers.BuyController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/BuyController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4168" y="738"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="study.team.abuhae.controllers.Cus_catgoryController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/Cus_catgoryController.java" binary="false" 
+  <class id="3" language="java" name="study.team.abuhae.controllers.BuyController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/BuyController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="202" y="1467"/>    
+    <position height="-1" width="-1" x="543" y="434"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="study.team.abuhae.controllers.CustomerController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/CustomerController.java" binary="false" 
+  <class id="4" language="java" name="study.team.abuhae.controllers.Cus_catgoryController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/Cus_catgoryController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3329" y="299"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="264" width="176" x="192" y="341"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="study.team.abuhae.controllers.JoinMomController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/JoinMomController.java" binary="false" 
+  <class id="5" language="java" name="study.team.abuhae.controllers.CustomerController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/CustomerController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4111" y="384"/>    
+    <position height="-1" width="-1" x="2699" y="566"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="study.team.abuhae.controllers.JoinSitterController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/JoinSitterController.java" binary="false" 
+  <class id="6" language="java" name="study.team.abuhae.controllers.JoinMomController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/JoinMomController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4134" y="1768"/>    
+    <position height="-1" width="-1" x="2886" y="215"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="study.team.abuhae.controllers.Leave_memberController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/Leave_memberController.java" binary="false" 
+  <class id="7" language="java" name="study.team.abuhae.controllers.JoinSitterController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/JoinSitterController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="563" y="1767"/>    
+    <position height="-1" width="-1" x="2511" y="893"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="study.team.abuhae.controllers.LoginController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/LoginController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3259" y="1780"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="11" language="java" name="study.team.abuhae.controllers.MomMypageController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/MomMypageController.java" binary="false" 
+  <class id="8" language="java" name="study.team.abuhae.controllers.LoginController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/LoginController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1003" y="284"/>    
+    <position height="-1" width="-1" x="2507" y="1454"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="study.team.abuhae.controllers.Page_detailController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/Page_detailController.java" binary="false" 
+  <class id="9" language="java" name="study.team.abuhae.controllers.MomMypageController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/MomMypageController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2126" y="1779"/>    
+    <position height="-1" width="-1" x="2235" y="251"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="study.team.abuhae.controllers.ReportController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/ReportController.java" binary="false" 
+  <class id="10" language="java" name="study.team.abuhae.controllers.Page_detailController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/Page_detailController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4426" y="1346"/>    
+    <position height="-1" width="-1" x="1972" y="1292"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="study.team.abuhae.controllers.SearchController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/SearchController.java" binary="false" 
+  <class id="11" language="java" name="study.team.abuhae.controllers.ReportController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/ReportController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4682" y="342"/>    
+    <position height="-1" width="-1" x="2509" y="1217"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="study.team.abuhae.controllers.SitterMypageController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/SitterMypageController.java" binary="false" 
+  <class id="12" language="java" name="study.team.abuhae.controllers.SearchController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/SearchController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="334" y="947"/>    
+    <position height="-1" width="-1" x="687" y="206"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="study.team.abuhae.controllers.UpdateApplController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/UpdateApplController.java" binary="false" 
+  <class id="13" language="java" name="study.team.abuhae.controllers.SearchRestController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/SearchRestController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="315" y="217"/>    
+    <position height="-1" width="-1" x="1173" y="176"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="study.team.abuhae.controllers.UpdateProfileController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/UpdateProfileController.java" binary="false" 
+  <class id="14" language="java" name="study.team.abuhae.controllers.SitterMypageController" 
+    project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/SitterMypageController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1039" y="1764"/>    
+    <position height="-1" width="-1" x="762" y="762"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="study.team.abuhae.controllers.UploadController" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/controllers/UploadController.java" binary="false" 
+  <class id="15" language="java" name="study.team.abuhae.controllers.UpdateApplController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/UpdateApplController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1596" y="318"/>    
+    <position height="-1" width="-1" x="829" y="1158"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="19" language="java" name="study.team.abuhae.service.AdminService" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/service/AdminService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2054" y="1046"/>    
+  <class id="16" language="java" name="study.team.abuhae.controllers.UpdateProfileController" 
+    project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/UpdateProfileController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1452" y="1432"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="study.team.abuhae.controllers.UploadController" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/controllers/UploadController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1749" y="203"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="18" language="java" name="study.team.abuhae.service.AdminService" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/service/AdminService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="331" width="225" x="1288" y="340"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="19" language="java" name="study.team.abuhae.service.BuyService" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/service/BuyService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1173" y="1059"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="20" language="java" name="study.team.abuhae.service.BuyService" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/service/BuyService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4148" y="961"/>    
+  <interface id="20" language="java" name="study.team.abuhae.service.SearchService" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/service/SearchService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="842" y="424"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="21" language="java" name="study.team.abuhae.service.CustomerService" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/service/CustomerService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3134" y="990"/>    
+  <interface id="21" language="java" name="study.team.abuhae.service.CustomerService" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/service/CustomerService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2172" y="598"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="22" language="java" name="study.team.abuhae.service.DetailService" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/service/DetailService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3674" y="968"/>    
+  <interface id="22" language="java" name="study.team.abuhae.service.DetailService" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/service/DetailService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2026" y="890"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="23" language="java" name="study.team.abuhae.service.MemberService" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/service/MemberService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2543" y="1050"/>    
+  <interface id="23" language="java" name="study.team.abuhae.service.MemberService" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/service/MemberService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1729" y="957"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="24" language="java" name="study.team.abuhae.service.SearchService" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/service/SearchService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4573" y="975"/>    
+  <interface id="24" language="java" name="study.team.abuhae.service.SitterMypageService" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/service/SitterMypageService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1436" y="968"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="25" language="java" name="study.team.abuhae.service.SitterMypageService" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/service/SitterMypageService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1550" y="1621"/>    
+  <interface id="25" language="java" name="study.team.abuhae.service.MomMypageService" project="ezen-android2020-2" 
+    file="/ezen-android2020-2/src/main/java/study/team/abuhae/service/MomMypageService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1132" y="658"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="26" language="java" name="study.team.abuhae.service.MomMypageService" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/service/MomMypageService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="914" y="1079"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <interface id="27" language="java" name="study.team.abuhae.service.UploadService" project="abuhae" 
-    file="/abuhae/src/main/java/study/team/abuhae/service/UploadService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1537" y="992"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <association id="28">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="29" name="customerService"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="31">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="32" name="uploadService"/>      
-      <multiplicity id="33" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="34">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="35" name="memberServcie"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
+  <association id="26">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="27" name="memberService"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="37">    
+  <association id="29">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="38" name="memberService"/>      
-      <multiplicity id="39" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="40">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="41" name="uploadService"/>      
-      <multiplicity id="42" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="43">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="44" name="momMypageService"/>      
-      <multiplicity id="45" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="46">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="47" name="customerService"/>      
-      <multiplicity id="48" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="49">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="50" name="uploadService"/>      
-      <multiplicity id="51" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="52">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="53" name="memberService"/>      
-      <multiplicity id="54" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="55">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="56" name="detailService"/>      
-      <multiplicity id="57" minimum="0" maximum="1"/>    
+      <attribute id="30" name="detailService"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="22" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="58">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="59" name="memberService"/>      
-      <multiplicity id="60" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="61">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="62" name="memberService"/>      
-      <multiplicity id="63" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="64">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="65" name="adminService"/>      
-      <multiplicity id="66" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="67">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="68" name="uploadService"/>      
-      <multiplicity id="69" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="70">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="71" name="uploadService"/>      
-      <multiplicity id="72" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="73">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="74" name="searchService"/>      
-      <multiplicity id="75" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="76">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="77" name="uploadService"/>      
-      <multiplicity id="78" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="79">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="80" name="momMypageService"/>      
-      <multiplicity id="81" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="82">    
+  <association id="32">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="83" name="adminService"/>      
-      <multiplicity id="84" minimum="0" maximum="1"/>    
+      <attribute id="33" name="adminService"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="85">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="86" name="memberService"/>      
-      <multiplicity id="87" minimum="0" maximum="1"/>    
+  <association id="35">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="36" name="memberService"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="88">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="89" name="adminService"/>      
-      <multiplicity id="90" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="91">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="92" name="sitterMypageService"/>      
-      <multiplicity id="93" minimum="0" maximum="1"/>    
+  <association id="38">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="39" name="momMypageService"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="25" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="94">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="95" name="uploadService"/>      
-      <multiplicity id="96" minimum="0" maximum="1"/>    
+  <association id="41">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="42" name="memberService"/>      
+      <multiplicity id="43" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
+    <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="97">    
+  <association id="44">    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="98" name="uploadService"/>      
-      <multiplicity id="99" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="100">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="101" name="customerService"/>      
-      <multiplicity id="102" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="103">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="104" name="buyService"/>      
-      <multiplicity id="105" minimum="0" maximum="1"/>    
+      <attribute id="45" name="searchService"/>      
+      <multiplicity id="46" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="106">    
+  <association id="47">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="48" name="memberService"/>      
+      <multiplicity id="49" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="50">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="107" name="detailService"/>      
-      <multiplicity id="108" minimum="0" maximum="1"/>    
+      <attribute id="51" name="searchService"/>      
+      <multiplicity id="52" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="53">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="54" name="momMypageService"/>      
+      <multiplicity id="55" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="56">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="57" name="detailService"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="59">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="60" name="adminService"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="63" name="customerService"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="65">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="66" name="sitterMypageService"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="68">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="69" name="adminService"/>      
+      <multiplicity id="70" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="71">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="72" name="memberServcie"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="74">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="75" name="customerService"/>      
+      <multiplicity id="76" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="78" name="momMypageService"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="81" name="buyService"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="84" name="sitterMypageService"/>      
+      <multiplicity id="85" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

@@ -130,9 +130,7 @@ public class Page_detailController {
 	
 			} catch (Exception e) {
 				return webHelper.redirect(null, e.getLocalizedMessage());
-			}
-			
-			
+			}			
 			}
 		
 		// 시터 상세페이지

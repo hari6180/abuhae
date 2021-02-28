@@ -42,6 +42,8 @@
 	          
 	       	// 찜할 때 alert창과 glyphicon변형
 	          if (sitterno != "" || sitterno != 0) {
+	        	  //if ()
+	        	  
 	            if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
 	              $(this).find("span").removeClass("glyphicon-heart-empty");
 	              $(this).find("span").addClass("glyphicon-heart");
@@ -911,7 +913,12 @@
 				<div class="fixed_btn">
 					<div class="fixed_btn_jim">
 						<button id="swapHeart" class="btn btn-default swap" type="button" data-momno="${output.momno}">
+							<c:if test="${output.findHt == 0}">
 						    <span class="glyphicon glyphicon-heart-empty" style="color: rgb(0, 143, 105); font-size: 25px;"></span>
+							</c:if>
+							<c:if test="${output.findHt != 0}">
+						    <span class="glyphicon glyphicon-heart" style="color: rgb(0, 143, 105); font-size: 25px;"></span>
+							</c:if>
 						</button>					
 					</div>
 					<div class="interview_btn">

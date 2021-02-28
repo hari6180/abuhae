@@ -51,8 +51,8 @@ public class Page_DetailRestController {
 			heart.setMomno(mono);
 			heart.setSitterno(stno);
 			heart.setWho('S');
+			int findHt = 0;
 			try {
-
 				searchService.addHeart(heart);
 
 			} catch (Exception e) {
@@ -61,7 +61,7 @@ public class Page_DetailRestController {
 
 			/** 3) JSON 출력하기 */
 			Map<String, Object> data = new HashMap<String, Object>();
-			data.put("heart", heart);
+			data.put("heart", findHt);
 
 			return webHelper.getJsonData(data);
 		}
@@ -153,6 +153,4 @@ public class Page_DetailRestController {
 
 				return webHelper.getJsonData(data);
 			}
-
-
 }

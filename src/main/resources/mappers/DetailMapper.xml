@@ -158,8 +158,7 @@
 		(SELECT COUNT(cntno) FROM connect c WHERE c.sitterno=s.sitterno AND accept='Y') AS cntno,
 		(SELECT DATE_FORMAT(signup_date, "%Y년 %m월 %d일") FROM member m WHERE s.memberno=m.memberno) AS signup
 		<if test = "loginMom != 0">,
-		(SELECT
-		COUNT(*)
+		(SELECT COUNT(*)
 		FROM heart h WHERE s.sitterno=h.sitterno AND
 		who='M' AND h.momno=#{loginMom}) AS findHt</if>
 		FROM sitter_info s
@@ -189,8 +188,7 @@
 		 startdate, subscribe,
 		(SELECT COUNT(heartno) FROM heart h WHERE m.momno=h.momno AND who='S') AS heartno,
 		(SELECT COUNT(cntno) FROM connect c WHERE c.momno=m.momno AND who='S') AS cntno
-		<if test = "loginSt != 0">, (SELECT
-		COUNT(*)
+		<if test = "loginSt != 0">, (SELECT COUNT(*)
 		FROM heart h WHERE m.momno=h.momno AND
 		who='S'AND h.sitterno=#{loginSt}) AS findHt</if>
 		FROM mom_info m
@@ -208,12 +206,21 @@
 		</where>
 	</update>
 	
-	<!-- 찜하기 -->
+	<!-- 찜하기 
 	<insert id="insertHeart" parameterType="study.team.abuhae.model.Heart"
 		useGeneratedKeys="true" keyProperty="heartno">
 		INSERT INTO heart (reg_date, who, momno, sitterno) 
 		VALUES (now(), #{who}, #{momno}, #{sitterno});
 	</insert>
+	
+	찜하기 취소 
+	<delete id="deleteHeart"
+		parameterType="study.team.abuhae.model.Heart">
+		DELETE FROM heart 
+		<where>
+		momno=#{momno} and sitterno=#{sitterno}
+		</where>
+	</delete> -->
 	
 	<!-- 맘회원번호로 회원 정보 조회  -->
 	<select id="selectHeart" resultMap="MomMap">
@@ -224,15 +231,6 @@
 			m.momno=#{momno}
 		</where>
 	</select>
-	
-	<!-- 찜하기 취소 -->
-	<delete id="deleteHeart"
-		parameterType="study.team.abuhae.model.Heart">
-		DELETE FROM heart 
-		<where>
-		momno=#{momno} and sitterno=#{sitterno}
-		</where>
-	</delete>
 	
 	<!-- 신고하기 -->
 	<insert id="insertReport" parameterType="study.team.abuhae.model.Report"
@@ -291,5 +289,29 @@
 		where s.sitterno=#{sitterno}
 		ORDER BY reg_date DESC
 	</select> 
+	
+	<!-- 찜중복 셀렉
+	<select id="heartSelect" parameterType="study.team.abuhae.model.Heart"
+	resultMap="HeartMap">
+		SELECT 
+	</select>  -->
+	
+	<!-- 찜하기 -->
+	<insert id="insertHeart"
+		parameterType="study.team.abuhae.model.Heart" useGeneratedKeys="true"
+		keyProperty="heartno">
+		INSERT INTO heart (reg_date, who, momno, sitterno)
+		VALUES (now(), #{who}, #{momno}, #{sitterno});
+	</insert>
+
+
+	<!-- 찜하기 취소 -->
+	<delete id="deleteHeart"
+		parameterType="study.team.abuhae.model.Heart">
+		DELETE FROM heart
+		WHERE
+		momno=#{momno} and sitterno=#{sitterno} and who=#{who}
+
+	</delete>
 		
 </mapper>

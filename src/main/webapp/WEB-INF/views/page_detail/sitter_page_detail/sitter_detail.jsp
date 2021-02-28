@@ -36,7 +36,6 @@
 jQuery(function($) {
 	$('#swapHeart').on('click', function() {
 		
-		
 		var $jim = $(this);
         let sitterno = $(this).data("sitterno");
         let momno = $("#app").data("login");
@@ -1194,7 +1193,12 @@ jQuery(function($) {
 					<div class="fixed_btn">
 						<div class="fixed_btn_jim">
 							<button id="swapHeart" class="btn btn-default swap" type="button" data-sitterno="${output.sitterno}">
-						    	<span class="glyphicon glyphicon-heart-empty" style="color: #ff7000; font-size: 25px;"></span>
+						    	<c:if test="${output.findHt == 0}">
+							    <span class="glyphicon glyphicon-heart-empty" style="color: #77000; font-size: 25px;"></span>
+								</c:if>
+								<c:if test="${output.findHt != 0}">
+							    <span class="glyphicon glyphicon-heart" style="color: #77000; font-size: 25px;"></span>
+								</c:if>
 							</button>
 						</div> <!-- fin. fixed_btn_jim -->					
 						<div class="interview_btn">
