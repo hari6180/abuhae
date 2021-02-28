@@ -399,7 +399,7 @@
             
 
                 $(".next_btn").click(function (e) {
-                    e.preventDefault();
+                    //e.preventDefault();
                     //원하는 연령대 넣기
                     var chk_age = [];
                     $("input[name=want_age]:checked").each(function () {
