@@ -52,7 +52,14 @@
 				</div> <!-- fin. siren_header -->
 				<div class="siren_body">
 					<div class="siren_body_profil">
-						<img width="80" height="80" src="<%=request.getContextPath()%>/assets/img/chat_mom.png" />
+						<c:choose>			  
+						  	<c:when test="${profile == null }">
+								<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="80" height="80"/>				
+						  	</c:when>
+						  	<c:otherwise>
+						  		<img src="${profile.fileUrl}" width="80" height="80"/>
+						  	</c:otherwise>
+						</c:choose>
 						<br/>
 						<span class="sitter_number">
 							no.${output.momno}

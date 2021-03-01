@@ -253,7 +253,7 @@ jQuery(function($) {
 						<div class="box_name">선호하는 돌봄유형</div>
 						<div class="iwant_area">
 							<div class="iwant_text_box">
-							<c:if test="${output.favorite_act=='등하원' || output.favorite_act==null}">
+							<c:if test="${output.favorite_act=='등하원 돌봄' || output.favorite_act==null}">
 								<div class="iwant_text_title">
 									"저는<span style="color: #ff7000"> 등하원</span> 돌봄을 가장 선호해요"
 								</div>
@@ -263,7 +263,7 @@ jQuery(function($) {
 									<div id="iwant_text_desc">- 등하원, 밥챙겨주기, 씻기기, 놀아주기 활동을 할 수 있어요</div>
 								</div>
 								</c:if>
-								<c:if test="${output.favorite_act=='놀이학습'}">
+								<c:if test="${output.favorite_act=='놀이/학습 돌봄'}">
 								<div class="iwant_text_title">
 									"저는<span style="color: #ff7000"> 놀이/학습</span> 돌봄을 가장 선호해요"
 								</div>
@@ -272,7 +272,7 @@ jQuery(function($) {
 									<div id="iwant_text_desc">- 주 1~4회 정기적으로 또는 단기로 2~4시간 활동</div>
 								</div>
 								</c:if>
-								<c:if test="${output.favorite_act=='신생아영아풀타임'}">
+								<c:if test="${output.favorite_act=='신생아/영아 풀타임 보조'}">
 								<div class="iwant_text_title">
 									"저는<span style="color: #ff7000"> 신생아/영아 풀타임</span> 돌봄을 가장 선호해요"
 								</div>
@@ -282,7 +282,7 @@ jQuery(function($) {
 									<div id="iwant_text_desc">- 아이 관련 가사활동 필수</div>
 								</div>
 								</c:if>
-								<c:if test="${output.favorite_act=='신생아영아보조'}">
+								<c:if test="${output.favorite_act=='신생아/영아 보조 돌봄'}">
 								<div class="iwant_text_title">
 									"저는<span style="color: #ff7000"> 신생아/영아 보조</span> 돌봄을 가장 선호해요"
 								</div>
@@ -292,7 +292,7 @@ jQuery(function($) {
 									<div id="iwant_text_desc">- 주 1~4회 정기적으로 또는 단기로 2~4시간 활동</div>
 								</div>
 								</c:if>
-								<c:if test="${output.favorite_act=='긴급단기'}">
+								<c:if test="${output.favorite_act=='긴급/단기 돌봄'}">
 								<div class="iwant_text_title">
 									"저는<span style="color: #ff7000"> 긴급/단기</span> 돌봄을 가장 선호해요"
 								</div>
@@ -1070,6 +1070,7 @@ jQuery(function($) {
 								<div>
 									<div class="talk_box_ea">
 									<c:forEach var="item" items="${reput}" varStatus="status">
+									<c:if test="${item.rev_rate!=''}">
 									<li style="list-style:none;" >
 										<div class="talk_box_line" style="margin: 15px 0px;">
 										  <c:choose>			  
@@ -1141,6 +1142,7 @@ jQuery(function($) {
 												</div>
 											</div>
 										</li>
+										</c:if>
 										<hr style="margin: -1px 0px 0px; height: 1px; border: none; background-color: rgb(224,224,224);">
 									</c:forEach>
 									<button class="btn_more" onclick = "location.href='${pageContext.request.contextPath}/page_detail/tab_more.do?sitterno=${output.sitterno}';">후기 더 보기</button>
