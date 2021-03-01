@@ -141,7 +141,7 @@
 		left outer join sitter_info si on m.memberno=si.memberno
 		left outer join mom_info mi on m.memberno=mi.memberno
 		
-		where id=#{id} and password=#{password};
+		where id=#{id} and password=md5(#{password});
 	</select>
 	
 	<!-- 특정 아이디에 대한 단일행 조회-->

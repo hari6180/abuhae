@@ -60,7 +60,7 @@
                 <div class="guide_box">
                     <img class="guide_img" src="${pageContext.request.contextPath}/assets/img/mom-guide-1.png">
                 </div>
-                <a href="${pageContext.request.contextPath}/assets/join/join.do" class="btn btn-default" role="button">회원가입하기</a>
+                <a href="${pageContext.request.contextPath}/join/join.do" class="btn btn-default" role="button">회원가입하기</a>
 
                 <p class="guide_text"><br>빠르고 간편한 회원가입을 진행해 주세요.</p>
             </div>

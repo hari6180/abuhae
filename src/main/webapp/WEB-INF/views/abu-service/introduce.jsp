@@ -117,7 +117,12 @@
             });
             
             $(document).on('click','.go_momsitter', function(){
-                location.href="${pageContext.request.contextPath}/join/join.do";
+            	if(${login == null }) {
+            		location.href="${pageContext.request.contextPath}/join/join.do";
+            	} else {
+            		location.href="${pageContext.request.contextPath}/search/sitter_search.do";
+            	}
+                
             });
 
             

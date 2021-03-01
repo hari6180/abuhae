@@ -69,7 +69,7 @@ public class JoinRestController {
 
 			int result = memberService.idCheck(check);
 			if (result == 1) {
-				return webhelper.getJsonWarning("아이디중복");
+				return webhelper.getJsonWarning("id");
 			}
 			mominfo.setId(user_id);
 		} catch (Exception e) {
@@ -79,7 +79,7 @@ public class JoinRestController {
 		try {
 			int result = memberService.emailCheck(check);
 			if (result == 1) {
-				return webhelper.getJsonWarning("이메일중복");
+				return webhelper.getJsonWarning("email");
 			}
 			mominfo.setEmail(email);
 		} catch (Exception e) {
@@ -89,7 +89,7 @@ public class JoinRestController {
 		try {
 			int result = memberService.phoneCheck(check);
 			if (result == 1) {
-				return webhelper.getJsonWarning("핸드폰중복");
+				return webhelper.getJsonWarning("phone");
 			}
 			mominfo.setPhone(tel);
 		} catch (Exception e) {
@@ -180,7 +180,7 @@ public class JoinRestController {
 
 			int result = memberService.idCheck(check);
 			if (result == 1) {
-				return webhelper.getJsonWarning("아이디중복");
+				return webhelper.getJsonWarning("id");
 			}
 			sitterinfo.setId(user_id);
 		} catch (Exception e) {
@@ -190,7 +190,7 @@ public class JoinRestController {
 		try {
 			int result = memberService.emailCheck(check);
 			if (result == 1) {
-				return webhelper.getJsonWarning("이메일중복");
+				return webhelper.getJsonWarning("email");
 			}
 			sitterinfo.setEmail(email);
 		} catch (Exception e) {
@@ -200,7 +200,7 @@ public class JoinRestController {
 		try {
 			int result = memberService.phoneCheck(check);
 			if (result == 1) {
-				return webhelper.getJsonWarning("핸드폰중복");
+				return webhelper.getJsonWarning("phone");
 			}
 			sitterinfo.setPhone(tel);
 		} catch (Exception e) {
