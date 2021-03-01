@@ -243,7 +243,7 @@ html, body {
 						<div class="bor_box_right"></div>
 					</div>
 					<a
-						href="${pageContext.request.contextPath}/customer/question_sitter.do"
+						href="${pageContext.request.contextPath}/customer/faq.do"
 						class="btn btn-primary btn-lg">FAQ 더 알아보기</a>
 				</div>
 				<!--end 맘시터가 궁금하신가요?-->

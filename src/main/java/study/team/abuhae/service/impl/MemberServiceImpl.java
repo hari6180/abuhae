@@ -48,10 +48,10 @@ public class MemberServiceImpl implements MemberService {
 
 		} catch (NullPointerException e) {
 			log.error(e.getLocalizedMessage());
-			throw new Exception("조회된 데이터가 없습니다.");
+			throw new Exception("아이디나 비밀번호를 다시 확인해 주세요.");
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 조회에 실패했습니다.");
+			throw new Exception("로그인에 실패하였습니다.");
 		}
 		
 		//반환된 데이터가 있으면 데이터 조회가 있다는 뜻

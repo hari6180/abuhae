@@ -78,7 +78,7 @@
 		phone, 
 		birthdate, gender, job_opening, signup_date, subscribe)
 		VALUES (#{id},
-		#{type}, #{password},
+		#{type}, md5(#{password}),
 		#{name},
 		#{email}, #{phone},
 		#{birthdate},

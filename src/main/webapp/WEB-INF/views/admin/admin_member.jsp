@@ -24,7 +24,6 @@
 <!-- icon 참조 -->
 <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_mng_mem.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_coupon.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 <!-- Javascript -->

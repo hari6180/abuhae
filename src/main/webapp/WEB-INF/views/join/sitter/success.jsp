@@ -35,7 +35,7 @@
                 <img src="${pageContext.request.contextPath}/assets/img/join-sitter-img.png">
             </div>
             <h3 class="success_title">가입이 완료되었습니다!</h3>
-            <a href="${pageContext.request.contextPath}/login/login.jsp"><button class="next_btn">아이를부탁해 이용하러 가기</button></a>
+            <a href="${pageContext.request.contextPath}/login/login.do"><button class="next_btn">아이를부탁해 이용하러 가기</button></a>
         </div> <!-- fin. col-xs-12 -->
     </div>
 

@@ -1612,7 +1612,7 @@
             });
             //정기적으로의 날짜 선택
             $('#datepicker').flatpickr({
-                dateFormat: "Y-m-d",
+                dateFormat: "Y/m/d",
                 minDate: "today",
                 maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
                 defaultDate: new Date().fp_incr(6) //지금으로부터 6일이 기본
@@ -1620,7 +1620,7 @@
             //특정날의 달력
             $(".calrendar_block").flatpickr({
                 inline: true,
-                dateFormat: "Y-m-d",
+                dateFormat: "Y/m/d",
                 minDate: "today",
                 maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
                 mode: "multiple", //여러개 선택 가능
@@ -1668,7 +1668,6 @@
                     //요일
                     var day = wantday;
                     
-                    startdate = startdate.replace(/\//gi, '-');
 
                     var schedule = {
                         startdate: startdate,
