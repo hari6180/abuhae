@@ -119,7 +119,7 @@
                                 			<div class="coupon_list">
 			                                    <div class="coupon_cont">
 			                                        <p>${item.coup_name }</p>
-			                                        <p class="discount_amount">${item.coup_price }원 할인권</p>
+			                                        <p class="discount_amount">${item.coup_price }% 할인권</p>
 			                                        <p>${item.reg_date } ~ ${item.exp_date }</p>
 			                                    </div>
 			                                    <div class="expire">
