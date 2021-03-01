@@ -55,7 +55,7 @@
 	<div id="tabCont2_1" class="tabCont">
 		<div class="mTab typeTab eTab">
 			<ul>
-				<button type="button" class="button">
+				<button type="button" class="rep_btn button">
 					<i class="fas fa-times"></i> 탈퇴승인
 				</button>
 			</ul>
