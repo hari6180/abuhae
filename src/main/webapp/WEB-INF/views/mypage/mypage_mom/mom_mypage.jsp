@@ -333,10 +333,6 @@
         		
         		if ($(check).is(":checked")) {
         			
-        			$.post("${pageContext.request.contextPath}/mypage/update_mopening_date", {
-        				momno: momno
-        			});
-        			
         			$.post("${pageContext.request.contextPath}/mypage/update_mjob_opening", {
         				memberno: memberno,
         				job_opening: "N",
@@ -348,6 +344,9 @@
         				} 
         			});
         		} else {
+        			$.post("${pageContext.request.contextPath}/mypage/update_mopening_date", {
+        				momno: momno
+        			});
         			
         			$.post("${pageContext.request.contextPath}/mypage/update_mjob_opening", {
         				memberno: memberno,

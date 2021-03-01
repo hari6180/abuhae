@@ -216,14 +216,14 @@
 							                                                    <p>
 							                                                    아래의 번호로 연락하여 인터뷰 시간을 조율할 수 있습니다.
 							                                                    </p>
-							                                                    <p class="si_phone"><mark>시터 번호 : ${in.phone }</mark></p>
+							                                                    <p class="si_phone"><mark>맘 번호 : ${in.phone }</mark></p>
 							                                                    <span>※ 아부해는 인터뷰 이후의 상황에 대하여 책임지지 않습니다.</span> 
 							                                                </div>
 			                                                             </c:if>
 			                                                             <%-- 인터뷰 요청을 거절했을 경우 --%>
 			                                                             <c:if test="${in.accept == 'N'}">
 			                                                             	<div class="deny">
-						                                                    	<p>시터에게 내 거절의사를 전달했습니다.</p>
+						                                                    	<p>맘회원에게 내 거절의사를 전달했습니다.</p>
 						                                                    	<p>${item.deny_type}</p>
 						                                                	</div>
 			                                                             </c:if> 
@@ -277,7 +277,7 @@
         <!--Google CDN 서버로부터 jQuery 참조 -->
       <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <!-- Javascript -->
-        <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
       <!-- jQuery Ajax Form plugin CDN -->
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
       <!-- jQuery Ajax Setup -->
@@ -290,7 +290,7 @@
                   method: "POST",
                   success: function(json) {
                      if (json.rt == "OK") {
-                        window.location = "${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do?sitterno=${out.sitterno}";
+                        window.location = "${pageContext.request.contextPath}/mypage/mypage_sitter/getm/${login.sitterno}";
                      }
                   }
                });
@@ -299,7 +299,7 @@
                    method: "POST",
                    success: function(json) {
                       if (json.rt == "OK") {
-                         window.location = "${pageContext.request.contextPath}/mypage/mypage_sitter/get_mom_mps.do?sitterno=${out.sitterno}";
+                         window.location = "${pageContext.request.contextPath}/mypage/mypage_sitter/getm/${login.sitterno}";
                       }
                    }
                 });

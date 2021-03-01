@@ -337,7 +337,7 @@
    <select id="selectSitterWorkCount"
    parameterType="study.team.abuhae.model.Connect" resultType="int">
    		select count(*) from connect
-		where sitterno=#{sitterno};
+		where sitterno=#{sitterno} and accept='Y';
    </select>
    
    <!-- 신고 내역 조회 -->

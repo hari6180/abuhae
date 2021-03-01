@@ -369,7 +369,7 @@
 	parameterType="study.team.abuhae.model.Connect" resultType="int">
 		select count(*) from connect c
 		inner join mom_info m on m.momno=c.momno
-		where c.momno=#{momno};
+		where c.momno=#{momno} and accept='Y';
 	</select>
 
 	<!-- 신고 내역 조회 -->

@@ -241,8 +241,8 @@
         </div>
 
 		<!-- Javascript -->
-		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
-        <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
         <script>
             $(function() {

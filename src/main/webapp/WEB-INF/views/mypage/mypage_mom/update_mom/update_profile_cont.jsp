@@ -207,7 +207,7 @@
 		                                <div class="user_img">
 		                                    <input type="file" id="new_profile_img" name="photo" accept="image/*">
 		                                    <label for="new_profile_img"><img
-		                                            src="${pageContext.request.contextPath}/assets/img/mypage_img/user.png"
+		                                            src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg"
 		                                            alt=""></label>
 		                                </div>
 		                            </div>
