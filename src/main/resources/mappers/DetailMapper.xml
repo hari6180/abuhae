@@ -48,6 +48,8 @@
 		<result property="schedule_start_date" column="schedule_start_date" />
 		<result property="findHt" column="findHt" />
 		<result property="subscribe" column="subscribe" />
+		<result property="selectdate" column="selectdate" />
+		<result property="wanttime" column="wanttime" />
 	</resultMap>
 
 	<resultMap id="SitterMap"
@@ -181,6 +183,8 @@
 		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
 		REPLACE(json_extract(schedule, '$.startdate'),'"','') AS schedule_start_date,
 		REPLACE(json_extract(schedule, '$.day'),'"','') AS days,
+		REPLACE(json_extract(schedule, '$.selectdate'),'"','') AS selectdate,
+		REPLACE(json_extract(schedule, '$.wanttime'),'"','') AS wanttime,
 		job_opening, want_act1, want_act2, want_act3, apply_content, apply_title,
 		si, gu, dong, signup_date, description, sitter_gender, care_type, 
 		payment, payment_ok,

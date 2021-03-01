@@ -42,6 +42,7 @@
 								<div>
 								<div class="talk_box_ea">
 								<c:forEach var="item" items="${reput}" varStatus="status">
+								<c:if test="${item.rev_rate!=''}">
 									<li style="list-style:none;" >
 										<div class="talk_box_line" style="margin: 15px 0px;">
 											<c:choose>			  
@@ -113,6 +114,7 @@
 												</div>
 											</div>
 										</li>
+										</c:if>
 										<hr style="margin: -1px 0px 0px; height: 1px; border: none; background-color: rgb(224,224,224);">
 									</c:forEach>
 									</div>

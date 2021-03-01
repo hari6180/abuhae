@@ -194,9 +194,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 						   </button>
 			               </c:when>
 			              <c:when test="${fn:contains(loginType, 'S')}"> 
-			              <button type="button" class="buy_btn">
+			              <button type="button" class="buy_btn" style="background-color: #ccc;">
 							 <p class="buy_btn_style">  
-							   시터회원 전용 이용권을 이용하여주세요
+							   맘회원 전용 이용권입니다.
 							 </p>
 						  </button>
 			              </c:when>

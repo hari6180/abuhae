@@ -15,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.ProfileFile;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.DetailService;
+import study.team.abuhae.service.UploadService;
 
 @Controller
 public class ReportController {
@@ -31,6 +33,8 @@ public class ReportController {
 		RegexHelper regexHelper;
 		@Value("#{servletContext.contextPath}")
 	    String contextPath;
+		@Autowired
+		UploadService uploadService;
 	
 		// 맘 신고 페이지
 		@RequestMapping(value = "/page_detail/mom_page_detail/mom_report.do", method = RequestMethod.GET)
@@ -39,22 +43,24 @@ public class ReportController {
 			
 			// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 			Mom_info input = new Mom_info();
+			ProfileFile input2 = new ProfileFile();
 			input.setMomno(momno);
 			
 			// 조회결과를 저장할 객체 선언 
 			Mom_info output = null;
+			ProfileFile output2 = null;
 			
 			try {
 				// 데이터 조회 
 				output = detailService.getMomItem(input);
-			
+				output2 = uploadService.getMomProfileItem(input2);
 			
 			} catch (Exception e) {
 				
 				e.printStackTrace();
 			}
 			model.addAttribute("output", output);
-			
+			model.addAttribute("profile", output2);
 			return "/page_detail/mom_page_detail/mom_report";
 		}
 		
@@ -97,19 +103,23 @@ public class ReportController {
 			
 			// 데이터 조회에 필요한 조건값을 Beans에 저장하기 
 			Sitter_info input = new Sitter_info();
+			ProfileFile input2 = new ProfileFile();
 			input.setSitterno(sitterno);
 			
 			// 조회결과를 저장할 객체 선언 
 			Sitter_info output = null;
+			ProfileFile output2 = null;
 			
 			try {
 				// 데이터 조회 
 				output = detailService.getSitterItem(input);
+				output2 = uploadService.getMomProfileItem(input2);
 			
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			model.addAttribute("output", output);
+			model.addAttribute("profile", output2);
 			return "/page_detail/sitter_page_detail/sitter_report";
 		}
 		

@@ -143,52 +143,52 @@
 						<div class="box_name">원하는 시터나이</div>
 						<div class="iwant_area">
 							<div class="sitter_age_area">
-								<c:if test="${output.want_age!='20대'}">
+								<c:if test="${output.want_age!='20'}">
 								<div class="sitter_age_no_area">
 									20대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age=='20대'}">
+								<c:if test="${output.want_age=='20'}">
 								<div class="sitter_age_ok_area">
 									20대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age!='30대'}">
+								<c:if test="${output.want_age!='30'}">
 								<div class="sitter_age_no_area">
 									30대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age=='30대'}">
+								<c:if test="${output.want_age=='30'}">
 								<div class="sitter_age_ok_area">
 									30대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age!='40대'}">
+								<c:if test="${output.want_age!='40'}">
 								<div class="sitter_age_no_area">
 									40대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age=='40대'}">
+								<c:if test="${output.want_age=='40'}">
 								<div class="sitter_age_ok_area">
 									40대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age!='50대'}">
+								<c:if test="${output.want_age!='50'}">
 								<div class="sitter_age_no_area">
 									50대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age=='50대'}">
+								<c:if test="${output.want_age=='50'}">
 								<div class="sitter_age_ok_area">
 									50대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age!='60대'}">
+								<c:if test="${output.want_age!='60'}">
 								<div class="sitter_age_no_area">
 									60대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age=='60대'}">
+								<c:if test="${output.want_age=='60'}">
 								<div class="sitter_age_ok_area">
 									60대
 								</div>
@@ -211,7 +211,8 @@
 						<div class="box_name">활동 가능 시간</div>
 						<div class="active_area">
 							<div class="active_area_text">
-								<div class="active_area_profil">
+							<div style="display: flex;">
+								<div class="active_area_profil" style="margin-top: 10px;">
 								  <c:choose>			  
 								  	<c:when test="${profile == null }">
 										<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="60" height="60" style="border-radius: 100%"/>				
@@ -229,7 +230,7 @@
 											<span id="active_text_style">
 											* 아래 표시된 날에만 돌봐주세요.
 											<br/>
-											<c:if test="${fn:contains(output.schedule_ok,Y)}">
+											<c:if test="${output.schedule_ok==Y}">
 											<span style="margin-left: 5px;">
 											* 이 일정은 맘시터에 맞춰서 얼마든지 
 											<br/>
@@ -242,8 +243,13 @@
 										</div>
 									</div>
 								</div>
-							</c:if>
-							<c:if test="${output.frequency=='1week' || output.frequency=='1month' || output.frequency=='3month' || output.frequency=='6month'}">
+								</div>
+								</c:if>
+								<c:if test="${output.frequency=='shortTerm'}">
+									<span id="schedule_text" style="color: #ff7000; font-weight: bold;"> ${output.selectdate} </span>
+									에 일할 수 있어요.
+								</c:if>
+								<c:if test="${output.frequency=='regular'}">
 								<div class="active_area_text_box">
 									<div id="active_area_style"></div>
 									<div style="padding: 8px 0px;">
@@ -251,15 +257,15 @@
 											<span id="schedule_text" style="color: #ff7000; font-weight: bold;"> 
 											${fn:split(output.schedule_start_date,'/')[0]}년 ${fn:split(output.schedule_start_date,'/')[1]}월 ${fn:split(output.schedule_start_date,'/')[2]}일 
 											 </span> 부터 일을 시작할 수 있어요.
+											 <c:if test="${fn:contains(output.schedule_ok,Y)}">
+											<span style="margin-left: 5px;">
+											* 이 일정은 맘시터에 맞춰서 얼마든지 
 											<br/>
-											<span style="margin-left: 5px; font-weight: bold;">
-												이 일정으로
-											 <c:if test="${output.frequency=='1week'}"><span style="color: #ff7000;">1주일 이상</span></c:if>
-											 <c:if test="${output.frequency=='1month'}"><span style="color: #ff7000;">1개월 이상</span></c:if>
-											 <c:if test="${output.frequency=='3month'}"><span style="color: #ff7000;">3개월 이상</span></c:if>
-											 <c:if test="${output.frequency=='6month'}"><span style="color: #ff7000;">6개월 이상</span></c:if>
-											 일 할 수 있어요.
+											<span style="margin-left: 13px;">
+											조정할 수 있어요.
 											</span>
+											</span>
+											</c:if>
 										</div>
 									</div>
 								</div>
@@ -340,7 +346,7 @@
 							</span>
 							</c:if>
 							<c:if test="${output.frequency=='noplan'}">
-							<c:set var="theString" value="${output.days}" />
+							<c:set var="theString" value="${output.wanttime}" />
 								<div class="active_time_box">
 									<div class="partTime_line">
 										<div class="partTime">
@@ -854,7 +860,7 @@
 							</div>
 						</div>
 						</div> <!-- fin. possible_active_area -->
-						<c:if test="${output.description!=null}">
+						<c:if test="${output.description!=''}">
 						<div class="possible_age_box">
 						<div class="box_name">시터가 알아야 할 사항</div>
 						<div class="possible_age_area">
@@ -866,6 +872,7 @@
 						<div class="box_name">그 외 요청사항</div>
 						<div class="possible_age_area">
 							<div>
+							<c:if test="${output.sitter_gender!=''}">
 								<div class="other_line">
 									<label class="want_gender_line">희망 맘시터 성별 : </label>
 									<c:if test="${fn:contains(output.sitter_gender,'F')}">
@@ -874,17 +881,27 @@
 									<c:if test="${fn:contains(output.sitter_gender,'M')}">
 									<span class="want_gender">남자</span>
 									</c:if>
+									<c:if test="${fn:contains(output.sitter_gender,'N')}">
+									<span class="want_gender">무관</span>
+									</c:if>
 								</div>
-							<c:if test="${output.care_type!=null}">	
+							</c:if>
+							<c:if test="${output.care_type!=''}">	
 								<div class="other_line">
 									<label class="want_care_line">희망 돌봄 방식 : </label>
 									<span class="want_care">${output.care_type}</span>
 								</div>	
 							</c:if>	
-							<c:if test="${output.interview_type!=null}">	
+							<c:if test="${output.interview_type!=''}">	
 								<div class="other_line">
-									<label class="want_care_line">희망 인터뷰 방식 : </label>
-									<span class="want_care">${output.interview_type}</span>
+									<label class="want_care_line">희망 인터뷰 방식 : 
+									<c:if test="${output.interview_type=='call'}">
+									<span class="want_care">전화 인터뷰</span></c:if>
+									<c:if test="${output.interview_type=='face'}">
+									<span class="want_care">대면 인터뷰</span></c:if>
+									<c:if test="${output.interview_type=='test'}">
+									<span class="want_care">시범 채용</span></c:if>
+									</label>
 								</div>
 							</c:if>								
 							</div>
