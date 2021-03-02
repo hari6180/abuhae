@@ -159,6 +159,7 @@
 		(SELECT COUNT(resino) FROM resi_cert rc WHERE rc.sitterno=s.sitterno AND cert='Y') AS resino,
 		(SELECT COUNT(cntno) FROM connect c WHERE c.sitterno=s.sitterno AND accept='Y') AS cntno,
 		(SELECT FLOOR(COUNT(accept)/COUNT(cntno)) * 100 FROM connect c WHERE s.sitterno=c.sitterno AND c.who='m') AS answer,
+		(SELECT FLOOR(AVG(rev_rate)) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate,
 		(SELECT DATE_FORMAT(signup_date, "%Y년 %m월 %d일") FROM member m WHERE s.memberno=m.memberno) AS signup
 		<if test = "loginMom != 0">,
 		(SELECT COUNT(*)
