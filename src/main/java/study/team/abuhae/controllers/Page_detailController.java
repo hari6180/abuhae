@@ -119,11 +119,6 @@ public class Page_detailController {
 			
 			try {
 				sitterinfo = (Sitter_info) detailService.getSitterItem(sitterput);
-						
-			if (sitterinfo.getSubscribe() == 'N') {
-				String redirectUrl = contextPath + "/buy/sitter_ticket.do?sitterno=" + input.getSitterno();
-				return webHelper.redirect(redirectUrl, "맘회원에게 지원하기 위해 이용권을 구매해주세요.");
-			}
 			detailService.addConnect(input);
 			String redirectUrl = contextPath + "/page_detail/mom_detail.do?momno=" + input.getMomno();
 			return webHelper.redirect(redirectUrl, "인터뷰 지원이 완료되었습니다.");
