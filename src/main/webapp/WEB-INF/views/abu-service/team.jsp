@@ -36,9 +36,8 @@
                 <div class="sitter_item_group">
                     <div class="item_header">
                         <div class="cert_label"><img
-                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">네
-                                아이의
-                                엄마</span></div>
+                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">
+                                먹금</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
@@ -103,9 +102,8 @@
                 <div class="sitter_item_group">
                     <div class="item_header">
                         <div class="cert_label"><img
-                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">네
-                                아이의
-                                엄마</span></div>
+                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">
+                                나보다 약한 자의 말은 듣지 않는다</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
@@ -170,9 +168,8 @@
                 <div class="sitter_item_group">
                     <div class="item_header">
                         <div class="cert_label"><img
-                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">네
-                                아이의
-                                엄마</span></div>
+                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">
+                                파싱몬스터</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
@@ -237,9 +234,8 @@
                 <div class="sitter_item_group">
                     <div class="item_header">
                         <div class="cert_label"><img
-                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">네
-                                아이의
-                                엄마</span></div>
+                                src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">
+                                차이코프스키</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
@@ -247,7 +243,7 @@
                             <img src="${pageContext.request.contextPath}/assets/img/team_jiwoo.jpg" />
                             <div class="responsive_rate_group">
                                 <div class="res_text">응답률</div>
-                                <div class="res_rate">100</div>
+                                <div class="res_rate">50</div>
                                 <div class="res_text">%</div>
                             </div>
                         </div>

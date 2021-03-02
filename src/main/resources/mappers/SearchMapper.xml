@@ -105,7 +105,7 @@
 		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
 		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl,
 		(SELECT COUNT(revno) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_count,
-		(SELECT rev_rate FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate,
+		(SELECT FLOOR(AVG(rev_rate)) FROM review r WHERE s.sitterno=r.sitterno AND who='M') AS rev_rate,
 		(SELECT COUNT(resino) FROM resi_cert rc WHERE s.sitterno=rc.sitterno AND cert='Y') AS resino,
 		(SELECT FLOOR(COUNT(accept)/COUNT(cntno)) * 100 FROM connect c WHERE s.sitterno=c.sitterno AND c.who='m') AS answer
 		<if test = "loginMom != 0">,

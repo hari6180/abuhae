@@ -1776,7 +1776,7 @@
 
                     var kids_age = kids_year + kids_month;
                     $('#kids_age').val(kids_age);
-                    $('#kids_age2').val(null);
+                    //$('#kids_age2').val(null);
                     console.log(kids_age);
                     console.log(kids_age2);
                 }

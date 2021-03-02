@@ -236,6 +236,15 @@
                     if(json.rt=="OK") {
                         window.location="${pageContext.request.contextPath}/join/sitter/success.do";
                     }
+                    if(json.rt=="id") {
+                        alert("이미 등록된 id입니다.");
+                    }
+                    if(json.rt=="email") {
+                        alert("이미 가입된 email입니다.");
+                    }
+                    if(json.rt=="phone") {
+                        alert("이미 가입된 핸드폰 번호입니다.");
+                    }
                 }
             });
             });
