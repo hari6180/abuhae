@@ -600,9 +600,9 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       const caredays = []; // 돌봄 요일
       const time_range = []; // 돌봄 시간대
       const actList = []; // 돌봄 종류
-      let min_pay = ""; // 최저 시급
-      let max_pay = ""; // 최고 시급
-      let kids_cnt = ""; // 아이 수
+      let min_pay = 0; // 최저 시급
+      let max_pay = 0; // 최고 시급
+      let kids_cnt = 0; // 아이 수
 
       $(function () {
         /** 주소 선택 모달 ------------------------------------------------------------------- */

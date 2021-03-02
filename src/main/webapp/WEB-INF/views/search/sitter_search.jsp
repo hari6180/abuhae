@@ -444,16 +444,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     </div>
                   </div>
                   <hr />
-                  <!--돌봄 시간대-->
-                  <!-- <div class="caretime_wrap">
-                    <h4>돌봄 시간대</h4>
-                    <div class="time_range_group">
-                      <button class="time_range" data-time="morning"><span class="time_range_content">07 - 12시</span></button>
-                      <button class="time_range" data-time="afternoon"><span class="time_range_content">12 - 18시</span></button>
-                      <button class="time_range" data-time="night"><span class="time_range_content">18 - 22시</span></button>
-                    </div>
-                  </div>
-                  <hr /> -->
                   <!-- 맘시터 유형 -->
                   <div class="sitter_type_wrap">
                     <h4>맘시터 유형</h4>

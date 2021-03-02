@@ -22,10 +22,34 @@ public class MemberInsertController {
       }
 
 	/** 멤버를 DB에 추가하는 컨트롤러 2021-02-04 하리
-	 *  void라 view가 없습니다. 
+	 *  따로 view가 없습니다. 
 	 *  프로젝트 실행하고 value 안 url 주소창에 입력하여 추가하세요. **/
 	@RequestMapping(value = "/member_insert.do", method = RequestMethod.GET)
 	public void member_insert(Model model) {
+		// 다양한 검색 결과를 보여주기 위해 만든 배열
+		
+		/** 공통 */
+		// 프로필 업데이트 날짜 및 시간 출력을 위한 값
+		int day = random(1,31);
+		int hour = random(1,12);
+		int minsec = random(1,59);
+		
+		// 다양한 주소 출력을 위한 값
+//		String loc1[] = {"강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구"};
+//		
+//		int gu = random(0,loc1.length);
+		
+		// 스케줄 
+		String[] days = {"mon", "tue", "wed", "thu", "fri", "sat", "sun"};
+		String[] frequency = {"regular", "shortTerm", "noplan"};
+		
+		
+		/** 맘 */
+		
+		
+		
+		/** 시터 */
+		
 		
 		// 저장할 값들을 Beans에 담는다.
 		Mom_info input = new Mom_info();
@@ -63,24 +87,12 @@ public class MemberInsertController {
 			input.setCare_type("주1회");
 			
 			// 프로필 업데이트 날짜 랜덤입력
-			int temp1 = random(2,12);
-			int temp2 = random(1,28);
-			String date = String.format("%02d-%02d", temp1, temp2);
-			String openingdate = "2020-" + date;
+
+			String date = String.format("%02d-%02d %02:%02:%02", 3, day, hour, minsec, minsec);
+			String openingdate = "2021-" + date;
 			input.setOpeningdate(openingdate);
 			input.setSignup_date(openingdate);
 			input.setSubscribe('N');
-			
-			/*
-			 * Schedule sd = new Schedule(); Day day = new Day(); Time time = new Time();
-			 * String[] darr = {"tue", "fri", "sun"}; String[] tarr = {"11:00", "21:00"};
-			 * 
-			 * day.setDay(darr); time.setTime(tarr);
-			 * 
-			 * sd.setStartdate("2021-02-10"); sd.setFrequency("regular"); sd.setDay();
-			 * 
-			 * input.setSchedule(sd);
-			 */
 			
 			int memberno = input.getMemberno();
 			input.setMemberno(memberno);
@@ -126,10 +138,8 @@ public class MemberInsertController {
 			input2.setCctv('Y');
 			
 			// 프로필 업데이트 날짜 랜덤입력
-			int temp1 = random(2,12);
-			int temp2 = random(1,28);
-			String date = String.format("%02d-%02d", temp1, temp2);
-			String openingdate = "2020-" + date;
+			String date = String.format("%02d-%02d %02:%02:%02", 3, day, hour, minsec, minsec);
+			String openingdate = "2021-" + date;
 			input2.setOpeningdate(openingdate);
 			
 			int memberno2 = input2.getMemberno();
