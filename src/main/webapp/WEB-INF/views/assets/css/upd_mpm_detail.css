@@ -543,6 +543,7 @@ input[type=radio]+label {
 
 #check_rev mark {
 	background-color: #ffffa0;
+	color: #2d2d2d;
 }
 
 /** 별점 */

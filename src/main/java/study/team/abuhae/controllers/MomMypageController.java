@@ -576,6 +576,8 @@ public class MomMypageController {
 	      newpw.setPassword(newpassword);
 	      newpw.setMemberno(memberno);
 	      
+	      Mom_info output = null;
+	      
 	      try {
 	         //현재 비밀번호 조회
 	         bigyo = momMypageService.bigyoPassword(input);
@@ -585,15 +587,14 @@ public class MomMypageController {
 	         }
 	         //현재 비밀번호와 일치하면 새로운 비밀번호로 업데이트
 	         momMypageService.updatePassword(newpw);
-	         
-	         
-	         
+	         output = momMypageService.getAccountItem(input);
+
 	      } catch (Exception e) {
 	         return webHelper.redirect(null, e.getLocalizedMessage());
 	      }
 	      
 	      /** 3) View 처리 */
-	      String url = contextPath+"/mypage/mypage_mom/manage_account.do?&memberno="+memberno;
+	      String url = contextPath+"/mypage/mypage_mom/mom_mypage.do?&momno="+output.getMomno();
 	      return webHelper.redirect(url, "비밀번호 변경이 완료되었습니다.");
 	   }
 	   

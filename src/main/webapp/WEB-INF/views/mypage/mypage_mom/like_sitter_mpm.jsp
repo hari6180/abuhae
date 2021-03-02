@@ -81,7 +81,7 @@
 		                                                <div class="ls_page_box_right">
 		                                               	 	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}">
 		                                                    	<p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;"> ${item.reg_date}</p>
-		                                                    	<p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }  ${item.gu } </p>
+		                                                    	<p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }&nbsp;${item.gu } </p>
 			                                                    <p style="color: #888888; font-size: 0.8em;">
 			                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
 			                                                    </p>
@@ -104,7 +104,7 @@
 		                                                <div class="ls_page_box_right">
 		                                               	 	
 	                                                    	<p style="font-size: 1em; font-weight: bold; color: #888888;">${item.name} <span style="font-size: 0.8em;"> ${item.reg_date}</p>
-		                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }  ${item.gu } </p>
+		                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }&nbsp;${item.gu } </p>
 		                                                    <p style="color: #888888; font-size: 0.8em;">
 		                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
 		                                                    </p>
@@ -132,7 +132,7 @@
 	                                                </div>
 	                                                <div class="ls_page_box_right">
 	                                                    <p style="font-size: 1em; font-weight: bold;">${it.name}<span style="color: #888888; font-size: 0.8em;"> ${it.reg_date }</p>
-	                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${it.si } ${it.gu }</p>
+	                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${it.si }&nbsp;${it.gu }</p>
 	                                                    <p style="color: #888888; font-size: 0.8em;">
 	                                                        <span>${it.birthdate}세</span> l <span>희망시급 ${it.payment }원</span> 
 	                                                    </p>
@@ -187,14 +187,6 @@
                    $(".ls_tab_panel > div").not($(target)).addClass("hide");
                });
 
-               /** 임시 삭제 기능 */
-               $(".garbage").click(function(e) {
-                   var is_ok = confirm("정말 삭제하시겠습니까?");
-
-                   if(is_ok) {
-                    $(this).parents("#page_con_1").addClass("hide");
-                   }
-               });
                
                $("#no_show").click(function(e) {
             	   alert("프로필을 비공개하였습니다.");

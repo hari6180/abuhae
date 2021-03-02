@@ -157,6 +157,8 @@ public class SitterMypageController {
 	      newpw.setPassword(newpassword);
 	      newpw.setMemberno(memberno);
 	      
+	      Sitter_info output = new Sitter_info();
+	      
 	      try {
 	         //현재 비밀번호 조회
 	         bigyo = sitterMypageService.bigyoSitterPassword(input);
@@ -166,16 +168,15 @@ public class SitterMypageController {
 	         }
 	         //현재 비밀번호와 일치하면 새로운 비밀번호로 업데이트
 	         sitterMypageService.updatSitterePassword(newpw);
-	         
-	         
+	         output = sitterMypageService.getSitterMember(input);
 	         
 	      } catch (Exception e) {
 	         return webHelper.redirect(null, e.getLocalizedMessage());
 	      }
 	      
 	      /** 3) View 처리 */
-	      String url = contextPath+"/mypage/mypage_sitter/manage_account.do?&memberno="+memberno;
-	      return webHelper.redirect(url, "Success change Password");
+	      String url = contextPath+"/mypage/mypage_sitter/sitter_mypage.do?&sitterno="+output.getSitterno();
+	      return webHelper.redirect(url, "비밀번호가 변경되었습니다.");
 	   }
 	
 	/** 내 구직 현황 페이지 */

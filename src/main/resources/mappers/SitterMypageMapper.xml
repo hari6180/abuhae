@@ -376,11 +376,11 @@
    
  	<!-- 비밀번호 비교 -->
    <select id="bigyoSitterPassword" parameterType="study.team.abuhae.model.Member" resultType="int">
-      select count(*) from member where memberno=#{memberno} and password=#{password};
+      select count(*) from member where memberno=#{memberno} and password=md5(#{password});
    </select>
    <!-- 비밀번호 변경 -->
    <update id="updateSitterPw"  parameterType="study.team.abuhae.model.Member">
-      update member set password=#{password} where memberno=#{memberno};
+      update member set password=md5(#{password}) where memberno=#{memberno};
    </update>
    
     <select id="selectSitter"

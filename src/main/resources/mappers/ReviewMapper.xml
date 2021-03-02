@@ -111,8 +111,8 @@
    <select id="selectSitterReviewList"
    parameterType="study.team.abuhae.model.Review" resultMap="ReviewMap">
       select mi.si, mi.gu, mi.dong, rev_rate, reg_date, contents, m.name, r.momno as momno, r.sitterno as sitterno, r.who,
-      (SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
-	  (SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl
+      (SELECT p.isProfile FROM profile_file p WHERE p.memberno = mi.memberno) AS isProfile, 
+	  (SELECT p.fileUrl FROM profile_file p WHERE p.memberno = mi.memberno) AS fileUrl
       from review r
       inner join sitter_info s on s.sitterno = r.sitterno
       inner join mom_info mi on mi.momno = r.momno

@@ -82,7 +82,7 @@
                                                  </div>
                                                  <!-- 후기작성 부모 정보 -->
                                                  <div class="si_rev_no_info">
-                                                    <h4>${it.name } <span style="font-size: 0.8em; color: #858585;"> | ${it.si } ${it.gu }</span></h4>
+                                                    <h4>${it.name } <span style="font-size: 0.8em; color: #858585;"> | ${it.si }&nbsp;${it.gu }</span></h4>
                                                      <h5></h5>
                                                      <p class="star" style="margin-top: 5px;">
 													<c:if test="${it.rev_rate eq '1'.charAt(0) }">
@@ -132,50 +132,52 @@
                                     </div>
 
 	
-                                    <!-- 작성한 후기 -->
+                                    <!-- 미작성한 후기 -->
                                     <div id="tab_page_2" class="tab_page hide">
                                			<c:forEach var="item" items="${output1}" varStatus="status">
                               				<div class="si_rev_no">
                                       			<div class="si_rev_no_tl">
 	                                                 <!-- 후기작성 부모 프로필사진 -->
 	                                                 <div class="si_rev_no_prof">
-	                                                 		<c:if test="${item.isProfile eq '0'}">
-	                                                 			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
-	                                                 		</c:if>
-	                                                 		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
-	                                                 			<img src="${item.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
-	                                                 		</c:if>
+                                                 		<c:if test="${item.isProfile eq '0'}">
+                                                 			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
+                                                 		</c:if>
+                                                 		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
+                                                 			<img src="${item.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
+                                                 		</c:if>
 	                                                 </div>
 	                                                 <div class="si_rev_no_info">
-	                                                    <h4>${item.name } <span style="font-size: 0.8em; color: #858585;"> | ${item.si } ${item.gu }</span></h4>
-	                                                 </div>   
-	                                                 <button type="button" class="rev_no_btn">후기 작성하기</button>
-	                                                 <!-- 후기작성 부모 정보 -->
-	                                                 <div class="write_rev hide">
-		                                                 <form id="reviewForm" action="${pageContext.request.contextPath}/mypage/edit_review_ok">
-					                                          <div id="check_rev">
-					                                          	 <p><mark><i class="fas fa-check-circle"></i> 별점과 내용을 입력하세요.</mark></p>
-					                                          <div>
-					                                          <div class="rev_rate">
-					                                             <input type="hidden" id="rev_edit" name="revno" value="${item.revno}">
-					                                             <span style="color: #858585;">별점 |</span> 
-					                                             <input type="radio" name="rev_rate" id="rev_rate1" value="1" class="rate_radio" title="1점">
-					                                             <label for="rev_rate1"><i class="fas fa-star"></i></label>
-					                                             <input type="radio" name="rev_rate" id="rev_rate2" value="2" class="rate_radio" title="2점">
-					                                             <label for="rev_rate2"><i class="fas fa-star"></i></label>
-					                                             <input type="radio" name="rev_rate" id="rev_rate3" value="3" class="rate_radio" title="3점">
-					                                             <label for="rev_rate3"><i class="fas fa-star"></i></label>
-					                                             <input type="radio" name="rev_rate" id="rev_rate4" value="4" class="rate_radio" title="4점">
-					                                             <label for="rev_rate4"><i class="fas fa-star"></i></label>
-					                                             <input type="radio" name="rev_rate" id="rev_rate5" value="5" class="rate_radio" title="5점" checked>
-					                                             <label for="rev_rate5"><i class="fas fa-star"></i></label>
-					                                          </div>
-					                                            <textarea name="contents" id="" cols="60%" rows="10" placeholder="내용을 입력하세요." style="width: 100%;"></textarea>
-					                                          <button class="rev_no_btn center-block" type="submit" style="width: 70%; margin-top: 20px; 
-					                                          background-color: #ff7000; border: 0; height: 30px; border-radius: 5px; color: #ffffff;">저장하기</button>
-				                                       </form>   
-	                                              </div>
-                                             </div>
+	                                                    <h4>${item.name }</h4>
+	                                                    <h4> <span style="font-size: 0.8em; color: #858585;"> ${item.si }&nbsp;${item.gu }</span></h4>
+	                                                 </div>  
+                                              	</div>
+                                               
+                                                 <button type="button" class="rev_no_btn center-block">후기 작성하기</button>
+                                                 <!-- 후기작성 부모 정보 -->
+                                                 <div class="write_rev hide" style="margin-top: 10px; padding: 5px 20px;">
+	                                                 <form id="reviewForm" action="${pageContext.request.contextPath}/mypage/edit_review_ok">
+				                                          <div id="check_rev">
+				                                          	 <p style="color: #2d2d2d;"><mark><i class="fas fa-check-circle"></i> 별점과 내용을 입력하세요.</mark></p>
+				                                          </div>
+				                                          <div class="rev_rate">
+				                                             <input type="hidden" id="rev_edit" name="revno" value="${item.revno}">
+				                                             <span style="color: #858585;">별점 |</span> 
+				                                             <input type="radio" name="rev_rate" id="rev_rate1" value="1" class="rate_radio" title="1점">
+				                                             <label for="rev_rate1"><i class="fas fa-star"></i></label>
+				                                             <input type="radio" name="rev_rate" id="rev_rate2" value="2" class="rate_radio" title="2점">
+				                                             <label for="rev_rate2"><i class="fas fa-star"></i></label>
+				                                             <input type="radio" name="rev_rate" id="rev_rate3" value="3" class="rate_radio" title="3점">
+				                                             <label for="rev_rate3"><i class="fas fa-star"></i></label>
+				                                             <input type="radio" name="rev_rate" id="rev_rate4" value="4" class="rate_radio" title="4점">
+				                                             <label for="rev_rate4"><i class="fas fa-star"></i></label>
+				                                             <input type="radio" name="rev_rate" id="rev_rate5" value="5" class="rate_radio" title="5점" checked>
+				                                             <label for="rev_rate5"><i class="fas fa-star"></i></label>
+				                                          </div>
+				                                            <textarea name="contents" id="" cols="60%" rows="3" placeholder="내용을 입력하세요." style="width: 100%; padding: 5px 10px;"></textarea>
+				                                          <button class="rev_no_btn center-block" type="submit" style="width: 70%; margin-top: 20px; 
+				                                          background-color: #ff7000; border: 0; height: 30px; border-radius: 5px; color: #ffffff;">저장하기</button>
+			                                       </form>   
+                                              </div>
                                            </div> 
                                		 	</c:forEach>
                                     </div>
@@ -189,10 +191,11 @@
         </div>
         
         	
-        	 <!-- Javascript -->
-	        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+
 	        <!--Google CDN 서버로부터 jQuery 참조 -->
 	        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                    	 <!-- Javascript -->
+	        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	        <!-- jQuery Ajax Form plugin CDN -->
 	        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 	        <!-- jQuery Ajax Setup -->
