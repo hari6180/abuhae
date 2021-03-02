@@ -92,12 +92,12 @@
 				                                                <p>지원시간:${out.applydate }</p>
 				                                                <c:if test="${out.accept == null }">
 				                                                	<div class="success">
-					                                                   <p>시터의 응답을 기다리고 있습니다.</p>
+					                                                   <p>맘회원의 응답을 기다리고 있습니다.</p>
 					                                                </div>
 				                                                </c:if>
 				                                                <c:if test="${out.accept == 'N' }">
 				                                                	<div class="deny">
-					                                                    <p>아쉽게도 시터가 3시간 내에 응답을 주지 못했습니다.
+					                                                    <p>${out.deny_type }
 					                                                        <br>다른 시터에게 신청을 시작해보세요.
 					                                                    </p>
 					                                                </div>
@@ -105,10 +105,10 @@
 				                                                <c:if test="${out.accept == 'Y' }">
 				                                                	<div class="success">
 					                                                    <p>
-					                                                        시터가 인터뷰 요청에 수락하였습니다. <br>
+					                                                        맘회원이 인터뷰 요청에 수락하였습니다. <br>
 					                                                    아래의 번호로 연락하여 인터뷰 시간을 조율할 수 있습니다.
 					                                                    </p>
-					                                                    <p class="si_phone"><mark>시터 번호 : ${out.phone }</mark></p>
+					                                                    <p class="si_phone"><mark>맘회원 번호 : ${out.phone }</mark></p>
 					                                                    <span>※ 아부해는 인터뷰 이후의 상황에 대하여 책임지지 않습니다.</span> 
 					                                                </div>
 				                                                </c:if>
