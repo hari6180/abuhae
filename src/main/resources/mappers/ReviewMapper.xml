@@ -79,7 +79,7 @@
    <!-- review의 who가 null일 경우 후기 남기기 가능 (후기 남기기는 한번만 가능함) -->
    <select id="selectMReviewMemberList" 
    parameterType="study.team.abuhae.model.Review" resultMap="ReviewMap">
-      select revno, c.accept as accept, s.si, s.gu, s.dong, m.name, mi.momno as momno, s.sitterno as sitterno, r.who,
+      select revno, c.accept as accept, s.si, s.gu, s.dong, m.name, mi.momno as momno, s.sitterno as sitterno, r.who, rev_rate,
       (SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
 	  (SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl
       from review r
@@ -94,7 +94,7 @@
    <!-- 부모 회원만 후기 남기기가 가능하기 때문에 who='M' 조건이 충족되어야 함 -->
    <select id="selectReviewList"
    parameterType="study.team.abuhae.model.Review" resultMap="ReviewMap">
-		select revno, rev_rate, reg_date, contents, r.momno, r.sitterno, r.cntno,
+		select revno, rev_rate, reg_date, contents, r.momno, r.sitterno, r.cntno, r.who,
 		m.name, s.si, s.gu, s.dong,
 		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
 		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl
@@ -103,7 +103,7 @@
 		inner join sitter_info s on r.sitterno = s.sitterno
 		inner join mom_info mi on mi.momno = r.momno
 		inner join member m on s.memberno = m.memberno
-		where r.momno = #{momno}; 
+		where r.momno = #{momno} and r.who is not null; 
    </select>
    
    

@@ -323,8 +323,9 @@
 	<!-- 찜하기 목록 조회 -->
 	<select id="selectHeartList"
 		parameterType="study.team.abuhae.model.Heart" resultMap="HeartMap">
-		select m.name, s.si, s.gu, s.dong, s.payment, (date_format(now(),
-		'%Y') - date_format(m.birthdate, '%Y') + 1) as birthdate,
+		select m.name, s.si, s.gu, s.dong, s.payment, 0, 
+		FLOOR((CAST(REPLACE(current_date,'-','') AS unsigned) -
+		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2 as birthdate,
 		m.job_opening, h.momno, s.sitterno, heartno, reg_date, who,
 		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
 		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl
@@ -350,7 +351,8 @@
 		parameterType="study.team.abuhae.model.Connect" resultMap="ConnectMap">
 		select cntno, applydate, who, c.momno, c.sitterno, accept, m.name,
 		s.si, s.gu, s.dong, s.payment,
-		(date_format(now(), '%Y') - date_format(m.birthdate, '%Y') + 1) as birthdate,
+		FLOOR((CAST(REPLACE(current_date,'-','') AS unsigned) -
+		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2 as birthdate,
 		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
 		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl
 		from connect c

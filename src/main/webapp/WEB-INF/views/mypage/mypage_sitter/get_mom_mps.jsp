@@ -275,13 +275,13 @@
         </div>
       
         <!--Google CDN 서버로부터 jQuery 참조 -->
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <!-- Javascript -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Javascript -->
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-      <!-- jQuery Ajax Form plugin CDN -->
-      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-      <!-- jQuery Ajax Setup -->
-      <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
+        <!-- jQuery Ajax Form plugin CDN -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+        <!-- jQuery Ajax Setup -->
+        <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
         <script type="text/javascript">
             $(function() {
                console.log("${output}");

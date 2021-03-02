@@ -298,7 +298,9 @@
    <!-- 찜하기 목록 조회 -->
    <select id="selectSitterHeartList"
    parameterType="study.team.abuhae.model.Heart" resultMap="SitterHeartMap">
-       select m.name, mi.apply_title, mi.si, mi.gu, mi.dong, mi.payment, mi.kids_num, (date_format(now(), '%Y') - date_format(m.birthdate, '%Y') + 1) as birthdate, 
+       select m.name, mi.apply_title, mi.si, mi.gu, mi.dong, mi.payment, mi.kids_num, 
+      FLOOR((CAST(REPLACE(current_date,'-','') AS unsigned) -
+		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2 as birthdate, 
 	  m.job_opening, h.momno, h.sitterno, heartno, reg_date, who, h.sitterno,
 	  (SELECT p.isProfile FROM profile_file p WHERE p.memberno = mi.memberno) AS isProfile, 
 	  (SELECT p.fileUrl FROM profile_file p WHERE p.memberno = mi.memberno) AS fileUrl
@@ -320,9 +322,10 @@
    <!-- 내 채용내역 -->
    <select id="selectSitterWorkList"
       parameterType="study.team.abuhae.model.Connect" resultMap="SitterConnectMap">
-     select cntno, TIMESTAMPDIFF(day, applydate, now()) as applydate, who, c.momno, c.sitterno, accept, m.name,
+     	select cntno, TIMESTAMPDIFF(day, applydate, now()) as applydate, who, c.momno, c.sitterno, accept, m.name,
 		mi.kids_num, mi.apply_title, mi.si, mi.gu, mi.dong, mi.payment,
-		(date_format(now(), '%Y') - date_format(m.birthdate, '%Y') + 1) as birthdate,
+		FLOOR((CAST(REPLACE(current_date,'-','') AS unsigned) -
+		CAST(REPLACE(birthdate,'-','') as unsigned)) / 10000 ) + 2 as birthdate,
 		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = mi.memberno) AS isProfile, 
 	    (SELECT p.fileUrl FROM profile_file p WHERE p.memberno = mi.memberno) AS fileUrl
 		from connect c

@@ -67,10 +67,9 @@
                                     <!-- 전체 일자리 -->
                                     <div id="ls_tab_page_1">
                                      	<c:forEach var="item" items="${output}" varStatus="status">
-	                                   		<div class="ls_page_cont" id="page_con_1">
-	                                    
-                                            	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}">
-                                            		<div class="ls_page_box">
+	                                   		<c:if test="${item.job_opening eq 'Y'.charAt(0) }">
+	                                   			<div class="ls_page_cont" id="page_con_1">
+	                                           		<div class="ls_page_box">
 		                                                <div class="ls_page_box_left">
 		                                                    <c:if test="${item.isProfile eq '0'}">
 	                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 52px; height: 52px; border-radius: 50%;"/>
@@ -80,58 +79,40 @@
 	                                                   		</c:if>
 		                                                </div>
 		                                                <div class="ls_page_box_right">
-		                                                    <p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;"> ${item.reg_date}</p>
+		                                               	 	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}">
+		                                                    	<p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;"> ${item.reg_date}</p>
+		                                                    	<p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }  ${item.gu } </p>
+			                                                    <p style="color: #888888; font-size: 0.8em;">
+			                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
+			                                                    </p>
+		                                                    </a>
+		                                                </div>          
+		                                            </div>
+		                                        </div>
+	                                   		</c:if>
+	                                   		<c:if test="${item.job_opening eq 'N'.charAt(0) }">
+	                                   			<div class="ls_page_cont" id="no_show" style="background-color: #f7f7f7;">
+	                                           		<div class="ls_page_box">
+		                                                <div class="ls_page_box_left">
+		                                                    <c:if test="${item.isProfile eq '0'}">
+	                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 52px; height: 52px; border-radius: 50%;"/>
+	                                                   		</c:if>
+	                                                   		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
+	                                                   			<img src="${item.fileUrl }" alt="임시프로필" style="width: 52px; height: 52px; border-radius: 50%;">
+	                                                   		</c:if>
+		                                                </div>
+		                                                <div class="ls_page_box_right">
+		                                               	 	
+	                                                    	<p style="font-size: 1em; font-weight: bold; color: #888888;">${item.name} <span style="font-size: 0.8em;"> ${item.reg_date}</p>
 		                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }  ${item.gu } </p>
 		                                                    <p style="color: #888888; font-size: 0.8em;">
 		                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
 		                                                    </p>
 		                                                </div>          
 		                                            </div>
-                                            	</a>
-	                                          
-	                                        </div>
+		                                        </div>
+	                                   		</c:if>
                                         </c:forEach>
-                                        <!--  <a href="#ls_modal" data-toggle="modal">
-                                            <div class="ls_page_cont no_work">
-                                                <div class="ls_page_box">
-                                                    <div class="ls_page_box_left">
-                                                        <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.png" alt="임시프로필">
-                                                        <br>
-                                                        <div class="response_per">응답률88%</div>
-                                                    </div>
-                                                    <div class="ls_page_box_right">
-                                                        <p style="font-size: 1em; font-weight: bold;">송○예 <span style="color: #888888; font-size: 0.8em;">13시간 전 작성</p>
-                                                        <p style="color: #888888; font-size: 0.8em; font-weight: bold;">전북 군산시 경기 평택시 </p>
-                                                        <p style="color: #888888; font-size: 0.8em;">
-                                                            <span>53세</span> l <span>희망시급 1,5000원</span> 
-                                                        </p>
-                                                        <p style="color: #888888; font-size: 0.7em;">
-                                                            <span class="point">★★★★</span> 
-                                                            <span>후기 155개</span> 
-                                                            <span class="point">
-                                                                <i class="fas fa-video"></i> CCTV 동의함
-                                                            </span>
-                                                        </p>
-                                                    </div>          
-                                                </div>
-                                                <hr/>
-                                                <div class="ls_page_box">
-                                                    <div class="ls_certify" style="font-size: 0.95em; font-weight: bold;">
-                                                        <div class="count_certify">
-                                                            <span>확인된 인증</span> 
-                                                            <span class="point">2개</span>
-                                                        </div>
-                                                        <div class="box_certify">
-                                                            <div class="text_certify">엄마 인증</div>
-                                                            <div class="text_certify">등초본 인증</div>
-                                                        </div>
-                                                    </div>
-                                                    <button type="button" class="garbage" href="#">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </a> -->
                                     </div>
                                     <!-- end 전체 일자리 -->
 
@@ -213,6 +194,10 @@
                    if(is_ok) {
                     $(this).parents("#page_con_1").addClass("hide");
                    }
+               });
+               
+               $("#no_show").click(function(e) {
+            	   alert("프로필을 비공개하였습니다.");
                });
            });
            

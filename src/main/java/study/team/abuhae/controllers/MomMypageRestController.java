@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Review;
@@ -20,6 +21,8 @@ import study.team.abuhae.service.MomMypageService;
 public class MomMypageRestController {
 	@Autowired
 	WebHelper webHelper;
+	@Autowired
+	RegexHelper regexHelper;
 	@Autowired
 	AdminService adminService;
 	@Autowired
@@ -38,9 +41,10 @@ public class MomMypageRestController {
 		input.setContents(contents);
 		
 		/** 사용자가 입력한 파라미터 유효성 검사 */
-		if (revno == 0) { return webHelper.getJsonWarning("리뷰를 작성할 수 없습니다."); }
-		if (rev_rate == 0 ) { return webHelper.getJsonWarning("별점을 체크해주세요."); }
-		if (contents == "") { return webHelper.getJsonWarning("내용을 입력해 주세요."); } 
+		String review = input.getContents(); 
+		if(!regexHelper.isValue(review)) {
+			return webHelper.getJsonError("내용을 입력해주세요.");
+		}
 		
 		try {
 			// 데이터 수정

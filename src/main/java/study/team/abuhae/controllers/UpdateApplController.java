@@ -52,6 +52,8 @@ public class UpdateApplController {
 		ProfileFile profile = null;
 		Mom_info output = null;
 		
+		int kids_age2=0;
+		
 		try {
 			profile = uploadService.getMomProfileItem(input);
 			output = momMypageService.getMemberItem(input2);
@@ -61,9 +63,11 @@ public class UpdateApplController {
 		
 		AgeHelper agehelper = new AgeHelper();
 		int kids_age1 = agehelper.kidsAge(output.getKids_age());
-		int kids_age2 = agehelper.kidsAge(output.getKids_age2());
-		
-		
+		String kids_age2_str = output.getKids_age2();
+		if (regexHelper.isValue(kids_age2_str)) {
+			kids_age2 = agehelper.kidsAge(kids_age2_str);
+		} 
+
 		model.addAttribute("profile", profile);
 		model.addAttribute("mominfo", output);
 		model.addAttribute("kids_age", kids_age1);
