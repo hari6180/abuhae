@@ -143,7 +143,7 @@
 		REPLACE(json_extract(schedule, '$.startdate'),'"','') AS schedule_start_date,
 		REPLACE(json_extract(schedule, '$.day'),'"','') AS days,
 		<!-- CONCAT(LEFT(payment,2), ',', RIGHT(payment,3)) AS -->
-		payment, cctv, answer, CASE
+		payment, cctv, CASE
 	<![CDATA[WHEN TIMESTAMPDIFF(minute, openingdate, now()) <= 0 THEN '방금 전'
 	WHEN TIMESTAMPDIFF(minute, openingdate, now()) < 60 THEN
 	CONCAT(TIMESTAMPDIFF(minute, openingdate, now()), '분 전')
@@ -158,6 +158,7 @@
 		(SELECT COUNT(heartno) FROM heart h WHERE s.sitterno=h.sitterno AND who='M') AS heartno,
 		(SELECT COUNT(resino) FROM resi_cert rc WHERE rc.sitterno=s.sitterno AND cert='Y') AS resino,
 		(SELECT COUNT(cntno) FROM connect c WHERE c.sitterno=s.sitterno AND accept='Y') AS cntno,
+		(SELECT FLOOR(COUNT(accept)/COUNT(cntno)) * 100 FROM connect c WHERE s.sitterno=c.sitterno AND c.who='m') AS answer,
 		(SELECT DATE_FORMAT(signup_date, "%Y년 %m월 %d일") FROM member m WHERE s.memberno=m.memberno) AS signup
 		<if test = "loginMom != 0">,
 		(SELECT COUNT(*)

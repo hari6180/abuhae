@@ -111,56 +111,53 @@ jQuery(function($) {
 							${output.answer}%
 						</div>
 					</div><!-- fin. info_name -->		
+					<c:forEach var="item" items="${reput}" varStatus="status" begin="0" end="0">
 					<div class="info_star">
 						<div class="star">
-						<c:if test="${fn:contains(output.rev_rate,0)}">
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+						<c:if test="${fn:contains(item.rev_rate,0)}">
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</c:if>																					
+							<c:if test="${fn:contains(item.rev_rate,1)}">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</c:if>
+							<c:if test="${fn:contains(item.rev_rate,2)}">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</c:if>
+							<c:if test="${fn:contains(item.rev_rate,3)}">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</c:if>
+							<c:if test="${fn:contains(item.rev_rate,4)}">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
+							</c:if>
+							<c:if test="${fn:contains(item.rev_rate,5)}">
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+							</c:if>
 						</div>
-						</c:if>
-						<c:if test="${fn:contains(output.rev_rate,1)}">
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-						</div>
-						</c:if>
-						<c:if test="${fn:contains(output.rev_rate,2)}">
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-						</div>
-						</c:if>
-						<c:if test="${fn:contains(output.rev_rate,3)}">
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-						</div>
-						</c:if>
-						<c:if test="${fn:contains(output.rev_rate,4)}">
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
-						</div>
-						</c:if>
-						<c:if test="${fn:contains(output.rev_rate,5)}">
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-							<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-						</div>
-						</c:if>
+						</c:forEach>
 						<div class="review_ea">
 								후기 ${output.rev_count}개
 						</div>
@@ -169,6 +166,7 @@ jQuery(function($) {
 						<div class="line"></div>
 						<div class="number">no.${output.sitterno}</div>
 					</div><!-- fin. info_star -->
+					
 				</div> <!-- fin. profil_info -->
 				
 				<hr/>
