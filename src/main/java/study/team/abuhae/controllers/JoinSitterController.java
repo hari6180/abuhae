@@ -199,67 +199,10 @@ public class JoinSitterController {
 		// return "/join/parent/children";
 	}
 	
-	@RequestMapping(value = "/join/sitter/profile_img.do", method = RequestMethod.POST)
-	public ModelAndView s_join_profImg(Model model, 
-			@RequestParam(value = "type") char type,
-			@RequestParam(value = "sitter_type") String sitter_type,
-			@RequestParam(value = "want_act1") String want_act1,
-			@RequestParam(value = "want_act2", required = false) String want_act2,
-			@RequestParam(value = "want_act3", required = false) String want_act3, 
-			@RequestParam(value = "want_age") String want_age,
-			@RequestParam(value = "si") String si,
-			@RequestParam(value = "gu") String gu, 
-			@RequestParam(value = "dong") String dong,
-			@RequestParam(value = "schedule") String schedule, 
-			@RequestParam(value = "payment") String paymentstr, 
-			@RequestParam(value = "cctv") char cctv) {
-
-		paymentstr = paymentstr.replace(",", "");
-		int payment = Integer.parseInt(paymentstr);
-		
-
-		// 저장할 값 beans에 담기
-		sitterinfo.setType(type);
-		sitterinfo.setSitter_type(sitter_type);
-		sitterinfo.setWant_act1(want_act1);
-		sitterinfo.setWant_act2(want_act2);
-		sitterinfo.setWant_act3(want_act3);
-		sitterinfo.setWant_age(want_age);
-		sitterinfo.setSi(si);
-		sitterinfo.setGu(gu);
-		sitterinfo.setDong(dong);
-		sitterinfo.setSchedule(schedule);
-		sitterinfo.setPayment(payment);
-		sitterinfo.setCctv(cctv);
-
-		// 저장된 결과 조회하기 위한 객체
-		// Mom_info output = null;
-
-		log.debug(sitterinfo.toString());
-
-		model.addAttribute("type", type);
-		model.addAttribute("sitter_type", sitter_type);
-		model.addAttribute("want_act1", want_act1);
-		model.addAttribute("want_act2", want_act2);
-		model.addAttribute("want_act3", want_act3);
-		model.addAttribute("want_age", want_age);
-		model.addAttribute("si", si);
-		model.addAttribute("gu", gu);
-		model.addAttribute("dong", dong);
-		model.addAttribute("schedule", schedule);
-		model.addAttribute("payment", payment);
-		model.addAttribute("cctv", cctv);
-		
-
-		return new ModelAndView("/join/sitter/profile_img");
-		// return webHelper.getJsonData(map);
-		// return "/join/parent/children";
-	}
-	
 	@RequestMapping(value = "/join/sitter/introduce.do", method = RequestMethod.POST)
 	public ModelAndView s_join_intro(Model model, 
 			@RequestParam(value = "type") char type,
-			@RequestParam(value = "type") String sitter_type,
+			@RequestParam(value = "sitter_type") String sitter_type,
 			@RequestParam(value = "want_act1") String want_act1,
 			@RequestParam(value = "want_act2", required = false) String want_act2,
 			@RequestParam(value = "want_act3", required = false) String want_act3, 

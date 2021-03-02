@@ -144,7 +144,7 @@ public class JoinRestController {
 	@RequestMapping(value = "join/sitter/add_ok", method = RequestMethod.POST)
 	public Map<String, Object> s_join_success(Model model, 
 			@RequestParam(value = "type") char type,
-			@RequestParam(value = "type") String sitter_type,
+			@RequestParam(value = "sitter_type") String sitter_type,
 			@RequestParam(value = "want_act1") String want_act1,
 			@RequestParam(value = "want_act2", required = false) String want_act2,
 			@RequestParam(value = "want_act3", required = false) String want_act3, 
