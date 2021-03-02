@@ -157,7 +157,6 @@ jQuery(function($) {
 								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							</c:if>
 						</div>
-						</c:forEach>
 						<div class="review_ea">
 								후기 ${output.rev_count}개
 						</div>
@@ -166,7 +165,7 @@ jQuery(function($) {
 						<div class="line"></div>
 						<div class="number">no.${output.sitterno}</div>
 					</div><!-- fin. info_star -->
-					
+					</c:forEach>
 				</div> <!-- fin. profil_info -->
 				
 				<hr/>

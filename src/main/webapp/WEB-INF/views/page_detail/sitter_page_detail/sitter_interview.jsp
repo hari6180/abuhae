@@ -72,7 +72,7 @@
 					<button type="submit" class="btn btn-block" id="btn_interview">
 						<span class="btn_interview">인터뷰 신청하기</span>
 					</button>
-					<!-- ------모달 영역------- -->
+					<!-- ------모달 영역
 					<div id="modalBox" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 						<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -99,7 +99,7 @@
 						</div>
 						</div>
 						</div>
-					</div>
+					</div> ------- -->
 					<input type="hidden" id="who" name="who" value='M'>
 					<input type="hidden" id="momno" name="momno" value="${login.momno}">
 					<input type="hidden" id="sitterno" name="sitterno" value="${output.sitterno}" >
