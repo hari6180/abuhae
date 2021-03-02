@@ -355,9 +355,6 @@
 		s.memberno=m.memberno
 		<!-- 활동 유형 && 상세 검색 && 주소 -->
 		<where>
-			<if test = "loginMom != 0">
-			AND h.who='M' AND h.momno=#{loginMom}
-			</if>
 			<if test="actList != null">
 				AND (want_act1 || want_act2 || want_act3) in
 				<foreach item="item1" collection="actList" open="("

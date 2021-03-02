@@ -88,7 +88,7 @@ public class MemberInsertController {
 			
 			// 프로필 업데이트 날짜 랜덤입력
 
-			String date = String.format("%02d-%02d %02:%02:%02", 3, day, hour, minsec, minsec);
+			String date = String.format("%02d-%02d %02d:%02d:%02d", 3, day, hour, minsec, minsec);
 			String openingdate = "2021-" + date;
 			input.setOpeningdate(openingdate);
 			input.setSignup_date(openingdate);
@@ -138,7 +138,7 @@ public class MemberInsertController {
 			input2.setCctv('Y');
 			
 			// 프로필 업데이트 날짜 랜덤입력
-			String date = String.format("%02d-%02d %02:%02:%02", 3, day, hour, minsec, minsec);
+			String date = String.format("%02d-%02d %02d:%02d:%02d", 3, day, hour, minsec, minsec);
 			String openingdate = "2021-" + date;
 			input2.setOpeningdate(openingdate);
 			

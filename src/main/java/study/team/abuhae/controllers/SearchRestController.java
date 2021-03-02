@@ -212,6 +212,13 @@ public class SearchRestController {
 		if (sitterAge != null) {
 			input.setSitterAge(sitterAge);
 		}
+		
+		if (momno != null) {
+			int mom = Integer.parseInt(momno);
+			Sitter_info.setLoginMom(mom);
+		}
+		
+		
 
 		List<Sitter_info> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산한 결과가 저장될 객체
