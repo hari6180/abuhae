@@ -53,7 +53,7 @@ public class SearchRestController {
 			// 정렬 조건
 			@RequestParam(value = "order", defaultValue = "null") String order,
 			/** (1) 원하는 활동 선택 **/
-			@RequestParam(value = "act[]", required = false) String[] actList, 
+			@RequestParam(value = "actList[]", required = false) String[] actList, 
 			/** (2) 상세 검색 **/
 			@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 			@RequestParam(value = "caredays[]", required = false) String[] caredays,
@@ -154,7 +154,7 @@ public class SearchRestController {
 			// 정렬 조건
 			@RequestParam(value = "order", defaultValue = "null") String order,
 			/** (1) 원하는 활동 선택 **/
-			@RequestParam(value = "act[]", required = false) String[] actList, 
+			@RequestParam(value = "actList[]", required = false) String[] actList, 
 			/** (2) 상세 검색 **/
 			@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 			@RequestParam(value = "caredays[]", required = false) String[] caredays,
@@ -319,7 +319,7 @@ public class SearchRestController {
 			// 정렬 조건
 			@RequestParam(value = "order", defaultValue = "null") String order, 
 			// 상세 검색
-			@RequestParam(value = "act[]", required = false) String[] actList,
+			@RequestParam(value = "actList[]", required = false) String[] actList,
 			@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 			@RequestParam(value = "caredays[]", required = false) String[] caredays,
 			@RequestParam(value = "time_range[]", required = false) String[] timeRange,
@@ -445,7 +445,7 @@ public class SearchRestController {
 				// 정렬 조건
 				@RequestParam(value = "order", defaultValue = "null") String order, 
 				// 상세 검색
-				@RequestParam(value = "act[]", required = false) String[] actList,
+				@RequestParam(value = "actList[]", required = false) String[] actList,
 				@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 				@RequestParam(value = "caredays[]", required = false) String[] caredays,
 				@RequestParam(value = "min_pay", required = false) String min_pay,

@@ -860,7 +860,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
             $.get(
               "${pageContext.request.contextPath}/search/sitter_search",
               {
-                act: actList,
+                actList: actList,
               },
               function (json) {
                 let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
@@ -1076,7 +1076,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
               si: si, // 시
               gu: gu, // 구
               dong: dong, // 동
-              act: actList,
+              actList: actList,
             },
             function (json) {
               let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
@@ -1231,7 +1231,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     si: si, // 시
                     gu: gu, // 구
                     dong: dong, // 동
-                    act: actList,
+                    actList: actList,
                   },
                   function (json) {
                     let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
@@ -1253,7 +1253,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     si: si, // 시
                     gu: gu, // 구
                     dong: dong, // 동
-                    act: actList,
+                    actList: actList,
                   },
                   function (json) {
                     let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기

@@ -65,9 +65,9 @@ public class MemberInsertController {
 			input.setJob_opening('Y');
 			
 			// 원하는 활동
-			input.setWant_act1(acts[random(0,3)]);
-			input.setWant_act2(acts[random(4,9)]);
-			input.setWant_act3(acts[random(10,12)]);
+			input.setWant_act1((String) acts[random(0,3)]);
+			input.setWant_act2((String) acts[random(4,9)]);
+			input.setWant_act3((String) acts[random(10,12)]);
 
 			
 			input.setWant_age("20대");
@@ -97,9 +97,10 @@ public class MemberInsertController {
 			// 스케줄 랜덤입력 
 			// 가능한 요일
 			String dayOk[] = new String[3];
-			for (int j=0; j<dayOk.length; j++) {
-				dayOk[j] = days[random(0,days.length-1)];
-			}
+			dayOk[0] = "\"" + days[random(0,2)] + "\"";
+			dayOk[1] = "\"" + days[random(3,4)] + "\"";
+			dayOk[2] = "\"" + days[random(5,6)] + "\"";
+			
 			
 			// 프로필 업데이트 및 스케줄 날짜 랜덤입력
 			int day = random(1,31);
@@ -143,7 +144,7 @@ public class MemberInsertController {
 			input2.setName("김선아" + i);
 			input2.setEmail("bbb@aaa.aa");
 			input2.setPhone("01088888888");
-			input2.setBirthdate("19"+ String.format("%2d-%02d-%02d", random(70,95), random(1,12), random(1,28)));
+			input2.setBirthdate("19"+ String.format("%02d-%02d-%02d", random(70,95), random(1,12), random(1,28)));
 			input2.setGender('F');
 			input2.setJob_opening('Y');
 			
@@ -153,9 +154,9 @@ public class MemberInsertController {
 			
 			// 가능한 돌봄유형
 			// 원하는 활동
-			input2.setWant_act1(acts[random(0,3)]);
-			input2.setWant_act2(acts[random(4,9)]);
-			input2.setWant_act3(acts[random(10,12)]);
+			input2.setWant_act1((String) acts[random(0,3)]);
+			input2.setWant_act2((String) acts[random(4,9)]);
+			input2.setWant_act3((String) acts[random(10,12)]);
 			
 			input2.setWant_age(age[random(0,age.length-1)]);
 			
@@ -171,9 +172,9 @@ public class MemberInsertController {
 			// 스케줄 랜덤입력 
 			// 가능한 요일
 			String dayOk[] = new String[3];
-			for (int j=0; j<dayOk.length-1; j++) {
-				dayOk[j] = days[random(0,days.length-1)];
-			}
+			dayOk[0] = "\"" + days[random(0,2)] + "\"";
+			dayOk[1] = "\"" + days[random(3,4)] + "\"";
+			dayOk[2] = "\"" + days[random(5,6)] + "\"";
 			// 프로필 업데이트 및 스케줄 날짜 랜덤입력
 			int day = random(1,31);
 			int hour = random(1,12);

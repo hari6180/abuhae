@@ -461,8 +461,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   {{#ifCond want_act1 'outside' }}야외활동{{/ifCond}}
                   {{#ifCond want_act1 'korean' }}한글놀이{{/ifCond}}
                   {{#ifCond want_act1 'english' }}영어놀이{{/ifCond}}
-                  {{#ifCond want_act1 'study' }}실내놀이{{/ifCond}}
-                  {{#ifCond want_act1 'sport' }}학습지도{{/ifCond}}
+                  {{#ifCond want_act1 'study' }}학습지도{{/ifCond}}
+                  {{#ifCond want_act1 'sport' }}체육놀이{{/ifCond}}
                   {{#ifCond want_act1 'simple_cleaning' }}간단 청소{{/ifCond}}
                   {{#ifCond want_act1 'eat' }}밥 챙겨주기{{/ifCond}}
                   {{#ifCond want_act1 'do_dish' }}간단 설거지{{/ifCond}}
@@ -474,8 +474,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   {{#ifCond want_act2 'outside' }}야외활동{{/ifCond}}
                   {{#ifCond want_act2 'korean' }}한글놀이{{/ifCond}}
                   {{#ifCond want_act2 'english' }}영어놀이{{/ifCond}}
-                  {{#ifCond want_act2 'study' }}실내놀이{{/ifCond}}
-                  {{#ifCond want_act2 'sport' }}학습지도{{/ifCond}}
+                  {{#ifCond want_act2 'study' }}학습지도{{/ifCond}}
+                  {{#ifCond want_act2 'sport' }}체육놀이{{/ifCond}}
                   {{#ifCond want_act2 'simple_cleaning' }}간단 청소{{/ifCond}}
                   {{#ifCond want_act2 'eat' }}밥 챙겨주기{{/ifCond}}
                   {{#ifCond want_act2 'do_dish' }}간단 설거지{{/ifCond}}
@@ -487,8 +487,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   {{#ifCond want_act3 'outside' }}야외활동{{/ifCond}}
                   {{#ifCond want_act3 'korean' }}한글놀이{{/ifCond}}
                   {{#ifCond want_act3 'english' }}영어놀이{{/ifCond}}
-                  {{#ifCond want_act3 'study' }}실내놀이{{/ifCond}}
-                  {{#ifCond want_act3 'sport' }}학습지도{{/ifCond}}
+                  {{#ifCond want_act3 'study' }}학습지도{{/ifCond}}
+                  {{#ifCond want_act3 'sport' }}체육놀이{{/ifCond}}
                   {{#ifCond want_act3 'simple_cleaning' }}간단 청소{{/ifCond}}
                   {{#ifCond want_act3 'eat' }}밥 챙겨주기{{/ifCond}}
                   {{#ifCond want_act3 'do_dish' }}간단 설거지{{/ifCond}}

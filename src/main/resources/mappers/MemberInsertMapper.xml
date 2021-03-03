@@ -5,68 +5,6 @@
 <!-- 데이터 대량 주입용 Mapper 0204 hari -->
 <mapper namespace="MemberInsertMapper">
 
-	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
-	<resultMap id="MemberMap"
-		type="study.team.abuhae.model.Member">
-		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-		<result property="memberno" column="memberno" />
-		<result property="type" column="type" />
-		<result property="id" column="id" />
-		<result property="password" column="password" />
-		<result property="name" column="name" />
-		<result property="email" column="email" />
-		<result property="phone" column="phone" />
-		<result property="birthdate" column="birthdate" />
-		<result property="gender" column="gender" />
-		<result property="job_opening" column="job_opening" />
-		<result property="signup_date" column="signup_date" />
-		<result property="subscribe" column="subscribe" />
-	</resultMap>
-
-	<resultMap id="MomMap"
-		type="study.team.abuhae.model.Mom_info">
-		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-		<result property="momno" column="momno" />
-		<result property="want_act1" column="want_act1" />
-		<result property="want_act2" column="want_act2" />
-		<result property="want_act3" column="want_act3" />
-		<result property="want_age" column="want_age" />
-		<result property="kids_num" column="kids_num" />
-		<result property="kids_age" column="kids_age" />
-		<result property="payment" column="payment" />
-		<result property="payment_ok" column="payment_ok" />
-		<result property="si" column="si" />
-		<result property="gu" column="gu" />
-		<result property="dong" column="dong" />
-		<result property="schedule" column="schedule" />
-		<result property="schedule_ok" column="schedule_ok" />
-		<result property="sitter_gender" column="sitter_gender" />
-		<result property="interview_type" column="interview_type" />
-		<result property="care_type" column="care_type" />
-		<result property="openingdate" column="openingdate" />
-		<result property="memberno" column="memberno" />
-	</resultMap>
-
-	<resultMap id="SitterMap"
-		type="study.team.abuhae.model.Sitter_info">
-		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-		<result property="sitterno" column="sitterno" />
-		<result property="sitter_type" column="sitter_type" />
-		<result property="want_act1" column="want_act1" />
-		<result property="want_act2" column="want_act2" />
-		<result property="want_act3" column="want_act3" />
-		<result property="want_age" column="want_age" />
-		<result property="payment" column="payment" />
-		<result property="payment_ok" column="payment_ok" />
-		<result property="si" column="si" />
-		<result property="gu" column="gu" />
-		<result property="dong" column="dong" />
-		<result property="schedule" column="schedule" />
-		<result property="introduce" column="introduce" />
-		<result property="cctv" column="cctv" />
-		<result property="openingdate" column="openingdate" />
-		<result property="memberno" column="memberno" />
-	</resultMap>
 
 	<!-- 데이터 저장을 위한 기능 정의 -->
 
