@@ -119,12 +119,12 @@ a:hover {
   border-bottom: 1px solid #eee;
 }
 
-.wrap_get_sitter .group1_get_sitter .appl_img {
-  width: 20%;
+.wrap_get_sitter .group1_get_sitter .appl_img img {
+margin-right: 10px
 }
 
 .wrap_get_sitter .group1_get_sitter .gs_appl_cont {
-  width: 80%;
+  width: 100%;
 }
 
 .wrap_get_sitter .group1_get_sitter .gs_appl .si_name {

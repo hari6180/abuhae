@@ -50,9 +50,9 @@
                 <div class="col-xs-12 input">
                     <form action="${pageContext.request.contextPath}/customer/cus_search.do" role="search" class="search search-full" data-search
 	                data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
-	                	<input type="search" name="keyword" id="keyword" value="${keyword}" placeholder="검색" aria-label="검색">
-                	<button type="submit">검색</button>
-                </form>
+	                	<input type="search" name="keyword" id="keyword" class="cus_search" value="${keyword}" placeholder="검색어를 입력하세요." aria-label="검색">
+	                	<button type="submit" class="cus_btn"><i class="fas fa-search"></i></button>
+	                </form>
                 </div>
                 <div class="col-xs-12 section">
                     <div class="section_header">
@@ -64,19 +64,19 @@
                     <div class="col-xs-12 section_middle">
                     	<!-- sub_category1 -->
                     	<c:choose>
-                			<c:when test="${out==null || fn:length(output) == 0}">
-                				<p>조회결과가 없습니다.</p> 
-                			</c:when>
-                			
-                			<c:otherwise>
-                				<c:forEach var="item_cate" items="${out}" varStatus="status">
-                					<!-- 카테고리=1(이용가이드) / 서브카테고리=1(이용가이드)의 작성글 제목 조회 -->
-                					<c:if test="${item_cate.cateno == 2 && item_cate.subcateno==5}">
-                						<h2>${item_cate.sub_category}</h2>
-                					</c:if>
-                				</c:forEach>
-                			</c:otherwise>
-                		</c:choose>
+                   			<c:when test="${out==null || fn:length(out) == 0}">
+                   				<p>조회결과가 없습니다.</p> 
+                   			</c:when>
+                   			
+                   			<c:otherwise>
+                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
+                   					<!-- 카테고리=1(이용가이드) / 서브카테고리=1(이용가이드)의 작성글 제목 조회 -->
+                   					<c:if test="${item_cate.cateno==2 && item_cate.subcateno==5}">
+                   						<h2>${item_cate.sub_category}</h2>
+                   					</c:if>
+                   				</c:forEach>
+                   			</c:otherwise>
+                   		</c:choose>
                 		
                 		<!-- sub_category1의 작성글 -->
                         <div class="col-xs-12 section_title">
@@ -102,13 +102,9 @@
                  			</c:otherwise>
                  		</c:choose>
                  	</div>
-                 	<div class="col-xs-12 section_title_2">
-                    		<a href="#">문서 7개 모두 보기</a>
-                 	</div>
+                  </div>
                  </div>
-                </div>
-                <div class="col-xs-12 footer">
-                </div>
+                <div class="col-xs-12 footer"></div>
 			</div> <!-- row 끝 -->
         </div> <!-- container 끝 -->
 	

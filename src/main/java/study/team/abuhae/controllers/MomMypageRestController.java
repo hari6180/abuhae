@@ -3,7 +3,6 @@ package study.team.abuhae.controllers;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +12,6 @@ import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Review;
-import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.AdminService;
 import study.team.abuhae.service.MomMypageService;
 
@@ -43,7 +41,7 @@ public class MomMypageRestController {
 		/** 사용자가 입력한 파라미터 유효성 검사 */
 		String review = input.getContents(); 
 		if(!regexHelper.isValue(review)) {
-			return webHelper.getJsonError("내용을 입력해주세요.");
+			return webHelper.getJsonWarning("내용을 입력해주세요.");
 		}
 		
 		try {

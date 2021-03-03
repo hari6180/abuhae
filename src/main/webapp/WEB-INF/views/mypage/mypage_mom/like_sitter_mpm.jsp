@@ -79,13 +79,14 @@
 	                                                   		</c:if>
 		                                                </div>
 		                                                <div class="ls_page_box_right">
-		                                               	 	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}">
-		                                                    	<p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;"> ${item.reg_date}</p>
-		                                                    	<p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }&nbsp;${item.gu } </p>
-			                                                    <p style="color: #888888; font-size: 0.8em;">
-			                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
-			                                                    </p>
-		                                                    </a>
+		                                               	 	
+	                                                    	<p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;">
+	                                                    		<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}"> ${item.reg_date} </a></span>
+	                                                    	</p>
+	                                                    	<p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }&nbsp;${item.gu } </p>
+		                                                    <p style="color: #888888; font-size: 0.8em;">
+		                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 
+		                                                    </p>
 		                                                </div>          
 		                                            </div>
 		                                        </div>
@@ -103,7 +104,7 @@
 		                                                </div>
 		                                                <div class="ls_page_box_right">
 		                                               	 	
-	                                                    	<p style="font-size: 1em; font-weight: bold; color: #888888;">${item.name} <span style="font-size: 0.8em;"> ${item.reg_date}</p>
+	                                                    	<p style="font-size: 1em; font-weight: bold; color: #888888;">${item.name} <span style="font-size: 0.8em;"> ${item.reg_date}</span></p>
 		                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }&nbsp;${item.gu } </p>
 		                                                    <p style="color: #888888; font-size: 0.8em;">
 		                                                        <span> ${item.birthdate}세</span> l <span>희망시급 ${item.payment }원</span> 

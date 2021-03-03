@@ -62,118 +62,68 @@
                         <div class="row">
                             <div class="col-xs-12 rev_tab_panel">
                                 <div class="rev_tab_panel_con">
-                                    <!-- 미작성 후기 -->
-                                   <!--  <div id="tab_page_1">
-                                        <div class="si_rev_no">
-                                            <div class="si_rev_no_tl">
-                                                <!-- 후기작성 부모 프로필사진 -->
-                                              <!--  <div class="si_rev_no_prof">
-                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="임시프로필" style="width: 42px; border-radius: 50%;">
-                                                </div>
-                                                <!-- 후기작성 부모 정보 -->
-                                              <!--   <div class="si_rev_no_info">
-                                                    <h4>김○영 부모</h4>
-                                                    <h5>서울특별시 강남구</h5>
-                                                </div>
-                                            </div>
-                                            <a data-toggle="modal" href="#rev_modal">
-                                                <button type="button" class="rev_no_btn">후기 작성하기</button>
-                                            </a>
-                                        </div>
-                                        
-                                    </div> -->
-
-                                    <!-- 작성한 후기 -->
-                                <!--    <div id="tab_page_2" class="hide">
-                                        <div class="si_rev_no">
-                                            <div class="si_rev_no_tl">
-                                                <!-- 후기작성 부모 프로필사진 -->
-                                            <!--     <div class="si_rev_no_prof">
-                                                    <img src="${pageContext.request.contextPath}/assets/img/mypage_img/profile.jpg" alt="임시프로필" style="width: 42px; border-radius: 50%;">
-                                                </div>
-                                                <!-- 후기작성 부모 정보 -->
-                                        <!--          <div class="si_rev_no_info">
-                                                    <h5>서울특별시 강남구</h5>
-                                                    <p class="star">★★★★</p>
-                                                    <p>작성일시 ㅣ 2020.11.23 22:00</p>
-                                                    <p class="rev_text">친절하시고, 간식도 잘 챙겨주셔서 정말 좋았습니다! 하지만 아이가 오르기를 너무 좋아하더라구요,, 다람쥐인줄</p>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="rev_button">
-                                                <a href="#" style="width:100%;">
-                                                    <button id="remove_btn" class="rev_no_btn" type="button">
-                                                        삭제하기
-                                                    </button>
-                                                </a>
-                                            </div>-->
-                                    <!--  </div>
-                                    </div> -->
-
                                     <!-- 받은 후기 -->
                                     <div id="tab_page_3">
                                     	<c:forEach var="item" items="${output}" varStatus="status">
                                     		  <c:if test="${item.contents != null }">
-                                    		  		<a href="${pageContext.request.contextPath}/page_detail/mom_detail.do?momno=${item.momno}">
-                                    		  			<div class="si_rev_no">
-				                                            <div class="si_rev_no_tl">
-				                                                <!-- 후기작성 부모 프로필사진 -->
-				                                                <div class="si_rev_no_prof">
-				                                                    <c:if test="${item.isProfile eq '0'}">
-			                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
-			                                                   		</c:if>
-			                                                   		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
-			                                                   			<img src="${item.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
-			                                                   		</c:if>
-				                                                </div>
-				                                                <!-- 후기작성 부모 정보 -->
-				                                                <div class="si_rev_no_info">
-				                                                    <h4>${item.name } 부모 <span class="rev_info" style="font-size: 0.85em; color: #999999;">영아 1명 ㅣ 채용후기</span></h4>
-				                                                    <p class="star">
-				                                                    	<c:if test="${item.rev_rate eq '1'.charAt(0) }">
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																		</c:if>
-																		<c:if test="${item.rev_rate eq '2'.charAt(0) }">
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																		</c:if>
-																		<c:if test="${item.rev_rate eq '3'.charAt(0) }">
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																		</c:if>
-																		<c:if test="${item.rev_rate eq '4'.charAt(0) }">
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ccc;"><i class="fas fa-star"></i></span>
-																		</c:if>
-																		<c:if test="${item.rev_rate eq '5'.charAt(0) }">
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																			<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
-																		</c:if>
-				                                                    	<span class="rev_info" style="font-size: 0.85em; color: #999999;">${item.reg_date }</span>
-				                                                    </p>
-				                                                    <p class="rev_text">${item.contents}</p>
-				                                                </div>
-				                                            </div>
-				                                           <!--   <a data-toggle="modal" href="#rev_modal2">
-																<button type="button" class="rev_no_btn">답글 작성하기</button>
-															 </a> -->
-				                                        </div>	
-                                    		  		</a>
+                                    		  		
+                              		  			<div class="si_rev_no">
+		                                            <div class="si_rev_no_tl">
+		                                                <!-- 후기작성 부모 프로필사진 -->
+		                                                <div class="si_rev_no_prof">
+		                                                    <c:if test="${item.isProfile eq '0'}">
+	                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
+	                                                   		</c:if>
+	                                                   		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
+	                                                   			<img src="${item.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
+	                                                   		</c:if>
+		                                                </div>
+		                                                <!-- 후기작성 부모 정보 -->
+		                                                <div class="si_rev_no_info">
+		                                                    <h4>${item.name } 부모 <span class="rev_info" style="font-size: 0.85em; color: #999999;">영아 1명 ㅣ 채용후기</span></h4>
+		                                                    <p class="star">
+		                                                    	<c:if test="${item.rev_rate eq '1'.charAt(0) }">
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																</c:if>
+																<c:if test="${item.rev_rate eq '2'.charAt(0) }">
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																</c:if>
+																<c:if test="${item.rev_rate eq '3'.charAt(0) }">
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																</c:if>
+																<c:if test="${item.rev_rate eq '4'.charAt(0) }">
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ccc;"><i class="fas fa-star"></i></span>
+																</c:if>
+																<c:if test="${item.rev_rate eq '5'.charAt(0) }">
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																	<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
+																</c:if>
+		                                                    	<span class="rev_info" style="font-size: 0.85em; color: #999999;">${item.reg_date }</span>
+		                                                    </p>
+		                                                    <p class="rev_text">${item.contents}</p>
+		                                                </div>
+		                                            </div>
+		                                        </div>	
+                                    		  	
                                     		  </c:if>
                                     	</c:forEach>
                                         

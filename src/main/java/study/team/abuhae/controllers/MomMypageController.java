@@ -26,7 +26,6 @@ import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.ProfileFile;
 import study.team.abuhae.model.Report;
 import study.team.abuhae.model.Review;
-import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.AdminService;
 import study.team.abuhae.service.MomMypageService;
 import study.team.abuhae.service.UploadService;
@@ -83,15 +82,6 @@ public class MomMypageController {
 		model.addAttribute("reportcount", reportcount);
 		
 		return new ModelAndView("mypage/mypage_mom/mom_mypage");
-	}
-	
-	
-	@RequestMapping(value = "/mypage/mypage_mom/update_password_ok.do", method = RequestMethod.POST)
-	public ModelAndView update_password_mom_ok(Model model, HttpSession session
-		) {
-		//String redirectUrl = contextPath + "/mypage/mypage_mom/mom_mypage.do?memberno=" + input.getMemberno();
-		//return webHelper.redirect(redirectUrl, "비밀번호가 수정되었습니다.");
-	return new ModelAndView("mypage/mypage_mom/update_password_ok");
 	}
 	
 	/** 내 구인 현황 페이지 */

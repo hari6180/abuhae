@@ -49,9 +49,9 @@
              </div>
              <div class="col-xs-12 input">
                 <form action="${pageContext.request.contextPath}/customer/cus_search.do" role="search" class="search search-full" data-search
-                data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
-                	<input type="search" name="keyword" id="keyword" value="${keyword}" placeholder="검색" aria-label="검색">
-                	<button type="submit">검색</button>
+	                data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
+                	<input type="search" name="keyword" id="keyword" class="cus_search" value="${keyword}" placeholder="검색" aria-label="검색">
+                	<button type="submit" class="cus_btn"><i class="fas fa-search"></i></button>
                 </form>
              </div>
              <div class="col-xs-12 section">

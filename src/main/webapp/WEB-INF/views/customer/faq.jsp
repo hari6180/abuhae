@@ -51,8 +51,8 @@
                     <div class="col-xs-12 input">
                         <form action="${pageContext.request.contextPath}/customer/cus_search.do" role="search" class="search search-full" data-search
 		                data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
-		                	<input type="search" name="keyword" id="keyword" value="${keyword}" placeholder="검색" aria-label="검색">
-		                	<button type="submit">검색</button>
+		                	<input type="search" name="keyword" id="keyword" class="cus_search" value="${keyword}" placeholder="검색어를 입력하세요." aria-label="검색">
+		                	<button type="submit" class="cus_btn"><i class="fas fa-search"></i></button>
 		                </form>
                     </div>
                     <div class="col-xs-12 section">
@@ -63,51 +63,46 @@
                         
                         <!-- 첫번째 서브 카테고리 게시글 목록 조회 -->
                         <div class="col-xs-12 section_middle">
-                        	<form action="">
-                        		<!-- sub_category1 -->
-	                        	<c:choose>
-		                   			<c:when test="${out==null || fn:length(out) == 0}">
-		                   				<p>조회결과가 없습니다.</p> 
-		                   			</c:when>
-		                   			
-		                   			<c:otherwise>
-		                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
-		                   					<!-- 카테고리=1(이용가이드) / 서브카테고리=1(이용가이드)의 작성글 제목 조회 -->
-		                   					<c:if test="${item_cate.cateno==1 && item_cate.subcateno==1}">
-		                   						<h2>${item_cate.sub_category}</h2>
-		                   					</c:if>
-		                   				</c:forEach>
-		                   			</c:otherwise>
-		                   		</c:choose>
-		                   		
-		                   		<!-- sub_category1의 작성글 -->
-	                            <div class="col-xs-12 section_title">
-		                    		<c:choose>
-		                    			<c:when test="${output==null || fn:length(output) == 0}">
-		                    				<p>조회결과가 없습니다.</p>
-		                    			</c:when>
-		                    			
-		                    			<c:otherwise>
-		                    				<c:forEach var="item" items="${output}" varStatus="status">
-		                    					
-		                    					<%-- 상세페이지 URL --%>
-		                    					<c:url value="/customer/cus_view.do" var="viewUrl">
-		                    						<c:param name="boardnum" value="${item.boardnum}"/>
-		                    					</c:url>
-		                    					<c:if test="${item.cateno==1 && item.subcateno == 1}">
-		                    						<ul>
-			                    						<li><a href="${viewUrl}">[${item.sub_category}] ${item.title}</a></li>
-			                    					</ul>
-		                    					</c:if>
-		                    					
-		                    				</c:forEach>
-		                    			</c:otherwise>
-		                    		</c:choose>
-		                    	</div>
-		                    	<div class="col-xs-12 section_title_2">
-		                       		<button type="submit" name="subcateno" value="1">문서 모두 보기</button>
-		                    	</div>
-                        	</form>
+                       		<!-- sub_category1 -->
+                        	<c:choose>
+	                   			<c:when test="${out==null || fn:length(out) == 0}">
+	                   				<p>조회결과가 없습니다.</p> 
+	                   			</c:when>
+	                   			
+	                   			<c:otherwise>
+	                   				<c:forEach var="item_cate" items="${out}" varStatus="status">
+	                   					<!-- 카테고리=1(이용가이드) / 서브카테고리=1(이용가이드)의 작성글 제목 조회 -->
+	                   					<c:if test="${item_cate.cateno==1 && item_cate.subcateno==1}">
+	                   						<h2>${item_cate.sub_category}</h2>
+	                   					</c:if>
+	                   				</c:forEach>
+	                   			</c:otherwise>
+	                   		</c:choose>
+	                   		
+	                   		<!-- sub_category1의 작성글 -->
+                            <div class="col-xs-12 section_title">
+	                    		<c:choose>
+	                    			<c:when test="${output==null || fn:length(output) == 0}">
+	                    				<p>조회결과가 없습니다.</p>
+	                    			</c:when>
+	                    			
+	                    			<c:otherwise>
+	                    				<c:forEach var="item" items="${output}" varStatus="status">
+	                    					
+	                    					<%-- 상세페이지 URL --%>
+	                    					<c:url value="/customer/cus_view.do" var="viewUrl">
+	                    						<c:param name="boardnum" value="${item.boardnum}"/>
+	                    					</c:url>
+	                    					<c:if test="${item.cateno==1 && item.subcateno == 1}">
+	                    						<ul>
+		                    						<li><a href="${viewUrl}">[${item.sub_category}] ${item.title}</a></li>
+		                    					</ul>
+	                    					</c:if>
+	                    					
+	                    				</c:forEach>
+	                    			</c:otherwise>
+	                    		</c:choose>
+	                    	</div>
 	                    </div>
 	                    
 	                    <!-- 두번째 서브 카테고리 게시글 목록 조회 -->
@@ -152,16 +147,13 @@
 	                    			</c:otherwise>
 	                    		</c:choose>
 	                    	</div>
-	                    	<div class="col-xs-12 section_title_2">
-	                       		<a href="#">문서 7개 모두 보기</a>
-	                    	</div>
 	                    </div>
                     
                     	<!-- 세번째 서브 카테고리 게시글 목록 조회 -->
                         <div class="col-xs-12 section_middle">
                         	<!-- sub_category3 -->
                         	<c:choose>
-	                   			<c:when test="${out==null || fn:length(output) == 0}">
+	                   			<c:when test="${out==null || fn:length(out) == 0}">
 	                   				<p>조회결과가 없습니다.</p> 
 	                   			</c:when>
 	                   			
@@ -199,16 +191,13 @@
 	                    			</c:otherwise>
 	                    		</c:choose>
 	                    	</div>
-	                    	<div class="col-xs-12 section_title_2">
-	                       		<a href="#">문서 7개 모두 보기</a>
-	                    	</div>
 	                    </div>
 	                    
 	                    <!-- 네번째 서브 카테고리 게시글 목록 조회 -->
                         <div class="col-xs-12 section_middle">
                         	<!-- sub_category4 -->
                         	<c:choose>
-	                   			<c:when test="${out==null || fn:length(output) == 0}">
+	                   			<c:when test="${out==null || fn:length(out) == 0}">
 	                   				<p>조회결과가 없습니다.</p> 
 	                   			</c:when>
 	                   			
@@ -246,14 +235,10 @@
 	                    			</c:otherwise>
 	                    		</c:choose>
 	                    	</div>
-	                    	<div class="col-xs-12 section_title_2">
-	                       		<a href="#">문서 7개 모두 보기</a>
-	                    	</div>
 	                    </div>
-	                     
                     </div>
-                    <div class="col-xs-12 footer">
-                    </div>
+                    
+                    <div class="col-xs-12 footer"></div>
 			</div> <!-- row 끝 -->
         </div> <!-- container 끝 -->
 
@@ -261,10 +246,5 @@
 		<!-- Javascript -->
 		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
 		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-		//$(function() {
-		//	$("#menu").load("../index_header.html");
-		//});
-		</script>
 	</body>
 </html>

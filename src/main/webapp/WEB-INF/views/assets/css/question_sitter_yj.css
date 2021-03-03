@@ -272,3 +272,17 @@ a:hover {
             margin-top: 60px;
             padding: 30px 0;
         }
+        
+         .cus_search {
+        	width: 70%;
+        	height: 30px;
+        }
+        
+        button {
+        	width: 30px;
+        	height: 30px;
+        	border: 0;
+        	background-color: #858585;
+        	border-radius: 3px;
+        	color: #ffffff;
+        }

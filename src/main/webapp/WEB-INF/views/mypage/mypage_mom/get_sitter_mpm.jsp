@@ -77,18 +77,22 @@
                                         	</c:when>
                                         	<c:otherwise>
                                         		<c:forEach var="out" items="${out}" varStatus="status">
-                                        			<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${out.sitterno}">
-                                        				<div class="gs_appl">
+                                        			<!-- 시터가 구직 중일 경우 -->
+                                       				<c:if test="${out.job_opening eq 'Y'.charAt(0) }">
+                                       					<div class="gs_appl">
 				                                            <div class="appl_img">
 				                                                <c:if test="${out.isProfile eq '0'}">
-		                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
+		                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 52px; height:52px; border-radius: 50%;"/>
 		                                                   		</c:if>
 		                                                   		<c:if test="${out.isProfile eq 'y'.charAt(0) }">
-		                                                   			<img src="${out.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
+		                                                   			<img src="${out.fileUrl }" alt="임시프로필" style="width: 52px; height: 52px; border-radius: 50%;">
 		                                                   		</c:if>
 				                                            </div>
 				                                            <div class="gs_appl_cont">
-				                                                <p class="si_name">${out.name } <span> ( ${out.birthdate }세 )</span></p>
+				                                            	
+			                                               	 	<p class="si_name">
+			                                               		 	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${out.sitterno}">${out.name } <span> ( ${out.birthdate }세 )</span> </a>
+			                                               	 	</p>
 				                                                <p>희망시급 : ${out.payment }원</p>
 				                                                <p>지원시간 : ${out.applydate }</p>
 				                                                <c:if test="${out.accept == null }">
@@ -115,7 +119,30 @@
 				                                                </c:if>
 				                                            </div>
 				                                        </div> 
-                                        			</a>
+                                       				</c:if>
+			                                        <!-- 시터가 구직 종료 하였을 경우 -->
+			                                        <c:if test="${out.job_opening eq 'N'.charAt(0)}">
+			                                        	<div class="gs_appl" id="no_show1">
+				                                            <div class="appl_img">
+				                                                <c:if test="${out.isProfile eq '0'}">
+		                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
+		                                                   		</c:if>
+		                                                   		<c:if test="${out.isProfile eq 'y'.charAt(0) }">
+		                                                   			<img src="${out.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
+		                                                   		</c:if>
+				                                            </div>
+				                                            <div class="gs_appl_cont">
+			                                               	 	<p class="si_name">${out.name } <span> ( ${out.birthdate }세 )</span></p>
+				                                                <p>희망시급 : ${out.payment }원</p>
+				                                                <p>지원시간 : ${out.applydate }</p>
+				                                               
+			                                                	<div class="deny">
+				                                                    <p>시터가 구직을 종료하였습니다.</p>
+				                                                </div>
+				                                            </div>
+				                                        </div> 
+			                                        </c:if>
+                                        			
                                         		</c:forEach>
                                         	</c:otherwise>
                                         </c:choose>                                          
@@ -130,8 +157,9 @@
                                         	</c:when>
                                         	<c:otherwise>
                                         		<c:forEach var="in" items="${in }" varStatus="status">
-                                        			<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${in.sitterno}">
-                                        				<div class="gs_appl">
+                                        			<!-- 구인중인 회원 -->
+                                       				<c:if test="${in.job_opening eq 'Y'.charAt(0) }">
+                                       					<div class="gs_appl">
 				                                            <div class="appl_img">
 				                                                <c:if test="${in.isProfile eq '0'}">
 		                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 52px; height: 52px; border-radius: 50%;"/>
@@ -141,7 +169,10 @@
 		                                                   		</c:if>
 				                                            </div>
 				                                            <div class="gs_appl_cont">
-				                                                <p class="si_name">${in.name } <span>( ${in.birthdate }세 )</span></p>
+				                                            	
+			                                               	    <p class="si_name">
+			                                               	 		<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${in.sitterno}">${in.name } <span>( ${in.birthdate }세 )</span></a>
+			                                               	    </p>
 				                                                <p>희망시급 : ${in.payment}원</p>
 				                                                <p>지원시간 : ${in.applydate }</p>
 				                                                <c:if test="${in.accept == null}">
@@ -210,8 +241,33 @@
 					                                                </div>
 	                                                            </c:if>
 				                                            </div>
-				                                        </div> 
-                                        			</a>
+				                                        </div>
+                                       				</c:if>
+                                       				
+                                       				<!-- 구인종료한 회원일 경우 --> 
+                                       				<c:if test="${in.job_opening eq 'N'.charAt(0)}">
+                                       					<div class="gs_appl" id="no_show2">
+				                                            <div class="appl_img">
+				                                                <c:if test="${in.isProfile eq '0'}">
+		                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 52px; height: 52px; border-radius: 50%;"/>
+		                                                   		</c:if>
+		                                                   		<c:if test="${in.isProfile eq 'y'.charAt(0) }">
+		                                                   			<img src="${in.fileUrl }" alt="임시프로필" style="width: 52px; height: 52px; border-radius: 50%;">
+		                                                   		</c:if>
+				                                            </div>
+				                                            <div class="gs_appl_cont">
+				                                               	 <p class="si_name">
+				                                               	 	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${in.sitterno}">${in.name } <span>( ${in.birthdate }세 )</span></a>
+			                                               	 	</p>
+				                                                <p>희망시급 : ${in.payment}원</p>
+				                                                <p>지원시간 : ${in.applydate }</p>
+				                                               <div class="deny">
+			                                                    	<p>시터가 구직 종료하였습니다.</p>
+			                                                	</div>
+				                                            </div>
+				                                        </div>
+                                       				</c:if>
+                                        			
                                         		</c:forEach>
                                         	</c:otherwise>
                                         </c:choose>
@@ -237,6 +293,17 @@
         <script type="text/javascript">
         	 $(function() {
         		 console.log("${output}");
+        		 
+        		 // 구직 종료 회원 프로필을 클릭했을 경우 메세지 창 
+        		 $("#no_show1").click(function(e) {
+        			 alert("시터가 프로필을 비공개하였습니다.");
+        			 return;
+        		 });
+        		 
+        		 $("#no_show2").click(function(e) {
+        			 alert("시터가 프로필을 비공개하였습니다.");
+        			 return;
+        		 });
         		 
                 $(".gs_tab_item").click(function(e) {
                     e.preventDefault();

@@ -136,13 +136,13 @@ public class SitterMypageController {
 
 	      /** 1) 파라미터 유효성 검사 */
 	      if (memberno == 0) {
-	         return webHelper.redirect(null, "no exist membernumber.");
+	         return webHelper.redirect(null, "회원번호가 존재하지 않습니다.");
 	      }
 	      if(oldpassword=="" || oldpassword==null) {
-	         return webHelper.redirect(null, "input your now password.");
+	         return webHelper.redirect(null, "현재 비밀번호를 입력하세요.");
 	      }
 	      if(newpassword=="" || newpassword==null) {
-	         return webHelper.redirect(null, "input your new password.");
+	         return webHelper.redirect(null, "새로운 비밀번호를 입력하세요.");
 	      }
 	      
 	      /** 2) 데이터 조회하기 */

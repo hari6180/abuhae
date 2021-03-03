@@ -81,7 +81,11 @@
    parameterType="study.team.abuhae.model.Review" resultMap="ReviewMap">
       select revno, c.accept as accept, s.si, s.gu, s.dong, m.name, mi.momno as momno, s.sitterno as sitterno, r.who, rev_rate,
       (SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
-	  (SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl
+	  (SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl,
+	  FLOOR(
+		(CAST(REPLACE(current_date,'-','') AS
+		signed) -
+		CAST(REPLACE(birthdate,'-','') as signed)) / 10000 ) + 2 as birthdate
       from review r
       inner join connect c on r.cntno = c.cntno
       inner join sitter_info s on s.sitterno = c.sitterno
@@ -95,7 +99,10 @@
    <select id="selectReviewList"
    parameterType="study.team.abuhae.model.Review" resultMap="ReviewMap">
 		select revno, rev_rate, reg_date, contents, r.momno, r.sitterno, r.cntno, r.who,
-		m.name, s.si, s.gu, s.dong,
+		m.name, s.si, s.gu, s.dong,FLOOR(
+		(CAST(REPLACE(current_date,'-','') AS
+		signed) -
+		CAST(REPLACE(birthdate,'-','') as signed)) / 10000 ) + 2 as birthdate,
 		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = s.memberno) AS isProfile, 
 		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = s.memberno) AS fileUrl
 		from review r 

@@ -332,3 +332,20 @@ a {
     width: 100%;
     padding: 0 20px;
 }
+
+.cus_search {
+	width: 80%;
+	height: 37px;
+	border: 0;
+	border-radius: 4px;
+}
+
+button {
+	color: #ffffff;
+	background-color: #858585;
+	width: 37px;
+	height: 37px;	
+	border: 0;
+	border-radius: 4px;
+	font-size: 1.1em;
+}

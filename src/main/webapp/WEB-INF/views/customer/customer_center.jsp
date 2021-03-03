@@ -48,10 +48,10 @@
 			<div class="section_main"> <!-- Background-image -->
 			<div class="section_input"> <!-- glyphicon -->
 			<form action="${pageContext.request.contextPath}/customer/cus_search.do" role="search" class="search search-full" data-search
-                data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
-				<input type="search" name="keyword" id="keyword" value="${keyword}" placeholder="검색" aria-label="검색">
-				<button type="submit">검색</button>
-			</form>
+              data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
+              	<input type="search" name="keyword" id="keyword" class="cus_search" value="${keyword}" placeholder="검색어를 입력하세요." aria-label="검색">
+              	<button type="submit" class="cus_btn"><i class="fas fa-search"></i></button>
+              </form>
 		</div>
 	</div>
 	</div>

@@ -267,3 +267,17 @@ a:hover {
         .section_title_2 a {
             color: #888887;
         }
+        
+        .cus_search {
+        	width: 70%;
+        	height: 30px;
+        }
+        
+        button {
+        	width: 30px;
+        	height: 30px;
+        	border: 0;
+        	background-color: #858585;
+        	border-radius: 3px;
+        	color: #ffffff;
+        }

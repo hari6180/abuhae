@@ -70,7 +70,7 @@
                                        		</c:when>
                                        		<c:otherwise>
                                        			<c:forEach var="item" items="${output}" varStatus="status">
-		                                        	<a href="${pageContext.request.contextPath}/page_detail/mom_detail.do?momno=${item.momno }">
+		                                        	<c:if test="${item.job_opening eq 'Y'.charAt(0)}">
 		                                        		<div class="lm_page_cont" id="page_con_1">
 				                                            <div class="lm_page_box">
 				                                                <div class="lm_page_box_left">
@@ -82,16 +82,40 @@
 			                                                   		</c:if>
 				                                                </div>
 				                                                <div class="lm_page_box_right">
-				                                                    <p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">신생아 ${item.kids_num }명 ㅣ <span style="color: #888888; font-size: 0.9em;">${item.reg_date }</span></p>
+				                                                	<a href="${pageContext.request.contextPath}/page_detail/mom_detail.do?momno=${item.momno }">
+				                                                    	<p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">신생아&nbsp;${item.kids_num }명 ㅣ <span style="color: #888888; font-size: 0.9em;">${item.reg_date }</span></p>
+				                                                    </a>
 				                                                    <p style="font-size: 1em; font-weight: bold;">${item.apply_title}</p>
-				                                                    <p style="color: #888888; font-size: 0.9em; font-weight: bold;">${item.si} ${item.gu} ㅣ ${item.name }</p>
+				                                                    <p style="color: #888888; font-size: 0.9em; font-weight: bold;">${item.si}&nbsp;${item.gu} ㅣ ${item.name }</p>
 				                                                    <p style="color: #888888; font-size: 0.9em;">
 				                                                        <i class="fas fa-dollar-sign" style="color: #007e62;"></i> 희망시급 ${item.payment }원 
 				                                                    </p>
 				                                                </div>          
 				                                            </div>
 				                                        </div>
-		                                        	</a>
+		                                        	</c:if>
+		                                        	<c:if test="${item.job_opening eq 'N'.charAt(0)}">
+		                                        		<div class="lm_page_cont" id="no_show">
+				                                            <div class="lm_page_box">
+				                                                <div class="lm_page_box_left">
+				                                                    <c:if test="${item.isProfile eq '0'}">
+			                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; border-radius: 50%;"/>
+			                                                   		</c:if>
+			                                                   		<c:if test="${item.isProfile eq 'y'.charAt(0) }">
+			                                                   			<img src="${item.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
+			                                                   		</c:if>
+				                                                </div>
+				                                                <div class="lm_page_box_right">
+				                                                    <p style="color: #0e6f6f; font-weight: bold; font-size: 1em; color: #888888;">신생아&nbsp;${item.kids_num }명 ㅣ <span style="color: #888888; font-size: 0.9em;">${item.reg_date }</span></p>
+				                                                    <p style="font-size: 1em; font-weight: bold;">${item.apply_title}</p>
+				                                                    <p style="color: #888888; font-size: 0.9em; font-weight: bold;">${item.si}&nbsp;${item.gu} ㅣ ${item.name }</p>
+				                                                    <p style="color: #888888; font-size: 0.9em;">
+				                                                        <i class="fas fa-dollar-sign" style="color: #007e62;"></i> 희망시급 ${item.payment }원 
+				                                                    </p>
+				                                                </div>          
+				                                            </div>
+				                                        </div>
+		                                        	</c:if>
 		                                        </c:forEach>
                                        		</c:otherwise>
                                         </c:choose>
@@ -107,28 +131,30 @@
                                         	<c:otherwise>
                                         		<c:forEach var="it" items="${output }" varStatus="status">
                                         			<c:if test="${it.job_opening eq 'Y'.charAt(0)}">
-                                        				<a href="${pageContext.request.contextPath}/page_detail/mom_detail.do?momno=${it.momno}">
+                                        				
                                         					<div class="lm_page_cont" id="page_con_1">
 					                                            <div class="lm_page_box">
 					                                                <div class="lm_page_box_left">
 					                                                    <c:if test="${it.isProfile eq '0'}">
-				                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 52px; height: 52px; border-radius: 50%;"/>
+				                                                   			<img alt="" src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" style="width: 42px; height: 42px; border-radius: 50%;"/>
 				                                                   		</c:if>
 				                                                   		<c:if test="${it.isProfile eq 'y'.charAt(0) }">
-				                                                   			<img src="${it.fileUrl }" alt="임시프로필" style="width: 52px; height: 52px; border-radius: 50%;">
+				                                                   			<img src="${it.fileUrl }" alt="임시프로필" style="width: 42px; height: 42px; border-radius: 50%;">
 				                                                   		</c:if>
 					                                                </div>
 					                                                <div class="lm_page_box_right">
-					                                                    <p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">신생아 ${it.kids_num }명 ㅣ <span style="color: #888888; font-size: 0.9em;">한 달 전</span></p>
+					                                                	<a href="${pageContext.request.contextPath}/page_detail/mom_detail.do?momno=${it.momno}">
+					                                                    	<p style="color: #0e6f6f; font-weight: bold; font-size: 1em;">신생아&nbsp;${it.kids_num }명 ㅣ <span style="color: #888888; font-size: 0.9em;">${it.reg_date }</span></p>
+				                                                    	</a>
 					                                                    <p style="font-size: 1em; font-weight: bold;">${it.apply_title}</p>
-					                                                    <p style="color: #888888; font-size: 0.9em; font-weight: bold;">${it.si} ${it.gu} ㅣ ${it.name }</p>
+					                                                    <p style="color: #888888; font-size: 0.9em; font-weight: bold;">${it.si}&nbsp;${it.gu} ㅣ ${it.name }</p>
 					                                                    <p style="color: #888888; font-size: 0.9em;">
-					                                                        <i class="fas fa-dollar-sign" style="color: #007e62;"></i> 희망시급 ${it.payment }원 
+					                                                        <i class="fas fa-dollar-sign" style="color: #007e62;"></i> 희망시급&nbsp;${it.payment }원 
 					                                                    </p>
 					                                                </div>          
 					                                            </div>
 					                                        </div>
-                                        				</a>
+                                        			
                                         			</c:if>
                                         		</c:forEach>
                                         	</c:otherwise>
@@ -172,6 +198,10 @@
                    if(is_ok) {
                     $(this).parents("#page_con_1").addClass("hide");
                    }
+               });
+               
+               $("#no_show").click(function(e) {
+            	   alert("프로필을 비공개하였습니다.");
                });
            });
            

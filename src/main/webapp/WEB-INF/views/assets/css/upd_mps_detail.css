@@ -193,6 +193,18 @@ label {
   font-size: 0.8em;
 }
 
+.gs_appl_cont {
+	width: 100%;
+}
+
+.gm_appl img {
+	margin-right: 10px;
+}
+
+.gm_info {
+	width: 100%;
+}
+
 /** 탭 네용 상세 css */
 .deny {
   background-color: #eee;
