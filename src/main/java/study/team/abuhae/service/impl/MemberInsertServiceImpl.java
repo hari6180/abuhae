@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Mom_info;
+import study.team.abuhae.model.ResiCert;
+import study.team.abuhae.model.Review;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.MemberInsertService;
 
@@ -58,6 +61,86 @@ public class MemberInsertServiceImpl implements MemberInsertService {
 		}
 
 		return result1;
+	}
+
+	@Override
+	public int applyStInsert(Connect input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.insert("ConnectMapper.applyInterview", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+
+		return result;
+	}
+
+	@Override
+	public int reviewInsert(Review input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.insert("MemberInsertMapper.addReview", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+
+		return result;
+	}
+
+	@Override
+	public int AcceptInsert(Connect input) throws Exception {
+		int result1 = 0;
+
+		try {
+			result1 = sqlSession.insert("MemberInsertMapper.applyInterview", input);
+			if (result1 == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+
+		return result1;
+	}
+
+	@Override
+	public int ResiInsert(ResiCert input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.insert("MemberInsertMapper.addCertify", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+
+		return result;
 	}
 
 }

@@ -123,4 +123,26 @@
 	</insert>
 
 
+	<!-- 인증 파일 업로드 -->
+	<insert id="addCertify"
+		parameterType="study.team.abuhae.model.ResiCert"
+		useGeneratedKeys="true" keyProperty="resino">
+		insert into resi_cert (cert, sitterno) 
+		values(#{cert}, #{sitterno});
+	</insert>
+	
+	   <!--mom 회원 리뷰남기기 -->
+   <insert id="addReview" parameterType="study.team.abuhae.model.Review" useGeneratedKeys="true" keyProperty="revno">
+      insert into review (who, rev_rate, reg_date, contents, sitterno, momno, cntno)
+      values('M', #{rev_rate}, now(), #{contents}, #{sitterno}, #{momno}, #{cntno}) 
+   </insert>
+   
+   <!-- 인터뷰 응답률 -->
+   	<insert id="applyInterview"
+		parameterType="study.team.abuhae.model.Connect"
+		useGeneratedKeys="true" keyProperty="cntno">
+		insert into connect (applydate,
+		who, sitterno, accept, momno) values (now(), #{who}, #{sitterno}, #{accept}, #{momno})
+	</insert>
+
 </mapper>
