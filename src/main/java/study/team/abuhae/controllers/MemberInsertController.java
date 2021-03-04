@@ -66,9 +66,9 @@ public class MemberInsertController {
 			input.setJob_opening('Y');
 
 			// 원하는 활동
-			String wantact1 = acts[random(0, 3)];
-			String wantact2 = acts[random(4, 9)];
-			String wantact3 = acts[random(10, 12)];
+			String wantact1 = new String(acts[random(0, 3)]);
+			String wantact2 = new String(acts[random(4, 9)]);
+			String wantact3 = new String(acts[random(10, 12)]);
 			
 			input.setWant_act1(wantact1);
 			input.setWant_act2(wantact2);
@@ -155,9 +155,9 @@ public class MemberInsertController {
 
 			// 가능한 돌봄유형
 			// 원하는 활동
-			String wantact1 = acts[random(0, 3)];
-			String wantact2 = acts[random(4, 9)];
-			String wantact3 = acts[random(10, 12)];
+			String wantact1 = new String(acts[random(0, 3)]);
+			String wantact2 = new String(acts[random(4, 9)]);
+			String wantact3 = new String(acts[random(10, 12)]);
 			
 			input2.setWant_act1(wantact1);
 			input2.setWant_act2(wantact2);

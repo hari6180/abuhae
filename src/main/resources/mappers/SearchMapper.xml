@@ -117,10 +117,10 @@
 		<!-- 활동 유형 && 상세 검색 && 주소 -->
 		<where>
 			<if test="actList != null">
-				(want_act1 || want_act2 || want_act3) in
-				<foreach item="item1" collection="actList" open="("
-					close=")" separator=",">
-					#{item1}
+				CONCAT(want_act1,want_act2,want_act3)
+				<foreach item="item1" collection="actList"
+					separator="AND CONCAT(want_act1,want_act2,want_act3)">
+					LIKE '%${item1}%'
 				</foreach>
 			</if>
 			<if test="kidsAge != null">
@@ -162,6 +162,8 @@
 			<if test="loc3 != null and loc3 !=''">
 				AND dong = #{loc3}
 			</if>
+			
+			AND job_opening = 'Y'
 		</where>
 	
 
@@ -223,10 +225,10 @@
 		<!-- 활동 유형 && 상세 검색 && 주소 -->
 		<where>
 			<if test="actList != null">
-				(want_act1 || want_act2 || want_act3) in
-				<foreach item="item1" collection="act" open="(" close=")"
-					separator=",">
-					#{item1}
+				CONCAT(want_act1,want_act2,want_act3)
+				<foreach item="item1" collection="actList"
+					separator="AND CONCAT(want_act1,want_act2,want_act3)">
+					LIKE '%${item1}%'
 				</foreach>
 			</if>
 			<if test="kidsAge != null">
@@ -266,6 +268,8 @@
 			<if test="loc3 != null and loc3 !=''">
 				AND dong = #{loc3}
 			</if>
+			
+			AND job_opening = 'Y'
 		</where>
 
 		ORDER BY
@@ -299,10 +303,10 @@
 		<!-- 활동 유형 && 상세 검색 && 주소 -->
 		<where>
 			<if test="actList != null">
-				(want_act1 || want_act2 || want_act3) in
-				<foreach item="item1" collection="act" open="(" close=")"
-					separator=",">
-					#{item1}
+				CONCAT(want_act1,want_act2,want_act3)
+				<foreach item="item1" collection="actList"
+					separator="AND CONCAT(want_act1,want_act2,want_act3)">
+					LIKE '%${item1}%'
 				</foreach>
 			</if>
 			<if test="kidsAge != null">
@@ -342,6 +346,7 @@
 			<if test="loc3 != null and loc3 !=''">
 				AND dong = #{loc3}
 			</if>
+			AND job_opening = 'Y'
 		</where>
 	</select>
 
@@ -356,10 +361,10 @@
 		<!-- 활동 유형 && 상세 검색 && 주소 -->
 		<where>
 			<if test="actList != null">
-				AND (want_act1 || want_act2 || want_act3) in
-				<foreach item="item1" collection="actList" open="("
-					close=")" separator=",">
-					#{item1}
+				CONCAT(want_act1,want_act2,want_act3)
+				<foreach item="item1" collection="actList"
+					separator="AND CONCAT(want_act1,want_act2,want_act3)">
+					LIKE '%${item1}%'
 				</foreach>
 			</if>
 			<if test="kidsAge != null">
@@ -401,6 +406,7 @@
 			<if test="loc3 != null and loc3 !=''">
 				AND dong = #{loc3}
 			</if>
+			AND job_opening = 'Y'
 		</where>
 	</select>
 

@@ -958,11 +958,14 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     max_pay: max_pay,
                     kids_cnt: kids_cnt,
                   },
+                  // 현재 페이지 번호가 전체 페이지 수에 도달하기 전까지만 내용물을 추가한다
                   function (json) {
-                    let source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
-                    let template = Handlebars.compile(source); // 템플릿 코드 컴파일
-                    let result = template(json); // 템플릿 컴파일 결과물에 json 전달
-                    $("#result2").append(result); // 최종 결과물을 추가한다
+                    if (json.meta.totalPage >= nowPage) {
+                      let source = $("#job-list-tmpl").html(); // 템플릿 코드 가져오기
+                      let template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                      let result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                      $("#result2").append(result); // 최종 결과물을 추가한다
+                    }
                   }
                 );
               }

@@ -904,6 +904,20 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
         $(".activity_type_wrap").click(function (e) {
           $(".act_label").removeClass("select_act_type");
           $(".act_label").removeClass("unselect_act_type");
+          // 이미지 찾기
+          let $img = $(".want_img");
+          // 이미지 길이
+          let length = $img.length;
+          // console.log(length);
+
+          for (let i = 0; i < length; i++) {
+            let img_url = $img.eq(i).attr("src");
+            let img_src = img_url.replace(/_s/, "_n");
+            $(".want_img").eq(i).attr("src", img_src);
+          }
+
+          $(".act_btn").prop("checked", false);
+          $(".want_text").removeClass("select_text");
         });
         /** 주소 선택 모달 ------------------------------------------------------------------- */
         //시 클릭했을 때
@@ -1255,11 +1269,14 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     dong: dong, // 동
                     actList: actList,
                   },
+                  // 현재 페이지 번호가 전체 페이지 수에 도달하기 전까지만 내용물을 추가한다
                   function (json) {
-                    let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
-                    let template = Handlebars.compile(source); // 템플릿 코드 컴파일
-                    let result = template(json); // 템플릿 컴파일 결과물에 json 전달
-                    $("#result2").append(result); // 최종 결과물을 추가한다
+                    if (json.meta.totalPage >= nowPage) {
+                      let source = $("#sitter-list-tmpl").html(); // 템플릿 코드 가져오기
+                      let template = Handlebars.compile(source); // 템플릿 코드 컴파일
+                      let result = template(json); // 템플릿 컴파일 결과물에 json 전달
+                      $("#result2").append(result); // 최종 결과물을 추가한다
+                    }
                   }
                 );
               }

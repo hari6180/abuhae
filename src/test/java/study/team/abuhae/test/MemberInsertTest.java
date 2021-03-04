@@ -60,10 +60,13 @@ public class MemberInsertTest {
 			// 스케줄 랜덤입력 
 			// 가능한 요일
 			// 원하는 활동
-			input.setWant_act1(acts[0]);
-			input.setWant_act2(acts[1]);
-			input.setWant_act3(acts[3]);
-
+			String wantact1 = new String(acts[0]);
+			String wantact2 = new String(acts[1]);
+			String wantact3 = new String(acts[3]);
+			
+			input.setWant_act1(wantact1);
+			input.setWant_act2(wantact2);
+			input.setWant_act3(wantact3);
 
 			System.out.println("원하는 활동1 입력 확인" + input.getWant_act1());
 			System.out.println("원하는 활동2 입력 확인" + input.getWant_act2());
@@ -78,6 +81,8 @@ public class MemberInsertTest {
 			System.out.println("원하는 활동3 입력 확인" + input2.getWant_act3());
 			
 			System.out.println(input.getWant_act1() == input2.getWant_act1());
+			
+			System.out.println(input.getWant_act1().equals(input2.getWant_act1()));
 
 		}
 		
