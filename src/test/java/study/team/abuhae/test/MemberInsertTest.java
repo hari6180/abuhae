@@ -80,4 +80,14 @@ public class MemberInsertTest {
 			System.out.println(input.getWant_act1() == input2.getWant_act1());
 
 		}
+		
+		@Test
+		public void testC() {
+			String[] accepts = {"Y", "N"};
+			
+			for(int i = 0; i<100; i++) {
+				String a = accepts[random(0,1)];
+				System.out.println(a);
+			}
+		}
 }
