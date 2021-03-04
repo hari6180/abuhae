@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import study.team.abuhae.helper.AgeHelper;
 import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.ResiCert;
@@ -51,6 +52,7 @@ public class MemberInsertController {
 
 		String[] age = { "got_baby", "baby", "children", "element" };
 
+
 		// 저장할 값들을 Beans에 담는다.
 		Mom_info input = new Mom_info();
 
@@ -81,12 +83,19 @@ public class MemberInsertController {
 			int birthYear = random(1, 9);
 			int birthMonth = random(1, 12);
 			input.setKids_age("201" + birthYear + String.format("%02d", birthMonth));
+			AgeHelper ageHelper = new AgeHelper();
+			String nai = ageHelper.kidsEng(input.getKids_age());
+			String nai2 = "";
 
 			if (input.getKids_num() == 2) {
 				birthYear = random(1, 9);
 				birthMonth = random(1, 12);
 				input.setKids_age2("201" + birthYear + String.format("%02d", birthMonth));
+				nai2 = ageHelper.kidsEng(input.getKids_age2());
 			}
+			
+			input.setKids_nai(nai);
+			input.setKids_nai2(nai2);
 
 			// 시급 랜덤입력
 			int payment = random(9000, 20000);
@@ -115,7 +124,7 @@ public class MemberInsertController {
 					+ String.format("%02d/%02d/%02d", 2021, 03, random(1, 31)) + "\"}");
 			input.setSchedule_ok('Y');
 			input.setSitter_gender('F');
-			input.setCare_type("주1회");
+			input.setCare_type("이모님(도우미)과 함께 도와주세요.");
 
 			// 프로필 업데이트 날짜 랜덤입력
 			String date = String.format("%02d-%02d %02d:%02d:%02d", 3, day, hour, minsec, minsec);

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import study.team.abuhae.helper.AgeHelper;
+import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Mom_info;
 import study.team.abuhae.model.Sitter_info;
@@ -21,6 +23,8 @@ import study.team.abuhae.service.MemberService;
 public class JoinRestController {
 	@Autowired
 	WebHelper webhelper;
+	@Autowired
+	RegexHelper regexHelper;
 	@Autowired
 	MemberService memberService;
 	Mom_info mominfo = new Mom_info();
@@ -63,6 +67,17 @@ public class JoinRestController {
 		check.setId(user_id);
 		check.setEmail(email);
 		check.setPhone(tel);
+		
+		//입력한 나이로 아이 연령대 검사
+		AgeHelper ageHelper = new AgeHelper();
+		String nai = ageHelper.kidsEng(kids_age);
+		String nai2 = "";
+		//아이가 2명일 경우
+		if(regexHelper.isValue(kids_age2)) {
+			nai2 = ageHelper.kidsEng(kids_age2);
+		}
+		
+		
 
 		// 아이디 검사
 		try {
@@ -105,6 +120,8 @@ public class JoinRestController {
 		mominfo.setKids_num(kids_num);
 		mominfo.setKids_age(kids_age);
 		mominfo.setKids_age2(kids_age2);
+		mominfo.setKids_nai(nai);
+		mominfo.setKids_nai2(nai2);
 		mominfo.setPayment(payment);
 		mominfo.setPayment_ok(payment_ok);
 		mominfo.setSi(si);

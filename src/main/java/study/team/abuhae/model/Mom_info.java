@@ -29,6 +29,8 @@ public class Mom_info extends Member {
 	private String want_age;		// 원하는 시터 나이대
 	private int kids_num;			// 아이 수
 	private String kids_age;		// 아이 나이
+	private String kids_nai;		// 아이 연령대
+	private String kids_nai2;		// 아이2 연령대
 	private int payment;			// 시터에게 지불하기 원하는 시급
 	private String si;				// 시
 	private String gu;				// 구

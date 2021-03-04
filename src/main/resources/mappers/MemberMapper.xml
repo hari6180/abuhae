@@ -29,6 +29,8 @@
 		<result property="want_age" column="want_age" />
 		<result property="kids_num" column="kids_num" />
 		<result property="kids_age" column="kids_age" />
+		<result property="kids_nai" column="kids_nai" />
+		<result property="kids_nai2" column="kids_nai2" />
 		<result property="payment" column="payment" />
 		<result property="payment_ok" column="payment_ok" />
 		<result property="si" column="si" />
@@ -84,15 +86,15 @@
 		parameterType="study.team.abuhae.model.Mom_info"
 		useGeneratedKeys="true" keyProperty="momno">
 		INSERT INTO Mom_info (want_act1, want_act2, want_act3,
-		want_age, kids_num, kids_age,
+		want_age, kids_num, kids_age, kids_age2, kids_nai, kids_nai2,
 		payment, payment_ok, si, gu, dong,
 		schedule,
 		schedule_ok, description, sitter_gender,
 		interview_type,
 		care_type,
 		openingdate, memberno) VALUES (#{want_act1},#{want_act2},#{want_act3}, #{want_age},
-		#{kids_num},
-		#{kids_age}, #{payment}, #{payment_ok}, #{si}, #{gu},
+		#{kids_num}, #{kids_age}, #{kids_age2},#{kids_nai},#{kids_nai2},
+		#{payment}, #{payment_ok}, #{si}, #{gu},
 		#{dong}, #{schedule},
 		#{schedule_ok}, #{description},
 		#{sitter_gender},#{interview_type},#{care_type},#{openingdate},

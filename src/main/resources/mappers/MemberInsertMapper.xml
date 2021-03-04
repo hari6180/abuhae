@@ -30,14 +30,14 @@
 		parameterType="study.team.abuhae.model.Mom_info"
 		useGeneratedKeys="true" keyProperty="momno">
 		INSERT INTO Mom_info (want_act1, want_act2, want_act3,
-		want_age, kids_num, kids_age,
+		want_age, kids_num, kids_age, kids_age2, kids_nai, kids_nai2,
 		payment, payment_ok, si, gu, dong,
 		schedule,
 		schedule_ok, sitter_gender,
 		interview_type, care_type,
 		openingdate, memberno) VALUES (#{want_act1},#{want_act2},#{want_act3}, #{want_age},
-		#{kids_num},
-		#{kids_age}, #{payment}, #{payment_ok}, #{si}, #{gu}, #{dong},
+		#{kids_num}, #{kids_age}, #{kids_age2}, #{kids_nai}, #{kids_nai2}, 
+		#{payment}, #{payment_ok}, #{si}, #{gu}, #{dong},
 		#{schedule},
 		#{schedule_ok},
 		#{sitter_gender},#{interview_type},#{care_type},#{openingdate},
