@@ -50,6 +50,8 @@
 		<result property="subscribe" column="subscribe" />
 		<result property="selectdate" column="selectdate" />
 		<result property="wanttime" column="wanttime" />
+		<result property="kids_nai" column="kids_nai" />
+		<result property="kids_nai2" column="kids_nai2" />
 	</resultMap>
 
 	<resultMap id="SitterMap"
@@ -189,7 +191,7 @@
 		REPLACE(json_extract(schedule, '$.wanttime'),'"','') AS wanttime,
 		job_opening, want_act1, want_act2, want_act3, apply_content, apply_title,
 		si, gu, dong, signup_date, description, sitter_gender, care_type, 
-		payment, payment_ok,
+		payment, payment_ok, kids_nai, kids_nai2,
 		(SELECT DATE_FORMAT(openingdate, "%Y년 %m월 %d일") FROM member b WHERE b.memberno=m.memberno) AS openingdate,
 		 startdate, subscribe,
 		(SELECT COUNT(heartno) FROM heart h WHERE m.momno=h.momno AND who='S') AS heartno,

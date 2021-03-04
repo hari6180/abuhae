@@ -76,7 +76,7 @@
 		<!-- 매일 자정마다 실행될 작업 for 멤버탈퇴 -->
 		<task:scheduled ref="scheduleJob" method="everyMidnight_Delete" cron="0 0 0 * * ?"/>
 		<!-- 매일 자정마다 실행될 작업 for 이용권 만료 -->
-		<task:scheduled ref="scheduleJob" method="everyMidnight_Update" cron="0 0 0 * * ?"/>
+		<task:scheduled ref="scheduleJob" method="everyMidnight_Update"  cron="0 0 0 * * ?"/>
 		<!-- 테스트 -->
 		<!--  <task:scheduled ref="scheduleJob" method="everySeconds" cron="* * * * * ?"/> -->
 	</task:scheduled-tasks>

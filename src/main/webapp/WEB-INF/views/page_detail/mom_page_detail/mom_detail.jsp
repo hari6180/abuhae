@@ -143,56 +143,55 @@
 						<div class="box_name">원하는 시터나이</div>
 						<div class="iwant_area">
 							<div class="sitter_age_area">
-								<c:if test="${output.want_age!='20'}">
+							<c:set var="theString" value="${output.want_age}" />
+								<c:if test="${fn:contains(theString, '20')==false}">
 								<div class="sitter_age_no_area">
 									20대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age=='20'}">
+								<c:if test="${fn:contains(theString, '20')==true}">
 								<div class="sitter_age_ok_area">
 									20대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age!='30'}">
+								<c:if test="${fn:contains(theString, '30')==false}">
 								<div class="sitter_age_no_area">
 									30대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age=='30'}">
+								<c:if test="${fn:contains(theString, '30')==true}">
 								<div class="sitter_age_ok_area">
 									30대
 								</div>
-								</c:if>
-								<c:if test="${output.want_age!='40'}">
+								</c:if><c:if test="${fn:contains(theString, '40')==false}">
 								<div class="sitter_age_no_area">
 									40대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age=='40'}">
+								<c:if test="${fn:contains(theString, '40')==true}">
 								<div class="sitter_age_ok_area">
 									40대
 								</div>
-								</c:if>
-								<c:if test="${output.want_age!='50'}">
+								</c:if><c:if test="${fn:contains(theString, '50')==false}">
 								<div class="sitter_age_no_area">
 									50대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age=='50'}">
+								<c:if test="${fn:contains(theString, '50')==true}">
 								<div class="sitter_age_ok_area">
 									50대
 								</div>
-								</c:if>
-								<c:if test="${output.want_age!='60'}">
+								</c:if><c:if test="${fn:contains(theString, '60')==false}">
 								<div class="sitter_age_no_area">
 									60대
 								</div>
 								</c:if>
-								<c:if test="${output.want_age=='60'}">
+								<c:if test="${fn:contains(theString, '60')==true}">
 								<div class="sitter_age_ok_area">
 									60대
 								</div>
 								</c:if>
+								
 							</div>
 						</div>
 					</div> <!-- fin. iwant_box -->
@@ -860,7 +859,7 @@
 							</div>
 						</div>
 						</div> <!-- fin. possible_active_area -->
-						<c:if test="${output.description!=''}">
+						<c:if test="${output.description!=null}">
 						<div class="possible_age_box">
 						<div class="box_name">시터가 알아야 할 사항</div>
 						<div class="possible_age_area">
@@ -872,7 +871,7 @@
 						<div class="box_name">그 외 요청사항</div>
 						<div class="possible_age_area">
 							<div>
-							<c:if test="${output.sitter_gender!=''}">
+							<c:if test="${output.sitter_gender!=null}">
 								<div class="other_line">
 									<label class="want_gender_line">희망 맘시터 성별 : </label>
 									<c:if test="${fn:contains(output.sitter_gender,'F')}">
@@ -886,13 +885,13 @@
 									</c:if>
 								</div>
 							</c:if>
-							<c:if test="${output.care_type!=''}">	
+							<c:if test="${output.care_type!=null}">	
 								<div class="other_line">
 									<label class="want_care_line">희망 돌봄 방식 : </label>
 									<span class="want_care">${output.care_type}</span>
 								</div>	
 							</c:if>	
-							<c:if test="${output.interview_type!=''}">	
+							<c:if test="${output.interview_type!=null}">	
 								<div class="other_line">
 									<label class="want_care_line">희망 인터뷰 방식 : 
 									<c:if test="${output.interview_type=='call'}">

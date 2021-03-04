@@ -227,7 +227,8 @@
 
             //입력요소 전부 입력 완료시 버튼 활성화 - 선아
             $("input").on("blur", function () {
-                if ($("#user_id").val() != '' && $("#user_pw").val() != '' && $("#user_pw_re").val() != '' && $("#name").val() != '' && $("#email").val() != '' &&$("#tel").val() != '' &&$("#birthdate").val() != '' ) {
+                if ($("#user_id").val() != '' && $("#user_pw").val() != '' && $("#user_pw_re").val() != '' && $("#name").val() != ''
+                		&& $("#email").val() != '' &&$("#tel").val() != '' &&$("#birthdate").val() != '' ) {
                     $(".next_btn").prop("disabled", false);
                 }; 
             });
