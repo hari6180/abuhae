@@ -4,11 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,14 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.slf4j.Slf4j;
 import study.team.abuhae.helper.AgeHelper;
 import study.team.abuhae.helper.PageData;
-import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Heart;
 import study.team.abuhae.model.Mom_info;
-import study.team.abuhae.model.ProfileFile;
 import study.team.abuhae.model.Sitter_info;
 import study.team.abuhae.service.SearchService;
-import study.team.abuhae.service.UploadService;
 
 @Slf4j
 @RestController
@@ -35,15 +28,16 @@ public class SearchRestController {
 	// --> import study.spring.springhelper.helper.WebHelper;
 	@Autowired
 	WebHelper webHelper;
+	
+	/** AgeHelper 주입 */
+	@Autowired
+	AgeHelper ageHelper;
 
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	SearchService searchService;
 
-	/** UploadService 주입 */
-	@Autowired
-	UploadService uploadService;
-
+	
 	/** 맘시터 찾기 페이지 */
 	// 카드 출력 - 비로그인
 	@RequestMapping(value = "/search/sitter_search", method = RequestMethod.GET)
@@ -132,7 +126,6 @@ public class SearchRestController {
 
 			// 데이터 조회하기
 			output = searchService.searchSitter(input);
-			// output2 = uploadService.getProfileItem(input2); list로 불러오는 메서드 만들기
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
@@ -322,7 +315,6 @@ public class SearchRestController {
 			@RequestParam(value = "actList[]", required = false) String[] actList,
 			@RequestParam(value = "kidsage[]", required = false) String[] kidsAge,
 			@RequestParam(value = "caredays[]", required = false) String[] caredays,
-			@RequestParam(value = "time_range[]", required = false) String[] timeRange,
 			@RequestParam(value = "min_pay", required = false) String min_pay,
 			@RequestParam(value = "max_pay", required = false) String max_pay,
 			@RequestParam(value = "kids_cnt", required = false) String kids_cnt,
@@ -415,8 +407,6 @@ public class SearchRestController {
 			output = searchService.searchMom(input);
 
 			// 아이 나이 계산 with AgeHelper
-			AgeHelper ageHelper = new AgeHelper();
-
 			for (int i = 0; i < output.size(); i++) {
 				Mom_info temp = output.get(i);
 				String age = ageHelper.kidsStr(temp.getKids_age());
@@ -547,8 +537,6 @@ public class SearchRestController {
 				output = searchService.searchMom(input);
 
 				// 아이 나이 계산 with AgeHelper
-				AgeHelper ageHelper = new AgeHelper();
-
 				for (int i = 0; i < output.size(); i++) {
 					Mom_info temp = output.get(i);
 					String age = ageHelper.kidsStr(temp.getKids_age());

@@ -36,6 +36,10 @@
 	<!-- regexhelper 주입 -->
 	<bean id="regexHelper"
 		class="study.team.abuhae.helper.RegexHelper"></bean>
+		
+	<!-- ageHelper 주입 -->
+	<bean id="ageHelper"
+		class="study.team.abuhae.helper.AgeHelper"></bean>
 
 	<!-- DB연동에 필요한 환경설정 값 -->
 	<util:properties id="dbConfig">

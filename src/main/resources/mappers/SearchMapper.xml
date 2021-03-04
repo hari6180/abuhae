@@ -61,6 +61,8 @@
 		<result property="kids_num" column="kids_num" />
 		<result property="kids_age" column="kids_age" />
 		<result property="kids_age2" column="kids_age2" />
+		<result property="kids_nai" column="kids_nai"/>
+		<result property="kids_nai2" column="kids_nai2"/>
 		<result property="payment" column="payment" />
 		<result property="payment_ok" column="payment_ok" />
 		<result property="si" column="si" />
@@ -198,7 +200,7 @@
 	<!-- 맘 회원 -->
 	<select id="searchMom" parameterType="study.team.abuhae.model.Mom_info" resultMap="MomMap">
 		SELECT m.memberno, type, CONCAT(LEFT(name,1), 'O', RIGHT(name,2)) AS name,
-		job_opening, m.momno, want_act1, want_act2, want_act3, want_age, kids_num, kids_age, si, gu, 
+		job_opening, m.momno, want_act1, want_act2, want_act3,want_age, kids_num, kids_age, kids_nai, kids_nai2, si, gu, 
 		json_extract(schedule, '$.startdate') AS schedule,
 		REPLACE(json_extract(schedule, '$.frequency'),'"','') AS frequency,
 		REPLACE(json_extract(schedule, '$.day'),'"','') AS days,
@@ -232,10 +234,10 @@
 				</foreach>
 			</if>
 			<if test="kidsAge != null">
-				AND want_age IN
-				<foreach item="item2" collection="kidsAge" open="("
-					close=")" separator=",">
-					#{item2}
+				AND CONCAT(kids_nai,kids_nai2)
+				<foreach item="item2" collection="kidsAge"
+					separator="AND CONCAT(kids_nai,kids_nai2)">
+					LIKE '%${item2}%'
 				</foreach>
 			</if>
 			<if test="caredays != null">
@@ -292,64 +294,7 @@
 	</select>
 
 	<!-- 총 회원 수 세기 -->
-	<!-- 맘 -->
-	<select id="selectCountAllMom"
-		parameterType="study.team.abuhae.model.Mom_info" resultType="int">
-		SELECT
-		COUNT(*)
-		FROM Mom_info m
-		INNER JOIN member mb ON
-		m.memberno=mb.memberno 
-		<!-- 활동 유형 && 상세 검색 && 주소 -->
-		<where>
-			<if test="actList != null">
-				CONCAT(want_act1,want_act2,want_act3)
-				<foreach item="item1" collection="actList"
-					separator="AND CONCAT(want_act1,want_act2,want_act3)">
-					LIKE '%${item1}%'
-				</foreach>
-			</if>
-			<if test="kidsAge != null">
-				AND want_age IN
-				<foreach item="item2" collection="kidsAge" open="("
-					close=")" separator=",">
-					#{item2}
-				</foreach>
-			</if>
-			<if test="caredays != null">
-				AND JSON_CONTAINS(schedule->'$.day',CAST('
-				<foreach item="item3" collection="caredays" open="["
-					close="]" separator=",">
-					"${item3}"
-				</foreach>
-				' AS JSON))
-			</if>
-			<if test="min_pay != 0 and max_pay == 0">
-				AND payment BETWEEN 8720 AND #{min_pay}
-			</if>
-			<if test="min_pay == 0 and max_pay != 0">
-				AND payment BETWEEN #{max_pay} AND 2000000
-			</if>
-			<if test="min_pay != 0 and max_pay != 0">
-				AND payment BETWEEN
-				#{min_pay} AND #{max_pay}
-			</if>
-			<if test="kids_cnt != 0 and kids_cnt==1 or kids_cnt==2">
-				AND kids_num = #{kids_cnt}
-			</if>
-			<if test="loc1 != null and loc1 !=''">
-				AND si = #{loc1}
-			</if>
-			<if test="loc2 != null and loc2 !=''">
-				AND gu = #{loc2}
-			</if>
-			<if test="loc3 != null and loc3 !=''">
-				AND dong = #{loc3}
-			</if>
-			AND job_opening = 'Y'
-		</where>
-	</select>
-
+	
 	<!-- 시터 -->
 	<select id="selectCountAllSitter"
 		parameterType="study.team.abuhae.model.Sitter_info" resultType="int">
@@ -396,6 +341,64 @@
 					close=")" separator=",">
 					left(#{item6},1)
 				</foreach>
+			</if>
+			<if test="loc1 != null and loc1 !=''">
+				AND si = #{loc1}
+			</if>
+			<if test="loc2 != null and loc2 !=''">
+				AND gu = #{loc2}
+			</if>
+			<if test="loc3 != null and loc3 !=''">
+				AND dong = #{loc3}
+			</if>
+			AND job_opening = 'Y'
+		</where>
+	</select>
+
+	<!-- 맘 -->
+	<select id="selectCountAllMom"
+		parameterType="study.team.abuhae.model.Mom_info" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM Mom_info m
+		INNER JOIN member mb ON
+		m.memberno=mb.memberno 
+		<!-- 활동 유형 && 상세 검색 && 주소 -->
+		<where>
+			<if test="actList != null">
+				CONCAT(want_act1,want_act2,want_act3)
+				<foreach item="item1" collection="actList"
+					separator="AND CONCAT(want_act1,want_act2,want_act3)">
+					LIKE '%${item1}%'
+				</foreach>
+			</if>
+			<if test="kidsAge != null">
+				AND CONCAT(kids_nai,kids_nai2)
+				<foreach item="item2" collection="kidsAge"
+					separator="AND CONCAT(kids_nai,kids_nai2)">
+					LIKE '%${item2}%'
+				</foreach>
+			</if>
+			<if test="caredays != null">
+				AND JSON_CONTAINS(schedule->'$.day',CAST('
+				<foreach item="item3" collection="caredays" open="["
+					close="]" separator=",">
+					"${item3}"
+				</foreach>
+				' AS JSON))
+			</if>
+			<if test="min_pay != 0 and max_pay == 0">
+				AND payment BETWEEN 8720 AND #{min_pay}
+			</if>
+			<if test="min_pay == 0 and max_pay != 0">
+				AND payment BETWEEN #{max_pay} AND 2000000
+			</if>
+			<if test="min_pay != 0 and max_pay != 0">
+				AND payment BETWEEN
+				#{min_pay} AND #{max_pay}
+			</if>
+			<if test="kids_cnt != 0 and kids_cnt==1 or kids_cnt==2">
+				AND kids_num = #{kids_cnt}
 			</if>
 			<if test="loc1 != null and loc1 !=''">
 				AND si = #{loc1}
