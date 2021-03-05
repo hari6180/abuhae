@@ -13,14 +13,14 @@
 <title>아이를부탁해</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 <!-- noto Sans 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 
 <!-- 아이콘 사용 -->
 <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script>
@@ -29,8 +29,8 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/page_detail_for_sitter.css" />	
-<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/page_detail_for_sitter.css" />	
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 <script type="text/javascript">
 
 jQuery(function($) {
@@ -69,7 +69,7 @@ jQuery(function($) {
 	}); 
  </script>
  <!-- jquery 파일명 수정 -->
-<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script> 
 </head>
 	
 <body>		
@@ -78,12 +78,12 @@ jQuery(function($) {
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
 					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href='${pageContext.request.contextPath}/page_detail/sitter_page_detail/sitter_report.do?sitterno=${output.sitterno}';">
-				 	<img src="<%=request.getContextPath()%>/assets/img/siren.png" width="13" height="15"/>
+				 	<img src="${pageContext.request.contextPath}/assets/img/siren.png" width="13" height="15"/>
 				            신고
 				  	</button>
 				</div>
 				  <button type="button" class="x_btn" onclick = "location.href='${pageContext.request.contextPath}';">
-						<img src="<%=request.getContextPath()%>/assets/img/x-btn.jpg" width="28" height="28"/>
+						<img src="${pageContext.request.contextPath}/assets/img/x-btn.jpg" width="28" height="28"/>
 					</button>
 				<div class="profil_photo">
 				  <div class="profil_img">			  
@@ -197,7 +197,7 @@ jQuery(function($) {
 					<div class="human_box">
 						<div class="human">
 							<div class="human_area">
-								<div><img width="70" height="70" src="<%=request.getContextPath()%>/assets/img/certification.png"/></div>	
+								<div><img width="70" height="70" src="${pageContext.request.contextPath}/assets/img/certification.png"/></div>	
 							<div class="human_text_area">
 								<div class="human_text_title">본인 인증 완료</div>
 								<div class="human_text">맘시터 고객안전관리팀에서 
@@ -214,7 +214,7 @@ jQuery(function($) {
 						<div class="main_area">
 							<div class="main_other_area">
 								<div height= 40px;>
-								<img width="100" src="<%=request.getContextPath()%>/assets/img/certification_human.png"/>
+								<img width="100" src="${pageContext.request.contextPath}/assets/img/certification_human.png"/>
 								</div>
 								<div class="main_other_text_area">
 									<div class="other_text_title">등초본 인증 완료</div>
@@ -736,7 +736,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/innerplayicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/innerplayicon_s.png"/>
 												</div>
 												<span>실내놀이</span>
 											</div>
@@ -748,7 +748,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/innerplayicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/innerplayicon_s.png"/>
 												</div>
 												<span>실내놀이</span>
 											</div>
@@ -760,7 +760,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/koreanicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/koreanicon_s.png"/>
 												</div>
 												<span>한글놀이</span>
 											</div>
@@ -772,7 +772,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/koreanicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/koreanicon_s.png"/>
 												</div>
 												<span>한글놀이</span>
 											</div>
@@ -784,7 +784,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/cleanicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/cleanicon_s.png"/>
 												</div>
 												<span>간단 청소</span>
 											</div>
@@ -796,7 +796,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/cleanicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/cleanicon_s.png"/>
 												</div>
 												<span>간단 청소</span>
 											</div>
@@ -808,7 +808,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/longhouseicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/longhouseicon_s.png"/>
 												</div>
 												<span>장기입주</span>
 											</div>
@@ -820,7 +820,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/longhouseicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/longhouseicon_s.png"/>
 												</div>
 												<span>장기입주</span>
 											</div>
@@ -835,7 +835,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/guideicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/guideicon_s.png"/>
 												</div>
 												<span>등하원 돕기</span>
 											</div>
@@ -847,7 +847,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/guideicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/guideicon_s.png"/>
 												</div>
 												<span>등하원 돕기</span>
 											</div>
@@ -859,7 +859,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/englishicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/englishicon_s.png"/>
 												</div>
 												<span>영어놀이</span>
 											</div>
@@ -871,7 +871,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/englishicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/englishicon_s.png"/>
 												</div>
 												<span>영어놀이</span>
 											</div>
@@ -883,7 +883,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/eaticon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/eaticon_s.png"/>
 												</div>
 												<span>밥 챙겨주기</span>
 											</div>
@@ -895,7 +895,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/eaticon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/eaticon_s.png"/>
 												</div>
 												<span>밥 챙겨주기</span>
 											</div>
@@ -907,7 +907,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/houseicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/houseicon_s.png"/>
 												</div>
 												<span>단기입주</span>
 											</div>
@@ -919,7 +919,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/houseicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/houseicon_s.png"/>
 												</div>
 												<span>단기입주</span>
 											</div>
@@ -934,7 +934,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/readicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/readicon_s.png"/>
 												</div>
 												<span>책읽기</span>
 											</div>
@@ -946,7 +946,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/readicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/readicon_s.png"/>
 												</div>
 												<span>책읽기</span>
 											</div>
@@ -958,7 +958,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/studyicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/studyicon_s.png"/>
 												</div>
 												<span>학습지도</span>
 											</div>
@@ -970,7 +970,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/studyicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/studyicon_s.png"/>
 												</div>
 												<span>학습지도</span>
 											</div>
@@ -982,7 +982,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/dishicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/dishicon_s.png"/>
 												</div>
 												<span>간단 설거지</span>
 											</div>
@@ -994,7 +994,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/dishicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/dishicon_s.png"/>
 												</div>
 												<span>간단 설거지</span>
 											</div>
@@ -1009,7 +1009,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/ousideicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/ousideicon_s.png"/>
 												</div>
 												<span>야외활동</span>
 											</div>
@@ -1021,7 +1021,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/ousideicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/ousideicon_s.png"/>
 												</div>
 												<span>야외활동</span>
 											</div>
@@ -1033,7 +1033,7 @@ jQuery(function($) {
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/ballicon_s.png" />
+												<img src="${pageContext.request.contextPath}/assets/img/ballicon_s.png" />
 												</div>
 												<span>체육놀이</span>
 											</div>
@@ -1045,7 +1045,7 @@ jQuery(function($) {
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/ballicon_s.png" />
+												<img src="${pageContext.request.contextPath}/assets/img/ballicon_s.png" />
 												</div>
 												<span>체육놀이</span>
 											</div>

@@ -12,14 +12,14 @@
 <title>아이를부탁해</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 <!-- noto Sans 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 
 <!-- 아이콘 사용 -->
 <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
@@ -28,9 +28,9 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/mom_page_detail.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mom_page_detail.css" />
 
-<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 	<script type="text/javascript">
 	
 	jQuery(function($) {
@@ -73,7 +73,7 @@
 		}); 
 	 </script>
 	 <!-- jquery 파일명 수정 -->
-	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script> 
 </head>
 	
 <body>		
@@ -82,12 +82,12 @@
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
 					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href='${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report.do?momno=${output.momno}';">
-				 	 <img src="<%=request.getContextPath()%>/assets/img/siren.png" width="13" height="15"/>
+				 	 <img src="${pageContext.request.contextPath}/assets/img/siren.png" width="13" height="15"/>
 				             신고
 				  	</button>
 				</div>
 				  <button type="button" class="x_btn" onclick = "location.href='${pageContext.request.contextPath}';">
-					<img src="<%=request.getContextPath()%>/assets/img/x-btn.jpg" width="28" height="28"/>
+					<img src="${pageContext.request.contextPath}/assets/img/x-btn.jpg" width="28" height="28"/>
 				  </button>
 				<div class="profil_photo">
 				  <div class="profil_img">
@@ -264,7 +264,7 @@
 									<div style="padding: 8px 0px;">
 										<div class="active_text_line" style="font-size: 0.98em;">
 											<span id="schedule_text" style="color: #ff7000; font-weight: bold;"> 
-											${fn:split(output.schedule_start_date,'/')[0]}년 ${fn:split(output.schedule_start_date,'/')[1]}월 ${fn:split(output.schedule_start_date,'/')[2]}일 
+											${fn:split(output.startdate,'/')[0]}년 ${fn:split(output.startdate,'/')[1]}월 ${fn:split(output.startdate,'/')[2]}일 
 											 </span> 부터 일을 시작할 수 있어요.
 											 <c:if test="${fn:contains(output.schedule_ok,Y)}">
 											<span style="margin-left: 5px;">
@@ -528,7 +528,7 @@
 					<div class="box_name">아이 정보</div>
 					<div class="possible_age_area" style="font-weight: bold;">
 						<div>												
-							<div class="child_age_line">
+							<div class="child_age_line" style="padding-bottom: 15px;">
 								<div style="margin-bottom: -10px">
 								</div>
 								<c:if test="${output.kids_nai =='got_baby'}">
@@ -552,7 +552,7 @@
 								</c:if>
 							</div>	
 							<c:if test="${age2!=''}">
-							<div>
+							<div class="child_age_line">
 								<div style="margin-bottom: -10px">
 								</div>
 								<c:if test="${output.kids_nai2 =='got_baby'}">
@@ -591,7 +591,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/innerplayicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/innerplayicon_s.png"/>
 												</div>
 												<span>실내놀이</span>
 											</div>
@@ -603,7 +603,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/innerplayicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/innerplayicon_s.png"/>
 												</div>
 												<span>실내놀이</span>
 											</div>
@@ -615,7 +615,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/koreanicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/koreanicon_s.png"/>
 												</div>
 												<span>한글놀이</span>
 											</div>
@@ -627,7 +627,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/koreanicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/koreanicon_s.png"/>
 												</div>
 												<span>한글놀이</span>
 											</div>
@@ -639,7 +639,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/cleanicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/cleanicon_s.png"/>
 												</div>
 												<span>간단 청소</span>
 											</div>
@@ -651,7 +651,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/cleanicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/cleanicon_s.png"/>
 												</div>
 												<span>간단 청소</span>
 											</div>
@@ -663,7 +663,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/longhouseicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/longhouseicon_s.png"/>
 												</div>
 												<span>장기입주</span>
 											</div>
@@ -675,7 +675,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/longhouseicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/longhouseicon_s.png"/>
 												</div>
 												<span>장기입주</span>
 											</div>
@@ -690,7 +690,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/guideicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/guideicon_s.png"/>
 												</div>
 												<span>등하원 돕기</span>
 											</div>
@@ -702,7 +702,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/guideicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/guideicon_s.png"/>
 												</div>
 												<span>등하원 돕기</span>
 											</div>
@@ -714,7 +714,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/englishicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/englishicon_s.png"/>
 												</div>
 												<span>영어놀이</span>
 											</div>
@@ -726,7 +726,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/englishicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/englishicon_s.png"/>
 												</div>
 												<span>영어놀이</span>
 											</div>
@@ -738,7 +738,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/eaticon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/eaticon_s.png"/>
 												</div>
 												<span>밥 챙겨주기</span>
 											</div>
@@ -750,7 +750,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/eaticon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/eaticon_s.png"/>
 												</div>
 												<span>밥 챙겨주기</span>
 											</div>
@@ -762,7 +762,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/houseicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/houseicon_s.png"/>
 												</div>
 												<span>단기입주</span>
 											</div>
@@ -774,7 +774,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/houseicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/houseicon_s.png"/>
 												</div>
 												<span>단기입주</span>
 											</div>
@@ -789,7 +789,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/readicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/readicon_s.png"/>
 												</div>
 												<span>책읽기</span>
 											</div>
@@ -801,7 +801,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/readicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/readicon_s.png"/>
 												</div>
 												<span>책읽기</span>
 											</div>
@@ -813,7 +813,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/studyicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/studyicon_s.png"/>
 												</div>
 												<span>학습지도</span>
 											</div>
@@ -825,7 +825,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/studyicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/studyicon_s.png"/>
 												</div>
 												<span>학습지도</span>
 											</div>
@@ -837,7 +837,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/dishicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/dishicon_s.png"/>
 												</div>
 												<span>간단 설거지</span>
 											</div>
@@ -849,7 +849,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/dishicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/dishicon_s.png"/>
 												</div>
 												<span>간단 설거지</span>
 											</div>
@@ -864,7 +864,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/ousideicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/ousideicon_s.png"/>
 												</div>
 												<span>야외활동</span>
 											</div>
@@ -876,7 +876,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/ousideicon_s.png"/>
+												<img src="${pageContext.request.contextPath}/assets/img/ousideicon_s.png"/>
 												</div>
 												<span>야외활동</span>
 											</div>
@@ -888,7 +888,7 @@
 										<div class="active_no">
 											<div class="active_no_img">
 												<div class="active_no_box">
-												<img src="<%=request.getContextPath()%>/assets/img/ballicon_s.png" />
+												<img src="${pageContext.request.contextPath}/assets/img/ballicon_s.png" />
 												</div>
 												<span>체육놀이</span>
 											</div>
@@ -900,7 +900,7 @@
 										<div class="active_ok">
 											<div class="active_ok_img">
 												<div class="active_ok_box">
-												<img src="<%=request.getContextPath()%>/assets/img/ballicon_s.png" />
+												<img src="${pageContext.request.contextPath}/assets/img/ballicon_s.png" />
 												</div>
 												<span>체육놀이</span>
 											</div>
