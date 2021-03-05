@@ -245,8 +245,18 @@
 								</div>
 								</c:if>
 								<c:if test="${output.frequency=='shortTerm'}">
-									<span id="schedule_text" style="color: #ff7000; font-weight: bold;"> ${output.selectdate} </span>
-									에 시간이 가능해요.
+									<div class="active_area_text_box">
+									<div id="active_area_style"></div>
+									<div style="padding: 8px 0px;">
+										<div class="active_text_line">
+											<span id="active_text_style">
+											<span id="schedule_text" style="color: #ff7000; font-weight: bold;"> ${output.selectdate} </span>
+												이 날짜에 아이를 돌봐주세요
+											</span>
+										</div>
+									</div>
+								</div>
+									
 								</c:if>
 								<c:if test="${output.frequency=='regular'}">
 								<div class="active_area_text_box">
