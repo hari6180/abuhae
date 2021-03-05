@@ -11,14 +11,14 @@
 <title>아이를부탁해</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 <!-- noto Sans 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 
 <!-- 아이콘 사용 -->
 <script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 
@@ -27,7 +27,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/siren.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/siren.css" />
 </head>
 	
 <body>		
@@ -37,7 +37,7 @@
 				<div class="siren_header">
 					<div class="x_btn_area">
 						<button type="button" class="x_btn" onclick = "history.back() ">
-							<img src="<%=request.getContextPath()%>/assets/img/x-btn.jpg" width="28" height="28"/>
+							<img src="${pageContext.request.contextPath}/assets/img/x-btn.jpg" width="28" height="28"/>
 						</button>
 					</div> <!-- fin. x_btn_area -->
 					<div class="header_text_area col-xs-12">
@@ -111,8 +111,8 @@
 				</form>
 			</div> <!-- fin. col-xs-12 -->
 		</div> <!-- fin. container -->
-		<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
-		<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script> 
 		<!-- Javascript -->
 		<script type="text/javascript">
 		/* $(function() {

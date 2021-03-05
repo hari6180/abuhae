@@ -12,20 +12,20 @@
 	<title>아이를부탁해</title>
 
 	<!-- 모바일 웹 페이지 설정 -->
-	<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
-	<link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/assets/ico/favicon.ico" />
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/favicon.ico" />
 
 	<!-- bootstrap -->
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 
 	<!-- noto Sans 웹 폰트 적용 -->
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/notosans.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 	
 	<!-- 아이콘 사용 -->
 	<script src="https://kit.fontawesome.com/7018452b37.js" crossorigin="anonymous"></script> 	
 	
 	<!-- css 참조 -->
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/review_more.css" />		
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/review_more.css" />		
 		</head>
 	
 		<body>
@@ -35,7 +35,7 @@
 					<div class="main">						
 						<div class="talk_box">
 							<div class="fixeBox col-xs-12">
-							<a href="javascript:history.back();"><img src="<%=request.getContextPath()%>/assets/img/backPage.svg"/></a><div class="box_name"><h4>부모 후기</h4></div>
+							<a href="javascript:history.back();"><img src="${pageContext.request.contextPath}/assets/img/backPage.svg"/></a><div class="box_name"><h4>부모 후기</h4></div>
 							</div>
 							<div class="talk_area">
 							<div class="talk_main">
@@ -126,9 +126,8 @@
 				</div> <!-- fin. col-xs-12 -->
 			</div> <!-- container -->
 			<!-- Javascript -->
-			<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
-			<script type="text/javascript">			
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 			 <!-- jquery 파일명 수정 -->
-			<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script> 
+			<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script> 
 		</body>
 	</html>
