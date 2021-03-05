@@ -81,10 +81,10 @@ jQuery(function($) {
 				 	<img src="${pageContext.request.contextPath}/assets/img/siren.png" width="13" height="15"/>
 				            신고
 				  	</button>
-				</div>
+				</div> <!-- fin. pull-right -->
 				  <button type="button" class="x_btn" onclick = "location.href='${pageContext.request.contextPath}';">
 						<img src="${pageContext.request.contextPath}/assets/img/x-btn.jpg" width="28" height="28"/>
-					</button>
+				  </button>
 				<div class="profil_photo">
 				  <div class="profil_img">			  
 					<c:choose>			  
@@ -155,7 +155,7 @@ jQuery(function($) {
 								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 								<span style="color: #ff7000;"><i class="fas fa-star"></i></span>
 							</c:if>
-						</div>
+						</div> <!-- fin. star -->
 						<div class="review_ea">
 								후기 ${output.rev_count}개
 						</div>
@@ -189,9 +189,9 @@ jQuery(function($) {
 							<div id="cctv" style="color: #3b3b3b"><span style="color: #555;"><i class="fas fa-video"></i></span> CCTV</div>
 							<div id="agree" style="color: #3b3b3b">동의 안함</div>
 						</c:if>
-						</div>
-					</div>
-				</div>
+						</div> <!-- fin. cctv_area -->
+					</div> <!-- fin. three_area -->
+				</div> <!-- fin. three -->
 				<!-- Main start-->
 				<div class="main">
 					<div class="human_box">
@@ -206,14 +206,14 @@ jQuery(function($) {
 							</div>
 							</div>		
 						</div>
-					</div>
+					</div> <!-- fin. human_box -->
 					<!-- ------------- -->
 					<c:if test="${output.resino!=''}">
 					<div class="main_box">
 						<div class="box_name">핵심 인증</div>
 						<div class="main_area">
 							<div class="main_other_area">
-								<div height= 40px;>
+								<div>
 								<img width="100" src="${pageContext.request.contextPath}/assets/img/certification_human.png"/>
 								</div>
 								<div class="main_other_text_area">
@@ -225,9 +225,9 @@ jQuery(function($) {
 									<div>- 주민등록등(초)본 확인</div>
 									</div>
 								</div>
-							</div> <!-- fin. main_other -->						
-						</div>
-					</div>
+							</div> <!-- fin. main_other_area -->						
+						</div> <!-- fin. main_area -->
+					</div> <!-- fin. main_box -->
 					</c:if>
 					<c:if test="${output.introduce!=''}">
 					<div class="info_box">
@@ -241,9 +241,8 @@ jQuery(function($) {
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> <!-- fin. info_box -->
 					</c:if>
-					
 					<div class="iwant_box">
 						<div class="box_name">선호하는 돌봄유형</div>
 						<div class="iwant_area">
@@ -296,9 +295,9 @@ jQuery(function($) {
 									<div id="iwant_text_desc">- 프로필에 돌봄 가능한 아이 연령과 활동 명시 필요</div>
 								</div>
 								</c:if>
-							</div>
-						</div>
-					</div>
+							</div> <!-- fin. iwant_text_box -->
+						</div> <!-- fin. iwant_area -->
+					</div> <!-- fin. iwant_box -->
 					<div class="active_box">
 						<div class="box_name">활동 가능 시간</div>
 						<div class="active_area">
@@ -324,9 +323,9 @@ jQuery(function($) {
 															 일 할 수 있어요.
 															</span>
 														</div>
-													</div>
-												</div>
-											</div>
+													</div> <!-- fin. schedule_box -->
+												</div> <!-- fin. schedule_area -->
+											</div> <!-- fin. schedule_info_box -->
 											<div class="col-xs-12">
 											<c:set var="theString" value="${output.days}" />
 											<c:if test="${fn:contains(theString, 'mon')==false}">
@@ -394,8 +393,8 @@ jQuery(function($) {
 												일 
 											</div>
 											</c:if>
-											</div>
-											</div>
+											</div> <!-- fin. col-xs-12 -->
+											</div> <!-- fin. active_main_box -->
 											<div style="text-align: center; font-weight: bold; padding-top: 10px;">
 											<span style="color: #ff7000;  ">
 												* 자세한 시간은 맘회원과 매칭된 이후에 조율해요. 
@@ -634,7 +633,6 @@ jQuery(function($) {
 												</div>
 											</div>						
 											-->
-										 <!-- fin. active_main_box -->
 									</div> <!-- fin. active_main -->
 								</div> <!-- fin. active -->
 							</div>
@@ -643,11 +641,9 @@ jQuery(function($) {
 					<div class="possible_age_box">
 					<div class="box_name">돌봄 가능 연령</div>
 					<c:set var="theString" value="${output.want_age}" />
-					
 					<div class="possible_age_area">
 						<div>
 							<div class="age_line">
-							
 								<c:if test="${fn:contains(theString, 'got_baby')}">
 								<div class="ages col-xs-3">
 									<div style="margin-bottom: -10px">
@@ -1136,6 +1132,7 @@ jQuery(function($) {
 													</div>
 												</div>
 											</div>
+											</div>
 										</li>
 										</c:if>
 										<hr style="margin: -1px 0px 0px; height: 1px; border: none; background-color: rgb(224,224,224);">
@@ -1172,6 +1169,8 @@ jQuery(function($) {
 						</div> <!-- fin. famille_area -->
 					</div> <!-- fin. famille_box -->
 				</div> <!-- fin. Main -->
+				</div>
+				</div>
 				<!-- ----------하단고정 부분 시작------------ -->
 				<div class="fixed_box">
 					<div class="fixed_area">
@@ -1209,5 +1208,6 @@ jQuery(function($) {
 						</div> <!-- fin. interview_btn -->
 					</div> <!-- fin. fixed_btn -->
 				</div> <!-- fin. fixed_box -->				
+				</div>
 	</body>
 </html>

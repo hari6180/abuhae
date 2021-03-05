@@ -200,7 +200,6 @@
 	    		.info_area {
 	    			padding: 0;
 	    			border-radius: 3px;
-	    			backgroud-color: #fff;
 	    		}
 	    		.info_text_box {
 	    			background-color: #fff;
@@ -746,7 +745,6 @@
 					line-height: 19px;
 					font-size: 0.9em;
 					width: 100%;
-					font-wwight: bold;
 				}
 				.famille_box {
 					margin-bottom: 25px;
@@ -759,7 +757,6 @@
 				}
 				.famille_main {
 					display: flex;
-					align-item: center;
 				}
 				.famille_date {
 					padding-right: 130px;
@@ -775,7 +772,7 @@
 					border-radius: 100%;
 					line-height: 45px;
 					height: 45px;
-					width: 45px;
+					width: 60px;
 					text-align: center;
 					font-weight: bold;
 					font-size: 1.1em;
@@ -792,7 +789,6 @@
 				}
 				.experience_main {
 					display: flex;
-					align-item: center;
 				}
 				.experience_line {
 					flex-direction: column;
@@ -1188,7 +1184,6 @@
 			line-height: 19px;
 			font-size: 0.9em;
 			width: 100%;
-			font-wwight: bold;
 		}
 		.talk_box_ea {
 			margin: 10px 0px;
@@ -1233,7 +1228,6 @@
 			flex-direction: row;
 		}
 		.btn_more {
-	   	ouline: none;
 	   	border: none;
 	   	width: 100%;
 	   	background: rgb(242,242,242);

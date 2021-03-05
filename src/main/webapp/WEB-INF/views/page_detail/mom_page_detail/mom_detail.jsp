@@ -31,7 +31,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/mom_page_detail.css" />
 
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-	<script type="text/javascript">
+<script type="text/javascript">
 	
 	jQuery(function($) {
 		$('#swapHeart').on('click', function() {
@@ -42,7 +42,6 @@
 	          
 	       	// 찜할 때 alert창과 glyphicon변형
 	          if (sitterno != "" || sitterno != 0) {
-	        	  //if ()
 	        	  
 	            if ($(this).find("span").hasClass("glyphicon-heart-empty")) {
 	              $(this).find("span").removeClass("glyphicon-heart-empty");
@@ -68,8 +67,6 @@
 	            swal("시터회원으로 가입 후 이용해주세요.");
 	          }
 	        }); // fin. 찜버튼 기능
-	        
-	        
 		}); 
 	 </script>
 	 <!-- jquery 파일명 수정 -->
@@ -191,7 +188,6 @@
 									60대
 								</div>
 								</c:if>
-								
 							</div>
 						</div>
 					</div> <!-- fin. iwant_box -->
@@ -205,12 +201,14 @@
 								</div>
 							</div>
 						</div> <!-- fin. possible_zone_area -->
-					</div> <!-- fin. possible_zone_box -->
+					</div> <!-- fin. possible_zone_box -->				
 					<div class="active_box">
 						<div class="box_name">활동 가능 시간</div>
 						<div class="active_area">
 							<div class="active_area_text">
-							<div style="display: flex;">
+							<div>
+								<c:if test="${output.frequency=='noplan'}">
+								<div style="display: flex;">
 								<div class="active_area_profil" style="margin-top: 10px;">
 								  <c:choose>			  
 								  	<c:when test="${profile == null }">
@@ -221,7 +219,6 @@
 								  	</c:otherwise>
 								  </c:choose>
 								</div>
-								<c:if test="${output.frequency=='noplan'}">
 								<div class="active_area_text_box">
 									<div id="active_area_style"></div>
 									<div style="padding: 8px 0px;">
@@ -242,9 +239,20 @@
 										</div>
 									</div>
 								</div>
-								</div>
+								</div >
 								</c:if>
 								<c:if test="${output.frequency=='shortTerm'}">
+								<div style="display: flex;">
+									<div class="active_area_profil" style="margin-top: 10px;">
+									  <c:choose>			  
+									  	<c:when test="${profile == null }">
+											<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="60" height="60" style="border-radius: 100%"/>				
+									  	</c:when>
+									  	<c:otherwise>
+									  		<img src="${profile.fileUrl}" width="60" height="60" style="border-radius: 100%"/>
+									  	</c:otherwise>
+									  </c:choose>
+									</div>
 									<div class="active_area_text_box">
 									<div id="active_area_style"></div>
 									<div style="padding: 8px 0px;">
@@ -256,9 +264,21 @@
 										</div>
 									</div>
 								</div>
-									
+								</div>
 								</c:if>
 								<c:if test="${output.frequency=='regular'}">
+								<div>
+								<div style="display: flex;">
+									<div class="active_area_profil" style="margin-top: 10px;">
+									  <c:choose>			  
+									  	<c:when test="${profile == null }">
+											<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="60" height="60" style="border-radius: 100%"/>				
+									  	</c:when>
+									  	<c:otherwise>
+									  		<img src="${profile.fileUrl}" width="60" height="60" style="border-radius: 100%"/>
+									  	</c:otherwise>
+									  </c:choose>
+									</div>
 								<div class="active_area_text_box">
 									<div id="active_area_style"></div>
 									<div style="padding: 8px 0px;">
@@ -277,6 +297,7 @@
 											</c:if>
 										</div>
 									</div>
+								</div>
 								</div>
 							</div>
 							<div>
@@ -353,6 +374,7 @@
 							<span style="color: #ff7000;  ">
 								* 자세한 시간은 맘시터 회원과 매칭된 이후에 조율해요. 
 							</span>
+							</div>
 							</c:if>
 							<c:if test="${output.frequency=='noplan'}">
 							<c:set var="theString" value="${output.wanttime}" />
@@ -520,10 +542,16 @@
 									</div> <!-- fin. partDay_line -->
 									
 								</div> <!-- fin. active_time_box -->
+								
 								</c:if>
+								
 							</div>
 						</div> <!-- fin. active_area -->
 					</div> <!-- fin. active_box -->
+					
+					
+					
+					
 					<div class="possible_age_box">
 					<div class="box_name">아이 정보</div>
 					<div class="possible_age_area" style="font-weight: bold;">
@@ -960,10 +988,10 @@
 						</div> <!-- fin. possible_age_box -->
 
 						</div> <!-- fin. possible_active_box -->
-					</div> <!-- fin. Main -->
-				</div>
-				</div>
-				
+					</div>
+					</div>
+					</div>
+					</div>			
 				<!-- ----------하단고정 부분 시작------------ -->
 			<div class="fixed_box col-xs-12">
 				<div class="fixed_area">
@@ -1022,6 +1050,7 @@
 					</div>
 					<!-- /.modal-dialog -->
 				</div>
-				<!-- /.modal -->				
+				<!-- /.modal -->	
+			
 	</body>
 </html>
