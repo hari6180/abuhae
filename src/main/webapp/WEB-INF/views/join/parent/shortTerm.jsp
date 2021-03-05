@@ -40,7 +40,7 @@
                 //e.preventDefault();
 				//스케쥴 json 조립
 				//시작 날짜
-				var selectdate = $(".calrendar_block").val();
+				var startdate = $(".calrendar_block").val();
 
 				//빈도
 				var frequency = "shortTerm";
@@ -55,7 +55,7 @@
 				}
 
 				var schedule = { 
-					selectdate : selectdate, 
+					startdate : startdate, 
 					frequency : frequency
 				};
 				

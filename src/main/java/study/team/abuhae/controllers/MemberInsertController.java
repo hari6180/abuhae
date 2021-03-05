@@ -134,7 +134,7 @@ public class MemberInsertController {
 			
 			if (freq == "shortTerm") {
 				input.setSchedule("{\"frequency\": \""+ freq
-						+ "\", \"selectdate\": \""+ String.format("%02d/%02d/%02d", 2021, 03, random(1, 31)) + "\"}");
+						+ "\", \"startdate\": \""+ String.format("%02d/%02d/%02d", 2021, 03, random(1, 31)) + "\"}");
 			}
 			
 			if (freq == "noplan") {
