@@ -37,7 +37,23 @@
 		<div class="container">
 			<div class="row">
 			
-			<%@ include file="../index_header.jsp" %>
+			<div id="menu">
+				<c:if test="${login != null }">
+					<c:choose>
+						<c:when test="${fn:contains(login.type, 'M')}">
+							<%@ include file="../index_header_login_mom.jsp"%>
+						</c:when>
+						<c:when test="${fn:contains(login.type, 'S')}">
+							<%@ include file="../index_header_login_sitter.jsp"%>
+						</c:when>
+					</c:choose>
+				</c:if>
+				<c:if test="${login == null }">
+					<%@ include file="../index_header.jsp"%>
+				</c:if>
+				<%-- <h3>${login.type}, ${login.momno }</h3>
+				<p>${login.sitterno }</p> --%>
+			</div>
 			
                 <div class="col-xs-12 nav">
                     <li>

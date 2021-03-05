@@ -37,12 +37,25 @@
 
 		</head>
 		
-		<body>
-			<div class="container"> <!-- 페이지 전체 영역 -->
-			<header>
+	<body>
+		<div class="container"> <!-- 페이지 전체 영역 -->
+		<div id="menu">
+			<c:if test="${login != null }">
+				<c:choose>
+					<c:when test="${fn:contains(login.type, 'M')}">
+						<%@ include file="../index_header_login_mom.jsp"%>
+					</c:when>
+					<c:when test="${fn:contains(login.type, 'S')}">
+						<%@ include file="../index_header_login_sitter.jsp"%>
+					</c:when>
+				</c:choose>
+			</c:if>
+			<c:if test="${login == null }">
 				<%@ include file="../index_header.jsp"%>
-				</header>
-				<!-- header end-->
+			</c:if>
+			<%-- <h3>${login.type}, ${login.momno }</h3>
+			<p>${login.sitterno }</p> --%>
+		</div>
 		<div class="section_wrap"> <!-- section 전체영역 -->
 			<div class="col-xs-12"> 
 			<div class="section_main"> <!-- Background-image -->
@@ -68,6 +81,11 @@
 								</a>
 							</li>
 							<li class="block_item">
+								<a href="${pageContext.request.contextPath}/customer/notice_site.do" class="block_item_link">
+									<span class="block_item_title">공지사항</span>
+								</a>
+							</li>
+							<li class="block_item">
 								<a href="${pageContext.request.contextPath}/customer/question_mom.do" class="block_item_link">
 									<span class="block_item_title">부모회원</span>
 									<span class="block_item_title2">이용가이드</span>
@@ -77,11 +95,6 @@
 								<a href="${pageContext.request.contextPath}/customer/question_sitter.do" class="block_item_link">
 									<span class="block_item_title">시터회원</span>
 									<span class="block_item_title2">이용가이드</span>
-								</a>
-							</li>
-							<li class="block_item">
-								<a href="${pageContext.request.contextPath}/customer/notice_site.do" class="block_item_link">
-									<span class="block_item_title">공지사항</span>
 								</a>
 							</li>
 						</ul>
@@ -114,7 +127,6 @@
 													<h4>${item.sub_category}</h4> <br>	
 													<a href="${viewUrl}">[${item.sub_category}] ${item.title}</a>
 												</li>
-												<hr>
 											</ul>
 	                 					</c:if> 
 	                 					

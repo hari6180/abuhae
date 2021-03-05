@@ -228,3 +228,14 @@ table {
   margin-top: 20px;
   margin-left: 220px;
 }
+
+.btn_button {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.btn_warning {
+	margin-right: 15px;
+}
+

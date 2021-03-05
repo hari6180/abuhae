@@ -53,7 +53,7 @@
 	</div>
 	<div class="state">
 		<div class="gleft">
-			<p class="total">오늘 등록된 글 <strong>4</strong>건 / 전체 게시글 <strong>10</strong>건</p>
+			<!--  <p class="total">오늘 등록된 글 <strong>4</strong>건 / 전체 게시글 <strong>10</strong>건</p> -->
 		</div>
 		<div class="gright">
 			<select class="filter" id="filter_bbs" name="filter_bbs">
