@@ -246,7 +246,7 @@
 								</c:if>
 								<c:if test="${output.frequency=='shortTerm'}">
 									<span id="schedule_text" style="color: #ff7000; font-weight: bold;"> ${output.selectdate} </span>
-									에 일할 수 있어요.
+									에 시간이 가능해요.
 								</c:if>
 								<c:if test="${output.frequency=='regular'}">
 								<div class="active_area_text_box">
@@ -516,14 +516,56 @@
 					</div> <!-- fin. active_box -->
 					<div class="possible_age_box">
 					<div class="box_name">아이 정보</div>
-					<div class="possible_age_area">
+					<div class="possible_age_area" style="font-weight: bold;">
 						<div>												
 							<div class="child_age_line">
 								<div style="margin-bottom: -10px">
-								<span style="color: #ff7000;"><i class="fas fa-child fa-3x"></i></span>
 								</div>
-								<span class="child_age_text">${output.kids_num} 명</span>		
-							</div>											
+								<c:if test="${output.kids_nai =='got_baby'}">
+								<span style="color: #ff7000;"><i class="fas fa-baby fa-3x"></i></span> 
+								<span style="margin-top: 11px; margin-left: 10px;">신생아 ${age}세</span>
+								</c:if>
+								<br/>
+								<c:if test="${output.kids_nai == 'baby'}">
+								<span style="color: #ff7000;"><i class="fas fa-baby-carriage fa-3x"></i></span> 
+								<span style="margin-top: 11px; margin-left: 10px;">영아 ${age}세</span>
+								</c:if>
+								<br/>
+								<c:if test="${output.kids_nai == 'children'}">
+								<span style="color: #ff7000;"><i class="fas fa-child fa-3x"></i></span>
+								<span style="margin-top: 11px; margin-left: 10px;"> 유아 ${age}세 </span>
+								</c:if>
+								<br/>
+								<c:if test="${output.kids_nai == 'element'}">
+								<span style="color: #ff7000;"><i class="fas fa-school fa-3x"></i></span> 
+								<span style="margin-top: 11px; margin-left: 10px;">초등학생 ${age}세</span>
+								</c:if>
+							</div>	
+							<c:if test="${age2!=''}">
+							<div>
+								<div style="margin-bottom: -10px">
+								</div>
+								<c:if test="${output.kids_nai2 =='got_baby'}">
+								<span style="color: #ff7000;"><i class="fas fa-baby fa-3x"></i></span> 
+								<span style="margin-top: 11px; margin-left: 10px;">신생아 ${age2}세</span>
+								</c:if>
+								<br/>
+								<c:if test="${output.kids_nai2 == 'baby'}">
+								<span style="color: #ff7000;"><i class="fas fa-baby-carriage fa-3x"></i></span> 
+								<span style="margin-top: 11px; margin-left: 10px;">영아 ${age2}세</span>
+								</c:if>
+								<br/>
+								<c:if test="${output.kids_nai2 == 'children'}">
+								<span style="color: #ff7000;"><i class="fas fa-child fa-3x"></i></span>
+								<span style="margin-top: 11px; margin-left: 10px;"> 유아 ${age2}세 </span>
+								</c:if>
+								<br/>
+								<c:if test="${output.kids_nai2 == 'element'}">
+								<span style="color: #ff7000;"><i class="fas fa-school fa-3x"></i></span> 
+								<span style="margin-top: 11px; margin-left: 10px;">초등학생 ${age2}세</span>
+								</c:if>
+							</div>	
+							</c:if>										
 						</div>
 					</div> <!-- fin. possible_age_area -->
 				</div> <!-- fin. possible_age_box -->

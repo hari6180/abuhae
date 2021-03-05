@@ -46,6 +46,7 @@ public class MemberInsertController {
 		// 스케줄
 		String[] days = { "mon", "tue", "wed", "thu", "fri", "sat", "sun" };
 		String[] frequency = { "regular", "shortTerm", "noplan" };
+		String[] wanttime = {"wek_morning","wek_launch","wek_evning","end_morning","end_launch","end_evning"};
 
 		// 원하는 활동
 		String[] acts = { "innerplay", "guide", "read", "outside", "korean", "english", "study", "sport",
@@ -114,15 +115,34 @@ public class MemberInsertController {
 			dayOk[0] = "\"" + days[random(0, 2)] + "\"";
 			dayOk[1] = "\"" + days[random(3, 4)] + "\"";
 			dayOk[2] = "\"" + days[random(5, 6)] + "\"";
+			String wanttimeok[] = new String[2];
+			wanttimeok[0] = "\"" + wanttime[random(0, 2)] + "\"";
+			wanttimeok[1] = "\"" + wanttime[random(3, 5)] + "\"";
 
 			// 프로필 업데이트 및 스케줄 날짜 랜덤입력
 			int day = random(1, 31);
 			int hour = random(1, 12);
 			int minsec = random(1, 59);
+			
+			String freq = frequency[random(0, frequency.length - 1)];
+			
+			if (freq == "regular") {
+				input.setSchedule("{\"day\":" + Arrays.toString(dayOk) + ", \"frequency\": \""
+						+ freq + "\", \"startdate\": \""
+						+ String.format("%02d/%02d/%02d", 2021, 03, random(1, 31)) + "\"}");
+			}
+			
+			if (freq == "shortTerm") {
+				input.setSchedule("{\"frequency\": \""+ freq
+						+ "\", \"selectdate\": \""+ String.format("%02d/%02d/%02d", 2021, 03, random(1, 31)) + "\"}");
+			}
+			
+			if (freq == "noplan") {
+				input.setSchedule("{\"wanttime\":" + Arrays.toString(wanttimeok) + ", \"frequency\": \""
+						+ freq + "\"}");
+			}
 
-			input.setSchedule("{\"day\":" + Arrays.toString(dayOk) + ", \"frequency\": \""
-					+ frequency[random(0, frequency.length - 1)] + "\", \"startdate\": \""
-					+ String.format("%02d/%02d/%02d", 2021, 03, random(1, 31)) + "\"}");
+			
 			input.setSchedule_ok('Y');
 			input.setSitter_gender('F');
 			input.setCare_type("이모님(도우미)과 함께 도와주세요.");

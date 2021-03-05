@@ -52,6 +52,8 @@
 		<result property="wanttime" column="wanttime" />
 		<result property="kids_nai" column="kids_nai" />
 		<result property="kids_nai2" column="kids_nai2" />
+		<result property="kids_age" column="kids_age" />
+		<result property="kids_age2" column="kids_age2" />
 	</resultMap>
 
 	<resultMap id="SitterMap"
@@ -193,7 +195,7 @@
 		si, gu, dong, signup_date, description, sitter_gender, care_type, 
 		payment, payment_ok, kids_nai, kids_nai2,
 		(SELECT DATE_FORMAT(openingdate, "%Y년 %m월 %d일") FROM member b WHERE b.memberno=m.memberno) AS openingdate,
-		 startdate, subscribe,
+		 startdate, subscribe, kids_age, kids_age2,
 		(SELECT COUNT(heartno) FROM heart h WHERE m.momno=h.momno AND who='S') AS heartno,
 		(SELECT COUNT(cntno) FROM connect c WHERE c.momno=m.momno AND who='S') AS cntno
 		<if test = "loginSt != 0">, (SELECT COUNT(*)
