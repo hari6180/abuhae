@@ -1,5 +1,6 @@
 package study.team.abuhae.controllers;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -412,6 +413,24 @@ public class SearchRestController {
 				String age = ageHelper.kidsStr(temp.getKids_age());
 				temp.setKids_age(age);
 				output.set(i, temp);
+			}
+			
+			// 시작일자 - 수정해야함
+			Calendar date = Calendar.getInstance();
+			
+			for (int i = 0; i < output.size(); i++) {
+				Mom_info temp = output.get(i);
+				String schedule = "";
+				int yy = date.get(Calendar.YEAR);
+				int mm = date.get(Calendar.MONTH) + 1;
+				schedule += yy;
+				schedule += mm;
+				if (temp.getSchedule() == null) {
+					temp.setSchedule(schedule);
+					output.set(i, temp);	
+				} else {
+					output.set(i, temp);
+				}
 			}
 
 		} catch (Exception e) {

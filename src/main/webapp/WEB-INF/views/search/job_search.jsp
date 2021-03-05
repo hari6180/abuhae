@@ -530,6 +530,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 </div>
               </div>
               <div class="care_days_group">
+                {{#ifCond frequency "regular"}}
                 <!-- 조건에 따라 css 색상 변환 처리 -->
                 <span class="care_days {{#contains "mon" days }} care_days_sel {{/contains}}">
                   월
@@ -552,6 +553,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                 <span class="care_days {{#contains "sun" days }} care_days_sel {{/contains}}">
                   일
                 </span>
+                {{/ifCond}}
               </div>
             </div>
             <div class="jim_btn">
