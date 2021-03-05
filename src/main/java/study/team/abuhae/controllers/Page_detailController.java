@@ -42,6 +42,8 @@ public class Page_detailController {
 	@Autowired
 	WebHelper webHelper;
 	@Autowired
+	AgeHelper ageHelper;
+	@Autowired
 	RegexHelper regexHelper;
 	@Value("#{servletContext.contextPath}")
     String contextPath;
@@ -60,17 +62,27 @@ public class Page_detailController {
 			// 조회결과를 저장할 객체 선언 
 			Mom_info output = null;
 			ProfileFile output2 = null;
+			int age = 0;
+			int age2 = 0;
 			
 			try {
 				// 데이터 조회 
 				output = detailService.getMomItem(input);
 				output2 = uploadService.getMomProfileItem(input2);
+				AgeHelper ageHelper = new AgeHelper();
+				age = ageHelper.kidsAge(output.getKids_age());
+				
+				if (output.getKids_num() == 2) {
+					age2 = ageHelper.kidsAge(output.getKids_age2());
+				}
 			
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			model.addAttribute("output", output);
 			model.addAttribute("profile", output2);
+			model.addAttribute("age", age);
+			model.addAttribute("age2", age2);
 			return new ModelAndView("/page_detail/mom_page_detail/mom_detail");
 			//return "/page_detail/mom_page_detail/mom_detail";
 	}
