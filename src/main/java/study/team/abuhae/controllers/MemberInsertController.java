@@ -120,7 +120,7 @@ public class MemberInsertController {
 			wanttimeok[1] = "\"" + wanttime[random(3, 5)] + "\"";
 
 			// 프로필 업데이트 및 스케줄 날짜 랜덤입력
-			int day = random(1, 31);
+			int day = random(1, 28);
 			int hour = random(1, 12);
 			int minsec = random(1, 59);
 			
@@ -148,7 +148,7 @@ public class MemberInsertController {
 			input.setCare_type("이모님(도우미)과 함께 도와주세요.");
 
 			// 프로필 업데이트 날짜 랜덤입력
-			String date = String.format("%02d-%02d %02d:%02d:%02d", 3, day, hour, minsec, minsec);
+			String date = String.format("%02d-%02d %02d:%02d:%02d", 2, day, hour, minsec, minsec);
 			String openingdate = "2021-" + date;
 			input.setOpeningdate(openingdate);
 			input.setSignup_date(openingdate);
@@ -211,7 +211,7 @@ public class MemberInsertController {
 			dayOk[1] = "\"" + days[random(3, 4)] + "\"";
 			dayOk[2] = "\"" + days[random(5, 6)] + "\"";
 			// 프로필 업데이트 및 스케줄 날짜 랜덤입력
-			int day = random(1, 31);
+			int day = random(1, 28);
 			int hour = random(1, 12);
 			int minsec = random(1, 59);
 
@@ -222,7 +222,7 @@ public class MemberInsertController {
 			input2.setCctv('Y');
 
 			// 프로필 업데이트 날짜 랜덤입력
-			String date = String.format("%02d-%02d %02d:%02d:%02d", 3, day, hour, minsec, minsec);
+			String date = String.format("%02d-%02d %02d:%02d:%02d", 2, day, hour, minsec, minsec);
 			String openingdate = "2021-" + date;
 			input2.setOpeningdate(openingdate);
 

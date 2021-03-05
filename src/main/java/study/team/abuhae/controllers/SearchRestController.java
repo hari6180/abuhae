@@ -245,64 +245,6 @@ public class SearchRestController {
 		return webHelper.getJsonData(data);
 	}
 
-	// 시터 찜하기
-	@RequestMapping(value = "/heart/insertSt", method = RequestMethod.GET)
-	public Map<String, Object> heartSt(/** (3) 찜하기 */
-	@RequestParam(value = "sitterno", required = false) String sitterno,
-			@RequestParam(value = "momno", required = false) String momno,
-			@RequestParam(value = "jjim", required = false) String jjim) {
-
-		// 찜하기
-		// 데이터를 전송할 객체 생성
-		Heart heart = new Heart();
-		int stno = Integer.parseInt(sitterno);
-		int mono = Integer.parseInt(momno);
-
-		heart.setMomno(mono);
-		heart.setSitterno(stno);
-		heart.setWho('M');
-		int findHt = 0;
-		try {
-			searchService.addHeart(heart);
-		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
-		}
-
-		/** 3) JSON 출력하기 */
-		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("heart", findHt);
-
-		return webHelper.getJsonData(data);
-	}
-
-	// 찜하기 취소
-	@RequestMapping(value = "/heart/deleteSt", method = RequestMethod.GET)
-	public Map<String, Object> heartNoSt(
-			/** (3) 찜하기 */
-			@RequestParam(value = "sitterno", required = false) String sitterno,
-			@RequestParam(value = "momno", required = false) String momno) {
-
-		// 찜하기 취소
-		// 데이터를 전송할 객체 생성
-		Heart heart = new Heart();
-		int stno = Integer.parseInt(sitterno);
-		int mono = Integer.parseInt(momno);
-
-		heart.setMomno(mono);
-		heart.setSitterno(stno);
-		heart.setWho('M');
-		try {
-			searchService.deleteHeart(heart);
-		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
-		}
-
-		/** 3) JSON 출력하기 */
-		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("heart", heart);
-
-		return webHelper.getJsonData(data);
-	}
 
 	/** 일자리 찾기 페이지 */
 	// 일자리 카드 출력 - 비로그인
@@ -415,7 +357,7 @@ public class SearchRestController {
 				output.set(i, temp);
 			}
 			
-			// 시작일자 - 수정해야함
+			// 시작일자 - noplan일시 오늘 날짜를 세팅해준다.
 			Calendar date = Calendar.getInstance();
 			
 			for (int i = 0; i < output.size(); i++) {
@@ -561,6 +503,23 @@ public class SearchRestController {
 					temp.setKids_age(age);
 					output.set(i, temp);
 				}
+				
+				// 시작일자 - noplan일시 오늘 날짜를 세팅해준다.
+				Calendar date = Calendar.getInstance();
+				
+				for (int i = 0; i < output.size(); i++) {
+					Mom_info temp = output.get(i);
+					int yy = date.get(Calendar.YEAR);
+					int mm = date.get(Calendar.MONTH) + 1;
+					int dd = date.get(Calendar.DAY_OF_MONTH);
+					String schedule = String.format("%05d/%02d/%02d", yy, mm, dd);
+					if (temp.getSchedule() == null) {
+						temp.setSchedule(schedule);
+						output.set(i, temp);	
+					} else {
+						output.set(i, temp);
+					}
+				}
 
 			} catch (Exception e) {
 				return webHelper.getJsonError(e.getLocalizedMessage());
@@ -571,6 +530,66 @@ public class SearchRestController {
 			data.put("item", output);
 			data.put("meta", pageData);
 			data.put("totalCount", totalCount);
+
+			return webHelper.getJsonData(data);
+		}
+		
+
+		// 시터 찜하기
+		@RequestMapping(value = "/heart/insertSt", method = RequestMethod.GET)
+		public Map<String, Object> heartSt(/** (3) 찜하기 */
+		@RequestParam(value = "sitterno", required = false) String sitterno,
+				@RequestParam(value = "momno", required = false) String momno,
+				@RequestParam(value = "jjim", required = false) String jjim) {
+
+			// 찜하기
+			// 데이터를 전송할 객체 생성
+			Heart heart = new Heart();
+			int stno = Integer.parseInt(sitterno);
+			int mono = Integer.parseInt(momno);
+
+			heart.setMomno(mono);
+			heart.setSitterno(stno);
+			heart.setWho('M');
+			int findHt = 0;
+			try {
+				searchService.addHeart(heart);
+			} catch (Exception e) {
+				return webHelper.getJsonError(e.getLocalizedMessage());
+			}
+
+			/** 3) JSON 출력하기 */
+			Map<String, Object> data = new HashMap<String, Object>();
+			data.put("heart", findHt);
+
+			return webHelper.getJsonData(data);
+		}
+
+		// 찜하기 취소
+		@RequestMapping(value = "/heart/deleteSt", method = RequestMethod.GET)
+		public Map<String, Object> heartNoSt(
+				/** (3) 찜하기 */
+				@RequestParam(value = "sitterno", required = false) String sitterno,
+				@RequestParam(value = "momno", required = false) String momno) {
+
+			// 찜하기 취소
+			// 데이터를 전송할 객체 생성
+			Heart heart = new Heart();
+			int stno = Integer.parseInt(sitterno);
+			int mono = Integer.parseInt(momno);
+
+			heart.setMomno(mono);
+			heart.setSitterno(stno);
+			heart.setWho('M');
+			try {
+				searchService.deleteHeart(heart);
+			} catch (Exception e) {
+				return webHelper.getJsonError(e.getLocalizedMessage());
+			}
+
+			/** 3) JSON 출력하기 */
+			Map<String, Object> data = new HashMap<String, Object>();
+			data.put("heart", heart);
 
 			return webHelper.getJsonData(data);
 		}
