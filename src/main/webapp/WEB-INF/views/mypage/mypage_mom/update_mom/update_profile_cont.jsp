@@ -1685,13 +1685,13 @@
                 
                 if (type == 'shortTerm') {
 
-                    var selectdate = $(".calrendar_block").val();
+                    var startdate = $(".calrendar_block").val();
 
                     //빈도
                     var frequency = type;
 
                     var schedule = {
-                        selectdate: selectdate,
+                   		startdate: startdate,
                         frequency: frequency
                     };
 
