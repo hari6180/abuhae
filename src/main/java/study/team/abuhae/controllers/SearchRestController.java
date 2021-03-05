@@ -420,11 +420,10 @@ public class SearchRestController {
 			
 			for (int i = 0; i < output.size(); i++) {
 				Mom_info temp = output.get(i);
-				String schedule = "";
 				int yy = date.get(Calendar.YEAR);
 				int mm = date.get(Calendar.MONTH) + 1;
-				schedule += yy;
-				schedule += mm;
+				int dd = date.get(Calendar.DAY_OF_MONTH);
+				String schedule = String.format("%05d/%02d/%02d", yy, mm, dd);
 				if (temp.getSchedule() == null) {
 					temp.setSchedule(schedule);
 					output.set(i, temp);	
