@@ -97,7 +97,7 @@
                                                     휴대폰 번호 수정하기
                                             </h4>
                                         </div>
-                                        <div class="modal-body"">
+                                        <div class="modal-body">
                                             <form method="POST" action="${pageContext.request.contextPath}/mypage/updateSitterPhone.do">
                                             	<label for="new_phonenumber">새로운 휴대폰 번호</label>
                                                 <input type="hidden" name="memberno" value="${login.memberno}">
@@ -127,11 +127,11 @@
                                                     이메일 수정하기
                                             </h4>
                                         </div>
-                                        <div class="modal-body"">
-                                            <form ${pageContext.request.contextPath}/mypage/updateSitterEmail.do>
+                                        <div class="modal-body">
+                                        	<form method="POST" action="${pageContext.request.contextPath}/mypage/updateSitterEmail.do">
                                                 <label for="new_email">새로운 이메일</label>
                                                 <input type="hidden" name="memberno" value="${login.memberno}">
-                                                <input type="text" name="new_email" id="new_email" placeholder="새로운 이메일을 입력하세요." 
+                                                <input type="text" name="email" id="new_email" placeholder="새로운 이메일을 입력하세요." 
                                                 style="width: 100%; line-height: 36px; padding: 0 20px; border: 0; border: 2px solid #ccc;">
                                                 <button class="rev_no_btn" type="submit" style="width: 100%; margin-top: 20px; 
                                                 background-color: rgb(34, 172, 135); border: 0; height: 30px; border-radius: 5px; color: #ffffff;">저장하기</button>

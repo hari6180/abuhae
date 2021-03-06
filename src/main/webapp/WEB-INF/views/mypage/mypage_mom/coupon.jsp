@@ -107,7 +107,7 @@
                     <section class="group2_coupon">
                         <div class="row">
                             <div class="col-xs-12 coupon_cont2">
-                                <a href="../../buy/buy.jsp" class="use_btn">
+                                <a href="${pageContext.request.contextPath}/buy/mom_ticket.do?momno=${login.momno}" class="use_btn">
                                     <button type="button">쿠폰 사용하러 가기 <i class="fas fa-angle-right"></i></button>
                                 </a>
                                 <c:choose>

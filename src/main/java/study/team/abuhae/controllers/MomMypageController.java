@@ -471,7 +471,7 @@ public class MomMypageController {
 	         return webHelper.redirect(null, e.getLocalizedMessage());
 	      }
 	      
-	      String url = contextPath+"/mypage/mypage_mom/manage_account.do?&memberno="+output.getMemberno();
+	      String url = contextPath+"/mypage/mypage_mom/ac/"+output.getMemberno();
 	      
 	      return webHelper.redirect(url, null);
 	   }
@@ -503,7 +503,7 @@ public class MomMypageController {
 	         return webHelper.redirect(null, e.getLocalizedMessage());
 	      }
 	      
-	      String url = contextPath+"/mypage/mypage_mom/manage_account.do?&memberno="+output.getMemberno();
+	      String url = contextPath+"/mypage/mypage_mom/ac/"+output.getMemberno();
 	      
 	      return webHelper.redirect(url, null);
 	   }
@@ -540,8 +540,8 @@ public class MomMypageController {
 	   @RequestMapping(value = "/mypage/mypage_mom/update_passwordOk.do", method = RequestMethod.POST)
 	   public ModelAndView update_passwordOK(Model model, HttpSession session,
 	         @RequestParam(value = "memberno", defaultValue = "0") int memberno,
-	         @RequestParam(value = "now_pw", defaultValue = "") String oldpassword,
-	         @RequestParam(value = "new_pw", defaultValue = "") String newpassword) {
+	         @RequestParam(value = "now_pw") String oldpassword,
+	         @RequestParam(value = "new_pw") String newpassword) {
 
 	      /** 1) 파라미터 유효성 검사 */
 	      if (memberno == 0) {

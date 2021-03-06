@@ -31,7 +31,7 @@ public class MomMypageRestController {
 	public Map<String, Object> edit_ok(
 			@RequestParam(value = "revno", defaultValue = "0") int revno,
 			@RequestParam(value = "rev_rate", defaultValue = "") char rev_rate,
-			@RequestParam(value = "contents", defaultValue = "") String contents) {
+			@RequestParam(value = "contents") String contents) {
 		/** accept 수정(connect table) - insert */
 		Review input = new Review();
 		input.setRevno(revno);
@@ -41,7 +41,7 @@ public class MomMypageRestController {
 		/** 사용자가 입력한 파라미터 유효성 검사 */
 		String review = input.getContents(); 
 		if(!regexHelper.isValue(review)) {
-			return webHelper.getJsonWarning("내용을 입력해주세요.");
+			return webHelper.getJsonWarning("content");
 		}
 		
 		try {

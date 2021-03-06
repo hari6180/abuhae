@@ -110,7 +110,7 @@
                                             
                                         </div>
                                     </div>
-                                    <a href="${pageContext.request.contextPath}/buy/buy.do?memberno=${output.memberno}">
+                                    <a href="${pageContext.request.contextPath}/buy/mom_ticket.do?momno=${login.momno}">
                                         <button type="button" id="buy_btn">무제한 이용권 구매하기</button>
                                     </a>
                                 </div>

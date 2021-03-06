@@ -192,15 +192,18 @@
         
         	
 
-	        <!--Google CDN 서버로부터 jQuery 참조 -->
-	        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                    	 <!-- Javascript -->
-	        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-	        <!-- jQuery Ajax Form plugin CDN -->
-	        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-	        <!-- jQuery Ajax Setup -->
-	        <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
-	          <script>
+	      	 <!--Google CDN 서버로부터 jQuery 참조 -->
+		    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+		    <!--validate플러그인 참조-->
+		    <script src="${pageContext.request.contextPath}/assets/plugin/validate/jquery.validate.min.js"></script>
+		    <script src="${pageContext.request.contextPath}/assets/plugin/validate/additional-methods.min.js"></script>
+		    
+		    <!-- jQuery Ajax Form plugin CDN -->
+		    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+		    <!-- jQuery Ajax Setup -->
+		    <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
+          	<script>
             $(function() {
             	var content = $('textarea[name="contents"]').val();
             	
@@ -212,10 +215,10 @@
                         window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/review.do?momno=${login.momno}";
                      }
                      
-                     if (content == "") {
-              		  	alert("내용을 입력하세요.");
-              		   window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/review.do?momno=${login.momno}";
-              	  	 }
+                     if (json.rt == "content") {
+                         alert("내용을 입력해주세요.");
+                         window.location = "${pageContext.request.contextPath}/mypage/mypage_mom/review.do?momno=${login.momno}";
+                      }
                   }
                });
                

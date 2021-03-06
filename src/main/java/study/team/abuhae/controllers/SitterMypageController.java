@@ -131,8 +131,8 @@ public class SitterMypageController {
 	   @RequestMapping(value = "/mypage/mypage_sitter/update_passwordOk.do", method = RequestMethod.POST)
 	   public ModelAndView update_passwordOK(Model model, HttpSession session,
 	         @RequestParam(value = "memberno", defaultValue = "0") int memberno,
-	         @RequestParam(value = "now_pw", defaultValue = "") String oldpassword,
-	         @RequestParam(value = "new_pw", defaultValue = "") String newpassword) {
+	         @RequestParam(value = "now_pw") String oldpassword,
+	         @RequestParam(value = "new_pw") String newpassword) {
 
 	      /** 1) 파라미터 유효성 검사 */
 	      if (memberno == 0) {
@@ -429,7 +429,7 @@ public class SitterMypageController {
 	      //데이터 출력
 	      model.addAttribute("output", output);
 	      
-		return new ModelAndView("mypage/mypage_sitter/manage_account");
+		return new ModelAndView("/mypage/mypage_sitter/manage_account");
 	}
 	
 	   
@@ -459,7 +459,7 @@ public class SitterMypageController {
          return webHelper.redirect(null, e.getLocalizedMessage());
       }
       
-      String url = contextPath+"/mypage/mypage_sitter/manage_account.do?&memberno="+output.getMemberno();
+      String url = contextPath+"/mypage/mypage_sitter/ma/"+output.getMemberno();
       
       return webHelper.redirect(url, null);
    }
@@ -491,7 +491,7 @@ public class SitterMypageController {
          return webHelper.redirect(null, e.getLocalizedMessage());
       }
       
-      String url = contextPath+"/mypage/sitter_mom/manage_account.do?&memberno="+output.getMemberno();
+      String url = contextPath+"/mypage/mypage_sitter/ma/"+output.getMemberno();
       
       return webHelper.redirect(url, null);
    }
