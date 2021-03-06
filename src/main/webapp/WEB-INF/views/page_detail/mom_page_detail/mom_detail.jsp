@@ -99,7 +99,7 @@
 				  </div>
 				</div> <!-- fin. profil_photo -->
 				<div class="profil_info">
-					<p style="font-weight: bold; font-size: 1.2em;">${output.apply_title}</p>
+					<p>${output.apply_title}</p>
 				</div> <!-- fin. profil_info -->
 				<div class="mom_info">
 				    <div class="name">${output.name}</div>
@@ -209,7 +209,7 @@
 							<div>
 								<c:if test="${output.frequency=='noplan'}">
 								<div style="display: flex;">
-								<div class="active_area_profil" style="margin-top: 10px;">
+								<div class="active_area_profil">
 								  <c:choose>			  
 								  	<c:when test="${profile == null }">
 										<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="60" height="60" style="border-radius: 100%"/>				
@@ -243,7 +243,7 @@
 								</c:if>
 								<c:if test="${output.frequency=='shortTerm'}">
 								<div style="display: flex;">
-									<div class="active_area_profil" style="margin-top: 10px;">
+									<div class="active_area_profil">
 									  <c:choose>			  
 									  	<c:when test="${profile == null }">
 											<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="60" height="60" style="border-radius: 100%"/>				
@@ -258,7 +258,7 @@
 									<div style="padding: 8px 0px;">
 										<div class="active_text_line">
 											<span id="active_text_style">
-											<span id="schedule_text" style="color: #ff7000; font-weight: bold;"> ${output.startdate} </span>
+											<span id="schedule_text"> ${output.startdate} </span>
 												이 날짜에 아이를 돌봐주세요
 											</span>
 										</div>
@@ -269,7 +269,7 @@
 								<c:if test="${output.frequency=='regular'}">
 								<div>
 								<div style="display: flex;">
-									<div class="active_area_profil" style="margin-top: 10px;">
+									<div class="active_area_profil">
 									  <c:choose>			  
 									  	<c:when test="${profile == null }">
 											<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg" width="60" height="60" style="border-radius: 100%"/>				
@@ -282,8 +282,8 @@
 								<div class="active_area_text_box">
 									<div id="active_area_style"></div>
 									<div style="padding: 8px 0px;">
-										<div class="active_text_line" style="font-size: 0.98em;">
-											<span id="schedule_text" style="color: #ff7000; font-weight: bold;"> 
+										<div class="active_text_line">
+											<span id="schedule_text"> 
 											${fn:split(output.startdate,'/')[0]}년 ${fn:split(output.startdate,'/')[1]}월 ${fn:split(output.startdate,'/')[2]}일 
 											 </span> 부터 일을 시작할 수 있어요.
 											 <c:if test="${fn:contains(output.schedule_ok,Y)}">
@@ -547,11 +547,7 @@
 								
 							</div>
 						</div> <!-- fin. active_area -->
-					</div> <!-- fin. active_box -->
-					
-					
-					
-					
+					</div> <!-- fin. active_box -->					
 					<div class="possible_age_box">
 					<div class="box_name">아이 정보</div>
 					<div class="possible_age_area" style="font-weight: bold;">
@@ -947,11 +943,11 @@
 						</div>
 						</div>						
 						</c:if>
+						<c:if test="${output.sitter_gender!='' || output.care_type!=null || output.interview_type!=null}">
 						<div class="possible_age_box">
 						<div class="box_name">그 외 요청사항</div>
 						<div class="possible_age_area">
-							<div>
-							<c:if test="${output.sitter_gender!=null}">
+							<c:if test="${output.sitter_gender!=''}">
 								<div class="other_line">
 									<label class="want_gender_line">희망 맘시터 성별 : </label>
 									<c:if test="${fn:contains(output.sitter_gender,'F')}">
@@ -984,8 +980,8 @@
 								</div>
 							</c:if>								
 							</div>
-						</div> <!-- fin. possible_age_area -->
 						</div> <!-- fin. possible_age_box -->
+						</c:if>
 						</div> <!-- fin. possible_active_box -->
 					</div>
 					</div>
@@ -1009,10 +1005,10 @@
 					<div class="fixed_btn_jim">
 						<button id="swapHeart" class="btn btn-default swap" type="button" data-momno="${output.momno}">
 							<c:if test="${output.findHt == 0}">
-						    <span class="glyphicon glyphicon-heart-empty" style="color: rgb(0, 143, 105); font-size: 25px;"></span>
+						    <span class="glyphicon glyphicon-heart-empty"></span>
 							</c:if>
 							<c:if test="${output.findHt != 0}">
-						    <span class="glyphicon glyphicon-heart" style="color: rgb(0, 143, 105); font-size: 25px;"></span>
+						    <span class="glyphicon glyphicon-heart"></span>
 							</c:if>
 						</button>					
 					</div>
@@ -1033,7 +1029,7 @@
 						<!-- .modal-content -->
 						<div class="modal-content">
 							<div class="modal-body">
-								<p style="text-align: center; padding-top: 10px; font-weight: bold;">
+								<p>
 									일자리에 지원하기 위해
 									<br/>
 									지원권을 구매해주세요

@@ -213,3 +213,9 @@
 	width: 150px;
 	border-radius: 100px;
 	}
+	.siren_body_profil > p {
+		padding-bottom: 10px;
+	}
+	.desc > span {
+		color: red;
+	}

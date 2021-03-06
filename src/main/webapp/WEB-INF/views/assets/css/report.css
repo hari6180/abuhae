@@ -48,7 +48,6 @@
 		font-size: 1.2em;
 		display: block;
 		text-align: center;
-		vertical-align: center;
 	}
 	.btn_area {
 		margin-top: 18px;
@@ -134,4 +133,8 @@
 	.desc{
 		font-size: 0.8em;
 		color: #585858;
+	}
+	siren_type_box > input {
+		width: 18px;
+		height: 18px;
 	}

@@ -27,7 +27,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/siren.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/report.css" />
 </head>
 	
 <body>		
@@ -70,17 +70,17 @@
 					<div class="siren_type">
 						<h4 class="siren_title">신고 유형을 선택해주세요.</h4>
 						<div class="siren_type_box">
-							<input id="rd1" type="radio" name="type" value="허위정보를 기재하였습니다." style="width:18px; height:18px;">
+							<input id="rd1" type="radio" name="type" value="허위정보를 기재하였습니다.">
 							<label for="rd1">허위정보를 기재하였습니다.</label><br/>
-							<input id="rd2" type="radio" name="type" value="부적절한 사진입니다." style="width:18px; height:18px;">
+							<input id="rd2" type="radio" name="type" value="부적절한 사진입니다.">
 							<label for="rd2">부적절한 사진입니다.</label><br/>
-							<input id="rd3" type="radio" name="type" value="부적절한 내용입니다." style="width:18px; height:18px;">
+							<input id="rd3" type="radio" name="type" value="부적절한 내용입니다.">
 							<label for="rd3">부적절한 내용입니다.</label><br/>
-							<input id="rd4" type="radio" name="type" value="규정을 위반하였습니다." style="width:18px; height:18px;">
+							<input id="rd4" type="radio" name="type" value="규정을 위반하였습니다.">
 							<label for="rd4">규정을 위반하였습니다.</label><br/>
-							<input id="rd5" type="radio" name="type" value="맘시터 회원 자격이 없습니다." style="width:18px; height:18px;">
+							<input id="rd5" type="radio" name="type" value="맘시터 회원 자격이 없습니다.">
 							<label for="rd5">맘회원 자격이 없습니다.</label><br/>
-							<input id="rd6" type="radio" name="type" value="기타" style="width:18px; height:18px;">
+							<input id="rd6" type="radio" name="type" value="기타">
 							<label for="rd6">기타</label><br/>
 						</div> <!-- fin. siren_type_box -->
 					</div> <!-- fin. siren_type -->

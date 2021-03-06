@@ -182,12 +182,12 @@ jQuery(function($) {
 						<div class="line_three"></div>
 						<div class="cctv_area">
 						 <c:if test="${fn:contains(output.cctv,'Y')}">
-							<div id="cctv" style="color: #ff7000"><span style="color: #ff7000;"><i class="fas fa-video"></i></span> CCTV</div>
-							<div id="agree" style="color: #ff7000">동의함</div>
+							<div id="cctv"><span style="color: #ff7000;"><i class="fas fa-video"></i></span> CCTV</div>
+							<div id="agree">동의함</div>
 						</c:if>
 						<c:if test="${fn:contains(output.cctv,'N')}">
-							<div id="cctv" style="color: #3b3b3b"><span style="color: #555;"><i class="fas fa-video"></i></span> CCTV</div>
-							<div id="agree" style="color: #3b3b3b">동의 안함</div>
+							<div id="cctv_no"><span style="color: #555;"><i class="fas fa-video"></i></span> CCTV</div>
+							<div id="agree_no">동의 안함</div>
 						</c:if>
 						</div> <!-- fin. cctv_area -->
 					</div> <!-- fin. three_area -->
@@ -310,16 +310,16 @@ jQuery(function($) {
 													<div class="schedule_style"></div>
 													<div class="schedule_box">
 														<div class="schedule_main">
-															<span id="schedule_text" style="color: #ff7000; font-weight: bold;"> 
+															<span id="schedule_text"> 
 															${fn:split(output.schedule_start_date,'/')[0]}년 ${fn:split(output.schedule_start_date,'/')[1]}월 ${fn:split(output.schedule_start_date,'/')[2]}일 
 															 </span> 부터 일을 시작할 수 있어요.
 															<br/>
-															<span style="margin-left: 5px; font-weight: bold;">
+															<span id="schedule_text_terms">
 																이 일정으로
-															 <c:if test="${output.workterm=='1week'}"><span style="color: #ff7000;">1주일 이상</span></c:if>
-															 <c:if test="${output.workterm=='1month'}"><span style="color: #ff7000;">1개월 이상</span></c:if>
-															 <c:if test="${output.workterm=='3month'}"><span style="color: #ff7000;">3개월 이상</span></c:if>
-															 <c:if test="${output.workterm=='6month'}"><span style="color: #ff7000;">6개월 이상</span></c:if>
+															 <c:if test="${output.workterm=='1week'}"><span>1주일 이상</span></c:if>
+															 <c:if test="${output.workterm=='1month'}"><span>1개월 이상</span></c:if>
+															 <c:if test="${output.workterm=='3month'}"><span>3개월 이상</span></c:if>
+															 <c:if test="${output.workterm=='6month'}"><span>6개월 이상</span></c:if>
 															 일 할 수 있어요.
 															</span>
 														</div>
@@ -395,8 +395,8 @@ jQuery(function($) {
 											</c:if>
 											</div> <!-- fin. col-xs-12 -->
 											</div> <!-- fin. active_main_box -->
-											<div style="text-align: center; font-weight: bold; padding-top: 10px;">
-											<span style="color: #ff7000;  ">
+											<div class="schedule_ok">
+											<span>
 												* 자세한 시간은 맘회원과 매칭된 이후에 조율해요. 
 											</span>
 											</div>
@@ -646,7 +646,7 @@ jQuery(function($) {
 							<div class="age_line">
 								<c:if test="${fn:contains(theString, 'got_baby')}">
 								<div class="ages col-xs-3">
-									<div style="margin-bottom: -10px">
+									<div>
 									<i class="fas fa-baby fa-3x"></i>
 									</div>
 									<br>
@@ -655,7 +655,7 @@ jQuery(function($) {
 								</c:if>
 								<c:if test="${fn:contains(theString, 'got_baby')==false}">
 								<div class="ages col-xs-3">
-									<div style="margin-bottom: -10px">
+									<div>
 									<span style="color: #ccc"><i class="fas fa-baby fa-3x"></i></span>
 									</div>
 									<br>
@@ -664,7 +664,7 @@ jQuery(function($) {
 								</c:if>
 								<c:if test="${fn:contains(theString, 'baby')}">
 								<div class="ages col-xs-3">
-									<div style="margin-bottom: -10px">
+									<div>
 									<i class="fas fa-baby-carriage fa-3x"></i>
 									</div>
 									<br>
@@ -673,7 +673,7 @@ jQuery(function($) {
 								</c:if>
 								<c:if test="${fn:contains(theString, 'baby')==false}">
 								<div class="ages col-xs-3">
-									<div style="margin-bottom: -10px">
+									<div>
 									<span style="color: #ccc"><i class="fas fa-baby-carriage fa-3x"></i></span>
 									</div>
 									<br>
@@ -682,7 +682,7 @@ jQuery(function($) {
 								</c:if>
 								<c:if test="${fn:contains(theString, 'children')}">
 								<div class="ages col-xs-3">
-									<div style="margin-bottom: -10px">
+									<div>
 									<i class="fas fa-child fa-3x"></i>
 									</div>
 									<br>
@@ -691,7 +691,7 @@ jQuery(function($) {
 								</c:if>
 								<c:if test="${fn:contains(theString, 'children')==false}">
 								<div class="ages col-xs-3">
-									<div style="margin-bottom: -10px">
+									<div>
 									<span style="color: #ccc"><i class="fas fa-child fa-3x"></i></span>
 									</div>
 									<br>
@@ -700,7 +700,7 @@ jQuery(function($) {
 								</c:if>
 								<c:if test="${fn:contains(theString, 'element')}">
 								<div class="ages col-xs-3">
-									<div style="margin-bottom: -10px">
+									<div>
 									<i class="fas fa-school fa-3x"></i>
 									</div>
 									<br>
@@ -709,7 +709,7 @@ jQuery(function($) {
 								</c:if>
 								<c:if test="${fn:contains(theString, 'element')==false}">
 								<div class="ages col-xs-3">
-									<div style="margin-bottom: -10px">
+									<div>
 									<span style="color: #ccc"><i class="fas fa-school fa-3x"></i></span>
 									</div>
 									<br>
@@ -1078,7 +1078,7 @@ jQuery(function($) {
 													<div class="talk_box_line_date">${item.reg_date}</div>
 												</div>
 												<div class="talk_box_line_date_name">
-													<div style="color: #000; font-size: 0.8em; margin-right: 5px; font-weight: bold;">인터뷰 후기</div>
+													<div class="interview_ment">인터뷰 후기</div>
 													<div class="star_area">	
 													<c:if test="${fn:contains(item.rev_rate,0)}">
 														<span style="color: #e5e5e5;"><i class="fas fa-star"></i></span>
@@ -1135,7 +1135,7 @@ jQuery(function($) {
 											</div>
 										</li>
 										</c:if>
-										<hr style="margin: -1px 0px 0px; height: 1px; border: none; background-color: rgb(224,224,224);">
+										<hr id="hr_style" />
 									</c:forEach>
 									<button class="btn_more" onclick = "location.href='${pageContext.request.contextPath}/page_detail/tab_more.do?sitterno=${output.sitterno}';">후기 더 보기</button>
 									</div>
@@ -1149,7 +1149,7 @@ jQuery(function($) {
 						<div class="possible_zone_area">
 							<div>
 								<div class="zone_line">
-									<span style="color: #028071;"><i class="fas fa-map-marker-alt"></i></span> 
+									<span><i class="fas fa-map-marker-alt"></i></span> 
 									<div>&nbsp;${output.si}&nbsp;${output.gu}</div>
 								</div>
 							</div>
@@ -1160,7 +1160,7 @@ jQuery(function($) {
 						<div class="famille_area">
 							<div class="famille_main">
 								<div class="famille_date col-xs-12">
-									${output.signup}부터 <span style="font-weight: bold; color: #ff7000;">현재까지</span>
+									${output.signup}부터 <span>현재까지</span>
 								</div>
 								<div class="famille_number">
 									${output.cntno}

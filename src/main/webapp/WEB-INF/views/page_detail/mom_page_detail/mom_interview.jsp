@@ -51,13 +51,13 @@
 						<div class="info_text_box">
 							<div class="info_text">
 								<div class="siren_body_profil">
-								<p style="padding-bottom: 10px;">
+								<p>
 									 인터뷰 지원 후 맘회원의 답변을 기다려 주세요.<br/>
 									 매일 낮 12시에 다시 인터뷰 지원을 할 수 있습니다.<br/>
 									인터뷰 지원권을 구매하면, 제한 없이 맘회원에게 지원할 수 있습니다.<br/>
 								</p>
 								<div class="desc">
-								<span style="color: red;"><i class="fas fa-exclamation-circle"></i></span> 지원하기를 누르면 내 프로필이 맘회원에게 바로 전송되니 신중하게 지원해주시길 바랍니다.
+								<span><i class="fas fa-exclamation-circle"></i></span> 지원하기를 누르면 내 프로필이 맘회원에게 바로 전송되니 신중하게 지원해주시길 바랍니다.
 								</div>
 								<span class="interview_info">
 								</span>

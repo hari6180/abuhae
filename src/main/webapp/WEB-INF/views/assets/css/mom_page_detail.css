@@ -13,6 +13,10 @@
 	.profil_info {
 		padding: 15px 25px 0px;
 	}
+	.profil_info > p {
+		font-weight: bold;
+		font-size: 1.2em;
+	}
 	.info_name {
 		display: flex;
 		align-items: center;
@@ -1423,7 +1427,28 @@
 	#schedule_text {
 		padding-top: 6px;
 		padding-left: 5px;
+		color: #ff7000;
+		font-weight: bold;
 	}
 	.swal-button {
 		background-color: #ff7000;
+	}
+	.active_area_profil {
+		margin-top: 10px;
+	}
+	.active_text_line {
+		font-size: 0.98em;
+	}
+	.modal-body > p {
+		text-align: center;
+		padding-top: 10px;
+		font-weight: bold;
+	}
+	.glyphicon-heart {
+		color: rgb(0, 143, 105);
+		font-size: 25px;
+	}
+	.glyphicon-heart-empty {
+		color: rgb(0, 143, 105);
+		font-size: 25px;
 	}
