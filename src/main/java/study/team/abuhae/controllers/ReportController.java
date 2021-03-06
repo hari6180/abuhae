@@ -45,6 +45,7 @@ public class ReportController {
 			Mom_info input = new Mom_info();
 			ProfileFile input2 = new ProfileFile();
 			input.setMomno(momno);
+			input2.setMomno(momno);
 			
 			// 조회결과를 저장할 객체 선언 
 			Mom_info output = null;
@@ -105,6 +106,7 @@ public class ReportController {
 			Sitter_info input = new Sitter_info();
 			ProfileFile input2 = new ProfileFile();
 			input.setSitterno(sitterno);
+			input2.setSitterno(sitterno);
 			
 			// 조회결과를 저장할 객체 선언 
 			Sitter_info output = null;
@@ -113,7 +115,7 @@ public class ReportController {
 			try {
 				// 데이터 조회 
 				output = detailService.getSitterItem(input);
-				output2 = uploadService.getMomProfileItem(input2);
+				output2 = uploadService.getProfileItem(input2);
 			
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -121,6 +123,7 @@ public class ReportController {
 			model.addAttribute("output", output);
 			model.addAttribute("profile", output2);
 			return "/page_detail/sitter_page_detail/sitter_report";
+			
 		}
 		
 		@RequestMapping(value = "/page_detail/sitter_page_detail/sitter_report_ok.do", method = RequestMethod.POST)

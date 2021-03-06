@@ -986,7 +986,6 @@
 							</div>
 						</div> <!-- fin. possible_age_area -->
 						</div> <!-- fin. possible_age_box -->
-
 						</div> <!-- fin. possible_active_box -->
 					</div>
 					</div>
