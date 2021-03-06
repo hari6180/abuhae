@@ -21,6 +21,9 @@
 		<!-- noto Sans 웹 폰트 적용 -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/question_mom_yj.css" />
+        <!-- Javascript -->
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
         <script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
         <style type="text/css">
         	ul, li {
@@ -120,9 +123,7 @@
 			</div> <!-- row 끝 -->
         </div> <!-- container 끝 -->
 	
-		<!-- Javascript -->
-		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
-		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+		
 		<script type="text/javascript">
 		//$(function() {
 			//$("#menu").load("../index_header.html");

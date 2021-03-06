@@ -103,7 +103,7 @@
         </div>
     </div>
     <div class="guide_go">
-        <a class="giude_go_text btn" href="${pageContext.request.contextPath}/customer/guide_mom.do" role="button">
+        <a class="giude_go_text btn" href="${pageContext.request.contextPath}/customer/question_mom.do" role="button">
             <div>
                 <span class="giude_go_text">부모회원 가이드 보기></span>
             </div>

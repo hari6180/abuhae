@@ -22,6 +22,9 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
 		<link rel="stylesheet" type="text/css" herf="${pageContext.request.contextPath}/assets/css/flexboxgrid.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/customer_center_yj.css" />
+		<!-- Javascript -->
+		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 		<!--header css-->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index_header.css">
 		<!-- fontawesome(글리피콘) 적용 -->
@@ -139,9 +142,6 @@
 				<div class="footer">
 				</div>
 			</div> <!-- 페이지 전체 영역 끝 -->
-		<!-- Javascript -->
-		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 		$(function () {
 			$("#mybutton").click(function(e) {

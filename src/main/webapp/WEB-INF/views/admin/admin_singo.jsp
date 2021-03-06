@@ -83,7 +83,7 @@
 		<!--신고 회원 목록-->
 		<div class="mTab typeTab eTab">
 			<ul>
-				<button type="button" class="button">
+				<button type="button" class="rep_btn button">
 					<i class="fas fa-bell-slash"></i> 프로필 비공개
 				</button>
 			</ul>

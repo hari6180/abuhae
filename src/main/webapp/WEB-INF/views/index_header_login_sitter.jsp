@@ -130,7 +130,7 @@
           location.replace("${pageContext.request.contextPath}/buy/sitter_ticket.do?sitterno=${login.sitterno}");
         });
         $("#menu_cert").click(function (e) {
-          location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/certify.do?sitterno=${login.sitterno}");
+          location.replace("${pageContext.request.contextPath}/mypage/mypage_sitter/ct/${login.sitterno}");
         });
         $("#other_sitter").click(function (e) {
           location.replace("${pageContext.request.contextPath}/search/sitter_search.do");
