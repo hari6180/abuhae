@@ -252,6 +252,66 @@
 	<delete id="sitterinfoDelete" parameterType="study.team.abuhae.model.Sitter_info">
 		delete from sitter_info where memberno=#{memberno}
 	</delete>
+	
+	<!-- 회원 탈퇴에 의한 참조 찜하기 삭제 -->
+	<delete id="heartDelete">
+		delete from heart
+		<if test="type == 'M'">
+			where momno=#{momno}
+		</if>
+		<if test="type == 'S'">
+			where sitterno=#{sitterno}
+		</if>
+	</delete>
+	
+	<!-- 회원 탈퇴에 의한 참조 신고 삭제 -->
+	<delete id="reportDelete">
+		delete from report
+		<if test="type == 'M'">
+			where momno=#{momno}
+		</if>
+		<if test="type == 'S'">
+			where sitterno=#{sitterno}
+		</if>
+	</delete>
+	
+	<!-- 회원 탈퇴에 의한 참조 지원하기 삭제 -->
+	<delete id="connectDelete">
+		delete from connect
+		<if test="type == 'M'">
+			where momno=#{momno}
+		</if>
+		<if test="type == 'S'">
+			where sitterno=#{sitterno}
+		</if>
+	</delete>
+	
+	<!-- 회원 탈퇴에 의한 참조 리뷰 삭제 -->
+	<delete id="reviewtDelete">
+		delete from review
+		<if test="type == 'M'">
+			where momno=#{momno}
+		</if>
+		<if test="type == 'S'">
+			where sitterno=#{sitterno}
+		</if>
+	</delete>
+	
+	<!-- 회원 탈퇴에 의한 참조 쿠폰 삭제 -->
+	<delete id="couponDelete">
+		delete from coupon where memberno=#{memberno}
+	</delete>
+	
+	<!-- 회원 탈퇴에 의한 참조 프로필이미지 삭제 -->
+	<delete id="profimgDelete">
+		delete from profile_file where memberno=#{memberno}
+	</delete>
+	
+	<!-- 회원 탈퇴에 의한 참조 시터 인증 삭제 -->
+	<delete id="resicertDelete">
+		delete from resi_cert where sitterno=#{sitterno}
+	</delete>
+	
 	<!-- 최종 삭제 -->
 	<delete id="memberDelete" parameterType="study.team.abuhae.model.Member">
 		delete from member where memberno=#{memberno}

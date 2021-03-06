@@ -201,12 +201,19 @@
 					//체크된 row의 회원번호 가져오기
 					var checkbox = $("input[name=chk]:checked");
 					var id = null;
+					let isok = null;
 					checkbox.each(function (i) {
 						var tr = checkbox.parent().parent().eq(i); //checkbox의 두단계 상위가 tr
 						var td = tr.children(); //td태그는 tr의 하위
 	
 						id = td.eq(2).text(); //id는 td의 두번째 요소
+						isok = td.eq(8).text(); //leave date는 td의 여덟번째 요소
 					});
+
+					if(isok != "") {
+						alert("이미 탈퇴 처리된 회원입니다.");
+						return false;
+					}
 	
 					$.ajax({
 						type: 'POST',

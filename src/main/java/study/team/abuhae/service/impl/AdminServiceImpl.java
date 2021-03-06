@@ -171,15 +171,41 @@ public class AdminServiceImpl implements AdminService {
 			//탈퇴 처리 날짜 업데이트
 			result = sqlsession.update("AdminMapper.updateLeaveDate", input);
 			if(input.getType() == 'M') {
+				//찜하기 삭제
+				result = sqlsession.delete("MemberMapper.heartDelete", input);
+				//신고 삭제
+				result = sqlsession.delete("MemberMapper.reportDelete", input);
+				//지원내역 삭제
+				result = sqlsession.delete("MemberMapper.connectDelete", input);
+				//리뷰 삭제
+				result = sqlsession.delete("MemberMapper.reviewtDelete", input);
+				//쿠폰삭제
+				result = sqlsession.delete("MemberMapper.couponDelete", input);
+				//프로필이미지 삭제
+				result = sqlsession.delete("MemberMapper.profimgDelete", input);
 				//mominfo 삭제
-				result = sqlsession.update("MemberMapper.mominfoDelete", input);
+				result = sqlsession.delete("MemberMapper.mominfoDelete", input);
 				//member 삭제
-				result = sqlsession.update("MemberMapper.memberDelete", input);
+				result = sqlsession.delete("MemberMapper.memberDelete", input);
 			} else {
+				//찜하기 삭제
+				result = sqlsession.delete("MemberMapper.heartDelete", input);
+				//신고 삭제
+				result = sqlsession.delete("MemberMapper.reportDelete", input);
+				//지원내역 삭제
+				result = sqlsession.delete("MemberMapper.connectDelete", input);
+				//리뷰 삭제
+				result = sqlsession.delete("MemberMapper.reviewtDelete", input);
+				//쿠폰삭제
+				result = sqlsession.delete("MemberMapper.couponDelete", input);
+				//프로필이미지 삭제
+				result = sqlsession.delete("MemberMapper.profimgDelete", input);
+				//시터 인증 삭제
+				result = sqlsession.delete("MemberMapper.resicertDelete", input);
 				//sitterinfo 삭제
-				result = sqlsession.update("MemberMapper.sitterinfoDelete", input);
+				result = sqlsession.delete("MemberMapper.sitterinfoDelete", input);
 				//member 삭제
-				result = sqlsession.update("MemberMapper.memberDelete", input);
+				result = sqlsession.delete("MemberMapper.memberDelete", input);
 			}
 			
 			
