@@ -206,7 +206,22 @@ html,
 		.mom_buy_box_left, .mom_buy_box_center, .mom_buy_box_right {
 			padding: 0px;
 		}
-		#button2 {
+		#button_3month {
 			border: 2px solid #79ccff;
 			border-radius: 8px;
+		}
+		.title_6month, .title_1month {
+			padding-top: 25px;
+		}
+		.price_6month {
+			padding-top: 10px;
+		}
+		.price_1month {
+			padding-top: 27px;
+		}
+		#title_3month {
+			color: #058ee2;
+		}
+		.desc_style {
+			padding-bottom: 40px;
 		}

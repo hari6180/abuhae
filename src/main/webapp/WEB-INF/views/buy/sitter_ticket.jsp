@@ -46,17 +46,17 @@
             </div>
             <!-- fin. sitter_buy_title -->
             <div class="sitter_buy_box">
-              <div class="sitter_buy_box_left col-xs-6" id="button1">
+              <div class="sitter_buy_box_left col-xs-6" id="button_30ea">
                 <div class="title_block">
                   <p>베이직</p>
                 </div>
                 <div class="img_block">
-                  <span style="color: #aaa"><i class="fas fa-ticket-alt fa-5x"></i></span>
+                  <span><i class="fas fa-ticket-alt fa-5x"></i></span>
                 </div>
                 <div class="apply_block">
                   <p>지원 횟수</p>
-                  <p style="font-size: 1.2em">월 30회</p>
-                  <p style="color: #ccc; font-size: 0.8em">(하루 1회)</p>
+                  <p class="month30ea">월 30회</p>
+                  <p class="month_desc">(하루 1회)</p>
                 </div>
                 <div class="price_block">
                   <p>적립금/쿠폰 사용불가</p>
@@ -66,20 +66,20 @@
                   <p>0% 절약!</p>
                 </div>
               </div>
-              <div class="sitter_buy_box_right col-xs-6" id="button2">
-                <div class="title_block" style="background-color: #fff2e9">
-                  <p style="color: #ff7000">프리미엄</p>
+              <div class="sitter_buy_box_right col-xs-6" id="button_300ea">
+                <div class="title_block">
+                  <p>프리미엄</p>
                 </div>
-                <div class="img_block">
-                  <span style="color: #ff7000"><i class="fas fa-ticket-alt fa-5x"></i></span>
+                <div class="img_block" id="img_block_300ea">
+                  <span><i class="fas fa-ticket-alt fa-5x"></i></span>
                 </div>
                 <div class="apply_block">
                   <p>지원 횟수</p>
-                  <p style="font-size: 1.2em">월 300회</p>
-                  <p style="color: #ccc; font-size: 0.8em">(하루 10회)</p>
+                  <p class="month300ea">월 300회</p>
+                  <p class="month_desc">(하루 10회)</p>
                 </div>
                 <div class="price_block">
-                  <p style="text-decoration: line-through">49,000원</p>
+                  <p id="price_block">49,000원</p>
                   <p>1개월 29,900원</p>
                 </div>
                 <div class="sale_block_vip">
@@ -92,7 +92,7 @@
               <p class="buy_btn_style">구매하기</p>
             </button>
             <button type="button" class="buy_btn_other">
-              <p class="buy_btn_style" style="color: #ff7000">자세히 보기</p>
+              <p class="buy_btn_style">자세히 보기</p>
             </button>
             <div class="sitter_buy_desc_area">
               <div class="product_title">
@@ -134,25 +134,25 @@
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <script type="text/javascript">
       $(function () {
-        $("#button1").click(function () {
-          $("#button1").css({
+        $("#button_30ea").click(function () {
+          $("#button_30ea").css({
             border: "2px solid #ff7000",
             "background-color": "#fff",
             "border-radius": "8px",
           });
-          $("#button2").css({
+          $("#button_300ea").css({
             border: "none",
             "background-color": "#fff",
           });
         });
 
-        $("#button2").click(function () {
-          $("#button2").css({
+        $("#button_300ea").click(function () {
+          $("#button_300ea").css({
             border: "2px solid #ff7000",
             "background-color": "#fff",
             "border-radius": "8px",
           });
-          $("#button1").css({
+          $("#button_30ea").css({
             border: "none",
             "background-color": "#fff",
           });

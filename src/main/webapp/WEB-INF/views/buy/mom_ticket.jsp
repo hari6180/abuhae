@@ -150,10 +150,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 					<div class="mom_buy_box">
 						<div class="mom_buy_box_left col-xs-4" id="button_6month" data-tktype='6'>
 							<div class="mom_buy_main">
-								<div style="padding-top: 25px;">
+								<div class="title_6month">
 									<p class="mom_buy_month">6개월</p>
 								</div>
-								<div style="padding-top: 10px;">
+								<div class="price_6month">
 									<p class="mom_buy_before_price">179,400원</p>
 								</div>
 								<div>
@@ -168,7 +168,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 						<div class="mom_buy_box_center col-xs-4" id="button_3month" data-tktype='3'>
 							<div class="mom_buy_main">
 								<div style="padding-bottom: 10px;">
-									<p class="mom_buy_month" style="color: #058ee2;">Best</p>
+									<p class="mom_buy_month" id="title_3month" style="color: #058ee2;">Best</p>
 									<p class="mom_buy_month">3개월</p>
 								</div>
 								<div>
@@ -185,10 +185,10 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 						</div>
 						<div class="mom_buy_box_right col-xs-4" id="button_1month"  data-tktype='1'>
 							<div class="mom_buy_main">
-								<div style="padding-top: 25px;">
+								<div class="title_1month">
 									<p class="mom_buy_month">1개월</p>
 								</div>
-								<div style="padding-top: 27px;">
+								<div class="price_1month">
 									<p class="mom_buy_price">월 29,900원</p>
 								</div>
 								<div class="save_box_bad">
@@ -208,7 +208,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 						   </button>
 			               </c:when>
 			              <c:when test="${fn:contains(loginType, 'S')}"> 
-			              <button type="button" class="buy_btn" style="background-color: #ccc;">
+			              <button type="button" class="buy_btn">
 							 <p class="buy_btn_style">  
 							   맘회원 전용 이용권입니다.
 							 </p>

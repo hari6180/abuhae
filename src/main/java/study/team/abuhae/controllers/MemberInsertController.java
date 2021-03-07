@@ -78,7 +78,8 @@ public class MemberInsertController {
 			input.setWant_act2(wantact2);
 			input.setWant_act3(wantact3);
 
-			input.setWant_age("20대");
+			// 0307 지우 - '대' 제거
+			input.setWant_age("20");
 			input.setKids_num(random(1, 2));
 
 			// 아이 나이 랜덤입력

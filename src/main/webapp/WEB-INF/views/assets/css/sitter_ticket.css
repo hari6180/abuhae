@@ -277,7 +277,32 @@ html,
 			font-size: 0.9em;
 			font-weight: bold;
 		}
-		#button2 {
+		#button_300ea {
 			border : 2px solid #ff7000;
 			border-radius: 8px;
+		}
+		.img_block > span {
+			color: #aaa;
+		}
+		.month30ea, .month300ea {
+			font-size: 1.2em;
+		}
+		.month_desc {
+			color: #ccc;
+			font-size: 0.8em;
+		}
+		.title_block {
+			background-color: #fff2e9;
+		}
+		.title_block > p {
+			color: #ff7000;
+		}
+		#img_block_300ea > span {
+			color: #ff7000;
+		}
+		#price_block {
+			text-decoration: line-through;
+		}
+		.buy_btn_other > p {
+			color: #ff7000;
 		}
