@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -41,7 +44,23 @@
 
 <body>
     <div class="container">
-        <div id="menu"><%@ include file="../index_header.jsp"%></div>
+        <div id="menu">
+				<c:if test="${login != null }">
+					<c:choose>
+						<c:when test="${fn:contains(login.type, 'M')}">
+							<%@ include file="../index_header_login_mom.jsp"%>
+						</c:when>
+						<c:when test="${fn:contains(login.type, 'S')}">
+							<%@ include file="../index_header_login_sitter.jsp"%>
+						</c:when>
+					</c:choose>
+				</c:if>
+				<c:if test="${login == null }">
+					<%@ include file="../index_header.jsp"%>
+				</c:if>
+				<%-- <h3>${login.type}, ${login.momno }</h3>
+				<p>${login.sitterno }</p> --%>
+			</div>
         <section>
             <div id="service" class="col-xs-12">
                 <!-- xs-12로 모바일 맞춤 -->

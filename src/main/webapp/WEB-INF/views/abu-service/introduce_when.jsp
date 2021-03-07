@@ -22,7 +22,7 @@
             <img src="${pageContext.request.contextPath}/assets/img/momsitterabout-tab2_2.png">
             <div class="desc">㈜아이를부탁해는 기술과 혁신을 통해 <span>사회문제를 해결하기 위해 존재</span>하며, 여성 경력단절 문제와 일자리 문제를 해결하기 위해 서비스를 시작하였습니다.</div>
             <div class="desc"><span>지금 바로 맘시터 회원이 되어, 저희와 함께 사회문제를 해결해주세요.</span></div>
-            <button class="go_momsitter">맘시터 시작하기 ></button>
+            <button class="go_momsitter">아부해 시작하기 ></button>
         </div>
     </div>
 </div>
