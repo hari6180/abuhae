@@ -88,7 +88,7 @@
                 <h3 class="what_want">당신은 어떤분 인가요?</h3>
                 <div>
                     <div class="radio_box">
-                        <input type="radio" name="type" id="teacher" class="type_select" value="선생님">
+                        <input type="radio" name="type" id="teacher" class="type_select" value="teacher">
                         <label for="teacher" class="radio_text">
                             <div>
                                 <h3>선생님</h3>
@@ -97,7 +97,7 @@
                         </label>
                     </div>
                     <div class="radio_box">
-                        <input type="radio" name="type" id="mom" class="type_select" value="엄마">
+                        <input type="radio" name="type" id="mom" class="type_select" value="mom">
                         <label for="mom" class="radio_text">
                             <div>
                                 <h3>엄마</h3>
@@ -106,7 +106,7 @@
                         </label>
                     </div>
                     <div class="radio_box">
-                        <input type="radio" name="type" id="student" class="type_select" value="대학생">
+                        <input type="radio" name="type" id="student" class="type_select" value="student">
                         <label for="student" class="radio_text">
                             <div>
                                 <h3>대학생</h3>
@@ -115,7 +115,7 @@
                         </label>
                     </div>
                     <div class="radio_box">
-                        <input type="radio" name="type" id="nomal" class="type_select" value="일반" checked>
+                        <input type="radio" name="type" id="nomal" class="type_select" value="normal" checked>
                         <label for="nomal" class="radio_text">
                             <div>
                                 <h3>일반</h3>
