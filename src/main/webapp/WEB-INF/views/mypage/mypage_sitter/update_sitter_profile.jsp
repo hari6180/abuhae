@@ -494,6 +494,51 @@
 						</section>
 						<button type="submit" class="edit_btn">수정하기</button>
 					</form>
+					
+					<!-- modal -->
+           			<div id="age_modal" class="modal fade" tabindex="-1" role="dialog" 
+                    aria-labelledby="modalLabel" aria-hidden="true">
+                        <!-- mocal-dialog -->
+                        <div class="modal-dialog">
+                            <!-- modal-content -->
+                            <div class="modal-content">
+                                <!--제목-->
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                    style="padding: 10px 0;">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <h4 class="modal-title" id="modalLabel" 
+                                    style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+                                        돌봄 가능 연령이란?
+                                    </h4>
+                                </div>
+                                
+                                <!-- 내용 -->
+                                <div class="modal-body">
+                                    <div style="margin-bottom: 25px;">
+                                        <h5><span style="color: #ff7000;">신생아</span> <span style="color: #929292;">0-6개월</span></h5>
+                                        <p style="font-size: 0.8em; margin-top: 10px;">제 몸을 못 가누는 아주 작은 아이로, 수유하기, 재우기, 목욕시키기가 주 활동입니다.</p>
+                                    </div>
+                                    <div style="margin-bottom: 25px;">
+                                        <h5><span style="color: #ff7000;">영아</span> <span style="color: #929292;">7-36개월</span></h5>
+                                        <p style="font-size: 0.8em; margin-top: 10px;">기어가거나 걸을 수 있는 아이로 이유식/밥 먹이기, 기저귀 갈아주기, 감각 활동하기가 주 활동입니다.</p>
+                                    </div>
+                                    <div style="margin-bottom: 25px;">
+                                        <h5><span style="color: #ff7000;">유아</span> <span style="color: #929292;">4-7세</span></h5>
+                                        <p style="font-size: 0.8em; margin-top: 10px;">활동성이 매우 높은 시기의 아이들롤 보통 어린이집/유치원에 다닙니다. 등하원 돕기, 책 읽어주기, 놀아주기 등이 주 활동입니다.</p>
+                                    </div>
+                                    <div>
+                                        <h5><span style="color: #ff7000;">초등학생</span></h5>
+                                        <p style="font-size: 0.8em; margin-top: 10px;">초등학교 1~6학년 아이들로 등하교돕기, 숙제 도와주기, 전문 학습하기 등이 주 활동입니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //modal-content end -->
+                        </div>
+                        <!-- //modal-dailog end-->
+                    </div>
+                    <!-- // modal end -->
 				</div>
                     
                 <hr/>
@@ -536,6 +581,60 @@
 									</div>
 								</div>
 							</div>
+							
+							<!-- modal -->
+		                    <div id="activ_modal" class="modal fade" tabindex="-1" role="dialog" 
+		                    aria-labelledby="modalLabel" aria-hidden="true">
+		                        <!-- mocal-dialog -->
+		                        <div class="modal-dialog">
+		                            <!-- modal-content -->
+		                            <div class="modal-content">
+		                                <!--제목-->
+		                                <div class="modal-header">
+		                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+		                                    style="padding: 10px 0;">
+		                                        <i class="fas fa-times"></i>
+		                                    </button>
+		                                    <h4 class="modal-title" id="modalLabel" 
+		                                    style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+		                                        가능한 활동이란?
+		                                    </h4>
+		                                </div>
+		                                
+		                                <!-- 내용 -->
+		                                <div class="modal-body" style="padding: 20px 20px;">
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">실내놀이</span> <span style="font-size: 0.8em; color: #777;">그림 그리기, 게임하기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">등하원 돕기</span> <span style="font-size: 0.8em; color: #777;">유치원 데려다주기, 데리고오기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">책 읽기</span> <span style="font-size: 0.8em; color: #777;">아이가 좋아하는 책 읽어주기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">야외활동</span> <span style="font-size: 0.8em; color: #777;">놀이동산, 키즈카페 가기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">한글놀이</span> <span style="font-size: 0.8em; color: #777;">한글 카드놀이, 받아쓰기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">영어놀이</span> <span style="font-size: 0.8em; color: #777;">영어노래 부르기, 영어책 읽어주기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">학습지도</span> <span style="font-size: 0.8em; color: #777;">면학분위기 조성, 숙제 도와주기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">체육놀이</span> <span style="font-size: 0.8em; color: #777;">공놀이, 놀이터 나가기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">간단 청소</span> <span style="font-size: 0.8em; color: #777;">아이 장난감 치우기, 청소기 돌리기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">밥 챙겨주기</span> <span style="font-size: 0.8em; color: #777;">있는 반찬으로 밥 챙겨주기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">간단 설거지</span> <span style="font-size: 0.8em; color: #777;">젖병세척, 아이먹은 그릇 씻기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">장기입주</span> <span style="font-size: 0.8em; color: #777;">함께 살면서 종일 봐주기</span></div>
+		                                    <hr>
+		                                    <div><span style="font-size: 0.9em; font-weight: bold;">단기입주</span> <span style="font-size: 0.8em; color: #777;">2-3일 종일 봐주기</span></div>
+		                                </div>
+		                            </div>
+		                            <!-- //modal-content end -->
+		                        </div>
+		                        <!-- //modal-dailog end-->
+		                    </div>
+		                    <!-- // modal end -->
 						</section>
 				
 						<section class="upd_care_age">
@@ -1128,7 +1227,7 @@
 			}
 		} 
 		
-		/$("#new_profile_img").change(function () {
+		$("#new_profile_img").change(function () {
 			upload_img(this);
 			$(".upload_prof").css('justify-content', 'flex-start');
 		}); 

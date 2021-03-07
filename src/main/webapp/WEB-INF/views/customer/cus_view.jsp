@@ -25,11 +25,6 @@
         <!-- Javascript -->
 		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
 		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-		$(function() {
-			$("#menu").load("../index_header.html");
-		});
-		</script>
 	</head>
 
 	<body>
@@ -50,6 +45,7 @@
 					<%@ include file="../index_header.jsp"%>
 				</c:if>
 			</div>
+			
 			<!-- header end-->
                 <div class="col-xs-12 nav">
                     <li>
@@ -65,20 +61,19 @@
                     </li>
                 </div>
                     <div class="col-xs-12 input">
-                        <span class="glyphicon glyphicon-search" id="glyphicon"></span>
-                        <form role="search" class="search search-full" data-search
-                        data-instant="true" autocomplete="off" accept-charset="UTF-8" method="GET">
-                        <input type="search" name="query" id="query" placeholder="검색" aria-label="검색">
-                        </form>
-                    </div>
-                    <div class="col-xs-12 sidebar">
-                        <div class="col-xs-10 sidebar_1">이 섹션의 문서
-                        </div>
-                        <div class="col-xs-2 sidebar_2">
-                            <span class="glyphicon glyphicon-chevron-down" id="glyphicon_2">    
-                            </span>
-                        </div>
-                    </div>
+						<form
+							action="${pageContext.request.contextPath}/customer/cus_search.do"
+							role="search" class="search search-full" data-search
+							data-instant="true" autocomplete="off" accept-charset="UTF-8"
+							method="GET">
+							<input type="search" name="keyword" id="keyword" class="cus_search"
+								value="${keyword}" placeholder="검색" aria-label="검색">
+							<button type="submit" class="cus_btn">
+								<i class="fas fa-search"></i>
+							</button>
+						</form>
+					</div>
+                    
                     <div class="col-xs-12 section">
                         <div class="section_header">
                         <h1>[${output.sub_category}] ${output.title}</h1>
@@ -89,7 +84,7 @@
                             <img src="${pageContext.request.contextPath}/assets/img/logo2.png" width="" height="40">
                         </div>
                         <div class="col-xs-10 article_title">
-                            <p>${output.writer}</p>
+                            <p style="margin-top: 10px;">아부해 고객지원팀</p>
                     </div>
                     </div>
                     <div class="col-xs-12 section_body">
@@ -99,13 +94,7 @@
                         <p>선긋기</p>
                     </div>
                     <div class="col-xs-12 article_footer">
-                        <span>도움이 되었습니까?</span>
-                    </div>
-                    <div class="col-xs-6">
-                        <button type="button" id="button_true"class="button article-vote article-vote-up button-primary" aria-label="이 문서가 유용했음" aria-pressed="true">예</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button type="button" class="button article-vote article-vote-down" aria-label="이 문서가 유용하지 않았음" aria-pressed="false">아니요</button>
+                        <span>아부해를 이용해 주셔서감사합니다.</span>
                     </div>
                     <div class="col-xs-12 chat">
                         <a href="#" class="chat_title">1:1 채팅 문의하기</a>

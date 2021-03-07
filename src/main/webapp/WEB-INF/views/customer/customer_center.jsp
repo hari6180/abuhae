@@ -20,7 +20,7 @@
 
 		<!-- noto Sans 웹 폰트 적용 -->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
-		<link rel="stylesheet" type="text/css" herf="${pageContext.request.contextPath}/assets/css/flexboxgrid.css" />
+
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/customer_center_yj.css" />
 		<!-- Javascript -->
 		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->		
@@ -35,6 +35,15 @@
 	       		list-style: none;
 	       		padding: 0;
 	       		margin: 0;
+	       		margin-bottom: 30px;
+	       	}
+	       	
+	       	ul:last-child {
+	       		margin-bottom: 0;
+	       	}
+	       	
+	       	h4 {
+	       		padding: 0;
 	       	}
        </style>
 
@@ -131,6 +140,7 @@
 													<a href="${viewUrl}">[${item.sub_category}] ${item.title}</a>
 												</li>
 											</ul>
+											<hr>
 	                 					</c:if> 
 	                 					
 	                 				</c:forEach>

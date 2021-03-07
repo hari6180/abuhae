@@ -221,7 +221,7 @@
 		                                </p>
 		                            </div>
 		                        </div>
-		                        <button id="updateProfileImg" class="edit_btn" type="submit">수정하기</button>
+		                        <button id="updateProfileImg" class="edit_btn" type="submit" onclick="window.location.reload()">수정하기</button>
 		                    </form>
                     	</c:when>
                     	<c:otherwise>

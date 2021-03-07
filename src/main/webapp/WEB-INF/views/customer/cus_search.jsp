@@ -31,7 +31,13 @@
     		list-style: none;
     		padding: 0;
     		margin: 0;
+    		margin-bottom: 10px;
+    		font-size: 1.1em;
     	}
+    	
+    	li:last-child {
+			margin: 0;
+		}
    	</style>
 </head>
 

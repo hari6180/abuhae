@@ -110,10 +110,10 @@ public class UploadController {
 
 		if (sitterno != 0) {
 			String url =  contextPath + "/mypage/mypage_sitter/update_sitter_profile.do?sitterno=" + sitterno;
-			return webHelper.redirect(null, "프로필 이미지가 수정되었습니다.");
+			return webHelper.redirect(url, "프로필 이미지가 수정되었습니다.");
 		} else {
 			String url =  contextPath + "/mypage/mypage_mom/update_profile.do?momno=" + momno;
-			return webHelper.redirect(null, "프로필 이미지가 수정되었습니다.");
+			return webHelper.redirect(url, "프로필 이미지가 수정되었습니다.");
 		}
 	}
 	
@@ -188,10 +188,10 @@ public class UploadController {
 		/** 3) View 처리 */
 		if (sitterno != 0) {
 			String url =  contextPath + "/mypage/mypage_sitter/update_sitter_profile.do?sitterno=" + sitterno;
-			return webHelper.redirect(null, "프로필 이미지가 수정되었습니다.");
+			return webHelper.redirect(url, "프로필 이미지가 수정되었습니다.");
 		} else {
 			String url =  contextPath + "/mypage/mypage_mom/update_profile.do?momno=" + momno;
-			return webHelper.redirect(null, "프로필 이미지가 수정되었습니다.");
+			return webHelper.redirect(url, "프로필 이미지가 수정되었습니다.");
 		}
 	}
 	

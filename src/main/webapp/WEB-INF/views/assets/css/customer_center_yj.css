@@ -275,10 +275,7 @@ a:hover {
     font-size: 2em;
     font-weight: bold;
 }
-ul {
-    padding-inline-start: 0px;
-    margin-bottom: 40px;
-}
+
 .activity {
     border-top: 1px solid #ddd;
     padding-top: 10px;
@@ -286,17 +283,8 @@ ul {
 .activity_header {
     text-align: center;
 }
-.activity_item_parent, .activity_item_link {
-    display: inline-block;
-    width: 100%;
-    margin: 6px 0;
-    color: rgba(66, 66, 66, 1);
-    font-size: 1.1em;
-}
-.activity_item_link {
-    padding-bottom: 2em;
-    border-bottom: 1px solid #eee;
-}
+
+
 .footer {
     height: 8em;
     border-bottom: 1px solid #eee;

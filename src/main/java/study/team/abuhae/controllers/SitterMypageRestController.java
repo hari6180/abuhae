@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Connect;
 import study.team.abuhae.model.Mom_info;
@@ -23,10 +24,12 @@ public class SitterMypageRestController {
 	@Autowired
 	WebHelper webHelper;
 	@Autowired
+	RegexHelper regexHelper;
+	@Autowired
 	AdminService adminService;
 	@Autowired
 	SitterMypageService sitterMypageService;
-	
+
 	@RequestMapping(value = "/mypage/edit_ok_accept", method = RequestMethod.POST)
 	public Map<String, Object> edit_ok(
 			@RequestParam(value = "momno", defaultValue = "0") int momno,
@@ -39,7 +42,7 @@ public class SitterMypageRestController {
 		if (sitterno == 0) { return webHelper.getJsonWarning("시터 회원 번호가 없습니다."); }
 		if (cntno == 0) { return webHelper.getJsonWarning("Not connect"); }
 		
-		/** accept 수정(connect table) - insert */
+		/** accept 수정(connect table) - update */
 		Connect input1 = new Connect();
 		input1.setSitterno(sitterno);
 		input1.setAccept("Y");
@@ -53,11 +56,21 @@ public class SitterMypageRestController {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		
-		/** 리뷰 입력 (review table) - update */
+		/** 리뷰 입력 (review table) - insert */
+		// content와 rev_rate는 null값을 주어 맘회원이 리뷰작성할 수 있는 회원 목록을 조회 가능하도록 함
 		Review input2 = new Review();
+		
 		input2.setMomno(momno);
 		input2.setSitterno(sitterno);
-		input2.setCntno(cntno);
+		
+		int revno = input2.getRevno();
+		String is_rev = Integer.toString(revno);
+		
+		if (is_rev == null) {
+			return webHelper.getJsonError("이미 리뷰를 작성한 회원입니다.");
+		}  else {
+			input2.setCntno(cntno);
+		}
 		
 		try {
 			// 데이터 입력

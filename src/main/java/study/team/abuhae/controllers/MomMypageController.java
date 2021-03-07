@@ -210,22 +210,6 @@ public class MomMypageController {
 			@RequestParam(value = "momno", defaultValue = "0") int momno,
 			@RequestParam(value = "sitterno", defaultValue = "0") int sitterno) {
 		
-		// 데이터 조회에 필요한 조건값 Beans에 저장
-		Mom_info in = new Mom_info();
-		in.setMomno(momno);
-		
-		// 조회 결과를 저장할 객체 선언
-		Mom_info output = null;
-		
-		try {
-			output = momMypageService.getMemberItem(in);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		// View 처리 
-		model.addAttribute("output" ,output);
-
 		/** 데이터 조회 */
 		Review input = new Review();
 		input.setMomno(momno);
@@ -587,10 +571,6 @@ public class MomMypageController {
 	      String url = contextPath+"/mypage/mypage_mom/mom_mypage.do?&momno="+output.getMomno();
 	      return webHelper.redirect(url, "비밀번호 변경이 완료되었습니다.");
 	   }
-	   
-	   
-	   
-	   
 	   
 	   //////////////end 선아작업////////////////////////////////////////
 }
