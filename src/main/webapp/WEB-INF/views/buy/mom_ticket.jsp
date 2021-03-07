@@ -22,7 +22,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick-theme.css" />
 	<!-- fontawesome(글리피콘) 적용 -->
 	<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
-
 	<!-- animaition 적용-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
 	<!--section-->
@@ -38,19 +37,30 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 		<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(function() {
+				
+				 //모달의 로그인 버튼 클릭시
+		        $("#login_btn").on("click", function () {
+		          location.replace("${pageContext.request.contextPath}/login/login.jsp");
+		        });
+
+		        //모달의 회원가입 버튼 클릭시
+		        $("#go_to_join").on("click", function () {
+		          location.replace("${pageContext.request.contextPath}/join/join.jsp");
+		        });
+				
 				let tktype = '3';
 	
-				$( "#button1" ).click( function() {
-					$('#button1').css({
+				$( "#button_6month" ).click( function() {
+					$('#button_6month').css({
 						"border": "2px solid #79ccff",
 						"background-color": "#fff",
 						"border-radius": "8px"
 					});
-					$('#button2').css({
+					$('#button_3month').css({
 						"border": "none",
 						"background-color": "#fff"		
 					});
-					$('#button3').css({
+					$('#button_1month').css({
 						"border": "none",
 						"background-color": "#fff"		
 					});
@@ -58,17 +68,17 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 					console.log(tktype);
 				});
 				
-				$( "#button2" ).click( function() {
-					$('#button2').css({
+				$( "#button_3month" ).click( function() {
+					$('#button_3month').css({
 						"border": "2px solid #79ccff",
 						"background-color": "#fff",
 						"border-radius": "8px"
 					});
-					$('#button1').css({
+					$('#button_6month').css({
 						"border": "none",
 						"background-color": "#fff"		
 					});
-					$('#button3').css({
+					$('#button_1month').css({
 						"border": "none",
 						"background-color": "#fff"		
 					});
@@ -76,17 +86,17 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 					console.log(tktype);
 				});
 				
-				$( "#button3" ).click( function() {
-					$('#button3').css({
+				$( "#button_1month" ).click( function() {
+					$('#button_1month').css({
 						"border": "2px solid #79ccff",
 						"background-color": "#fff",
 						"border-radius": "8px"
 					});
-					$('#button1').css({
+					$('#button_6month').css({
 						"border": "none",
 						"background-color": "#fff"		
 					});
-					$('#button2').css({
+					$('#button_3month').css({
 						"border": "none",
 						"background-color": "#fff"		
 					});
@@ -97,25 +107,29 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 				$('#buy_apply').click(function(e) {
 					e.preventDefault();
 					window.location = "${pageContext.request.contextPath}/buy/receipt.do?tktype=" + tktype + "&memberno=" + ${login.memberno};
-				});
+				});		       
 			});
 		</script>
+		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+		<!--slick slider-->
+    	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js"></script>
 
 </head>
 
 <body>
 	<div id="app">
 		<div class="container">
-			<div id="menu">
-
-          <c:if test="${isLogin ==true }">
-            <c:choose>
-              <c:when test="${fn:contains(loginType, 'M')}"> <%@ include file="../index_header_login_mom.jsp"%> </c:when>
-              <c:when test="${fn:contains(loginType, 'S')}"> <%@ include file="../index_header_login_sitter.jsp"%> </c:when>
-            </c:choose>
-          </c:if>
-
-				</div>
+		<header>
+          <div id="menu">
+            <c:if test="${isLogin ==true }">
+              <c:choose>
+                <c:when test="${fn:contains(loginType, 'M')}"> <%@ include file="../index_header_login_mom.jsp"%> </c:when>
+                <c:when test="${fn:contains(loginType, 'S')}"> <%@ include file="../index_header_login_sitter.jsp"%> </c:when>
+              </c:choose>
+            </c:if>
+            <c:if test="${isLogin == null }"> <%@ include file="../index_header.jsp"%> </c:if>
+          </div>
+        </header>
 			<div class="mom_buy_area col-xs-12">
 				<div class="mom_buy_area">
 					<div class="mom_buy_title">
@@ -134,7 +148,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 						</div>
 					</div> <!-- fin. mom_buy_title -->
 					<div class="mom_buy_box">
-						<div class="mom_buy_box_left col-xs-4" id="button1" data-tktype='6'>
+						<div class="mom_buy_box_left col-xs-4" id="button_6month" data-tktype='6'>
 							<div class="mom_buy_main">
 								<div style="padding-top: 25px;">
 									<p class="mom_buy_month">6개월</p>
@@ -151,7 +165,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 							</div> <!-- fin. mom_buy_main -->	
 							<div class="mom_buy_select_btn"></div>	
 						</div>
-						<div class="mom_buy_box_center col-xs-4" id="button2" data-tktype='3'>
+						<div class="mom_buy_box_center col-xs-4" id="button_3month" data-tktype='3'>
 							<div class="mom_buy_main">
 								<div style="padding-bottom: 10px;">
 									<p class="mom_buy_month" style="color: #058ee2;">Best</p>
@@ -169,7 +183,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 							</div> <!-- fin. mom_buy_main -->	
 							<div class="mom_buy_select_btn"></div>
 						</div>
-						<div class="mom_buy_box_right col-xs-4" id="button3"  data-tktype='1'>
+						<div class="mom_buy_box_right col-xs-4" id="button_1month"  data-tktype='1'>
 							<div class="mom_buy_main">
 								<div style="padding-top: 25px;">
 									<p class="mom_buy_month">1개월</p>
