@@ -1217,10 +1217,10 @@
 		<div class="now_selected">
 			<c:set var="gender" value="${mominfo.sitter_gender}" />
 			<c:set var="interview" value="${mominfo.interview_type}" />
-			<c:if test="${mominfo.sitter_gender eq null and mominfo.interview_type eq null and mominfo.care_type eq null }">
+			<c:if test="${mominfo.sitter_gender eq '' and mominfo.interview_type eq null and mominfo.care_type eq null }">
 				<p class="desc">현재 작성하신 추가 요구사항이 없습니다.</p>
 			</c:if>
-			<c:if test="${mominfo.sitter_gender ne null and mominfo.interview_type ne null and mominfo.care_type ne null }">
+			<c:if test="${mominfo.sitter_gender ne '' and mominfo.interview_type ne null and mominfo.care_type ne null }">
 				<p class="desc">
 					현재 원하시는 시터 성별은 
 					<c:if test="${fn:contains(gender, 'F')}">
@@ -1246,18 +1246,18 @@
 					원하시는 돌봄 방식은 <i class="point">${mominfo.care_type}</i>입니다.
 				</p>
 			</c:if>
-			<c:if test="${mominfo.sitter_gender eq null and mominfo.interview_type ne null and mominfo.care_type ne null }">
+			<c:if test="${mominfo.sitter_gender eq '' and mominfo.interview_type ne null and mominfo.care_type ne null }">
 				<p class="desc">
 					현재 요청하신 인터뷰 방식은 <i class="point">${mominfo.interview_type}</i>이고, 
 					원하시는 돌봄 방식은 <i class="point">${mominfo.care_type}</i>입니다.
 				</p>
 			</c:if>
-			<c:if test="${mominfo.sitter_gender eq null and mominfo.interview_type eq null and mominfo.care_type ne null }">
+			<c:if test="${mominfo.sitter_gender eq '' and mominfo.interview_type eq null and mominfo.care_type ne null }">
 				<p class="desc">
 					현재 원하시는 돌봄 방식은 <i class="point">${mominfo.care_type}</i>입니다.
 				</p>
 			</c:if>
-			<c:if test="${mominfo.sitter_gender eq null and mominfo.interview_type ne null and mominfo.care_type eq null }">
+			<c:if test="${mominfo.sitter_gender eq '' and mominfo.interview_type ne null and mominfo.care_type eq null }">
 				<p class="desc">
 					현재 요청하신 인터뷰 방식은 
 					<c:if test="${fn:contains(interview, 'call')}">
@@ -1271,7 +1271,7 @@
 					</c:if>입니다.
 				</p>
 			</c:if>
-			<c:if test="${mominfo.sitter_gender ne null and mominfo.interview_type ne null and mominfo.care_type eq null }">
+			<c:if test="${mominfo.sitter_gender ne '' and mominfo.interview_type ne null and mominfo.care_type eq null }">
 				<p class="desc">
 					현재 원하시는 시터 성별은 
 					<c:if test="${fn:contains(gender, 'F')}">
@@ -1296,7 +1296,7 @@
 					</c:if>입니다.
 				</p>
 			</c:if>
-			<c:if test="${mominfo.sitter_gender ne null and mominfo.interview_type eq null and mominfo.care_type ne null }">
+			<c:if test="${mominfo.sitter_gender ne '' and mominfo.interview_type eq null and mominfo.care_type ne null }">
 				<p class="desc">
 					현재 원하시는 시터 성별은 
 					<c:if test="${fn:contains(gender, 'F')}">
@@ -1312,7 +1312,7 @@
 					원하시는 돌봄 방식은 <i class="point">${mominfo.care_type}</i>입니다.
 				</p>
 			</c:if>
-			<c:if test="${mominfo.sitter_gender ne null and mominfo.interview_type eq null and mominfo.care_type eq null }">
+			<c:if test="${mominfo.sitter_gender ne '' and mominfo.interview_type eq null and mominfo.care_type eq null }">
 				<p class="desc">
 					현재 원하시는 시터 성별은 
 					<c:if test="${fn:contains(gender, 'F')}">
