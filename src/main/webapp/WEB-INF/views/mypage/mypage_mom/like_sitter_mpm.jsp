@@ -80,8 +80,9 @@
 		                                                </div>
 		                                                <div class="ls_page_box_right">
 		                                               	 	
-	                                                    	<p style="font-size: 1em; font-weight: bold;">${item.name} <span style="color: #888888; font-size: 0.8em;">
-	                                                    		<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}"> ${item.reg_date} </a></span>
+	                                                    	<p style="font-size: 1em; font-weight: bold;">
+	                                                    		<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}"> 
+	                                                    		${item.name}&nbsp;<span style="color: #888888; font-size: 0.8em;">${item.reg_date}</span> </a>
 	                                                    	</p>
 	                                                    	<p style="color: #888888; font-size: 0.8em; font-weight: bold;">${item.si }&nbsp;${item.gu } </p>
 		                                                    <p style="color: #888888; font-size: 0.8em;">
@@ -132,7 +133,10 @@
                                                    		</c:if>
 	                                                </div>
 	                                                <div class="ls_page_box_right">
-	                                                    <p style="font-size: 1em; font-weight: bold;">${it.name}<span style="font-size: 0.8em;"> ${it.reg_date }</p>
+	                                                    <p style="font-size: 1em; font-weight: bold;">
+	                                                    	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${item.sitterno}">
+	                                                    	 ${it.name}&nbsp;<span style="font-size: 0.8em; color: #888888;">${it.reg_date }</span></a>
+                                                    	</p>
 	                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${it.si }&nbsp;${it.gu }</p>
 	                                                    <p style="color: #888888; font-size: 0.8em;">
 	                                                        <span>${it.birthdate}세</span> l <span>희망시급 ${it.payment }원</span> 
