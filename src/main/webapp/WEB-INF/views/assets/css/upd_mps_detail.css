@@ -287,6 +287,10 @@ input[type=radio]+label {
 	margin-left: 10px;
 }
 
+input[type=radio] {
+	margin-top: 13px;
+}
+
 .ok_btn {
 	width: 70%;
 	background-color: #696969;

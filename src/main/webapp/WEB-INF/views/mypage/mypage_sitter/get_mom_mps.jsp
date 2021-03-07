@@ -40,7 +40,7 @@
                      <header class="mp_detail_tl">
                         <div class="row">
                             <div class="col-xs-12 mp_detail_tl_in">
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${out.sitterno}">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/sitter_mypage.do?sitterno=${login.sitterno}">
                                     <i class="fas fa-times"></i>
                                 </a>
                                 <h3 class="center-block">내 구직 현황</h3>
@@ -190,7 +190,7 @@
                                                          		  	      		<h4>거절 유형을 선택해주세요.</h4>
 					                                                              <div class="deny_radio">
 					                                                              	  <input type="hidden" id="accept_edit1" name="momno" value="${in.momno}">
-					                                                              	  <input type="hidden" id="accept_edit2" name="sitterno" value="${in.sitterno }">
+					                                                              	  <input type="hidden" id="accept_edit2" name="sitterno" value="${login.sitterno }">
 					                                                                  <div>
 					                                                                      <input type="radio" name="deny_type" id="deny1" class="deny_btn" value="최근에 다른 부모님과 활동을 시작하였습니다.">
 					                                                                      <label for="deny1">최근에 다른 부모님과 활동을 시작하였습니다.</label>
@@ -245,7 +245,7 @@
 	                                                             <c:if test="${in.accept == 'N'}">
 	                                                             	<div class="deny">
 				                                                    	<p>맘회원에게 내 거절의사를 전달했습니다.</p>
-				                                                    	<p><span style="color: e93c3c;">거절 사유 : ${item.deny_type}</span></p>
+				                                                    	<p><span style="color: #e93c3c; font-size: 1.3em;">거절 사유 : ${in.deny_type}</span></p>
 				                                                	</div>
 	                                                             </c:if> 
 	                                                         </p>

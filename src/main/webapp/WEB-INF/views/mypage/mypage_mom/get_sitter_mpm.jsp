@@ -91,7 +91,7 @@
 				                                            <div class="gs_appl_cont">
 				                                            	
 			                                               	 	<p class="si_name">
-			                                               		 	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${out.sitterno}">${out.name } <span> ( ${out.birthdate }세 )</span> </a>
+			                                               		 	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${out.sitterno}">${out.name }&nbsp;<span>( ${out.birthdate }세 )</span> </a>
 			                                               	 	</p>
 				                                                <p>희망시급 : ${out.payment }원</p>
 				                                                <p>지원시간 : ${out.applydate }</p>
@@ -132,7 +132,7 @@
 		                                                   		</c:if>
 				                                            </div>
 				                                            <div class="gs_appl_cont">
-			                                               	 	<p class="si_name">${out.name } <span> ( ${out.birthdate }세 )</span></p>
+			                                               	 	<p class="si_name">${out.name }&nbsp;<span>( ${out.birthdate }세 )</span></p>
 				                                                <p>희망시급 : ${out.payment }원</p>
 				                                                <p>지원시간 : ${out.applydate }</p>
 				                                               
@@ -171,7 +171,7 @@
 				                                            <div class="gs_appl_cont">
 				                                            	
 			                                               	    <p class="si_name">
-			                                               	 		<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${in.sitterno}">${in.name } <span>( ${in.birthdate }세 )</span></a>
+			                                               	 		<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${in.sitterno}">${in.name }&nbsp;<span>( ${in.birthdate }세 )</span></a>
 			                                               	    </p>
 				                                                <p>희망시급 : ${in.payment}원</p>
 				                                                <p>지원시간 : ${in.applydate }</p>
@@ -257,7 +257,7 @@
 				                                            </div>
 				                                            <div class="gs_appl_cont">
 				                                               	 <p class="si_name">
-				                                               	 	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${in.sitterno}">${in.name } <span>( ${in.birthdate }세 )</span></a>
+				                                               	 	<a href="${pageContext.request.contextPath}/page_detail/sitter_detail.do?sitterno=${in.sitterno}">${in.name }&nbsp;<span>( ${in.birthdate }세 )</span></a>
 			                                               	 	</p>
 				                                                <p>희망시급 : ${in.payment}원</p>
 				                                                <p>지원시간 : ${in.applydate }</p>
