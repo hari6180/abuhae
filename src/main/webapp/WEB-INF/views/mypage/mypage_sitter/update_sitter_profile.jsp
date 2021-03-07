@@ -120,6 +120,7 @@
 										<div class="col-xs-12 update_img_cont">
 											<div class="upload_prof">
 												<div class="user_img">
+													<input type="hidden" name="sitterno" value="${login.sitterno }">
 													<input type="file" id="new_profile_img" name="photo" accept="image/*">
 													 <label for="new_profile_img">
 														<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg"
@@ -219,7 +220,7 @@
 									<!-- end modal -->
 								</section>
 					
-								<button type="submit" class="edit_btn" onClick="window.location.reload()"> 수정하기 </button>
+								<button type="submit" id="updateProfileImg" class="edit_btn" onClick="window.location.reload()"> 수정하기 </button>
 							</form>
 						</c:when>
 					
@@ -234,8 +235,9 @@
 										<div class="col-xs-12 update_img_cont">
 											<div class="upload_prof">
 												<div class="user_img">
+													<input type="hidden" name="sitterno" value="${login.sitterno }">
 													<input type="file" id="new_profile_img" name="photo" accept="image/*">
-													<label for="new_profile_img"><img src="${output.fileUrl }" alt=""></label>
+													<label for="new_profile_img"><img src="${output.fileUrl}" alt=""></label>
 												</div>
 											</div>
 											<div class="guide_user_img">
@@ -252,6 +254,79 @@
 													</button>
 												</a>
 											</div>
+											
+											<!-- modal (사진 올리는 방법 )-->
+									<div id="way_upd_img" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal_label"
+										aria-hidden="true">
+										<!-- modal dialog -->
+										<div class="modal-dialog">
+											<!-- modal content -->
+											<div class="modal-content">
+												<!-- 제목 -->
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+														style="padding: 10px 0;">
+														<i class="fas fa-times"></i>
+													</button>
+													<h4 class="modal-title" id="modalLabel"
+														style="font-size: 1.2em; font-weight: bold; padding: 10px 0;">
+														부모님이 좋아하는 사진 올리는 방법!
+													</h4>
+												</div>
+													<div class="modal-body" style="color: #838383;">
+														<div class="way_upd_img_cont">
+															<div>
+																<img src="../../assets/img/ex1.jpg" class="col-xs-6" alt="">
+																<p class="col-xs-6">
+																	<span style="color:rgb(34, 172, 135); font-size:5em">o</span>
+																	<br> 본인 얼굴 정면이 <br> 나온 모습
+																</p>
+															</div>
+															<div>
+																<img src="../../assets/img/ex2.jpg" class="col-xs-6" alt="">
+																<p class="col-xs-6">
+																	<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
+																	<br> 이모티콘이 <br> 포함된 사진
+																</p>
+															</div>
+															<div>
+																<img src="../../assets/img/ex3.jpg" class="col-xs-6" alt="">
+																<p class="col-xs-6">
+																	<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
+																	<br> 얼굴이 <br> 가려진 경우
+																</p>
+															</div>
+															<div>
+																<img src="../../assets/img/ex4.jpg" class="col-xs-6" alt="">
+																<p class="col-xs-6">
+																	<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
+																	<br> 여러명이 <br> 함께 찍은 경우
+																</p>
+															</div>
+															<div>
+																<img src="../../assets/img/ex5.jpg" class="col-xs-6" alt="">
+																<p class="col-xs-6">
+																	<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
+																	<br> 먼 거리에서 <br> 찍은 경우
+																</p>
+															</div>
+															<div>
+																<img src="../../assets/img/ex6.jpg" class="col-xs-6" alt="">
+																<p class="col-xs-6">
+																	<span style="color:rgb(231, 73, 73); font-size:5em">x</span>
+																	<br> 인물 식별이 <br> 어려운 경우
+																</p>
+															</div>
+														</div>
+														<div class="way_upd_img_text">
+															<p>이 외 본인이 아닌 경우, 본인 식별이 어려운 사진을 올리면 부모님의 선택을 받지 못할 수도 있습니다.</p>
+														</div>
+													</div>
+												</div>
+												<!-- end modal content -->
+											</div>
+											<!-- end modal dialog -->
+										</div>
 										</div>
 									</div>
 								</section>
@@ -1038,6 +1113,10 @@
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript">
+		function addCommas(x) {
+        	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    	}
+
 		function upload_img(input) {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
@@ -1047,11 +1126,13 @@
 				}
 				reader.readAsDataURL(input.files[0]);
 			}
-		}
-		function addCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-
+		} 
+		
+		/$("#new_profile_img").change(function () {
+			upload_img(this);
+			$(".upload_prof").css('justify-content', 'flex-start');
+		}); 
+	
 		$(function () {
 			/** for content4 */
 			$(function () {
@@ -1062,12 +1143,7 @@
 					defaultDate: new Date()
 				});
 			});
-
-			$("#new_profile_img").change(function () {
-				upload_img(this);
-				$(".upload_prof").css('justify-content', 'flex-start');
-			});
-
+			
 			/** for content2 */
 			/** 라디오 버튼 클릭시 아코디언 형식으로 내용이 나타는 기능 */
 			$(".kind_care").click(function (e) {

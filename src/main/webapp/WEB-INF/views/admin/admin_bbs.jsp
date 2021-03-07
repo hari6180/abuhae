@@ -44,7 +44,7 @@
 		<ol class="breadcrumb">
 			<li>
 				<i class="fas fa-home"></i>
-				<a href="${pageContext.request.contextPath}/admin_member.do?who=M">Home</a>
+				<a href="${pageContext.request.contextPath}/admin/admin_member.do?type=M">Home</a>
 			</li>
 			<li class="active">
 				${category}
@@ -54,21 +54,6 @@
 	<div class="state">
 		<div class="gleft">
 			<!--  <p class="total">오늘 등록된 글 <strong>4</strong>건 / 전체 게시글 <strong>10</strong>건</p> -->
-		</div>
-		<div class="gright">
-			<select class="filter" id="filter_bbs" name="filter_bbs">
-				<option value="">카테고리별</option>
-				<option value="payment">부모회원 가이드</option>
-				<option value="member">시터회원 가이드</option>
-				<option value="resi">아부해 주의사항</option>
-				<option value="find">해결방법</option>
-
-			</select>
-			<select class="filter" id="filter_bbs" name="filter_bbs">
-				<option value="nomal">기본정렬</option>
-				<option value="hit">조회수많은순</option>
-				<option value="recent">최근작성순</option>
-			</select>
 		</div>
 	</div>
 	<!--main content-->

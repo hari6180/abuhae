@@ -47,7 +47,7 @@
 				<ol class="breadcrumb">
 					<li>
 						<i class="fas fa-home"></i>
-						<a href="${pageContext.request.contextPath}/admin_member.do?type=M">Home</a>
+						<a href="${pageContext.request.contextPath}/admin/admin_member.do?type=M">Home</a>
 					</li>
 					<li class="active">
 						글쓰기

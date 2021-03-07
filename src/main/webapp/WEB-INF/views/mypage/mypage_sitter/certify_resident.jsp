@@ -181,7 +181,7 @@
                                     <h3>등/초본 인증 </h3>
                                     <p>"올리신 서류의 세부내용은 노출되지 않으니 안심하세요."</p>
                                 </div>
-                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/certify.do">
+                                <a href="${pageContext.request.contextPath}/mypage/mypage_sitter/ct/${login.sitterno}">
                                     <i class="fas fa-times"></i>
                                 </a>
                             </div>

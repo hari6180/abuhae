@@ -91,7 +91,7 @@
               </div>
               <div id="collapseFour" class="panel-collapse collapse">
                 <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_injeung_sitter.do">인증승인(시터)</a></div>
-                <div class="panel-body"><a href="${pageContext.request.contextPath}/admin/admin_injeung_mom.do">인증승인(부모) -오픈예정-</a></div>
+                <div class="panel-body"><a href="#">인증승인(부모) -오픈예정-</a></div>
               </div>
             </div>
             <!-- 아코디언 영역 end-->

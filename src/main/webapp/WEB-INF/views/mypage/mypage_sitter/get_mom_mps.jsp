@@ -99,8 +99,9 @@
 				                                                </c:if>
 				                                                <c:if test="${out.accept == 'N' }">
 				                                                	<div class="deny">
-					                                                    <p>${out.deny_type }
-					                                                        <br>다른 시터에게 신청을 시작해보세요.
+					                                                    <p>
+					                                                    	<span style="color: #e93c3c;">거절 사유 : ${out.deny_type }</span>
+					                                                        <br>다른 맘회원에게 신청을 시작해보세요.
 					                                                    </p>
 					                                                </div>
 				                                                </c:if>
@@ -244,7 +245,7 @@
 	                                                             <c:if test="${in.accept == 'N'}">
 	                                                             	<div class="deny">
 				                                                    	<p>맘회원에게 내 거절의사를 전달했습니다.</p>
-				                                                    	<p>${item.deny_type}</p>
+				                                                    	<p><span style="color: e93c3c;">거절 사유 : ${item.deny_type}</span></p>
 				                                                	</div>
 	                                                             </c:if> 
 	                                                         </p>

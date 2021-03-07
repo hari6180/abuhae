@@ -132,7 +132,7 @@
                                                    		</c:if>
 	                                                </div>
 	                                                <div class="ls_page_box_right">
-	                                                    <p style="font-size: 1em; font-weight: bold;">${it.name}<span style="color: #888888; font-size: 0.8em;"> ${it.reg_date }</p>
+	                                                    <p style="font-size: 1em; font-weight: bold;">${it.name}<span style="font-size: 0.8em;"> ${it.reg_date }</p>
 	                                                    <p style="color: #888888; font-size: 0.8em; font-weight: bold;">${it.si }&nbsp;${it.gu }</p>
 	                                                    <p style="color: #888888; font-size: 0.8em;">
 	                                                        <span>${it.birthdate}세</span> l <span>희망시급 ${it.payment }원</span> 

@@ -40,7 +40,7 @@
 		<ol class="breadcrumb">
 			<li>
 				<i class="fas fa-home"></i>
-				<a href="${pageContext.request.contextPath}/admin_coupon.do">Home</a>
+				<a href="${pageContext.request.contextPath}/admin/admin_member.do?type=M"">Home</a>
 			</li>
 			<li class="active">
 				이용권 관리 현황 / 쿠폰 발송

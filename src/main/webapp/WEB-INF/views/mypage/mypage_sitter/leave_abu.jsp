@@ -109,7 +109,7 @@
                             <div class="col-md-6 col-xs-12" style="float: none; margin: 0 auto;">
                                 <div class="recheck_title" style="text-align: center;">
                                     <p>위 내용을 잘 확인하셨나요?</p>
-                                    <h3>맘시터 <mark>탈퇴신청</mark>을 하시겠습니까?</h3>
+                                    <h3>아부해 <mark>탈퇴신청</mark>을 하시겠습니까?</h3>
                                 </div>
                                 <div class="recheck_cont">
                                     <ul style="list-style: outside;">

@@ -25,17 +25,13 @@
 		<!-- fontawesome(글리피콘) 적용 -->
 		<script src="https://kit.fontawesome.com/f27ac0bcc1.js" crossorigin="anonymous"></script>
 		<!-- css 참조  -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_custom_bbs.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_coupon.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/admin_header.css" />
 		<style type="text/css">
-		.gleft {
-			height: 70px;
-			line-height: 25px;
-		}
 		#subject {
-			width: 940px;
+			width: 100%;
+			margin-top: 10px;
 		}
-
 		</style>
 	</head>
 
@@ -45,21 +41,21 @@
 			<%@ include file="../admin/admin_header.jsp"%>
 			</header>
 			<!--content header-->
-			<section class="content_header">
-                <h1>글 수정</h1>
-                <ol class="breadcrumb">
-                    <li>
+			<div class="Title">
+				<h1>글 수정</h1>
+				<ol class="breadcrumb">
+					<li>
 						<i class="fas fa-home"></i>
-                        <a href="${pageContext.request.contextPath}/admin/admin_member.do">Home</a>
-                    </li>
-                    <li class="active">
-                        글 수정
-                    </li>
-                </ol>
-			</section>
+						<a href="${pageContext.request.contextPath}/admin/admin_member.do?type=M">Home</a>
+					</li>
+					<li class="active">
+						글수정
+					</li>
+				</ol>
+			</div>
 			<!--end content_header-->
 			<!--main content-->
-			<section>
+			<section id="#edit">
 				<div class="col-md-12">
 					<div class="write_title_group">
 						<form method="POST" action="${pageContext.request.contextPath}/admin/edit_ok.do">

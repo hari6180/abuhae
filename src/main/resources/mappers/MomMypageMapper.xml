@@ -284,7 +284,7 @@
 		<result property="leaveok_date" column="leaveok_date" />
 	</resultMap>
 
-<!-- 로그인한 회원정보 조회 조회 -->
+	<!-- 로그인한 회원정보 조회 조회 -->
 	<select id="selectMomItem" 
 	parameterType="study.team.abuhae.model.Mom_info" resultMap="MomInfoMap">
 		SELECT m.memberno, m.name, m.type, m.id, m.password, m.email, m.phone, m.birthdate, m.job_opening, mi.momno, mi.momno,

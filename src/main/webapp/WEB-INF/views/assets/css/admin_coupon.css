@@ -80,10 +80,6 @@ option {
   color: #ff4311;
 }
 
-.gleft {
-  margin-left: 260px;
-}
-
 .gright {
   margin-right: 20px;
 }
@@ -239,3 +235,6 @@ table {
 	margin-right: 15px;
 }
 
+.gleft {
+	margin-left: 220px;
+}

@@ -205,6 +205,7 @@
 		                            <h5 class="upd_img_tl">1. 내 사진 (선택사항)</h5>
 		                            <div class="upload_prof">
 		                                <div class="user_img">
+		                                	<input type="hidden" name= "momno" value="${login.momno }">
 		                                    <input type="file" id="new_profile_img" name="photo" accept="image/*">
 		                                    <label for="new_profile_img"><img
 		                                            src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg"
@@ -231,8 +232,9 @@
 		                            <div class="upload_prof">
 		                                <div class="user_img">
 		                                    <input type="file" id="new_profile_img" name="photo" accept="image/*">
+		                                    <input type="hidden" name="momno" value="${login.momno }"> 
 		                                    <label for="new_profile_img"><img
-		                                            src="${pageContext.request.contextPath}/assets/img/mypage_img/user.png"
+		                                            src="${profile.fileUrl }"
 		                                            alt=""></label>
 		                                </div>
 		                            </div>
@@ -245,7 +247,7 @@
 		                                </p>
 		                            </div>
 		                        </div>
-		                        <button id="updateProfileImg" class="edit_btn" type="submit">수정하기</button>
+		                        <button id="updateProfileImg" class="edit_btn" type="submit" onClick="window.location.reload()">수정하기</button>
 		                    </form>
                     	</c:otherwise>
                     </c:choose>
@@ -283,7 +285,7 @@
                                     placeholder="영어놀이, 등하원돕기, 학습지도 맘시터 찾습니다.">
                             </div>
                         </div>
-                        <button id="updateApplytitle" class="edit_btn" type="submit">수정하기</button>
+                        <button id="updateApplytitle" class="edit_btn" type="submit" onClick="window.location.reload()">수정하기</button>
                     </form>
                 </div>
             </section>
@@ -1463,7 +1465,6 @@
                 upload_img(this);
                 $(".upload_prof").css('justify-content', 'flex-start');
             });
-
 
             //프로필 제목 업데이트
             /** 직접 입력 클릭 시 텍스트 박스 나타남 */

@@ -65,7 +65,7 @@
                                             </c:choose>
                                         </div>
                                         <div class="acc_con_right col-xs-6">
-                                            <a href="${pageContext.request.contextPath}/buy/buy.do">
+                                            <a href="${pageContext.request.contextPath}/buy/mom_ticket.do?momno=${login.momno}">
                                                 <button type="button">이용권 구매하기</button>
                                             </a>
                                         </div>
