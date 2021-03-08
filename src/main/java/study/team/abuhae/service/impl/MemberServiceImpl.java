@@ -282,10 +282,10 @@ public class MemberServiceImpl implements MemberService {
 			result = sqlsession.selectOne("MemberMapper.findID", input);
 		} catch (NullPointerException e) {
 			log.error(e.getLocalizedMessage());
-			throw new Exception("조회된 데이터가 없습니다.");
+			throw new Exception("가입되지 않은 회원 정보입니다.");
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 조회에 실패했습니다.");
+			throw new Exception("가입 정보를 정확히 기입해 주세요.");
 		}
 
 		return result;
@@ -316,9 +316,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void findPw(HttpServletResponse response, Mom_info input) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
-		Mom_info ck = sqlsession.selectOne("MemberMapper.selectIDItem", input);
+		Mom_info ck = sqlsession.selectOne("MemberMapper.selectId", input);
 		//PrintWriter out = response.getWriter();
-
+		
+		ck.setId(input.getId());
+		
 		// 임시 비밀번호 생성
 		String pw = "";
 		for (int i = 0; i < 12; i++) {

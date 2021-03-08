@@ -146,6 +146,17 @@
 		where id=#{id} and password=md5(#{password});
 	</select>
 	
+	<!-- 특정 아이디에 대한 단일행 조회 - 추후 암호화-->
+	<select id="selectId"
+		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">
+		select m.memberno as memberno, mi.momno as momno, si.sitterno as sitterno, type, name, email
+		from member m
+		left outer join sitter_info si on m.memberno=si.memberno
+		left outer join mom_info mi on m.memberno=mi.memberno
+		
+		where id=#{id};
+	</select>
+	
 	<!-- 특정 아이디에 대한 단일행 조회-->
 	<select id="selectIdItem"
 		parameterType="study.team.abuhae.model.Member" resultMap="MomMap">

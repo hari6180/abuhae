@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import study.team.abuhae.helper.RegexHelper;
 import study.team.abuhae.helper.WebHelper;
 import study.team.abuhae.model.Cus_bbs;
 import study.team.abuhae.model.Mom_info;
@@ -27,6 +28,8 @@ public class LoginController {
 	MemberService memberService;
 	@Autowired
 	WebHelper webHelper;
+	@Autowired
+	RegexHelper regexHelper;
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
@@ -96,9 +99,20 @@ public class LoginController {
 	// 아이디 찾기
 	@RequestMapping(value = "login/find_ok", method = RequestMethod.POST)
 	public ModelAndView m_find_id_ok(Model model, 
-			@RequestParam(value = "name") String name,
-			@RequestParam(value = "birthdate") String birthdate_str, 
-			@RequestParam(value = "tel") String phone) {
+			@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "birthdate", defaultValue = "") String birthdate_str, 
+			@RequestParam(value = "tel", defaultValue = "") String phone) {
+		
+		//파라미터 유효성 검사
+		if(!regexHelper.isValue(name)) {
+			return webHelper.redirect(null, "이름을 입력해 주세요");
+		}
+		if(!regexHelper.isValue(birthdate_str)) {
+			return webHelper.redirect(null, "생년월일을 입력해 주세요");
+		}
+		if(!regexHelper.isValue(phone)) {
+			return webHelper.redirect(null, "연락처를 입력해 주세요");
+		}
 		
 		Mom_info mominfo = new Mom_info();
 		
@@ -120,6 +134,9 @@ public class LoginController {
 		try {
 			// 요청한 값으로 id 찾아오기
 			output = (Mom_info) memberService.findId(mominfo);
+			if(output == null) {
+				return webHelper.redirect(null, "조회된 정보가 없습니다. 회원 정보를 다시 확인해 주세요!");
+			}
 
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());

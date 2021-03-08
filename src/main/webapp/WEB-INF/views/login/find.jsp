@@ -42,6 +42,14 @@
         i {
             font-style: normal;
         }
+        .swal-button {
+            padding: 7px 19px;
+            border-radius: 2px;
+            background-color: #ff7000 !important;
+            font-size: 12px;
+            border: 1px solid #ff7000 !important;
+            text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 
@@ -97,6 +105,8 @@
             </div>
         </div> <!-- fin. col-xs-12 -->
     </div>
+    <!--sweetalert plugin-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">
         /* $(function () {
             //$("#menu").load("../index_header.html");
@@ -122,11 +132,15 @@
 					id : $("#getid").text()
 				},
 				success : function(result) {
-					alert(result);
+                    swal({
+                        text: "임시 비밀번호가 발급되었습니다."
+                    });
 
 				},
                 error : function() { //통신 실패시 ㅠㅠ
-						alert('통신실패!');
+                    swal({
+                        text: "발급에 실패했습니다. 관리자에게 문의해 주세요."
+                    });
 					}
 			})
 		});
