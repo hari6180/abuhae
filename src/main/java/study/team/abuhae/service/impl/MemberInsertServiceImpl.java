@@ -143,4 +143,26 @@ public class MemberInsertServiceImpl implements MemberInsertService {
 		return result;
 	}
 
+	@Override
+	public Connect getConnect(Connect input) throws Exception {
+		Connect result = null;
+
+		try {
+			result = sqlSession.selectOne("MomMypageMapper.selectAccept", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("아이디나 비밀번호를 다시 확인해 주세요.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("로그인에 실패하였습니다.");
+		}
+		
+		//반환된 데이터가 있으면 데이터 조회가 있다는 뜻
+		return result;
+	}
+
 }

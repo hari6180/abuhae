@@ -345,6 +345,12 @@
 		inner join mom_info m on m.momno = h.momno
 		where h.momno=#{momno} and who='M';
 	</select>
+	
+	<select id="selectAccept"
+	parameterType="study.team.abuhae.model.Connect" resultMap="ConnectMap">
+		select accpet from connect
+		where momno = #{momno};
+	</select>
 
 	<!-- 내 채용내역 -->
 	<select id="selectWorkList"

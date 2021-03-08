@@ -37,4 +37,6 @@ public interface MemberInsertService {
 	
 	// 시터 인증 데이터 입력
 	public int ResiInsert(ResiCert input) throws Exception;
+	
+	public Connect getConnect(Connect input) throws Exception;
 }

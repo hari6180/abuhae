@@ -270,7 +270,8 @@ public class MemberInsertController {
 	public void acepcount_insert(Model model) {
 		Connect applySt = new Connect();
 		Review review = new Review();
-
+		Connect output = new Connect();
+		
 		char[] rev = { '0', '1', '2', '3', '4', '5' };
 
 		// 맘에게 지원한 시터 수 랜덤 입력
@@ -278,14 +279,23 @@ public class MemberInsertController {
 			applySt.setWho("s");
 			applySt.setMomno(random(1, 100));
 			applySt.setSitterno(random(1, 100));
-
+			
 			try {
-				memberInsertService.applyStInsert(applySt);
-				memberInsertService.reviewInsert(review);
-			} catch (Exception e) {
-				e.printStackTrace();
+				output = memberInsertService.getConnect(applySt);
+			} catch (Exception e1) {
+				e1.printStackTrace();
 			}
+	
+			if (output.getAccept() == "Y") {
+				try {
+					memberInsertService.applyStInsert(applySt);
+					memberInsertService.reviewInsert(review);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
+			}
+			
 		}
 		
 		// 리뷰 및 별점 랜덤 입력
