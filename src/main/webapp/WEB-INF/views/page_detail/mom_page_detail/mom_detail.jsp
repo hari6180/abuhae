@@ -67,6 +67,30 @@
 	            swal("시터회원으로 가입 후 이용해주세요.");
 	          }
 	        }); // fin. 찜버튼 기능
+	        
+	        $('#siren').on('click', function() {
+		          let momno = $(this).data("momno");
+		          
+		          if (${fn:contains(login.type, 'M')}) {
+		            
+		              swal("맘은 맘회원을 신고할 수 없습니다.");
+		              
+		              return false;
+		            } 
+		          location.href='${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report.do?momno=${output.momno}';
+			}); // fin. 같은 타입 신고막기 
+			
+			$('#interview').on('click', function() {
+		          let momno = $(this).data("momno");
+		          
+		          if (${fn:contains(login.type, 'M')}) {
+		            
+		              swal("맘은 맘회원에게 지원할 수 없습니다.");
+		              
+		              return false;
+		            } 
+		          location.href='${pageContext.request.contextPath}/page_detail/mom_interview.do?momno=${output.momno}';
+				}); // fin. 같은 타입 인터뷰 막기 
 		}); 
 	 </script>
 	 <!-- jquery 파일명 수정 -->
@@ -78,7 +102,7 @@
 		<div class="container" >
 			<div class="col-xs-12"> <!-- xs-12로 모바일 맞춤 -->
 				<div class="pull-right">
-					<button type="button" class="btn btn-dark btn-xs" id="siren" onclick = "location.href='${pageContext.request.contextPath}/page_detail/mom_page_detail/mom_report.do?momno=${output.momno}';">
+					<button type="button" class="btn btn-dark btn-xs" id="siren">
 				 	 <img src="${pageContext.request.contextPath}/assets/img/siren.png" width="13" height="15"/>
 				             신고
 				  	</button>
@@ -1013,7 +1037,7 @@
 						</button>					
 					</div>
 					<div class="interview_btn">
-							<button tabindex="0" type="button" class="btn-interview" onclick = "location.href='${pageContext.request.contextPath}/page_detail/mom_interview.do?momno=${output.momno}';">
+							<button tabindex="0" type="button" class="btn-interview" id="interview">
 								<div>
 									<div class="btn_text_box">
 										<span><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">인터뷰 신청하기</a></span>
