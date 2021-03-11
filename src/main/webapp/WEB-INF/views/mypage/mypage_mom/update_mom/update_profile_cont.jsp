@@ -199,7 +199,7 @@
                 <div class="row">
                     <c:choose>
                     	<c:when test="${profile == null }">
-                    		<form method="post" action="${pageContext.request.contextPath}/upload/upload_ok.do?memberno=${login.memberno}"
+                    		<form method="post" action="${pageContext.request.contextPath}/mypage/upload_ok.do?memberno=${login.memberno}"
 		                    enctype="multipart/form-data">
 		                        <div class="col-xs-12">
 		                            <h5 class="upd_img_tl">1. 내 사진 (선택사항)</h5>
@@ -225,7 +225,7 @@
 		                    </form>
                     	</c:when>
                     	<c:otherwise>
-                    		<form method="post" action="${pageContext.request.contextPath}/upload/upload_edit.do?memberno=${login.memberno}"
+                    		<form method="post" action="${pageContext.request.contextPath}/mypage/upload_edit.do?memberno=${login.memberno}"
 		                    enctype="multipart/form-data">
 		                        <div class="col-xs-12">
 		                            <h5 class="upd_img_tl">1. 내 사진 (선택사항)</h5>

@@ -110,7 +110,7 @@
                 <!-- content1 -->
 					<c:choose>
 						<c:when test="${output == null }">
-							<form method="post" action="${pageContext.request.contextPath}/upload/upload_ok.do?memberno=${login.memberno}"
+							<form method="post" action="${pageContext.request.contextPath}/mypage/upload_ok.do?memberno=${login.memberno}"
 								enctype="multipart/form-data">
 								<div>
 									<h5 class="upd_img_tl">1. 내 사진 (선택사항) ${totalCount}</h5>
@@ -225,7 +225,7 @@
 						</c:when>
 					
 						<c:otherwise>
-							<form method="post" action="${pageContext.request.contextPath}/upload/upload_edit.do?memberno=${login.memberno}"
+							<form method="post" action="${pageContext.request.contextPath}/mypage/upload_edit.do?memberno=${login.memberno}"
 								enctype="multipart/form-data">
 								<div>
 									<h5 class="upd_img_tl">1. 내 사진 (선택사항)</h5>
