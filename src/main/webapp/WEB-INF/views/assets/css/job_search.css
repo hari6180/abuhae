@@ -243,14 +243,12 @@ button {
 .content_row .kids_count {
   margin-right: 5px;
   font-size: 1em;
-  font-weight: bold;
   color: #ff7000;
   width: 140px;
 }
 
 .last_update {
   font-size: 1em;
-  font-weight: bold;
   color: #585858;
   width: 100%;
 }
@@ -285,7 +283,6 @@ button {
 .wanted_pay {
   color: #585858;
   font-size: 1em;
-  font-weight: bold;
 }
 
 .text_sep {
