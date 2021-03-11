@@ -245,12 +245,14 @@ button {
   font-size: 1em;
   font-weight: bold;
   color: #ff7000;
+  width: 140px;
 }
 
 .last_update {
   font-size: 1em;
   font-weight: bold;
   color: #585858;
+  width: 100%;
 }
 
 .find_text {
@@ -261,14 +263,14 @@ button {
 
 .job_item_group .location,
 .user_name {
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 400;
   color: #585858;
 }
 
 .start_date {
   color: #bdbdbd;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 400;
 }
 
