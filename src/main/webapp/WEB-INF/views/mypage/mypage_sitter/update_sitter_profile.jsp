@@ -901,7 +901,7 @@
 									<div class="wage_box">
 										<input type="checkbox" id="avg_wage">
 										<label for="avg_wage">
-											<div class="check_avg"></div> 평균시급 적용
+											<div class="check_avg"></div> <p class="select_wage">평균시급 적용</p>
 										</label>
 									</div>
 								</div>

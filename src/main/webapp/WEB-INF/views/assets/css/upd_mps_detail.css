@@ -6,7 +6,7 @@ html,
   padding: 0;
 
   font-size: 1em;
-  font-weight: bold;
+
 }
 
 h1,
@@ -722,7 +722,6 @@ input[type=radio] {
 
 .wrap_review .group1_review .rev_tab_panel .rev_tab_panel_con h4 {
   font-size: 1.2em;
-  font-weight: bold;
 }
 
 .wrap_review .group1_review .rev_tab_panel .rev_tab_panel_con h5 {
@@ -874,6 +873,11 @@ button {
   font-size: 3.5em;
   margin-bottom: 10px;
 }
+
+.certify_cont2 p {
+	font-weight: normal;
+}
+
 /** end 인증 관리  ------------------------------------------------------------------*/
 
 /** 내 맘시터 채용 횟수  --------------------------------------------------------- ---*/
@@ -922,6 +926,10 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.total_count p {
+	font-weight: normal;
 }
 
 /** end 내 맘시터 채용 횟수  ---------------------------------------------------------*/
