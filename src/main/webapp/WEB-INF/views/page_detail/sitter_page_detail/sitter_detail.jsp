@@ -1199,11 +1199,8 @@ jQuery(function($) {
 				<div class="fixed_box">
 					<div class="fixed_area">
 						<div class="fixed_area_age">
-							<div class="fixed_name">
-								${output.name}
-							</div>
 							<div class="fixed_age">
-								(${output.birthdate}세, <c:if test="${fn:contains(output.gender,'F')}">여</c:if><c:if test="${fn:contains(output.gender,'M')}">남</c:if>)
+								${output.name}&nbsp;(${output.birthdate}세, <c:if test="${fn:contains(output.gender,'F')}">여</c:if><c:if test="${fn:contains(output.gender,'M')}">남</c:if>)
 							</div>
 						</div>
 						<div class="fixed_money">
