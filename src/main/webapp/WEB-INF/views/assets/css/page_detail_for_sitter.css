@@ -611,6 +611,7 @@
 				.possible_active_main {
 					padding: 15px 0px;
 					display: flex;
+					margin-right: 30px;
 				}
 				.active_ok {
 					margin-bottom: 30px;

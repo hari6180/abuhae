@@ -246,6 +246,7 @@
 		position: relative;
 		padding: 15px;
 		border-radius: 3px;
+		margin-bottom: 25px;
 		background-color: #fff;
 	}
 	.active {
@@ -604,6 +605,7 @@
 	.possible_active_main {
 		padding: 15px 0px;
 		display: flex;
+		margin-right: 30px;
 	}
 	.active_ok {
 		margin-bottom: 30px;
@@ -1426,11 +1428,9 @@
 	.swal-button {
 		background-color: #ff7000;
 	}
-	.active_area_profil {
-		margin-top: 10px;
-	}
 	.active_text_line {
 		font-size: 0.8em;
+		font-weight: normal;
 	}
 	.modal-body > p {
 		text-align: center;

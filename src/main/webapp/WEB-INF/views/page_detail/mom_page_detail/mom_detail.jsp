@@ -310,10 +310,10 @@
 											<span id="schedule_text"> 
 											${fn:split(output.startdate,'/')[0]}년 ${fn:split(output.startdate,'/')[1]}월 ${fn:split(output.startdate,'/')[2]}일 
 											 </span> 부터 일을 시작할 수 있어요.
+											 <br/>
 											 <c:if test="${fn:contains(output.schedule_ok,Y)}">
 											<span style="margin-left: 5px;">
 											* 이 일정은 맘시터에 맞춰서 얼마든지 
-											<br/>
 											<span style="margin-left: 13px;">
 											조정할 수 있어요.
 											</span>
@@ -395,7 +395,7 @@
 							</div>
 							</div>
 							<div style="text-align: center; font-weight: bold; padding-top: 10px;">
-							<span style="color: #ff7000;  ">
+							<span style="color: #ff7000; font-weight: normal; ">
 								* 자세한 시간은 맘시터 회원과 매칭된 이후에 조율해요. 
 							</span>
 							</div>
