@@ -301,7 +301,7 @@
 								</div>
 							</div>
 							<div>
-							<div class="col-xs-12">
+							<div class="col-xs-12" style="text-align: center;">
 							<c:set var="theString" value="${output.days}" />
 							<c:if test="${fn:contains(theString, 'mon')==false}">
 							<div class="days_box_no">
@@ -1023,28 +1023,6 @@
 					</div> <!-- fin. interview_btn -->
 				</div>
 			</div> <!-- fin. fixed_box -->
-				<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<!-- .modal-dialog --> 
-					<div class="modal-dialog">
-						<!-- .modal-content -->
-						<div class="modal-content">
-							<div class="modal-body">
-								<p>
-									일자리에 지원하기 위해
-									<br/>
-									지원권을 구매해주세요
-								</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal" id="btn_ok" onclick = "location.href='${pageContext.request.contextPath}';">
-									지원권 구매하러 가기
-								</button>
-							</div>
-						</div>
-						<!-- /.modal-content -->
-					</div>
-					<!-- /.modal-dialog -->
-				</div>
 				<!-- /.modal -->	
 			
 	</body>

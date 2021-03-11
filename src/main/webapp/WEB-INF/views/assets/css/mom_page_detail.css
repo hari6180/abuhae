@@ -585,6 +585,7 @@
 		padding: 15px;
 		border-radius: 3px;
 		background-color: #fff;
+		font-size: 0.9em;
 	}
 	.age_line {
 		display: flex;
@@ -819,7 +820,6 @@
 	}
 	.fixed_box {
 		display: flex;
-		min-height: 70px;
 		flex-direction: row;
 		-webkit-box-pack: justify;
 		-webkit-box-align: center;
@@ -828,6 +828,8 @@
 		background-color: #fff;
 		position: fixed;
 		z-index: 15;
+		width: 420px;
+		height: 90px;
 		bottom: 0px;
 		padding: 10px 15px;
 		left: 0px;
@@ -856,15 +858,10 @@
 		color: #000;
 		font-weight: bold;
 	}
-	.fixed_btn {
-		
-		display: inline-flex;
-		align-items: center;
-	}
 	.fixed_btn_jim {
 		position: relative;
-		left: 55px;
-		text-align: center;
+		left: 22px;
+		top: 25px;
 	}
 	.btn-jim {
 		border: 10px;
@@ -889,13 +886,14 @@
 	}
 	.interview_btn {
 		position: relative;
-		left: 45px;
+		left: 60px;
 		padding-left: 15px;
 		color: rgba(0, 0, 0, 0.87);
 		background-color: rgb(255, 255, 255);
 		box-sizing: border-box;
 		border-radius: 2px;
 		height: 50px;
+		bottom: 20px;
 		min-width: 88px;
 		display: inline-block;
 	}
@@ -1369,8 +1367,8 @@
 		padding: 0 70px;
 	}
 	.days_box_no {
-		width: 47px;
-		height: 45px;
+		width: 42px;
+		height: 42px;
 		background-color: #ccc;
 		color: #fff;
 		padding: 3px 4px;
@@ -1384,8 +1382,8 @@
 		margin-bottom: 10px;
 	}
 	.days_box_ok {
-		width: 47px;
-		height: 45px;
+		width: 42px;
+		height: 42px;
 		background-color: #ff7000;
 		color: #fff;
 		padding: 3px 4px;

@@ -326,7 +326,7 @@ jQuery(function($) {
 													</div> <!-- fin. schedule_box -->
 												</div> <!-- fin. schedule_area -->
 											</div> <!-- fin. schedule_info_box -->
-											<div class="col-xs-12">
+											<div class="col-xs-12" style="text-align: center;">
 											<c:set var="theString" value="${output.days}" />
 											<c:if test="${fn:contains(theString, 'mon')==false}">
 											<div class="days_box_no">
