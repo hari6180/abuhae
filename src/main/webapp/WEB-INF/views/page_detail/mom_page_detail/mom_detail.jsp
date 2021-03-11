@@ -314,7 +314,7 @@
 											 <c:if test="${fn:contains(output.schedule_ok,Y)}">
 											<span style="margin-left: 5px;">
 											* 이 일정은 맘시터에 맞춰서 얼마든지 
-											<span style="margin-left: 13px;">
+											<span>
 											조정할 수 있어요.
 											</span>
 											</span>
