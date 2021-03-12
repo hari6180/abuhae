@@ -217,7 +217,7 @@
 		END AS opening, openingdate,  
 		(SELECT p.isProfile FROM profile_file p WHERE p.memberno = m.memberno) AS isProfile, 
 		(SELECT p.fileUrl FROM profile_file p WHERE p.memberno = m.memberno) AS fileUrl,
-		(SELECT COUNT(cntno) FROM Connect c WHERE c.momno=m.momno AND who='s') AS applySt 
+		(SELECT COUNT(cntno) FROM connect c WHERE c.momno=m.momno AND who='s') AS applySt 
 		<if test = "loginSt != 0">, 
 		(SELECT COUNT(*) FROM heart h WHERE m.momno=h.momno AND who='S'AND h.sitterno=#{loginSt}) AS findHt
 		</if>
