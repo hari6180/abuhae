@@ -206,12 +206,12 @@ jQuery(function($) {
 						<div class="line_three"></div>
 						<div class="cctv_area">
 						 <c:if test="${fn:contains(output.cctv,'Y')}">
-							<div id="cctv"><span style="color: #ff7000;"><i class="fas fa-video"></i></span> CCTV</div>
-							<div id="agree">동의함</div>
+							<div id="cctv" style="color: #ff7000;"><span style="color: #ff7000;"><i class="fas fa-video"></i></span> CCTV</div>
+							<div id="agree" style="color: #ff7000;">동의함</div>
 						</c:if>
 						<c:if test="${fn:contains(output.cctv,'N')}">
 							<div id="cctv_no"><span style="color: #555;"><i class="fas fa-video"></i></span> CCTV</div>
-							<div id="agree_no">동의 안함</div>
+							<div id="agree_no">동의 안 함</div>
 						</c:if>
 						</div> <!-- fin. cctv_area -->
 					</div> <!-- fin. three_area -->
