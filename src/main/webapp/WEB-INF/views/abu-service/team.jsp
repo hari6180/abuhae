@@ -37,7 +37,7 @@
                     <div class="item_header">
                         <div class="cert_label"><img
                                 src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">
-                                먹금</span></div>
+                                오늘밤 당신을 Intercept 하겠습니다!</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
@@ -103,7 +103,7 @@
                     <div class="item_header">
                         <div class="cert_label"><img
                                 src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">
-                                나보다 약한 자의 말은 듣지 않는다</span></div>
+                                당신의 성실함을 응원합니다!</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
@@ -169,7 +169,7 @@
                     <div class="item_header">
                         <div class="cert_label"><img
                                 src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">
-                                파싱몬스터</span></div>
+                                REST 하셨으니 REST 하세요!</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
@@ -224,8 +224,8 @@
                                 <div class="cert_count">2개</div>
                             </div>
                             <div class="cert_info_btn_group">
-                                <div class="cert_btn">파싱 마스터 인증</div>
-                                <div class="cert_btn">ajax 마스터 인증</div>
+                                <div class="cert_btn">REST 마스터 인증</div>
+                                <div class="cert_btn">Dynamic SQL 마스터 인증</div>
                             </div>
                         </div>
                     </div>
@@ -235,7 +235,7 @@
                     <div class="item_header">
                         <div class="cert_label"><img
                                 src="${pageContext.request.contextPath}/assets/img/icon-cert-label (1).png" /><span class="cert_text">
-                                차이코프스키</span></div>
+                                단 하나뿐인 Front 인재로 인정합니다!</span></div>
                     </div>
                     <hr class="divider" />
                     <div class="item_body">
