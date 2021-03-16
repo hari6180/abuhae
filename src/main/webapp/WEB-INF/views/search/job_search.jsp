@@ -79,54 +79,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                     <div>
                       <button class="loc_btn">서울특별시</button>
                     </div>
-                    <div>
-                      <button class="loc_btn">경기도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">인천광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">부산광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">대전광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">대구광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">울산광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">세종특별자치시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">광주광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">강원도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">충청북도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">충청남도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">경상북도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">경상남도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">전라북도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">전라남도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">제주특별자치도</button>
-                    </div>
                   </div>
                   <!--end 시-->
                   <!--구-->

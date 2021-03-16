@@ -133,12 +133,11 @@
 				</foreach>
 			</if>
 			<if test="caredays != null">
-				AND JSON_CONTAINS(schedule->'$.day',CAST('
-				<foreach item="item3" collection="caredays" open="["
-					close="]" separator=",">
-					"${item3}"
+				AND schedule 
+				<foreach item="item3" collection="caredays"
+				 	separator="AND schedule">
+					LIKE '%${item3}%'
 				</foreach>
-				' AS JSON))
 			</if>
 			<if test="sitterType != null">
 				AND sitter_type IN
@@ -241,12 +240,11 @@
 				</foreach>
 			</if>
 			<if test="caredays != null">
-				AND JSON_CONTAINS(schedule->'$.day',CAST('
-				<foreach item="item3" collection="caredays" open="["
-					close="]" separator=",">
-					"${item3}"
+				AND schedule 
+				<foreach item="item3" collection="caredays"
+				 	separator="AND schedule">
+					LIKE '%${item3}%'
 				</foreach>
-				' AS JSON))
 			</if>
 			<if test="min_pay != 0 and max_pay == 0">
 				AND payment BETWEEN 8720 AND #{min_pay}
@@ -320,12 +318,11 @@
 				</foreach>
 			</if>
 			<if test="caredays != null">
-				AND JSON_CONTAINS(schedule->'$.day',CAST('
-				<foreach item="item3" collection="caredays" open="["
-					close="]" separator=",">
-					"${item3}"
+				AND schedule 
+				<foreach item="item3" collection="caredays"
+				 	separator="AND schedule">
+					LIKE '%${item3}%'
 				</foreach>
-				' AS JSON))
 			</if>
 			<if test="sitterType != null">
 				AND sitter_type IN
@@ -380,12 +377,11 @@
 				</foreach>
 			</if>
 			<if test="caredays != null">
-				AND JSON_CONTAINS(schedule->'$.day',CAST('
-				<foreach item="item3" collection="caredays" open="["
-					close="]" separator=",">
-					"${item3}"
+				AND schedule 
+				<foreach item="item3" collection="caredays"
+				 	separator="AND schedule">
+					LIKE '%${item3}%'
 				</foreach>
-				' AS JSON))
 			</if>
 			<if test="min_pay != 0 and max_pay == 0">
 				AND payment BETWEEN 8720 AND #{min_pay}

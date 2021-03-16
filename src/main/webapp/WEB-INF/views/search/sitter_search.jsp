@@ -45,18 +45,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
       function random(n1, n2) {
         return parseInt(Math.random() * (n2 - n1 + 1)) + n1;
       }
-
-      $(function () {
-        // 헤더 메뉴 load처리 1224 하리
-        // $("#menu").load("/ezen-android2020-2/index_header.html"); - 210124 include 변경
-
-        // 시터 타이틀 랜덤 출력 0206 하리 (반복문 돌아서 안되는듯..)
-        let num = random(0, 3);
-        let title = ["믿음직한 시터", "든든한 시터", "약속된 시터", "보장된 시터"];
-        $(document).on("scroll", ".sitter_item_group", function () {
-          $(".cert_text").html(title[random(0, 3)]);
-        });
-      });
     </script>
   </head>
 
@@ -94,54 +82,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   <div class="location_group" id="si">
                     <div>
                       <button class="loc_btn">서울특별시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">경기도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">인천광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">부산광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">대전광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">대구광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">울산광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">세종특별자치시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">광주광역시</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">강원도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">충청북도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">충청남도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">경상북도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">경상남도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">전라북도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">전라남도</button>
-                    </div>
-                    <div>
-                      <button class="loc_btn">제주특별자치도</button>
                     </div>
                   </div>
                   <!--end 시-->
