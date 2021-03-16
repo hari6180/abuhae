@@ -244,13 +244,11 @@ button {
   margin-right: 5px;
   font-size: 1em;
   color: #ff7000;
-  width: 90px;
 }
 
 .last_update {
   font-size: 1em;
   color: #585858;
-  width: 100%;
 }
 
 .find_text {

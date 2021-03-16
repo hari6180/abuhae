@@ -1166,7 +1166,8 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
         // 무한 스크롤 1218 하리
         $(window).scroll(function () {
-          if (Math.round($(window).scrollTop()) + $(window).height() == $(document).height()) {
+          if (parseInt($(document).height()) - parseInt($(window).height()) == $(window).scrollTop())  
+          /* (Math.round($(window).scrollTop()) + $(window).height() == $(document).height()) */ {
             console.log("끝에 도착함");
             nowPage++;
             // Restful API에 GET방식 요청

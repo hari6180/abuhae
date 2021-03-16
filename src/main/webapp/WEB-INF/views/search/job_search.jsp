@@ -870,13 +870,16 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
 
         // 무한 스크롤 1218 하리
         $(window).scroll(function () {
-          if (Math.round($(window).scrollTop()) + $(window).height() + 1 == $(document).height()) {
-            // 이 계산식만 잘 고치면 될거같다. -> 반올림, setTimeout으로 해결! 0217
+          if (parseInt($(document).height()) - parseInt($(window).height()) == $(window).scrollTop()) 
+          /* (Math.round($(window).scrollTop()) + $(window).height() + 1 == $(document).height()) */ {
+            // 반올림, setTimeout으로 해결! 0217
+            // 모바일로 보니 해상도 이슈가 생겼음, 식을 바꿔봄..
             console.log("끝에 도착함");
-            nowPage++;
+
             // Restful API에 GET방식 요청
             setTimeout(function () {
               if (login_stno != "" || login_stno != 0) {
+                  nowPage++;
                 $.get(
                   "${pageContext.request.contextPath}/search/job_search/login",
                   {
@@ -899,6 +902,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%@ taglib pr
                   }
                 );
               } else {
+                  nowPage++;
                 $.get(
                   "${pageContext.request.contextPath}/search/job_search",
                   {
