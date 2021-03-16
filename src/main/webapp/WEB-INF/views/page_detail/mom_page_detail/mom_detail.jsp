@@ -309,7 +309,7 @@
 										<div class="active_text_line">
 											<span id="schedule_text"> 
 											${fn:split(output.startdate,'/')[0]}년 ${fn:split(output.startdate,'/')[1]}월 ${fn:split(output.startdate,'/')[2]}일 
-											 </span> 부터 일을 시작할 수 있어요.
+											 </span> 부터 아이를 돌봐주세요.
 											 <br/>
 											 <c:if test="${fn:contains(output.schedule_ok,Y)}">
 											<span style="margin-left: 5px;">
