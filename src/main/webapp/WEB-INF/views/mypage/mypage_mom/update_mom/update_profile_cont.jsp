@@ -362,140 +362,102 @@
 				</div>
 				<br>
 				<div class="row">
-                    <form  method="post" action="${pageContext.request.contextPath}/mypage_update/location.do?momno=${login.momno}">
-                        <div class="col-xs-12 upd_loc_cont1">
+                   <div class="col-xs-12 upd_loc_cont1">
 
-                            <!--시,도-->
-                            <div class="location_group" id="si">
-                                <div>
-                                    <button type="button" class="loc_btn">서울특별시</button>
-                                </div>
-                            </div>
-                            <!--end 시-->
-                            <!--구-->
-                            <div class="location_group" id="gu">
-                                <div class="hide_content">
-                                    <div>
-                                        <button type="button">강남구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">강동구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">강북구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">강서구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">관악구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">광진구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">구로구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">금천구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">노원구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">도봉구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">동대문구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">동작구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">마포구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">서대문구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">서초구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">성동구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">성북구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">송파구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">양천구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">영등포구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">용산구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">은평구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">종로구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">중구</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">중랑구</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end 구-->
-                            <!--동-->
-                            <div class="location_group" id="dong">
-                                <div class="hide_content">
-                                    <div>
-                                        <button type="button">가산동</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">독산1동</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">독산2동</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">독산3동</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">독산4동</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">독산동</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">시흥1동</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">시흥2동</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">시흥3동</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">시흥4동</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">시흥5동</button>
-                                    </div>
-                                    <div>
-                                        <button type="button">시흥동</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end 동-->
-                        </div>
+                    <!--시,도-->
+		            <div class="location_group" id="si">
+		              <div>
+		                <button class="loc_btn">서울특별시</button>
+		              </div>
+		            </div>
+		            <!--end 시-->
+		            <!--구-->
+		            <div class="location_group" id="gu">
+		              <div class="hide_content">
+		                <div>
+		                  <button>강남구</button>
+		                </div>
+		                <div>
+		                  <button>강동구</button>
+		                </div>
+		                <div>
+		                  <button>강북구</button>
+		                </div>
+		                <div>
+		                  <button>강서구</button>
+		                </div>
+		                <div>
+		                  <button>관악구</button>
+		                </div>
+		                <div>
+		                  <button>광진구</button>
+		                </div>
+		                <div>
+		                  <button>구로구</button>
+		                </div>
+		                <div>
+		                  <button>금천구</button>
+		                </div>
+		                <div>
+		                  <button>노원구</button>
+		                </div>
+		                <div>
+		                  <button>도봉구</button>
+		                </div>
+		                <div>
+		                  <button>동대문구</button>
+		                </div>
+		                <div>
+		                  <button>동작구</button>
+		                </div>
+		                <div>
+		                  <button>마포구</button>
+		                </div>
+		                <div>
+		                  <button>서대문구</button>
+		                </div>
+		                <div>
+		                  <button>서초구</button>
+		                </div>
+		                <div>
+		                  <button>성동구</button>
+		                </div>
+		                <div>
+		                  <button>성북구</button>
+		                </div>
+		                <div>
+		                  <button>송파구</button>
+		                </div>
+		                <div>
+		                  <button>양천구</button>
+		                </div>
+		                <div>
+		                  <button>영등포구</button>
+		                </div>
+		                <div>
+		                  <button>용산구</button>
+		                </div>
+		                <div>
+		                  <button>은평구</button>
+		                </div>
+		                <div>
+		                  <button>종로구</button>
+		                </div>
+		                <div>
+		                  <button>중구</button>
+		                </div>
+		                <div>
+		                  <button>중랑구</button>
+		                </div>
+		              </div>
+		            </div>
+		            <!--end 구-->
+		            <!--동-->
+		            <div class="location_group" id="dong"></div>
+	            	<!--end 동-->
+                  </div>
+                  
+                   <form method="post" action="${pageContext.request.contextPath}/mypage_update/location.do?momno=${login.momno}">
                         <input type="hidden" name="si" id="loc_si">
                         <input type="hidden" name="gu" id="loc_gu">
                         <input type="hidden" name="dong" id="loc_dong">
@@ -1425,36 +1387,34 @@
 
 
 	<!-- Javascript -->
-     <!--Google CDN 서버로부터 jQuery 참조 -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <!-- Javascript -->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!-- jquery 파일명 수정 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-    <!-- jQuery Ajax Form plugin CDN -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-    <!-- jQuery Ajax Setup -->
-    <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript">
         function addCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
+        
         $(function () {
 
-        //프로필 업로드 
-        function upload_img(input) {
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function (e) {
-					var img_html = "<div class=user_img><img src=" + e.target.result + '></div>';
-					$(".upload_prof").append(img_html);
+	        //프로필 업로드 
+	        function upload_img(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						var img_html = "<div class=user_img><img src=" + e.target.result + '></div>';
+						$(".upload_prof").append(img_html);
+					}
+					reader.readAsDataURL(input.files[0]);
 				}
-				reader.readAsDataURL(input.files[0]);
-			}
-		} 
+			} 
 		
-		$("#new_profile_img").change(function () {
-			upload_img(this);
-			$(".upload_prof").css('justify-content', 'flex-start');
-		}); 
+			$("#new_profile_img").change(function () {
+				upload_img(this);
+				$(".upload_prof").css('justify-content', 'flex-start');
+			}); 
 
             //프로필 제목 업데이트
             /** 직접 입력 클릭 시 텍스트 박스 나타남 */
@@ -1508,45 +1468,44 @@
 
             var si, gu, dong;
             //시 클릭했을 때
-            $(".loc_btn").on("click", function () {
-                var select = $(this).hasClass("select_location");
-                //선택이 안되어있을때
-                if (select == false) {
-                    //선택이 되어있는 요소 탐색
-                    var loc = $("#si").find("button").removeClass("select_loaction");
-                    //console.log(loc);
-                    $(this).addClass("select_loaction");
-                    si = $(this).text()
-                    //시 선택하면 gu 보이게
-                    $("#gu>div").removeClass("hide_content");
-                    $("#gu>div").addClass("show_content");
-                }
-            });
-            
-            //구 클릭했을 때
-            $("#gu button").on("click", function () {
-	          let html = "";
-	          gu = $(this).html();
-	          var select = $(this).hasClass("select_location");
+            $(".loc_btn").on("click", function (e) {
+	          e.preventDefault();
+	          let select = $(this).hasClass("select_location");
 	          //선택이 안되어있을때
 	          if (select == false) {
 	            //선택이 되어있는 요소 탐색
-	            var loc = $("#gu").find("button").removeClass("select_location");
+	            let loc = $("#si").find("button").removeClass("select_loaction");
 	            //console.log(loc);
-	            $(this).addClass("select_location");
+	            $(this).addClass("select_loaction");
+	            si = "";
+	            si += $(this).html();
+	            //시 선택하면 gu 보이게
+	            $("#gu>div").removeClass("hide_content");
+	            $("#gu button").removeClass("hide_content");
+	            $("#gu>div").addClass("show_content");
+	          }
+	        });
+            
+            $("#gu button").on("click", function (e) {
+	          e.preventDefault();
+	          let html = "";
+	          gu = $(this).html();
+	          //console.log(gu);
+	          let select = $(this).hasClass("select_location");
+	          if (select == false) {
+	            let loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+	            $(this).addClass("select_loaction");
 	            gu = "";
 	            gu += $(this).html();
-	            //구 선택하면 동 보이게
-	            $("#dong>div").removeClass("hide_content");
-	            $("#dong>div").addClass("show_content");
-     		}
-	
+	          }
+	          // 로컬의 JSON 파일 읽어오기 0224 hari
+	          // 스프링 프로젝트에서 설정한 리소스 폴더에서만 가져올 수 있다. 다른 폴더에서는 안됨
 	          $.getJSON("${pageContext.request.contextPath}/assets/location.json", function (loc) {
 	            //console.log(loc[gu]);
 	            // JSON의 value가 array일 경우 ['key']로 전체를 읽어올 수 있다.
 	            let dong = loc[gu];
 	            html += '<div class="hide_content">';
-	            for (var i = 0; i < dong.length; i++) {
+	            for (let i = 0; i < dong.length; i++) {
 	              html += "<div><button class='dong_btn'>";
 	              html += dong[i];
 	              html += "</button></div>";
@@ -1558,49 +1517,48 @@
 	            //선택이 안되어있을때
 	            if (select == false) {
 	              //선택이 되어있는 요소 탐색
-	              // var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+	              // let loc = $("#gu").find("button").removeClass("select_loaction hide_content");
 	              //console.log(loc);
-	              $(this).addClass("select_location");
+	              $(this).addClass("select_loaction");
 	              //구 선택하면 동 보이게
 	              $("#dong>div").removeClass("hide_content");
 	              $("#dong>div").addClass("show_content");
 	            }
 	          });
 	        });
+            
+             //동 클릭했을때
+             $(document).on("click", ".dong_btn", function (e) {
+               //e.preventDefault();
+               var select = $(this).hasClass("select_loaction");
+
+               if (select == false) {
+                 //선택이 되어있는 요소 탐색
+                 var loc = $("#dong").find("button").removeClass("select_loaction");
+                 //console.log(loc);
+                 $(this).addClass("select_loaction");
+                 dong = "";
+                 dong += $(this).html();
+
+                 //동까지 선택하면 다음 버튼 활성화
+                 $("#updateLocation").prop("disabled", false);
+               } else {
+                 $(this).removeClass("select_loaction");
+                 $("#updateLocation").prop("disabled", true);
+               }
+             });
 	
-	        //동 클릭했을때
-	        $(document).on("click", ".dong_btn", function (e) {
+	        $("#updateLoaction").click(function (e) {
 	          //e.preventDefault();
-	          var select = $(this).hasClass("select_location");
-	
-	          if (select == false) {
-	            //선택이 되어있는 요소 탐색
-	            var loc = $("#dong").find("button").removeClass("select_location");
-	            //console.log(loc);
-	            $(this).addClass("select_location");
-	            dong = "";
-	            dong += $(this).html();
-	
-	            //동까지 선택하면 다음 버튼 활성화
-	            $(".next_btn").prop("disabled", false);
-	          } else {
-	            $(this).removeClass("select_location");
-	            $(".next_btn").prop("disabled", true);
-	          }
+	          //시
+	          $("#loc_si").val(si);
+	          //구
+	          $("#loc_gu").val(gu);
+	          //동
+	          $("#loc_dong").val(dong);
 	        });
-	        
-            //지역 수정하기 버튼을 눌렀을 경우
-            $("#updateLoaction").click(function (e) {
-                //e.preventDefault();
-                //시
-                $('#loc_si').val(si);
-                //구
-                $('#loc_gu').val(gu);
-                //동
-                $('#loc_dong').val(dong);
-
-            });
-
+		        
+	            
 ///////////////////////////스케쥴//////////////////////////////
 
             var type;
