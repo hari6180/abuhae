@@ -21,19 +21,12 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/notosans.css" />
     <!-- icon 참조 -->
     <script src="https://kit.fontawesome.com/12ac058ac7.js" crossorigin="anonymous"></script>
-    <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-        <!--Google CDN 서버로부터 jQuery 참조 -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- jQuery Ajax Form plugin CDN -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
-    <!-- jQuery Ajax Setup -->
-    <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  
     <!-- css 참조 -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/upd_mom_appl.css">
+    
+    <!-- flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style type="text/css">
         /** for 후기 관리 페이지 (review.html) --------------------------------------*/
         /** 공통 for 후기 관리 */
@@ -210,14 +203,15 @@
 		                    enctype="multipart/form-data">
 		                        <div class="col-xs-12">
 		                            <h5 class="upd_img_tl">1. 내 사진 (선택사항)</h5>
-		                            <div clvsass="upload_prof">
-		                                <div class="user_img">
-		                                	<input type="hidden" name= "momno" value="${login.momno }">
-		                                    <input type="file" id="new_profile_img" name="photo" accept="image/*">
-		                                    <label for="new_profile_img"><img
-		                                            src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg"
-		                                            alt=""></label>
-		                                </div>
+		                            <div class="upload_prof">
+		                            	<div class="user_img">
+											<input type="hidden" name="momno" value="${login.momno}">
+											<input type="file" id="new_profile_img" name="photo" accept="image/*">
+											 <label for="new_profile_img">
+												<img src="${pageContext.request.contextPath}/assets/img/defaultImage.jpg"
+													alt="임시 프로필사진" style="border-radius: 50%;">
+											</label>
+										</div>
 		                            </div>
 		                            <div class="guide_user_img">
 		                                <p>
@@ -240,9 +234,7 @@
 		                                <div class="user_img">
 		                                    <input type="file" id="new_profile_img" name="photo" accept="image/*">
 		                                    <input type="hidden" name="momno" value="${login.momno }"> 
-		                                    <label for="new_profile_img"><img
-		                                            src="${profile.fileUrl }"
-		                                            alt=""></label>
+		                                    <label for="new_profile_img"><img src="${profile.fileUrl }" alt=""></label>
 		                                </div>
 		                            </div>
 		                            <div class="guide_user_img">
@@ -1392,6 +1384,10 @@
 	</div>
 
 
+	<!-- Javascript -->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript">
         function addCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -1399,21 +1395,21 @@
         $(function () {
 
         //프로필 업로드 
-            function upload_img(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        var img_html = "<div class=user_img><img src=" + e.target.result + '></div>';
-                        $(".upload_prof").append(img_html);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-            $("#new_profile_img").change(function () {
-                upload_img(this);
-                $(".upload_prof").css('justify-content', 'flex-start');
-            });
+        function upload_img(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					var img_html = "<div class=user_img><img src=" + e.target.result + '></div>';
+					$(".upload_prof").append(img_html);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		} 
+		
+		$("#new_profile_img").change(function () {
+			upload_img(this);
+			$(".upload_prof").css('justify-content', 'flex-start');
+		}); 
 
             //프로필 제목 업데이트
             /** 직접 입력 클릭 시 텍스트 박스 나타남 */
@@ -1483,34 +1479,73 @@
                     $("#gu>div").addClass("show_content");
                 }
             });
+            
             //구 클릭했을 때
             $("#gu button").on("click", function () {
-                var select = $(this).hasClass("select_location");
-                //선택이 안되어있을때
-                if (select == false) {
-                    //선택이 되어있는 요소 탐색
-                    var loc = $("#gu").find("button").removeClass("select_loaction");
-                    //console.log(loc);
-                    $(this).addClass("select_loaction");
-                    gu = $(this).text();
-                    //구 선택하면 동 보이게
-                    $("#dong>div").removeClass("hide_content");
-                    $("#dong>div").addClass("show_content");
-                }
-            });
-
-            //동 클릭했을때
-            $("#dong button").on("click", function () {
-                var select = $(this).hasClass("select_location");
-                //선택이 안되어있을때
-                if (select == false) {
-                    //선택이 되어있는 요소 탐색
-                    var loc = $("#dong").find("button").removeClass("select_loaction");
-                    //console.log(loc);
-                    $(this).addClass("select_loaction");
-                    dong = $(this).text();
-                }
-            });
+	          let html = "";
+	          gu = $(this).html();
+	          var select = $(this).hasClass("select_location");
+	          //선택이 안되어있을때
+	          if (select == false) {
+	            //선택이 되어있는 요소 탐색
+	            var loc = $("#gu").find("button").removeClass("select_location");
+	            //console.log(loc);
+	            $(this).addClass("select_location");
+	            gu = "";
+	            gu += $(this).html();
+	            //구 선택하면 동 보이게
+	            $("#dong>div").removeClass("hide_content");
+	            $("#dong>div").addClass("show_content");
+     		}
+	
+	          $.getJSON("${pageContext.request.contextPath}/assets/location.json", function (loc) {
+	            //console.log(loc[gu]);
+	            // JSON의 value가 array일 경우 ['key']로 전체를 읽어올 수 있다.
+	            let dong = loc[gu];
+	            html += '<div class="hide_content">';
+	            for (var i = 0; i < dong.length; i++) {
+	              html += "<div><button class='dong_btn'>";
+	              html += dong[i];
+	              html += "</button></div>";
+	            }
+	            html += "</div>";
+	            //console.log(html);
+	            $("#dong").empty();
+	            $("#dong").append(html);
+	            //선택이 안되어있을때
+	            if (select == false) {
+	              //선택이 되어있는 요소 탐색
+	              // var loc = $("#gu").find("button").removeClass("select_loaction hide_content");
+	              //console.log(loc);
+	              $(this).addClass("select_location");
+	              //구 선택하면 동 보이게
+	              $("#dong>div").removeClass("hide_content");
+	              $("#dong>div").addClass("show_content");
+	            }
+	          });
+	        });
+	
+	        //동 클릭했을때
+	        $(document).on("click", ".dong_btn", function (e) {
+	          //e.preventDefault();
+	          var select = $(this).hasClass("select_location");
+	
+	          if (select == false) {
+	            //선택이 되어있는 요소 탐색
+	            var loc = $("#dong").find("button").removeClass("select_location");
+	            //console.log(loc);
+	            $(this).addClass("select_location");
+	            dong = "";
+	            dong += $(this).html();
+	
+	            //동까지 선택하면 다음 버튼 활성화
+	            $(".next_btn").prop("disabled", false);
+	          } else {
+	            $(this).removeClass("select_location");
+	            $(".next_btn").prop("disabled", true);
+	          }
+	        });
+	        
             //지역 수정하기 버튼을 눌렀을 경우
             $("#updateLoaction").click(function (e) {
                 //e.preventDefault();
@@ -1594,9 +1629,9 @@
 
                 if ($(".jojung_box").hasClass("box_check") == true) {
                     //일정조정 가능 
-                    $("#schedule_ok").val("Y");
+                    $("#schedule_ok").val('Y');
                 } else {
-                    $("#schedule_ok").val("N");
+                    $("#schedule_ok").val('N');
                 }
                 if (type == 'regular') {
                     //시작 날짜
