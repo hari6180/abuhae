@@ -224,9 +224,7 @@ public class UpdateApplController {
 		input.setSchedule_ok(schedule_ok);
 
 		try {
-
 			momMypageService.updateSchedule(input);
-
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}

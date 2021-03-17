@@ -734,3 +734,53 @@ choice_care input[type="radio"] + label {
   font-weight: bold;
 }
 /** end 그 외 요청사항 --------------------------------------------------------*/
+
+.time_box {
+	margin-top: 10px;
+}
+
+.time_box .calc_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time_box .regu_title {
+  font-weight: 600;
+  font-size: 1em;
+  color: #646464;
+}
+
+.time_box .date_box {
+  display: block;
+  border: 1px solid #ffcfb8;
+  background-color: #fff0e8;
+  border-radius: 2px;
+  width: 130px;
+  height: 37px;
+  text-align: center;
+  color: #ff7000;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.time_box .day_btn_group {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  margin: 13px 0;
+}
+
+.time_box .day_btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 36px;
+  background-color: #eee;
+  color: #646464;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+a {
+	color: #646464;
+}

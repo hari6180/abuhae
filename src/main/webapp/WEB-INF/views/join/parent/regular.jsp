@@ -23,16 +23,15 @@
 			</div>
 		</div>
 		<hr>
-			<!--일정은 시터에게 맞출 수 잇어요-->
-			<div class="jojung_box">
-				<span class="jojung_check"></span>
-				<span class="jojung_text">본 일정은 맘시터에 맞춰서 얼마든지 조정할 수 있어요.</span>
-			</div>
-			<button type="submit" class="next_btn">다음</button>
-			
+		<!--일정은 시터에게 맞출 수 잇어요-->
+		<div class="jojung_box">
+			<span class="jojung_check"></span>
+			<span class="jojung_text">본 일정은 맘시터에 맞춰서 얼마든지 조정할 수 있어요.</span>
 		</div>
-		<!--end hide content-->
+		<button type="submit" class="next_btn">다음</button>
+			
 	</div>
+	<!--end hide content-->
 </div>
 <script>
 	$(function () {

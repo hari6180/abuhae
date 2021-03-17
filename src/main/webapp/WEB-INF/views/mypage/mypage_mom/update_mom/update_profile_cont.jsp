@@ -315,7 +315,7 @@
                 <h5 class="upd_img_tl">4. 원하는 시터 나이 수정</h5>
                 <div class="now_selected">
 					<p class="desc">
-						현재 선택하신 나이대는 <i class="point">${mominfo.want_age}</i> 입니다.
+						현재 선택하신 나이대는 <i class="point">${mominfo.want_age}</i>대 입니다.
 					</p>
 				</div>
                 <div class="row">
@@ -556,14 +556,54 @@
                         <div class="col-xs-12">
                             <!-- 탭 버튼 영역 (정기적으로 / 특정한 날에만)-->
                             <div class="upd_ct_tab">
-                                <button type="button" class="upd_ct_tab_item_link" value="regular">정기적으로</button>
-                                <button type="button" class="upd_ct_tab_item_link" value="shortTerm" >특정한 날에만</button>
+                                <button type="button" class="upd_ct_tab_item_link" value="regular">
+                                	<a href="#regular_box">정기적으로</a>
+                                </button>
+                                <button type="button" class="upd_ct_tab_item_link" value="shortTerm" >
+                                	<a href="#short_box">특정한 날에만</a>
+                                </button>
                             </div>
                             <!-- end 탭 버튼 영역 -->
 
                             <!-- 내용 영역 -->
-                            <div class="change_box">
-                                
+                            <div class="time_box">
+                            	<div class="regular_box hide" id="regular_box">
+	                                <!--돌봄 시작일-->
+									<div class="calc_box">
+										<div class="regu_title">돌봄 시작일</div>
+										<input id="datepicker" class="date_box">
+									</div>
+									<hr>
+									<div>
+										<div class="regu_title">돌봄 요일</div>
+										<div class="day_btn_group">
+											<button class="day_btn" value="mon" type="button">월</button>
+											<button class="day_btn" value="tue" type="button">화</button>
+											<button class="day_btn" value="wen" type="button">수</button>
+											<button class="day_btn" value="thu" type="button">목</button>
+											<button class="day_btn" value="fri" type="button">금</button>
+											<button class="day_btn" value="sat" type="button">토</button>
+											<button class="day_btn" value="sun" type="button">일</button>
+										</div>
+									</div>
+									<hr>
+									<!--일정은 시터에게 맞출 수 잇어요-->
+									<div class="jojung_box">
+										<span class="jojung_check"></span>
+										<span class="jojung_text">본 일정은 맘시터에 맞춰서 얼마든지 조정할 수 있어요.</span>
+									</div>
+	                            </div>
+	                            
+	                            <div class="short_box hide" id="short_box">
+	                            	<div class="calrendar_block"></div>
+								    <hr>
+								
+								    <!--일정은 시터에게 맞출 수 잇어요-->
+								    <div class="jojung_box">
+								        <span class="jojung_check"></span>
+								        <span class="jojung_text">본 일정은 맘시터에 맞춰서 얼마든지 조정할 수 있어요.</span>
+								    </div>
+	                            </div>
                             </div>
                         </div>
                         <input type="hidden" id="schedule" name="schedule"/>
@@ -1385,8 +1425,13 @@
 
 
 	<!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> <!-- jquery 파일명 수정 -->
+     <!--Google CDN 서버로부터 jQuery 참조 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <!-- jQuery Ajax Form plugin CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+    <!-- jQuery Ajax Setup -->
+    <script src="${pageContext.request.contextPath}/assets/ajax/ajax_helper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript">
         function addCommas(x) {
@@ -1436,8 +1481,6 @@
                     $("#appl_title").val(title);
                     console.log(title);
                 }
-
-
             });
 
 
@@ -1583,17 +1626,10 @@
                     $(this).removeClass("selected");
                     $(this).prev().addClass("selected");
                 }
-                $.ajax({
-                    type: 'GET',                 //get방식으로 통신
-                    url: "${pageContext.request.contextPath}/join/parent/" + type + ".do",
-                    dataType: "text",            //html형식으로 값 읽기
-                    error: function () {          //통신 실패시 ㅠㅠ
-                        alert('통신실패!');
-                    },
-                    success: function (data) {    //통신 성공시 탭 내용을 담는 div를 읽어들인 값으로 채우기
-                        $('.change_box').html(data);
-                    }
-                });
+                
+                var target = $(this).find("a").attr("href");
+                $(target).removeClass("hide");
+                $(".time_box > div").not($(target)).addClass("hide");
             });
             
             /*
@@ -1619,7 +1655,39 @@
                 $(this).find(".jojung_check").toggleClass("check_check");
 
             });
+            
+            // 정기적으로
+            $('#datepicker').flatpickr({
+				dateFormat: "Y/m/d",
+				minDate: "today",
+				maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
+				defaultDate: new Date().fp_incr(6) //지금으로부터 6일이 기본
+			});
+			const result1 = [];
+			//요일 선택시 
+			$(document).on('click', '.day_btn', function () {
+				$(this).toggleClass("select_btn");
 
+
+				if ($(this).hasClass("select_btn") == true) {
+					var day = $(this);
+					for (var i = 0; i < day.length; i++) {
+						result1.push($(day[i]).val());
+						//console.log(result1);
+					};
+				}
+
+			});
+
+			$(".calrendar_block").flatpickr({
+                inline: true,
+                dateFormat: "Y/m/d",
+                minDate: "today",
+                maxDate: new Date().fp_incr(30), //지금으로부터 30일 이내
+                mode: "multiple", //여러개 선택 가능
+                defaultDate: new Date().fp_incr(6) //지금으로부터 6일이 기본
+            });
+			
             //수정하기 버튼 클릭시
             $(document).on('click', '#updateSchedule', function (e) {
                 //e.preventDefault();
@@ -1629,16 +1697,18 @@
 
                 if ($(".jojung_box").hasClass("box_check") == true) {
                     //일정조정 가능 
-                    $("#schedule_ok").val('Y');
+                    $("#schedule_ok").val("Y");
                 } else {
-                    $("#schedule_ok").val('N');
+                    $("#schedule_ok").val("N");
                 }
+                
                 if (type == 'regular') {
                     //시작 날짜
                     var startdate = $(".date_box").val();
                     //요일
                     var day = result1;
-                    
+                    // 빈도
+                    var frequency = "regular";
 
                     var schedule = {
                         startdate: startdate,
@@ -1650,7 +1720,7 @@
                     var scheduleStr = JSON.stringify(schedule);
                     //console.log(scheduleStr);
                     var schedulerep = scheduleStr.replace(/\"/gi, '\'');
-                    console.log(schedulerep);
+                    //console.log(schedulerep);
                     $("#schedule").val(schedulerep);
                 } 
                 
