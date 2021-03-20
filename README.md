@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 # 아이를 부탁해
 =======
-# ezen-android2020-2
->>>>>>> 5a81a3d2ab6c185e542a4e532bc6b9c8de32839c
-
 <p align="center"> <img src="https://user-images.githubusercontent.com/63278754/110749802-e9847c80-8284-11eb-944a-a0ef7c272982.gif" width="250" /> </p>
 
 <p align="center"> <a href="http://itproject.ezenac.co.kr/abuhae/">
@@ -27,7 +23,7 @@
 - 고객센터
 - 관리자페이지
 
-<<<<<<< HEAD
+
 ## Service Flow
 
 ![Service Flow](https://user-images.githubusercontent.com/63278754/110744101-7b3bbc00-827c-11eb-8a99-424d2070cf19.png)
@@ -55,15 +51,3 @@ MVC with Spring Framework
 
 ![image](https://user-images.githubusercontent.com/63278754/110747713-15eac980-8282-11eb-8f0f-7be50c207b49.png)
 https://www.notion.so/Project-2d568de1bcaa4de181b33c72be346c66
-=======
-21/2/21 수정 사항
-이용권 금액, 타입 int로 변경 
-<<<<<<< HEAD
-=======
-
-21/2/24
-editdate 삭제
-interview_type 데이터형 변경
-profilefile, resi_certi 테이블 수정
->>>>>>> 103f2c6341b17ea61c1f6c77c268751113536a8f
->>>>>>> 5a81a3d2ab6c185e542a4e532bc6b9c8de32839c
