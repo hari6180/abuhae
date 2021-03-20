@@ -37,7 +37,7 @@ MVC with Spring Framework
 ## Key summary
 
 - RESTful API : ajax 통신을 이용하여 JSON 파라미터 전송/수신, 비동기식 페이지 새로고침 처리
-- Helper : 자주 쓰는 기능을 모듈화하여 코드량 감소
+- Helper : 자주 쓰는 기능을 모듈화하여 코드량 감소(AOP)
 - abstracts DB : 타입별 회원 공통 정보 추출, 상속처리
 - Dynamic SQL : 검색기능 조건값에 따라 동적으로 쿼리 생성
 
