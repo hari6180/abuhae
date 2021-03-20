@@ -1,5 +1,5 @@
 # 아이를 부탁해
-=======
+
 <p align="center"> <img src="https://user-images.githubusercontent.com/63278754/110749802-e9847c80-8284-11eb-944a-a0ef7c272982.gif" width="250" /> </p>
 
 <p align="center"> <a href="http://itproject.ezenac.co.kr/abuhae/">
