@@ -43,8 +43,8 @@ MVC with Spring Framework
 
 ## git branch
 
-- Main : frontend 작업
-- Spring : backend 작업
+- Main : backend 작업
+- front : frontend 작업
 - Database : DB
 
 ## Work Flow
