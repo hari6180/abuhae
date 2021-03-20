@@ -23,11 +23,9 @@ sitter_experience 테이블에서 삭제
 
 21/2/21 수정 사항
 이용권 금액, 타입 int로 변경 
-<<<<<<< HEAD
-=======
 
 21/2/24
 editdate 삭제
 interview_type 데이터형 변경
 profilefile, resi_certi 테이블 수정
->>>>>>> 103f2c6341b17ea61c1f6c77c268751113536a8f
+
